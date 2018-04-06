@@ -41,8 +41,8 @@ body {
   
   background-color: #FFFFFF;
   background-image: url('/assets/images/background.jpg');
-  background-position: bottom left 5px 5px;
-  background-origin: content-box padding-box;
+  background-position: bottom left;
+  background-origin: content-box;
   background-size: auto auto;
   background-repeat: no-repeat;
   background-attachment: fixed, scroll;
