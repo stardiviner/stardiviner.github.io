@@ -45,7 +45,7 @@ body {
   background-origin: content-box padding-box;
   background-size: auto auto;
   background-repeat: no-repeat;
-  background-attachment: scroll;
+  background-attachment: fixed, scroll;
 
   /* text effect */
   text-shadow: 1px 1px 3px rgba(50, 50, 50, .15);
