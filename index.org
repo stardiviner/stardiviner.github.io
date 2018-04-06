@@ -1,0 +1,9 @@
+#+TITLE: stardiviner's website
+#+AUTHOR: stardiviner
+#+DATE: [2011-11-11 Fri 08:58]
+
+* Test
+
+#+begin_src lisp
+(print "hello, world!")
+#+end_src

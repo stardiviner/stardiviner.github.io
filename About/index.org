@@ -1,0 +1,21 @@
+#+TITLE: About
+
+[[file:avatar.png]]
+
+#+ATTR_ORG: :width 300
+#+ATTR_LATEX: :width 3.0in
+#+ATTR_HTML: :width 300px
+[[file:head-computer.jpg]]
+
+* My Tools
+
+** Conky
+
+#+ATTR_ORG: :width 500
+#+ATTR_LATEX: :width 5.0in
+#+ATTR_HTML: :width 500px
+[[file:conky.png]]
+
+
+
+* Contact
