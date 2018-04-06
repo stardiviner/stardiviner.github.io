@@ -239,15 +239,14 @@ figure > img {
 
 /* kbd */
 kbd {
+  font-weight: bold;
+  
   color: #333333;
-  /* background: rgba(255, 255, 255, 0.6) none repeat scroll 0% 0%; */
-  /* text-shadow: 5px 5px 5px rgba(169, 170, 164, 0.9); */
+  background: rgba(255, 255, 255, 0.6) none repeat scroll 0% 0%;
 
   border: 0.5px solid #444444;
   border-radius: 3px;
-  
-  box-shadow: 2px 1px 1px #555555;
-  text-shadow: 2px 2px 3px rgba(50, 50, 50, .15);
+  box-shadow: 5px 5px 5px rgba(169, 170, 164, 0.9);
   
   /* padding: 2px 8px 1px; */
   /* margin: 0px 2px; */
