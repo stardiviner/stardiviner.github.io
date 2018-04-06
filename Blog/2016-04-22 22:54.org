@@ -1,0 +1,510 @@
+# Created 2018-04-06 Fri 09:00
+#+OPTIONS: num:t toc:1 H:4
+#+TITLE: Org-mode exporter template for testing
+#+AUTHOR: stardiviner
+
+* Comment
+:PROPERTIES:
+:ID:       3897afe8-36d6-4b4b-83b2-de19c268f996
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+* Property
+:PROPERTIES:
+:URL:      http://localhost
+:ID:       e8cdddae-a0ad-4cb9-bb70-25e36cfe4d17
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+* Paragraph
+:PROPERTIES:
+:ID:       6268e637-e022-4a5d-8c3e-d3975841334e
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+** horizontal rules
+:PROPERTIES:
+:ID:       75ae6f4c-9b97-485f-a41b-07ff6f5b706e
+:END:
+
+AAAAAAAAAAAAAA
+
+-----
+
+BBBBBBBBBBBBB
+
+* Formatting text
+:PROPERTIES:
+:ID:       c840528f-b708-412a-b33d-2212d8c7ec88
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+** bold & italic
+:PROPERTIES:
+:ID:       fb4ca44c-6b6d-4f32-a489-8d6281363300
+:END:
+
+- *bold text*
+- /italic text/
+- /italic *bold text* test/
+- *bold /italic/ test*
+
+** monospace, superscript and subscript
+:PROPERTIES:
+:ID:       6db24646-62fa-49ea-adaa-a56fb8d4bfb7
+:END:
+
+- monospaced typewriter font for ~inline code~
+- monospaced typewriter font for =verbatim text=
+- +deleted text+ (vs. _inserted text_)
+- text with super^{script}, such as 2^{10}
+- text with sub_{script}, such as H_{2}O
+
+** Inline code
+:PROPERTIES:
+:ID:       50e9abd8-45ed-42d1-8ba5-d3209ecc4ded
+:END:
+
+=inline code=
+
+If you have ~\equal~, ~\quot~ or ~\rsquo~ in code which you want to surround by ~=code=~.
+
+* Smart punctuation
+:PROPERTIES:
+:ID:       a738b9bc-b97b-4901-bb01-3eb3f6cc995d
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+If the XXX option is specified, Org mode will produce typographically correct
+output, converting straight quotes to curly quotes, ~---~ to em-dashes, ~--~ to
+en-dashes, and ~...~ to ellipses.
+
+* Plain lists
+:PROPERTIES:
+:ID:       fbbd5b73-5594-4db4-94e3-d8141dc17a36
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+** un-ordered lists
+:PROPERTIES:
+:ID:       067cafb7-cd55-47b1-b54b-6e6ff4dc41ce
+:END:
+
+- one
+- two
+- three
+
+- [ ] one
+- [ ] two
+
+- one :: 1
+- two :: 2
+
+
+- Item with some lengthy text wrapping hopefully across several lines. We add
+  a few words to really show the line wrapping.
+- Bullet.
+  - Bullet.
+    - Bullet.
+
+** ordered lists
+:PROPERTIES:
+:ID:       02dc3830-0639-44b0-9799-f971853661fe
+:END:
+
+1. Arabic (decimal) numbered list item. We add a few words to show the line
+   wrapping.
+   1. Upper case alpha (letter) numbered list item.
+      1. Lower alpha.
+      2. Lower alpha.
+   2. Upper alpha.
+2. Number.
+
+*** ordered list with jumping numbers
+:PROPERTIES:
+:ID:       0220a1cf-2fc4-47dd-a2bf-6d3637d80529
+:END:
+
+1. line one
+2. [@2] We start with point number 2.
+3. Automatically numbered item.
+
+** checklists
+:PROPERTIES:
+:ID:       5e91b15b-79d1-4ea5-b679-0ab67ee3e2ab
+:END:
+
+- [X] Checked.
+- [-] Half-checked.
+- [ ] Not checked.
+- Normal list item.
+
+** definition list
+:PROPERTIES:
+:ID:       e154cd3e-3b23-42ce-abeb-c54518f6ee85
+:END:
+
+- First term to define :: 
+     Definition of the first term. We add a few words to show the line wrapping,
+     to see what happens when you have long lines.
+
+- Second term :: 
+     Explication of the second term with *inline markup*.
+
+     In many paragraphs.
+
+** separating lists
+:PROPERTIES:
+:ID:       342c7589-ce8c-4eee-9fcb-07eb72d9eec8
+:END:
+
+- apples
+- oranges
+- bananas
+
+- carrots
+- tomatoes
+- celery
+
+* Tables
+:PROPERTIES:
+:ID:       335af6e1-9cad-47c4-acb4-f4f6b21d7183
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+Tables are one of the most refined areas of the Org mode syntax. They are very
+easy to create and to read.
+
+** simple table
+:PROPERTIES:
+:ID:       d8d91db5-e30d-48b3-b9ac-c5c521bb78bc
+:END:
+
+| column 1                | column 2                |
+|-------------------------+-------------------------|
+| Cell in column 1, row 1 | Cell in column 2, row 1 |
+| Cell in column 1, row 2 | Cell in column 2, row 2 |
+
+** Table with aligned cells
+:PROPERTIES:
+:ID:       f9fa207e-1c43-4dd6-a08e-888023bca5e9
+:END:
+
+| 1            | 2            | 3            |
+| Right        | Center       | Left         |
+|--------------+--------------+--------------|
+| xxxxxxxxxxxx | xxxxxxxxxxxx | xxxxxxxxxxxx |
+
+** Header row
+:PROPERTIES:
+:ID:       7200d3ae-4bb1-40bd-9055-9932371e6448
+:END:
+
+| Name of column 1 | Name of column 2 | Name of column 3 |
+|------------------+------------------+------------------|
+| Top left         | Top middle       |                  |
+|                  |                  | Right            |
+| Bottom left      | Bottom middle    |                  |
+
+* Hyperlinks
+:PROPERTIES:
+:ID:       cc6c5740-3a87-402e-addd-d42c6e77b6df
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+** Internal links
+:PROPERTIES:
+:ID:       d0993c1f-7a37-4972-afea-bb8cc35dde36
+:END:
+
+*** radio target link
+:PROPERTIES:
+:ID:       912f6a31-553a-4e73-be0c-769643d56cc2
+:END:
+
+Here is a <<<radio_target_link>>>
+
+-----
+
+Reference previous a radio_target_link.
+
+**** <<<foo>>>
+:PROPERTIES:
+:ID:       fcb882a4-a428-44ba-9beb-c032b2d5e7b1
+:END:
+
+About foo. What is foo?
+
+**** <<<bar>>>
+:PROPERTIES:
+:ID:       b16096d0-d147-4872-8394-e982c0562994
+:END:
+
+bar is developed based on foo.
+
+*** TODO coderef
+:PROPERTIES:
+:ID:       127550da-5a57-42bf-bbdc-0c25b6fcc8eb
+:END:
+#+begin_src emacs-lisp -n -r
+(save-excursion                  (ref:sc)
+   (goto-char (point-min)))      (ref:jump)
+#+end_src
+
+In line [[(sc)]] we remember the current position. [[(jump)][Line (jump)]] jumps to point-min.
+
+** External links
+:PROPERTIES:
+:ID:       147feca3-3651-4c29-9e46-b9c08f332d4b
+:END:
+
+* Drawers
+:PROPERTIES:
+:ID:       2d62890f-ced7-4f7b-9746-8fa1835d5704
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+** test drawer
+:PROPERTIES:
+:ID:       8ac3c6c8-14ef-4b21-8efd-8dc5d91daee0
+:END:
+:DRAWERNAME:
+This is inside the drawer.
+:END:
+
+* Dynamic blocks
+:PROPERTIES:
+:ID:       a839d0ae-63bc-42fa-84fe-92b33b9d533c
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+#+begin: clocktable :maxlevel 2 :scope subtree
+#+caption: Clock summary at [2017-02-24 Fri 09:37]
+| Headline     | Time   |   |
+|--------------+--------+---|
+| *Total time* | *0:00* |   |
+#+end:
+
+* ASCII export
+:PROPERTIES:
+:ID:       af09b5b2-5882-4a36-88f5-d00733fad636
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+* Inline Images
+:PROPERTIES:
+:ID:       14207a95-e121-47fd-9bba-63f4392e7181
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+#+begin_src dot
+digraph G {
+  size="8,6"
+  ratio=expand
+  edge [dir=both]
+  plcnet [shape=box, label="PLC Network"]
+  subgraph cluster_wrapline {
+    label="Wrapline Control System"
+    color=purple
+    subgraph {
+    rank=same
+    exec
+    sharedmem [style=filled, fillcolor=lightgrey, shape=box]
+    }
+    edge[style=dotted, dir=none]
+    exec -> opserver
+    exec -> db
+    plc -> exec
+    edge [style=line, dir=both]
+    exec -> sharedmem
+    sharedmem -> db
+    plc -> sharedmem
+    sharedmem -> opserver
+  }
+  plcnet -> plc [constraint=false]
+  millwide [shape=box, label="Millwide System"]
+  db -> millwide
+
+  subgraph cluster_opclients {
+    color=blue
+    label="Operator Clients"
+    rankdir=LR
+    labelloc=b
+    node[label=client]
+    opserver -> client1
+    opserver -> client2
+    opserver -> client3
+  }
+}
+#+end_src
+
+#+name: fig:bldg-1-5-seq
+#+caption: This is an image
+[[file:data/images/babel_lang_dot_example1.png]]
+
+** Image attributes and values
+:PROPERTIES:
+:ID:       d89c0016-df43-44f3-88b8-535975506317
+:END:
+
+[[file:data/images/babel_lang_dot_example1.png]]
+
+* Footnote
+:PROPERTIES:
+:ID:       6c577429-a3f6-4c14-9794-c50a3753e49f
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+A footnote is defined in a paragraph that is started by a footnote marker in
+square brackets in column 0, no indentation allowed. The footnote reference is
+simply the marker in square brackets, inside text. For example:
+
+The org homepage [fn:1] now looks a lot better than it used to.
+
+[fn:1] The link is: http://orgmode.org
+
+* Entity
+:PROPERTIES:
+:ID:       a4dc8312-be47-4a4c-bdbe-ea4c36fbd186
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+1 + 1 \equal 2
+
+Like \EUR with
+
+* Inline code
+:PROPERTIES:
+:ID:       8f9d52a8-f04e-4f20-aa2e-1a594811fc57
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+src_elisp{(message "hi")} =hi=
+
+* LaTeX
+:PROPERTIES:
+:ID:       0f7f4e61-cc38-45d4-a821-72871d220707
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+** Inline LaTeX
+:PROPERTIES:
+:ID:       0cf98440-5210-4193-8f8e-7e85abbae324
+:END:
+
+This is inline latex \[ 1 + 2 = 3 \]. and $3 * 3 = 9$ .
+
+** LaTeX block
+:PROPERTIES:
+:ID:       3fcbf355-d843-4cf0-9679-f406e83ba8cc
+:END:
+
+\begin{equation} \label{sqrt equation}
+y = \sqrt{r^2 - x^2}
+\end{equation}
+
+** a more complex latex block
+:PROPERTIES:
+:ID:       85b239ed-cfdd-4dbd-850d-9a80b0957da0
+:END:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{csharp}
+string title = "This is a Unicode π in the sky"
+/*
+Defined as $\pi=\lim_{n\to\infty}\frac{P_n}{d}$ where $P$ is the perimeter
+of an $n$-sided regular polygon circumscribing a
+circle of diameter $d$.
+*/
+const double pi = 3.1415926535
+\end{minted}
+
+* src blocks
+:PROPERTIES:
+:ID:       0bbfd97e-52f8-4e75-968b-79a71f5a316a
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+** syntax highlighting
+:PROPERTIES:
+:ID:       68e01fc8-0e03-4179-8ab4-a23ce58b9a20
+:END:
+
+#+begin_src emacs-lisp
+(defun hello (name)
+  (print (format "Hello, %s" name)))
+
+(hello "stardiviner")
+#+end_src
+
+** escape math formulas in src block
+:PROPERTIES:
+:ID:       cbed519a-be32-47f8-a7c4-beb408f632e9
+:END:
+
+#+begin_src emacs-lisp
+;; Defined as $\pi=\lim_{n\to\infty}\frac{P_n}{d}$ where $P$ is the perimeter
+;; of an $n$-sided regular polygon circumscribing a
+;; circle of diameter $d$.
+(prin1 "hello, world!")
+#+end_src
+
+** highlight code tags
+:PROPERTIES:
+:ID:       92432324-3cf9-4152-aeb8-d5539137240f
+:END:
+
+#+begin_src emacs-lisp
+;;; TODO does this code tag highlighted?
+;;; TODO: what about this one?
+;;; XXX
+;;; BUG
+;;; NOTE
+(prin1 "yes")
+#+end_src
+
+** src block with inline image result
+:PROPERTIES:
+:ID:       9e5200c5-3655-477e-ab20-b9a9fdda3857
+:END:
+
+#+begin_src gnuplot
+set grid
+
+plot sin(x)
+#+end_src
+
+#+results[<2018-04-06 09:00:28> dcc4b32ad00ed93896cdbc4e2ee47e4cc9c0b6d9]: 
+[[file:data/images/babel-gnuplot-graphics-test.png]]
+
+* 中文测试
+:PROPERTIES:
+:ID:       87084b84-e7f2-4eda-b689-44155df7fd18
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+这是中文段落
+
+* Reference to previous pages links
+:PROPERTIES:
+:ID:       e056308d-32c2-470a-b623-1635665b5a20
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:
+
+** radio target link reference
+:PROPERTIES:
+:ID:       3a96566e-c212-4174-a576-08a154502a33
+:END:
+
+foo
+
+** coderef
+:PROPERTIES:
+:ID:       b01f97a7-9e77-44a9-ab89-cce03e5edad5
+:END:
+
+In line [[(sc)]] we remember the current position. [[(jump)][Line (jump)]] jumps to point-min.

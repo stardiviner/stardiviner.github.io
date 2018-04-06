@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+	   xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	   xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	   xmlns:dc="http://purl.org/dc/elements/1.1/"
+	   xmlns:atom="http://www.w3.org/2005/Atom"
+	   xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	   xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	   xmlns:georss="http://www.georss.org/georss"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:media="http://search.yahoo.com/mrss/"><channel>
+  <title>Blog</title>
+  <atom:link href="https://stardiviner.github.io/index.xml" rel="self" type="application/rss+xml" />
+  <link>https://stardiviner.github.io/</link>
+  <description><![CDATA[]]></description>
+  <language>en</language>
+  <pubDate>Fri, 06 Apr 2018 09:00:37 +0800</pubDate>
+  <lastBuildDate>Fri, 06 Apr 2018 09:00:37 +0800</lastBuildDate>
+  <generator>Emacs 27.0 Org-mode 9.1.8</generator>
+  <webMaster>numbchild@gmail.com (stardiviner)</webMaster>
+  <image>
+    <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
+    <title>Blog</title>
+    <link>https://stardiviner.github.io/</link>
+  </image>
+
+  <nav id="table-of-contents">
+    <h2>Table of Contents</h2>
+    <div id="text-table-of-contents">
+      <ul>
+        <li><a href="#org95d85b3">2016</a>
+        <ul>
+          <li><a href="#orga8f60a8">2016-04 April</a>
+          <ul>
+            <li><a href="#org4e7956e">2016-04-22 Friday</a>
+            <ul>
+              <li><a href="#org48e60f5">test org-mode ox-publish</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+        </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <item>
+    <title>2016</title>
+    <link>https://stardiviner.github.io/index.html#org95d85b3</link>
+    <author>numbchild@gmail.com (stardiviner)</author>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org95d85b3</guid>
+    <pubDate>Sat, 23 Apr 2016 17:03:00 +0800</pubDate>
+
+    <description><![CDATA[<pre class="example">
+    ID: bc5e06a2-08bd-49ef-ab42-449a641cdaee
+    PUBDATE: <2016-04-23 Sat 17:03>
+    </pre>
+
+    <div id="outline-container-orga8f60a8" class="outline-3">
+    <h3 id="orga8f60a8">2016-04 April</h3>
+    <div class="outline-text-3" id="text-orga8f60a8">
+    <pre class="example">
+    ID: 0b1a19cd-cf46-4d80-897d-cd5a7856fa52
+    </pre>
+    </div>
+
+    <div id="outline-container-org4e7956e" class="outline-4">
+    <h4 id="org4e7956e">2016-04-22 Friday</h4>
+    <div class="outline-text-4" id="text-org4e7956e">
+    <pre class="example">
+    ID: 2f9f4005-1913-41a0-866a-0f45b67ec2ee
+    </pre>
+    </div>
+
+    <div id="outline-container-org48e60f5" class="outline-5">
+    <h5 id="org48e60f5">test org-mode ox-publish</h5>
+    <div class="outline-text-5" id="text-org48e60f5">
+    <pre class="example">
+    TIME: [2016-04-22 Fri 22:54]
+    ID: b80c8cad-9403-4533-9cd4-cb2fd5b92678
+    </pre>
+
+    <p>
+    <a href="2016-04-22 22:54.html">test org-mode ox-publish</a>
+    </p>
+    </div>
+    </div>
+    </div>
+    </div>
+    ]]></description>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,27 @@
+# Created 2018-04-06 Fri 09:01
+#+TITLE: Blog
+#+AUTHOR: stardiviner
+
+* 2016
+:PROPERTIES:
+:ID:       bc5e06a2-08bd-49ef-ab42-449a641cdaee
+:PUBDATE:  <2016-04-23 Sat 17:03>
+:END:
+
+** 2016-04 April
+:PROPERTIES:
+:ID:       0b1a19cd-cf46-4d80-897d-cd5a7856fa52
+:END:
+
+*** 2016-04-22 Friday
+:PROPERTIES:
+:ID:       2f9f4005-1913-41a0-866a-0f45b67ec2ee
+:END:
+
+**** test org-mode ox-publish
+:PROPERTIES:
+:TIME:     [2016-04-22 Fri 22:54]
+:ID:       b80c8cad-9403-4533-9cd4-cb2fd5b92678
+:END:
+
+[[file:2016-04-22 22:54.org][test org-mode ox-publish]]
