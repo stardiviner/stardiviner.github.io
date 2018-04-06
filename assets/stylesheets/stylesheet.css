@@ -29,6 +29,13 @@ html, body {
   }
 }
 
+/* top border */
+html {
+  border-top-style: solid;
+  border-top-color: #f006;
+  border-top-width: 5px;
+}
+
 body {
   padding: 10px;
   
