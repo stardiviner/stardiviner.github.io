@@ -80,6 +80,18 @@ body {
   position: relative;
 }
 
+/* headlines */
+h2, h3, h4, h5, h6 {
+  /* bottom line */
+  border-bottom-style: solid;
+  border-bottom-color: #0000001a;
+  border-bottom-width: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  /* ahead blank */
+  padding-left: 20px;
+}
+
 /* drawers */
 pre.example {
   color: #b3b3b3;
