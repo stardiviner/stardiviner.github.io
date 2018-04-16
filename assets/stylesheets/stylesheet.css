@@ -541,3 +541,13 @@ sup a:after {
 .footpara {
   display: inline;
 }
+
+/* reward */
+.reward img {
+  display: block;
+  width: 150px;
+  position: relative;
+}
+.reward img:hover {
+  width: auto;
+}

@@ -19,3 +19,19 @@
 
 
 * Contact
+:PROPERTIES:
+:CUSTOM_ID: Contact
+:END:
+
+* Reward
+:PROPERTIES:
+:CUSTOM_ID: Reward
+:END:
+:LOGBOOK:
+- Note taken on [2018-04-16 Mon 15:46] \\
+  Add CUSTOM_ID property for link anchor by other links.
+:END:
+
+@@html:<img src="/assets/images/alipay_collect.jpg" title="打赏" />@@
+
+
