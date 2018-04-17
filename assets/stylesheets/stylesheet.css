@@ -544,10 +544,21 @@ sup a:after {
 
 /* reward */
 .reward img {
-  display: block;
-  width: 150px;
-  position: relative;
+  display: inline;        /* align horizontally */
+  height: 90px;             /* smaller size like thumb */
+}
+/* absolute position at left-bottom on page */
+#alipay-payment img {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+#wechat-payment img {
+  position: fixed;
+  bottom: 20px;
+  left: 100px;
 }
 .reward img:hover {
-  width: auto;
+  width: auto;                  /* auto large when hover on */
+  display: block;
 }
