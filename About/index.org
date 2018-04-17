@@ -23,15 +23,16 @@
 :CUSTOM_ID: Contact
 :END:
 
-* Reward
+* Payment
 :PROPERTIES:
-:CUSTOM_ID: Reward
+:CUSTOM_ID: Payment
 :END:
 :LOGBOOK:
 - Note taken on [2018-04-16 Mon 15:46] \\
   Add CUSTOM_ID property for link anchor by other links.
 :END:
 
-@@html:<img src="/assets/images/alipay_collect.jpg" title="打赏" />@@
+@@html:<img src="/assets/images/alipay_payment.jpg" title="打赏" />@@
+@@html:<img src="/assets/images/wechat_payment.png" title="打赏" />@@
 
 
