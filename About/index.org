@@ -36,3 +36,37 @@
 @@html:<img src="/assets/images/wechat_payment.png" title="打赏" />@@
 
 
+
+* Resume
+:PROPERTIES:
+:CUSTOM_ID: Resume
+:END:
+
+** Linux
+
+从大学辍学以来 [2011-10-10 Mon] 一直用的Linux。
+
+** Emacs + Org-mode
+
+一开始是学的Vim， [2013-06-16 Sun] 后来因为觉得 Org-mode 超赞，就转到
+Emacs下了。确实很赞。之后一直都是用Org-mode组织内容。GTD, Wiki
+(Personal Knowledge Graph), Blog, Email etc。 [2016-12-16 Fri] 用Elisp
+给很多Emacs插件和Org-mode贡献过一些代码。
+
+** Programming Languages
+
+*** C
+
+[2009-07-16 Thu] 大学学过一点C语言，现在已忘记了。
+
+*** Lisp family: Clojure
+
+[2017-08-16 Wed] 现在主要用这个语言 。也会去了解一点 Common Lisp。
+
+*** Know a little about Python, Ruby, HTML, CSS, JavaScript
+
+[2015-03-16 Mon] 这些语言都了解一点。
+
+** Data Structures & Algorithms
+
+[2018-04-16 Mon] 这几天开始学习数据结构和算法。
