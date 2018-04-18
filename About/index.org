@@ -15,18 +15,6 @@
 - Email: numbchild A/T gmail |. COM
 - IRC: stardiviner on Freenode
 
-* Payment
-:PROPERTIES:
-:CUSTOM_ID: Payment
-:END:
-:LOGBOOK:
-- Note taken on [2018-04-16 Mon 15:46] \\
-  Add CUSTOM_ID property for link anchor by other links.
-:END:
-
-@@html:<img src="/assets/images/alipay_payment.jpg" title="打赏" />@@
-@@html:<img src="/assets/images/wechat_payment.png" title="打赏" />@@
-
 
 * Resume
 :PROPERTIES:
@@ -35,9 +23,23 @@
 
 ** Linux
 
+I've been use Linux for a long time from [2011-10-10 Mon]. It is a hard start,
+but awesome path for being more good on Linux machine.
+
 从大学辍学以来 [2011-10-10 Mon] 一直用的Linux。
 
 ** Emacs + Org-mode
+
+Now, I use Emcs + Org-mode a lot, I try to do many things under Emacs, and with
+Org-mode.
+
+- Writing code with Emacs and Org-mode Literate Programming paradigm.
+- Note taking with Org-mode.
+- Record down knowledge with Org-mode like Wiki.
+- Task management with Org-mode Agenda.
+- Email with Emacs package mu4e.
+- IRC chatting with Emacs package ERC.
+- Website/Blog publishment with Org-mode exporting.
 
 一开始是学的Vim， [2013-06-16 Sun] 后来因为觉得 Org-mode 超赞，就转到
 Emacs下了。确实很赞。之后一直都是用Org-mode组织内容。GTD, Wiki
@@ -48,17 +50,28 @@ Emacs下了。确实很赞。之后一直都是用Org-mode组织内容。GTD, Wi
 
 *** C
 
+[2009-07-16 Thu] Already forgot C programming language after a little touch in college.
+
 [2009-07-16 Thu] 大学学过一点C语言，现在已忘记了。
 
 *** Lisp family: Clojure
 
-[2017-08-16 Wed] 现在主要用这个语言 。也会去了解一点 Common Lisp。
+[2017-08-16 Wed] I mainly learning and use Clojure currently. Also like Lisp
+(Common Lisp) (not good at it yet).
+
+[2017-08-16 Wed] 现在主要用这个语言 。也会去了解一点 Lisp (Common Lisp)。
 
 *** Know a little about Python, Ruby, HTML, CSS, JavaScript
+
+[2015-03-16 Mon] I learned a little of Python, Ruby, HTML, CSS, JavaScript when
+some small things used them.
 
 [2015-03-16 Mon] 这些语言都了解一点。
 
 ** Data Structures & Algorithms
+
+[2018-04-16 Mon] Those days, I try to learn some Data Structures and Algorithms
+to be a better programmer.
 
 [2018-04-16 Mon] 这几天开始学习数据结构和算法。
 
@@ -77,6 +90,8 @@ I used to use Ubuntu about two yearts ago.
 
 ** Emacs
 
+I really like Emacs. It has some kind of spirit can help you do things in Emacs style.
+
 #+ATTR_ORG: :width 600
 #+ATTR_LATEX: :width 6.0in
 #+ATTR_HTML: :width 600px
@@ -84,7 +99,23 @@ I used to use Ubuntu about two yearts ago.
 
 ** Conky
 
+Having an awesome desktop is a cool thing.
+
 #+ATTR_ORG: :width 500
 #+ATTR_LATEX: :width 5.0in
 #+ATTR_HTML: :width 500px
 [[file:conky.png]]
+
+
+* Payment
+:PROPERTIES:
+:CUSTOM_ID: Payment
+:END:
+:LOGBOOK:
+- Note taken on [2018-04-16 Mon 15:46] \\
+  Add CUSTOM_ID property for link anchor by other links.
+:END:
+
+@@html:<img src="/assets/images/alipay_payment.jpg" title="打赏" />@@
+
+@@html:<img src="/assets/images/wechat_payment.png" title="打赏" />@@
