@@ -416,17 +416,6 @@ sup a:after {
   content: "]";
 }
 
-/* avatar */
-#preamble img.avatar {
-  position: relative;
-  float: right;
-  margin-top: -50px;
-  margin-bottom: -100%;
-  margin-right: 0%;
-  width: 150px;
-  background-color: #fff;
-}
-
 /* org-infojs: table of content */
 #table-of-contents {
   position: fixed;

@@ -1,11 +1,18 @@
 #+TITLE: About
 
-[[file:avatar.png]]
-
-#+ATTR_ORG: :width 300
-#+ATTR_LATEX: :width 3.0in
-#+ATTR_HTML: :width 300px
-[[file:head-computer.jpg]]
+#+begin_export html
+<div id="avatar">
+  <img src="head-computer.jpg" alt="avatar" title="avatar" />
+</div>
+<style type="text/css">
+ #avatar img {
+   position: fixed;
+   right: 20px;
+   width: 100px;
+   bottom: 20%;
+ }
+</style>
+#+end_export
 
 * Contact
 :PROPERTIES:
@@ -119,3 +126,8 @@ Having an awesome desktop is a cool thing.
 @@html:<img src="/assets/images/alipay_payment.jpg" title="打赏" />@@
 
 @@html:<img src="/assets/images/wechat_payment.png" title="打赏" />@@
+
+
+* Nagato Pain
+
+[[file:avatar.png]]
