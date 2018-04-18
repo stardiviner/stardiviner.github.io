@@ -128,6 +128,29 @@ Having an awesome desktop is a cool thing.
 @@html:<img src="/assets/images/wechat_payment.png" title="打赏" />@@
 
 
+注册 Coinbase 即可获得Bitcoin。 https://www.coinbase.com/join/53b8ac3eed744366f7000001
+
+** Bitcoin Wallet (BTC)
+
+My BitCoin Wallet Address:
+
+#+begin_example
+3QrdhGw9N1Jm1QLct74A46NPLHmjpw3yJk
+#+end_example
+
+** BitCoin Cash Wallet (BTH)
+
+#+begin_example
+qr7gc5z0zml5g2tj2d88yzxqx7t2wd0gtucugd2fdl
+#+end_example
+
+** Ethereum Wallet (ETH)
+
+#+begin_example
+0x04cdae4Db1dbbe29C7F98B6bA14C727Be98f658A
+#+end_example
+
+
 * Nagato Pain
 
 [[file:avatar.png]]
