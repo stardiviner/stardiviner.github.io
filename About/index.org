@@ -2,7 +2,7 @@
 
 #+begin_export html
 <div id="avatar">
-  <img src="head-computer.jpg" alt="avatar" title="avatar" />
+  <img src="data/images/head-computer.jpg" alt="avatar" title="avatar" />
 </div>
 <style type="text/css">
  #avatar img {
@@ -103,7 +103,7 @@ I really like Emacs. It has some kind of spirit can help you do things in Emacs 
 #+ATTR_ORG: :width 600
 #+ATTR_LATEX: :width 6.0in
 #+ATTR_HTML: :width 600px
-[[file:my_emacs.png]]
+[[file:data/images/my_emacs.png]]
 
 ** Conky
 
@@ -112,7 +112,7 @@ Having an awesome desktop is a cool thing.
 #+ATTR_ORG: :width 500
 #+ATTR_LATEX: :width 5.0in
 #+ATTR_HTML: :width 500px
-[[file:conky.png]]
+[[file:data/images/conky.png]]
 
 
 * Payment
@@ -154,4 +154,4 @@ qr7gc5z0zml5g2tj2d88yzxqx7t2wd0gtucugd2fdl
 
 * Nagato Pain
 
-[[file:avatar.png]]
+[[file:data/images/avatar.png]]
