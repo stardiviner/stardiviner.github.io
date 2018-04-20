@@ -1,6 +1,8 @@
 #+TITLE: Poem (诗词)
 #+AUTHOR: stardiviner
 
+[[file:data/images/poem.jpg]]
+
 * 我喜欢的一些诗词
 
 ** 戚氏
