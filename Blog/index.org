@@ -1,5 +1,14 @@
 #+TITLE: Blog
 
+* Needlework: Setup the sewing machine
+:PROPERTIES:
+:DATE: [2018-04-20 Fri 11:41]
+:ID:       62bcea74-3133-4a44-adda-bd71f977c8fc
+:PUBDATE:  <2018-04-20 Fri 12:32>
+:END: 
+
+[[file:setup%20the%20sewing%20machine%20for%20needlework.org][setup the sewing machine for needlework]]
+
 * How to BANISH myself
 :PROPERTIES:
 :DATE: [2018-04-18 Wed]
@@ -8,7 +17,6 @@
 :END:
 
 [[file:How%20to%20BANISH%20myself.org][How to BANISH myself]]
-
 
 * test org-mode ox-publish
 :PROPERTIES:
