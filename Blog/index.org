@@ -1,5 +1,14 @@
 #+TITLE: Blog
 
+* Learned basic skateboard
+:PROPERTIES:
+:DATE: [2018-04-21 Sat 11:15]
+:ID:       dc0b9dbc-8abd-42ba-834d-e5205a99910b
+:PUBDATE:  <2018-04-21 Sat 11:32>
+:END: 
+
+[[file:Learned basic skateboard.org][Learned basic skateboard]]
+
 * Needlework: Setup the sewing machine
 :PROPERTIES:
 :DATE: [2018-04-20 Fri 11:41]
