@@ -54,8 +54,6 @@ BBBBBBBBBBBBB
 
 - *bold text*
 - /italic text/
-- /italic *bold text* test/
-- *bold /italic/ test*
 
 ** monospace, superscript and subscript
 :PROPERTIES:
