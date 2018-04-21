@@ -1,5 +1,14 @@
 #+TITLE: Blog
 
+* multilingual support with ob-translate and google-translate
+:PROPERTIES:
+:DATE: [2018-04-21 Sat 15:57]
+:ID:       b7e86ca8-367c-4ba0-8ebb-ba37860958c0
+:PUBDATE:  <2018-04-21 Sat 16:30>
+:END: 
+
+[[file:multilingual support with ob-translate and google-translate.org][multilingual support with ob-translate and google-translate]]
+
 * Learned basic skateboard
 :PROPERTIES:
 :DATE: [2018-04-21 Sat 11:15]

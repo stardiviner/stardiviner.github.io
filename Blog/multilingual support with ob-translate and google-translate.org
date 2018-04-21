@@ -1,0 +1,179 @@
+#+TITLE: multilingual support with ob-translate and google-translate
+
+* Why multilingual support?
+
+#+begin_src translate :src auto :dest zh-CN,zh-TW,ja,ko
+On the internet, English is the main language. But currently translation is good
+enough now. In my previous blog posts I use two languages to write, it is take
+much time. I want t a simpler automatic way to do this.
+#+end_src
+
+#+RESULTS[<2018-04-21 16:14:47> f94aff19787f76c9e0faea4cf7522a0c6259765d]:
+| zh-CN | 在互联网上，英语是主要的语言。但是现在翻译已经够好了。在我以前的博客文章中，我使用两种语言编写，这需要很长时间。我想要一个更简单的自动方式来做到这一点。                                      |
+| zh-TW | 在互聯網上，英語是主要的語言。但是現在翻譯已經夠好了。在我以前的博客文章中，我使用兩種語言編寫，這需要很長時間。我想要一個更簡單的自動方式來做到這一點。                                      |
+| ja    | インターネットでは、英語が主要言語です。しかし、現在のところ翻訳は十分です。以前のブログ記事では、2つの言語を使って書きましたが、時間がかかります。私はこれを行う簡単な自動方法をしたいです。 |
+| ko    | 인터넷에서 영어가 주요 언어입니다. 그러나 현재 번역은 현재 충분합니다. 이전 글에서 두 언어를 사용하여 글을 쓸 때 시간이 많이 걸립니다. 이 작업을 수행하는 더 간단한 자동 방법을 원합니다.     |
+
+
+* How it looks like
+
+#+begin_src org
+,#+begin_src translate :src zh-CN :dest en,zh-TW,ja,ko
+你好，我叫阿国。
+,#+end_src
+
+,#+RESULTS[<2018-04-21 16:17:39> 7982d9e369a56107e0b9252c5b1a7753bd6ecef0]:
+| en    | Hello, my name is Aguo.              |
+| zh-TW | 你好，我叫阿國。                     |
+| ja    | こんにちは、私の名前はアグーオです。 |
+| ko    | 안녕, 내 이름은 아구아 야.           |
+#+end_src
+
+
+*NOTE*: Not allow space between langs (~en,zh-TW,ja,ko~). Other wise it does not wok.
+
+* Multilingual support setup
+
+Multilingual support is simple to integrate. Especially like great tool Emacs
+and Org-mode. I remember a great tool "ob-translate" which use
+"[[https://github.com/atykhonov/google-translate][google-translate]]" as backend support. Really simple to use in Org-mode
+(especial I publish whole website with Org-mode org-publish).
+
+** configure ob-translate
+
+My sample config here:
+
+#+begin_src emacs-lisp
+(use-package ob-translate
+  :ensure t
+  :init
+  (add-to-list 'org-babel-load-languages '(translate . t))
+  (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
+  ;; add translate special block into structure template alist.
+  (add-to-list 'org-structure-template-alist '("t" . "src translate")))
+#+end_src
+
+I added ob-translate src block into Org-mode new structure template alist.
+
+*** require org-mode export src blocks export with results
+
+#+begin_src emacs-lisp
+(add-to-list 'org-babel-default-header-args '(:eval . "never-export"))
+(add-to-list 'org-babel-default-header-args '(:exports . "both"))
+#+end_src
+
+- The first let Org-mode don't evaluate src blocks when exporting.
+- The second let Org-mode export src blocks with results.
+
+*** create a snippet for easy inserting template
+
+#+begin_src snippet
+# -*- mode: snippet -*-
+# name: ob-translate
+# key: babel-translate
+# group: babel
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 't))
+# --
+,#+begin_src translate :src ${1:source: auto, en, zh-CN} :dest ${2:en,zh-KW,ja,ko}
+$0
+,#+end_src
+#+end_src
+
+** configure google-translate if you use it interactively
+
+Here is my config example:
+
+#+begin_src emacs-lisp
+(use-package google-translate
+  :ensure t
+  :defer t
+  :bind (:map dictionary-prefix
+              ("t" . google-translate-smooth-translate)
+              ("C-t" . google-translate-at-point)
+              ("M-t" . google-translate-query-translate)
+              ("C-r" . google-translate-at-point-reverse)
+              ("M-r" . google-translate-query-translate-reverse))
+  :init
+  (add-to-list 'display-buffer-alist
+               '("^\\*Google Translate\\*" . (display-buffer-below-selected)))
+  :config
+  (setq google-translate-enable-ido-completion nil
+        google-translate-show-phonetic t
+        ;; google-translate-listen-program
+        google-translate-output-destination nil ; 'echo-area, 'popup
+        google-translate-pop-up-buffer-set-focus t
+        ;; `google-translate-supported-languages'
+        google-translate-default-target-language "zh-CN"
+        ;; for `google-translate-smooth-translate' + [C-n/p]
+        google-translate-translation-directions-alist '(("en" . "zh-CN")
+                                                        ("zh-CN" . "en")
+                                                        ("zh-CN" . "ja")
+                                                        ("zh-CN" . "ko"))
+        ))
+#+end_src
+
+You should explore google-translate features on its readme page, really convinient.
+
+** about Google Translate service not accessible issue
+
+I'm writing a simple global minor mode to toggle proxy (support HTTP, socks)
+from inside of Emacs, instead of system global.
+
+For now, you can simply use my helper function:
+
+#+begin_src emacs-lisp
+(defvar my:proxy-toggle-p nil
+  "A global variable indicate current proxy toggle status.
+Used by function `my:proxy-toggle'.")
+
+(defun my:proxy-toggle (proxy)
+  "A command to toggle `PROXY' for Emacs."
+  (interactive (list (unless my:proxy-toggle-p
+                       (completing-read "Select a proxy routine: " '("socks" "url_proxy_services" "env HTTP_PROXY")))))
+  (if my:proxy-toggle-p
+      (setq my:proxy-toggle-p nil)
+    (setq my:proxy-toggle-p proxy))
+  (pcase my:proxy-toggle-p
+    ("socks"
+     (setq url-gateway-method 'socks
+           socks-noproxy '("localhost")
+           socks-server '("Default server" "127.0.0.1" 1086 5)))
+    ("url_proxy_services"
+     (setq url-proxy-services
+           '(("http"  . "127.0.0.1:8118")
+             ("https" . "127.0.0.1:8118")
+             ("ftp"   . "127.0.0.1:8118")
+             ;; don't use `localhost', avoid robe server (For Ruby) can't response.
+             ("no_proxy" . "127.0.0.1")
+             ("no_proxy" . "^.*\\(baidu\\|sina)\\.com")
+             )))
+    ("env HTTP_PROXY"
+     ;; Privoxy
+     (setenv "HTTP_PROXY"  "http://localhost:8118")
+     (setenv "HTTPS_PROXY" "http://localhost:8118"))
+    (_
+     (setq url-gateway-method 'native)
+     (setq url-proxy-services nil)
+     (setenv "HTTP_PROXY"  nil)
+     (setenv "HTTPS_PROXY" nil))
+    ))
+#+end_src
+
+
+* Some issues
+
+** the Babel result output type is table
+
+The Babel result output type is table, it seems is forced, I will try to figure
+a way to fix this problem. Might add an PR to "ob-translate".
+
+** ob-translate can't be used anywhere in Org-mode buffer
+
+Like headlines, ob-translate can't apply on them. But google-translate does not
+support output to current buffer with option
+~google-translate-output-destination~. This should be improved like output to
+current buffer (insert at point).
+
+
+* Any updates will updated in this post
+
