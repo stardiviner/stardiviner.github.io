@@ -1,0 +1,32 @@
+<div class='footer'>
+  Copyright 2011, Author: %a (%e).<br>
+  Last update date: %C.<br>
+  Built with %c. (%v HTML)
+</div>
+
+<!-- Show Org Source -->
+<script>
+ var url = document.location.href;
+ var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+ function show_org_source(){
+   document.location.href = orgsource;
+ }
+</script>
+<div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
+
+<!-- payment -->
+<div class='payment'>
+  <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
+  <div id='wechat-payment'><a href="/About/index.html#Payment"><img src="/assets/images/wechat_payment.png" title="打赏" /></a></div>
+</div>
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script>
+ (function() {
+   var d = document, s = d.createElement('script');
+   s.src = 'https://stardiviner.disqus.com/embed.js';
+   s.setAttribute('data-timestamp', +new Date());
+   (d.head || d.body).appendChild(s);
+ })();
+</script>

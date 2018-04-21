@@ -532,8 +532,8 @@ sup a:after {
   display: inline;
 }
 
-/* reward */
-.reward img {
+/* payment */
+.payment img {
   display: inline;        /* align horizontally */
   height: 90px;             /* smaller size like thumb */
 }
@@ -548,7 +548,7 @@ sup a:after {
   bottom: 20px;
   left: 100px;
 }
-.reward img:hover {
+.payment img:hover {
   width: auto;                  /* auto large when hover on */
   display: block;
 }
