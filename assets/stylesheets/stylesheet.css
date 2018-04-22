@@ -534,8 +534,8 @@ sup a:after {
 
 /* payment */
 .payment img {
-  display: inline;        /* align horizontally */
-  height: 90px;             /* smaller size like thumb */
+  display: inline;              /* align horizontally */
+  height: 60px;                 /* smaller size like thumb */
 }
 /* absolute position at left-bottom on page */
 #alipay-payment img {
@@ -548,7 +548,12 @@ sup a:after {
   bottom: 20px;
   left: 100px;
 }
+#payment-icon img {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  border-radius: 30px;
+}
 .payment img:hover {
   width: auto;                  /* auto large when hover on */
-  display: block;
 }
