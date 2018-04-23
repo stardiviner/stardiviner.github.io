@@ -546,7 +546,7 @@ sup a:after {
 /* payment */
 .payment img {
   display: inline;              /* align horizontally */
-  height: 60px;                 /* smaller size like thumb */
+  height: 50px;                 /* smaller size like thumb */
 }
 /* absolute position at left-bottom on page */
 #alipay-payment img {
