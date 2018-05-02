@@ -77,12 +77,6 @@ body {
 }
 
 /* head */
-/* org-home-and-up */
-#org-div-home-and-up {
-  float: left;
-  text-align: left;
-  position: relative;
-}
 
 /* headlines */
 h2, h3, h4, h5, h6 {
@@ -154,6 +148,17 @@ div.MathJax_Display::before {
   color: #ccc;
 }
 
+/* org-info.js */
+#org-div-home-and-up {
+  float: left;
+  text-align: left;
+  position: relative;
+  /* remove this HOME/UP */
+  display: none;
+}
+.org-info-js_info-navigation {
+  display: none;
+}
 /* infojs search box */
 #org-info-js_console-container {
   /* NOTE: remove it, useless */
