@@ -12,8 +12,7 @@ html, body {
 
 /* body */
 
-/* Responsive
-   -------------------------------------------------- */
+/* Responsive */
 @media (min-width: 768px) {
   body {
     /* center align */
@@ -64,7 +63,7 @@ body {
 /* content */
 #content {
   width: 80%;
-  margin: 0px 20px 0px 20px;
+  margin: 20px 20px 0px 20px;
   display: block;
   background-color: rgba(255,255,255,0.6);
   border-radius: 4px;
@@ -125,7 +124,6 @@ div.MathJax_Display::before {
 }
 #preamble:after {
   display: block;
-  content: '----------------------------------------------------------------';
   margin: 10px 0;
   color: #ccc;
 }
@@ -135,31 +133,55 @@ div.MathJax_Display::before {
 
 /* navigator */
 .nav {
+  display: table;
+  content: " ";
+  top: 5px;                     /* leave space for top red border */
+  position: fixed;
+  background: rgba(255,255,255,0.9) !important;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-bottom: pink solid thin;
+  transition: all 1s;
 }
 .nav ul {
   list-style: none;
-  margin-top: 30px;
 }
 .nav li {
   /* horizontal one line navigator */
-  display: inline-block;
+  /* display: inline-block; */
+  float: left;
+  /* larger font */
+  font-size: 150%;
+  /* separator navigators with larger space */
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* separate with a right border */
+  border-right-style: solid;
+  border-right-color: #e7e7e780;
+  border-right-width: medium;
 }
-.nav li + li:before {
-  display: inline-block;
-  content: "\00B7 \00a0";
-  color: #ccc;
+/* don't show underline for navigator links */
+.nav li a {
+  text-decoration: none;
 }
 
 /* org-info.js */
+/* HOME/UP */
 #org-div-home-and-up {
   float: left;
   text-align: left;
   position: relative;
-  /* remove this HOME/UP */
+  /* hide */
   display: none;
 }
+/* org-info.js navigation */
 .org-info-js_info-navigation {
-  display: none;
+  /* hide */
+  /* display: none; */
 }
 /* infojs search box */
 #org-info-js_console-container {
