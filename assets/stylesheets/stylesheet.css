@@ -586,3 +586,11 @@ sup a:after {
 .payment img:hover {
   width: auto;                  /* auto large when hover on */
 }
+
+/* Disqus */
+#comment-policy {
+  background-color: inherit;
+  font-size: 80%;
+  line-height: 1em;
+  margin-bottom: 2px;
+}
