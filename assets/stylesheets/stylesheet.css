@@ -212,27 +212,6 @@ div.MathJax_Display::before {
   width: 20%;
 }
 
-/* header asterisks */
-h1:before, h2:before, h3:before {
-  display: inline;
-  position: absolute;
-  top: auto;
-  color: #ccc;
-  display: none;
-}
-h1:before {
-  content: "*";
-  left: -1.25em;
-}
-h2:before {
-  content: "**";
-  left: -2em;
-}
-h3:before {
-  content: "***";
-  left: -2.5em;
-}
-
 /* bold, italic, inline code */
 i, em, b, strong {
   padding-left: .1em;
