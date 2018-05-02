@@ -433,19 +433,25 @@ sup a:after {
   position: fixed;
   right: 0em;
   top: 0em;
-  border:1px solid #e1e1e8;
+
+  text-align: right;
+  
   -webkit-box-shadow: 0 0 1em #777777;
   -moz-box-shadow: 0 0 1em #777777;
+  
+  border:1px solid #e1e1e8;
   -webkit-border-bottom-left-radius: 5px;
   -moz-border-radius-bottomleft: 5px;
-  text-align: right;
+
+  display: block;
   /* ensure doesn't flow off the screen when expanded */
   max-height: 80%;
   overflow: auto;
   z-index: 200;
 
   /* semi-transparent */
-  background: rgba(255, 255, 255, 0.6) none repeat scroll 0% 0%;
+  color: black;
+  background: rgba(255,255,255,0.9);
 }
 #table-of-contents h2 {
   max-width: 20em;
