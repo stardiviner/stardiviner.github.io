@@ -556,8 +556,9 @@ sup a:after {
   font-size: 15px;
   color: #999;
 }
-.footpara {
-  display: inline;
+/* Show Org source */
+#show_source {
+
 }
 
 /* payment */
