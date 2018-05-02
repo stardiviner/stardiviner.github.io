@@ -79,15 +79,17 @@ body {
 /* head */
 
 /* headlines */
+h2::before, h3::before, h4::before, h5::before, h6::before {
+  content: "";
+  border-left: 4px solid #C74451;
+  padding-left: 10px;
+}
 h2, h3, h4, h5, h6 {
-  /* bottom line */
-  border-bottom-style: solid;
-  border-bottom-color: #0000001a;
-  border-bottom-width: 6px;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  /* ahead blank */
-  padding-left: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: .8em;
+  margin-top: .8em;
+  font-family: 'Lobster',cursive;
 }
 
 /* drawers */
