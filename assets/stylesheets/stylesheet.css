@@ -551,7 +551,7 @@ sup a:after {
 
 /* footer */
 /* postamble */
-.footer, #postamble {
+footer, #postamble {
   text-align: center;
   font-size: 15px;
   color: #999;

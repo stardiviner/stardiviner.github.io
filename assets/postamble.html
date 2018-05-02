@@ -1,18 +1,19 @@
-<div class='footer'>
+<footer>
   Copyright 2011, Author: %a (%e).<br>
   Last update date: %C.<br>
-  Built with %c. <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (%v HTML)  
-</div>
+  Built with %c. <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (%v HTML)
+  
+  <!-- Show Org Source -->
+  <script>
+   var url = document.location.href;
+   var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+   function show_org_source(){
+     document.location.href = orgsource;
+   }
+  </script>
+  <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
 
-<!-- Show Org Source -->
-<script>
- var url = document.location.href;
- var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
- function show_org_source(){
-   document.location.href = orgsource;
- }
-</script>
-<div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
+</footer>
 
 <!-- payment -->
 <div class='payment'>
