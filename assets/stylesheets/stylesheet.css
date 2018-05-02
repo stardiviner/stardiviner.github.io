@@ -587,6 +587,9 @@ sup a:after {
   width: auto;                  /* auto large when hover on */
 }
 
+/* Comment */
+.comments {
+}
 /* Disqus */
 #comment-policy {
   background-color: inherit;
