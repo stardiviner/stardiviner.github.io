@@ -1,4 +1,5 @@
 #+TITLE: About
+#+OPTIONS: toc:nil
 
 #+begin_export html
 <div id="avatar">
