@@ -448,6 +448,7 @@ sup a:after {
   position: fixed;
   right: 0em;
   top: 0em;
+  padding-right: 5px;
 
   text-align: right;
   
