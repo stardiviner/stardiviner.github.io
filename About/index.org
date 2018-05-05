@@ -459,9 +459,32 @@ Having an awesome desktop is a cool thing.
   Add CUSTOM_ID property for link anchor by other links.
 :END:
 
-@@html:<img src="/assets/images/alipay_payment.jpg" title="打赏" />@@
-
-@@html:<img src="/assets/images/wechat_payment.png" title="打赏" />@@
+#+begin_export html
+<div id="payment-qr">
+  <div id="payment-alipay">
+    <img src="/assets/images/alipay_payment.jpg" title="打赏" />
+  </div>
+  <div id="payment-wechat">
+    <img src="/assets/images/wechat_payment.png" title="打赏" />
+  </div>
+</div>
+<style>
+ #payment-qr {
+   display: flex;
+   justify-content: space-around;
+ }
+ #payment-alipay {
+   display: inline-flex;
+   width: 30%;
+   height: auto;
+ }
+ #payment-wechat {
+   display: inline-flex;
+   width: 30%;
+   height: auto;
+ }
+</style>
+#+end_export
 
 
 注册 Coinbase 即可获得Bitcoin。 https://www.coinbase.com/join/53b8ac3eed744366f7000001
