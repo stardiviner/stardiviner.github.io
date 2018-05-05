@@ -569,6 +569,13 @@ sup a:after {
   color: #ccc;
 }
 
+/* timestamp */
+span.timestamp-wrapper {
+  background-color: #f3f3f3cc;
+  border: #ccc solid 1px;
+  padding: 4px 2px 2px 0px;
+}
+
 /* footer */
 /* postamble */
 footer, #postamble {
