@@ -268,4 +268,9 @@ http://music.163.com/#/mv?id=5741268
 爱恨情仇方人生
 #+end_verse
 
+** 断舍离
 
+#+begin_verse
+世人只道名利好，求来半生争斗事。
+舍身断念见凡心，不忘初心守一方。
+#+end_verse
