@@ -568,7 +568,7 @@ footer, #postamble {
 /* payment */
 .payment img {
   display: inline;              /* align horizontally */
-  height: 50px;                 /* smaller size like thumb */
+  height: 80px;                 /* smaller size like thumb */
 }
 /* absolute position at left-bottom on page */
 #alipay-payment img {
@@ -585,7 +585,7 @@ footer, #postamble {
   position: fixed;
   bottom: 20px;
   left: 20px;
-  border-radius: 30px;
+  border-radius: 40px;
 }
 .payment img:hover {
   width: auto;                  /* auto large when hover on */
