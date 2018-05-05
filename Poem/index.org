@@ -64,6 +64,13 @@
 
 http://music.163.com/#/mv?id=5741268
 
+#+begin_export html
+<audio autoplay controls="controls">
+  <source src="data/audios/西游记-女儿国.mp3" type="audio/mpeg"/>
+  <p>Your browser does not support the audio tag.</p>
+</audio>
+#+end_export
+
 #+begin_verse
 美人不是母胎生，应是桃花树长成，
 已恨桃花容易落，落花比汝尚多情。
