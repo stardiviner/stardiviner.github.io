@@ -264,7 +264,7 @@ img {
   margin: 0;
   vertical-align: middle;
   border-radius: 10px;
-  box-shadow: 0 0 0.7em pink;
+  box-shadow: 0 0 0.7em #818181b3;
   width: auto;
 }
 
