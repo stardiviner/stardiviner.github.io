@@ -451,6 +451,61 @@ circle of diameter $d$.
 const double pi = 3.1415926535
 \end{minted}
 
+* Blocks
+
+** Quote block
+
+#+begin_quote
+This is a quote block.
+#+end_quote
+
+** LaTeX export block
+
+#+begin_export latex
+\begin{equation} \label{sqrt equation}
+y = \sqrt{r^2 - x^2}
+\end{equation}
+#+end_export
+
+** ASCII export block
+
+#+begin_src shell :results output :wrap export ascii
+tree .
+#+end_src
+
+#+RESULTS[<2018-05-05 10:22:24> feb81823312f6bb7d87a20d8c191515dd9a4a332]:
+#+begin_export ascii
+.
+├── 2016-04-22 22:54.org
+├── data
+│   ├── ce
+│   │   └── 6423b8-3283-4cb9-843a-022a5e2a7124
+│   │       └── 芳华 700.jpg
+│   └── images
+│       ├── babel-gnuplot-graphics-test.png
+│       └── babel_lang_dot_example1.png
+├── How to BANISH myself.org
+├── index.org
+├── Learned basic skateboard.org
+├── multilingual support with ob-translate and google-translate.org
+├── setup the sewing machine for needlework.org
+├── sitemap.org
+├── theindex.inc
+└── theindex.org
+
+4 directories, 12 files
+#+end_export
+
+** HTML export block
+
+#+begin_export html
+<div id="html-export">
+  <p>
+    helllo, worlllld!!!
+  </p>
+</div>
+#+end_export
+
 * src blocks
 :PROPERTIES:
 :ID:       0bbfd97e-52f8-4e75-968b-79a71f5a316a
