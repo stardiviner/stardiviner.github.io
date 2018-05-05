@@ -355,6 +355,7 @@ div.org-src-container {
   margin: 0px 30px;
   padding: 1px;
   background-color: white;
+  text-shadow: 0 0 2px rgba(255,255,255,0.7);
 }
 pre.src {
   background-color: transparent;
@@ -397,6 +398,8 @@ pre > code {
   border-style: solid;
   border-color: #ccc;
   border-radius: 3px;
+  /* white neon effect text */
+  text-shadow: 0 0 2px rgba(255,255,255,0.7);
 }
 
 /* table */
