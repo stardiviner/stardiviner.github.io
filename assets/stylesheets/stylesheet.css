@@ -60,7 +60,11 @@ body {
   text-shadow: 1px 1px 3px rgba(50, 50, 50, .15);
 }
 
-
+/* selection */
+::moz-selection {
+  background: #C74451;
+  color: white;
+}
 
 /* content */
 #content {
