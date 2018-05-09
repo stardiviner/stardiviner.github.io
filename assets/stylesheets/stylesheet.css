@@ -411,7 +411,7 @@ pre.src::before, pre.src:hover::before {
   opacity: 0.9;
   color: black;
   border: 1px solid black;
-  background-colo: transparent;
+  background-color: transparent;
 
   white-space: nowrap;
 }
