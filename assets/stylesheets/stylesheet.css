@@ -44,7 +44,8 @@ body {
 
   /* line height */
   /* line-height: 1.5; */
-  
+
+  /* background */
   background-image: url('/assets/images/background.jpg');
   background-color: #FFFFFF; /* white background to compatible with background image. */
   /* background: rgba(255, 255, 255, 0.6) none repeat scroll 0% 0%; */  /* semi-transparent */
@@ -309,23 +310,28 @@ kbd {
 
 /* blockquote */
 blockquote {
-  font-style: italic;
-  font-size: 15px;
-  padding: 0 0 0 20px;
-  margin: 0 30px 20px -22.5px;
+  padding: .75em .5em .75em 1em;
+  margin: 1.5em 0 1.5em -1.5em;
 
-  /* color: gray; */
-  /* border-left: 4px solid gray; */
+  display: block;
+  width: 60%;
 
-  color: #999;
-  border-left: 8px solid #e5e5e5;
+  color: #444;
+  background: #fff;
+  border-left: 0.5em solid #DDD;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  border-radius: 0.5em;
 
-  text-shadow: 2px 2px 3px rgba(50, 50, 50, .15);
+  /* auto wrap */
+  word-wrap: break-word;
 }
 blockquote::before {
-  content: "☞";
-  color: gray;
-  position: relative;
+  display: block;
+  content: "“";
+  font: italic 400%/1 Cochin,Georgia,"Times New Roman", serif;
+  height: 0;                    /* don't leave blockquote top empty space because of `content:`. */
+  margin-left: -1.2em;
+  color: #999;
 }
 blockquote::after {
 }
@@ -352,11 +358,7 @@ pre {
   /* shadow */
   box-shadow: inset 2px 2px 2px #80808080;
 
-  /* auto wrap */
-  white-space: pre-wrap;
-
   /* word wrap */
-  word-break: break-all;
   word-wrap: break-word;
   
   /* scroll bar */
