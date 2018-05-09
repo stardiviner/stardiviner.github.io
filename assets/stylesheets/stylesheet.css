@@ -370,12 +370,9 @@ pre {
 }
 
 /* Org src block */
-div.org-src-container {
-  display: inline-block;
-  border-style: solid;
-  border-width: thin;
-  border-color: #ccc;
-  margin: 0px 30px;
+.org-src-container {
+  display: block;
+  margin: 0.5em;
   padding: 1px;
   background-color: white;
   text-shadow: 0 0 2px rgba(255,255,255,0.7);
@@ -383,7 +380,7 @@ div.org-src-container {
 pre.src {
   background-color: transparent;
   overflow: auto;
-  display: inline-block;
+  display: block;
   border-style: solid;
   border-width: thin;
   border-radius: unset;
@@ -395,8 +392,6 @@ pre.src {
 
 /* src block hover language */
 pre.src::before, pre.src:hover::before {
-  /* content: "lang"; */
-  
   display: inline;
   float: right;
   overflow: visible;
