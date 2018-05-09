@@ -65,7 +65,7 @@
 http://music.163.com/#/mv?id=5741268
 
 #+begin_export html
-<audio loop controls="controls">
+<audio loop autoplay controls>
   <source src="data/audios/西游记-女儿国.mp3" type="audio/mpeg"/>
   <p>Your browser does not support the audio tag.</p>
 </audio>
@@ -191,14 +191,7 @@ http://music.163.com/#/mv?id=5741268
   :AUTHOR:   stardiviner
   :DATE:     [2017-05-12 Fri 12:16]
   :DESCRIPTION: 离家出走在云南大理的足迹青旅时写的一首小词。
-  :Attachments: P70512-152033.jpg
-  :ID:       0442c5dc-eaa3-40e9-92c1-0ccb8768467e
   :END:
-
-#+ATTR_ORG: :width 300
-#+ATTR_LATEX: :width 3.0in
-#+ATTR_HTML: :width 300px
-[[file:data/04/42c5dc-eaa3-40e9-92c1-0ccb8768467e/P70512-152033.jpg]]
 
 #+begin_verse
 闲忙有时觉自知，
