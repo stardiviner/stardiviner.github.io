@@ -54,6 +54,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed, scroll;
 
+  color: #444;
   /* text effect */
   text-shadow: 1px 1px 3px rgba(50, 50, 50, .15);
 }
