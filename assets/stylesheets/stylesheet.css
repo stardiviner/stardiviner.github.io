@@ -427,24 +427,52 @@ pre > code {
 
 /* table */
 table {
-  margin-bottom: 15px;
-  max-width: 100%;
-  width: 100%;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  width: 80%;
+  margin-bottom: 1.5em;
+  border-radius: 8px 8px 0 0;
+  border-collapse: collapse;
+  border-bottom: 1px solid #999;
 }
+/* table caption */
+table caption {
+  margin-bottom: 0.75em;
+  text-align: center;
+  font-style: italic;
+}
+/* table head */
 table thead {
-  background-color: #7575751a;
+  background-color: #444;
+  color: #fff;
 }
-table td, table th {
-  padding: 2px 5px;
-  border-style: solid;
-  border-width: thin;
-  border-color: #ccc;
+/* table head text */
+tbale thead th {
+  border: none;
+  padding: 0.4em;
+  background: transparent;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
 }
-table th.left, table td.left {
+/* table body */
+table tbody th {
+  border-top: 1px solid #999;
+  padding: 0.4em;
+  color: #444;
+  background-color: #ddd;
   text-align: left;
+  font-weight: normal;
 }
-table th.right, table td.right {
-  text-align: right;
+table tbody td {
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  padding: 0.4em 0.8em;
+  background-color: #fff;
+  color: #444;
+}
+/* transition animation */
+th, td {
+  transition: background 0.2s linear;
 }
 
 /* org-verse */
