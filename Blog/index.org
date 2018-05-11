@@ -1,4 +1,4 @@
-#+TITLE: Blog
+#+TITLE: stardiviner's Blog
 
 * multilingual support with ob-translate and google-translate
 :PROPERTIES:
