@@ -1,0 +1,21 @@
+#+TITLE: Slides
+#+AUTHOR: stardiviner <numbchild@gmail.com>
+
+* Test org-publish export to Reveal.js slides
+
+* Code blocks syntax highlighting
+
+#+begin_src emacs-lisp
+(defun hello (name)
+  (prin1 (format "hello, %s!" name)))
+
+(hello "stardiviner")
+#+end_src
+
+#+RESULTS[<2018-05-12 22:47:45> 5e9c8b8926fbb7c15c66238770a7685e264be7f5]:
+: hello, stardiviner!
+
+* Table
+
+| A | B  | 一 | 二 |
+| I | II |  1 |  2 |
