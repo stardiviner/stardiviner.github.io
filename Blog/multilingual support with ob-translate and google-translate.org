@@ -177,3 +177,31 @@ current buffer (insert at point).
 
 * Any updates will updated in this post
 
+* use external tools to translate with ob-shell
+
+There are some command-lines tools can translate text. For example, [[https://github.com/afc163/fanyi][fanyi]]. Unfortunally,
+some tools use online service which only support Chinese<->English.
+
+For ob-shell, want to get raw text instead of org-code result, then you need to specify
+header argument ~:results raw~.
+
+Another problem is that the result usually formatted by command-line tools separately. You
+might need other text processing commands like =sed=, =awk= etc to strip some text.
+
+** fanyi
+
+#+begin_src shell :results raw
+fanyi "你好，世界"
+#+end_src
+
+#+RESULTS[<2018-05-14 21:50:44> 048f42580fce295f1dc0ecb3bb62f05755d5a8f6]:
+
+ 你好，世界  ~  iciba.com
+ 
+  -------- 
+ 
+ 你好，世界  ~  fanyi.youdao.com
+ 
+  -------- 
+ 
+
