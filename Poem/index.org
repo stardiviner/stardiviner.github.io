@@ -65,7 +65,7 @@
 http://music.163.com/#/mv?id=5741268
 
 #+begin_export html
-<audio loop controls>
+<audio controls>
   <source src="data/audios/西游记-女儿国.mp3" type="audio/mpeg"/>
   <p>Your browser does not support the audio tag.</p>
 </audio>
@@ -134,7 +134,7 @@ http://music.163.com/#/mv?id=5741268
 :END:
 
 #+begin_export html
-<audio loop controls>
+<audio controls>
   <source src="data/audios/问世间 - 张馨予.mp3" type="audio/mpeg"/>
   <p>Your browser does not support the audio tag.</p>
 </audio>
