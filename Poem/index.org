@@ -158,10 +158,6 @@ http://music.163.com/#/mv?id=5741268
 :PROPERTIES:
 :DATE:     [2014-08-24 Sun 19:17]
 :END:
-:LOGBOOK:
-- Note taken on [2018-05-05 Sat 10:08] \\
-  我在诸暨里浦丰泉固废处理公司刚进来，做了5天夜半后，休息，感冒，一天什么都没有吃，起来泡方便面。
-:END:
 
 #+begin_verse
 白驹踏过尘光去，入夜方觉无人知。
@@ -276,7 +272,6 @@ http://music.163.com/#/mv?id=5741268
 ** 无常平常                                          :人生:残句:
 :PROPERTIES:
 :DATE: [2018-01-29 Mon]
-:REFERENCE: [[file:~/Org/Diary/Diary.org::*2018-01%20January][最近时常想起芈兰]]。
 :END:
 
 #+begin_verse
