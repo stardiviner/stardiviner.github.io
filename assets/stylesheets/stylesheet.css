@@ -114,11 +114,12 @@ h5, h6 {
 
 /* drawers: properties, logbook, */
 pre.example {
+  display: block;
   color: #7b7b7b;
   border-color: #ccc;
   font-size: 7px;
   padding: 1px 5px 1px 5px;
-  margin: 0 0 0px 20px;
+  margin: 0 0 10px 20px;
   border-radius: unset;
   box-shadow: none;
   text-shadow: unset;
