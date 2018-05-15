@@ -126,6 +126,29 @@ http://music.163.com/#/mv?id=5741268
 无穷般若心自在，语默动静体自然。
 #+end_quote
 
+** 《摸鱼儿·雁丘词》                                       :爱情:
+:PROPERTIES:
+:Attachments: 问世间%20-%20张馨予.mp3
+:ID:       370c01ca-e14d-49bd-a2c0-c7e441576a6f
+:AUTHOR:   元好问
+:END:
+
+#+begin_export html
+<audio loop autoplay controls>
+  <source src="data/audios/问世间 - 张馨予.mp3" type="audio/mpeg"/>
+  <p>Your browser does not support the audio tag.</p>
+</audio>
+#+end_export
+
+#+begin_verse
+问世间，情为何物？直教生死相许。天南地北双飞客，老翅几回寒暑。欢乐趣，离别苦，就
+中更有痴儿女。君应有语，渺万里层云，千山暮雪，只影向谁去？
+#+end_verse
+
+“问世间情为何物，直教人生死相许”两句词出自金、元之际著名文学家元好问的《摸鱼儿·雁
+丘词》一词中的“问世间，情为何物？直教生死相许。”在金庸武侠名著《神雕侠侣》中，
+为情所困的李莫愁常常会引用此句而被广为流传。
+
 
 
 
