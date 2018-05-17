@@ -474,14 +474,14 @@ Having an awesome desktop is a cool thing.
    display: flex;
    justify-content: space-around;
  }
- #payment-alipay {
+ #payment-alipay img {
    display: inline-flex;
-   width: 30%;
+   width: 100%;
    height: auto;
  }
- #payment-wechat {
+ #payment-wechat img {
    display: inline-flex;
-   width: 30%;
+   width: 100%;
    height: auto;
  }
 </style>
