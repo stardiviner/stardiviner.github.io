@@ -1,5 +1,14 @@
 #+TITLE: stardiviner's Blog
 
+* Clojure Plotting to Org inline image in ob-clojure
+:PROPERTIES:
+:DATE: [2018-05-17 Thu 10:01]
+:ID:       e1e67b92-9153-4ec2-8c59-df4619a0c994
+:PUBDATE:  <2018-05-17 Thu 11:47>
+:END:
+
+[[file:Clojure Plotting to Org inline image in ob-clojure.org][Clojure Plotting to Org inline image in ob-clojure]]
+
 * How to Read Code in Emacs
 :PROPERTIES:
 :DATE: [2018-05-17 Thu 08:31]

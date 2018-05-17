@@ -1,0 +1,100 @@
+#+TITLE: Clojure Plotting to Org inline image in ob-clojure
+
+* The Process of my Clojure Plotting
+
+** ask whether Clojure/JVM can change working directory
+
+I did some hard search, found some links
+
+- https://stackoverflow.com/questions/840190/changing-the-current-working-directory-in-java
+- https://stackoverflow.com/questions/19008592/java-change-file-working-directory
+
+Then I found JVM does not allow to change working directory because of security reason
+https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688.
+
+So, there is no reliable way to do this in pure Java. Setting the ~user.dir~ /property/ via
+~System.setProperty()~ or ~java -Duser.dir=...~ does seem to affect subsequent creations of
+Files, but not e.g. ~FileOutputStreams~.
+
+** I create Org-mode library "=ob-clojure-literate=" and improve Org Babel "=ob-core.el=" for plotting support
+
+Because changing Clojure/JVM working directory is not available, so I find method on Emacs
+side, Org-mode other Babel lanaguages like R, Python have good image file result support.
+So I dive into source code, and try to add similar function to "=ob-clojure=". But I found
+some limites, then I created "[[https://github.com/stardiviner/ob-clojure-literate][ob-clojure-literate (GitHub repo)]]" (Now it is in [[https://code.orgmode.org/bzg/org-mode/src/master/contrib/lisp/ob-clojure-literate.el][Org-mode
+contrib lib]]).
+
+** use more better solution by passing target path into Clojure with header argument ~:var~
+
+You can fake change Clojure REPL working directory by passing header argument variable
+into Clojure code. Like this:
+
+#+begin_src clojure :results value :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+(str dir "ob-clojure-literate.png")
+#+end_src
+
+#+RESULTS[<2018-05-17 01:12:55> 73be0ca9a40a4f1e4fdee8e535991955f77b034a]:
+: "/home/stardiviner/Org/Wiki/Computer Technology/Programming/Emacs/Data/Emacs Packages/Org mode/data/images/ob-clojure-literate.png"
+
+Then you can use Clojure funciton to save graphics object to target file with correct
+absolute path:
+
+#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+(use '(incanter core stats datasets charts io pdf))
+(def hist (histogram (sample-normal 1000)))
+(save hist (str dir "ob-clojure-literate.png"))
+#+end_src
+
+#+RESULTS[<2018-05-17 10:40:29> bbff27177a545feba5ed98a467689eb91ce7e501]:
+[[file:data/images/ob-clojure-literate.png]]
+
+** use final solution by move image file to target path with Clojure function
+
+#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+(use '(incanter core stats datasets charts io pdf))
+(import '(java.io File))
+
+(def hist (histogram (sample-normal 1000)))
+(save hist "ob-clojure-incanter-move.png")
+(.renameTo (File. "ob-clojure-incanter-move.png") (File. (str dir "ob-clojure-incanter-move.png")))
+#+end_src
+
+#+RESULTS[<2018-05-17 11:46:15> ff75cfacbf1e10441f0349531db625b77acc7368]:
+[[file:data/images/ob-clojure-incanter-move.png]]
+
+
+* Incanter
+
+#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+(use '(incanter core stats datasets charts io pdf))
+(def hist (histogram (sample-normal 1000)))
+(save hist (str dir "ob-clojure-literate.png"))
+#+end_src
+
+#+RESULTS[<2018-05-17 10:40:29> bbff27177a545feba5ed98a467689eb91ce7e501]:
+[[file:data/images/ob-clojure-literate.png]]
+
+
+* clj-xchart
+
+#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+(require '[com.hypirion.clj-xchart :as xchart])
+
+(def ob-clojure-clj-xchart
+  (xchart/xy-chart {"Expected rate" [(range 10) (range 10)]
+                    "Actual rate"   [(range 10) (map #(+ % (rand-int 5) -2) (range 10))]}))
+
+;; (xchart/view ob-clojure-clj-xchart)
+(xchart/spit ob-clojure-clj-xchart (str dir "ob-clojure-clj-xchart.png"))
+#+end_src
+
+#+RESULTS[<2018-05-17 10:52:37> 0ada10eaeabcc1c8431c9805a3bc03c9c388fbd9]:
+[[file:data/images/ob-clojure-clj-xchart.png]]
+
+
+* ggplot2
+
+
+
+
+* jutsu
