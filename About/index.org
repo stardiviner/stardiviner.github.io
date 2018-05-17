@@ -513,4 +513,14 @@ qr7gc5z0zml5g2tj2d88yzxqx7t2wd0gtucugd2fdl
 
 * Nagato Pain
 
-[[file:data/images/avatar.png]]
+#+begin_export html
+<div id="pain">
+  <img src="data/images/Nagato Pain.jpg" alt="Nagato Pain" title="Nagato Pain" />
+</div>
+<style type="text/css">
+ #pain img {
+   width: 600px;
+ }
+</style>
+#+end_export
+
