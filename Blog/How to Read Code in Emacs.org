@@ -1,0 +1,82 @@
+#+TITLE: How to Read Code in Emacs
+
+* View
+
+** Highlight Code
+  :PROPERTIES:
+  :Attachments: highlight%20code.png
+  :ID:       98ca483b-70bd-4a8b-b1b9-d604672fb8f3
+  :END:
+
+#+ATTR_ORG: :width 600
+#+ATTR_LATEX: :width 6.0in
+#+ATTR_HTML: :width 600px
+[[file:data/98/ca483b-70bd-4a8b-b1b9-d604672fb8f3/highlight%20code.png]]
+
+You can use highlighting tools to mark code with different colors like taking notes to
+distinguish code.
+
+- I used Emacs package [[https://github.com/wolray/symbol-overlay/][symbol-overlay]] or other similar highlighting packages.
+
+
+* Navigation
+
+** Jump to definition of any code
+
+There are some options to select:
+
+- Use text searching tools directly, Emacs =isearch=, =grep=, =ag=, =pt=, =rg= etc.
+- If you want advanced text searching, can use "=regexp= search", Emacs has built-in
+  support, and has some packages to help you, even can use PCRE (Perl regexp) in Emacs
+  with package "=pcre2el=".
+- In current buffer, you can use =Imenu=, etc to jump.
+- Or even open an class/functions definitions sidebar to have an overview of your code.
+
+** Jump to definition of thing-at-point
+
+When code definition is not in the same window page area, you want to jump to definition.
+You can use =xref.el= (which is Emacs built-in support now). If you want to keep current
+code viewing, you can create a function to accept universal prefix argument
+@@html:<kbd>C-u</kbd>@@ for =[M-.]= to open code definition in other window. If you don't
+want to mess your windows up, you also can try Emacs new feature (from 26?) "child-frame".
+There is an existing package called "[[https://github.com/tumashu/posframe][posframe]]" can be helpful.
+
+
+* Figure out of Code by running it
+  :PROPERTIES:
+  :Attachments: Edebug%20result%20at%20point.png
+  :ID:       6c961996-eff9-41fa-a420-9272520996af
+  :END:
+
+Sometimes I can't understand the code by reading, then I try to run code with debugger/tracer.
+
+For Elisp code, Emacs has built-in tool =Edebug=.
+
+Because Edebug show stop point result in echo-area (minibuffer). It is not convinient for
+me. I want it displayed at point.
+
+[[file:data/6c/961996-eff9-41fa-a420-9272520996af/Edebug%20result%20at%20point.png]]
+
+Here is my trick after I dive into Edebug source code:
+
+#+begin_src emacs-lisp
+(defun my:edebug-previous-result ()
+    "Print the previous result."
+    (interactive)
+    ;; (pos-tip-show edebug-previous-result 'popup-face) ; slow
+    (popup-tip edebug-previous-result :truncate t :height 20 :width 45 :nostrip t :margin 1 :nowait nil)
+    )
+  (advice-add 'edebug-previous-result :override #'my:edebug-previous-result)
+#+end_src
+
+*Tip*: Sometimes edebug will auto scroll down, when stop point moves to bottom of window,
+ the result popup is truncated, you can use @@html:<kbd>C-l</kbd>@@ (~recenter-top-bottom~)
+ to recenter window. Then redisplay result popup with =[r]=.
+
+
+* TODO Will add more tricks here in future
+  :LOGBOOK:
+  - State "TODO"       from              [2018-05-17 Thu 08:53]
+  :END:
+
+Record to My Org node "Read Code" too.
