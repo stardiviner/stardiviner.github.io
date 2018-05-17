@@ -40,7 +40,7 @@ body {
   
   /* font */
   /* font-family: Monaco, monospace; */
-  font-size: 12px;
+  font-size: 13px;
 
   /* line height */
   /* line-height: 1.5; */
@@ -652,7 +652,7 @@ audio:hover, audio:focus, audio:active {
 /* postamble */
 footer, #postamble {
   text-align: center;
-  font-size: 15px;
+  font-size: 13px;
   color: #999;
 }
 /* Show Org source */
