@@ -2,6 +2,17 @@
 
 * Why Literate Programming?
 
+There are lot of data on internet about "Literate Programming" already, I blog about this
+just for personal opinion.
+
+It can organize things better with literal document style. Code is just another kind of
+text or meta-text used to generate other data like text results, tables, images, JSON, XML
+data etc.
+
+Anyway, the start point is that I like Emacs and Org-mode very much, they are powerful,
+organize anything with them can be very flexible. I use Org-mode as the ultimate tool to
+organize knowledge and data as my external brain database, and my other applications of
+Org Mode.
 
 
 * How to Literate Programming with Org Mode?
@@ -10,13 +21,89 @@
 
 ** LP: organize logic with "headlines" and "tags"
 
+You can navigation and filter Literate Programming document logic with headlines and tags.
+When a file grows large, organize your document with clear structure and better tags group
+is very necessary.
+
 ** LP: write code with Org Babel source code blocks
+
+Org Mode Babel are technology that can evaluate source code blocks and insert result into
+Org buffer. Babel is powerful by backend with many different programming languages and
+tools. On essention, Babel is send source code block text to another binary to be
+evaluated, then return the result to be inserted in Org buffer.
 
 *** LP: support many different languages with Babel languages
 
+For now, Org Babel has many languages supported now. Official support in Org-mode packages
+has a lot. Here is my loaded languages alist. They are many more, and you can search in
+Org source code, and GitHub, and maybe somewhere else.
+
+#+begin_src emacs-lisp :results list
+org-babel-load-languages
+#+end_src
+
+#+RESULTS[<2018-05-16 22:33:24> 9e1c07de675e9f640b64e6c91fee8a59f9dae26b]:
+#+begin_example
+- (sclang . t)
+- (spice . t)
+- (lilypond . t)
+- (smiles . t)
+- (coq . t)
+- (arduino . t)
+- (http . t)
+- (restclient . t)
+- (elasticsearch . t)
+- (prolog . t)
+- (matlab . t)
+- (octave . t)
+- (gnuplot . t)
+- (julia . t)
+- (R . t)
+- (haskell . t)
+- (redis . t)
+- (mongo . t)
+- (sqlite . t)
+- (sql . t)
+- (js . t)
+- (css . t)
+- (php . t)
+- (java . t)
+- (swift . t)
+- (lua . t)
+- (rust . t)
+- (go . t)
+- (C . t)
+- (ruby . t)
+- (python . t)
+- (clojurescript . t)
+- (scheme . t)
+- (lisp . t)
+- (emacs-lisp . t)
+- (makefile . t)
+- (ledger . t)
+- (blockdiag . t)
+- (ditaa . t)
+- (dot . t)
+- (clojure . t)
+- (asymptote . t)
+- (translate . t)
+- (latex . t)
+- (org . t)
+- (shell . t)
+- (calc . t)
+#+end_example
+
 **** LP: use different languages to processing data in mixture
 
-*** LP: use other input with header argument ":var" and other ways
+You can process JSON data with JavaScript, then pass result data to Python to process to
+generate XML data, then pass the XML data to gnuplot to generate image result.
+
+*** LP: Babel header arguments
+
+There are many source code block header arguments, you can check out Org Mode Info
+document. And I after some years usage of Org Mode, I found there are some merely used
+header arguments are not mentioned in Org Mode Manual. And some header arguments are
+language specific only.
 
 ** LP: separate code logic and reference with "noweb"
 
@@ -120,7 +207,14 @@ evaluated in the current source-code block but are passed literally to
 
 *** LP: display image result with Org inline image display
 
+You can manually insert a file link to image file as inline image. You also can let source
+code block generate a file link to plot image file. Toggle inline image display in
+Org-mode with =[M-x org-display-inline-images]=.
+
 *** LP: display table result with Org table
+
+Org-mode supports table. Support many manipulations. Also there are many advanced usage of
+Org table, like use table as data input for source code block, radio table, etc.
 
 ** LP: reference to text, code and each other
 
@@ -149,7 +243,7 @@ evaluated in the current source-code block but are passed literally to
 
 *** code->text with link
 
-[[#org-link in source code block comment][org-link in source code block comment]]
+**** org-link in source code block comment
 
 ** LP: navigation in text and code
 
@@ -159,3 +253,7 @@ evaluated in the current source-code block but are passed literally to
 
 You can jump back in mark ring with =[M-,]= / ~org-mark-ring-goto~.
 
+
+* TODO complete this post
+
+Still there are many things need to write. But temporary like this for now.
