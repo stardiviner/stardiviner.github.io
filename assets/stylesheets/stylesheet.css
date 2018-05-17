@@ -291,8 +291,10 @@ img {
   width: auto;
 }
 
+/* inline image */
 figure > img {
   display: block;
+  width: 100%;
 }
 
 /* kbd */
