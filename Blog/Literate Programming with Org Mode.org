@@ -1,0 +1,161 @@
+#+TITLE: Literate Programming with Org Mode
+
+* Why Literate Programming?
+
+
+
+* How to Literate Programming with Org Mode?
+
+** LP: organize things in text and code
+
+** LP: organize logic with "headlines" and "tags"
+
+** LP: write code with Org Babel source code blocks
+
+*** LP: support many different languages with Babel languages
+
+**** LP: use different languages to processing data in mixture
+
+*** LP: use other input with header argument ":var" and other ways
+
+** LP: separate code logic and reference with "noweb"
+
+Tangling functionality is controlled by the tangle family of tangle header
+arguments. These arguments can be used to turn tangling on or off (the default),
+either for the code block or the Org-mode heading level.
+
+The following code blocks demonstrate how to tangle them into a single source
+code file using ~org-babel-tangle~.
+
+The following two code blocks have no tangle header arguments and so will not,
+by themselves, create source code files. They are included in the source code
+file by the third code block, which does have a tangle header argument.
+
+In the Org-mode file:
+
+#+begin_src org
+,#+name: hello-world-prefix
+,#+begin_src shell :exports none
+  echo "/-----------------------------------------------------------\\"
+,#+end_src
+#+end_src
+
+HTML export of code: In the Org-mode file
+
+#+begin_src org
+,#+name: hello-world-postfix
+,#+begin_src shell :exports none
+  echo "\-----------------------------------------------------------/"
+,#+end_src
+#+end_src
+
+HTML export of code: The third code block does have a tangle header argument
+indicating the name of the file to which the tangled source code will be
+written. It also has Noweb style references to the two previous code blocks.
+These references will be expanded during tangling to include them in the output
+file as well.
+
+In the Org-mode file:
+
+#+begin_src org
+,#+name: hello-world
+,#+begin_src shell :tangle hello.sh :exports none :noweb yes
+  <<hello-world-prefix>>
+  echo "|                       hello world                         |"
+  <<hello-world-postfix>>
+,#+end_src
+#+end_src
+
+HTML export of code: Calling ~org-babel-tangle~ will result in the following shell
+source code being written to the ~hello.sh~ file:
+
+#+NAME: hello.sh
+#+begin_src shell
+echo "/-----------------------------------------------------------\\"
+echo "|                       hello world                         |"
+echo "\-----------------------------------------------------------/"
+#+end_src
+
+
+#+NAME: hello.sh
+#+begin_src shell
+#!/usr/bin/env sh
+
+# [[file:~/org/temp/index.org::*Noweb%20test][hello-world]]
+
+echo "/-----------------------------------------------------------\\"
+echo "|                       hello world                         |"
+echo "\-----------------------------------------------------------/"
+# hello-world ends here
+#+end_src
+
+In addition, the following syntax can be used to insert the results of
+evaluating a code block, in this case one named example-block.
+
+#+begin_src org
+# <<example-block()>>
+#+end_src
+
+Any optional arguments can be passed to ~example-block()~ by placing the arguments
+inside the parentheses following the convention defined when calling source
+block functions (see the Library of babel). For example,
+
+#+begin_src org
+# <<example-block(a=9)>>
+#+end_src
+
+sets the value of argument ~a~ equal to ~9~. Note that these arguments are not
+evaluated in the current source-code block but are passed literally to
+~example-block()~.
+
+** LP: export to source code with "tangling"
+
+*** LP: tangle single source code block
+
+*** LP: tangle the section of headline
+
+*** LP: tangle whole file
+
+** LP: display result
+
+*** LP: display image result with Org inline image display
+
+*** LP: display table result with Org table
+
+** LP: reference to text, code and each other
+
+*** text->code with coderef
+
+#+NAME: hello
+#+begin_src emacs-lisp
+(defun hello (name)                               ; (ref:define function hello)
+  (print (format "Hello, %s" name)))
+#+end_src
+
+[[(define function hello)]]
+
+*** text->text with link
+
+*** code->code with noweb
+
+#+begin_src emacs-lisp :noweb yes
+<<hello>>
+
+(hello "stardiviner")
+#+end_src
+
+#+RESULTS[<2018-05-15 17:52:00> 02e3921eec72f7200c882e875e3a26ec1963f443]:
+: Hello, stardiviner
+
+*** code->text with link
+
+[[#org-link in source code block comment][org-link in source code block comment]]
+
+** LP: navigation in text and code
+
+- ~org-babel-goto-named-src-block~
+- ~org-babel-goto-named-result~
+- ~org-babel-goto-src-block-head~
+
+You can jump back in mark ring with =[M-,]= / ~org-mark-ring-goto~.
+
