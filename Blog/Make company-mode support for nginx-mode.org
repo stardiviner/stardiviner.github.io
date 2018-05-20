@@ -1,0 +1,321 @@
+#+TITLE: Make company-mode support for nginx-mode
+
+* At the beginning
+
+I'm learning a little about Nginx recently, I hope can setup web server by myself
+when someday I want to build up a website for startup or something else.
+
+Like Ansible, Terraform, they all have keywords completions support.
+
+Emacs already has an major mode =nginx-mode=, but it does not provide Nginx directives
+completion. I know =company-mode= has ~company-keywords-alist~. So I can support for Nginx
+too.
+
+
+* Fetch all Nginx directives
+
+** TODO Elisp implementation
+       :LOGBOOK:
+       - State "TODO"       from              [2018-05-14 Mon 11:08]
+       :END:
+
+#+begin_src emacs-lisp
+(require 'elquery)
+
+(with-current-buffer (url-retrieve-synchronously "https://nginx.org/en/docs/dirindex.html")
+  (message "%S"
+           (elquery-$ "body #main #content p"
+                      (elquery-read-string (buffer-string)))))
+
+(let ((html (with-current-buffer
+                (set-buffer-multibyte nil)
+              (url-retrieve-synchronously "https://nginx.org/en/docs/dirindex.html")
+              (elquery-read-string
+               (buffer-string)))))
+  (elquery-$ "#content p" html))
+#+end_src
+
+*NOTE*: This version does not work, because some low-level reason.
+
+https://github.com/AdamNiederer/elquery/issues/5
+
+** another Python implementation
+
+#+NAME: get-directives
+#+begin_src python :session
+import urllib.request
+import urllib.parse
+import bs4
+
+req = urllib.request.Request("https://nginx.org/en/docs/dirindex.html")
+respond = urllib.request.urlopen(req)
+html_page = respond.read().decode("utf-8")
+parsed_html = bs4.BeautifulSoup(html_page, "html")
+p = parsed_html.find('div', attrs={'id': 'content'}).find('p')
+# print(p)
+
+a = p.find_all('a')
+# print(a)
+
+directives = []
+
+for x in a:
+    directives.append(x.text)
+
+print(directives)
+#+end_src
+
+Convert result to Elisp list data structure:
+
+#+begin_src emacs-lisp :var directives=get-directives() :results pp
+(setq nginx-directives
+      (mapcar
+       (lambda (element)
+         (replace-regexp-in-string " " "" element))
+       (split-string
+        (replace-regexp-in-string
+         "\\[\\|\\]" ""
+         (replace-regexp-in-string
+          "'" ""
+          directives))
+        ",")))
+
+(print nginx-directives)
+
+;; (replace-regexp-in-string "\\[\\|\\]" "" directives)
+
+;; (replace-regexp-in-string
+;;  "'" ""
+;;  (replace-regexp-in-string "\\[\\|\\]" "" "['a', 'b']"))
+
+;;; prepend nginx-mode element for `company-keywords-alist'
+(add-to-list 'company-keywords-alist
+             (cons 'nginx-mode nginx-directives))
+#+end_src
+
+#+RESULTS[<2018-05-12 15:49:39> ef2c27fb824821ec2c72d69838c3d7aa0e66dbfb]:
+#+begin_example
+((nginx-mode "absolute_redirect" "accept_mutex" "accept_mutex_delay" "access_log" "access_log" "add_after_body" "add_before_body" "add_header" "add_trailer" "addition_types" "aio" "aio_write" "alias" "allow" "allow" "ancient_browser" "ancient_browser_value" "api" "auth_basic" "auth_basic_user_file" "auth_http" "auth_http_header" "auth_http_pass_client_cert" "auth_http_timeout" "auth_jwt" "auth_jwt_claim_set" "auth_jwt_header_set" "auth_jwt_key_file" "auth_jwt_leeway" "auth_request" "auth_request_set" "autoindex" "autoindex_exact_size" "autoindex_format" "autoindex_localtime" "break" "charset" "charset_map" "charset_types" "chunked_transfer_encoding" "client_body_buffer_size" "client_body_in_file_only" "client_body_in_single_buffer" "client_body_temp_path" "client_body_timeout" "client_header_buffer_size" "client_header_timeout" "client_max_body_size" "connection_pool_size" "create_full_put_path" "daemon" "dav_access" "dav_methods" "debug_connection" "debug_points" "default_type" "deny" "deny" "directio" "directio_alignment" "disable_symlinks" "empty_gif" "env" "error_log" "error_page" "etag" "events" "expires" "f4f" "f4f_buffer_size" "fastcgi_bind" "fastcgi_buffer_size" "fastcgi_buffering" "fastcgi_buffers" "fastcgi_busy_buffers_size" "fastcgi_cache" "fastcgi_cache_background_update" "fastcgi_cache_bypass" "fastcgi_cache_key" "fastcgi_cache_lock" "fastcgi_cache_lock_age" "fastcgi_cache_lock_timeout" "fastcgi_cache_max_range_offset" "fastcgi_cache_methods" "fastcgi_cache_min_uses" "fastcgi_cache_path" "fastcgi_cache_purge" "fastcgi_cache_revalidate" "fastcgi_cache_use_stale" "fastcgi_cache_valid" "fastcgi_catch_stderr" "fastcgi_connect_timeout" "fastcgi_force_ranges" "fastcgi_hide_header" "fastcgi_ignore_client_abort" "fastcgi_ignore_headers" "fastcgi_index" "fastcgi_intercept_errors" "fastcgi_keep_conn" "fastcgi_limit_rate" "fastcgi_max_temp_file_size" "fastcgi_next_upstream" "fastcgi_next_upstream_timeout" "fastcgi_next_upstream_tries" "fastcgi_no_cache" "fastcgi_param" "fastcgi_pass" "fastcgi_pass_header" "fastcgi_pass_request_body" "fastcgi_pass_request_headers" "fastcgi_read_timeout" "fastcgi_request_buffering" "fastcgi_send_lowat" "fastcgi_send_timeout" "fastcgi_split_path_info" "fastcgi_store" "fastcgi_store_access" "fastcgi_temp_file_write_size" "fastcgi_temp_path" "flv" "geo" "geo" "geoip_city" "geoip_city" "geoip_country" "geoip_country" "geoip_org" "geoip_org" "geoip_proxy" "geoip_proxy_recursive" "google_perftools_profiles" "grpc_bind" "grpc_buffer_size" "grpc_connect_timeout" "grpc_hide_header" "grpc_ignore_headers" "grpc_intercept_errors" "grpc_next_upstream" "grpc_next_upstream_timeout" "grpc_next_upstream_tries" "grpc_pass" "grpc_pass_header" "grpc_read_timeout" "grpc_send_timeout" "grpc_set_header" "grpc_ssl_certificate" "grpc_ssl_certificate_key" "grpc_ssl_ciphers" "grpc_ssl_crl" "grpc_ssl_name" "grpc_ssl_password_file" "grpc_ssl_protocols" "grpc_ssl_server_name" "grpc_ssl_session_reuse" "grpc_ssl_trusted_certificate" "grpc_ssl_verify" "grpc_ssl_verify_depth" "gunzip" "gunzip_buffers" "gzip" "gzip_buffers" "gzip_comp_level" "gzip_disable" "gzip_http_version" "gzip_min_length" "gzip_proxied" "gzip_static" "gzip_types" "gzip_vary" "hash" "hash" "health_check" "health_check" "health_check_timeout" "hls" "hls_buffers" "hls_forward_args" "hls_fragment" "hls_mp4_buffer_size" "hls_mp4_max_buffer_size" "http" "http2_body_preread_size" "http2_chunk_size" "http2_idle_timeout" "http2_max_concurrent_pushes" "http2_max_concurrent_streams" "http2_max_field_size" "http2_max_header_size" "http2_max_requests" "http2_push" "http2_push_preload" "http2_recv_buffer_size" "http2_recv_timeout" "if" "if_modified_since" "ignore_invalid_headers" "image_filter" "image_filter_buffer" "image_filter_interlace" "image_filter_jpeg_quality" "image_filter_sharpen" "image_filter_transparency" "image_filter_webp_quality" "imap_auth" "imap_capabilities" "imap_client_buffer" "include" "index" "internal" "ip_hash" "js_access" "js_content" "js_filter" "js_include" "js_include" "js_preread" "js_set" "js_set" "keepalive" "keepalive_disable" "keepalive_requests" "keepalive_timeout" "keyval" "keyval" "keyval_zone" "keyval_zone" "large_client_header_buffers" "least_conn" "least_conn" "least_time" "least_time" "limit_conn" "limit_conn" "limit_conn_log_level" "limit_conn_log_level" "limit_conn_status" "limit_conn_zone" "limit_conn_zone" "limit_except" "limit_rate" "limit_rate_after" "limit_req" "limit_req_log_level" "limit_req_status" "limit_req_zone" "limit_zone" "lingering_close" "lingering_time" "lingering_timeout" "listen" "listen" "listen" "load_module" "location" "lock_file" "log_format" "log_format" "log_not_found" "log_subrequest" "mail" "map" "map" "map_hash_bucket_size" "map_hash_bucket_size" "map_hash_max_size" "map_hash_max_size" "master_process" "match" "match" "max_ranges" "memcached_bind" "memcached_buffer_size" "memcached_connect_timeout" "memcached_force_ranges" "memcached_gzip_flag" "memcached_next_upstream" "memcached_next_upstream_timeout" "memcached_next_upstream_tries" "memcached_pass" "memcached_read_timeout" "memcached_send_timeout" "merge_slashes" "min_delete_depth" "mirror" "mirror_request_body" "modern_browser" "modern_browser_value" "mp4" "mp4_buffer_size" "mp4_limit_rate" "mp4_limit_rate_after" "mp4_max_buffer_size" "msie_padding" "msie_refresh" "multi_accept" "ntlm" "open_file_cache" "open_file_cache_errors" "open_file_cache_min_uses" "open_file_cache_valid" "open_log_file_cache" "open_log_file_cache" "output_buffers" "override_charset" "pcre_jit" "perl" "perl_modules" "perl_require" "perl_set" "pid" "pop3_auth" "pop3_capabilities" "port_in_redirect" "postpone_output" "preread_buffer_size" "preread_timeout" "protocol" "proxy_bind" "proxy_bind" "proxy_buffer" "proxy_buffer_size" "proxy_buffer_size" "proxy_buffering" "proxy_buffers" "proxy_busy_buffers_size" "proxy_cache" "proxy_cache_background_update" "proxy_cache_bypass" "proxy_cache_convert_head" "proxy_cache_key" "proxy_cache_lock" "proxy_cache_lock_age" "proxy_cache_lock_timeout" "proxy_cache_max_range_offset" "proxy_cache_methods" "proxy_cache_min_uses" "proxy_cache_path" "proxy_cache_purge" "proxy_cache_revalidate" "proxy_cache_use_stale" "proxy_cache_valid" "proxy_connect_timeout" "proxy_connect_timeout" "proxy_cookie_domain" "proxy_cookie_path" "proxy_download_rate" "proxy_force_ranges" "proxy_headers_hash_bucket_size" "proxy_headers_hash_max_size" "proxy_hide_header" "proxy_http_version" "proxy_ignore_client_abort" "proxy_ignore_headers" "proxy_intercept_errors" "proxy_limit_rate" "proxy_max_temp_file_size" "proxy_method" "proxy_next_upstream" "proxy_next_upstream" "proxy_next_upstream_timeout" "proxy_next_upstream_timeout" "proxy_next_upstream_tries" "proxy_next_upstream_tries" "proxy_no_cache" "proxy_pass" "proxy_pass" "proxy_pass_error_message" "proxy_pass_header" "proxy_pass_request_body" "proxy_pass_request_headers" "proxy_protocol" "proxy_protocol_timeout" "proxy_read_timeout" "proxy_redirect" "proxy_request_buffering" "proxy_responses" "proxy_send_lowat" "proxy_send_timeout" "proxy_set_body" "proxy_set_header" "proxy_ssl" "proxy_ssl_certificate" "proxy_ssl_certificate" "proxy_ssl_certificate_key" "proxy_ssl_certificate_key" "proxy_ssl_ciphers" "proxy_ssl_ciphers" "proxy_ssl_crl" "proxy_ssl_crl" "proxy_ssl_name" "proxy_ssl_name" "proxy_ssl_password_file" "proxy_ssl_password_file" "proxy_ssl_protocols" "proxy_ssl_protocols" "proxy_ssl_server_name" "proxy_ssl_server_name" "proxy_ssl_session_reuse" "proxy_ssl_session_reuse" "proxy_ssl_trusted_certificate" "proxy_ssl_trusted_certificate" "proxy_ssl_verify" "proxy_ssl_verify" "proxy_ssl_verify_depth" "proxy_ssl_verify_depth" "proxy_store" "proxy_store_access" "proxy_temp_file_write_size" "proxy_temp_path" "proxy_timeout" "proxy_timeout" "proxy_upload_rate" "queue" "random_index" "read_ahead" "real_ip_header" "real_ip_recursive" "recursive_error_pages" "referer_hash_bucket_size" "referer_hash_max_size" "request_pool_size" "reset_timedout_connection" "resolver" "resolver" "resolver" "resolver_timeout" "resolver_timeout" "resolver_timeout" "return" "return" "rewrite" "rewrite_log" "root" "satisfy" "scgi_bind" "scgi_buffer_size" "scgi_buffering" "scgi_buffers" "scgi_busy_buffers_size" "scgi_cache" "scgi_cache_background_update" "scgi_cache_bypass" "scgi_cache_key" "scgi_cache_lock" "scgi_cache_lock_age" "scgi_cache_lock_timeout" "scgi_cache_max_range_offset" "scgi_cache_methods" "scgi_cache_min_uses" "scgi_cache_path" "scgi_cache_purge" "scgi_cache_revalidate" "scgi_cache_use_stale" "scgi_cache_valid" "scgi_connect_timeout" "scgi_force_ranges" "scgi_hide_header" "scgi_ignore_client_abort" "scgi_ignore_headers" "scgi_intercept_errors" "scgi_limit_rate" "scgi_max_temp_file_size" "scgi_next_upstream" "scgi_next_upstream_timeout" "scgi_next_upstream_tries" "scgi_no_cache" "scgi_param" "scgi_pass" "scgi_pass_header" "scgi_pass_request_body" "scgi_pass_request_headers" "scgi_read_timeout" "scgi_request_buffering" "scgi_send_timeout" "scgi_store" "scgi_store_access" "scgi_temp_file_write_size" "scgi_temp_path" "secure_link" "secure_link_md5" "secure_link_secret" "send_lowat" "send_timeout" "sendfile" "sendfile_max_chunk" "server" "server" "server" "server" "server" "server_name" "server_name" "server_name_in_redirect" "server_names_hash_bucket_size" "server_names_hash_max_size" "server_tokens" "session_log" "session_log_format" "session_log_zone" "set" "set_real_ip_from" "set_real_ip_from" "slice" "smtp_auth" "smtp_capabilities" "smtp_client_buffer" "smtp_greeting_delay" "source_charset" "spdy_chunk_size" "spdy_headers_comp" "split_clients" "split_clients" "ssi" "ssi_last_modified" "ssi_min_file_chunk" "ssi_silent_errors" "ssi_types" "ssi_value_length" "ssl" "ssl" "ssl_buffer_size" "ssl_certificate" "ssl_certificate" "ssl_certificate" "ssl_certificate_key" "ssl_certificate_key" "ssl_certificate_key" "ssl_ciphers" "ssl_ciphers" "ssl_ciphers" "ssl_client_certificate" "ssl_client_certificate" "ssl_client_certificate" "ssl_crl" "ssl_crl" "ssl_crl" "ssl_dhparam" "ssl_dhparam" "ssl_dhparam" "ssl_ecdh_curve" "ssl_ecdh_curve" "ssl_ecdh_curve" "ssl_engine" "ssl_handshake_timeout" "ssl_password_file" "ssl_password_file" "ssl_password_file" "ssl_prefer_server_ciphers" "ssl_prefer_server_ciphers" "ssl_prefer_server_ciphers" "ssl_preread" "ssl_protocols" "ssl_protocols" "ssl_protocols" "ssl_session_cache" "ssl_session_cache" "ssl_session_cache" "ssl_session_ticket_key" "ssl_session_ticket_key" "ssl_session_ticket_key" "ssl_session_tickets" "ssl_session_tickets" "ssl_session_tickets" "ssl_session_timeout" "ssl_session_timeout" "ssl_session_timeout" "ssl_stapling" "ssl_stapling_file" "ssl_stapling_responder" "ssl_stapling_verify" "ssl_trusted_certificate" "ssl_trusted_certificate" "ssl_trusted_certificate" "ssl_verify_client" "ssl_verify_client" "ssl_verify_client" "ssl_verify_depth" "ssl_verify_depth" "ssl_verify_depth" "starttls" "state" "state" "status" "status_format" "status_zone" "sticky" "sticky_cookie_insert" "stream" "stub_status" "sub_filter" "sub_filter_last_modified" "sub_filter_once" "sub_filter_types" "subrequest_output_buffer_size" "tcp_nodelay" "tcp_nodelay" "tcp_nopush" "thread_pool" "timeout" "timer_resolution" "try_files" "types" "types_hash_bucket_size" "types_hash_max_size" "underscores_in_headers" "uninitialized_variable_warn" "upstream" "upstream" "upstream_conf" "use" "user" "userid" "userid_domain" "userid_expires" "userid_mark" "userid_name" "userid_p3p" "userid_path" "userid_service" "uwsgi_bind" "uwsgi_buffer_size" "uwsgi_buffering" "uwsgi_buffers" "uwsgi_busy_buffers_size" "uwsgi_cache" "uwsgi_cache_background_update" "uwsgi_cache_bypass" "uwsgi_cache_key" "uwsgi_cache_lock" "uwsgi_cache_lock_age" "uwsgi_cache_lock_timeout" "uwsgi_cache_max_range_offset" "uwsgi_cache_methods" "uwsgi_cache_min_uses" "uwsgi_cache_path" "uwsgi_cache_purge" "uwsgi_cache_revalidate" "uwsgi_cache_use_stale" "uwsgi_cache_valid" "uwsgi_connect_timeout" "uwsgi_force_ranges" "uwsgi_hide_header" "uwsgi_ignore_client_abort" "uwsgi_ignore_headers" "uwsgi_intercept_errors" "uwsgi_limit_rate" "uwsgi_max_temp_file_size" "uwsgi_modifier1" "uwsgi_modifier2" "uwsgi_next_upstream" "uwsgi_next_upstream_timeout" "uwsgi_next_upstream_tries" "uwsgi_no_cache" "uwsgi_param" "uwsgi_pass" "uwsgi_pass_header" "uwsgi_pass_request_body" "uwsgi_pass_request_headers" "uwsgi_read_timeout" "uwsgi_request_buffering" "uwsgi_send_timeout" "uwsgi_ssl_certificate" "uwsgi_ssl_certificate_key" "uwsgi_ssl_ciphers" "uwsgi_ssl_crl" "uwsgi_ssl_name" "uwsgi_ssl_password_file" "uwsgi_ssl_protocols" "uwsgi_ssl_server_name" "uwsgi_ssl_session_reuse" "uwsgi_ssl_trusted_certificate" "uwsgi_ssl_verify" "uwsgi_ssl_verify_depth" "uwsgi_store" "uwsgi_store_access" "uwsgi_temp_file_write_size" "uwsgi_temp_path" "valid_referers" "variables_hash_bucket_size" "variables_hash_bucket_size" "variables_hash_max_size" "variables_hash_max_size" "worker_aio_requests" "worker_connections" "worker_cpu_affinity" "worker_priority" "worker_processes" "worker_rlimit_core" "worker_rlimit_nofile" "worker_shutdown_timeout" "working_directory" "xclient" "xml_entities" "xslt_last_modified" "xslt_param" "xslt_string_param" "xslt_stylesheet" "xslt_types" "zone" "zone" "zone_sync" "zone_sync_buffers" "zone_sync_connect_retry_interval" "zone_sync_connect_timeout" "zone_sync_interval" "zone_sync_recv_buffer_size" "zone_sync_server" "zone_sync_ssl" "zone_sync_ssl_certificate" "zone_sync_ssl_certificate_key" "zone_sync_ssl_ciphers" "zone_sync_ssl_crl" "zone_sync_ssl_password_file" "zone_sync_ssl_protocols" "zone_sync_ssl_trusted_certificate" "zone_sync_ssl_verify" "zone_sync_ssl_verify_depth" "zone_sync_timeout")
+ (cons 'nginx-mode nginx-directives)
+ (c++-mode "alignas" "alignof" "asm" "auto" "bool" "break" "case" "catch" "char" "char16_t" "char32_t" "class" "const" "const_cast" "constexpr" "continue" "decltype" "default" "delete" "do" "double" "dynamic_cast" "else" "enum" "explicit" "export" "extern" "false" "final" "float" "for" "friend" "goto" "if" "inline" "int" "long" "mutable" "namespace" "new" "noexcept" "nullptr" "operator" "override" "private" "protected" "public" "register" "reinterpret_cast" "return" "short" "signed" "sizeof" "static" "static_assert" "static_cast" "struct" "switch" "template" "this" "thread_local" "throw" "true" "try" "typedef" "typeid" "typename" "union" "unsigned" "using" "virtual" "void" "volatile" "wchar_t" "while")
+ (c-mode "auto" "break" "case" "char" "const" "continue" "default" "do" "double" "else" "enum" "extern" "float" "for" "goto" "if" "int" "long" "register" "return" "short" "signed" "sizeof" "static" "struct" "switch" "typedef" "union" "unsigned" "void" "volatile" "while")
+ (csharp-mode "abstract" "add" "alias" "as" "base" "bool" "break" "byte" "case" "catch" "char" "checked" "class" "const" "continue" "decimal" "default" "delegate" "do" "double" "else" "enum" "event" "explicit" "extern" "false" "finally" "fixed" "float" "for" "foreach" "get" "global" "goto" "if" "implicit" "in" "int" "interface" "internal" "is" "lock" "long" "namespace" "new" "null" "object" "operator" "out" "override" "params" "partial" "private" "protected" "public" "readonly" "ref" "remove" "return" "sbyte" "sealed" "set" "short" "sizeof" "stackalloc" "static" "string" "struct" "switch" "this" "throw" "true" "try" "typeof" "uint" "ulong" "unchecked" "unsafe" "ushort" "using" "value" "var" "virtual" "void" "volatile" "where" "while" "yield")
+ (d-mode "abstract" "alias" "align" "asm" "assert" "auto" "body" "bool" "break" "byte" "case" "cast" "catch" "cdouble" "cent" "cfloat" "char" "class" "const" "continue" "creal" "dchar" "debug" "default" "delegate" "delete" "deprecated" "do" "double" "else" "enum" "export" "extern" "false" "final" "finally" "float" "for" "foreach" "foreach_reverse" "function" "goto" "idouble" "if" "ifloat" "import" "in" "inout" "int" "interface" "invariant" "ireal" "is" "lazy" "long" "macro" "mixin" "module" "new" "nothrow" "null" "out" "override" "package" "pragma" "private" "protected" "public" "pure" "real" "ref" "return" "scope" "short" "static" "struct" "super" "switch" "synchronized" "template" "this" "throw" "true" "try" "typedef" "typeid" "typeof" "ubyte" "ucent" "uint" "ulong" "union" "unittest" "ushort" "version" "void" "volatile" "wchar" "while" "with")
+ (f90-mode "ABS" "ABSTRACT" "ACHAR" "ACOS" "ADJUSTL" "ADJUSTR" "AIMAG" "AINT" "ALIGN" "ALL" "ALLOCATABLE" "ALLOCATE" "ALLOCATED" "ALL_PREFIX" "ALL_SCATTER" "ALL_SUFFIX" "AND" "ANINT" "ANY" "ANY_PREFIX" "ANY_SCATTER" "ANY_SUFFIX" "ASIN" "ASSIGN" "ASSIGNMENT" "ASSOCIATE" "ASSOCIATED" "ASYNCHRONOUS" "ATAN" "ATAN2" "BACKSPACE" "BIND" "BIT_SIZE" "BLOCK" "BTEST" "CALL" "CASE" "CEILING" "CHAR" "CHARACTER" "CHARACTER_STORAGE_SIZE" "CLASS" "CLOSE" "CMPLX" "COMMAND_ARGUMENT_COUNT" "COMMON" "COMPLEX" "CONJG" "CONTAINS" "CONTINUE" "COPY_PREFIX" "COPY_SCATTER" "COPY_SUFFIX" "COS" "COSH" "COUNT" "COUNT_PREFIX" "COUNT_SCATTER" "COUNT_SUFFIX" "CPU_TIME" "CSHIFT" "CYCLE" "CYCLIC" "C_ALERT" "C_ASSOCIATED" "C_BACKSPACE" "C_BOOL" "C_CARRIAGE_RETURN" "C_CHAR" "C_DOUBLE" "C_DOUBLE_COMPLEX" "C_FLOAT" "C_FLOAT_COMPLEX" "C_FORM_FEED" "C_FUNLOC" "C_FUNPTR" "C_F_POINTER" "C_F_PROCPOINTER" "C_HORIZONTAL_TAB" "C_INT" "C_INT16_T" "C_INT32_T" "C_INT64_T" "C_INT8_T" "C_INTMAX_T" "C_INTPTR_T" "C_INT_FAST16_T" "C_INT_FAST32_T" "C_INT_FAST64_T" "C_INT_FAST8_T" "C_INT_LEAST16_T" "C_INT_LEAST32_T" "C_INT_LEAST64_T" "C_INT_LEAST8_T" "C_LOC" "C_LONG" "C_LONG_DOUBLE" "C_LONG_DOUBLE_COMPLEX" "C_LONG_LONG" "C_NEW_LINE" "C_NULL_CHAR" "C_NULL_FUNPTR" "C_NULL_PTR" "C_PTR" "C_SHORT" "C_SIGNED_CHAR" "C_SIZE_T" "C_VERTICAL_TAB" "DATA" "DATE_AND_TIME" "DBLE" "DEALLOCATE" "DEFERRED" "DIGITS" "DIM" "DIMENSION" "DISTRIBUTE" "DO" "DOT_PRODUCT" "DOUBLE" "DPROD" "DYNAMIC" "ELEMENTAL" "ELSE" "ELSEIF" "ELSEWHERE" "END" "ENDDO" "ENDFILE" "ENDIF" "ENTRY" "ENUM" "ENUMERATOR" "EOSHIFT" "EPSILON" "EQ" "EQUIVALENCE" "EQV" "ERROR_UNIT" "EXIT" "EXP" "EXPONENT" "EXTENDS" "EXTENDS_TYPE_OF" "EXTERNAL" "EXTRINSIC" "FALSE" "FILE_STORAGE_SIZE" "FINAL" "FLOOR" "FLUSH" "FORALL" "FORMAT" "FRACTION" "FUNCTION" "GE" "GENERIC" "GET_COMMAND" "GET_COMMAND_ARGUMENT" "GET_ENVIRONMENT_VARIABLE" "GOTO" "GRADE_DOWN" "GRADE_UP" "GT" "HPF_ALIGNMENT" "HPF_DISTRIBUTION" "HPF_TEMPLATE" "HUGE" "IACHAR" "IALL" "IALL_PREFIX" "IALL_SCATTER" "IALL_SUFFIX" "IAND" "IANY" "IANY_PREFIX" "IANY_SCATTER" "IANY_SUFFIX" "IBCLR" "IBITS" "IBSET" "ICHAR" "IEEE_ARITHMETIC" "IEEE_EXCEPTIONS" "IEEE_FEATURES" "IEEE_GET_UNDERFLOW_MODE" "IEEE_SET_UNDERFLOW_MODE" "IEEE_SUPPORT_UNDERFLOW_CONTROL" "IEOR" "IF" "ILEN" "IMPLICIT" "IMPORT" "INCLUDE" "INDEPENDENT" "INDEX" "INHERIT" "INPUT_UNIT" "INQUIRE" "INT" "INTEGER" "INTENT" "INTERFACE" "INTRINSIC" "IOR" "IOSTAT_END" "IOSTAT_EOR" "IPARITY" "IPARITY_PREFIX" "IPARITY_SCATTER" "IPARITY_SUFFIX" "ISHFT" "ISHFTC" "ISO_C_BINDING" "ISO_FORTRAN_ENV" "KIND" "LBOUND" "LE" "LEADZ" "LEN" "LEN_TRIM" "LGE" "LGT" "LLE" "LLT" "LOG" "LOG10" "LOGICAL" "LT" "MATMUL" "MAX" "MAXEXPONENT" "MAXLOC" "MAXVAL" "MAXVAL_PREFIX" "MAXVAL_SCATTER" "MAXVAL_SUFFIX" "MERGE" "MIN" "MINEXPONENT" "MINLOC" "MINVAL" "MINVAL_PREFIX" "MINVAL_SCATTER" "MINVAL_SUFFIX" "MOD" "MODULE" "MODULO" "MOVE_ALLOC" "MVBITS" "NAMELIST" "NE" "NEAREST" "NEQV" "NEW" "NEW_LINE" "NINT" "NONE" "NON_INTRINSIC" "NON_OVERRIDABLE" "NOPASS" "NOT" "NULL" "NULLIFY" "NUMBER_OF_PROCESSORS" "NUMERIC_STORAGE_SIZE" "ONLY" "ONTO" "OPEN" "OPERATOR" "OPTIONAL" "OR" "OUTPUT_UNIT" "PACK" "PARAMETER" "PARITY" "PARITY_PREFIX" "PARITY_SCATTER" "PARITY_SUFFIX" "PASS" "PAUSE" "POINTER" "POPCNT" "POPPAR" "PRECISION" "PRESENT" "PRINT" "PRIVATE" "PROCEDURE" "PROCESSORS" "PROCESSORS_SHAPE" "PRODUCT" "PRODUCT_PREFIX" "PRODUCT_SCATTER" "PRODUCT_SUFFIX" "PROGRAM" "PROTECTED" "PUBLIC" "PURE" "RADIX" "RANDOM_NUMBER" "RANDOM_SEED" "RANGE" "READ" "REAL" "REALIGN" "RECURSIVE" "REDISTRIBUTE" "REPEAT" "RESHAPE" "RESULT" "RETURN" "REWIND" "RRSPACING" "SAME_TYPE_AS" "SAVE" "SCALE" "SCAN" "SELECT" "SELECTED_CHAR_KIND" "SELECTED_INT_KIND" "SELECTED_REAL_KIND" "SEQUENCE" "SET_EXPONENT" "SHAPE" "SIGN" "SIN" "SINH" "SIZE" "SPACING" "SPREAD" "SQRT" "STOP" "SUBROUTINE" "SUM" "SUM_PREFIX" "SUM_SCATTER" "SUM_SUFFIX" "SYSTEM_CLOCK" "TAN" "TANH" "TARGET" "TEMPLATE" "THEN" "TINY" "TRANSFER" "TRANSPOSE" "TRIM" "TRUE" "TYPE" "UBOUND" "UNPACK" "USE" "VALUE" "VERIFY" "VOLATILE" "WAIT" "WHERE" "WHILE" "WITH" "WRITE" "abs" "abstract" "achar" "acos" "adjustl" "adjustr" "aimag" "aint" "align" "all" "all_prefix" "all_scatter" "all_suffix" "allocatable" "allocate" "allocated" "and" "anint" "any" "any_prefix" "any_scatter" "any_suffix" "asin" "assign" "assignment" "associate" "associated" "asynchronous" "atan" "atan2" "backspace" "bind" "bit_size" "block" "btest" "c_alert" "c_associated" "c_backspace" "c_bool" "c_carriage_return" "c_char" "c_double" "c_double_complex" "c_f_pointer" "c_f_procpointer" "c_float" "c_float_complex" "c_form_feed" "c_funloc" "c_funptr" "c_horizontal_tab" "c_int" "c_int16_t" "c_int32_t" "c_int64_t" "c_int8_t" "c_int_fast16_t" "c_int_fast32_t" "c_int_fast64_t" "c_int_fast8_t" "c_int_least16_t" "c_int_least32_t" "c_int_least64_t" "c_int_least8_t" "c_intmax_t" "c_intptr_t" "c_loc" "c_long" "c_long_double" "c_long_double_complex" "c_long_long" "c_new_line" "c_null_char" "c_null_funptr" "c_null_ptr" "c_ptr" "c_short" "c_signed_char" "c_size_t" "c_vertical_tab" "call" "case" "ceiling" "char" "character" "character_storage_size" "class" "close" "cmplx" "command_argument_count" "common" "complex" "conjg" "contains" "continue" "copy_prefix" "copy_scatter" "copy_suffix" "cos" "cosh" "count" "count_prefix" "count_scatter" "count_suffix" "cpu_time" "cshift" "cycle" "cyclic" "data" "date_and_time" "dble" "deallocate" "deferred" "digits" "dim" "dimension" "distribute" "do" "dot_product" "double" "dprod" "dynamic" "elemental" "else" "elseif" "elsewhere" "end" "enddo" "endfile" "endif" "entry" "enum" "enumerator" "eoshift" "epsilon" "eq" "equivalence" "eqv" "error_unit" "exit" "exp" "exponent" "extends" "extends_type_of" "external" "extrinsic" "false" "file_storage_size" "final" "floor" "flush" "forall" "format" "fraction" "function" "ge" "generic" "get_command" "get_command_argument" "get_environment_variable" "goto" "grade_down" "grade_up" "gt" "hpf_alignment" "hpf_distribution" "hpf_template" "huge" "iachar" "iall" "iall_prefix" "iall_scatter" "iall_suffix" "iand" "iany" "iany_prefix" "iany_scatter" "iany_suffix" "ibclr" "ibits" "ibset" "ichar" "ieee_arithmetic" "ieee_exceptions" "ieee_features" "ieee_get_underflow_mode" "ieee_set_underflow_mode" "ieee_support_underflow_control" "ieor" "if" "ilen" "implicit" "import" "include" "independent" "index" "inherit" "input_unit" "inquire" "int" "integer" "intent" "interface" "intrinsic" "ior" "iostat_end" "iostat_eor" "iparity" "iparity_prefix" "iparity_scatter" "iparity_suffix" "ishft" "ishftc" "iso_c_binding" "iso_fortran_env" "kind" "lbound" "le" "leadz" "len" "len_trim" "lge" "lgt" "lle" "llt" "log" "log10" "logical" "lt" "matmul" "max" "maxexponent" "maxloc" "maxval" "maxval_prefix" "maxval_scatter" "maxval_suffix" "merge" "min" "minexponent" "minloc" "minval" "minval_prefix" "minval_scatter" "minval_suffix" "mod" "module" "modulo" "move_alloc" "mvbits" "namelist" "ne" "nearest" "neqv" "new" "new_line" "nint" "non_intrinsic" "non_overridable" "none" "nopass" "not" "null" "nullify" "number_of_processors" "numeric_storage_size" "only" "onto" "open" "operator" "optional" "or" "output_unit" "pack" "parameter" "parity" "parity_prefix" "parity_scatter" "parity_suffix" "pass" "pause" "pointer" "popcnt" "poppar" "precision" "present" "print" "private" "procedure" "processors" "processors_shape" "product" "product_prefix" "product_scatter" "product_suffix" "program" "protected" "public" "pure" "radix" "random_number" "random_seed" "range" "read" "real" "realign" "recursive" "redistribute" "repeat" "reshape" "result" "return" "rewind" "rrspacing" "same_type_as" "save" "scale" "scan" "select" "selected_char_kind" "selected_int_kind" "selected_real_kind" "sequence" "set_exponent" "shape" "sign" "sin" "sinh" "size" "spacing" "spread" "sqrt" "stop" "subroutine" "sum" "sum_prefix" "sum_scatter" "sum_suffix" "system_clock" "tan" "tanh" "target" "template" "then" "tiny" "transfer" "transpose" "trim" "true" "type" "ubound" "unpack" "use" "value" "verify" "volatile" "wait" "where" "while" "with" "write")
+ (java-mode "abstract" "assert" "boolean" "break" "byte" "case" "catch" "char" "class" "continue" "default" "do" "double" "else" "enum" "extends" "final" "finally" "float" "for" "if" "implements" "import" "instanceof" "int" "interface" "long" "native" "new" "package" "private" "protected" "public" "return" "short" "static" "strictfp" "super" "switch" "synchronized" "this" "throw" "throws" "transient" "try" "void" "volatile" "while")
+ (javascript-mode "break" "catch" "const" "continue" "delete" "do" "else" "export" "for" "function" "if" "import" "in" "instanceOf" "label" "let" "new" "return" "switch" "this" "throw" "try" "typeof" "var" "void" "while" "with" "yield")
+ (kotlin-mode "abstract" "annotation" "as" "break" "by" "catch" "class" "companion" "const" "constructor" "continue" "data" "do" "else" "enum" "false" "final" "finally" "for" "fun" "if" "import" "in" "init" "inner" "interface" "internal" "is" "lateinit" "nested" "null" "object" "open" "out" "override" "package" "private" "protected" "public" "return" "super" "this" "throw" "trait" "true" "try" "typealias" "val" "var" "when" "while")
+ (objc-mode "@catch" "@class" "@encode" "@end" "@finally" "@implementation" "@interface" "@private" "@protected" "@protocol" "@public" "@selector" "@synchronized" "@throw" "@try" "alloc" "autorelease" "bycopy" "byref" "in" "inout" "oneway" "out" "release" "retain")
+ (perl-mode "AUTOLOAD" "BEGIN" "CHECK" "CORE" "DESTROY" "END" "INIT" "__END__" "__FILE__" "__LINE__" "abs" "accept" "alarm" "and" "atan2" "bind" "binmode" "bless" "caller" "chdir" "chmod" "chomp" "chop" "chown" "chr" "chroot" "close" "closedir" "cmp" "connect" "continue" "cos" "crypt" "dbmclose" "dbmopen" "defined" "delete" "die" "do" "dump" "each" "else" "elsif" "endgrent" "endhostent" "endnetent" "endprotoent" "endpwent" "endservent" "eof" "eq" "eval" "exec" "exists" "exit" "exp" "fcntl" "fileno" "flock" "for" "foreach" "fork" "format" "formline" "ge" "getc" "getgrent" "getgrgid" "getgrnam" "gethostbyaddr" "gethostbyname" "gethostent" "getlogin" "getnetbyaddr" "getnetbyname" "getnetent" "getpeername" "getpgrp" "getppid" "getpriority" "getprotobyname" "getprotobynumber" "getprotoent" "getpwent" "getpwnam" "getpwuid" "getservbyname" "getservbyport" "getservent" "getsockname" "getsockopt" "glob" "gmtime" "goto" "grep" "gt" "hex" "if" "index" "int" "ioctl" "join" "keys" "kill" "last" "lc" "lcfirst" "le" "length" "link" "listen" "local" "localtime" "lock" "log" "lstat" "lt" "map" "mkdir" "msgctl" "msgget" "msgrcv" "msgsnd" "my" "ne" "next" "no" "not" "oct" "open" "opendir" "or" "ord" "our" "pack" "package" "pipe" "pop" "pos" "print" "printf" "push" "q" "qq" "quotemeta" "qw" "qx" "rand" "read" "readdir" "readline" "readlink" "readpipe" "recv" "redo" "ref" "rename" "require" "reset" "return" "reverse" "rewinddir" "rindex" "rmdir" "scalar" "seek" "seekdir" "select" "semctl" "semget" "semop" "send" "setgrent" "sethostent" "setnetent" "setpgrp" "setpriority" "setprotoent" "setpwent" "setservent" "setsockopt" "shift" "shmctl" "shmget" "shmread" "shmwrite" "shutdown" "sin" "sleep" "socket" "socketpair" "sort" "splice" "split" "sprintf" "sqrt" "srand" "stat" "study" "sub" "substr" "symlink" "syscall" "sysopen" "sysread" "system" "syswrite" "tell" "telldir" "tie" "time" "times" "tr" "truncate" "uc" "ucfirst" "umask" "undef" "unless" "unlink" "unpack" "unshift" "untie" "until" "use" "utime" "values" "vec" "wait" "waitpid" "wantarray" "warn" "while" "write" "x" "xor" "y")
+ (php-mode "__CLASS__" "__DIR__" "__FILE__" "__FUNCTION__" "__LINE__" "__METHOD__" "__NAMESPACE__" "_once" "abstract" "and" "array" "as" "break" "case" "catch" "cfunction" "class" "clone" "const" "continue" "declare" "default" "die" "do" "echo" "else" "elseif" "empty" "enddeclare" "endfor" "endforeach" "endif" "endswitch" "endwhile" "eval" "exception" "exit" "extends" "final" "for" "foreach" "function" "global" "goto" "if" "implements" "include" "instanceof" "interface" "isset" "list" "namespace" "new" "old_function" "or" "php_user_filter" "print" "private" "protected" "public" "require" "require_once" "return" "static" "switch" "this" "throw" "try" "unset" "use" "var" "while" "xor")
+ (python-mode "and" "assert" "break" "class" "continue" "def" "del" "elif" "else" "except" "exec" "finally" "for" "from" "global" "if" "import" "in" "is" "lambda" "not" "or" "pass" "print" "raise" "return" "try" "while" "yield")
+ (ruby-mode "BEGIN" "END" "alias" "and" "begin" "break" "case" "class" "def" "defined?" "do" "else" "elsif" "end" "ensure" "false" "for" "if" "in" "module" "next" "nil" "not" "or" "redo" "rescue" "retry" "return" "self" "super" "then" "true" "undef" "unless" "until" "when" "while" "yield")
+ (go-mode "break" "case" "chan" "const" "continue" "default" "defer" "else" "fallthrough" "for" "func" "go" "goto" "if" "import" "interface" "map" "package" "range" "return" "select" "struct" "switch" "type" "var")
+ (rust-mode "Self" "as" "box" "break" "const" "continue" "crate" "else" "enum" "extern" "false" "fn" "for" "if" "impl" "in" "let" "loop" "macro" "match" "mod" "move" "mut" "pub" "ref" "return" "self" "static" "struct" "super" "trait" "true" "type" "unsafe" "use" "where" "while")
+ (scala-mode "abstract" "case" "catch" "class" "def" "do" "else" "extends" "false" "final" "finally" "for" "forSome" "if" "implicit" "import" "lazy" "match" "new" "null" "object" "override" "package" "private" "protected" "return" "sealed" "super" "this" "throw" "trait" "true" "try" "type" "val" "var" "while" "with" "yield")
+ (swift-mode "Protocol" "Self" "Type" "and" "as" "assignment" "associatedtype" "associativity" "available" "break" "case" "catch" "class" "column" "continue" "convenience" "default" "defer" "deinit" "didSet" "do" "dynamic" "dynamicType" "else" "elseif" "endif" "enum" "extension" "fallthrough" "false" "file" "fileprivate" "final" "for" "func" "function" "get" "guard" "higherThan" "if" "import" "in" "indirect" "infix" "init" "inout" "internal" "is" "lazy" "left" "let" "line" "lowerThan" "mutating" "nil" "none" "nonmutating" "open" "operator" "optional" "override" "postfix" "precedence" "precedencegroup" "prefix" "private" "protocol" "public" "repeat" "required" "rethrows" "return" "right" "selector" "self" "set" "static" "struct" "subscript" "super" "switch" "throw" "throws" "true" "try" "typealias" "unowned" "var" "weak" "where" "while" "willSet")
+ (julia-mode "abstract" "break" "case" "catch" "const" "continue" "do" "else" "elseif" "end" "eval" "export" "false" "finally" "for" "function" "global" "if" "ifelse" "immutable" "import" "importall" "in" "let" "macro" "module" "otherwise" "quote" "return" "switch" "throw" "true" "try" "type" "typealias" "using" "while")
+ (thrift-mode "binary" "bool" "byte" "const" "double" "enum" "exception" "extends" "i16" "i32" "i64" "include" "list" "map" "oneway" "optional" "required" "service" "set" "string" "struct" "throws" "typedef" "void")
+ (js2-mode . javascript-mode)
+ (js2-jsx-mode . javascript-mode)
+ (espresso-mode . javascript-mode)
+ (js-mode . javascript-mode)
+ (js-jsx-mode . javascript-mode)
+ (cperl-mode . perl-mode)
+ (jde-mode . java-mode)
+ (ess-julia-mode . julia-mode)
+ (enh-ruby-mode . ruby-mode))
+#+end_example
+
+
+* company-keywords-alist
+
+#+begin_src emacs-lisp
+(defun company-nginx-keywords ()
+  (add-to-list 'company-keywords-alist
+               '(nginx-mode
+                 "absolute_redirect" "accept_mutex" "accept_mutex_delay" "access_log" "access_log"
+                 "add_after_body" "add_before_body" "add_header" "add_trailer" "addition_types" "aio"
+                 "aio_write" "alias" "allow" "allow" "ancient_browser" "ancient_browser_value" "api"
+                 "auth_basic" "auth_basic_user_file" "auth_http" "auth_http_header"
+                 "auth_http_pass_client_cert" "auth_http_timeout" "auth_jwt" "auth_jwt_claim_set"
+                 "auth_jwt_header_set" "auth_jwt_key_file" "auth_jwt_leeway" "auth_request"
+                 "auth_request_set" "autoindex" "autoindex_exact_size" "autoindex_format"
+                 "autoindex_localtime" "break" "charset" "charset_map" "charset_types"
+                 "chunked_transfer_encoding" "client_body_buffer_size" "client_body_in_file_only"
+                 "client_body_in_single_buffer" "client_body_temp_path" "client_body_timeout"
+                 "client_header_buffer_size" "client_header_timeout" "client_max_body_size"
+                 "connection_pool_size" "create_full_put_path" "daemon" "dav_access" "dav_methods"
+                 "debug_connection" "debug_points" "default_type" "deny" "deny" "directio"
+                 "directio_alignment" "disable_symlinks" "empty_gif" "env" "error_log" "error_page" "etag"
+                 "events" "expires" "f4f" "f4f_buffer_size" "fastcgi_bind" "fastcgi_buffer_size"
+                 "fastcgi_buffering" "fastcgi_buffers" "fastcgi_busy_buffers_size" "fastcgi_cache"
+                 "fastcgi_cache_background_update" "fastcgi_cache_bypass" "fastcgi_cache_key"
+                 "fastcgi_cache_lock" "fastcgi_cache_lock_age" "fastcgi_cache_lock_timeout"
+                 "fastcgi_cache_max_range_offset" "fastcgi_cache_methods" "fastcgi_cache_min_uses"
+                 "fastcgi_cache_path" "fastcgi_cache_purge" "fastcgi_cache_revalidate"
+                 "fastcgi_cache_use_stale" "fastcgi_cache_valid" "fastcgi_catch_stderr"
+                 "fastcgi_connect_timeout" "fastcgi_force_ranges" "fastcgi_hide_header"
+                 "fastcgi_ignore_client_abort" "fastcgi_ignore_headers" "fastcgi_index"
+                 "fastcgi_intercept_errors" "fastcgi_keep_conn" "fastcgi_limit_rate"
+                 "fastcgi_max_temp_file_size" "fastcgi_next_upstream" "fastcgi_next_upstream_timeout"
+                 "fastcgi_next_upstream_tries" "fastcgi_no_cache" "fastcgi_param" "fastcgi_pass"
+                 "fastcgi_pass_header" "fastcgi_pass_request_body" "fastcgi_pass_request_headers"
+                 "fastcgi_read_timeout" "fastcgi_request_buffering" "fastcgi_send_lowat"
+                 "fastcgi_send_timeout" "fastcgi_split_path_info" "fastcgi_store" "fastcgi_store_access"
+                 "fastcgi_temp_file_write_size" "fastcgi_temp_path" "flv" "geo" "geo" "geoip_city"
+                 "geoip_city" "geoip_country" "geoip_country" "geoip_org" "geoip_org" "geoip_proxy"
+                 "geoip_proxy_recursive" "google_perftools_profiles" "grpc_bind" "grpc_buffer_size"
+                 "grpc_connect_timeout" "grpc_hide_header" "grpc_ignore_headers" "grpc_intercept_errors"
+                 "grpc_next_upstream" "grpc_next_upstream_timeout" "grpc_next_upstream_tries" "grpc_pass"
+                 "grpc_pass_header" "grpc_read_timeout" "grpc_send_timeout" "grpc_set_header"
+                 "grpc_ssl_certificate" "grpc_ssl_certificate_key" "grpc_ssl_ciphers" "grpc_ssl_crl"
+                 "grpc_ssl_name" "grpc_ssl_password_file" "grpc_ssl_protocols" "grpc_ssl_server_name"
+                 "grpc_ssl_session_reuse" "grpc_ssl_trusted_certificate" "grpc_ssl_verify"
+                 "grpc_ssl_verify_depth" "gunzip" "gunzip_buffers" "gzip" "gzip_buffers" "gzip_comp_level"
+                 "gzip_disable" "gzip_http_version" "gzip_min_length" "gzip_proxied" "gzip_static"
+                 "gzip_types" "gzip_vary" "hash" "hash" "health_check" "health_check"
+                 "health_check_timeout" "hls" "hls_buffers" "hls_forward_args" "hls_fragment"
+                 "hls_mp4_buffer_size" "hls_mp4_max_buffer_size" "http" "http2_body_preread_size"
+                 "http2_chunk_size" "http2_idle_timeout" "http2_max_concurrent_pushes"
+                 "http2_max_concurrent_streams" "http2_max_field_size" "http2_max_header_size"
+                 "http2_max_requests" "http2_push" "http2_push_preload" "http2_recv_buffer_size"
+                 "http2_recv_timeout" "if" "if_modified_since" "ignore_invalid_headers" "image_filter"
+                 "image_filter_buffer" "image_filter_interlace" "image_filter_jpeg_quality"
+                 "image_filter_sharpen" "image_filter_transparency" "image_filter_webp_quality" "imap_auth"
+                 "imap_capabilities" "imap_client_buffer" "include" "index" "internal" "ip_hash"
+                 "js_access" "js_content" "js_filter" "js_include" "js_include" "js_preread" "js_set"
+                 "js_set" "keepalive" "keepalive_disable" "keepalive_requests" "keepalive_timeout" "keyval"
+                 "keyval" "keyval_zone" "keyval_zone" "large_client_header_buffers" "least_conn"
+                 "least_conn" "least_time" "least_time" "limit_conn" "limit_conn" "limit_conn_log_level"
+                 "limit_conn_log_level" "limit_conn_status" "limit_conn_zone" "limit_conn_zone"
+                 "limit_except" "limit_rate" "limit_rate_after" "limit_req" "limit_req_log_level"
+                 "limit_req_status" "limit_req_zone" "limit_zone" "lingering_close" "lingering_time"
+                 "lingering_timeout" "listen" "listen" "listen" "load_module" "location" "lock_file"
+                 "log_format" "log_format" "log_not_found" "log_subrequest" "mail" "map" "map"
+                 "map_hash_bucket_size" "map_hash_bucket_size" "map_hash_max_size" "map_hash_max_size"
+                 "master_process" "match" "match" "max_ranges" "memcached_bind" "memcached_buffer_size"
+                 "memcached_connect_timeout" "memcached_force_ranges" "memcached_gzip_flag"
+                 "memcached_next_upstream" "memcached_next_upstream_timeout"
+                 "memcached_next_upstream_tries" "memcached_pass" "memcached_read_timeout"
+                 "memcached_send_timeout" "merge_slashes" "min_delete_depth" "mirror" "mirror_request_body"
+                 "modern_browser" "modern_browser_value" "mp4" "mp4_buffer_size" "mp4_limit_rate"
+                 "mp4_limit_rate_after" "mp4_max_buffer_size" "msie_padding" "msie_refresh" "multi_accept"
+                 "ntlm" "open_file_cache" "open_file_cache_errors" "open_file_cache_min_uses"
+                 "open_file_cache_valid" "open_log_file_cache" "open_log_file_cache" "output_buffers"
+                 "override_charset" "pcre_jit" "perl" "perl_modules" "perl_require" "perl_set" "pid"
+                 "pop3_auth" "pop3_capabilities" "port_in_redirect" "postpone_output" "preread_buffer_size"
+                 "preread_timeout" "protocol" "proxy_bind" "proxy_bind" "proxy_buffer" "proxy_buffer_size"
+                 "proxy_buffer_size" "proxy_buffering" "proxy_buffers" "proxy_busy_buffers_size"
+                 "proxy_cache" "proxy_cache_background_update" "proxy_cache_bypass"
+                 "proxy_cache_convert_head" "proxy_cache_key" "proxy_cache_lock" "proxy_cache_lock_age"
+                 "proxy_cache_lock_timeout" "proxy_cache_max_range_offset" "proxy_cache_methods"
+                 "proxy_cache_min_uses" "proxy_cache_path" "proxy_cache_purge" "proxy_cache_revalidate"
+                 "proxy_cache_use_stale" "proxy_cache_valid" "proxy_connect_timeout"
+                 "proxy_connect_timeout" "proxy_cookie_domain" "proxy_cookie_path" "proxy_download_rate"
+                 "proxy_force_ranges" "proxy_headers_hash_bucket_size" "proxy_headers_hash_max_size"
+                 "proxy_hide_header" "proxy_http_version" "proxy_ignore_client_abort"
+                 "proxy_ignore_headers" "proxy_intercept_errors" "proxy_limit_rate"
+                 "proxy_max_temp_file_size" "proxy_method" "proxy_next_upstream" "proxy_next_upstream"
+                 "proxy_next_upstream_timeout" "proxy_next_upstream_timeout" "proxy_next_upstream_tries"
+                 "proxy_next_upstream_tries" "proxy_no_cache" "proxy_pass" "proxy_pass"
+                 "proxy_pass_error_message" "proxy_pass_header" "proxy_pass_request_body"
+                 "proxy_pass_request_headers" "proxy_protocol" "proxy_protocol_timeout"
+                 "proxy_read_timeout" "proxy_redirect" "proxy_request_buffering" "proxy_responses"
+                 "proxy_send_lowat" "proxy_send_timeout" "proxy_set_body" "proxy_set_header" "proxy_ssl"
+                 "proxy_ssl_certificate" "proxy_ssl_certificate" "proxy_ssl_certificate_key"
+                 "proxy_ssl_certificate_key" "proxy_ssl_ciphers" "proxy_ssl_ciphers" "proxy_ssl_crl"
+                 "proxy_ssl_crl" "proxy_ssl_name" "proxy_ssl_name" "proxy_ssl_password_file"
+                 "proxy_ssl_password_file" "proxy_ssl_protocols" "proxy_ssl_protocols"
+                 "proxy_ssl_server_name" "proxy_ssl_server_name" "proxy_ssl_session_reuse"
+                 "proxy_ssl_session_reuse" "proxy_ssl_trusted_certificate" "proxy_ssl_trusted_certificate"
+                 "proxy_ssl_verify" "proxy_ssl_verify" "proxy_ssl_verify_depth" "proxy_ssl_verify_depth"
+                 "proxy_store" "proxy_store_access" "proxy_temp_file_write_size" "proxy_temp_path"
+                 "proxy_timeout" "proxy_timeout" "proxy_upload_rate" "queue" "random_index" "read_ahead"
+                 "real_ip_header" "real_ip_recursive" "recursive_error_pages" "referer_hash_bucket_size"
+                 "referer_hash_max_size" "request_pool_size" "reset_timedout_connection" "resolver"
+                 "resolver" "resolver" "resolver_timeout" "resolver_timeout" "resolver_timeout" "return"
+                 "return" "rewrite" "rewrite_log" "root" "satisfy" "scgi_bind" "scgi_buffer_size"
+                 "scgi_buffering" "scgi_buffers" "scgi_busy_buffers_size" "scgi_cache"
+                 "scgi_cache_background_update" "scgi_cache_bypass" "scgi_cache_key" "scgi_cache_lock"
+                 "scgi_cache_lock_age" "scgi_cache_lock_timeout" "scgi_cache_max_range_offset"
+                 "scgi_cache_methods" "scgi_cache_min_uses" "scgi_cache_path" "scgi_cache_purge"
+                 "scgi_cache_revalidate" "scgi_cache_use_stale" "scgi_cache_valid" "scgi_connect_timeout"
+                 "scgi_force_ranges" "scgi_hide_header" "scgi_ignore_client_abort" "scgi_ignore_headers"
+                 "scgi_intercept_errors" "scgi_limit_rate" "scgi_max_temp_file_size" "scgi_next_upstream"
+                 "scgi_next_upstream_timeout" "scgi_next_upstream_tries" "scgi_no_cache" "scgi_param"
+                 "scgi_pass" "scgi_pass_header" "scgi_pass_request_body" "scgi_pass_request_headers"
+                 "scgi_read_timeout" "scgi_request_buffering" "scgi_send_timeout" "scgi_store"
+                 "scgi_store_access" "scgi_temp_file_write_size" "scgi_temp_path" "secure_link"
+                 "secure_link_md5" "secure_link_secret" "send_lowat" "send_timeout" "sendfile"
+                 "sendfile_max_chunk" "server" "server" "server" "server" "server" "server_name"
+                 "server_name" "server_name_in_redirect" "server_names_hash_bucket_size"
+                 "server_names_hash_max_size" "server_tokens" "session_log" "session_log_format"
+                 "session_log_zone" "set" "set_real_ip_from" "set_real_ip_from" "slice" "smtp_auth"
+                 "smtp_capabilities" "smtp_client_buffer" "smtp_greeting_delay" "source_charset"
+                 "spdy_chunk_size" "spdy_headers_comp" "split_clients" "split_clients" "ssi"
+                 "ssi_last_modified" "ssi_min_file_chunk" "ssi_silent_errors" "ssi_types"
+                 "ssi_value_length" "ssl" "ssl" "ssl_buffer_size" "ssl_certificate" "ssl_certificate"
+                 "ssl_certificate" "ssl_certificate_key" "ssl_certificate_key" "ssl_certificate_key"
+                 "ssl_ciphers" "ssl_ciphers" "ssl_ciphers" "ssl_client_certificate"
+                 "ssl_client_certificate" "ssl_client_certificate" "ssl_crl" "ssl_crl" "ssl_crl"
+                 "ssl_dhparam" "ssl_dhparam" "ssl_dhparam" "ssl_ecdh_curve" "ssl_ecdh_curve"
+                 "ssl_ecdh_curve" "ssl_engine" "ssl_handshake_timeout" "ssl_password_file"
+                 "ssl_password_file" "ssl_password_file" "ssl_prefer_server_ciphers"
+                 "ssl_prefer_server_ciphers" "ssl_prefer_server_ciphers" "ssl_preread" "ssl_protocols"
+                 "ssl_protocols" "ssl_protocols" "ssl_session_cache" "ssl_session_cache"
+                 "ssl_session_cache" "ssl_session_ticket_key" "ssl_session_ticket_key"
+                 "ssl_session_ticket_key" "ssl_session_tickets" "ssl_session_tickets" "ssl_session_tickets"
+                 "ssl_session_timeout" "ssl_session_timeout" "ssl_session_timeout" "ssl_stapling"
+                 "ssl_stapling_file" "ssl_stapling_responder" "ssl_stapling_verify"
+                 "ssl_trusted_certificate" "ssl_trusted_certificate" "ssl_trusted_certificate"
+                 "ssl_verify_client" "ssl_verify_client" "ssl_verify_client" "ssl_verify_depth"
+                 "ssl_verify_depth" "ssl_verify_depth" "starttls" "state" "state" "status" "status_format"
+                 "status_zone" "sticky" "sticky_cookie_insert" "stream" "stub_status" "sub_filter"
+                 "sub_filter_last_modified" "sub_filter_once" "sub_filter_types"
+                 "subrequest_output_buffer_size" "tcp_nodelay" "tcp_nodelay" "tcp_nopush" "thread_pool"
+                 "timeout" "timer_resolution" "try_files" "types" "types_hash_bucket_size"
+                 "types_hash_max_size" "underscores_in_headers" "uninitialized_variable_warn" "upstream"
+                 "upstream" "upstream_conf" "use" "user" "userid" "userid_domain" "userid_expires"
+                 "userid_mark" "userid_name" "userid_p3p" "userid_path" "userid_service" "uwsgi_bind"
+                 "uwsgi_buffer_size" "uwsgi_buffering" "uwsgi_buffers" "uwsgi_busy_buffers_size"
+                 "uwsgi_cache" "uwsgi_cache_background_update" "uwsgi_cache_bypass" "uwsgi_cache_key"
+                 "uwsgi_cache_lock" "uwsgi_cache_lock_age" "uwsgi_cache_lock_timeout"
+                 "uwsgi_cache_max_range_offset" "uwsgi_cache_methods" "uwsgi_cache_min_uses"
+                 "uwsgi_cache_path" "uwsgi_cache_purge" "uwsgi_cache_revalidate" "uwsgi_cache_use_stale"
+                 "uwsgi_cache_valid" "uwsgi_connect_timeout" "uwsgi_force_ranges" "uwsgi_hide_header"
+                 "uwsgi_ignore_client_abort" "uwsgi_ignore_headers" "uwsgi_intercept_errors"
+                 "uwsgi_limit_rate" "uwsgi_max_temp_file_size" "uwsgi_modifier1" "uwsgi_modifier2"
+                 "uwsgi_next_upstream" "uwsgi_next_upstream_timeout" "uwsgi_next_upstream_tries"
+                 "uwsgi_no_cache" "uwsgi_param" "uwsgi_pass" "uwsgi_pass_header" "uwsgi_pass_request_body"
+                 "uwsgi_pass_request_headers" "uwsgi_read_timeout" "uwsgi_request_buffering"
+                 "uwsgi_send_timeout" "uwsgi_ssl_certificate" "uwsgi_ssl_certificate_key"
+                 "uwsgi_ssl_ciphers" "uwsgi_ssl_crl" "uwsgi_ssl_name" "uwsgi_ssl_password_file"
+                 "uwsgi_ssl_protocols" "uwsgi_ssl_server_name" "uwsgi_ssl_session_reuse"
+                 "uwsgi_ssl_trusted_certificate" "uwsgi_ssl_verify" "uwsgi_ssl_verify_depth" "uwsgi_store"
+                 "uwsgi_store_access" "uwsgi_temp_file_write_size" "uwsgi_temp_path" "valid_referers"
+                 "variables_hash_bucket_size" "variables_hash_bucket_size" "variables_hash_max_size"
+                 "variables_hash_max_size" "worker_aio_requests" "worker_connections" "worker_cpu_affinity"
+                 "worker_priority" "worker_processes" "worker_rlimit_core" "worker_rlimit_nofile"
+                 "worker_shutdown_timeout" "working_directory" "xclient" "xml_entities"
+                 "xslt_last_modified" "xslt_param" "xslt_string_param" "xslt_stylesheet" "xslt_types"
+                 "zone" "zone" "zone_sync" "zone_sync_buffers" "zone_sync_connect_retry_interval"
+                 "zone_sync_connect_timeout" "zone_sync_interval" "zone_sync_recv_buffer_size"
+                 "zone_sync_server" "zone_sync_ssl" "zone_sync_ssl_certificate"
+                 "zone_sync_ssl_certificate_key" "zone_sync_ssl_ciphers" "zone_sync_ssl_crl"
+                 "zone_sync_ssl_password_file" "zone_sync_ssl_protocols"
+                 "zone_sync_ssl_trusted_certificate" "zone_sync_ssl_verify" "zone_sync_ssl_verify_depth"
+                 "zone_sync_timeout")))
+
+;;;###autoload
+(eval-after-load 'nginx-mode
+  '(add-hook 'nginx-mode-hook #'company-nginx-keywords))
+#+end_src
+
+* created package company-nginx
+
+In order to share to others, I created a simple package:
+
+https://github.com/stardiviner/company-nginx
+
+I will push to MELPA.
