@@ -29,15 +29,25 @@ contrib lib]]).
 You can fake change Clojure REPL working directory by passing header argument variable
 into Clojure code. Like this:
 
-#+begin_src clojure :results value :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+#+begin_src org
+,#+begin_src clojure :results value :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (str dir "ob-clojure-literate.png")
-#+end_src
+,#+end_src
 
-#+RESULTS[<2018-05-17 01:12:55> 73be0ca9a40a4f1e4fdee8e535991955f77b034a]:
+,#+RESULTS[<2018-05-17 01:12:55> 73be0ca9a40a4f1e4fdee8e535991955f77b034a]:
 : "/home/stardiviner/Org/Wiki/Computer Technology/Programming/Emacs/Data/Emacs Packages/Org mode/data/images/ob-clojure-literate.png"
+#+end_src
 
 Then you can use Clojure funciton to save graphics object to target file with correct
 absolute path:
+
+#+begin_src org
+,#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+(use '(incanter core stats datasets charts io pdf))
+(def hist (histogram (sample-normal 1000)))
+(save hist (str dir "ob-clojure-literate.png"))
+,#+end_src
+#+end_src
 
 #+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (use '(incanter core stats datasets charts io pdf))
@@ -49,6 +59,17 @@ absolute path:
 [[file:data/images/ob-clojure-literate.png]]
 
 ** use final solution by move image file to target path with Clojure function
+
+#+begin_src org
+,#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+(use '(incanter core stats datasets charts io pdf))
+(import '(java.io File))
+
+(def hist (histogram (sample-normal 1000)))
+(save hist "ob-clojure-incanter-move.png")
+(.renameTo (File. "ob-clojure-incanter-move.png") (File. (str dir "ob-clojure-incanter-move.png")))
+,#+end_src
+#+end_src
 
 #+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (use '(incanter core stats datasets charts io pdf))
@@ -65,6 +86,14 @@ absolute path:
 
 * Incanter
 
+#+begin_src org
+,#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+(use '(incanter core stats datasets charts io pdf))
+(def hist (histogram (sample-normal 1000)))
+(save hist (str dir "ob-clojure-literate.png"))
+,#+end_src
+#+end_src
+
 #+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (use '(incanter core stats datasets charts io pdf))
 (def hist (histogram (sample-normal 1000)))
@@ -76,6 +105,19 @@ absolute path:
 
 
 * clj-xchart
+
+#+begin_src org
+,#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+(require '[com.hypirion.clj-xchart :as xchart])
+
+(def ob-clojure-clj-xchart
+  (xchart/xy-chart {"Expected rate" [(range 10) (range 10)]
+                    "Actual rate"   [(range 10) (map #(+ % (rand-int 5) -2) (range 10))]}))
+
+;; (xchart/view ob-clojure-clj-xchart)
+(xchart/spit ob-clojure-clj-xchart (str dir "ob-clojure-clj-xchart.png"))
+,#+end_src
+#+end_src
 
 #+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (require '[com.hypirion.clj-xchart :as xchart])
@@ -98,3 +140,8 @@ absolute path:
 
 
 * jutsu
+
+
+* Literaral Org-mode version
+
+If you want to see Literal Org-mode version of this post, click the "Show Org Source" button!
