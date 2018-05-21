@@ -423,7 +423,9 @@ pre.src {
 
 /* src block hover language */
 pre.src::before, pre.src:hover::before {
-  display: inline;
+  /* always display in fixed postion */
+  /* display: inline; */
+  
   float: right;
   overflow: visible;
   position: relative;
@@ -435,11 +437,13 @@ pre.src::before, pre.src:hover::before {
   margin: -5px 2px 0px 20px;
 
   opacity: 0.9;
-  color: black;
-  border: 1px solid black;
-  background-color: transparent;
+  color: #ed1c1cb3;
+  border: 1px solid gray;
+  background-color: white;
 
   white-space: nowrap;
+
+  font-weight: bolder;
 }
 
 /* inline code */
