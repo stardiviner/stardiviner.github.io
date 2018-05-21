@@ -1,0 +1,11 @@
+#+TITLE: Literature (文学)
+
+* Poem (诗词)
+
+[[file:Poem/index.org][Poem]]
+
+
+* Novel (小说)
+
+[[file:Novel/index.org][Novel]]
+
