@@ -1,0 +1,3 @@
+* Test org-capture template for org-publish blog post convert space into dash
+
+

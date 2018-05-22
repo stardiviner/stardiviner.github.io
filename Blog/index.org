@@ -1,5 +1,14 @@
 #+TITLE: stardiviner's Blog
 
+* Learn a little basic of Nginx for setting up web server
+:PROPERTIES:
+:DATE: [2018-05-22 Tue 11:11]
+:ID:       2de740e7-d646-4ae3-88a9-2e4a7adca39a
+:PUBDATE:  <2018-05-22 Tue 11:13>
+:END:
+
+[[file:Learn-a-little-basic-of-Nginx-for-setting-up-web-server.org][Learn a little basic of Nginx for setting up web server]]
+
 * Make company-mode support for nginx-mode
 :PROPERTIES:
 :DATE: [2018-05-20 Sun 16:43]
@@ -7,7 +16,7 @@
 :PUBDATE:  <2018-05-20 Sun 18:06>
 :END:
 
-[[file:Make company-mode support for nginx-mode.org][Make company-mode support for nginx-mode]]
+[[file:Make-company-mode-support-for-nginx-mode.org][Make company-mode support for nginx-mode]]
 
 * Clojure Plotting to Org inline image in ob-clojure
 :PROPERTIES:
@@ -16,7 +25,7 @@
 :PUBDATE:  <2018-05-17 Thu 11:47>
 :END:
 
-[[file:Clojure Plotting to Org inline image in ob-clojure.org][Clojure Plotting to Org inline image in ob-clojure]]
+[[file:Clojure-Plotting-to-Org-inline-image-in-ob-clojure.org][Clojure Plotting to Org inline image in ob-clojure]]
 
 * How to Read Code in Emacs
 :PROPERTIES:
@@ -25,7 +34,7 @@
 :PUBDATE:  <2018-05-17 Thu 09:00>
 :END:
 
-[[file:How%20to%20Read%20Code%20in%20Emacs.org][How to Read Code in Emacs]]
+[[file:How-to-Read-Code-in-Emacs.org][How to Read Code in Emacs]]
 
 * Literate Programming with Org Mode
 :PROPERTIES:
@@ -34,7 +43,7 @@
 :PUBDATE:  <2018-05-17 Thu 09:00>
 :END:
 
-[[file:Literate Programming with Org Mode.org][Literate Programming with Org Mode]]
+[[file:Literate-Programming-with-Org-Mode.org][Literate Programming with Org Mode]]
 
 * multilingual support with ob-translate and google-translate
 :PROPERTIES:
@@ -43,7 +52,7 @@
 :PUBDATE:  <2018-04-21 Sat 16:30>
 :END: 
 
-[[file:multilingual support with ob-translate and google-translate.org][multilingual support with ob-translate and google-translate]]
+[[file:multilingual-support-with-ob-translate-and-google-translate.org][multilingual support with ob-translate and google-translate]]
 
 * Learned basic skateboard
 :PROPERTIES:
@@ -52,7 +61,7 @@
 :PUBDATE:  <2018-04-21 Sat 11:32>
 :END: 
 
-[[file:Learned basic skateboard.org][Learned basic skateboard]]
+[[file:Learned-basic-skateboard.org][Learned basic skateboard]]
 
 * Needlework: Setup the sewing machine
 :PROPERTIES:
@@ -61,7 +70,7 @@
 :PUBDATE:  <2018-04-20 Fri 12:32>
 :END: 
 
-[[file:setup%20the%20sewing%20machine%20for%20needlework.org][setup the sewing machine for needlework]]
+[[file:setup-the-sewing-machine-for-needlework.org][setup the sewing machine for needlework]]
 
 * How to BANISH myself
 :PROPERTIES:
@@ -70,7 +79,7 @@
 :PUBDATE:  <2018-04-18 Wed 14:13>
 :END:
 
-[[file:How%20to%20BANISH%20myself.org][How to BANISH myself]]
+[[file:How-to-BANISH-myself.org][How to BANISH myself]]
 
 * test org-mode ox-publish
 :PROPERTIES:
@@ -79,5 +88,5 @@
 :PUBDATE:  <2018-04-18 Wed 14:13>
 :END: 
 
-[[file:2016-04-22 22:54.org][test org-mode ox-publish]]
+[[file:2016-04-22%2022:54.org][test org-mode ox-publish]]
 
