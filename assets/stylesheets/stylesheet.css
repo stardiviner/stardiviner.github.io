@@ -113,12 +113,13 @@ h5, h6 {
 }
 
 /* drawers: properties, logbook, */
+/* example block */
 pre.example {
   display: block;
   color: #7b7b7b;
   border-color: #ccc;
   font-size: 7px;
-  padding: 1px 5px 1px 5px;
+  padding: 5px 5px 5px 5px;
   margin: 0 0 10px 20px;
   border-radius: unset;
   box-shadow: none;
@@ -286,8 +287,8 @@ img {
   display: block;
   margin: 0;
   vertical-align: middle;
-  border-radius: 10px;
-  box-shadow: 0 0 0.7em #818181b3;
+  border-radius: 13px;
+  box-shadow: 0 0 1em #818181b3;
   width: auto;
 }
 
@@ -414,7 +415,7 @@ pre.src {
   display: block;
   border-style: solid;
   border-width: thin;
-  border-radius: unset;
+  border-radius: 5px;
   border-color: #ccc;
   margin: 7px 12px 7px 12px;
   padding: 5px;
@@ -569,6 +570,26 @@ sup a:after {
   margin-top: -1.5em;
 }
 
+/* form */
+input[type=text] {
+}
+input[type=text]:focus {
+}
+input[type=submit] {
+}
+
+input[type=button]:hover {
+
+}
+input[type=button]:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
 /* post */
 .post {
   position: relative;
@@ -626,8 +647,12 @@ sup a:after {
 /* timestamp */
 span.timestamp-wrapper {
   background-color: #f3f3f3cc;
-  border: #ccc solid 1px;
+  border: #b7b7b74d solid 1px;
   padding: 4px 2px 2px 0px;
+  margin: 0px 2px 0px 2px;
+}
+.timestamp {
+  color: #727272;
 }
 
 /* audio */
@@ -659,9 +684,9 @@ footer, #postamble {
   font-size: 13px;
   color: #999;
 }
-/* Show Org source */
-#show_source {
-
+/* "Show Org source" button */
+#show_source input[type=button]:hover {
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
 }
 
 /* payment */
