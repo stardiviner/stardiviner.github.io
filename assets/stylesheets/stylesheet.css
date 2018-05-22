@@ -681,8 +681,6 @@ audio:hover, audio:focus, audio:active {
 /* postamble */
 footer, #postamble {
   text-align: center;
-  font-size: 13px;
-  color: #999;
 }
 /* "Show Org source" button */
 #show_source input[type=button]:hover {
