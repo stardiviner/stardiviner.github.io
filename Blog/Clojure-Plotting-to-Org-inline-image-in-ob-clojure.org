@@ -149,6 +149,16 @@ I also posted this method on Org Mode Worg documentations:
 https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html
 
 
+* Make use of CIDER new support of image content-type
+
+Since the PR https://github.com/clojure-emacs/cider-nrepl/pull/517 got merged into CIDER.
+It is realsed in CIDER 0.17 (Andalucía).
+
+CIDER in Emacs can handle various image content-types now and render image in the REPL.
+
+I'm considering how to integrate this feature into =ob-clojure.el= to save image content-type as file.
+
+
 * Literaral Org-mode version
 
 If you want to see Literal Org-mode version of this post, click the "Show Org Source" button!
