@@ -411,7 +411,6 @@ pre {
 }
 pre.src {
   background-color: transparent;
-  overflow: auto;
   display: block;
   border-style: solid;
   border-width: thin;
@@ -420,31 +419,26 @@ pre.src {
   margin: 7px 12px 7px 12px;
   padding: 5px;
   box-shadow: unset;
+  overflow: auto;               /* auto use scroll-bar for over-length code */
 }
 
 /* src block hover language */
-pre.src::before, pre.src:hover::before {
-  /* always display in fixed postion */
-  /* display: inline; */
-  
+pre.src::before {
+  display: none;
+}
+pre.src:hover::before {
+  display: inline;
   float: right;
   overflow: visible;
   position: relative;
-
-  top: 2px;
-  right: 0px;
-  z-index: 2;
-  padding: 1px;
-  margin: -5px 2px 0px 20px;
 
   opacity: 0.9;
   color: #ed1c1cb3;
   border: 1px solid gray;
   background-color: white;
+  font-weight: bolder;
 
   white-space: nowrap;
-
-  font-weight: bolder;
 }
 
 /* inline code */
