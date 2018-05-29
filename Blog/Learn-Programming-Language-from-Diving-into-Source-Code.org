@@ -1,0 +1,155 @@
+#+TITLE: Learn Programming Language from Diving into Source Code
+
+* Master Core Functions
+
+If you're a beginner on learning Programming Language, mastering some core and frequently
+used functions is really helpful. This can let you write better code.
+
+This thought is comes from book <[[https://www.manning.com/books/clojure-standard-library][Clojure Standard Library: An annotated reference]]>. I get
+a free chance to choose an ebook after filled a form from Manning Publications. (I choose
+this book because I'm learning Clojure, need to master basic of Clojure as a beginner.)
+
+* Dive into Language Source Code
+
+Programming Language usually has a mechanism to check out source code. For example, Emacs
+Lisp, it can use @@html:<kbd>M-.</kbd>@@ to jump to function definition. Clojure is same.
+About other languages like Python, Ruby etc. In Emacs also can use @@html:<kbd>M-.</kbd>@@
+or Emacs extensions to support this.
+
+* Search code examples on public source code hosting websites
+
+Learning with examples is helpful for beginner, you can search code on public source code
+hosting websites. Here is my collected list:
+
+- [[https://www.rosettacode.org/wiki/Rosetta_Code][Rosetta Code]] :: Rosetta Code is a programming chrestomathy site. The idea is to present
+     solutions to the same task in as many different languages as possible, to demonstrate
+     how languages are similar and different, and to aid a person with a grounding in one
+     approach to a problem in learning another. Rosetta Code currently has 874 tasks, 223
+     draft tasks, and is aware of 687 languages, though we do not (and cannot) have
+     solutions to every task in every language.
+
+- [[https://cocycles.com/][CoCycles]] :: search for open source code by functionality.
+- [[https://sourcegraph.com/][Sourcegraph]] :: search for code, docs, and usage examples.
+
+- https://github.com/search
+- https://bitbucket.org/
+- https://cloud.google.com/tools/cloud-repositories/
+- https://www.codeplex.com/
+- https://gitorious.org/
+- https://code.google.com/
+- [[https://sourceforge.net/][SourceForge]] :: The Complete Open-Source Software Platform. Create, collaborate
+     & distribute to over 33 million users worldwide.
+- http://freecode.com/
+- https://gitlab.com/public
+- https://www.openhub.net/
+- http://sources.debian.net/
+- https://codesearch.debian.net/
+
+** Emacs package engine-mode
+
+Emacs has a package called "=engine-mode=" which can define search engine based on URL by
+replacing query keyword with "~%s~". It is quite quick to use it to open a search query in
+web browser. Even can use ~thing-at-point~ to get word or symbol at point to avoid manually
+input.
+
+*** how to define engine
+
+**** simple
+
+#+begin_src emacs-lisp
+(defengine github
+  "https://github.com/search?ref=simplesearch&q=%s")
+#+end_src
+
+**** specify key
+
+#+begin_src emacs-lisp
+(defengine duckduckgo
+  "https://duckduckgo.com/?q=%s"
+  :keybinding "d")
+#+end_src
+
+**** specify browser function
+
+#+begin_src emacs-lisp
+(defengine github
+  "https://github.com/search?ref=simplesearch&q=%s"
+  :browser 'eww-browse-url)
+#+end_src
+
+**** specify docstring
+
+#+begin_src emacs-lisp
+(defengine ctan
+  "http://www.ctan.org/search/?x=1&PORTAL=on&phrase=%s"
+  :docstring "Search the Comprehensive TeX Archive Network (ctan.org)")
+#+end_src
+
+*** my config part
+
+  #+begin_src emacs-lisp
+  ;; general search engines
+  (defengine google
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+    ;; "http://www.google.com/search?q=%s"
+    :docstring "Google"
+    :keybinding "g")
+  (defengine duckduckgo
+    "https://duckduckgo.com/?q=%s"
+    :docstring "DuckDuckGo"
+    :keybinding "d")
+  (defengine blekko
+    "https://blekko.com/#?q=%s"
+    :docstring "Blekko"
+    ;; :keybinding "B"
+    )
+  (defengine bing
+    "http://cn.bing.com/search?q="
+    :docstring "Bing")
+  (defengine baidu
+    "http://www.baidu.com/s?wd=%s"
+    :docstring "Baidu"
+    :keybinding "b")
+  
+  ;; Wikipedia
+  (defengine wikipedia
+    "http://www.wikipedia.org/search-redirect.php?language=en&go=Go&search=%s"
+    :docstring "Wikipedia"
+    :keybinding "w")
+  (defengine baidu_baike
+    "http://baike.baidu.com/search/none?word=%s"
+    :docstring "Baidu Baike"
+    :keybinding "W")
+  (defengine wolfram-alpha
+    "http://www.wolframalpha.com/input/?i=%s"
+    :docstring "Wolfram Alpha"
+    :keybinding "A")
+  
+  ;; programming
+  
+  ;; Docs: API
+  (defengine APIs
+    "http://apis.io/?search=%s"
+    :docstring "APIs"
+    :keybinding "a")
+  (defengine mozilla-developer
+    "https://developer.mozilla.org/en-US/search?q=%s"
+    :docstring "Mozilla Developer"
+    :keybinding "m")
+  (defengine rfcs
+    "http://pretty-rfc.herokuapp.com/search?q=%s"
+    ;; "https://www.rfc-editor.org/search/rfc_search_detail.php?rfc=%s"
+    :docstring "RFC"
+    :keybinding "R")
+  (defengine emacswiki
+    "www.emacswiki.org/emacs?search=%s"
+    :docstring "Emacs Wiki"
+    :keybinding "e")
+  #+end_src
+
+
+* More tips will updated on this post
+
+If anyone suggest more skill tips about learning from diving into source code. I will add
+them at this post.
+

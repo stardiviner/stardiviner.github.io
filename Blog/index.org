@@ -1,5 +1,14 @@
 #+TITLE: stardiviner's Blog
 
+* Learn Programming Language from Diving into Source Code
+:PROPERTIES:
+:DATE: [2018-05-28 Mon 20:25]
+:ID:       187b85cb-b92d-49d7-b66e-e6c79b902266
+:PUBDATE:  <2018-05-29 Tue 08:40>
+:END:
+
+[[file:Learn-Programming-Language-from-Diving-into-Source-Code.org][Learn Programming Language from Diving into Source Code]]
+
 * Learn a little basic of Nginx for setting up web server
 :PROPERTIES:
 :DATE: [2018-05-22 Tue 11:11]
