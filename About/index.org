@@ -62,7 +62,7 @@ Emacs下了。确实很赞。之后一直都是用Org-mode组织内容。GTD, Wi
 
 *** contributed commits on Org-mode
 
-#+begin_src sh :dir "~/Code/Emacs/org-mode"
+#+begin_src shell :dir "~/Code/Emacs/org-mode"
 git log --author=stardiviner
 #+end_src
 
