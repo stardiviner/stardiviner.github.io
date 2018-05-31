@@ -411,7 +411,6 @@ pre {
 }
 pre.src {
   background-color: transparent;
-  display: block;
   border-style: solid;
   border-width: thin;
   border-radius: 5px;
@@ -419,7 +418,11 @@ pre.src {
   margin: 7px 12px 7px 12px;
   padding: 5px;
   box-shadow: unset;
-  overflow: auto;               /* auto use scroll-bar for over-length code */
+
+  /* expand src block width to body width */
+  display: block;
+  /* auto use scroll-bar for over-length code */
+  overflow: auto;
 }
 
 /* src block hover language */
@@ -430,7 +433,6 @@ pre.src:hover::before {
   display: inline;
   float: right;
   overflow: visible;
-  position: relative;
 
   opacity: 0.9;
   color: #ed1c1cb3;
