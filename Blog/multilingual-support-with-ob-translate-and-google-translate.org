@@ -190,7 +190,7 @@ might need other text processing commands like =sed=, =awk= etc to strip some te
 
 ** fanyi
 
-#+begin_src shell :results raw
+#+begin_src sh :results raw
 fanyi "你好，世界"
 #+end_src
 

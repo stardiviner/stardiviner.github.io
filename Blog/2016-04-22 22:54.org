@@ -469,7 +469,7 @@ y = \sqrt{r^2 - x^2}
 
 ** ASCII export block
 
-#+begin_src shell :results output :wrap export ascii
+#+begin_src sh :results output :wrap export ascii
 tree .
 #+end_src
 

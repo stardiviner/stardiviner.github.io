@@ -122,7 +122,7 @@ In the Org-mode file:
 
 #+begin_src org
 ,#+name: hello-world-prefix
-,#+begin_src shell :exports none
+,#+begin_src sh :exports none
   echo "/-----------------------------------------------------------\\"
 ,#+end_src
 #+end_src
@@ -131,7 +131,7 @@ HTML export of code: In the Org-mode file
 
 #+begin_src org
 ,#+name: hello-world-postfix
-,#+begin_src shell :exports none
+,#+begin_src sh :exports none
   echo "\-----------------------------------------------------------/"
 ,#+end_src
 #+end_src
@@ -146,7 +146,7 @@ In the Org-mode file:
 
 #+begin_src org
 ,#+name: hello-world
-,#+begin_src shell :tangle hello.sh :exports none :noweb yes
+,#+begin_src sh :tangle hello.sh :exports none :noweb yes
   <<hello-world-prefix>>
   echo "|                       hello world                         |"
   <<hello-world-postfix>>
@@ -157,7 +157,7 @@ HTML export of code: Calling ~org-babel-tangle~ will result in the following she
 source code being written to the ~hello.sh~ file:
 
 #+NAME: hello.sh
-#+begin_src shell
+#+begin_src sh
 echo "/-----------------------------------------------------------\\"
 echo "|                       hello world                         |"
 echo "\-----------------------------------------------------------/"
@@ -165,7 +165,7 @@ echo "\-----------------------------------------------------------/"
 
 
 #+NAME: hello.sh
-#+begin_src shell
+#+begin_src sh
 #!/usr/bin/env sh
 
 # [[file:~/org/temp/index.org::*Noweb%20test][hello-world]]
