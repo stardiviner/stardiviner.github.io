@@ -1,0 +1,40 @@
+* How does the idea comes up?
+
+Sometimes I think what if the source code can be translated into human natural language in
+some way. Or display annotation beside of source code. It would help newbie (like me) to
+understand the program source code better and faster.
+
+* Emacs ElDoc
+
+Emacs ElDoc already display docstring for symbol in minibuffer. There are some packages
+can change its display place like "eldoc-overlay". Can be displayed in context with popup,
+property-text or overlay etc.
+
+* My idea details
+
+
+* Examples
+
+** Lisp dialects
+
+#+begin_src clojure :eval no
+;; +--> define a function named hello-world.
+;; |   +--> function name.
+;; |   |          +--> arguments.
+(defn hello-world []
+  ;; +--> print string "Hello, World!".
+  (prn "Hello, World!"))
+#+end_src
+
+** Python/Ruby/JavaScript
+
+** C/C++/Java
+
+** HTML
+
+** CSS
+
+* Try to implement in Emacs as an extension
+
+Here is an new created empty repository https://github.com/stardiviner/eldoc-annotation.el
+that I will add code in future.

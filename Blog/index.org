@@ -1,5 +1,14 @@
 #+TITLE: stardiviner's Blog
 
+* How to use docstring to annotate source code
+:PROPERTIES:
+:DATE: [2018-09-28 Fri 11:00]
+:ID:       a5088ae4-7e8a-4351-b51e-7a55bbf04ce4
+:PUBDATE:  <2018-09-28 Fri 12:41>
+:END:
+
+[[file:How-to-use-docstring-to-annotate-source-code.org][How to use docstring to annotate source code]]
+
 * Learn Programming Language from Diving into Source Code
 :PROPERTIES:
 :DATE: [2018-05-28 Mon 20:25]
