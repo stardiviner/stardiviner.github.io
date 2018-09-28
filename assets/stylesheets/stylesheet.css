@@ -684,6 +684,19 @@ footer, #postamble {
   box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
 }
 
+/* jump to beginning */
+div#jumptobeginning > a.link {
+  color: white;
+  background-color: hotpink;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  padding: 14px 25px;
+}
+div#jumptobeginning > a.hover {
+  background-color: red;
+}
+
 /* payment */
 .payment img {
   display: inline;              /* align horizontally */
