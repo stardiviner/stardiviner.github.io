@@ -32,7 +32,9 @@
 
 ** Profiles
 
+- Blog: https://stardiviner.github.io/
 - GitHub: https://github.com/stardiviner/
+- Stack Overflow: https://stackexchange.com/users/366399/stardiviner
 - 豆瓣: https://www.douban.com/people/stardiviner/
 
 ** Linux
