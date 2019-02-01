@@ -1,10 +1,12 @@
-# Created 2018-10-20 Sat 20:00
+# Created 2019-02-01 Fri 20:09
 #+TITLE: stardiviner's Blog
 #+AUTHOR: stardiviner
 
 * Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
 :PROPERTIES:
 :DATE:     [2018-10-20 Sat 19:43]
+:ID:       8879a709-020b-4b28-b32b-fa2e4bef3336
+:PUBDATE:  <2018-10-20 Sat 20:00>
 :END:
 
 [[file:Emacs-slow-and-heavy-Profile,-Benchmark-your-Emacs,-and-speed-it-up.org][Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up]]
