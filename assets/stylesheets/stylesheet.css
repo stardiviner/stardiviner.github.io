@@ -419,8 +419,8 @@ pre.src {
 
   /* expand src block width to body width */
   display: block;
-  /* auto use scroll-bar for over-length code */
-  overflow: auto;
+  /* auto use scroll-bar for over-length code. */
+  overflow: auto; /* This also cause lang widget can't display overflow on source block. */
 }
 
 /* src block hover language */
