@@ -697,7 +697,7 @@ div#jumptobeginning > a.hover {
 
 /* payment */
 .payment img {
-  display: inline;              /* align horizontally */
+  display: none;              /* align horizontally */
   height: 80px;                 /* smaller size like thumb */
 }
 /* absolute position at left-bottom on page */
