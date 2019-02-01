@@ -678,16 +678,20 @@ footer, #postamble {
   text-align: center;
 }
 /* "Show Org source" button */
+#show_source input[type=button] {
+  background: white;
+  opacity: 2;
+  border: 1px solid;
+  border-radius: 4px;
+  height: 1.5rem;
+  margin-top: 5px;
+}
 #show_source input[type=button]:hover {
   box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
 }
 
 /* jump to beginning */
 div#jumptobeginning > a.link {
-  color: white;
-  background-color: hotpink;
-  text-decoration: none;
-  text-align: center;
   display: inline-block;
   padding: 14px 25px;
 }
