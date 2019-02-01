@@ -157,18 +157,16 @@ div.MathJax_Display::before {
 
 /* navigator */
 .nav {
-  display: table;
-  content: " ";
-  top: 5px;                     /* leave space for top red border */
-  position: fixed;
-  background: rgba(255,255,255,0.9) !important;
-  width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 5%;
-  padding-right: 5%;
-  border-bottom: pink solid thin;
-  transition: all 1s;
+  /* background: rgba(255,255,255,0.9) !important; */
+  opacity: 1;
+  transition: opacity 0.3s ease-out 0s, transform 0.3s ease-out 0s;
+  transform: translateY(0px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border-radius: 4px;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  z-index: 30;
 }
 .nav ul {
   list-style: none;
