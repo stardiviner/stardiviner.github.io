@@ -3,16 +3,11 @@
 
 #+begin_export html
 <div id="avatar">
-  <img src="data/images/head-computer.jpg" alt="avatar" title="avatar" />
+  <figure>
+    <img src="assets/images/avatar.jpg" alt="avatar.jpg" width="300px">
+  </figure>
+  <p>This is what I look like.</p>
 </div>
-<style type="text/css">
- #avatar img {
-   position: fixed;
-   right: 20px;
-   width: 100px;
-   bottom: 20%;
- }
-</style>
 #+end_export
 
 * Contact
