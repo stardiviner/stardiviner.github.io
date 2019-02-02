@@ -1,4 +1,4 @@
-#+TITLE: stardiviner's website
+#+TITLE: stardiviner's index page
 #+AUTHOR: stardiviner
 #+DATE: [2011-11-11 Fri 08:58]
 
@@ -19,11 +19,13 @@ sourced projects, Emacs packages, Org Mode etc sometimes. Mainly actived in
 Clojure forums, Emacs/Org-Mode mailing lists, IRC channels
 (#emacs,#archlinux,#lisp,#clojure) sometimes.
 
-I like literature, movie, argue, and daydreams. I like get to know about any
-interested things.
+I like literature, movie, philosophy, argue, and daydreams. I like get to know
+about any interested things. I write some small and never published novels with
+suddenly popuped fantasy idea.
 
 我是一个业余写代码的，喜欢Lisp，Clojure。我在生活中主要用Emacs (Org Mode)。我的
 笔记本上安装的是Arch GNU/Linux。这是我从2012年开始用到现在的。平常会对一些开源项
 目Emacs的插件或者Org Mode贡献代码。
 
-我喜欢文学，[[https://movie.douban.com/people/stardiviner/][电影]]，辩论，还喜欢做白日梦，以及各种有趣的东西。
+我喜欢文学，[[https://movie.douban.com/people/stardiviner/][电影]]，哲学，辩论，还喜欢做白日梦，以及各种有趣的东西。也会把脑海中突
+然冒出来的一些奇怪的念头和想法写成短小的小说残篇，我还从来没有发表过他们。
