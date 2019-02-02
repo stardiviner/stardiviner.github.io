@@ -700,12 +700,18 @@ footer, #postamble {
 }
 
 /* jump to beginning */
-div#jumptobeginning > a.link {
-  display: inline-block;
-  padding: 14px 25px;
+div#jumptobeginning {
+  position: sticky;
+  left: 100%;
+  width: 60px;
+  bottom: 30px;
+  border-radius: 4px;
+  background-color: #fffc;
+  opacity: 1;
 }
-div#jumptobeginning > a.hover {
-  background-color: red;
+i#backtotop::before {
+  content: "^";
+  font-size: 2rem;
 }
 
 /* payment */
