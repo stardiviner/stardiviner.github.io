@@ -294,7 +294,8 @@ div.MathJax_Display::before {
     margin: 0;
     vertical-align: middle;
     border-radius: 13px;
-    box-shadow: 0 0 1em #818181b3;
+    border: 3px solid white;
+    box-shadow: 12px 10px 1px -3px whitesmoke;
     width: auto;
   }
 
