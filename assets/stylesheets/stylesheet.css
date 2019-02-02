@@ -168,6 +168,7 @@ div.MathJax_Display::before {
   align-items: stretch;
   position: relative;
   z-index: 30;
+  padding: 20px 20px 0px 20px;
 }
 .nav ul {
   list-style: none;
