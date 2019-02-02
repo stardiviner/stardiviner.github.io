@@ -1,4 +1,4 @@
-#+TITLE: stardiviner's Blog
+#+TITLE: An amateurish coder's blog
 
 * Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
 :PROPERTIES:
