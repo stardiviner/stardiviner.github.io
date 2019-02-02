@@ -183,10 +183,6 @@ div.MathJax_Display::before {
   margin-left: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  /* separate with a right border */
-  border-right-style: solid;
-  border-right-color: #e7e7e780;
-  border-right-width: medium;
 }
 /* don't show underline for navigator links */
 .nav li a {
