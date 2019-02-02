@@ -58,12 +58,6 @@ p {
   text-shadow: none;
 }
 
-/* selection */
-::moz-selection {
-  background: #C74451;
-  color: white;
-}
-
 /* content */
 #content {
   width: 90%;
