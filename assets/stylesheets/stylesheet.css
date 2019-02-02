@@ -175,8 +175,7 @@ div.MathJax_Display::before {
 }
 .nav li {
   /* horizontal one line navigator */
-  /* display: inline-block; */
-  float: left;
+  display: inline-flex;
   /* larger font */
   font-size: 150%;
   /* separator navigators with larger space */
