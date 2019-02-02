@@ -9,18 +9,18 @@
 	   xmlns:georss="http://www.georss.org/georss"
      xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
      xmlns:media="http://search.yahoo.com/mrss/"><channel>
-  <title>stardiviner's Blog</title>
+  <title>An amateurish coder's blog</title>
   <atom:link href="https://stardiviner.github.io/index.xml" rel="self" type="application/rss+xml" />
   <link>https://stardiviner.github.io/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Sat, 20 Oct 2018 20:00:23 +0800</pubDate>
-  <lastBuildDate>Sat, 20 Oct 2018 20:00:23 +0800</lastBuildDate>
-  <generator>Emacs 26.1 Org-mode 9.1.13</generator>
+  <pubDate>Sat, 02 Feb 2019 16:32:44 +0800</pubDate>
+  <lastBuildDate>Sat, 02 Feb 2019 16:32:44 +0800</lastBuildDate>
+  <generator>Emacs 26.1 Org-mode 9.2</generator>
   <webMaster>numbchild@gmail.com (stardiviner)</webMaster>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
-    <title>stardiviner's Blog</title>
+    <title>An amateurish coder's blog</title>
     <link>https://stardiviner.github.io/</link>
   </image>
 
