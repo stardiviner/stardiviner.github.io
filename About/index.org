@@ -4,7 +4,7 @@
 #+begin_export html
 <div id="avatar">
   <figure>
-    <img src="assets/images/avatar.jpg" alt="avatar.jpg" width="300px">
+    <img src="/assets/images/avatar.jpg" alt="avatar.jpg" width="300px">
   </figure>
   <p>This is what I look like.</p>
 </div>
