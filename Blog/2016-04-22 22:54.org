@@ -320,50 +320,6 @@ This is inside the drawer.
 :PUBDATE:  <2018-04-03 Tue 21:59>
 :END:
 
-#+begin_src dot :dir "data/images" :file babel_lang_dot_example1.png :cmdline -Kdot -Tpng :exports "code"
-digraph G {
-  size="8,6"
-  ratio=expand
-  edge [dir=both]
-  plcnet [shape=box, label="PLC Network"]
-  subgraph cluster_wrapline {
-    label="Wrapline Control System"
-    color=purple
-    subgraph {
-    rank=same
-    exec
-    sharedmem [style=filled, fillcolor=lightgrey, shape=box]
-    }
-    edge[style=dotted, dir=none]
-    exec -> opserver
-    exec -> db
-    plc -> exec
-    edge [style=line, dir=both]
-    exec -> sharedmem
-    sharedmem -> db
-    plc -> sharedmem
-    sharedmem -> opserver
-  }
-  plcnet -> plc [constraint=false]
-  millwide [shape=box, label="Millwide System"]
-  db -> millwide
-
-  subgraph cluster_opclients {
-    color=blue
-    label="Operator Clients"
-    rankdir=LR
-    labelloc=b
-    node[label=client]
-    opserver -> client1
-    opserver -> client2
-    opserver -> client3
-  }
-}
-#+end_src
-
-#+RESULTS[<2018-04-04 21:15:18> f2435518e97850828b387878ac8de916b77fa1e8]:
-[[file:data/images/babel_lang_dot_example1.png]]
-
 #+NAME: fig:bldg-1-5-seq
 #+CAPTION: This is an image
 #+ATTR_ORG: :width 300
@@ -401,13 +357,19 @@ The org homepage [fn:1] now looks a lot better than it used to.
 
 Like \EUR with
 
-* Inline code
+* COMMENT Inline code
 :PROPERTIES:
 :ID:       8f9d52a8-f04e-4f20-aa2e-1a594811fc57
 :PUBDATE:  <2018-04-03 Tue 21:59>
 :END:
+:LOGBOOK:
+- Note taken on [2019-02-15 Fri 20:37] \\
+  export inline source block has error.
+:END:
 
-src_elisp{(message "hi")}
+# src_emacs-lisp{(message "hi")} {{{results(=hi=)}}}
+
+src_python{print("hi")} {{{results(=hi=)}}} 
 
 * LaTeX
 :PROPERTIES:

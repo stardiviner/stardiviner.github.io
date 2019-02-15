@@ -9,25 +9,27 @@ I did some hard search, found some links
 - https://stackoverflow.com/questions/840190/changing-the-current-working-directory-in-java
 - https://stackoverflow.com/questions/19008592/java-change-file-working-directory
 
-Then I found JVM does not allow to change working directory because of security reason
-https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688.
+Then I found JVM does not allow to change working directory because of security
+reason https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688.
 
-So, there is no reliable way to do this in pure Java. Setting the ~user.dir~ /property/ via
-~System.setProperty()~ or ~java -Duser.dir=...~ does seem to affect subsequent creations of
-Files, but not e.g. ~FileOutputStreams~.
+So, there is no reliable way to do this in pure Java. Setting the ~user.dir~
+/property/ via ~System.setProperty()~ or ~java -Duser.dir=...~ does seem to affect
+subsequent creations of Files, but not e.g. ~FileOutputStreams~.
 
 ** I create Org-mode library "=ob-clojure-literate=" and improve Org Babel "=ob-core.el=" for plotting support
 
-Because changing Clojure/JVM working directory is not available, so I find method on Emacs
-side, Org-mode other Babel lanaguages like R, Python have good image file result support.
-So I dive into source code, and try to add similar function to "=ob-clojure=". But I found
-some limites, then I created "[[https://github.com/stardiviner/ob-clojure-literate][ob-clojure-literate (GitHub repo)]]" (Now it is in [[https://code.orgmode.org/bzg/org-mode/src/master/contrib/lisp/ob-clojure-literate.el][Org-mode
+Because changing Clojure/JVM working directory is not available, so I find
+method on Emacs side, Org-mode other Babel lanaguages like R, Python have good
+image file result support. So I dive into source code, and try to add similar
+function to "=ob-clojure=". But I found some limites, then I created
+"[[https://github.com/stardiviner/ob-clojure-literate][ob-clojure-literate (GitHub repo)]]" (Now it is in
+[[https://code.orgmode.org/bzg/org-mode/src/master/contrib/lisp/ob-clojure-literate.el][Org-mode
 contrib lib]]).
 
 ** use more better solution by passing target path into Clojure with header argument ~:var~
 
-You can fake change Clojure REPL working directory by passing header argument variable
-into Clojure code. Like this:
+You can fake change Clojure REPL working directory by passing header argument
+variable into Clojure code. Like this:
 
 #+BEGIN_SRC org
 ,#+begin_src clojure :results value :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
@@ -38,22 +40,24 @@ into Clojure code. Like this:
 : "/home/stardiviner/Org/Wiki/Computer Technology/Programming/Emacs/Data/Emacs Packages/Org mode/data/images/ob-clojure-literate.png"
 #+END_SRC
 
-Then you can use Clojure funciton to save graphics object to target file with correct
-absolute path:
+Then you can use Clojure funciton to save graphics object to target file with
+correct absolute path:
 
 #+BEGIN_SRC org
-,#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+,#+HEADERS: :var cwd=(concat (file-name-directory (buffer-file-name)) "data/images/")
+,#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-literate.png"
 (use '(incanter core stats datasets charts io pdf))
 (def hist (histogram (sample-normal 1000)))
-(save hist (str dir "ob-clojure-literate.png"))
+(save hist (str cwd "ob-clojure-literate.png"))
 ,#+end_src
 #+END_SRC
 
-#+BEGIN_SRC clojure :eval no-export
+#+HEADERS: :var cwd=(concat (file-name-directory (buffer-file-name)) "data/images/")
+#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-literate.png"
 (use '(incanter core stats datasets charts io pdf))
 (def hist (histogram (sample-normal 1000)))
-(save hist (str dir "ob-clojure-literate.png"))
-#+END_SRC
+(save hist (str cwd "ob-clojure-literate.png"))
+#+end_src
 
 #+RESULTS[<2018-05-17 10:40:29> bbff27177a545feba5ed98a467689eb91ce7e501]:
 [[file:data/images/ob-clojure-literate.png]]
@@ -61,7 +65,7 @@ absolute path:
 ** use final solution by move image file to target path with Clojure function
 
 #+BEGIN_SRC org
-,#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+,#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (use '(incanter core stats datasets charts io pdf))
 (import '(java.io File))
 
@@ -107,7 +111,7 @@ absolute path:
 * clj-xchart
 
 #+BEGIN_SRC org
-,#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+,#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (require '[com.hypirion.clj-xchart :as xchart])
 
 (def ob-clojure-clj-xchart
@@ -119,7 +123,7 @@ absolute path:
 ,#+end_src
 #+END_SRC
 
-#+begin_src clojure :eval no-export :results graphics :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+#+begin_src clojure :eval no-export :results graphics file link :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (require '[com.hypirion.clj-xchart :as xchart])
 
 (def ob-clojure-clj-xchart
@@ -151,14 +155,17 @@ https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html
 
 * Make use of CIDER new support of image content-type
 
-Since the PR https://github.com/clojure-emacs/cider-nrepl/pull/517 got merged into CIDER.
-It is realsed in CIDER 0.17 (Andalucía).
+Since the PR https://github.com/clojure-emacs/cider-nrepl/pull/517 got merged
+into CIDER. It is realsed in CIDER 0.17 (Andalucía).
 
-CIDER in Emacs can handle various image content-types now and render image in the REPL.
+CIDER in Emacs can handle various image content-types now and render image in
+the REPL.
 
-I'm considering how to integrate this feature into =ob-clojure.el= to save image content-type as file.
+I'm considering how to integrate this feature into =ob-clojure.el= to save image
+content-type as file.
 
 
 * Literaral Org-mode version
 
-If you want to see Literal Org-mode version of this post, click the "Show Org Source" button!
+If you want to see Literal Org-mode version of this post, click the "Show Org
+Source" button!
