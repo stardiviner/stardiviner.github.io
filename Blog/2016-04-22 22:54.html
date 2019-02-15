@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2018-09-28 Fri 12:38 -->
+<!-- 2019-02-15 Fri 20:46 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Org-mode exporter template for testing</title>
@@ -191,7 +191,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32">
 <script type="text/javascript" src="/assets/scripts/org-info-src.js">
 /**
  *
@@ -200,7 +200,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in /assets/scripts/org-info-src.js.
  *
- * Copyright (C) 2012-2018 Free Software Foundation, Inc.
+ * Copyright (C) 2012-2019 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -229,7 +229,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -268,7 +268,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -309,7 +309,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="org-div-home-and-up">
@@ -335,108 +356,107 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0cd1cd3">1. Comment</a></li>
-<li><a href="#org11b4b20">2. Property</a></li>
-<li><a href="#org4e1e5b1">3. Paragraph</a>
+<li><a href="#org1cb40a9">1. Comment</a></li>
+<li><a href="#orge5cd665">2. Property</a></li>
+<li><a href="#orgefc6c70">3. Paragraph</a>
 <ul>
-<li><a href="#org9cdff5d">3.1. horizontal rules</a></li>
+<li><a href="#org7c743b7">3.1. horizontal rules</a></li>
 </ul>
 </li>
-<li><a href="#org56cb1ea">4. Formatting text</a>
+<li><a href="#org30fa66f">4. Formatting text</a>
 <ul>
-<li><a href="#orge8475d4">4.1. bold &amp; italic</a></li>
-<li><a href="#orgf35be7a">4.2. monospace, superscript and subscript</a></li>
-<li><a href="#org0c2592f">4.3. Inline code</a></li>
+<li><a href="#org3e3ca71">4.1. bold &amp; italic</a></li>
+<li><a href="#orgaa2fc88">4.2. monospace, superscript and subscript</a></li>
+<li><a href="#org259934d">4.3. Inline code</a></li>
 </ul>
 </li>
-<li><a href="#orgfadc368">5. Smart punctuation</a></li>
-<li><a href="#org4afae10">6. Plain lists</a>
+<li><a href="#orge818149">5. Smart punctuation</a></li>
+<li><a href="#org186fa09">6. Plain lists</a>
 <ul>
-<li><a href="#orgf314622">6.1. un-ordered lists</a></li>
-<li><a href="#org662aa13">6.2. ordered lists</a>
+<li><a href="#orge3078a6">6.1. un-ordered lists</a></li>
+<li><a href="#org908853d">6.2. ordered lists</a>
 <ul>
-<li><a href="#org4eea051">6.2.1. ordered list with jumping numbers</a></li>
+<li><a href="#orga474958">6.2.1. ordered list with jumping numbers</a></li>
 </ul>
 </li>
-<li><a href="#orgd0e4f66">6.3. checklists</a></li>
-<li><a href="#orga4ea870">6.4. definition list</a></li>
-<li><a href="#org3dfeee7">6.5. separating lists</a></li>
+<li><a href="#org6f66171">6.3. checklists</a></li>
+<li><a href="#orga3ff2d9">6.4. definition list</a></li>
+<li><a href="#org21b3c9d">6.5. separating lists</a></li>
 </ul>
 </li>
-<li><a href="#orgeff9881">7. Tables</a>
+<li><a href="#orgea0e242">7. Tables</a>
 <ul>
-<li><a href="#orgc281eaf">7.1. simple table</a></li>
-<li><a href="#orgfe767e0">7.2. Table with aligned cells</a></li>
-<li><a href="#org9b30247">7.3. Header row</a></li>
+<li><a href="#orge7610dd">7.1. simple table</a></li>
+<li><a href="#orgb1549b3">7.2. Table with aligned cells</a></li>
+<li><a href="#orgfb58e30">7.3. Header row</a></li>
 </ul>
 </li>
-<li><a href="#org15fe0f8">8. Hyperlinks</a>
+<li><a href="#orgdc97b4b">8. Hyperlinks</a>
 <ul>
-<li><a href="#org0ca4312">8.1. Internal links</a>
+<li><a href="#org56df231">8.1. Internal links</a>
 <ul>
-<li><a href="#orga9507ec">8.1.1. radio target link</a>
+<li><a href="#orgd215002">8.1.1. radio target link</a>
 <ul>
-<li><a href="#orga077c62">8.1.1.1. foo</a></li>
-<li><a href="#org7c1553b">8.1.1.2. bar</a></li>
+<li><a href="#org8aa3afc">8.1.1.1. foo</a></li>
+<li><a href="#orgb09bc66">8.1.1.2. bar</a></li>
 </ul>
 </li>
-<li><a href="#orgf18f2b3">8.1.2. <span class="todo TODO">TODO</span> coderef</a></li>
+<li><a href="#org0b5573f">8.1.2. <span class="todo TODO">TODO</span> coderef</a></li>
 </ul>
 </li>
-<li><a href="#org439f6e2">8.2. External links</a></li>
+<li><a href="#org1f26940">8.2. External links</a></li>
 </ul>
 </li>
-<li><a href="#org80b89ef">9. Drawers</a>
+<li><a href="#org7af72e5">9. Drawers</a>
 <ul>
-<li><a href="#org44f0477">9.1. test drawer</a></li>
+<li><a href="#org63c2292">9.1. test drawer</a></li>
 </ul>
 </li>
-<li><a href="#org91aa35f">10. Dynamic blocks</a></li>
-<li><a href="#org5ee67b7">11. ASCII export</a></li>
-<li><a href="#org43b24cc">12. Inline Images</a>
+<li><a href="#orga135933">10. Dynamic blocks</a></li>
+<li><a href="#orgbba86cf">11. ASCII export</a></li>
+<li><a href="#org457eacb">12. Inline Images</a>
 <ul>
-<li><a href="#org454ca11">12.1. Image attributes and values</a></li>
+<li><a href="#org81009a7">12.1. Image attributes and values</a></li>
 </ul>
 </li>
-<li><a href="#orgc0f3153">13. Footnote</a></li>
-<li><a href="#org78f2180">14. Entity</a></li>
-<li><a href="#orgc8310a0">15. Inline code</a></li>
-<li><a href="#orga915a87">16. LaTeX</a>
+<li><a href="#orgaf4ab58">13. Footnote</a></li>
+<li><a href="#org7c6e696">14. Entity</a></li>
+<li><a href="#org6c898fd">15. LaTeX</a>
 <ul>
-<li><a href="#org69bafc6">16.1. Inline LaTeX</a></li>
-<li><a href="#org14d2a03">16.2. LaTeX block</a></li>
-<li><a href="#orge418005">16.3. a more complex latex block</a></li>
+<li><a href="#org082b7ba">15.1. Inline LaTeX</a></li>
+<li><a href="#org2651dc5">15.2. LaTeX block</a></li>
+<li><a href="#org22dd7b6">15.3. a more complex latex block</a></li>
 </ul>
 </li>
-<li><a href="#orgb1e92d1">17. Blocks</a>
+<li><a href="#org1fe3f1d">16. Blocks</a>
 <ul>
-<li><a href="#orgb265050">17.1. Quote block</a></li>
-<li><a href="#org0ec1e25">17.2. LaTeX export block</a></li>
-<li><a href="#orgf48f402">17.3. ASCII export block</a></li>
-<li><a href="#orgf907a3b">17.4. HTML export block</a></li>
+<li><a href="#org1d7b5bd">16.1. Quote block</a></li>
+<li><a href="#org2e1e9f9">16.2. LaTeX export block</a></li>
+<li><a href="#org2c036f1">16.3. ASCII export block</a></li>
+<li><a href="#org4ae3636">16.4. HTML export block</a></li>
 </ul>
 </li>
-<li><a href="#org5b78eff">18. src blocks</a>
+<li><a href="#org48a33d8">17. src blocks</a>
 <ul>
-<li><a href="#org176bc56">18.1. syntax highlighting</a></li>
-<li><a href="#org482a822">18.2. escape math formulas in src block</a></li>
-<li><a href="#org7ca9b85">18.3. highlight code tags</a></li>
-<li><a href="#org652dd14">18.4. src block with inline image result</a></li>
+<li><a href="#orgaa09808">17.1. syntax highlighting</a></li>
+<li><a href="#org1116a62">17.2. escape math formulas in src block</a></li>
+<li><a href="#orgc2b7140">17.3. highlight code tags</a></li>
+<li><a href="#org363e249">17.4. src block with inline image result</a></li>
 </ul>
 </li>
-<li><a href="#org6cbdbae">19. 中文测试</a></li>
-<li><a href="#org49d5cba">20. Reference to previous pages links</a>
+<li><a href="#orgd79fd52">18. 中文测试</a></li>
+<li><a href="#org9aad220">19. Reference to previous pages links</a>
 <ul>
-<li><a href="#org5a120e2">20.1. radio target link reference</a></li>
-<li><a href="#orgb9873ec">20.2. coderef</a></li>
+<li><a href="#orgccf3a16">19.1. radio target link reference</a></li>
+<li><a href="#orga15e52e">19.2. coderef</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org0cd1cd3" class="outline-2">
-<h2 id="org0cd1cd3"><span class="section-number-2">1</span> Comment</h2>
+<div id="outline-container-org1cb40a9" class="outline-2">
+<h2 id="org1cb40a9"><span class="section-number-2">1</span> Comment</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="example">
 ID: 3897afe8-36d6-4b4b-83b2-de19c268f996
@@ -445,8 +465,8 @@ PUBDATE: <2018-04-03 Tue 21:59>
 </div>
 </div>
 
-<div id="outline-container-org11b4b20" class="outline-2">
-<h2 id="org11b4b20"><span class="section-number-2">2</span> Property</h2>
+<div id="outline-container-orge5cd665" class="outline-2">
+<h2 id="orge5cd665"><span class="section-number-2">2</span> Property</h2>
 <div class="outline-text-2" id="text-2">
 <pre class="example">
 URL: http://localhost
@@ -456,8 +476,8 @@ PUBDATE: <2018-04-03 Tue 21:59>
 </div>
 </div>
 
-<div id="outline-container-org4e1e5b1" class="outline-2">
-<h2 id="org4e1e5b1"><span class="section-number-2">3</span> Paragraph</h2>
+<div id="outline-container-orgefc6c70" class="outline-2">
+<h2 id="orgefc6c70"><span class="section-number-2">3</span> Paragraph</h2>
 <div class="outline-text-2" id="text-3">
 <pre class="example">
 ID: 6268e637-e022-4a5d-8c3e-d3975841334e
@@ -465,8 +485,8 @@ PUBDATE: <2018-04-03 Tue 21:59>
 </pre>
 </div>
 
-<div id="outline-container-org9cdff5d" class="outline-3">
-<h3 id="org9cdff5d"><span class="section-number-3">3.1</span> horizontal rules</h3>
+<div id="outline-container-org7c743b7" class="outline-3">
+<h3 id="org7c743b7"><span class="section-number-3">3.1</span> horizontal rules</h3>
 <div class="outline-text-3" id="text-3-1">
 <pre class="example">
 ID: 75ae6f4c-9b97-485f-a41b-07ff6f5b706e
@@ -485,8 +505,8 @@ BBBBBBBBBBBBB
 </div>
 </div>
 
-<div id="outline-container-org56cb1ea" class="outline-2">
-<h2 id="org56cb1ea"><span class="section-number-2">4</span> Formatting text</h2>
+<div id="outline-container-org30fa66f" class="outline-2">
+<h2 id="org30fa66f"><span class="section-number-2">4</span> Formatting text</h2>
 <div class="outline-text-2" id="text-4">
 <pre class="example">
 ID: c840528f-b708-412a-b33d-2212d8c7ec88
@@ -494,8 +514,8 @@ PUBDATE: <2018-04-03 Tue 21:59>
 </pre>
 </div>
 
-<div id="outline-container-orge8475d4" class="outline-3">
-<h3 id="orge8475d4"><span class="section-number-3">4.1</span> bold &amp; italic</h3>
+<div id="outline-container-org3e3ca71" class="outline-3">
+<h3 id="org3e3ca71"><span class="section-number-3">4.1</span> bold &amp; italic</h3>
 <div class="outline-text-3" id="text-4-1">
 <pre class="example">
 ID: fb4ca44c-6b6d-4f32-a489-8d6281363300
@@ -508,8 +528,8 @@ ID: fb4ca44c-6b6d-4f32-a489-8d6281363300
 </div>
 </div>
 
-<div id="outline-container-orgf35be7a" class="outline-3">
-<h3 id="orgf35be7a"><span class="section-number-3">4.2</span> monospace, superscript and subscript</h3>
+<div id="outline-container-orgaa2fc88" class="outline-3">
+<h3 id="orgaa2fc88"><span class="section-number-3">4.2</span> monospace, superscript and subscript</h3>
 <div class="outline-text-3" id="text-4-2">
 <pre class="example">
 ID: 6db24646-62fa-49ea-adaa-a56fb8d4bfb7
@@ -525,8 +545,8 @@ ID: 6db24646-62fa-49ea-adaa-a56fb8d4bfb7
 </div>
 </div>
 
-<div id="outline-container-org0c2592f" class="outline-3">
-<h3 id="org0c2592f"><span class="section-number-3">4.3</span> Inline code</h3>
+<div id="outline-container-org259934d" class="outline-3">
+<h3 id="org259934d"><span class="section-number-3">4.3</span> Inline code</h3>
 <div class="outline-text-3" id="text-4-3">
 <pre class="example">
 ID: 50e9abd8-45ed-42d1-8ba5-d3209ecc4ded
@@ -543,8 +563,8 @@ If you have <code>\equal</code>, <code>\quot</code> or <code>\rsquo</code> in co
 </div>
 </div>
 
-<div id="outline-container-orgfadc368" class="outline-2">
-<h2 id="orgfadc368"><span class="section-number-2">5</span> Smart punctuation</h2>
+<div id="outline-container-orge818149" class="outline-2">
+<h2 id="orge818149"><span class="section-number-2">5</span> Smart punctuation</h2>
 <div class="outline-text-2" id="text-5">
 <pre class="example">
 ID: a738b9bc-b97b-4901-bb01-3eb3f6cc995d
@@ -559,8 +579,8 @@ en-dashes, and <code>...</code> to ellipses.
 </div>
 </div>
 
-<div id="outline-container-org4afae10" class="outline-2">
-<h2 id="org4afae10"><span class="section-number-2">6</span> Plain lists</h2>
+<div id="outline-container-org186fa09" class="outline-2">
+<h2 id="org186fa09"><span class="section-number-2">6</span> Plain lists</h2>
 <div class="outline-text-2" id="text-6">
 <pre class="example">
 ID: fbbd5b73-5594-4db4-94e3-d8141dc17a36
@@ -568,8 +588,8 @@ PUBDATE: <2018-04-03 Tue 21:59>
 </pre>
 </div>
 
-<div id="outline-container-orgf314622" class="outline-3">
-<h3 id="orgf314622"><span class="section-number-3">6.1</span> un-ordered lists</h3>
+<div id="outline-container-orge3078a6" class="outline-3">
+<h3 id="orge3078a6"><span class="section-number-3">6.1</span> un-ordered lists</h3>
 <div class="outline-text-3" id="text-6-1">
 <pre class="example">
 ID: 067cafb7-cd55-47b1-b54b-6e6ff4dc41ce
@@ -602,8 +622,8 @@ a few words to really show the line wrapping.</li>
 </div>
 </div>
 
-<div id="outline-container-org662aa13" class="outline-3">
-<h3 id="org662aa13"><span class="section-number-3">6.2</span> ordered lists</h3>
+<div id="outline-container-org908853d" class="outline-3">
+<h3 id="org908853d"><span class="section-number-3">6.2</span> ordered lists</h3>
 <div class="outline-text-3" id="text-6-2">
 <pre class="example">
 ID: 02dc3830-0639-44b0-9799-f971853661fe
@@ -624,8 +644,8 @@ wrapping.
 </ol>
 </div>
 
-<div id="outline-container-org4eea051" class="outline-4">
-<h4 id="org4eea051"><span class="section-number-4">6.2.1</span> ordered list with jumping numbers</h4>
+<div id="outline-container-orga474958" class="outline-4">
+<h4 id="orga474958"><span class="section-number-4">6.2.1</span> ordered list with jumping numbers</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <pre class="example">
 ID: 0220a1cf-2fc4-47dd-a2bf-6d3637d80529
@@ -640,8 +660,8 @@ ID: 0220a1cf-2fc4-47dd-a2bf-6d3637d80529
 </div>
 </div>
 
-<div id="outline-container-orgd0e4f66" class="outline-3">
-<h3 id="orgd0e4f66"><span class="section-number-3">6.3</span> checklists</h3>
+<div id="outline-container-org6f66171" class="outline-3">
+<h3 id="org6f66171"><span class="section-number-3">6.3</span> checklists</h3>
 <div class="outline-text-3" id="text-6-3">
 <pre class="example">
 ID: 5e91b15b-79d1-4ea5-b679-0ab67ee3e2ab
@@ -656,8 +676,8 @@ ID: 5e91b15b-79d1-4ea5-b679-0ab67ee3e2ab
 </div>
 </div>
 
-<div id="outline-container-orga4ea870" class="outline-3">
-<h3 id="orga4ea870"><span class="section-number-3">6.4</span> definition list</h3>
+<div id="outline-container-orga3ff2d9" class="outline-3">
+<h3 id="orga3ff2d9"><span class="section-number-3">6.4</span> definition list</h3>
 <div class="outline-text-3" id="text-6-4">
 <pre class="example">
 ID: e154cd3e-3b23-42ce-abeb-c54518f6ee85
@@ -678,8 +698,8 @@ In many paragraphs.
 </div>
 </div>
 
-<div id="outline-container-org3dfeee7" class="outline-3">
-<h3 id="org3dfeee7"><span class="section-number-3">6.5</span> separating lists</h3>
+<div id="outline-container-org21b3c9d" class="outline-3">
+<h3 id="org21b3c9d"><span class="section-number-3">6.5</span> separating lists</h3>
 <div class="outline-text-3" id="text-6-5">
 <pre class="example">
 ID: 342c7589-ce8c-4eee-9fcb-07eb72d9eec8
@@ -700,8 +720,8 @@ ID: 342c7589-ce8c-4eee-9fcb-07eb72d9eec8
 </div>
 </div>
 
-<div id="outline-container-orgeff9881" class="outline-2">
-<h2 id="orgeff9881"><span class="section-number-2">7</span> Tables</h2>
+<div id="outline-container-orgea0e242" class="outline-2">
+<h2 id="orgea0e242"><span class="section-number-2">7</span> Tables</h2>
 <div class="outline-text-2" id="text-7">
 <pre class="example">
 ID: 335af6e1-9cad-47c4-acb4-f4f6b21d7183
@@ -714,8 +734,8 @@ easy to create and to read.
 </p>
 </div>
 
-<div id="outline-container-orgc281eaf" class="outline-3">
-<h3 id="orgc281eaf"><span class="section-number-3">7.1</span> simple table</h3>
+<div id="outline-container-orge7610dd" class="outline-3">
+<h3 id="orge7610dd"><span class="section-number-3">7.1</span> simple table</h3>
 <div class="outline-text-3" id="text-7-1">
 <pre class="example">
 ID: d8d91db5-e30d-48b3-b9ac-c5c521bb78bc
@@ -750,8 +770,8 @@ ID: d8d91db5-e30d-48b3-b9ac-c5c521bb78bc
 </div>
 </div>
 
-<div id="outline-container-orgfe767e0" class="outline-3">
-<h3 id="orgfe767e0"><span class="section-number-3">7.2</span> Table with aligned cells</h3>
+<div id="outline-container-orgb1549b3" class="outline-3">
+<h3 id="orgb1549b3"><span class="section-number-3">7.2</span> Table with aligned cells</h3>
 <div class="outline-text-3" id="text-7-2">
 <pre class="example">
 ID: f9fa207e-1c43-4dd6-a08e-888023bca5e9
@@ -791,8 +811,8 @@ ID: f9fa207e-1c43-4dd6-a08e-888023bca5e9
 </div>
 </div>
 
-<div id="outline-container-org9b30247" class="outline-3">
-<h3 id="org9b30247"><span class="section-number-3">7.3</span> Header row</h3>
+<div id="outline-container-orgfb58e30" class="outline-3">
+<h3 id="orgfb58e30"><span class="section-number-3">7.3</span> Header row</h3>
 <div class="outline-text-3" id="text-7-3">
 <pre class="example">
 ID: 7200d3ae-4bb1-40bd-9055-9932371e6448
@@ -839,8 +859,8 @@ ID: 7200d3ae-4bb1-40bd-9055-9932371e6448
 </div>
 </div>
 
-<div id="outline-container-org15fe0f8" class="outline-2">
-<h2 id="org15fe0f8"><span class="section-number-2">8</span> Hyperlinks</h2>
+<div id="outline-container-orgdc97b4b" class="outline-2">
+<h2 id="orgdc97b4b"><span class="section-number-2">8</span> Hyperlinks</h2>
 <div class="outline-text-2" id="text-8">
 <pre class="example">
 ID: cc6c5740-3a87-402e-addd-d42c6e77b6df
@@ -848,68 +868,68 @@ PUBDATE: <2018-04-03 Tue 21:59>
 </pre>
 </div>
 
-<div id="outline-container-org0ca4312" class="outline-3">
-<h3 id="org0ca4312"><span class="section-number-3">8.1</span> Internal links</h3>
+<div id="outline-container-org56df231" class="outline-3">
+<h3 id="org56df231"><span class="section-number-3">8.1</span> Internal links</h3>
 <div class="outline-text-3" id="text-8-1">
 <pre class="example">
 ID: d0993c1f-7a37-4972-afea-bb8cc35dde36
 </pre>
 </div>
 
-<div id="outline-container-orga9507ec" class="outline-4">
-<h4 id="orga9507ec"><span class="section-number-4">8.1.1</span> radio target link</h4>
+<div id="outline-container-orgd215002" class="outline-4">
+<h4 id="orgd215002"><span class="section-number-4">8.1.1</span> radio target link</h4>
 <div class="outline-text-4" id="text-8-1-1">
 <pre class="example">
 ID: 912f6a31-553a-4e73-be0c-769643d56cc2
 </pre>
 
 <p>
-Here is a <a id="org3f0c5c3" name="org3f0c5c3">radio<sub>target</sub><sub>link</sub></a>
+Here is a <a id="org546509f" name="org546509f">radio<sub>target</sub><sub>link</sub></a>
 </p>
 
 <hr>
 
 <p>
-Reference previous a <a href="#org3f0c5c3">radio<sub>target</sub><sub>link</sub></a>.
+Reference previous a <a href="#org546509f">radio<sub>target</sub><sub>link</sub></a>.
 </p>
 </div>
 
-<div id="outline-container-orga077c62" class="outline-5">
-<h5 id="orga077c62"><span class="section-number-5">8.1.1.1</span> <a id="orga189d2d" name="orga189d2d">foo</a></h5>
+<div id="outline-container-org8aa3afc" class="outline-5">
+<h5 id="org8aa3afc"><span class="section-number-5">8.1.1.1</span> <a id="org5d90bb8" name="org5d90bb8">foo</a></h5>
 <div class="outline-text-5" id="text-8-1-1-1">
 <pre class="example">
 ID: fcb882a4-a428-44ba-9beb-c032b2d5e7b1
 </pre>
 
 <p>
-About <a href="#orga189d2d">foo</a>. What is <a href="#orga189d2d">foo</a>?
+About <a href="#org5d90bb8">foo</a>. What is <a href="#org5d90bb8">foo</a>?
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7c1553b" class="outline-5">
-<h5 id="org7c1553b"><span class="section-number-5">8.1.1.2</span> <a id="orgad25fcf" name="orgad25fcf">bar</a></h5>
+<div id="outline-container-orgb09bc66" class="outline-5">
+<h5 id="orgb09bc66"><span class="section-number-5">8.1.1.2</span> <a id="org700a9bd" name="org700a9bd">bar</a></h5>
 <div class="outline-text-5" id="text-8-1-1-2">
 <pre class="example">
 ID: b16096d0-d147-4872-8394-e982c0562994
 </pre>
 
 <p>
-<a href="#orgad25fcf">bar</a> is developed based on <a href="#orga189d2d">foo</a>.
+<a href="#org700a9bd">bar</a> is developed based on <a href="#org5d90bb8">foo</a>.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf18f2b3" class="outline-4">
-<h4 id="orgf18f2b3"><span class="section-number-4">8.1.2</span> <span class="todo TODO">TODO</span> coderef</h4>
+<div id="outline-container-org0b5573f" class="outline-4">
+<h4 id="org0b5573f"><span class="section-number-4">8.1.2</span> <span class="todo TODO">TODO</span> coderef</h4>
 <div class="outline-text-4" id="text-8-1-2">
 <pre class="example">
 ID: 127550da-5a57-42bf-bbdc-0c25b6fcc8eb
 </pre>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span id="coderef-sc" class="coderef-off"><span class="linenr">1: </span><span style="color: #707183;">(</span><span style="color: #0000FF;">save-excursion</span></span>
-<span id="coderef-jump" class="coderef-off"><span class="linenr">2: </span>   <span style="color: #7388D6;">(</span>goto-char <span style="color: #909183;">(</span>point-min<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></span>
+<pre class="src src-emacs-lisp"><span class="linenr">1: </span><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">save-excursion</span>                  <span style="color: #D19A66;">(</span>ref:sc<span style="color: #D19A66;">)</span>
+<span class="linenr">2: </span>   <span style="color: #D19A66;">(</span>goto-char <span style="color: #61AFEF;">(</span>point-min<span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>      <span style="color: #56B6C2; font-weight: bold;">(</span><span style="color: #BE5046; font-weight: bold;">ref:jump</span><span style="color: #56B6C2; font-weight: bold;">)</span>
 </pre>
 </div>
 
@@ -920,8 +940,8 @@ In line <a href="#coderef-sc" class="coderef" onmouseover="CodeHighlightOn(this,
 </div>
 </div>
 
-<div id="outline-container-org439f6e2" class="outline-3">
-<h3 id="org439f6e2"><span class="section-number-3">8.2</span> External links</h3>
+<div id="outline-container-org1f26940" class="outline-3">
+<h3 id="org1f26940"><span class="section-number-3">8.2</span> External links</h3>
 <div class="outline-text-3" id="text-8-2">
 <pre class="example">
 ID: 147feca3-3651-4c29-9e46-b9c08f332d4b
@@ -930,8 +950,8 @@ ID: 147feca3-3651-4c29-9e46-b9c08f332d4b
 </div>
 </div>
 
-<div id="outline-container-org80b89ef" class="outline-2">
-<h2 id="org80b89ef"><span class="section-number-2">9</span> Drawers</h2>
+<div id="outline-container-org7af72e5" class="outline-2">
+<h2 id="org7af72e5"><span class="section-number-2">9</span> Drawers</h2>
 <div class="outline-text-2" id="text-9">
 <pre class="example">
 ID: 2d62890f-ced7-4f7b-9746-8fa1835d5704
@@ -939,8 +959,8 @@ PUBDATE: <2018-04-03 Tue 21:59>
 </pre>
 </div>
 
-<div id="outline-container-org44f0477" class="outline-3">
-<h3 id="org44f0477"><span class="section-number-3">9.1</span> test drawer</h3>
+<div id="outline-container-org63c2292" class="outline-3">
+<h3 id="org63c2292"><span class="section-number-3">9.1</span> test drawer</h3>
 <div class="outline-text-3" id="text-9-1">
 <pre class="example">
 ID: 8ac3c6c8-14ef-4b21-8efd-8dc5d91daee0
@@ -952,8 +972,8 @@ This is inside the drawer.
 </div>
 </div>
 
-<div id="outline-container-org91aa35f" class="outline-2">
-<h2 id="org91aa35f"><span class="section-number-2">10</span> Dynamic blocks</h2>
+<div id="outline-container-orga135933" class="outline-2">
+<h2 id="orga135933"><span class="section-number-2">10</span> Dynamic blocks</h2>
 <div class="outline-text-2" id="text-10">
 <pre class="example">
 ID: a839d0ae-63bc-42fa-84fe-92b33b9d533c
@@ -988,8 +1008,8 @@ PUBDATE: <2018-04-03 Tue 21:59>
 </div>
 </div>
 
-<div id="outline-container-org5ee67b7" class="outline-2">
-<h2 id="org5ee67b7"><span class="section-number-2">11</span> ASCII export</h2>
+<div id="outline-container-orgbba86cf" class="outline-2">
+<h2 id="orgbba86cf"><span class="section-number-2">11</span> ASCII export</h2>
 <div class="outline-text-2" id="text-11">
 <pre class="example">
 ID: af09b5b2-5882-4a36-88f5-d00733fad636
@@ -998,66 +1018,24 @@ PUBDATE: <2018-04-03 Tue 21:59>
 </div>
 </div>
 
-<div id="outline-container-org43b24cc" class="outline-2">
-<h2 id="org43b24cc"><span class="section-number-2">12</span> Inline Images</h2>
+<div id="outline-container-org457eacb" class="outline-2">
+<h2 id="org457eacb"><span class="section-number-2">12</span> Inline Images</h2>
 <div class="outline-text-2" id="text-12">
 <pre class="example">
 ID: 14207a95-e121-47fd-9bba-63f4392e7181
 PUBDATE: <2018-04-03 Tue 21:59>
 </pre>
 
-<div class="org-src-container">
-<pre class="src src-dot">digraph <span style="color: #006699;">G</span> {
-  <span style="color: #BA36A5;">size=</span><span style="color: #008000;">"8,6"</span>
-  <span style="color: #BA36A5;">ratio=</span>expand
-  edge [<span style="color: #BA36A5;">dir=</span><span style="color: #D0372D;">both</span>]
-  plcnet [<span style="color: #BA36A5;">shape=</span><span style="color: #D0372D;">box</span>, <span style="color: #BA36A5;">label=</span><span style="color: #008000;">"PLC Network"</span>]
-  subgraph <span style="color: #006699;">cluster</span>_wrapline {
-    <span style="color: #BA36A5;">label=</span><span style="color: #008000;">"Wrapline Control System"</span>
-    <span style="color: #BA36A5;">color=</span><span style="color: #008000;">purple</span>
-    subgraph {
-    <span style="color: #BA36A5;">rank=</span><span style="color: #D0372D;">same</span>
-    exec
-    sha<span style="color: #008000;">red</span>mem [<span style="color: #BA36A5;">style=</span><span style="color: #D0372D;">filled</span>, <span style="color: #BA36A5;">fillcolor=</span><span style="color: #008000;">lightgrey</span>, <span style="color: #BA36A5;">shape=</span><span style="color: #D0372D;">box</span>]
-    }
-    edge[<span style="color: #BA36A5;">style=</span><span style="color: #D0372D;">dotted</span>, <span style="color: #BA36A5;">dir=</span><span style="color: #D0372D;">none</span>]
-    exec -&gt; opserver
-    exec -&gt; db
-    plc -&gt; exec
-    edge [<span style="color: #BA36A5;">style=</span>line, <span style="color: #BA36A5;">dir=</span><span style="color: #D0372D;">both</span>]
-    exec -&gt; sha<span style="color: #008000;">red</span>mem
-    sha<span style="color: #008000;">red</span>mem -&gt; db
-    plc -&gt; sha<span style="color: #008000;">red</span>mem
-    sha<span style="color: #008000;">red</span>mem -&gt; opserver
-  }
-  plcnet -&gt; plc [<span style="color: #BA36A5;">constraint=</span><span style="color: #D0372D;">false</span>]
-  millwide [<span style="color: #BA36A5;">shape=</span><span style="color: #D0372D;">box</span>, <span style="color: #BA36A5;">label=</span><span style="color: #008000;">"Millwide System"</span>]
-  db -&gt; millwide
 
-  subgraph <span style="color: #006699;">cluster</span>_opclients {
-    <span style="color: #BA36A5;">color=</span><span style="color: #008000;">blue</span>
-    <span style="color: #BA36A5;">label=</span><span style="color: #008000;">"Operator Clients"</span>
-    <span style="color: #BA36A5;">rankdir=</span><span style="color: #D0372D;">LR</span>
-    <span style="color: #BA36A5;">labelloc=</span>b
-    node[<span style="color: #BA36A5;">label=</span>client]
-    opserver -&gt; client1
-    opserver -&gt; client2
-    opserver -&gt; client3
-  }
-}
-</pre>
-</div>
-
-
-<figure id="org82ea05d">
+<figure id="org2218cf7">
 <img src="data/images/babel_lang_dot_example1.png" alt="babel_lang_dot_example1.png" width="300px">
 
 <figcaption><span class="figure-number">Figure 1: </span>This is an image</figcaption>
 </figure>
 </div>
 
-<div id="outline-container-org454ca11" class="outline-3">
-<h3 id="org454ca11"><span class="section-number-3">12.1</span> Image attributes and values</h3>
+<div id="outline-container-org81009a7" class="outline-3">
+<h3 id="org81009a7"><span class="section-number-3">12.1</span> Image attributes and values</h3>
 <div class="outline-text-3" id="text-12-1">
 <pre class="example">
 ID: d89c0016-df43-44f3-88b8-535975506317
@@ -1072,8 +1050,8 @@ ID: d89c0016-df43-44f3-88b8-535975506317
 </div>
 </div>
 
-<div id="outline-container-orgc0f3153" class="outline-2">
-<h2 id="orgc0f3153"><span class="section-number-2">13</span> Footnote</h2>
+<div id="outline-container-orgaf4ab58" class="outline-2">
+<h2 id="orgaf4ab58"><span class="section-number-2">13</span> Footnote</h2>
 <div class="outline-text-2" id="text-13">
 <pre class="example">
 ID: 6c577429-a3f6-4c14-9794-c50a3753e49f
@@ -1092,8 +1070,8 @@ The org homepage <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1<
 </div>
 </div>
 
-<div id="outline-container-org78f2180" class="outline-2">
-<h2 id="org78f2180"><span class="section-number-2">14</span> Entity</h2>
+<div id="outline-container-org7c6e696" class="outline-2">
+<h2 id="org7c6e696"><span class="section-number-2">14</span> Entity</h2>
 <div class="outline-text-2" id="text-14">
 <pre class="example">
 ID: a4dc8312-be47-4a4c-bdbe-ea4c36fbd186
@@ -1110,32 +1088,18 @@ Like &euro; with
 </div>
 </div>
 
-<div id="outline-container-orgc8310a0" class="outline-2">
-<h2 id="orgc8310a0"><span class="section-number-2">15</span> Inline code</h2>
+<div id="outline-container-org6c898fd" class="outline-2">
+<h2 id="org6c898fd"><span class="section-number-2">15</span> LaTeX</h2>
 <div class="outline-text-2" id="text-15">
-<pre class="example">
-ID: 8f9d52a8-f04e-4f20-aa2e-1a594811fc57
-PUBDATE: <2018-04-03 Tue 21:59>
-</pre>
-
-<p>
-<code class="src src-elisp"><span style="color: #707183;">(</span>message <span style="color: #008000;">"hi"</span><span style="color: #707183;">)</span></code> <code>hi</code>
-</p>
-</div>
-</div>
-
-<div id="outline-container-orga915a87" class="outline-2">
-<h2 id="orga915a87"><span class="section-number-2">16</span> LaTeX</h2>
-<div class="outline-text-2" id="text-16">
 <pre class="example">
 ID: 0f7f4e61-cc38-45d4-a821-72871d220707
 PUBDATE: <2018-04-03 Tue 21:59>
 </pre>
 </div>
 
-<div id="outline-container-org69bafc6" class="outline-3">
-<h3 id="org69bafc6"><span class="section-number-3">16.1</span> Inline LaTeX</h3>
-<div class="outline-text-3" id="text-16-1">
+<div id="outline-container-org082b7ba" class="outline-3">
+<h3 id="org082b7ba"><span class="section-number-3">15.1</span> Inline LaTeX</h3>
+<div class="outline-text-3" id="text-15-1">
 <pre class="example">
 ID: 0cf98440-5210-4193-8f8e-7e85abbae324
 </pre>
@@ -1146,9 +1110,9 @@ This is inline latex \[ 1 + 2 = 3 \]. and \(3 * 3 = 9\) .
 </div>
 </div>
 
-<div id="outline-container-org14d2a03" class="outline-3">
-<h3 id="org14d2a03"><span class="section-number-3">16.2</span> LaTeX block</h3>
-<div class="outline-text-3" id="text-16-2">
+<div id="outline-container-org2651dc5" class="outline-3">
+<h3 id="org2651dc5"><span class="section-number-3">15.2</span> LaTeX block</h3>
+<div class="outline-text-3" id="text-15-2">
 <pre class="example">
 ID: 3fcbf355-d843-4cf0-9679-f406e83ba8cc
 </pre>
@@ -1159,9 +1123,9 @@ y = \sqrt{r^2 - x^2}
 </div>
 </div>
 
-<div id="outline-container-orge418005" class="outline-3">
-<h3 id="orge418005"><span class="section-number-3">16.3</span> a more complex latex block</h3>
-<div class="outline-text-3" id="text-16-3">
+<div id="outline-container-org22dd7b6" class="outline-3">
+<h3 id="org22dd7b6"><span class="section-number-3">15.3</span> a more complex latex block</h3>
+<div class="outline-text-3" id="text-15-3">
 <pre class="example">
 ID: 85b239ed-cfdd-4dbd-850d-9a80b0957da0
 </pre>
@@ -1184,13 +1148,13 @@ const double pi = 3.1415926535
 </div>
 </div>
 
-<div id="outline-container-orgb1e92d1" class="outline-2">
-<h2 id="orgb1e92d1"><span class="section-number-2">17</span> Blocks</h2>
-<div class="outline-text-2" id="text-17">
+<div id="outline-container-org1fe3f1d" class="outline-2">
+<h2 id="org1fe3f1d"><span class="section-number-2">16</span> Blocks</h2>
+<div class="outline-text-2" id="text-16">
 </div>
-<div id="outline-container-orgb265050" class="outline-3">
-<h3 id="orgb265050"><span class="section-number-3">17.1</span> Quote block</h3>
-<div class="outline-text-3" id="text-17-1">
+<div id="outline-container-org1d7b5bd" class="outline-3">
+<h3 id="org1d7b5bd"><span class="section-number-3">16.1</span> Quote block</h3>
+<div class="outline-text-3" id="text-16-1">
 <blockquote>
 <p>
 This is a quote block.
@@ -1199,15 +1163,15 @@ This is a quote block.
 </div>
 </div>
 
-<div id="outline-container-org0ec1e25" class="outline-3">
-<h3 id="org0ec1e25"><span class="section-number-3">17.2</span> LaTeX export block</h3>
-<div class="outline-text-3" id="text-17-2">
+<div id="outline-container-org2e1e9f9" class="outline-3">
+<h3 id="org2e1e9f9"><span class="section-number-3">16.2</span> LaTeX export block</h3>
+<div class="outline-text-3" id="text-16-2">
 </div>
 </div>
 
-<div id="outline-container-orgf48f402" class="outline-3">
-<h3 id="orgf48f402"><span class="section-number-3">17.3</span> ASCII export block</h3>
-<div class="outline-text-3" id="text-17-3">
+<div id="outline-container-org2c036f1" class="outline-3">
+<h3 id="org2c036f1"><span class="section-number-3">16.3</span> ASCII export block</h3>
+<div class="outline-text-3" id="text-16-3">
 <div class="org-src-container">
 <pre class="src src-shell">tree .
 </pre>
@@ -1215,9 +1179,9 @@ This is a quote block.
 </div>
 </div>
 
-<div id="outline-container-orgf907a3b" class="outline-3">
-<h3 id="orgf907a3b"><span class="section-number-3">17.4</span> HTML export block</h3>
-<div class="outline-text-3" id="text-17-4">
+<div id="outline-container-org4ae3636" class="outline-3">
+<h3 id="org4ae3636"><span class="section-number-3">16.4</span> HTML export block</h3>
+<div class="outline-text-3" id="text-16-4">
 <div id="html-export">
   <p>
     helllo, worlllld!!!
@@ -1227,27 +1191,27 @@ This is a quote block.
 </div>
 </div>
 
-<div id="outline-container-org5b78eff" class="outline-2">
-<h2 id="org5b78eff"><span class="section-number-2">18</span> src blocks</h2>
-<div class="outline-text-2" id="text-18">
+<div id="outline-container-org48a33d8" class="outline-2">
+<h2 id="org48a33d8"><span class="section-number-2">17</span> src blocks</h2>
+<div class="outline-text-2" id="text-17">
 <pre class="example">
 ID: 0bbfd97e-52f8-4e75-968b-79a71f5a316a
 PUBDATE: <2018-04-03 Tue 21:59>
 </pre>
 </div>
 
-<div id="outline-container-org176bc56" class="outline-3">
-<h3 id="org176bc56"><span class="section-number-3">18.1</span> syntax highlighting</h3>
-<div class="outline-text-3" id="text-18-1">
+<div id="outline-container-orgaa09808" class="outline-3">
+<h3 id="orgaa09808"><span class="section-number-3">17.1</span> syntax highlighting</h3>
+<div class="outline-text-3" id="text-17-1">
 <pre class="example">
 ID: 68e01fc8-0e03-4179-8ab4-a23ce58b9a20
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #707183;">(</span><span style="color: #0000FF;">defun</span> <span style="color: #006699;">hello</span> <span style="color: #7388D6;">(</span>name<span style="color: #7388D6;">)</span>
-  <span style="color: #7388D6;">(</span>print <span style="color: #909183;">(</span>format <span style="color: #008000;">"Hello, %s"</span> name<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">hello</span> <span style="color: #D19A66;">(</span>name<span style="color: #D19A66;">)</span>
+  <span style="color: #D19A66;">(</span>print <span style="color: #61AFEF;">(</span>format <span style="color: #98C379;">"Hello, %s"</span> name<span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 
-<span style="color: #707183;">(</span>hello <span style="color: #008000;">"stardiviner"</span><span style="color: #707183;">)</span>
+<span style="color: #56B6C2;">(</span>hello <span style="color: #98C379;">"stardiviner"</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -1257,53 +1221,53 @@ Hello, stardiviner
 </div>
 </div>
 
-<div id="outline-container-org482a822" class="outline-3">
-<h3 id="org482a822"><span class="section-number-3">18.2</span> escape math formulas in src block</h3>
-<div class="outline-text-3" id="text-18-2">
+<div id="outline-container-org1116a62" class="outline-3">
+<h3 id="org1116a62"><span class="section-number-3">17.2</span> escape math formulas in src block</h3>
+<div class="outline-text-3" id="text-17-2">
 <pre class="example">
 ID: cbed519a-be32-47f8-a7c4-beb408f632e9
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Defined as $\pi=\lim_{n\to\infty}\frac{P_n}{d}$ where $P$ is the perimeter</span>
-<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">of an $n$-sided regular polygon circumscribing a</span>
-<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">circle of diameter $d$.</span>
-<span style="color: #707183;">(</span>prin1 <span style="color: #008000;">"hello, world!"</span><span style="color: #707183;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">Defined as $\pi=\lim_{n\to\infty}\frac{P_n}{d}$ where $P$ is the perimeter</span>
+<span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">of an $n$-sided regular polygon circumscribing a</span>
+<span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">circle of diameter $d$.</span>
+<span style="color: #56B6C2;">(</span>prin1 <span style="color: #98C379;">"hello, world!"</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7ca9b85" class="outline-3">
-<h3 id="org7ca9b85"><span class="section-number-3">18.3</span> highlight code tags</h3>
-<div class="outline-text-3" id="text-18-3">
+<div id="outline-container-orgc2b7140" class="outline-3">
+<h3 id="orgc2b7140"><span class="section-number-3">17.3</span> highlight code tags</h3>
+<div class="outline-text-3" id="text-17-3">
 <pre class="example">
 ID: 92432324-3cf9-4152-aeb8-d5539137240f
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">TODO does this code tag highlighted?</span>
-<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">TODO: what about this one?</span>
-<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">XXX</span>
-<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">BUG</span>
-<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">NOTE</span>
-<span style="color: #707183;">(</span>prin1 <span style="color: #008000;">"yes"</span><span style="color: #707183;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #5C6370; font-style: italic;">;;; </span><span style="color: #dc752f;">TODO</span><span style="color: #5C6370; font-style: italic;"> does this code tag highlighted?</span>
+<span style="color: #5C6370; font-style: italic;">;;; </span><span style="color: #dc752f;">TODO</span><span style="color: #5C6370; font-style: italic;">: what about this one?</span>
+<span style="color: #5C6370; font-style: italic;">;;; </span><span style="color: #dc752f;">XXX</span>
+<span style="color: #5C6370; font-style: italic;">;;; </span><span style="color: #5C6370; font-style: italic;">BUG</span>
+<span style="color: #5C6370; font-style: italic;">;;; </span><span style="color: #b1951d;">NOTE</span>
+<span style="color: #56B6C2;">(</span>prin1 <span style="color: #98C379;">"yes"</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org652dd14" class="outline-3">
-<h3 id="org652dd14"><span class="section-number-3">18.4</span> src block with inline image result</h3>
-<div class="outline-text-3" id="text-18-4">
+<div id="outline-container-org363e249" class="outline-3">
+<h3 id="org363e249"><span class="section-number-3">17.4</span> src block with inline image result</h3>
+<div class="outline-text-3" id="text-17-4">
 <pre class="example">
 ID: 9e5200c5-3655-477e-ab20-b9a9fdda3857
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-gnuplot"><span style="color: #D0372D;">set</span> grid
+<pre class="src src-gnuplot">set grid
 
-<span style="color: #0000FF;">plot</span> <span style="color: #006699;">sin</span>(x)
+plot sin(x)
 </pre>
 </div>
 
@@ -1316,9 +1280,9 @@ ID: 9e5200c5-3655-477e-ab20-b9a9fdda3857
 </div>
 </div>
 
-<div id="outline-container-org6cbdbae" class="outline-2">
-<h2 id="org6cbdbae"><span class="section-number-2">19</span> 中文测试</h2>
-<div class="outline-text-2" id="text-19">
+<div id="outline-container-orgd79fd52" class="outline-2">
+<h2 id="orgd79fd52"><span class="section-number-2">18</span> 中文测试</h2>
+<div class="outline-text-2" id="text-18">
 <pre class="example">
 ID: 87084b84-e7f2-4eda-b689-44155df7fd18
 PUBDATE: <2018-04-03 Tue 21:59>
@@ -1330,31 +1294,31 @@ PUBDATE: <2018-04-03 Tue 21:59>
 </div>
 </div>
 
-<div id="outline-container-org49d5cba" class="outline-2">
-<h2 id="org49d5cba"><span class="section-number-2">20</span> Reference to previous pages links</h2>
-<div class="outline-text-2" id="text-20">
+<div id="outline-container-org9aad220" class="outline-2">
+<h2 id="org9aad220"><span class="section-number-2">19</span> Reference to previous pages links</h2>
+<div class="outline-text-2" id="text-19">
 <pre class="example">
 ID: e056308d-32c2-470a-b623-1635665b5a20
 PUBDATE: <2018-04-03 Tue 21:59>
 </pre>
 </div>
 
-<div id="outline-container-org5a120e2" class="outline-3">
-<h3 id="org5a120e2"><span class="section-number-3">20.1</span> radio target link reference</h3>
-<div class="outline-text-3" id="text-20-1">
+<div id="outline-container-orgccf3a16" class="outline-3">
+<h3 id="orgccf3a16"><span class="section-number-3">19.1</span> radio target link reference</h3>
+<div class="outline-text-3" id="text-19-1">
 <pre class="example">
 ID: 3a96566e-c212-4174-a576-08a154502a33
 </pre>
 
 <p>
-<a href="#orga189d2d">foo</a>
+<a href="#org5d90bb8">foo</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb9873ec" class="outline-3">
-<h3 id="orgb9873ec"><span class="section-number-3">20.2</span> coderef</h3>
-<div class="outline-text-3" id="text-20-2">
+<div id="outline-container-orga15e52e" class="outline-3">
+<h3 id="orga15e52e"><span class="section-number-3">19.2</span> coderef</h3>
+<div class="outline-text-3" id="text-19-2">
 <pre class="example">
 ID: b01f97a7-9e77-44a9-ab89-cce03e5edad5
 </pre>
@@ -1379,8 +1343,8 @@ The link is: <a href="http://orgmode.org">http://orgmode.org</a>
 <div id="postamble" class="status">
 <footer>
   Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
-  Last update date: 2018-05-31 Thu 08:21.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.1.13). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
+  Last update date: 2019-02-15 Fri 20:38.<br>
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.2). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
   
   <!-- Show Org Source -->
   <script>
@@ -1396,16 +1360,9 @@ The link is: <a href="http://orgmode.org">http://orgmode.org</a>
 
 <!-- jump to beginning -->
 <div id="jumptobeginning">
-  <a href="#content">Jump to Beginning</a>
-  <style>
-   #jumptobeginning {
-     text-decoration: none;
-     display: block;
-     
-     float: right;
-     background-color: #D0D0D0;
-   }
-  </style>
+  <a href="#content" alt="Back to Top" style="text-decoration: none;">
+    <i id="backtotop" style="color: lightsalmon;"></i>
+  </a>
 </div>
 
 <!-- payment -->
@@ -1421,49 +1378,49 @@ The link is: <a href="http://orgmode.org">http://orgmode.org</a>
 </div>
 
 <!-- Google Analytics -->
-<script async src="//www.google-analytics.com/analytics.js"></script>
-<script type="text/javascript">
- (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+     <script type="text/javascript">
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
- ga('create', 'UA-63992234-1', 'auto');
- ga('send', 'pageview');
-</script>
+     ga('create', 'UA-63992234-1', 'auto');
+     ga('send', 'pageview');
+     </script> -->
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
-<script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+     <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
 
- gtag('config', 'UA-63992234-1');
-</script>
+     gtag('config', 'UA-63992234-1');
+     </script> -->
 
 <!-- Disqus -->
-<div class="comments">
-  <style>
-   /* hide comment policy */
-   .comment-policy {
+<!-- <div class="comments">
+     <style>
+     /* hide comment policy */
+     .comment-policy {
      display: none;
-   }
-   /* hide Disqus footer */
-   .disqus-footer__wrapper {
+     }
+     /* hide Disqus footer */
+     .disqus-footer__wrapper {
      display: none;
-   } 
-  </style>
-  
-  <div id="disqus_thread"></div>
-  <script>
-   (function() {
+     } 
+     </style>
+     
+     <div id="disqus_thread"></div>
+     <script>
+     (function() {
      var d = document, s = d.createElement('script');
      s.src = 'https://stardiviner.disqus.com/embed.js';
      s.setAttribute('data-timestamp', +new Date());
      (d.head || d.body).appendChild(s);
-   })();
-  </script>
-</div>
+     })();
+     </script>
+     </div> -->
 </div>
 </body>
 </html>

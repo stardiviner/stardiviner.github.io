@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2018-09-28 Fri 12:40 -->
+<!-- 2019-02-15 Fri 20:48 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clojure Plotting to Org inline image in ob-clojure</title>
@@ -191,7 +191,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32">
 <script type="text/javascript" src="/assets/scripts/org-info-src.js">
 /**
  *
@@ -200,7 +200,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in /assets/scripts/org-info-src.js.
  *
- * Copyright (C) 2012-2018 Free Software Foundation, Inc.
+ * Copyright (C) 2012-2019 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -229,7 +229,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -268,7 +268,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -334,31 +334,31 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org92fa39d">1. The Process of my Clojure Plotting</a>
+<li><a href="#orgce4c150">1. The Process of my Clojure Plotting</a>
 <ul>
-<li><a href="#orgdf4fa05">1.1. ask whether Clojure/JVM can change working directory</a></li>
-<li><a href="#orgdf7f902">1.2. I create Org-mode library "<code>ob-clojure-literate</code>" and improve Org Babel "<code>ob-core.el</code>" for plotting support</a></li>
-<li><a href="#org1e833fa">1.3. use more better solution by passing target path into Clojure with header argument <code>:var</code></a></li>
-<li><a href="#org05b073a">1.4. use final solution by move image file to target path with Clojure function</a></li>
+<li><a href="#org33d442b">1.1. ask whether Clojure/JVM can change working directory</a></li>
+<li><a href="#orgfe4c215">1.2. I create Org-mode library "<code>ob-clojure-literate</code>" and improve Org Babel "<code>ob-core.el</code>" for plotting support</a></li>
+<li><a href="#org93d06b7">1.3. use more better solution by passing target path into Clojure with header argument <code>:var</code></a></li>
+<li><a href="#org415f103">1.4. use final solution by move image file to target path with Clojure function</a></li>
 </ul>
 </li>
-<li><a href="#orgc7489e8">2. Incanter</a></li>
-<li><a href="#orge8bd272">3. clj-xchart</a></li>
-<li><a href="#org42be35b">4. ggplot2</a></li>
-<li><a href="#orga63110e">5. jutsu</a></li>
-<li><a href="#orgc548774">6. References</a></li>
-<li><a href="#org96a60c5">7. Make use of CIDER new support of image content-type</a></li>
-<li><a href="#org0d99821">8. Literaral Org-mode version</a></li>
+<li><a href="#org778c6a2">2. Incanter</a></li>
+<li><a href="#org20090f8">3. clj-xchart</a></li>
+<li><a href="#org9b8f7d9">4. ggplot2</a></li>
+<li><a href="#orgd50211a">5. jutsu</a></li>
+<li><a href="#org0d9f6f2">6. References</a></li>
+<li><a href="#orge42cbda">7. Make use of CIDER new support of image content-type</a></li>
+<li><a href="#orga5ab419">8. Literaral Org-mode version</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org92fa39d" class="outline-2">
-<h2 id="org92fa39d"><span class="section-number-2">1</span> The Process of my Clojure Plotting</h2>
+<div id="outline-container-orgce4c150" class="outline-2">
+<h2 id="orgce4c150"><span class="section-number-2">1</span> The Process of my Clojure Plotting</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgdf4fa05" class="outline-3">
-<h3 id="orgdf4fa05"><span class="section-number-3">1.1</span> ask whether Clojure/JVM can change working directory</h3>
+<div id="outline-container-org33d442b" class="outline-3">
+<h3 id="org33d442b"><span class="section-number-3">1.1</span> ask whether Clojure/JVM can change working directory</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 I did some hard search, found some links
@@ -370,67 +370,70 @@ I did some hard search, found some links
 </ul>
 
 <p>
-Then I found JVM does not allow to change working directory because of security reason
-<a href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688">https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688</a>.
+Then I found JVM does not allow to change working directory because of security
+reason <a href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688">https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688</a>.
 </p>
 
 <p>
-So, there is no reliable way to do this in pure Java. Setting the <code>user.dir</code> <i>property</i> via
-<code>System.setProperty()</code> or <code>java -Duser.dir=...</code> does seem to affect subsequent creations of
-Files, but not e.g. <code>FileOutputStreams</code>.
+So, there is no reliable way to do this in pure Java. Setting the <code>user.dir</code>
+<i>property</i> via <code>System.setProperty()</code> or <code>java -Duser.dir=...</code> does seem to affect
+subsequent creations of Files, but not e.g. <code>FileOutputStreams</code>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgdf7f902" class="outline-3">
-<h3 id="orgdf7f902"><span class="section-number-3">1.2</span> I create Org-mode library "<code>ob-clojure-literate</code>" and improve Org Babel "<code>ob-core.el</code>" for plotting support</h3>
+<div id="outline-container-orgfe4c215" class="outline-3">
+<h3 id="orgfe4c215"><span class="section-number-3">1.2</span> I create Org-mode library "<code>ob-clojure-literate</code>" and improve Org Babel "<code>ob-core.el</code>" for plotting support</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-Because changing Clojure/JVM working directory is not available, so I find method on Emacs
-side, Org-mode other Babel lanaguages like R, Python have good image file result support.
-So I dive into source code, and try to add similar function to "<code>ob-clojure</code>". But I found
-some limites, then I created "<a href="https://github.com/stardiviner/ob-clojure-literate">ob-clojure-literate (GitHub repo)</a>" (Now it is in <a href="https://code.orgmode.org/bzg/org-mode/src/master/contrib/lisp/ob-clojure-literate.el">Org-mode
+Because changing Clojure/JVM working directory is not available, so I find
+method on Emacs side, Org-mode other Babel lanaguages like R, Python have good
+image file result support. So I dive into source code, and try to add similar
+function to "<code>ob-clojure</code>". But I found some limites, then I created
+"<a href="https://github.com/stardiviner/ob-clojure-literate">ob-clojure-literate (GitHub repo)</a>" (Now it is in
+<a href="https://code.orgmode.org/bzg/org-mode/src/master/contrib/lisp/ob-clojure-literate.el">Org-mode
 contrib lib</a>).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org1e833fa" class="outline-3">
-<h3 id="org1e833fa"><span class="section-number-3">1.3</span> use more better solution by passing target path into Clojure with header argument <code>:var</code></h3>
+<div id="outline-container-org93d06b7" class="outline-3">
+<h3 id="org93d06b7"><span class="section-number-3">1.3</span> use more better solution by passing target path into Clojure with header argument <code>:var</code></h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-You can fake change Clojure REPL working directory by passing header argument variable
-into Clojure code. Like this:
+You can fake change Clojure REPL working directory by passing header argument
+variable into Clojure code. Like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-org"><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results value :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">str</span><span style="color: #000088; background-color: #FFFFE0;"> dir </span><span style="color: #008000; background-color: #FFFFE0;">"ob-clojure-literate.png"</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #555555; background-color: #E2E1D5;">#+end_src</span>
+<pre class="src src-org"><span style="color: #828997; background-color: #363C47;">#+begin_src clojure :results value :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">str</span><span style="background-color: #2F333D;"> dir </span><span style="color: #98C379; background-color: #2F333D;">"ob-clojure-literate.png"</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #828997; background-color: #363C47;">#+end_src</span>
 
-<span style="color: #008ED1; background-color: #EAEAFF;">#+RESULTS[&lt;2018-05-17 01:12:55&gt; 73be0ca9a40a4f1e4fdee8e535991955f77b034a]:</span>
-<span style="color: #006400; background-color: #E2E9CB;">: "/home/stardiviner/Org/Wiki/Computer Technology/Programming/Emacs/Data/Emacs Packages/Org mode/data/images/ob-clojure-literate.png"</span>
+<span style="color: #5C6370; font-style: italic;">#+RESULTS[&lt;2018-05-17 01:12:55&gt; 73be0ca9a40a4f1e4fdee8e535991955f77b034a]:</span>
+<span style="color: #56B6C2;">: "/home/stardiviner/Org/Wiki/Computer Technology/Programming/Emacs/Data/Emacs Packages/Org mode/data/images/ob-clojure-literate.png"</span>
 </pre>
 </div>
 
 <p>
-Then you can use Clojure funciton to save graphics object to target file with correct
-absolute path:
+Then you can use Clojure funciton to save graphics object to target file with
+correct absolute path:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-org"><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">use</span><span style="color: #000088; background-color: #FFFFE0;"> '</span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">incanter core stats datasets charts io pdf</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #0000FF; background-color: #FFFFE0;">def</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #BA36A5; background-color: #FFFFE0;">hist</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">histogram </span><span style="color: #909183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">sample-normal 1000</span><span style="color: #909183; background-color: #FFFFE0;">)</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">save hist </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">str</span><span style="color: #000088; background-color: #FFFFE0;"> dir </span><span style="color: #008000; background-color: #FFFFE0;">"ob-clojure-literate.png"</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #555555; background-color: #E2E1D5;">#+end_src</span>
+<pre class="src src-org"><span style="color: #5C6370; font-style: italic;">#+HEADERS: :var cwd=(concat (file-name-directory (buffer-file-name)) "data/images/")</span>
+<span style="color: #828997; background-color: #363C47;">#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-literate.png"</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">use</span><span style="background-color: #2F333D;"> '</span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">incanter core stats datasets charts io pdf</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="color: #E06C75; background-color: #2F333D;">def</span><span style="background-color: #2F333D;"> </span><span style="color: #E5C07B; background-color: #2F333D;">hist</span><span style="background-color: #2F333D;"> </span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">histogram </span><span style="color: #61AFEF; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">sample-normal 1000</span><span style="color: #61AFEF; background-color: #2F333D;">)</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">save hist </span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">str</span><span style="background-color: #2F333D;"> cwd </span><span style="color: #98C379; background-color: #2F333D;">"ob-clojure-literate.png"</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #828997; background-color: #363C47;">#+end_src</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">use</span> '<span style="color: #7388D6;">(</span>incanter core stats datasets charts io pdf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">hist</span> <span style="color: #7388D6;">(</span>histogram <span style="color: #909183;">(</span>sample-normal 1000<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span>save hist <span style="color: #7388D6;">(</span><span style="color: #006FE0;">str</span> dir <span style="color: #008000;">"ob-clojure-literate.png"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-clojure"><span style="color: #56B6C2;">(</span><span style="color: #828997;">use</span> '<span style="color: #D19A66;">(</span>incanter core stats datasets charts io pdf<span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">def</span> <span style="color: #E5C07B;">hist</span> <span style="color: #D19A66;">(</span>histogram <span style="color: #61AFEF;">(</span>sample-normal 1000<span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span>save hist <span style="color: #D19A66;">(</span><span style="color: #828997;">str</span> cwd <span style="color: #98C379;">"ob-clojure-literate.png"</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -442,28 +445,28 @@ absolute path:
 </div>
 </div>
 
-<div id="outline-container-org05b073a" class="outline-3">
-<h3 id="org05b073a"><span class="section-number-3">1.4</span> use final solution by move image file to target path with Clojure function</h3>
+<div id="outline-container-org415f103" class="outline-3">
+<h3 id="org415f103"><span class="section-number-3">1.4</span> use final solution by move image file to target path with Clojure function</h3>
 <div class="outline-text-3" id="text-1-4">
 <div class="org-src-container">
-<pre class="src src-org"><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">use</span><span style="color: #000088; background-color: #FFFFE0;"> '</span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">incanter core stats datasets charts io pdf</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">import '</span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">java.io File</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
+<pre class="src src-org"><span style="color: #828997; background-color: #363C47;">#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">use</span><span style="background-color: #2F333D;"> '</span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">incanter core stats datasets charts io pdf</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">import '</span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">java.io File</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
 
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #0000FF; background-color: #FFFFE0;">def</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #BA36A5; background-color: #FFFFE0;">hist</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">histogram </span><span style="color: #909183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">sample-normal 1000</span><span style="color: #909183; background-color: #FFFFE0;">)</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">save hist </span><span style="color: #008000; background-color: #FFFFE0;">"ob-clojure-incanter-move.png"</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">.renameTo </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">File. </span><span style="color: #008000; background-color: #FFFFE0;">"ob-clojure-incanter-move.png"</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">File. </span><span style="color: #909183; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">str</span><span style="color: #000088; background-color: #FFFFE0;"> dir </span><span style="color: #008000; background-color: #FFFFE0;">"ob-clojure-incanter-move.png"</span><span style="color: #909183; background-color: #FFFFE0;">)</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #555555; background-color: #E2E1D5;">#+end_src</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="color: #E06C75; background-color: #2F333D;">def</span><span style="background-color: #2F333D;"> </span><span style="color: #E5C07B; background-color: #2F333D;">hist</span><span style="background-color: #2F333D;"> </span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">histogram </span><span style="color: #61AFEF; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">sample-normal 1000</span><span style="color: #61AFEF; background-color: #2F333D;">)</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">save hist </span><span style="color: #98C379; background-color: #2F333D;">"ob-clojure-incanter-move.png"</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">.renameTo </span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">File. </span><span style="color: #98C379; background-color: #2F333D;">"ob-clojure-incanter-move.png"</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="background-color: #2F333D;"> </span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">File. </span><span style="color: #61AFEF; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">str</span><span style="background-color: #2F333D;"> dir </span><span style="color: #98C379; background-color: #2F333D;">"ob-clojure-incanter-move.png"</span><span style="color: #61AFEF; background-color: #2F333D;">)</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #828997; background-color: #363C47;">#+end_src</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">use</span> '<span style="color: #7388D6;">(</span>incanter core stats datasets charts io pdf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span>import '<span style="color: #7388D6;">(</span>java.io File<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-clojure"><span style="color: #56B6C2;">(</span><span style="color: #828997;">use</span> '<span style="color: #D19A66;">(</span>incanter core stats datasets charts io pdf<span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span>import '<span style="color: #D19A66;">(</span>java.io File<span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 
-<span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">hist</span> <span style="color: #7388D6;">(</span>histogram <span style="color: #909183;">(</span>sample-normal 1000<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span>save hist <span style="color: #008000;">"ob-clojure-incanter-move.png"</span><span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span>.renameTo <span style="color: #7388D6;">(</span>File. <span style="color: #008000;">"ob-clojure-incanter-move.png"</span><span style="color: #7388D6;">)</span> <span style="color: #7388D6;">(</span>File. <span style="color: #909183;">(</span><span style="color: #006FE0;">str</span> dir <span style="color: #008000;">"ob-clojure-incanter-move.png"</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">def</span> <span style="color: #E5C07B;">hist</span> <span style="color: #D19A66;">(</span>histogram <span style="color: #61AFEF;">(</span>sample-normal 1000<span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span>save hist <span style="color: #98C379;">"ob-clojure-incanter-move.png"</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span>.renameTo <span style="color: #D19A66;">(</span>File. <span style="color: #98C379;">"ob-clojure-incanter-move.png"</span><span style="color: #D19A66;">)</span> <span style="color: #D19A66;">(</span>File. <span style="color: #61AFEF;">(</span><span style="color: #828997;">str</span> dir <span style="color: #98C379;">"ob-clojure-incanter-move.png"</span><span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -477,22 +480,22 @@ absolute path:
 </div>
 
 
-<div id="outline-container-orgc7489e8" class="outline-2">
-<h2 id="orgc7489e8"><span class="section-number-2">2</span> Incanter</h2>
+<div id="outline-container-org778c6a2" class="outline-2">
+<h2 id="org778c6a2"><span class="section-number-2">2</span> Incanter</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
-<pre class="src src-org"><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">use</span><span style="color: #000088; background-color: #FFFFE0;"> '</span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">incanter core stats datasets charts io pdf</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #0000FF; background-color: #FFFFE0;">def</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #BA36A5; background-color: #FFFFE0;">hist</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">histogram </span><span style="color: #909183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">sample-normal 1000</span><span style="color: #909183; background-color: #FFFFE0;">)</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">save hist </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">str</span><span style="color: #000088; background-color: #FFFFE0;"> dir </span><span style="color: #008000; background-color: #FFFFE0;">"ob-clojure-literate.png"</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #555555; background-color: #E2E1D5;">#+end_src</span>
+<pre class="src src-org"><span style="color: #828997; background-color: #363C47;">#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">use</span><span style="background-color: #2F333D;"> '</span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">incanter core stats datasets charts io pdf</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="color: #E06C75; background-color: #2F333D;">def</span><span style="background-color: #2F333D;"> </span><span style="color: #E5C07B; background-color: #2F333D;">hist</span><span style="background-color: #2F333D;"> </span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">histogram </span><span style="color: #61AFEF; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">sample-normal 1000</span><span style="color: #61AFEF; background-color: #2F333D;">)</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">save hist </span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">str</span><span style="background-color: #2F333D;"> dir </span><span style="color: #98C379; background-color: #2F333D;">"ob-clojure-literate.png"</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #828997; background-color: #363C47;">#+end_src</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">use</span> '<span style="color: #7388D6;">(</span>incanter core stats datasets charts io pdf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">hist</span> <span style="color: #7388D6;">(</span>histogram <span style="color: #909183;">(</span>sample-normal 1000<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
-<span style="color: #707183;">(</span>save hist <span style="color: #7388D6;">(</span><span style="color: #006FE0;">str</span> dir <span style="color: #008000;">"ob-clojure-literate.png"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-clojure"><span style="color: #56B6C2;">(</span><span style="color: #828997;">use</span> '<span style="color: #D19A66;">(</span>incanter core stats datasets charts io pdf<span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">def</span> <span style="color: #E5C07B;">hist</span> <span style="color: #D19A66;">(</span>histogram <span style="color: #61AFEF;">(</span>sample-normal 1000<span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span>save hist <span style="color: #D19A66;">(</span><span style="color: #828997;">str</span> dir <span style="color: #98C379;">"ob-clojure-literate.png"</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -505,20 +508,32 @@ absolute path:
 </div>
 
 
-<div id="outline-container-orge8bd272" class="outline-2">
-<h2 id="orge8bd272"><span class="section-number-2">3</span> clj-xchart</h2>
+<div id="outline-container-org20090f8" class="outline-2">
+<h2 id="org20090f8"><span class="section-number-2">3</span> clj-xchart</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-org"><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">require</span><span style="color: #000088; background-color: #FFFFE0;"> '</span><span style="color: #7388D6; background-color: #FFFFE0;">[</span><span style="color: #000088; background-color: #FFFFE0;">com.hypirion.clj-xchart </span><span style="color: #D0372D; background-color: #FFFFE0;">:as</span><span style="color: #000088; background-color: #FFFFE0;"> xchart</span><span style="color: #7388D6; background-color: #FFFFE0;">]</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
+<pre class="src src-org"><span style="color: #828997; background-color: #363C47;">#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">require</span><span style="background-color: #2F333D;"> '</span><span style="color: #D19A66; background-color: #2F333D;">[</span><span style="background-color: #2F333D;">com.hypirion.clj-xchart </span><span style="color: #98C379; background-color: #2F333D;">:as</span><span style="background-color: #2F333D;"> xchart</span><span style="color: #D19A66; background-color: #2F333D;">]</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
 
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #0000FF; background-color: #FFFFE0;">def</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #BA36A5; background-color: #FFFFE0;">ob-clojure-clj-xchart</span>
-<span style="color: #000088; background-color: #FFFFE0;">  </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #6434A3; background-color: #FFFFE0;">xchart</span><span style="color: #000088; background-color: #FFFFE0;">/xy-chart </span><span style="color: #909183; background-color: #FFFFE0;">{</span><span style="color: #008000; background-color: #FFFFE0;">"Expected rate"</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #709870; background-color: #FFFFE0;">[</span><span style="color: #907373; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">range</span><span style="color: #000088; background-color: #FFFFE0;"> 10</span><span style="color: #907373; background-color: #FFFFE0;">)</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #907373; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">range</span><span style="color: #000088; background-color: #FFFFE0;"> 10</span><span style="color: #907373; background-color: #FFFFE0;">)</span><span style="color: #709870; background-color: #FFFFE0;">]</span>
-<span style="color: #000088; background-color: #FFFFE0;">                    </span><span style="color: #008000; background-color: #FFFFE0;">"Actual rate"</span><span style="color: #000088; background-color: #FFFFE0;">   </span><span style="color: #709870; background-color: #FFFFE0;">[</span><span style="color: #907373; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">range</span><span style="color: #000088; background-color: #FFFFE0;"> 10</span><span style="color: #907373; background-color: #FFFFE0;">)</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #907373; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">map</span><span style="color: #000088; background-color: #FFFFE0;"> #</span><span style="color: #6276BA; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">+ </span><span style="color: #BA36A5; background-color: #FFFFE0;">%</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #858580; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">rand-int</span><span style="color: #000088; background-color: #FFFFE0;"> 5</span><span style="color: #858580; background-color: #FFFFE0;">)</span><span style="color: #000088; background-color: #FFFFE0;"> -2</span><span style="color: #6276BA; background-color: #FFFFE0;">)</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #6276BA; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">range</span><span style="color: #000088; background-color: #FFFFE0;"> 10</span><span style="color: #6276BA; background-color: #FFFFE0;">)</span><span style="color: #907373; background-color: #FFFFE0;">)</span><span style="color: #709870; background-color: #FFFFE0;">]</span><span style="color: #909183; background-color: #FFFFE0;">}</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="color: #E06C75; background-color: #2F333D;">def</span><span style="background-color: #2F333D;"> </span><span style="color: #E5C07B; background-color: #2F333D;">ob-clojure-clj-xchart</span>
+<span style="background-color: #2F333D;">  </span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="color: #61AFEF; background-color: #2F333D;">xchart</span><span style="background-color: #2F333D;">/xy-chart </span><span style="color: #61AFEF; background-color: #2F333D;">{</span><span style="color: #98C379; background-color: #2F333D;">"Expected rate"</span><span style="background-color: #2F333D;"> </span><span style="color: #C678DD; background-color: #2F333D;">[</span><span style="color: #98C379; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">range</span><span style="background-color: #2F333D;"> 10</span><span style="color: #98C379; background-color: #2F333D;">)</span><span style="background-color: #2F333D;"> </span><span style="color: #98C379; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">range</span><span style="background-color: #2F333D;"> 10</span><span style="color: #98C379; background-color: #2F333D;">)</span><span style="color: #C678DD; background-color: #2F333D;">]</span>
+<span style="background-color: #2F333D;">                    </span><span style="color: #98C379; background-color: #2F333D;">"Actual rate"</span><span style="background-color: #2F333D;">   </span><span style="color: #C678DD; background-color: #2F333D;">[</span><span style="color: #98C379; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">range</span><span style="background-color: #2F333D;"> 10</span><span style="color: #98C379; background-color: #2F333D;">)</span><span style="background-color: #2F333D;"> </span><span style="color: #98C379; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">map</span><span style="background-color: #2F333D;"> #</span><span style="color: #BE5046; background-color: #2F333D;">(</span><span style="background-color: #2F333D;">+ </span><span style="color: #E5C07B; background-color: #2F333D;">%</span><span style="background-color: #2F333D;"> </span><span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">rand-int</span><span style="background-color: #2F333D;"> 5</span><span style="color: #56B6C2; background-color: #2F333D;">)</span><span style="background-color: #2F333D;"> -2</span><span style="color: #BE5046; background-color: #2F333D;">)</span><span style="background-color: #2F333D;"> </span><span style="color: #BE5046; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">range</span><span style="background-color: #2F333D;"> 10</span><span style="color: #BE5046; background-color: #2F333D;">)</span><span style="color: #98C379; background-color: #2F333D;">)</span><span style="color: #C678DD; background-color: #2F333D;">]</span><span style="color: #61AFEF; background-color: #2F333D;">}</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
 
-<span style="color: #8D8D84; background-color: #FFFFE0;">;; </span><span style="color: #8D8D84; background-color: #FFFFE0; font-style: italic;">(xchart/view ob-clojure-clj-xchart)</span>
-<span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #6434A3; background-color: #FFFFE0;">xchart</span><span style="color: #000088; background-color: #FFFFE0;">/</span><span style="color: #006FE0; background-color: #FFFFE0;">spit</span><span style="color: #000088; background-color: #FFFFE0;"> ob-clojure-clj-xchart </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #006FE0; background-color: #FFFFE0;">str</span><span style="color: #000088; background-color: #FFFFE0;"> dir </span><span style="color: #008000; background-color: #FFFFE0;">"ob-clojure-clj-xchart.png"</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span>
-<span style="color: #555555; background-color: #E2E1D5;">#+end_src</span>
+<span style="color: #5C6370; background-color: #2F333D; font-style: italic;">;; </span><span style="color: #5C6370; background-color: #2F333D; font-style: italic;">(xchart/view ob-clojure-clj-xchart)</span>
+<span style="color: #56B6C2; background-color: #2F333D;">(</span><span style="color: #61AFEF; background-color: #2F333D;">xchart</span><span style="background-color: #2F333D;">/</span><span style="color: #828997; background-color: #2F333D;">spit</span><span style="background-color: #2F333D;"> ob-clojure-clj-xchart </span><span style="color: #D19A66; background-color: #2F333D;">(</span><span style="color: #828997; background-color: #2F333D;">str</span><span style="background-color: #2F333D;"> dir </span><span style="color: #98C379; background-color: #2F333D;">"ob-clojure-clj-xchart.png"</span><span style="color: #D19A66; background-color: #2F333D;">)</span><span style="color: #56B6C2; background-color: #2F333D;">)</span>
+<span style="color: #828997; background-color: #363C47;">#+end_src</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #56B6C2;">(</span><span style="color: #828997;">require</span> '<span style="color: #D19A66;">[</span>com.hypirion.clj-xchart <span style="color: #98C379;">:as</span> xchart<span style="color: #D19A66;">]</span><span style="color: #56B6C2;">)</span>
+
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">def</span> <span style="color: #E5C07B;">ob-clojure-clj-xchart</span>
+  <span style="color: #D19A66;">(</span><span style="color: #61AFEF;">xchart</span>/xy-chart <span style="color: #61AFEF;">{</span><span style="color: #98C379;">"Expected rate"</span> <span style="color: #C678DD;">[</span><span style="color: #98C379;">(</span><span style="color: #828997;">range</span> 10<span style="color: #98C379;">)</span> <span style="color: #98C379;">(</span><span style="color: #828997;">range</span> 10<span style="color: #98C379;">)</span><span style="color: #C678DD;">]</span>
+                    <span style="color: #98C379;">"Actual rate"</span>   <span style="color: #C678DD;">[</span><span style="color: #98C379;">(</span><span style="color: #828997;">range</span> 10<span style="color: #98C379;">)</span> <span style="color: #98C379;">(</span><span style="color: #828997;">map</span> #<span style="color: #BE5046;">(</span>+ <span style="color: #E5C07B;">%</span> <span style="color: #56B6C2;">(</span><span style="color: #828997;">rand-int</span> 5<span style="color: #56B6C2;">)</span> -2<span style="color: #BE5046;">)</span> <span style="color: #BE5046;">(</span><span style="color: #828997;">range</span> 10<span style="color: #BE5046;">)</span><span style="color: #98C379;">)</span><span style="color: #C678DD;">]</span><span style="color: #61AFEF;">}</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
+
+<span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">(xchart/view ob-clojure-clj-xchart)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #61AFEF;">xchart</span>/<span style="color: #828997;">spit</span> ob-clojure-clj-xchart <span style="color: #D19A66;">(</span><span style="color: #828997;">str</span> dir <span style="color: #98C379;">"ob-clojure-clj-xchart.png"</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -531,21 +546,21 @@ absolute path:
 </div>
 
 
-<div id="outline-container-org42be35b" class="outline-2">
-<h2 id="org42be35b"><span class="section-number-2">4</span> ggplot2</h2>
+<div id="outline-container-org9b8f7d9" class="outline-2">
+<h2 id="org9b8f7d9"><span class="section-number-2">4</span> ggplot2</h2>
 </div>
 
 
 
 
-<div id="outline-container-orga63110e" class="outline-2">
-<h2 id="orga63110e"><span class="section-number-2">5</span> jutsu</h2>
+<div id="outline-container-orgd50211a" class="outline-2">
+<h2 id="orgd50211a"><span class="section-number-2">5</span> jutsu</h2>
 </div>
 
 
 
-<div id="outline-container-orgc548774" class="outline-2">
-<h2 id="orgc548774"><span class="section-number-2">6</span> References</h2>
+<div id="outline-container-org0d9f6f2" class="outline-2">
+<h2 id="org0d9f6f2"><span class="section-number-2">6</span> References</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 I also posted this method on Org Mode Worg documentations:
@@ -555,30 +570,33 @@ I also posted this method on Org Mode Worg documentations:
 </div>
 
 
-<div id="outline-container-org96a60c5" class="outline-2">
-<h2 id="org96a60c5"><span class="section-number-2">7</span> Make use of CIDER new support of image content-type</h2>
+<div id="outline-container-orge42cbda" class="outline-2">
+<h2 id="orge42cbda"><span class="section-number-2">7</span> Make use of CIDER new support of image content-type</h2>
 <div class="outline-text-2" id="text-7">
 <p>
-Since the PR <a href="https://github.com/clojure-emacs/cider-nrepl/pull/517">https://github.com/clojure-emacs/cider-nrepl/pull/517</a> got merged into CIDER.
-It is realsed in CIDER 0.17 (Andalucía).
+Since the PR <a href="https://github.com/clojure-emacs/cider-nrepl/pull/517">https://github.com/clojure-emacs/cider-nrepl/pull/517</a> got merged
+into CIDER. It is realsed in CIDER 0.17 (Andalucía).
 </p>
 
 <p>
-CIDER in Emacs can handle various image content-types now and render image in the REPL.
+CIDER in Emacs can handle various image content-types now and render image in
+the REPL.
 </p>
 
 <p>
-I'm considering how to integrate this feature into <code>ob-clojure.el</code> to save image content-type as file.
+I'm considering how to integrate this feature into <code>ob-clojure.el</code> to save image
+content-type as file.
 </p>
 </div>
 </div>
 
 
-<div id="outline-container-org0d99821" class="outline-2">
-<h2 id="org0d99821"><span class="section-number-2">8</span> Literaral Org-mode version</h2>
+<div id="outline-container-orga5ab419" class="outline-2">
+<h2 id="orga5ab419"><span class="section-number-2">8</span> Literaral Org-mode version</h2>
 <div class="outline-text-2" id="text-8">
 <p>
-If you want to see Literal Org-mode version of this post, click the "Show Org Source" button!
+If you want to see Literal Org-mode version of this post, click the "Show Org
+Source" button!
 </p>
 </div>
 </div>
@@ -586,8 +604,8 @@ If you want to see Literal Org-mode version of this post, click the "Show Org So
 <div id="postamble" class="status">
 <footer>
   Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
-  Last update date: 2018-05-28 Mon 11:09.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.1.13). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
+  Last update date: 2019-02-15 Fri 20:24.<br>
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.2). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
   
   <!-- Show Org Source -->
   <script>
@@ -603,16 +621,9 @@ If you want to see Literal Org-mode version of this post, click the "Show Org So
 
 <!-- jump to beginning -->
 <div id="jumptobeginning">
-  <a href="#content">Jump to Beginning</a>
-  <style>
-   #jumptobeginning {
-     text-decoration: none;
-     display: block;
-     
-     float: right;
-     background-color: #D0D0D0;
-   }
-  </style>
+  <a href="#content" alt="Back to Top" style="text-decoration: none;">
+    <i id="backtotop" style="color: lightsalmon;"></i>
+  </a>
 </div>
 
 <!-- payment -->
@@ -628,49 +639,49 @@ If you want to see Literal Org-mode version of this post, click the "Show Org So
 </div>
 
 <!-- Google Analytics -->
-<script async src="//www.google-analytics.com/analytics.js"></script>
-<script type="text/javascript">
- (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+     <script type="text/javascript">
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
- ga('create', 'UA-63992234-1', 'auto');
- ga('send', 'pageview');
-</script>
+     ga('create', 'UA-63992234-1', 'auto');
+     ga('send', 'pageview');
+     </script> -->
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
-<script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+     <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
 
- gtag('config', 'UA-63992234-1');
-</script>
+     gtag('config', 'UA-63992234-1');
+     </script> -->
 
 <!-- Disqus -->
-<div class="comments">
-  <style>
-   /* hide comment policy */
-   .comment-policy {
+<!-- <div class="comments">
+     <style>
+     /* hide comment policy */
+     .comment-policy {
      display: none;
-   }
-   /* hide Disqus footer */
-   .disqus-footer__wrapper {
+     }
+     /* hide Disqus footer */
+     .disqus-footer__wrapper {
      display: none;
-   } 
-  </style>
-  
-  <div id="disqus_thread"></div>
-  <script>
-   (function() {
+     } 
+     </style>
+     
+     <div id="disqus_thread"></div>
+     <script>
+     (function() {
      var d = document, s = d.createElement('script');
      s.src = 'https://stardiviner.disqus.com/embed.js';
      s.setAttribute('data-timestamp', +new Date());
      (d.head || d.body).appendChild(s);
-   })();
-  </script>
-</div>
+     })();
+     </script>
+     </div> -->
 </div>
 </body>
 </html>

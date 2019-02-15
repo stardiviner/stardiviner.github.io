@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2018-09-28 Fri 12:40 -->
+<!-- 2019-02-15 Fri 20:48 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Make company-mode support for nginx-mode</title>
@@ -191,7 +191,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32">
 <script type="text/javascript" src="/assets/scripts/org-info-src.js">
 /**
  *
@@ -200,7 +200,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in /assets/scripts/org-info-src.js.
  *
- * Copyright (C) 2012-2018 Free Software Foundation, Inc.
+ * Copyright (C) 2012-2019 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -229,7 +229,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -268,7 +268,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -334,21 +334,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org06a60b0">1. At the beginning</a></li>
-<li><a href="#orgce93fa6">2. Fetch all Nginx directives</a>
+<li><a href="#org692cf0f">1. At the beginning</a></li>
+<li><a href="#org66de8f0">2. Fetch all Nginx directives</a>
 <ul>
-<li><a href="#orgd974937">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
-<li><a href="#orgecad8f3">2.2. another Python implementation</a></li>
+<li><a href="#org79eef3e">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
+<li><a href="#org4afad06">2.2. another Python implementation</a></li>
 </ul>
 </li>
-<li><a href="#orgee738ac">3. company-keywords-alist</a></li>
-<li><a href="#org60f96bc">4. created package company-nginx</a></li>
+<li><a href="#org027ccc3">3. company-keywords-alist</a></li>
+<li><a href="#org3d76481">4. created package company-nginx</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org06a60b0" class="outline-2">
-<h2 id="org06a60b0"><span class="section-number-2">1</span> At the beginning</h2>
+<div id="outline-container-org692cf0f" class="outline-2">
+<h2 id="org692cf0f"><span class="section-number-2">1</span> At the beginning</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I'm learning a little about Nginx recently, I hope can setup web server by myself
@@ -368,27 +368,27 @@ too.
 </div>
 
 
-<div id="outline-container-orgce93fa6" class="outline-2">
-<h2 id="orgce93fa6"><span class="section-number-2">2</span> Fetch all Nginx directives</h2>
+<div id="outline-container-org66de8f0" class="outline-2">
+<h2 id="org66de8f0"><span class="section-number-2">2</span> Fetch all Nginx directives</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgd974937" class="outline-3">
-<h3 id="orgd974937"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
+<div id="outline-container-org79eef3e" class="outline-3">
+<h3 id="org79eef3e"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #707183;">(</span><span style="color: #0000FF;">require</span> '<span style="color: #D0372D;">elquery</span><span style="color: #707183;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">require</span> '<span style="color: #98C379;">elquery</span><span style="color: #56B6C2;">)</span>
 
-<span style="color: #707183;">(</span><span style="color: #0000FF;">with-current-buffer</span> <span style="color: #7388D6;">(</span>url-retrieve-synchronously <span style="color: #008000;">"https://nginx.org/en/docs/dirindex.html"</span><span style="color: #7388D6;">)</span>
-  <span style="color: #7388D6;">(</span>message <span style="color: #008000;">"%S"</span>
-           <span style="color: #909183;">(</span>elquery-$ <span style="color: #008000;">"body #main #content p"</span>
-                      <span style="color: #709870;">(</span>elquery-read-string <span style="color: #907373;">(</span>buffer-string<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">with-current-buffer</span> <span style="color: #D19A66;">(</span>url-retrieve-synchronously <span style="color: #98C379;">"https://nginx.org/en/docs/dirindex.html"</span><span style="color: #D19A66;">)</span>
+  <span style="color: #D19A66;">(</span>message <span style="color: #98C379;">"%S"</span>
+           <span style="color: #61AFEF;">(</span>elquery-$ <span style="color: #98C379;">"body #main #content p"</span>
+                      <span style="color: #C678DD;">(</span>elquery-read-string <span style="color: #98C379;">(</span>buffer-string<span style="color: #98C379;">)</span><span style="color: #C678DD;">)</span><span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 
-<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">(</span><span style="color: #909183;">(</span>html <span style="color: #709870;">(</span><span style="color: #0000FF;">with-current-buffer</span>
-                <span style="color: #907373;">(</span>set-buffer-multibyte nil<span style="color: #907373;">)</span>
-              <span style="color: #907373;">(</span>url-retrieve-synchronously <span style="color: #008000;">"https://nginx.org/en/docs/dirindex.html"</span><span style="color: #907373;">)</span>
-              <span style="color: #907373;">(</span>elquery-read-string
-               <span style="color: #6276BA;">(</span>buffer-string<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span>
-  <span style="color: #7388D6;">(</span>elquery-$ <span style="color: #008000;">"#content p"</span> html<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">let</span> <span style="color: #D19A66;">(</span><span style="color: #61AFEF;">(</span>html <span style="color: #C678DD;">(</span><span style="color: #E06C75;">with-current-buffer</span>
+                <span style="color: #98C379;">(</span>set-buffer-multibyte nil<span style="color: #98C379;">)</span>
+              <span style="color: #98C379;">(</span>url-retrieve-synchronously <span style="color: #98C379;">"https://nginx.org/en/docs/dirindex.html"</span><span style="color: #98C379;">)</span>
+              <span style="color: #98C379;">(</span>elquery-read-string
+               <span style="color: #BE5046;">(</span>buffer-string<span style="color: #BE5046;">)</span><span style="color: #98C379;">)</span><span style="color: #C678DD;">)</span><span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span>
+  <span style="color: #D19A66;">(</span>elquery-$ <span style="color: #98C379;">"#content p"</span> html<span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -402,30 +402,30 @@ too.
 </div>
 </div>
 
-<div id="outline-container-orgecad8f3" class="outline-3">
-<h3 id="orgecad8f3"><span class="section-number-3">2.2</span> another Python implementation</h3>
+<div id="outline-container-org4afad06" class="outline-3">
+<h3 id="org4afad06"><span class="section-number-3">2.2</span> another Python implementation</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
-<pre class="src src-python" id="orgaa940f2"><span style="color: #0000FF;">import</span> urllib.request
-<span style="color: #0000FF;">import</span> urllib.parse
-<span style="color: #0000FF;">import</span> bs4
+<pre class="src src-python" id="org87e1bb3"><span style="color: #E06C75;">import</span> urllib.request
+<span style="color: #E06C75;">import</span> urllib.parse
+<span style="color: #E06C75;">import</span> bs4
 
-<span style="color: #BA36A5;">req</span> = urllib.request.Request(<span style="color: #008000;">"https://nginx.org/en/docs/dirindex.html"</span>)
-<span style="color: #BA36A5;">respond</span> = urllib.request.urlopen(req)
-<span style="color: #BA36A5;">html_page</span> = respond.read().decode(<span style="color: #008000;">"utf-8"</span>)
-<span style="color: #BA36A5;">parsed_html</span> = bs4.BeautifulSoup(html_page, <span style="color: #008000;">"html"</span>)
-<span style="color: #BA36A5;">p</span> = parsed_html.find(<span style="color: #008000;">'div'</span>, attrs={<span style="color: #008000;">'id'</span>: <span style="color: #008000;">'content'</span>}).find(<span style="color: #008000;">'p'</span>)
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">print(p)</span>
+<span style="color: #E5C07B;">req</span> = urllib.request.Request(<span style="color: #98C379;">"https://nginx.org/en/docs/dirindex.html"</span>)
+<span style="color: #E5C07B;">respond</span> = urllib.request.urlopen(req)
+<span style="color: #E5C07B;">html_page</span> = respond.read().decode(<span style="color: #98C379;">"utf-8"</span>)
+<span style="color: #E5C07B;">parsed_html</span> = bs4.BeautifulSoup(html_page, <span style="color: #98C379;">"html"</span>)
+<span style="color: #E5C07B;">p</span> = parsed_html.find(<span style="color: #98C379;">'div'</span>, attrs={<span style="color: #98C379;">'id'</span>: <span style="color: #98C379;">'content'</span>}).find(<span style="color: #98C379;">'p'</span>)
+<span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">print(p)</span>
 
-<span style="color: #BA36A5;">a</span> = p.find_all(<span style="color: #008000;">'a'</span>)
-<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">print(a)</span>
+<span style="color: #E5C07B;">a</span> = p.find_all(<span style="color: #98C379;">'a'</span>)
+<span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">print(a)</span>
 
-<span style="color: #BA36A5;">directives</span> = []
+<span style="color: #E5C07B;">directives</span> = []
 
-<span style="color: #0000FF;">for</span> x <span style="color: #0000FF;">in</span> a:
+<span style="color: #E06C75;">for</span> x <span style="color: #E06C75;">in</span> a:
     directives.append(x.text)
 
-<span style="color: #0000FF;">print</span>(directives)
+<span style="color: #E06C75;">print</span>(directives)
 </pre>
 </div>
 
@@ -434,29 +434,29 @@ Convert result to Elisp list data structure:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #707183;">(</span><span style="color: #0000FF;">setq</span> nginx-directives
-      <span style="color: #7388D6;">(</span>mapcar
-       <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>element<span style="color: #709870;">)</span>
-         <span style="color: #709870;">(</span>replace-regexp-in-string <span style="color: #008000;">" "</span> <span style="color: #008000;">""</span> element<span style="color: #709870;">)</span><span style="color: #909183;">)</span>
-       <span style="color: #909183;">(</span>split-string
-        <span style="color: #709870;">(</span>replace-regexp-in-string
-         <span style="color: #008000;">"\\[</span><span style="color: #D0372D; font-weight: bold;">\\</span><span style="color: #D0372D; font-weight: bold;">|</span><span style="color: #D0372D;">\\</span><span style="color: #008000;">]"</span> <span style="color: #008000;">""</span>
-         <span style="color: #907373;">(</span>replace-regexp-in-string
-          <span style="color: #008000;">"'"</span> <span style="color: #008000;">""</span>
-          directives<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-        <span style="color: #008000;">","</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">setq</span> nginx-directives
+      <span style="color: #D19A66;">(</span>mapcar
+       <span style="color: #61AFEF;">(</span><span style="color: #E06C75;">lambda</span> <span style="color: #C678DD;">(</span>element<span style="color: #C678DD;">)</span>
+         <span style="color: #C678DD;">(</span>replace-regexp-in-string <span style="color: #98C379;">" "</span> <span style="color: #98C379;">""</span> element<span style="color: #C678DD;">)</span><span style="color: #61AFEF;">)</span>
+       <span style="color: #61AFEF;">(</span>split-string
+        <span style="color: #C678DD;">(</span>replace-regexp-in-string
+         <span style="color: #98C379;">"\\[</span><span style="color: #E5C07B;">\\</span><span style="color: #C678DD;">|</span><span style="color: #98C379;">\\</span><span style="color: #98C379;">]"</span> <span style="color: #98C379;">""</span>
+         <span style="color: #98C379;">(</span>replace-regexp-in-string
+          <span style="color: #98C379;">"'"</span> <span style="color: #98C379;">""</span>
+          directives<span style="color: #98C379;">)</span><span style="color: #C678DD;">)</span>
+        <span style="color: #98C379;">","</span><span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 
-<span style="color: #707183;">(</span>print nginx-directives<span style="color: #707183;">)</span>
+<span style="color: #56B6C2;">(</span>print nginx-directives<span style="color: #56B6C2;">)</span>
 
-<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">(replace-regexp-in-string "\\[</span><span style="color: #D0372D; font-style: italic;">\\|\\</span><span style="color: #8D8D84; font-style: italic;">]" "" directives)</span>
+<span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">(replace-regexp-in-string "\\[</span><span style="color: #98C379; font-style: italic;">\\|\\</span><span style="color: #5C6370; font-style: italic;">]" "" directives)</span>
 
-<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">(replace-regexp-in-string</span>
-<span style="color: #8D8D84;">;;  </span><span style="color: #8D8D84; font-style: italic;">"'" ""</span>
-<span style="color: #8D8D84;">;;  </span><span style="color: #8D8D84; font-style: italic;">(replace-regexp-in-string "\\[</span><span style="color: #D0372D; font-style: italic;">\\|\\</span><span style="color: #8D8D84; font-style: italic;">]" "" "['a', 'b']"))</span>
+<span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">(replace-regexp-in-string</span>
+<span style="color: #5C6370; font-style: italic;">;;  </span><span style="color: #5C6370; font-style: italic;">"'" ""</span>
+<span style="color: #5C6370; font-style: italic;">;;  </span><span style="color: #5C6370; font-style: italic;">(replace-regexp-in-string "\\[</span><span style="color: #98C379; font-style: italic;">\\|\\</span><span style="color: #5C6370; font-style: italic;">]" "" "['a', 'b']"))</span>
 
-<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">prepend nginx-mode element for `</span><span style="color: #D0372D; font-style: italic;">company-keywords-alist</span><span style="color: #8D8D84; font-style: italic;">'</span>
-<span style="color: #707183;">(</span>add-to-list 'company-keywords-alist
-             <span style="color: #7388D6;">(</span>cons 'nginx-mode nginx-directives<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #5C6370; font-style: italic;">;;; </span><span style="color: #5C6370; font-style: italic;">prepend nginx-mode element for `</span><span style="color: #98C379; font-style: italic;">company-keywords-alist</span><span style="color: #5C6370; font-style: italic;">'</span>
+<span style="color: #56B6C2;">(</span>add-to-list 'company-keywords-alist
+             <span style="color: #D19A66;">(</span>cons 'nginx-mode nginx-directives<span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -497,196 +497,196 @@ Convert result to Elisp list data structure:
 </div>
 
 
-<div id="outline-container-orgee738ac" class="outline-2">
-<h2 id="orgee738ac"><span class="section-number-2">3</span> company-keywords-alist</h2>
+<div id="outline-container-org027ccc3" class="outline-2">
+<h2 id="org027ccc3"><span class="section-number-2">3</span> company-keywords-alist</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #707183;">(</span><span style="color: #0000FF;">defun</span> <span style="color: #006699;">company-nginx-keywords</span> <span style="color: #7388D6;">()</span>
-  <span style="color: #7388D6;">(</span>add-to-list 'company-keywords-alist
-               '<span style="color: #909183;">(</span>nginx-mode
-                 <span style="color: #008000;">"absolute_redirect"</span> <span style="color: #008000;">"accept_mutex"</span> <span style="color: #008000;">"accept_mutex_delay"</span> <span style="color: #008000;">"access_log"</span> <span style="color: #008000;">"access_log"</span>
-                 <span style="color: #008000;">"add_after_body"</span> <span style="color: #008000;">"add_before_body"</span> <span style="color: #008000;">"add_header"</span> <span style="color: #008000;">"add_trailer"</span> <span style="color: #008000;">"addition_types"</span> <span style="color: #008000;">"aio"</span>
-                 <span style="color: #008000;">"aio_write"</span> <span style="color: #008000;">"alias"</span> <span style="color: #008000;">"allow"</span> <span style="color: #008000;">"allow"</span> <span style="color: #008000;">"ancient_browser"</span> <span style="color: #008000;">"ancient_browser_value"</span> <span style="color: #008000;">"api"</span>
-                 <span style="color: #008000;">"auth_basic"</span> <span style="color: #008000;">"auth_basic_user_file"</span> <span style="color: #008000;">"auth_http"</span> <span style="color: #008000;">"auth_http_header"</span>
-                 <span style="color: #008000;">"auth_http_pass_client_cert"</span> <span style="color: #008000;">"auth_http_timeout"</span> <span style="color: #008000;">"auth_jwt"</span> <span style="color: #008000;">"auth_jwt_claim_set"</span>
-                 <span style="color: #008000;">"auth_jwt_header_set"</span> <span style="color: #008000;">"auth_jwt_key_file"</span> <span style="color: #008000;">"auth_jwt_leeway"</span> <span style="color: #008000;">"auth_request"</span>
-                 <span style="color: #008000;">"auth_request_set"</span> <span style="color: #008000;">"autoindex"</span> <span style="color: #008000;">"autoindex_exact_size"</span> <span style="color: #008000;">"autoindex_format"</span>
-                 <span style="color: #008000;">"autoindex_localtime"</span> <span style="color: #008000;">"break"</span> <span style="color: #008000;">"charset"</span> <span style="color: #008000;">"charset_map"</span> <span style="color: #008000;">"charset_types"</span>
-                 <span style="color: #008000;">"chunked_transfer_encoding"</span> <span style="color: #008000;">"client_body_buffer_size"</span> <span style="color: #008000;">"client_body_in_file_only"</span>
-                 <span style="color: #008000;">"client_body_in_single_buffer"</span> <span style="color: #008000;">"client_body_temp_path"</span> <span style="color: #008000;">"client_body_timeout"</span>
-                 <span style="color: #008000;">"client_header_buffer_size"</span> <span style="color: #008000;">"client_header_timeout"</span> <span style="color: #008000;">"client_max_body_size"</span>
-                 <span style="color: #008000;">"connection_pool_size"</span> <span style="color: #008000;">"create_full_put_path"</span> <span style="color: #008000;">"daemon"</span> <span style="color: #008000;">"dav_access"</span> <span style="color: #008000;">"dav_methods"</span>
-                 <span style="color: #008000;">"debug_connection"</span> <span style="color: #008000;">"debug_points"</span> <span style="color: #008000;">"default_type"</span> <span style="color: #008000;">"deny"</span> <span style="color: #008000;">"deny"</span> <span style="color: #008000;">"directio"</span>
-                 <span style="color: #008000;">"directio_alignment"</span> <span style="color: #008000;">"disable_symlinks"</span> <span style="color: #008000;">"empty_gif"</span> <span style="color: #008000;">"env"</span> <span style="color: #008000;">"error_log"</span> <span style="color: #008000;">"error_page"</span> <span style="color: #008000;">"etag"</span>
-                 <span style="color: #008000;">"events"</span> <span style="color: #008000;">"expires"</span> <span style="color: #008000;">"f4f"</span> <span style="color: #008000;">"f4f_buffer_size"</span> <span style="color: #008000;">"fastcgi_bind"</span> <span style="color: #008000;">"fastcgi_buffer_size"</span>
-                 <span style="color: #008000;">"fastcgi_buffering"</span> <span style="color: #008000;">"fastcgi_buffers"</span> <span style="color: #008000;">"fastcgi_busy_buffers_size"</span> <span style="color: #008000;">"fastcgi_cache"</span>
-                 <span style="color: #008000;">"fastcgi_cache_background_update"</span> <span style="color: #008000;">"fastcgi_cache_bypass"</span> <span style="color: #008000;">"fastcgi_cache_key"</span>
-                 <span style="color: #008000;">"fastcgi_cache_lock"</span> <span style="color: #008000;">"fastcgi_cache_lock_age"</span> <span style="color: #008000;">"fastcgi_cache_lock_timeout"</span>
-                 <span style="color: #008000;">"fastcgi_cache_max_range_offset"</span> <span style="color: #008000;">"fastcgi_cache_methods"</span> <span style="color: #008000;">"fastcgi_cache_min_uses"</span>
-                 <span style="color: #008000;">"fastcgi_cache_path"</span> <span style="color: #008000;">"fastcgi_cache_purge"</span> <span style="color: #008000;">"fastcgi_cache_revalidate"</span>
-                 <span style="color: #008000;">"fastcgi_cache_use_stale"</span> <span style="color: #008000;">"fastcgi_cache_valid"</span> <span style="color: #008000;">"fastcgi_catch_stderr"</span>
-                 <span style="color: #008000;">"fastcgi_connect_timeout"</span> <span style="color: #008000;">"fastcgi_force_ranges"</span> <span style="color: #008000;">"fastcgi_hide_header"</span>
-                 <span style="color: #008000;">"fastcgi_ignore_client_abort"</span> <span style="color: #008000;">"fastcgi_ignore_headers"</span> <span style="color: #008000;">"fastcgi_index"</span>
-                 <span style="color: #008000;">"fastcgi_intercept_errors"</span> <span style="color: #008000;">"fastcgi_keep_conn"</span> <span style="color: #008000;">"fastcgi_limit_rate"</span>
-                 <span style="color: #008000;">"fastcgi_max_temp_file_size"</span> <span style="color: #008000;">"fastcgi_next_upstream"</span> <span style="color: #008000;">"fastcgi_next_upstream_timeout"</span>
-                 <span style="color: #008000;">"fastcgi_next_upstream_tries"</span> <span style="color: #008000;">"fastcgi_no_cache"</span> <span style="color: #008000;">"fastcgi_param"</span> <span style="color: #008000;">"fastcgi_pass"</span>
-                 <span style="color: #008000;">"fastcgi_pass_header"</span> <span style="color: #008000;">"fastcgi_pass_request_body"</span> <span style="color: #008000;">"fastcgi_pass_request_headers"</span>
-                 <span style="color: #008000;">"fastcgi_read_timeout"</span> <span style="color: #008000;">"fastcgi_request_buffering"</span> <span style="color: #008000;">"fastcgi_send_lowat"</span>
-                 <span style="color: #008000;">"fastcgi_send_timeout"</span> <span style="color: #008000;">"fastcgi_split_path_info"</span> <span style="color: #008000;">"fastcgi_store"</span> <span style="color: #008000;">"fastcgi_store_access"</span>
-                 <span style="color: #008000;">"fastcgi_temp_file_write_size"</span> <span style="color: #008000;">"fastcgi_temp_path"</span> <span style="color: #008000;">"flv"</span> <span style="color: #008000;">"geo"</span> <span style="color: #008000;">"geo"</span> <span style="color: #008000;">"geoip_city"</span>
-                 <span style="color: #008000;">"geoip_city"</span> <span style="color: #008000;">"geoip_country"</span> <span style="color: #008000;">"geoip_country"</span> <span style="color: #008000;">"geoip_org"</span> <span style="color: #008000;">"geoip_org"</span> <span style="color: #008000;">"geoip_proxy"</span>
-                 <span style="color: #008000;">"geoip_proxy_recursive"</span> <span style="color: #008000;">"google_perftools_profiles"</span> <span style="color: #008000;">"grpc_bind"</span> <span style="color: #008000;">"grpc_buffer_size"</span>
-                 <span style="color: #008000;">"grpc_connect_timeout"</span> <span style="color: #008000;">"grpc_hide_header"</span> <span style="color: #008000;">"grpc_ignore_headers"</span> <span style="color: #008000;">"grpc_intercept_errors"</span>
-                 <span style="color: #008000;">"grpc_next_upstream"</span> <span style="color: #008000;">"grpc_next_upstream_timeout"</span> <span style="color: #008000;">"grpc_next_upstream_tries"</span> <span style="color: #008000;">"grpc_pass"</span>
-                 <span style="color: #008000;">"grpc_pass_header"</span> <span style="color: #008000;">"grpc_read_timeout"</span> <span style="color: #008000;">"grpc_send_timeout"</span> <span style="color: #008000;">"grpc_set_header"</span>
-                 <span style="color: #008000;">"grpc_ssl_certificate"</span> <span style="color: #008000;">"grpc_ssl_certificate_key"</span> <span style="color: #008000;">"grpc_ssl_ciphers"</span> <span style="color: #008000;">"grpc_ssl_crl"</span>
-                 <span style="color: #008000;">"grpc_ssl_name"</span> <span style="color: #008000;">"grpc_ssl_password_file"</span> <span style="color: #008000;">"grpc_ssl_protocols"</span> <span style="color: #008000;">"grpc_ssl_server_name"</span>
-                 <span style="color: #008000;">"grpc_ssl_session_reuse"</span> <span style="color: #008000;">"grpc_ssl_trusted_certificate"</span> <span style="color: #008000;">"grpc_ssl_verify"</span>
-                 <span style="color: #008000;">"grpc_ssl_verify_depth"</span> <span style="color: #008000;">"gunzip"</span> <span style="color: #008000;">"gunzip_buffers"</span> <span style="color: #008000;">"gzip"</span> <span style="color: #008000;">"gzip_buffers"</span> <span style="color: #008000;">"gzip_comp_level"</span>
-                 <span style="color: #008000;">"gzip_disable"</span> <span style="color: #008000;">"gzip_http_version"</span> <span style="color: #008000;">"gzip_min_length"</span> <span style="color: #008000;">"gzip_proxied"</span> <span style="color: #008000;">"gzip_static"</span>
-                 <span style="color: #008000;">"gzip_types"</span> <span style="color: #008000;">"gzip_vary"</span> <span style="color: #008000;">"hash"</span> <span style="color: #008000;">"hash"</span> <span style="color: #008000;">"health_check"</span> <span style="color: #008000;">"health_check"</span>
-                 <span style="color: #008000;">"health_check_timeout"</span> <span style="color: #008000;">"hls"</span> <span style="color: #008000;">"hls_buffers"</span> <span style="color: #008000;">"hls_forward_args"</span> <span style="color: #008000;">"hls_fragment"</span>
-                 <span style="color: #008000;">"hls_mp4_buffer_size"</span> <span style="color: #008000;">"hls_mp4_max_buffer_size"</span> <span style="color: #008000;">"http"</span> <span style="color: #008000;">"http2_body_preread_size"</span>
-                 <span style="color: #008000;">"http2_chunk_size"</span> <span style="color: #008000;">"http2_idle_timeout"</span> <span style="color: #008000;">"http2_max_concurrent_pushes"</span>
-                 <span style="color: #008000;">"http2_max_concurrent_streams"</span> <span style="color: #008000;">"http2_max_field_size"</span> <span style="color: #008000;">"http2_max_header_size"</span>
-                 <span style="color: #008000;">"http2_max_requests"</span> <span style="color: #008000;">"http2_push"</span> <span style="color: #008000;">"http2_push_preload"</span> <span style="color: #008000;">"http2_recv_buffer_size"</span>
-                 <span style="color: #008000;">"http2_recv_timeout"</span> <span style="color: #008000;">"if"</span> <span style="color: #008000;">"if_modified_since"</span> <span style="color: #008000;">"ignore_invalid_headers"</span> <span style="color: #008000;">"image_filter"</span>
-                 <span style="color: #008000;">"image_filter_buffer"</span> <span style="color: #008000;">"image_filter_interlace"</span> <span style="color: #008000;">"image_filter_jpeg_quality"</span>
-                 <span style="color: #008000;">"image_filter_sharpen"</span> <span style="color: #008000;">"image_filter_transparency"</span> <span style="color: #008000;">"image_filter_webp_quality"</span> <span style="color: #008000;">"imap_auth"</span>
-                 <span style="color: #008000;">"imap_capabilities"</span> <span style="color: #008000;">"imap_client_buffer"</span> <span style="color: #008000;">"include"</span> <span style="color: #008000;">"index"</span> <span style="color: #008000;">"internal"</span> <span style="color: #008000;">"ip_hash"</span>
-                 <span style="color: #008000;">"js_access"</span> <span style="color: #008000;">"js_content"</span> <span style="color: #008000;">"js_filter"</span> <span style="color: #008000;">"js_include"</span> <span style="color: #008000;">"js_include"</span> <span style="color: #008000;">"js_preread"</span> <span style="color: #008000;">"js_set"</span>
-                 <span style="color: #008000;">"js_set"</span> <span style="color: #008000;">"keepalive"</span> <span style="color: #008000;">"keepalive_disable"</span> <span style="color: #008000;">"keepalive_requests"</span> <span style="color: #008000;">"keepalive_timeout"</span> <span style="color: #008000;">"keyval"</span>
-                 <span style="color: #008000;">"keyval"</span> <span style="color: #008000;">"keyval_zone"</span> <span style="color: #008000;">"keyval_zone"</span> <span style="color: #008000;">"large_client_header_buffers"</span> <span style="color: #008000;">"least_conn"</span>
-                 <span style="color: #008000;">"least_conn"</span> <span style="color: #008000;">"least_time"</span> <span style="color: #008000;">"least_time"</span> <span style="color: #008000;">"limit_conn"</span> <span style="color: #008000;">"limit_conn"</span> <span style="color: #008000;">"limit_conn_log_level"</span>
-                 <span style="color: #008000;">"limit_conn_log_level"</span> <span style="color: #008000;">"limit_conn_status"</span> <span style="color: #008000;">"limit_conn_zone"</span> <span style="color: #008000;">"limit_conn_zone"</span>
-                 <span style="color: #008000;">"limit_except"</span> <span style="color: #008000;">"limit_rate"</span> <span style="color: #008000;">"limit_rate_after"</span> <span style="color: #008000;">"limit_req"</span> <span style="color: #008000;">"limit_req_log_level"</span>
-                 <span style="color: #008000;">"limit_req_status"</span> <span style="color: #008000;">"limit_req_zone"</span> <span style="color: #008000;">"limit_zone"</span> <span style="color: #008000;">"lingering_close"</span> <span style="color: #008000;">"lingering_time"</span>
-                 <span style="color: #008000;">"lingering_timeout"</span> <span style="color: #008000;">"listen"</span> <span style="color: #008000;">"listen"</span> <span style="color: #008000;">"listen"</span> <span style="color: #008000;">"load_module"</span> <span style="color: #008000;">"location"</span> <span style="color: #008000;">"lock_file"</span>
-                 <span style="color: #008000;">"log_format"</span> <span style="color: #008000;">"log_format"</span> <span style="color: #008000;">"log_not_found"</span> <span style="color: #008000;">"log_subrequest"</span> <span style="color: #008000;">"mail"</span> <span style="color: #008000;">"map"</span> <span style="color: #008000;">"map"</span>
-                 <span style="color: #008000;">"map_hash_bucket_size"</span> <span style="color: #008000;">"map_hash_bucket_size"</span> <span style="color: #008000;">"map_hash_max_size"</span> <span style="color: #008000;">"map_hash_max_size"</span>
-                 <span style="color: #008000;">"master_process"</span> <span style="color: #008000;">"match"</span> <span style="color: #008000;">"match"</span> <span style="color: #008000;">"max_ranges"</span> <span style="color: #008000;">"memcached_bind"</span> <span style="color: #008000;">"memcached_buffer_size"</span>
-                 <span style="color: #008000;">"memcached_connect_timeout"</span> <span style="color: #008000;">"memcached_force_ranges"</span> <span style="color: #008000;">"memcached_gzip_flag"</span>
-                 <span style="color: #008000;">"memcached_next_upstream"</span> <span style="color: #008000;">"memcached_next_upstream_timeout"</span>
-                 <span style="color: #008000;">"memcached_next_upstream_tries"</span> <span style="color: #008000;">"memcached_pass"</span> <span style="color: #008000;">"memcached_read_timeout"</span>
-                 <span style="color: #008000;">"memcached_send_timeout"</span> <span style="color: #008000;">"merge_slashes"</span> <span style="color: #008000;">"min_delete_depth"</span> <span style="color: #008000;">"mirror"</span> <span style="color: #008000;">"mirror_request_body"</span>
-                 <span style="color: #008000;">"modern_browser"</span> <span style="color: #008000;">"modern_browser_value"</span> <span style="color: #008000;">"mp4"</span> <span style="color: #008000;">"mp4_buffer_size"</span> <span style="color: #008000;">"mp4_limit_rate"</span>
-                 <span style="color: #008000;">"mp4_limit_rate_after"</span> <span style="color: #008000;">"mp4_max_buffer_size"</span> <span style="color: #008000;">"msie_padding"</span> <span style="color: #008000;">"msie_refresh"</span> <span style="color: #008000;">"multi_accept"</span>
-                 <span style="color: #008000;">"ntlm"</span> <span style="color: #008000;">"open_file_cache"</span> <span style="color: #008000;">"open_file_cache_errors"</span> <span style="color: #008000;">"open_file_cache_min_uses"</span>
-                 <span style="color: #008000;">"open_file_cache_valid"</span> <span style="color: #008000;">"open_log_file_cache"</span> <span style="color: #008000;">"open_log_file_cache"</span> <span style="color: #008000;">"output_buffers"</span>
-                 <span style="color: #008000;">"override_charset"</span> <span style="color: #008000;">"pcre_jit"</span> <span style="color: #008000;">"perl"</span> <span style="color: #008000;">"perl_modules"</span> <span style="color: #008000;">"perl_require"</span> <span style="color: #008000;">"perl_set"</span> <span style="color: #008000;">"pid"</span>
-                 <span style="color: #008000;">"pop3_auth"</span> <span style="color: #008000;">"pop3_capabilities"</span> <span style="color: #008000;">"port_in_redirect"</span> <span style="color: #008000;">"postpone_output"</span> <span style="color: #008000;">"preread_buffer_size"</span>
-                 <span style="color: #008000;">"preread_timeout"</span> <span style="color: #008000;">"protocol"</span> <span style="color: #008000;">"proxy_bind"</span> <span style="color: #008000;">"proxy_bind"</span> <span style="color: #008000;">"proxy_buffer"</span> <span style="color: #008000;">"proxy_buffer_size"</span>
-                 <span style="color: #008000;">"proxy_buffer_size"</span> <span style="color: #008000;">"proxy_buffering"</span> <span style="color: #008000;">"proxy_buffers"</span> <span style="color: #008000;">"proxy_busy_buffers_size"</span>
-                 <span style="color: #008000;">"proxy_cache"</span> <span style="color: #008000;">"proxy_cache_background_update"</span> <span style="color: #008000;">"proxy_cache_bypass"</span>
-                 <span style="color: #008000;">"proxy_cache_convert_head"</span> <span style="color: #008000;">"proxy_cache_key"</span> <span style="color: #008000;">"proxy_cache_lock"</span> <span style="color: #008000;">"proxy_cache_lock_age"</span>
-                 <span style="color: #008000;">"proxy_cache_lock_timeout"</span> <span style="color: #008000;">"proxy_cache_max_range_offset"</span> <span style="color: #008000;">"proxy_cache_methods"</span>
-                 <span style="color: #008000;">"proxy_cache_min_uses"</span> <span style="color: #008000;">"proxy_cache_path"</span> <span style="color: #008000;">"proxy_cache_purge"</span> <span style="color: #008000;">"proxy_cache_revalidate"</span>
-                 <span style="color: #008000;">"proxy_cache_use_stale"</span> <span style="color: #008000;">"proxy_cache_valid"</span> <span style="color: #008000;">"proxy_connect_timeout"</span>
-                 <span style="color: #008000;">"proxy_connect_timeout"</span> <span style="color: #008000;">"proxy_cookie_domain"</span> <span style="color: #008000;">"proxy_cookie_path"</span> <span style="color: #008000;">"proxy_download_rate"</span>
-                 <span style="color: #008000;">"proxy_force_ranges"</span> <span style="color: #008000;">"proxy_headers_hash_bucket_size"</span> <span style="color: #008000;">"proxy_headers_hash_max_size"</span>
-                 <span style="color: #008000;">"proxy_hide_header"</span> <span style="color: #008000;">"proxy_http_version"</span> <span style="color: #008000;">"proxy_ignore_client_abort"</span>
-                 <span style="color: #008000;">"proxy_ignore_headers"</span> <span style="color: #008000;">"proxy_intercept_errors"</span> <span style="color: #008000;">"proxy_limit_rate"</span>
-                 <span style="color: #008000;">"proxy_max_temp_file_size"</span> <span style="color: #008000;">"proxy_method"</span> <span style="color: #008000;">"proxy_next_upstream"</span> <span style="color: #008000;">"proxy_next_upstream"</span>
-                 <span style="color: #008000;">"proxy_next_upstream_timeout"</span> <span style="color: #008000;">"proxy_next_upstream_timeout"</span> <span style="color: #008000;">"proxy_next_upstream_tries"</span>
-                 <span style="color: #008000;">"proxy_next_upstream_tries"</span> <span style="color: #008000;">"proxy_no_cache"</span> <span style="color: #008000;">"proxy_pass"</span> <span style="color: #008000;">"proxy_pass"</span>
-                 <span style="color: #008000;">"proxy_pass_error_message"</span> <span style="color: #008000;">"proxy_pass_header"</span> <span style="color: #008000;">"proxy_pass_request_body"</span>
-                 <span style="color: #008000;">"proxy_pass_request_headers"</span> <span style="color: #008000;">"proxy_protocol"</span> <span style="color: #008000;">"proxy_protocol_timeout"</span>
-                 <span style="color: #008000;">"proxy_read_timeout"</span> <span style="color: #008000;">"proxy_redirect"</span> <span style="color: #008000;">"proxy_request_buffering"</span> <span style="color: #008000;">"proxy_responses"</span>
-                 <span style="color: #008000;">"proxy_send_lowat"</span> <span style="color: #008000;">"proxy_send_timeout"</span> <span style="color: #008000;">"proxy_set_body"</span> <span style="color: #008000;">"proxy_set_header"</span> <span style="color: #008000;">"proxy_ssl"</span>
-                 <span style="color: #008000;">"proxy_ssl_certificate"</span> <span style="color: #008000;">"proxy_ssl_certificate"</span> <span style="color: #008000;">"proxy_ssl_certificate_key"</span>
-                 <span style="color: #008000;">"proxy_ssl_certificate_key"</span> <span style="color: #008000;">"proxy_ssl_ciphers"</span> <span style="color: #008000;">"proxy_ssl_ciphers"</span> <span style="color: #008000;">"proxy_ssl_crl"</span>
-                 <span style="color: #008000;">"proxy_ssl_crl"</span> <span style="color: #008000;">"proxy_ssl_name"</span> <span style="color: #008000;">"proxy_ssl_name"</span> <span style="color: #008000;">"proxy_ssl_password_file"</span>
-                 <span style="color: #008000;">"proxy_ssl_password_file"</span> <span style="color: #008000;">"proxy_ssl_protocols"</span> <span style="color: #008000;">"proxy_ssl_protocols"</span>
-                 <span style="color: #008000;">"proxy_ssl_server_name"</span> <span style="color: #008000;">"proxy_ssl_server_name"</span> <span style="color: #008000;">"proxy_ssl_session_reuse"</span>
-                 <span style="color: #008000;">"proxy_ssl_session_reuse"</span> <span style="color: #008000;">"proxy_ssl_trusted_certificate"</span> <span style="color: #008000;">"proxy_ssl_trusted_certificate"</span>
-                 <span style="color: #008000;">"proxy_ssl_verify"</span> <span style="color: #008000;">"proxy_ssl_verify"</span> <span style="color: #008000;">"proxy_ssl_verify_depth"</span> <span style="color: #008000;">"proxy_ssl_verify_depth"</span>
-                 <span style="color: #008000;">"proxy_store"</span> <span style="color: #008000;">"proxy_store_access"</span> <span style="color: #008000;">"proxy_temp_file_write_size"</span> <span style="color: #008000;">"proxy_temp_path"</span>
-                 <span style="color: #008000;">"proxy_timeout"</span> <span style="color: #008000;">"proxy_timeout"</span> <span style="color: #008000;">"proxy_upload_rate"</span> <span style="color: #008000;">"queue"</span> <span style="color: #008000;">"random_index"</span> <span style="color: #008000;">"read_ahead"</span>
-                 <span style="color: #008000;">"real_ip_header"</span> <span style="color: #008000;">"real_ip_recursive"</span> <span style="color: #008000;">"recursive_error_pages"</span> <span style="color: #008000;">"referer_hash_bucket_size"</span>
-                 <span style="color: #008000;">"referer_hash_max_size"</span> <span style="color: #008000;">"request_pool_size"</span> <span style="color: #008000;">"reset_timedout_connection"</span> <span style="color: #008000;">"resolver"</span>
-                 <span style="color: #008000;">"resolver"</span> <span style="color: #008000;">"resolver"</span> <span style="color: #008000;">"resolver_timeout"</span> <span style="color: #008000;">"resolver_timeout"</span> <span style="color: #008000;">"resolver_timeout"</span> <span style="color: #008000;">"return"</span>
-                 <span style="color: #008000;">"return"</span> <span style="color: #008000;">"rewrite"</span> <span style="color: #008000;">"rewrite_log"</span> <span style="color: #008000;">"root"</span> <span style="color: #008000;">"satisfy"</span> <span style="color: #008000;">"scgi_bind"</span> <span style="color: #008000;">"scgi_buffer_size"</span>
-                 <span style="color: #008000;">"scgi_buffering"</span> <span style="color: #008000;">"scgi_buffers"</span> <span style="color: #008000;">"scgi_busy_buffers_size"</span> <span style="color: #008000;">"scgi_cache"</span>
-                 <span style="color: #008000;">"scgi_cache_background_update"</span> <span style="color: #008000;">"scgi_cache_bypass"</span> <span style="color: #008000;">"scgi_cache_key"</span> <span style="color: #008000;">"scgi_cache_lock"</span>
-                 <span style="color: #008000;">"scgi_cache_lock_age"</span> <span style="color: #008000;">"scgi_cache_lock_timeout"</span> <span style="color: #008000;">"scgi_cache_max_range_offset"</span>
-                 <span style="color: #008000;">"scgi_cache_methods"</span> <span style="color: #008000;">"scgi_cache_min_uses"</span> <span style="color: #008000;">"scgi_cache_path"</span> <span style="color: #008000;">"scgi_cache_purge"</span>
-                 <span style="color: #008000;">"scgi_cache_revalidate"</span> <span style="color: #008000;">"scgi_cache_use_stale"</span> <span style="color: #008000;">"scgi_cache_valid"</span> <span style="color: #008000;">"scgi_connect_timeout"</span>
-                 <span style="color: #008000;">"scgi_force_ranges"</span> <span style="color: #008000;">"scgi_hide_header"</span> <span style="color: #008000;">"scgi_ignore_client_abort"</span> <span style="color: #008000;">"scgi_ignore_headers"</span>
-                 <span style="color: #008000;">"scgi_intercept_errors"</span> <span style="color: #008000;">"scgi_limit_rate"</span> <span style="color: #008000;">"scgi_max_temp_file_size"</span> <span style="color: #008000;">"scgi_next_upstream"</span>
-                 <span style="color: #008000;">"scgi_next_upstream_timeout"</span> <span style="color: #008000;">"scgi_next_upstream_tries"</span> <span style="color: #008000;">"scgi_no_cache"</span> <span style="color: #008000;">"scgi_param"</span>
-                 <span style="color: #008000;">"scgi_pass"</span> <span style="color: #008000;">"scgi_pass_header"</span> <span style="color: #008000;">"scgi_pass_request_body"</span> <span style="color: #008000;">"scgi_pass_request_headers"</span>
-                 <span style="color: #008000;">"scgi_read_timeout"</span> <span style="color: #008000;">"scgi_request_buffering"</span> <span style="color: #008000;">"scgi_send_timeout"</span> <span style="color: #008000;">"scgi_store"</span>
-                 <span style="color: #008000;">"scgi_store_access"</span> <span style="color: #008000;">"scgi_temp_file_write_size"</span> <span style="color: #008000;">"scgi_temp_path"</span> <span style="color: #008000;">"secure_link"</span>
-                 <span style="color: #008000;">"secure_link_md5"</span> <span style="color: #008000;">"secure_link_secret"</span> <span style="color: #008000;">"send_lowat"</span> <span style="color: #008000;">"send_timeout"</span> <span style="color: #008000;">"sendfile"</span>
-                 <span style="color: #008000;">"sendfile_max_chunk"</span> <span style="color: #008000;">"server"</span> <span style="color: #008000;">"server"</span> <span style="color: #008000;">"server"</span> <span style="color: #008000;">"server"</span> <span style="color: #008000;">"server"</span> <span style="color: #008000;">"server_name"</span>
-                 <span style="color: #008000;">"server_name"</span> <span style="color: #008000;">"server_name_in_redirect"</span> <span style="color: #008000;">"server_names_hash_bucket_size"</span>
-                 <span style="color: #008000;">"server_names_hash_max_size"</span> <span style="color: #008000;">"server_tokens"</span> <span style="color: #008000;">"session_log"</span> <span style="color: #008000;">"session_log_format"</span>
-                 <span style="color: #008000;">"session_log_zone"</span> <span style="color: #008000;">"set"</span> <span style="color: #008000;">"set_real_ip_from"</span> <span style="color: #008000;">"set_real_ip_from"</span> <span style="color: #008000;">"slice"</span> <span style="color: #008000;">"smtp_auth"</span>
-                 <span style="color: #008000;">"smtp_capabilities"</span> <span style="color: #008000;">"smtp_client_buffer"</span> <span style="color: #008000;">"smtp_greeting_delay"</span> <span style="color: #008000;">"source_charset"</span>
-                 <span style="color: #008000;">"spdy_chunk_size"</span> <span style="color: #008000;">"spdy_headers_comp"</span> <span style="color: #008000;">"split_clients"</span> <span style="color: #008000;">"split_clients"</span> <span style="color: #008000;">"ssi"</span>
-                 <span style="color: #008000;">"ssi_last_modified"</span> <span style="color: #008000;">"ssi_min_file_chunk"</span> <span style="color: #008000;">"ssi_silent_errors"</span> <span style="color: #008000;">"ssi_types"</span>
-                 <span style="color: #008000;">"ssi_value_length"</span> <span style="color: #008000;">"ssl"</span> <span style="color: #008000;">"ssl"</span> <span style="color: #008000;">"ssl_buffer_size"</span> <span style="color: #008000;">"ssl_certificate"</span> <span style="color: #008000;">"ssl_certificate"</span>
-                 <span style="color: #008000;">"ssl_certificate"</span> <span style="color: #008000;">"ssl_certificate_key"</span> <span style="color: #008000;">"ssl_certificate_key"</span> <span style="color: #008000;">"ssl_certificate_key"</span>
-                 <span style="color: #008000;">"ssl_ciphers"</span> <span style="color: #008000;">"ssl_ciphers"</span> <span style="color: #008000;">"ssl_ciphers"</span> <span style="color: #008000;">"ssl_client_certificate"</span>
-                 <span style="color: #008000;">"ssl_client_certificate"</span> <span style="color: #008000;">"ssl_client_certificate"</span> <span style="color: #008000;">"ssl_crl"</span> <span style="color: #008000;">"ssl_crl"</span> <span style="color: #008000;">"ssl_crl"</span>
-                 <span style="color: #008000;">"ssl_dhparam"</span> <span style="color: #008000;">"ssl_dhparam"</span> <span style="color: #008000;">"ssl_dhparam"</span> <span style="color: #008000;">"ssl_ecdh_curve"</span> <span style="color: #008000;">"ssl_ecdh_curve"</span>
-                 <span style="color: #008000;">"ssl_ecdh_curve"</span> <span style="color: #008000;">"ssl_engine"</span> <span style="color: #008000;">"ssl_handshake_timeout"</span> <span style="color: #008000;">"ssl_password_file"</span>
-                 <span style="color: #008000;">"ssl_password_file"</span> <span style="color: #008000;">"ssl_password_file"</span> <span style="color: #008000;">"ssl_prefer_server_ciphers"</span>
-                 <span style="color: #008000;">"ssl_prefer_server_ciphers"</span> <span style="color: #008000;">"ssl_prefer_server_ciphers"</span> <span style="color: #008000;">"ssl_preread"</span> <span style="color: #008000;">"ssl_protocols"</span>
-                 <span style="color: #008000;">"ssl_protocols"</span> <span style="color: #008000;">"ssl_protocols"</span> <span style="color: #008000;">"ssl_session_cache"</span> <span style="color: #008000;">"ssl_session_cache"</span>
-                 <span style="color: #008000;">"ssl_session_cache"</span> <span style="color: #008000;">"ssl_session_ticket_key"</span> <span style="color: #008000;">"ssl_session_ticket_key"</span>
-                 <span style="color: #008000;">"ssl_session_ticket_key"</span> <span style="color: #008000;">"ssl_session_tickets"</span> <span style="color: #008000;">"ssl_session_tickets"</span> <span style="color: #008000;">"ssl_session_tickets"</span>
-                 <span style="color: #008000;">"ssl_session_timeout"</span> <span style="color: #008000;">"ssl_session_timeout"</span> <span style="color: #008000;">"ssl_session_timeout"</span> <span style="color: #008000;">"ssl_stapling"</span>
-                 <span style="color: #008000;">"ssl_stapling_file"</span> <span style="color: #008000;">"ssl_stapling_responder"</span> <span style="color: #008000;">"ssl_stapling_verify"</span>
-                 <span style="color: #008000;">"ssl_trusted_certificate"</span> <span style="color: #008000;">"ssl_trusted_certificate"</span> <span style="color: #008000;">"ssl_trusted_certificate"</span>
-                 <span style="color: #008000;">"ssl_verify_client"</span> <span style="color: #008000;">"ssl_verify_client"</span> <span style="color: #008000;">"ssl_verify_client"</span> <span style="color: #008000;">"ssl_verify_depth"</span>
-                 <span style="color: #008000;">"ssl_verify_depth"</span> <span style="color: #008000;">"ssl_verify_depth"</span> <span style="color: #008000;">"starttls"</span> <span style="color: #008000;">"state"</span> <span style="color: #008000;">"state"</span> <span style="color: #008000;">"status"</span> <span style="color: #008000;">"status_format"</span>
-                 <span style="color: #008000;">"status_zone"</span> <span style="color: #008000;">"sticky"</span> <span style="color: #008000;">"sticky_cookie_insert"</span> <span style="color: #008000;">"stream"</span> <span style="color: #008000;">"stub_status"</span> <span style="color: #008000;">"sub_filter"</span>
-                 <span style="color: #008000;">"sub_filter_last_modified"</span> <span style="color: #008000;">"sub_filter_once"</span> <span style="color: #008000;">"sub_filter_types"</span>
-                 <span style="color: #008000;">"subrequest_output_buffer_size"</span> <span style="color: #008000;">"tcp_nodelay"</span> <span style="color: #008000;">"tcp_nodelay"</span> <span style="color: #008000;">"tcp_nopush"</span> <span style="color: #008000;">"thread_pool"</span>
-                 <span style="color: #008000;">"timeout"</span> <span style="color: #008000;">"timer_resolution"</span> <span style="color: #008000;">"try_files"</span> <span style="color: #008000;">"types"</span> <span style="color: #008000;">"types_hash_bucket_size"</span>
-                 <span style="color: #008000;">"types_hash_max_size"</span> <span style="color: #008000;">"underscores_in_headers"</span> <span style="color: #008000;">"uninitialized_variable_warn"</span> <span style="color: #008000;">"upstream"</span>
-                 <span style="color: #008000;">"upstream"</span> <span style="color: #008000;">"upstream_conf"</span> <span style="color: #008000;">"use"</span> <span style="color: #008000;">"user"</span> <span style="color: #008000;">"userid"</span> <span style="color: #008000;">"userid_domain"</span> <span style="color: #008000;">"userid_expires"</span>
-                 <span style="color: #008000;">"userid_mark"</span> <span style="color: #008000;">"userid_name"</span> <span style="color: #008000;">"userid_p3p"</span> <span style="color: #008000;">"userid_path"</span> <span style="color: #008000;">"userid_service"</span> <span style="color: #008000;">"uwsgi_bind"</span>
-                 <span style="color: #008000;">"uwsgi_buffer_size"</span> <span style="color: #008000;">"uwsgi_buffering"</span> <span style="color: #008000;">"uwsgi_buffers"</span> <span style="color: #008000;">"uwsgi_busy_buffers_size"</span>
-                 <span style="color: #008000;">"uwsgi_cache"</span> <span style="color: #008000;">"uwsgi_cache_background_update"</span> <span style="color: #008000;">"uwsgi_cache_bypass"</span> <span style="color: #008000;">"uwsgi_cache_key"</span>
-                 <span style="color: #008000;">"uwsgi_cache_lock"</span> <span style="color: #008000;">"uwsgi_cache_lock_age"</span> <span style="color: #008000;">"uwsgi_cache_lock_timeout"</span>
-                 <span style="color: #008000;">"uwsgi_cache_max_range_offset"</span> <span style="color: #008000;">"uwsgi_cache_methods"</span> <span style="color: #008000;">"uwsgi_cache_min_uses"</span>
-                 <span style="color: #008000;">"uwsgi_cache_path"</span> <span style="color: #008000;">"uwsgi_cache_purge"</span> <span style="color: #008000;">"uwsgi_cache_revalidate"</span> <span style="color: #008000;">"uwsgi_cache_use_stale"</span>
-                 <span style="color: #008000;">"uwsgi_cache_valid"</span> <span style="color: #008000;">"uwsgi_connect_timeout"</span> <span style="color: #008000;">"uwsgi_force_ranges"</span> <span style="color: #008000;">"uwsgi_hide_header"</span>
-                 <span style="color: #008000;">"uwsgi_ignore_client_abort"</span> <span style="color: #008000;">"uwsgi_ignore_headers"</span> <span style="color: #008000;">"uwsgi_intercept_errors"</span>
-                 <span style="color: #008000;">"uwsgi_limit_rate"</span> <span style="color: #008000;">"uwsgi_max_temp_file_size"</span> <span style="color: #008000;">"uwsgi_modifier1"</span> <span style="color: #008000;">"uwsgi_modifier2"</span>
-                 <span style="color: #008000;">"uwsgi_next_upstream"</span> <span style="color: #008000;">"uwsgi_next_upstream_timeout"</span> <span style="color: #008000;">"uwsgi_next_upstream_tries"</span>
-                 <span style="color: #008000;">"uwsgi_no_cache"</span> <span style="color: #008000;">"uwsgi_param"</span> <span style="color: #008000;">"uwsgi_pass"</span> <span style="color: #008000;">"uwsgi_pass_header"</span> <span style="color: #008000;">"uwsgi_pass_request_body"</span>
-                 <span style="color: #008000;">"uwsgi_pass_request_headers"</span> <span style="color: #008000;">"uwsgi_read_timeout"</span> <span style="color: #008000;">"uwsgi_request_buffering"</span>
-                 <span style="color: #008000;">"uwsgi_send_timeout"</span> <span style="color: #008000;">"uwsgi_ssl_certificate"</span> <span style="color: #008000;">"uwsgi_ssl_certificate_key"</span>
-                 <span style="color: #008000;">"uwsgi_ssl_ciphers"</span> <span style="color: #008000;">"uwsgi_ssl_crl"</span> <span style="color: #008000;">"uwsgi_ssl_name"</span> <span style="color: #008000;">"uwsgi_ssl_password_file"</span>
-                 <span style="color: #008000;">"uwsgi_ssl_protocols"</span> <span style="color: #008000;">"uwsgi_ssl_server_name"</span> <span style="color: #008000;">"uwsgi_ssl_session_reuse"</span>
-                 <span style="color: #008000;">"uwsgi_ssl_trusted_certificate"</span> <span style="color: #008000;">"uwsgi_ssl_verify"</span> <span style="color: #008000;">"uwsgi_ssl_verify_depth"</span> <span style="color: #008000;">"uwsgi_store"</span>
-                 <span style="color: #008000;">"uwsgi_store_access"</span> <span style="color: #008000;">"uwsgi_temp_file_write_size"</span> <span style="color: #008000;">"uwsgi_temp_path"</span> <span style="color: #008000;">"valid_referers"</span>
-                 <span style="color: #008000;">"variables_hash_bucket_size"</span> <span style="color: #008000;">"variables_hash_bucket_size"</span> <span style="color: #008000;">"variables_hash_max_size"</span>
-                 <span style="color: #008000;">"variables_hash_max_size"</span> <span style="color: #008000;">"worker_aio_requests"</span> <span style="color: #008000;">"worker_connections"</span> <span style="color: #008000;">"worker_cpu_affinity"</span>
-                 <span style="color: #008000;">"worker_priority"</span> <span style="color: #008000;">"worker_processes"</span> <span style="color: #008000;">"worker_rlimit_core"</span> <span style="color: #008000;">"worker_rlimit_nofile"</span>
-                 <span style="color: #008000;">"worker_shutdown_timeout"</span> <span style="color: #008000;">"working_directory"</span> <span style="color: #008000;">"xclient"</span> <span style="color: #008000;">"xml_entities"</span>
-                 <span style="color: #008000;">"xslt_last_modified"</span> <span style="color: #008000;">"xslt_param"</span> <span style="color: #008000;">"xslt_string_param"</span> <span style="color: #008000;">"xslt_stylesheet"</span> <span style="color: #008000;">"xslt_types"</span>
-                 <span style="color: #008000;">"zone"</span> <span style="color: #008000;">"zone"</span> <span style="color: #008000;">"zone_sync"</span> <span style="color: #008000;">"zone_sync_buffers"</span> <span style="color: #008000;">"zone_sync_connect_retry_interval"</span>
-                 <span style="color: #008000;">"zone_sync_connect_timeout"</span> <span style="color: #008000;">"zone_sync_interval"</span> <span style="color: #008000;">"zone_sync_recv_buffer_size"</span>
-                 <span style="color: #008000;">"zone_sync_server"</span> <span style="color: #008000;">"zone_sync_ssl"</span> <span style="color: #008000;">"zone_sync_ssl_certificate"</span>
-                 <span style="color: #008000;">"zone_sync_ssl_certificate_key"</span> <span style="color: #008000;">"zone_sync_ssl_ciphers"</span> <span style="color: #008000;">"zone_sync_ssl_crl"</span>
-                 <span style="color: #008000;">"zone_sync_ssl_password_file"</span> <span style="color: #008000;">"zone_sync_ssl_protocols"</span>
-                 <span style="color: #008000;">"zone_sync_ssl_trusted_certificate"</span> <span style="color: #008000;">"zone_sync_ssl_verify"</span> <span style="color: #008000;">"zone_sync_ssl_verify_depth"</span>
-                 <span style="color: #008000;">"zone_sync_timeout"</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">company-nginx-keywords</span> <span style="color: #D19A66;">()</span>
+  <span style="color: #D19A66;">(</span>add-to-list 'company-keywords-alist
+               '<span style="color: #61AFEF;">(</span>nginx-mode
+                 <span style="color: #98C379;">"absolute_redirect"</span> <span style="color: #98C379;">"accept_mutex"</span> <span style="color: #98C379;">"accept_mutex_delay"</span> <span style="color: #98C379;">"access_log"</span> <span style="color: #98C379;">"access_log"</span>
+                 <span style="color: #98C379;">"add_after_body"</span> <span style="color: #98C379;">"add_before_body"</span> <span style="color: #98C379;">"add_header"</span> <span style="color: #98C379;">"add_trailer"</span> <span style="color: #98C379;">"addition_types"</span> <span style="color: #98C379;">"aio"</span>
+                 <span style="color: #98C379;">"aio_write"</span> <span style="color: #98C379;">"alias"</span> <span style="color: #98C379;">"allow"</span> <span style="color: #98C379;">"allow"</span> <span style="color: #98C379;">"ancient_browser"</span> <span style="color: #98C379;">"ancient_browser_value"</span> <span style="color: #98C379;">"api"</span>
+                 <span style="color: #98C379;">"auth_basic"</span> <span style="color: #98C379;">"auth_basic_user_file"</span> <span style="color: #98C379;">"auth_http"</span> <span style="color: #98C379;">"auth_http_header"</span>
+                 <span style="color: #98C379;">"auth_http_pass_client_cert"</span> <span style="color: #98C379;">"auth_http_timeout"</span> <span style="color: #98C379;">"auth_jwt"</span> <span style="color: #98C379;">"auth_jwt_claim_set"</span>
+                 <span style="color: #98C379;">"auth_jwt_header_set"</span> <span style="color: #98C379;">"auth_jwt_key_file"</span> <span style="color: #98C379;">"auth_jwt_leeway"</span> <span style="color: #98C379;">"auth_request"</span>
+                 <span style="color: #98C379;">"auth_request_set"</span> <span style="color: #98C379;">"autoindex"</span> <span style="color: #98C379;">"autoindex_exact_size"</span> <span style="color: #98C379;">"autoindex_format"</span>
+                 <span style="color: #98C379;">"autoindex_localtime"</span> <span style="color: #98C379;">"break"</span> <span style="color: #98C379;">"charset"</span> <span style="color: #98C379;">"charset_map"</span> <span style="color: #98C379;">"charset_types"</span>
+                 <span style="color: #98C379;">"chunked_transfer_encoding"</span> <span style="color: #98C379;">"client_body_buffer_size"</span> <span style="color: #98C379;">"client_body_in_file_only"</span>
+                 <span style="color: #98C379;">"client_body_in_single_buffer"</span> <span style="color: #98C379;">"client_body_temp_path"</span> <span style="color: #98C379;">"client_body_timeout"</span>
+                 <span style="color: #98C379;">"client_header_buffer_size"</span> <span style="color: #98C379;">"client_header_timeout"</span> <span style="color: #98C379;">"client_max_body_size"</span>
+                 <span style="color: #98C379;">"connection_pool_size"</span> <span style="color: #98C379;">"create_full_put_path"</span> <span style="color: #98C379;">"daemon"</span> <span style="color: #98C379;">"dav_access"</span> <span style="color: #98C379;">"dav_methods"</span>
+                 <span style="color: #98C379;">"debug_connection"</span> <span style="color: #98C379;">"debug_points"</span> <span style="color: #98C379;">"default_type"</span> <span style="color: #98C379;">"deny"</span> <span style="color: #98C379;">"deny"</span> <span style="color: #98C379;">"directio"</span>
+                 <span style="color: #98C379;">"directio_alignment"</span> <span style="color: #98C379;">"disable_symlinks"</span> <span style="color: #98C379;">"empty_gif"</span> <span style="color: #98C379;">"env"</span> <span style="color: #98C379;">"error_log"</span> <span style="color: #98C379;">"error_page"</span> <span style="color: #98C379;">"etag"</span>
+                 <span style="color: #98C379;">"events"</span> <span style="color: #98C379;">"expires"</span> <span style="color: #98C379;">"f4f"</span> <span style="color: #98C379;">"f4f_buffer_size"</span> <span style="color: #98C379;">"fastcgi_bind"</span> <span style="color: #98C379;">"fastcgi_buffer_size"</span>
+                 <span style="color: #98C379;">"fastcgi_buffering"</span> <span style="color: #98C379;">"fastcgi_buffers"</span> <span style="color: #98C379;">"fastcgi_busy_buffers_size"</span> <span style="color: #98C379;">"fastcgi_cache"</span>
+                 <span style="color: #98C379;">"fastcgi_cache_background_update"</span> <span style="color: #98C379;">"fastcgi_cache_bypass"</span> <span style="color: #98C379;">"fastcgi_cache_key"</span>
+                 <span style="color: #98C379;">"fastcgi_cache_lock"</span> <span style="color: #98C379;">"fastcgi_cache_lock_age"</span> <span style="color: #98C379;">"fastcgi_cache_lock_timeout"</span>
+                 <span style="color: #98C379;">"fastcgi_cache_max_range_offset"</span> <span style="color: #98C379;">"fastcgi_cache_methods"</span> <span style="color: #98C379;">"fastcgi_cache_min_uses"</span>
+                 <span style="color: #98C379;">"fastcgi_cache_path"</span> <span style="color: #98C379;">"fastcgi_cache_purge"</span> <span style="color: #98C379;">"fastcgi_cache_revalidate"</span>
+                 <span style="color: #98C379;">"fastcgi_cache_use_stale"</span> <span style="color: #98C379;">"fastcgi_cache_valid"</span> <span style="color: #98C379;">"fastcgi_catch_stderr"</span>
+                 <span style="color: #98C379;">"fastcgi_connect_timeout"</span> <span style="color: #98C379;">"fastcgi_force_ranges"</span> <span style="color: #98C379;">"fastcgi_hide_header"</span>
+                 <span style="color: #98C379;">"fastcgi_ignore_client_abort"</span> <span style="color: #98C379;">"fastcgi_ignore_headers"</span> <span style="color: #98C379;">"fastcgi_index"</span>
+                 <span style="color: #98C379;">"fastcgi_intercept_errors"</span> <span style="color: #98C379;">"fastcgi_keep_conn"</span> <span style="color: #98C379;">"fastcgi_limit_rate"</span>
+                 <span style="color: #98C379;">"fastcgi_max_temp_file_size"</span> <span style="color: #98C379;">"fastcgi_next_upstream"</span> <span style="color: #98C379;">"fastcgi_next_upstream_timeout"</span>
+                 <span style="color: #98C379;">"fastcgi_next_upstream_tries"</span> <span style="color: #98C379;">"fastcgi_no_cache"</span> <span style="color: #98C379;">"fastcgi_param"</span> <span style="color: #98C379;">"fastcgi_pass"</span>
+                 <span style="color: #98C379;">"fastcgi_pass_header"</span> <span style="color: #98C379;">"fastcgi_pass_request_body"</span> <span style="color: #98C379;">"fastcgi_pass_request_headers"</span>
+                 <span style="color: #98C379;">"fastcgi_read_timeout"</span> <span style="color: #98C379;">"fastcgi_request_buffering"</span> <span style="color: #98C379;">"fastcgi_send_lowat"</span>
+                 <span style="color: #98C379;">"fastcgi_send_timeout"</span> <span style="color: #98C379;">"fastcgi_split_path_info"</span> <span style="color: #98C379;">"fastcgi_store"</span> <span style="color: #98C379;">"fastcgi_store_access"</span>
+                 <span style="color: #98C379;">"fastcgi_temp_file_write_size"</span> <span style="color: #98C379;">"fastcgi_temp_path"</span> <span style="color: #98C379;">"flv"</span> <span style="color: #98C379;">"geo"</span> <span style="color: #98C379;">"geo"</span> <span style="color: #98C379;">"geoip_city"</span>
+                 <span style="color: #98C379;">"geoip_city"</span> <span style="color: #98C379;">"geoip_country"</span> <span style="color: #98C379;">"geoip_country"</span> <span style="color: #98C379;">"geoip_org"</span> <span style="color: #98C379;">"geoip_org"</span> <span style="color: #98C379;">"geoip_proxy"</span>
+                 <span style="color: #98C379;">"geoip_proxy_recursive"</span> <span style="color: #98C379;">"google_perftools_profiles"</span> <span style="color: #98C379;">"grpc_bind"</span> <span style="color: #98C379;">"grpc_buffer_size"</span>
+                 <span style="color: #98C379;">"grpc_connect_timeout"</span> <span style="color: #98C379;">"grpc_hide_header"</span> <span style="color: #98C379;">"grpc_ignore_headers"</span> <span style="color: #98C379;">"grpc_intercept_errors"</span>
+                 <span style="color: #98C379;">"grpc_next_upstream"</span> <span style="color: #98C379;">"grpc_next_upstream_timeout"</span> <span style="color: #98C379;">"grpc_next_upstream_tries"</span> <span style="color: #98C379;">"grpc_pass"</span>
+                 <span style="color: #98C379;">"grpc_pass_header"</span> <span style="color: #98C379;">"grpc_read_timeout"</span> <span style="color: #98C379;">"grpc_send_timeout"</span> <span style="color: #98C379;">"grpc_set_header"</span>
+                 <span style="color: #98C379;">"grpc_ssl_certificate"</span> <span style="color: #98C379;">"grpc_ssl_certificate_key"</span> <span style="color: #98C379;">"grpc_ssl_ciphers"</span> <span style="color: #98C379;">"grpc_ssl_crl"</span>
+                 <span style="color: #98C379;">"grpc_ssl_name"</span> <span style="color: #98C379;">"grpc_ssl_password_file"</span> <span style="color: #98C379;">"grpc_ssl_protocols"</span> <span style="color: #98C379;">"grpc_ssl_server_name"</span>
+                 <span style="color: #98C379;">"grpc_ssl_session_reuse"</span> <span style="color: #98C379;">"grpc_ssl_trusted_certificate"</span> <span style="color: #98C379;">"grpc_ssl_verify"</span>
+                 <span style="color: #98C379;">"grpc_ssl_verify_depth"</span> <span style="color: #98C379;">"gunzip"</span> <span style="color: #98C379;">"gunzip_buffers"</span> <span style="color: #98C379;">"gzip"</span> <span style="color: #98C379;">"gzip_buffers"</span> <span style="color: #98C379;">"gzip_comp_level"</span>
+                 <span style="color: #98C379;">"gzip_disable"</span> <span style="color: #98C379;">"gzip_http_version"</span> <span style="color: #98C379;">"gzip_min_length"</span> <span style="color: #98C379;">"gzip_proxied"</span> <span style="color: #98C379;">"gzip_static"</span>
+                 <span style="color: #98C379;">"gzip_types"</span> <span style="color: #98C379;">"gzip_vary"</span> <span style="color: #98C379;">"hash"</span> <span style="color: #98C379;">"hash"</span> <span style="color: #98C379;">"health_check"</span> <span style="color: #98C379;">"health_check"</span>
+                 <span style="color: #98C379;">"health_check_timeout"</span> <span style="color: #98C379;">"hls"</span> <span style="color: #98C379;">"hls_buffers"</span> <span style="color: #98C379;">"hls_forward_args"</span> <span style="color: #98C379;">"hls_fragment"</span>
+                 <span style="color: #98C379;">"hls_mp4_buffer_size"</span> <span style="color: #98C379;">"hls_mp4_max_buffer_size"</span> <span style="color: #98C379;">"http"</span> <span style="color: #98C379;">"http2_body_preread_size"</span>
+                 <span style="color: #98C379;">"http2_chunk_size"</span> <span style="color: #98C379;">"http2_idle_timeout"</span> <span style="color: #98C379;">"http2_max_concurrent_pushes"</span>
+                 <span style="color: #98C379;">"http2_max_concurrent_streams"</span> <span style="color: #98C379;">"http2_max_field_size"</span> <span style="color: #98C379;">"http2_max_header_size"</span>
+                 <span style="color: #98C379;">"http2_max_requests"</span> <span style="color: #98C379;">"http2_push"</span> <span style="color: #98C379;">"http2_push_preload"</span> <span style="color: #98C379;">"http2_recv_buffer_size"</span>
+                 <span style="color: #98C379;">"http2_recv_timeout"</span> <span style="color: #98C379;">"if"</span> <span style="color: #98C379;">"if_modified_since"</span> <span style="color: #98C379;">"ignore_invalid_headers"</span> <span style="color: #98C379;">"image_filter"</span>
+                 <span style="color: #98C379;">"image_filter_buffer"</span> <span style="color: #98C379;">"image_filter_interlace"</span> <span style="color: #98C379;">"image_filter_jpeg_quality"</span>
+                 <span style="color: #98C379;">"image_filter_sharpen"</span> <span style="color: #98C379;">"image_filter_transparency"</span> <span style="color: #98C379;">"image_filter_webp_quality"</span> <span style="color: #98C379;">"imap_auth"</span>
+                 <span style="color: #98C379;">"imap_capabilities"</span> <span style="color: #98C379;">"imap_client_buffer"</span> <span style="color: #98C379;">"include"</span> <span style="color: #98C379;">"index"</span> <span style="color: #98C379;">"internal"</span> <span style="color: #98C379;">"ip_hash"</span>
+                 <span style="color: #98C379;">"js_access"</span> <span style="color: #98C379;">"js_content"</span> <span style="color: #98C379;">"js_filter"</span> <span style="color: #98C379;">"js_include"</span> <span style="color: #98C379;">"js_include"</span> <span style="color: #98C379;">"js_preread"</span> <span style="color: #98C379;">"js_set"</span>
+                 <span style="color: #98C379;">"js_set"</span> <span style="color: #98C379;">"keepalive"</span> <span style="color: #98C379;">"keepalive_disable"</span> <span style="color: #98C379;">"keepalive_requests"</span> <span style="color: #98C379;">"keepalive_timeout"</span> <span style="color: #98C379;">"keyval"</span>
+                 <span style="color: #98C379;">"keyval"</span> <span style="color: #98C379;">"keyval_zone"</span> <span style="color: #98C379;">"keyval_zone"</span> <span style="color: #98C379;">"large_client_header_buffers"</span> <span style="color: #98C379;">"least_conn"</span>
+                 <span style="color: #98C379;">"least_conn"</span> <span style="color: #98C379;">"least_time"</span> <span style="color: #98C379;">"least_time"</span> <span style="color: #98C379;">"limit_conn"</span> <span style="color: #98C379;">"limit_conn"</span> <span style="color: #98C379;">"limit_conn_log_level"</span>
+                 <span style="color: #98C379;">"limit_conn_log_level"</span> <span style="color: #98C379;">"limit_conn_status"</span> <span style="color: #98C379;">"limit_conn_zone"</span> <span style="color: #98C379;">"limit_conn_zone"</span>
+                 <span style="color: #98C379;">"limit_except"</span> <span style="color: #98C379;">"limit_rate"</span> <span style="color: #98C379;">"limit_rate_after"</span> <span style="color: #98C379;">"limit_req"</span> <span style="color: #98C379;">"limit_req_log_level"</span>
+                 <span style="color: #98C379;">"limit_req_status"</span> <span style="color: #98C379;">"limit_req_zone"</span> <span style="color: #98C379;">"limit_zone"</span> <span style="color: #98C379;">"lingering_close"</span> <span style="color: #98C379;">"lingering_time"</span>
+                 <span style="color: #98C379;">"lingering_timeout"</span> <span style="color: #98C379;">"listen"</span> <span style="color: #98C379;">"listen"</span> <span style="color: #98C379;">"listen"</span> <span style="color: #98C379;">"load_module"</span> <span style="color: #98C379;">"location"</span> <span style="color: #98C379;">"lock_file"</span>
+                 <span style="color: #98C379;">"log_format"</span> <span style="color: #98C379;">"log_format"</span> <span style="color: #98C379;">"log_not_found"</span> <span style="color: #98C379;">"log_subrequest"</span> <span style="color: #98C379;">"mail"</span> <span style="color: #98C379;">"map"</span> <span style="color: #98C379;">"map"</span>
+                 <span style="color: #98C379;">"map_hash_bucket_size"</span> <span style="color: #98C379;">"map_hash_bucket_size"</span> <span style="color: #98C379;">"map_hash_max_size"</span> <span style="color: #98C379;">"map_hash_max_size"</span>
+                 <span style="color: #98C379;">"master_process"</span> <span style="color: #98C379;">"match"</span> <span style="color: #98C379;">"match"</span> <span style="color: #98C379;">"max_ranges"</span> <span style="color: #98C379;">"memcached_bind"</span> <span style="color: #98C379;">"memcached_buffer_size"</span>
+                 <span style="color: #98C379;">"memcached_connect_timeout"</span> <span style="color: #98C379;">"memcached_force_ranges"</span> <span style="color: #98C379;">"memcached_gzip_flag"</span>
+                 <span style="color: #98C379;">"memcached_next_upstream"</span> <span style="color: #98C379;">"memcached_next_upstream_timeout"</span>
+                 <span style="color: #98C379;">"memcached_next_upstream_tries"</span> <span style="color: #98C379;">"memcached_pass"</span> <span style="color: #98C379;">"memcached_read_timeout"</span>
+                 <span style="color: #98C379;">"memcached_send_timeout"</span> <span style="color: #98C379;">"merge_slashes"</span> <span style="color: #98C379;">"min_delete_depth"</span> <span style="color: #98C379;">"mirror"</span> <span style="color: #98C379;">"mirror_request_body"</span>
+                 <span style="color: #98C379;">"modern_browser"</span> <span style="color: #98C379;">"modern_browser_value"</span> <span style="color: #98C379;">"mp4"</span> <span style="color: #98C379;">"mp4_buffer_size"</span> <span style="color: #98C379;">"mp4_limit_rate"</span>
+                 <span style="color: #98C379;">"mp4_limit_rate_after"</span> <span style="color: #98C379;">"mp4_max_buffer_size"</span> <span style="color: #98C379;">"msie_padding"</span> <span style="color: #98C379;">"msie_refresh"</span> <span style="color: #98C379;">"multi_accept"</span>
+                 <span style="color: #98C379;">"ntlm"</span> <span style="color: #98C379;">"open_file_cache"</span> <span style="color: #98C379;">"open_file_cache_errors"</span> <span style="color: #98C379;">"open_file_cache_min_uses"</span>
+                 <span style="color: #98C379;">"open_file_cache_valid"</span> <span style="color: #98C379;">"open_log_file_cache"</span> <span style="color: #98C379;">"open_log_file_cache"</span> <span style="color: #98C379;">"output_buffers"</span>
+                 <span style="color: #98C379;">"override_charset"</span> <span style="color: #98C379;">"pcre_jit"</span> <span style="color: #98C379;">"perl"</span> <span style="color: #98C379;">"perl_modules"</span> <span style="color: #98C379;">"perl_require"</span> <span style="color: #98C379;">"perl_set"</span> <span style="color: #98C379;">"pid"</span>
+                 <span style="color: #98C379;">"pop3_auth"</span> <span style="color: #98C379;">"pop3_capabilities"</span> <span style="color: #98C379;">"port_in_redirect"</span> <span style="color: #98C379;">"postpone_output"</span> <span style="color: #98C379;">"preread_buffer_size"</span>
+                 <span style="color: #98C379;">"preread_timeout"</span> <span style="color: #98C379;">"protocol"</span> <span style="color: #98C379;">"proxy_bind"</span> <span style="color: #98C379;">"proxy_bind"</span> <span style="color: #98C379;">"proxy_buffer"</span> <span style="color: #98C379;">"proxy_buffer_size"</span>
+                 <span style="color: #98C379;">"proxy_buffer_size"</span> <span style="color: #98C379;">"proxy_buffering"</span> <span style="color: #98C379;">"proxy_buffers"</span> <span style="color: #98C379;">"proxy_busy_buffers_size"</span>
+                 <span style="color: #98C379;">"proxy_cache"</span> <span style="color: #98C379;">"proxy_cache_background_update"</span> <span style="color: #98C379;">"proxy_cache_bypass"</span>
+                 <span style="color: #98C379;">"proxy_cache_convert_head"</span> <span style="color: #98C379;">"proxy_cache_key"</span> <span style="color: #98C379;">"proxy_cache_lock"</span> <span style="color: #98C379;">"proxy_cache_lock_age"</span>
+                 <span style="color: #98C379;">"proxy_cache_lock_timeout"</span> <span style="color: #98C379;">"proxy_cache_max_range_offset"</span> <span style="color: #98C379;">"proxy_cache_methods"</span>
+                 <span style="color: #98C379;">"proxy_cache_min_uses"</span> <span style="color: #98C379;">"proxy_cache_path"</span> <span style="color: #98C379;">"proxy_cache_purge"</span> <span style="color: #98C379;">"proxy_cache_revalidate"</span>
+                 <span style="color: #98C379;">"proxy_cache_use_stale"</span> <span style="color: #98C379;">"proxy_cache_valid"</span> <span style="color: #98C379;">"proxy_connect_timeout"</span>
+                 <span style="color: #98C379;">"proxy_connect_timeout"</span> <span style="color: #98C379;">"proxy_cookie_domain"</span> <span style="color: #98C379;">"proxy_cookie_path"</span> <span style="color: #98C379;">"proxy_download_rate"</span>
+                 <span style="color: #98C379;">"proxy_force_ranges"</span> <span style="color: #98C379;">"proxy_headers_hash_bucket_size"</span> <span style="color: #98C379;">"proxy_headers_hash_max_size"</span>
+                 <span style="color: #98C379;">"proxy_hide_header"</span> <span style="color: #98C379;">"proxy_http_version"</span> <span style="color: #98C379;">"proxy_ignore_client_abort"</span>
+                 <span style="color: #98C379;">"proxy_ignore_headers"</span> <span style="color: #98C379;">"proxy_intercept_errors"</span> <span style="color: #98C379;">"proxy_limit_rate"</span>
+                 <span style="color: #98C379;">"proxy_max_temp_file_size"</span> <span style="color: #98C379;">"proxy_method"</span> <span style="color: #98C379;">"proxy_next_upstream"</span> <span style="color: #98C379;">"proxy_next_upstream"</span>
+                 <span style="color: #98C379;">"proxy_next_upstream_timeout"</span> <span style="color: #98C379;">"proxy_next_upstream_timeout"</span> <span style="color: #98C379;">"proxy_next_upstream_tries"</span>
+                 <span style="color: #98C379;">"proxy_next_upstream_tries"</span> <span style="color: #98C379;">"proxy_no_cache"</span> <span style="color: #98C379;">"proxy_pass"</span> <span style="color: #98C379;">"proxy_pass"</span>
+                 <span style="color: #98C379;">"proxy_pass_error_message"</span> <span style="color: #98C379;">"proxy_pass_header"</span> <span style="color: #98C379;">"proxy_pass_request_body"</span>
+                 <span style="color: #98C379;">"proxy_pass_request_headers"</span> <span style="color: #98C379;">"proxy_protocol"</span> <span style="color: #98C379;">"proxy_protocol_timeout"</span>
+                 <span style="color: #98C379;">"proxy_read_timeout"</span> <span style="color: #98C379;">"proxy_redirect"</span> <span style="color: #98C379;">"proxy_request_buffering"</span> <span style="color: #98C379;">"proxy_responses"</span>
+                 <span style="color: #98C379;">"proxy_send_lowat"</span> <span style="color: #98C379;">"proxy_send_timeout"</span> <span style="color: #98C379;">"proxy_set_body"</span> <span style="color: #98C379;">"proxy_set_header"</span> <span style="color: #98C379;">"proxy_ssl"</span>
+                 <span style="color: #98C379;">"proxy_ssl_certificate"</span> <span style="color: #98C379;">"proxy_ssl_certificate"</span> <span style="color: #98C379;">"proxy_ssl_certificate_key"</span>
+                 <span style="color: #98C379;">"proxy_ssl_certificate_key"</span> <span style="color: #98C379;">"proxy_ssl_ciphers"</span> <span style="color: #98C379;">"proxy_ssl_ciphers"</span> <span style="color: #98C379;">"proxy_ssl_crl"</span>
+                 <span style="color: #98C379;">"proxy_ssl_crl"</span> <span style="color: #98C379;">"proxy_ssl_name"</span> <span style="color: #98C379;">"proxy_ssl_name"</span> <span style="color: #98C379;">"proxy_ssl_password_file"</span>
+                 <span style="color: #98C379;">"proxy_ssl_password_file"</span> <span style="color: #98C379;">"proxy_ssl_protocols"</span> <span style="color: #98C379;">"proxy_ssl_protocols"</span>
+                 <span style="color: #98C379;">"proxy_ssl_server_name"</span> <span style="color: #98C379;">"proxy_ssl_server_name"</span> <span style="color: #98C379;">"proxy_ssl_session_reuse"</span>
+                 <span style="color: #98C379;">"proxy_ssl_session_reuse"</span> <span style="color: #98C379;">"proxy_ssl_trusted_certificate"</span> <span style="color: #98C379;">"proxy_ssl_trusted_certificate"</span>
+                 <span style="color: #98C379;">"proxy_ssl_verify"</span> <span style="color: #98C379;">"proxy_ssl_verify"</span> <span style="color: #98C379;">"proxy_ssl_verify_depth"</span> <span style="color: #98C379;">"proxy_ssl_verify_depth"</span>
+                 <span style="color: #98C379;">"proxy_store"</span> <span style="color: #98C379;">"proxy_store_access"</span> <span style="color: #98C379;">"proxy_temp_file_write_size"</span> <span style="color: #98C379;">"proxy_temp_path"</span>
+                 <span style="color: #98C379;">"proxy_timeout"</span> <span style="color: #98C379;">"proxy_timeout"</span> <span style="color: #98C379;">"proxy_upload_rate"</span> <span style="color: #98C379;">"queue"</span> <span style="color: #98C379;">"random_index"</span> <span style="color: #98C379;">"read_ahead"</span>
+                 <span style="color: #98C379;">"real_ip_header"</span> <span style="color: #98C379;">"real_ip_recursive"</span> <span style="color: #98C379;">"recursive_error_pages"</span> <span style="color: #98C379;">"referer_hash_bucket_size"</span>
+                 <span style="color: #98C379;">"referer_hash_max_size"</span> <span style="color: #98C379;">"request_pool_size"</span> <span style="color: #98C379;">"reset_timedout_connection"</span> <span style="color: #98C379;">"resolver"</span>
+                 <span style="color: #98C379;">"resolver"</span> <span style="color: #98C379;">"resolver"</span> <span style="color: #98C379;">"resolver_timeout"</span> <span style="color: #98C379;">"resolver_timeout"</span> <span style="color: #98C379;">"resolver_timeout"</span> <span style="color: #98C379;">"return"</span>
+                 <span style="color: #98C379;">"return"</span> <span style="color: #98C379;">"rewrite"</span> <span style="color: #98C379;">"rewrite_log"</span> <span style="color: #98C379;">"root"</span> <span style="color: #98C379;">"satisfy"</span> <span style="color: #98C379;">"scgi_bind"</span> <span style="color: #98C379;">"scgi_buffer_size"</span>
+                 <span style="color: #98C379;">"scgi_buffering"</span> <span style="color: #98C379;">"scgi_buffers"</span> <span style="color: #98C379;">"scgi_busy_buffers_size"</span> <span style="color: #98C379;">"scgi_cache"</span>
+                 <span style="color: #98C379;">"scgi_cache_background_update"</span> <span style="color: #98C379;">"scgi_cache_bypass"</span> <span style="color: #98C379;">"scgi_cache_key"</span> <span style="color: #98C379;">"scgi_cache_lock"</span>
+                 <span style="color: #98C379;">"scgi_cache_lock_age"</span> <span style="color: #98C379;">"scgi_cache_lock_timeout"</span> <span style="color: #98C379;">"scgi_cache_max_range_offset"</span>
+                 <span style="color: #98C379;">"scgi_cache_methods"</span> <span style="color: #98C379;">"scgi_cache_min_uses"</span> <span style="color: #98C379;">"scgi_cache_path"</span> <span style="color: #98C379;">"scgi_cache_purge"</span>
+                 <span style="color: #98C379;">"scgi_cache_revalidate"</span> <span style="color: #98C379;">"scgi_cache_use_stale"</span> <span style="color: #98C379;">"scgi_cache_valid"</span> <span style="color: #98C379;">"scgi_connect_timeout"</span>
+                 <span style="color: #98C379;">"scgi_force_ranges"</span> <span style="color: #98C379;">"scgi_hide_header"</span> <span style="color: #98C379;">"scgi_ignore_client_abort"</span> <span style="color: #98C379;">"scgi_ignore_headers"</span>
+                 <span style="color: #98C379;">"scgi_intercept_errors"</span> <span style="color: #98C379;">"scgi_limit_rate"</span> <span style="color: #98C379;">"scgi_max_temp_file_size"</span> <span style="color: #98C379;">"scgi_next_upstream"</span>
+                 <span style="color: #98C379;">"scgi_next_upstream_timeout"</span> <span style="color: #98C379;">"scgi_next_upstream_tries"</span> <span style="color: #98C379;">"scgi_no_cache"</span> <span style="color: #98C379;">"scgi_param"</span>
+                 <span style="color: #98C379;">"scgi_pass"</span> <span style="color: #98C379;">"scgi_pass_header"</span> <span style="color: #98C379;">"scgi_pass_request_body"</span> <span style="color: #98C379;">"scgi_pass_request_headers"</span>
+                 <span style="color: #98C379;">"scgi_read_timeout"</span> <span style="color: #98C379;">"scgi_request_buffering"</span> <span style="color: #98C379;">"scgi_send_timeout"</span> <span style="color: #98C379;">"scgi_store"</span>
+                 <span style="color: #98C379;">"scgi_store_access"</span> <span style="color: #98C379;">"scgi_temp_file_write_size"</span> <span style="color: #98C379;">"scgi_temp_path"</span> <span style="color: #98C379;">"secure_link"</span>
+                 <span style="color: #98C379;">"secure_link_md5"</span> <span style="color: #98C379;">"secure_link_secret"</span> <span style="color: #98C379;">"send_lowat"</span> <span style="color: #98C379;">"send_timeout"</span> <span style="color: #98C379;">"sendfile"</span>
+                 <span style="color: #98C379;">"sendfile_max_chunk"</span> <span style="color: #98C379;">"server"</span> <span style="color: #98C379;">"server"</span> <span style="color: #98C379;">"server"</span> <span style="color: #98C379;">"server"</span> <span style="color: #98C379;">"server"</span> <span style="color: #98C379;">"server_name"</span>
+                 <span style="color: #98C379;">"server_name"</span> <span style="color: #98C379;">"server_name_in_redirect"</span> <span style="color: #98C379;">"server_names_hash_bucket_size"</span>
+                 <span style="color: #98C379;">"server_names_hash_max_size"</span> <span style="color: #98C379;">"server_tokens"</span> <span style="color: #98C379;">"session_log"</span> <span style="color: #98C379;">"session_log_format"</span>
+                 <span style="color: #98C379;">"session_log_zone"</span> <span style="color: #98C379;">"set"</span> <span style="color: #98C379;">"set_real_ip_from"</span> <span style="color: #98C379;">"set_real_ip_from"</span> <span style="color: #98C379;">"slice"</span> <span style="color: #98C379;">"smtp_auth"</span>
+                 <span style="color: #98C379;">"smtp_capabilities"</span> <span style="color: #98C379;">"smtp_client_buffer"</span> <span style="color: #98C379;">"smtp_greeting_delay"</span> <span style="color: #98C379;">"source_charset"</span>
+                 <span style="color: #98C379;">"spdy_chunk_size"</span> <span style="color: #98C379;">"spdy_headers_comp"</span> <span style="color: #98C379;">"split_clients"</span> <span style="color: #98C379;">"split_clients"</span> <span style="color: #98C379;">"ssi"</span>
+                 <span style="color: #98C379;">"ssi_last_modified"</span> <span style="color: #98C379;">"ssi_min_file_chunk"</span> <span style="color: #98C379;">"ssi_silent_errors"</span> <span style="color: #98C379;">"ssi_types"</span>
+                 <span style="color: #98C379;">"ssi_value_length"</span> <span style="color: #98C379;">"ssl"</span> <span style="color: #98C379;">"ssl"</span> <span style="color: #98C379;">"ssl_buffer_size"</span> <span style="color: #98C379;">"ssl_certificate"</span> <span style="color: #98C379;">"ssl_certificate"</span>
+                 <span style="color: #98C379;">"ssl_certificate"</span> <span style="color: #98C379;">"ssl_certificate_key"</span> <span style="color: #98C379;">"ssl_certificate_key"</span> <span style="color: #98C379;">"ssl_certificate_key"</span>
+                 <span style="color: #98C379;">"ssl_ciphers"</span> <span style="color: #98C379;">"ssl_ciphers"</span> <span style="color: #98C379;">"ssl_ciphers"</span> <span style="color: #98C379;">"ssl_client_certificate"</span>
+                 <span style="color: #98C379;">"ssl_client_certificate"</span> <span style="color: #98C379;">"ssl_client_certificate"</span> <span style="color: #98C379;">"ssl_crl"</span> <span style="color: #98C379;">"ssl_crl"</span> <span style="color: #98C379;">"ssl_crl"</span>
+                 <span style="color: #98C379;">"ssl_dhparam"</span> <span style="color: #98C379;">"ssl_dhparam"</span> <span style="color: #98C379;">"ssl_dhparam"</span> <span style="color: #98C379;">"ssl_ecdh_curve"</span> <span style="color: #98C379;">"ssl_ecdh_curve"</span>
+                 <span style="color: #98C379;">"ssl_ecdh_curve"</span> <span style="color: #98C379;">"ssl_engine"</span> <span style="color: #98C379;">"ssl_handshake_timeout"</span> <span style="color: #98C379;">"ssl_password_file"</span>
+                 <span style="color: #98C379;">"ssl_password_file"</span> <span style="color: #98C379;">"ssl_password_file"</span> <span style="color: #98C379;">"ssl_prefer_server_ciphers"</span>
+                 <span style="color: #98C379;">"ssl_prefer_server_ciphers"</span> <span style="color: #98C379;">"ssl_prefer_server_ciphers"</span> <span style="color: #98C379;">"ssl_preread"</span> <span style="color: #98C379;">"ssl_protocols"</span>
+                 <span style="color: #98C379;">"ssl_protocols"</span> <span style="color: #98C379;">"ssl_protocols"</span> <span style="color: #98C379;">"ssl_session_cache"</span> <span style="color: #98C379;">"ssl_session_cache"</span>
+                 <span style="color: #98C379;">"ssl_session_cache"</span> <span style="color: #98C379;">"ssl_session_ticket_key"</span> <span style="color: #98C379;">"ssl_session_ticket_key"</span>
+                 <span style="color: #98C379;">"ssl_session_ticket_key"</span> <span style="color: #98C379;">"ssl_session_tickets"</span> <span style="color: #98C379;">"ssl_session_tickets"</span> <span style="color: #98C379;">"ssl_session_tickets"</span>
+                 <span style="color: #98C379;">"ssl_session_timeout"</span> <span style="color: #98C379;">"ssl_session_timeout"</span> <span style="color: #98C379;">"ssl_session_timeout"</span> <span style="color: #98C379;">"ssl_stapling"</span>
+                 <span style="color: #98C379;">"ssl_stapling_file"</span> <span style="color: #98C379;">"ssl_stapling_responder"</span> <span style="color: #98C379;">"ssl_stapling_verify"</span>
+                 <span style="color: #98C379;">"ssl_trusted_certificate"</span> <span style="color: #98C379;">"ssl_trusted_certificate"</span> <span style="color: #98C379;">"ssl_trusted_certificate"</span>
+                 <span style="color: #98C379;">"ssl_verify_client"</span> <span style="color: #98C379;">"ssl_verify_client"</span> <span style="color: #98C379;">"ssl_verify_client"</span> <span style="color: #98C379;">"ssl_verify_depth"</span>
+                 <span style="color: #98C379;">"ssl_verify_depth"</span> <span style="color: #98C379;">"ssl_verify_depth"</span> <span style="color: #98C379;">"starttls"</span> <span style="color: #98C379;">"state"</span> <span style="color: #98C379;">"state"</span> <span style="color: #98C379;">"status"</span> <span style="color: #98C379;">"status_format"</span>
+                 <span style="color: #98C379;">"status_zone"</span> <span style="color: #98C379;">"sticky"</span> <span style="color: #98C379;">"sticky_cookie_insert"</span> <span style="color: #98C379;">"stream"</span> <span style="color: #98C379;">"stub_status"</span> <span style="color: #98C379;">"sub_filter"</span>
+                 <span style="color: #98C379;">"sub_filter_last_modified"</span> <span style="color: #98C379;">"sub_filter_once"</span> <span style="color: #98C379;">"sub_filter_types"</span>
+                 <span style="color: #98C379;">"subrequest_output_buffer_size"</span> <span style="color: #98C379;">"tcp_nodelay"</span> <span style="color: #98C379;">"tcp_nodelay"</span> <span style="color: #98C379;">"tcp_nopush"</span> <span style="color: #98C379;">"thread_pool"</span>
+                 <span style="color: #98C379;">"timeout"</span> <span style="color: #98C379;">"timer_resolution"</span> <span style="color: #98C379;">"try_files"</span> <span style="color: #98C379;">"types"</span> <span style="color: #98C379;">"types_hash_bucket_size"</span>
+                 <span style="color: #98C379;">"types_hash_max_size"</span> <span style="color: #98C379;">"underscores_in_headers"</span> <span style="color: #98C379;">"uninitialized_variable_warn"</span> <span style="color: #98C379;">"upstream"</span>
+                 <span style="color: #98C379;">"upstream"</span> <span style="color: #98C379;">"upstream_conf"</span> <span style="color: #98C379;">"use"</span> <span style="color: #98C379;">"user"</span> <span style="color: #98C379;">"userid"</span> <span style="color: #98C379;">"userid_domain"</span> <span style="color: #98C379;">"userid_expires"</span>
+                 <span style="color: #98C379;">"userid_mark"</span> <span style="color: #98C379;">"userid_name"</span> <span style="color: #98C379;">"userid_p3p"</span> <span style="color: #98C379;">"userid_path"</span> <span style="color: #98C379;">"userid_service"</span> <span style="color: #98C379;">"uwsgi_bind"</span>
+                 <span style="color: #98C379;">"uwsgi_buffer_size"</span> <span style="color: #98C379;">"uwsgi_buffering"</span> <span style="color: #98C379;">"uwsgi_buffers"</span> <span style="color: #98C379;">"uwsgi_busy_buffers_size"</span>
+                 <span style="color: #98C379;">"uwsgi_cache"</span> <span style="color: #98C379;">"uwsgi_cache_background_update"</span> <span style="color: #98C379;">"uwsgi_cache_bypass"</span> <span style="color: #98C379;">"uwsgi_cache_key"</span>
+                 <span style="color: #98C379;">"uwsgi_cache_lock"</span> <span style="color: #98C379;">"uwsgi_cache_lock_age"</span> <span style="color: #98C379;">"uwsgi_cache_lock_timeout"</span>
+                 <span style="color: #98C379;">"uwsgi_cache_max_range_offset"</span> <span style="color: #98C379;">"uwsgi_cache_methods"</span> <span style="color: #98C379;">"uwsgi_cache_min_uses"</span>
+                 <span style="color: #98C379;">"uwsgi_cache_path"</span> <span style="color: #98C379;">"uwsgi_cache_purge"</span> <span style="color: #98C379;">"uwsgi_cache_revalidate"</span> <span style="color: #98C379;">"uwsgi_cache_use_stale"</span>
+                 <span style="color: #98C379;">"uwsgi_cache_valid"</span> <span style="color: #98C379;">"uwsgi_connect_timeout"</span> <span style="color: #98C379;">"uwsgi_force_ranges"</span> <span style="color: #98C379;">"uwsgi_hide_header"</span>
+                 <span style="color: #98C379;">"uwsgi_ignore_client_abort"</span> <span style="color: #98C379;">"uwsgi_ignore_headers"</span> <span style="color: #98C379;">"uwsgi_intercept_errors"</span>
+                 <span style="color: #98C379;">"uwsgi_limit_rate"</span> <span style="color: #98C379;">"uwsgi_max_temp_file_size"</span> <span style="color: #98C379;">"uwsgi_modifier1"</span> <span style="color: #98C379;">"uwsgi_modifier2"</span>
+                 <span style="color: #98C379;">"uwsgi_next_upstream"</span> <span style="color: #98C379;">"uwsgi_next_upstream_timeout"</span> <span style="color: #98C379;">"uwsgi_next_upstream_tries"</span>
+                 <span style="color: #98C379;">"uwsgi_no_cache"</span> <span style="color: #98C379;">"uwsgi_param"</span> <span style="color: #98C379;">"uwsgi_pass"</span> <span style="color: #98C379;">"uwsgi_pass_header"</span> <span style="color: #98C379;">"uwsgi_pass_request_body"</span>
+                 <span style="color: #98C379;">"uwsgi_pass_request_headers"</span> <span style="color: #98C379;">"uwsgi_read_timeout"</span> <span style="color: #98C379;">"uwsgi_request_buffering"</span>
+                 <span style="color: #98C379;">"uwsgi_send_timeout"</span> <span style="color: #98C379;">"uwsgi_ssl_certificate"</span> <span style="color: #98C379;">"uwsgi_ssl_certificate_key"</span>
+                 <span style="color: #98C379;">"uwsgi_ssl_ciphers"</span> <span style="color: #98C379;">"uwsgi_ssl_crl"</span> <span style="color: #98C379;">"uwsgi_ssl_name"</span> <span style="color: #98C379;">"uwsgi_ssl_password_file"</span>
+                 <span style="color: #98C379;">"uwsgi_ssl_protocols"</span> <span style="color: #98C379;">"uwsgi_ssl_server_name"</span> <span style="color: #98C379;">"uwsgi_ssl_session_reuse"</span>
+                 <span style="color: #98C379;">"uwsgi_ssl_trusted_certificate"</span> <span style="color: #98C379;">"uwsgi_ssl_verify"</span> <span style="color: #98C379;">"uwsgi_ssl_verify_depth"</span> <span style="color: #98C379;">"uwsgi_store"</span>
+                 <span style="color: #98C379;">"uwsgi_store_access"</span> <span style="color: #98C379;">"uwsgi_temp_file_write_size"</span> <span style="color: #98C379;">"uwsgi_temp_path"</span> <span style="color: #98C379;">"valid_referers"</span>
+                 <span style="color: #98C379;">"variables_hash_bucket_size"</span> <span style="color: #98C379;">"variables_hash_bucket_size"</span> <span style="color: #98C379;">"variables_hash_max_size"</span>
+                 <span style="color: #98C379;">"variables_hash_max_size"</span> <span style="color: #98C379;">"worker_aio_requests"</span> <span style="color: #98C379;">"worker_connections"</span> <span style="color: #98C379;">"worker_cpu_affinity"</span>
+                 <span style="color: #98C379;">"worker_priority"</span> <span style="color: #98C379;">"worker_processes"</span> <span style="color: #98C379;">"worker_rlimit_core"</span> <span style="color: #98C379;">"worker_rlimit_nofile"</span>
+                 <span style="color: #98C379;">"worker_shutdown_timeout"</span> <span style="color: #98C379;">"working_directory"</span> <span style="color: #98C379;">"xclient"</span> <span style="color: #98C379;">"xml_entities"</span>
+                 <span style="color: #98C379;">"xslt_last_modified"</span> <span style="color: #98C379;">"xslt_param"</span> <span style="color: #98C379;">"xslt_string_param"</span> <span style="color: #98C379;">"xslt_stylesheet"</span> <span style="color: #98C379;">"xslt_types"</span>
+                 <span style="color: #98C379;">"zone"</span> <span style="color: #98C379;">"zone"</span> <span style="color: #98C379;">"zone_sync"</span> <span style="color: #98C379;">"zone_sync_buffers"</span> <span style="color: #98C379;">"zone_sync_connect_retry_interval"</span>
+                 <span style="color: #98C379;">"zone_sync_connect_timeout"</span> <span style="color: #98C379;">"zone_sync_interval"</span> <span style="color: #98C379;">"zone_sync_recv_buffer_size"</span>
+                 <span style="color: #98C379;">"zone_sync_server"</span> <span style="color: #98C379;">"zone_sync_ssl"</span> <span style="color: #98C379;">"zone_sync_ssl_certificate"</span>
+                 <span style="color: #98C379;">"zone_sync_ssl_certificate_key"</span> <span style="color: #98C379;">"zone_sync_ssl_ciphers"</span> <span style="color: #98C379;">"zone_sync_ssl_crl"</span>
+                 <span style="color: #98C379;">"zone_sync_ssl_password_file"</span> <span style="color: #98C379;">"zone_sync_ssl_protocols"</span>
+                 <span style="color: #98C379;">"zone_sync_ssl_trusted_certificate"</span> <span style="color: #98C379;">"zone_sync_ssl_verify"</span> <span style="color: #98C379;">"zone_sync_ssl_verify_depth"</span>
+                 <span style="color: #98C379;">"zone_sync_timeout"</span><span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 
-<span style="color: #8D8D84;">;;;</span><span style="color: #8D8D84; font-style: italic;">###</span><span style="color: #ff0000; font-weight: bold; font-style: italic;">autoload</span>
-<span style="color: #707183;">(</span>eval-after-load 'nginx-mode
-  '<span style="color: #7388D6;">(</span>add-hook 'nginx-mode-hook #'company-nginx-keywords<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #5C6370; font-style: italic;">;;;</span><span style="color: #5C6370; font-style: italic;">###</span><span style="color: #BE5046; font-weight: bold; font-style: italic;">autoload</span>
+<span style="color: #56B6C2;">(</span>eval-after-load 'nginx-mode
+  '<span style="color: #D19A66;">(</span>add-hook 'nginx-mode-hook #'company-nginx-keywords<span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org60f96bc" class="outline-2">
-<h2 id="org60f96bc"><span class="section-number-2">4</span> created package company-nginx</h2>
+<div id="outline-container-org3d76481" class="outline-2">
+<h2 id="org3d76481"><span class="section-number-2">4</span> created package company-nginx</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 In order to share to others, I created a simple package:
@@ -706,7 +706,7 @@ I will push to MELPA.
 <footer>
   Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
   Last update date: 2018-05-20 Sun 18:01.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.1.13). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.2). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
   
   <!-- Show Org Source -->
   <script>
@@ -722,16 +722,9 @@ I will push to MELPA.
 
 <!-- jump to beginning -->
 <div id="jumptobeginning">
-  <a href="#content">Jump to Beginning</a>
-  <style>
-   #jumptobeginning {
-     text-decoration: none;
-     display: block;
-     
-     float: right;
-     background-color: #D0D0D0;
-   }
-  </style>
+  <a href="#content" alt="Back to Top" style="text-decoration: none;">
+    <i id="backtotop" style="color: lightsalmon;"></i>
+  </a>
 </div>
 
 <!-- payment -->
@@ -747,49 +740,49 @@ I will push to MELPA.
 </div>
 
 <!-- Google Analytics -->
-<script async src="//www.google-analytics.com/analytics.js"></script>
-<script type="text/javascript">
- (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+     <script type="text/javascript">
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
- ga('create', 'UA-63992234-1', 'auto');
- ga('send', 'pageview');
-</script>
+     ga('create', 'UA-63992234-1', 'auto');
+     ga('send', 'pageview');
+     </script> -->
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
-<script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+     <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
 
- gtag('config', 'UA-63992234-1');
-</script>
+     gtag('config', 'UA-63992234-1');
+     </script> -->
 
 <!-- Disqus -->
-<div class="comments">
-  <style>
-   /* hide comment policy */
-   .comment-policy {
+<!-- <div class="comments">
+     <style>
+     /* hide comment policy */
+     .comment-policy {
      display: none;
-   }
-   /* hide Disqus footer */
-   .disqus-footer__wrapper {
+     }
+     /* hide Disqus footer */
+     .disqus-footer__wrapper {
      display: none;
-   } 
-  </style>
-  
-  <div id="disqus_thread"></div>
-  <script>
-   (function() {
+     } 
+     </style>
+     
+     <div id="disqus_thread"></div>
+     <script>
+     (function() {
      var d = document, s = d.createElement('script');
      s.src = 'https://stardiviner.disqus.com/embed.js';
      s.setAttribute('data-timestamp', +new Date());
      (d.head || d.body).appendChild(s);
-   })();
-  </script>
-</div>
+     })();
+     </script>
+     </div> -->
 </div>
 </body>
 </html>

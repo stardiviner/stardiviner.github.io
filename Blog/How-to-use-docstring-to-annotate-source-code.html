@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2018-09-28 Fri 13:38 -->
+<!-- 2019-02-15 Fri 20:47 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>&lrm;</title>
@@ -191,7 +191,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32">
 <script type="text/javascript" src="/assets/scripts/org-info-src.js">
 /**
  *
@@ -200,7 +200,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in /assets/scripts/org-info-src.js.
  *
- * Copyright (C) 2012-2018 Free Software Foundation, Inc.
+ * Copyright (C) 2012-2019 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -229,7 +229,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -268,7 +268,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -332,24 +332,24 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org04b518a">1. How does the idea comes up?</a></li>
-<li><a href="#org4e215ea">2. Emacs ElDoc</a></li>
-<li><a href="#org65a7af3">3. My idea details</a></li>
-<li><a href="#orgabb821d">4. Examples</a>
+<li><a href="#org5490a2e">1. How does the idea comes up?</a></li>
+<li><a href="#org448d2b9">2. Emacs ElDoc</a></li>
+<li><a href="#orgd72c466">3. My idea details</a></li>
+<li><a href="#org207aed3">4. Examples</a>
 <ul>
-<li><a href="#orgb3eff99">4.1. Lisp dialects</a></li>
-<li><a href="#org1594b15">4.2. Python/Ruby/JavaScript</a></li>
-<li><a href="#orga708b78">4.3. C/C++/Java</a></li>
-<li><a href="#orgf5174a9">4.4. HTML</a></li>
-<li><a href="#orga18330e">4.5. CSS</a></li>
+<li><a href="#orgc470f02">4.1. Lisp dialects</a></li>
+<li><a href="#org4984a2b">4.2. Python/Ruby/JavaScript</a></li>
+<li><a href="#org6b2b6e1">4.3. C/C++/Java</a></li>
+<li><a href="#orgd6fb117">4.4. HTML</a></li>
+<li><a href="#org07a83a0">4.5. CSS</a></li>
 </ul>
 </li>
-<li><a href="#org681bafc">5. Try to implement in Emacs as an extension</a></li>
+<li><a href="#org41d0062">5. Try to implement in Emacs as an extension</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org04b518a" class="outline-2">
-<h2 id="org04b518a"><span class="section-number-2">1</span> How does the idea comes up?</h2>
+<div id="outline-container-org5490a2e" class="outline-2">
+<h2 id="org5490a2e"><span class="section-number-2">1</span> How does the idea comes up?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Sometimes I think what if the source code can be translated into human natural language in
@@ -359,8 +359,8 @@ understand the program source code better and faster.
 </div>
 </div>
 
-<div id="outline-container-org4e215ea" class="outline-2">
-<h2 id="org4e215ea"><span class="section-number-2">2</span> Emacs ElDoc</h2>
+<div id="outline-container-org448d2b9" class="outline-2">
+<h2 id="org448d2b9"><span class="section-number-2">2</span> Emacs ElDoc</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Emacs ElDoc already display docstring for symbol in minibuffer. There are some packages
@@ -370,49 +370,49 @@ property-text or overlay etc.
 </div>
 </div>
 
-<div id="outline-container-org65a7af3" class="outline-2">
-<h2 id="org65a7af3"><span class="section-number-2">3</span> My idea details</h2>
+<div id="outline-container-orgd72c466" class="outline-2">
+<h2 id="orgd72c466"><span class="section-number-2">3</span> My idea details</h2>
 </div>
 
 
-<div id="outline-container-orgabb821d" class="outline-2">
-<h2 id="orgabb821d"><span class="section-number-2">4</span> Examples</h2>
+<div id="outline-container-org207aed3" class="outline-2">
+<h2 id="org207aed3"><span class="section-number-2">4</span> Examples</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgb3eff99" class="outline-3">
-<h3 id="orgb3eff99"><span class="section-number-3">4.1</span> Lisp dialects</h3>
+<div id="outline-container-orgc470f02" class="outline-3">
+<h3 id="orgc470f02"><span class="section-number-3">4.1</span> Lisp dialects</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">+--&gt; define a function named hello-world.</span>
-<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">|   +--&gt; function name.</span>
-<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">|   |          +--&gt; arguments.</span>
-<span style="color: #707183;">(</span><span style="color: #0000FF;">defn</span> <span style="color: #006699;">hello-world</span> <span style="color: #7388D6;">[]</span>
-  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">+--&gt; print string "Hello, World!".</span>
-  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">prn</span> <span style="color: #008000;">"Hello, World!"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-clojure"><span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">+--&gt; define a function named hello-world.</span>
+<span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">|   +--&gt; function name.</span>
+<span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">|   |          +--&gt; arguments.</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defn</span> <span style="color: #61AFEF;">hello-world</span> <span style="color: #D19A66;">[]</span>
+  <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">+--&gt; print string "Hello, World!".</span>
+  <span style="color: #D19A66;">(</span><span style="color: #828997;">prn</span> <span style="color: #98C379;">"Hello, World!"</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1594b15" class="outline-3">
-<h3 id="org1594b15"><span class="section-number-3">4.2</span> Python/Ruby/JavaScript</h3>
+<div id="outline-container-org4984a2b" class="outline-3">
+<h3 id="org4984a2b"><span class="section-number-3">4.2</span> Python/Ruby/JavaScript</h3>
 </div>
 
-<div id="outline-container-orga708b78" class="outline-3">
-<h3 id="orga708b78"><span class="section-number-3">4.3</span> C/C++/Java</h3>
+<div id="outline-container-org6b2b6e1" class="outline-3">
+<h3 id="org6b2b6e1"><span class="section-number-3">4.3</span> C/C++/Java</h3>
 </div>
 
-<div id="outline-container-orgf5174a9" class="outline-3">
-<h3 id="orgf5174a9"><span class="section-number-3">4.4</span> HTML</h3>
+<div id="outline-container-orgd6fb117" class="outline-3">
+<h3 id="orgd6fb117"><span class="section-number-3">4.4</span> HTML</h3>
 </div>
 
-<div id="outline-container-orga18330e" class="outline-3">
-<h3 id="orga18330e"><span class="section-number-3">4.5</span> CSS</h3>
+<div id="outline-container-org07a83a0" class="outline-3">
+<h3 id="org07a83a0"><span class="section-number-3">4.5</span> CSS</h3>
 </div>
 </div>
 
-<div id="outline-container-org681bafc" class="outline-2">
-<h2 id="org681bafc"><span class="section-number-2">5</span> Try to implement in Emacs as an extension</h2>
+<div id="outline-container-org41d0062" class="outline-2">
+<h2 id="org41d0062"><span class="section-number-2">5</span> Try to implement in Emacs as an extension</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Here is an new created empty repository <a href="https://github.com/stardiviner/eldoc-annotation.el">https://github.com/stardiviner/eldoc-annotation.el</a>
@@ -425,7 +425,7 @@ that I will add code in future.
 <footer>
   Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
   Last update date: 2018-09-28 Fri 13:37.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.1.13). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.2). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
   
   <!-- Show Org Source -->
   <script>
@@ -441,16 +441,9 @@ that I will add code in future.
 
 <!-- jump to beginning -->
 <div id="jumptobeginning">
-  <a href="#content">Jump to Beginning</a>
-  <style>
-   #jumptobeginning {
-     text-decoration: none;
-     display: block;
-     
-     float: right;
-     background-color: #D0D0D0;
-   }
-  </style>
+  <a href="#content" alt="Back to Top" style="text-decoration: none;">
+    <i id="backtotop" style="color: lightsalmon;"></i>
+  </a>
 </div>
 
 <!-- payment -->
@@ -466,49 +459,49 @@ that I will add code in future.
 </div>
 
 <!-- Google Analytics -->
-<script async src="//www.google-analytics.com/analytics.js"></script>
-<script type="text/javascript">
- (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+     <script type="text/javascript">
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
- ga('create', 'UA-63992234-1', 'auto');
- ga('send', 'pageview');
-</script>
+     ga('create', 'UA-63992234-1', 'auto');
+     ga('send', 'pageview');
+     </script> -->
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
-<script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+     <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
 
- gtag('config', 'UA-63992234-1');
-</script>
+     gtag('config', 'UA-63992234-1');
+     </script> -->
 
 <!-- Disqus -->
-<div class="comments">
-  <style>
-   /* hide comment policy */
-   .comment-policy {
+<!-- <div class="comments">
+     <style>
+     /* hide comment policy */
+     .comment-policy {
      display: none;
-   }
-   /* hide Disqus footer */
-   .disqus-footer__wrapper {
+     }
+     /* hide Disqus footer */
+     .disqus-footer__wrapper {
      display: none;
-   } 
-  </style>
-  
-  <div id="disqus_thread"></div>
-  <script>
-   (function() {
+     } 
+     </style>
+     
+     <div id="disqus_thread"></div>
+     <script>
+     (function() {
      var d = document, s = d.createElement('script');
      s.src = 'https://stardiviner.disqus.com/embed.js';
      s.setAttribute('data-timestamp', +new Date());
      (d.head || d.body).appendChild(s);
-   })();
-  </script>
-</div>
+     })();
+     </script>
+     </div> -->
 </div>
 </body>
 </html>

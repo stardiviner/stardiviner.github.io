@@ -1,4 +1,4 @@
-# Created 2018-09-28 Fri 12:39
+# Created 2019-02-15 Fri 20:46
 #+OPTIONS: num:t toc:1 H:4
 #+TITLE: Org-mode exporter template for testing
 #+AUTHOR: stardiviner
@@ -295,47 +295,6 @@ This is inside the drawer.
 :PUBDATE:  <2018-04-03 Tue 21:59>
 :END:
 
-#+begin_src dot
-digraph G {
-  size="8,6"
-  ratio=expand
-  edge [dir=both]
-  plcnet [shape=box, label="PLC Network"]
-  subgraph cluster_wrapline {
-    label="Wrapline Control System"
-    color=purple
-    subgraph {
-    rank=same
-    exec
-    sharedmem [style=filled, fillcolor=lightgrey, shape=box]
-    }
-    edge[style=dotted, dir=none]
-    exec -> opserver
-    exec -> db
-    plc -> exec
-    edge [style=line, dir=both]
-    exec -> sharedmem
-    sharedmem -> db
-    plc -> sharedmem
-    sharedmem -> opserver
-  }
-  plcnet -> plc [constraint=false]
-  millwide [shape=box, label="Millwide System"]
-  db -> millwide
-
-  subgraph cluster_opclients {
-    color=blue
-    label="Operator Clients"
-    rankdir=LR
-    labelloc=b
-    node[label=client]
-    opserver -> client1
-    opserver -> client2
-    opserver -> client3
-  }
-}
-#+end_src
-
 #+name: fig:bldg-1-5-seq
 #+caption: This is an image
 [[file:data/images/babel_lang_dot_example1.png]]
@@ -370,14 +329,6 @@ The org homepage [fn:1] now looks a lot better than it used to.
 1 + 1 \equal 2
 
 Like \EUR with
-
-* Inline code
-:PROPERTIES:
-:ID:       8f9d52a8-f04e-4f20-aa2e-1a594811fc57
-:PUBDATE:  <2018-04-03 Tue 21:59>
-:END:
-
-src_elisp{(message "hi")} =hi=
 
 * LaTeX
 :PROPERTIES:
