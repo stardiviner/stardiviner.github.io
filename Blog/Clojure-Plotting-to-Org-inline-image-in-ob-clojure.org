@@ -1,4 +1,4 @@
-# Created 2019-02-15 Fri 20:48
+# Created 2019-02-16 Sat 08:30
 #+TITLE: Clojure Plotting to Org inline image in ob-clojure
 #+AUTHOR: stardiviner
 
@@ -118,7 +118,7 @@ correct absolute path:
 
 (def ob-clojure-clj-xchart
   (xchart/xy-chart {"Expected rate" [(range 10) (range 10)]
-                    "Actual rate"   [(range 10) (map #(+ % (rand-int 5) -2) (range 10))]}))
+		    "Actual rate"   [(range 10) (map #(+ % (rand-int 5) -2) (range 10))]}))
 
 ;; (xchart/view ob-clojure-clj-xchart)
 (xchart/spit ob-clojure-clj-xchart (str dir "ob-clojure-clj-xchart.png"))

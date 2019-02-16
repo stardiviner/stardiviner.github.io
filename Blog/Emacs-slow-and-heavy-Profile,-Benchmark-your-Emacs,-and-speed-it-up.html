@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-02-15 Fri 20:47 -->
+<!-- 2019-02-16 Sat 08:29 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</title>
@@ -191,7 +191,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
 <script type="text/javascript" src="/assets/scripts/org-info-src.js">
 /**
  *
@@ -334,35 +334,35 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbd85047">1. Is your Emacs slow and heavy?</a>
+<li><a href="#orge27c629">1. Is your Emacs slow and heavy?</a>
 <ul>
-<li><a href="#orgc68cab9">1.1. elp</a>
+<li><a href="#org624c6d0">1.1. elp</a>
 <ul>
-<li><a href="#org10ce1b1">1.1.1. workflow</a></li>
-<li><a href="#orgbffc84c">1.1.2. <code>[C-h p elp RET]</code></a></li>
+<li><a href="#org4b62921">1.1.1. workflow</a></li>
+<li><a href="#org5b15c05">1.1.2. <code>[C-h p elp RET]</code></a></li>
 </ul>
 </li>
-<li><a href="#orgd2b2455">1.2. profile</a>
+<li><a href="#org2105f41">1.2. profile</a>
 <ul>
-<li><a href="#orgbe1eee6">1.2.1. workflow</a></li>
+<li><a href="#orgde3c894">1.2.1. workflow</a></li>
 </ul>
 </li>
-<li><a href="#org4e0452a">1.3. esup</a>
+<li><a href="#orgf88f75a">1.3. esup</a>
 <ul>
-<li><a href="#org3ce358d">1.3.1. workflow</a></li>
-<li><a href="#org5f21bb8">1.3.2. navigation &#x2013; <code>[n/p/&lt;RET&gt;]</code></a></li>
-<li><a href="#org261e821">1.3.3. FAQ</a></li>
+<li><a href="#org3faa3bd">1.3.1. workflow</a></li>
+<li><a href="#org4d12f6a">1.3.2. navigation &#x2013; <code>[n/p/&lt;RET&gt;]</code></a></li>
+<li><a href="#orgb727a01">1.3.3. FAQ</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org7580ead">2. The history commits I did which slow down my Emacs</a></li>
+<li><a href="#org55a482e">2. The history commits I did which slow down my Emacs</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgbd85047" class="outline-2">
-<h2 id="orgbd85047"><span class="section-number-2">1</span> Is your Emacs slow and heavy?</h2>
+<div id="outline-container-orge27c629" class="outline-2">
+<h2 id="orge27c629"><span class="section-number-2">1</span> Is your Emacs slow and heavy?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 When you installed many Emacs packages, or you set up many configurations. You found your
@@ -382,12 +382,12 @@ Here are some ways you can find out the reaons:
 </dl>
 </div>
 
-<div id="outline-container-orgc68cab9" class="outline-3">
-<h3 id="orgc68cab9"><span class="section-number-3">1.1</span> elp</h3>
+<div id="outline-container-org624c6d0" class="outline-3">
+<h3 id="org624c6d0"><span class="section-number-3">1.1</span> elp</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org10ce1b1" class="outline-4">
-<h4 id="org10ce1b1"><span class="section-number-4">1.1.1</span> workflow</h4>
+<div id="outline-container-org4b62921" class="outline-4">
+<h4 id="org4b62921"><span class="section-number-4">1.1.1</span> workflow</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 Profile the code while executing the function that takes a long time.
@@ -428,7 +428,7 @@ You can start monitoring the whole <code>elpy</code> package with:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span>elp-instrument-package <span style="color: #98C379;">"elpy-"</span><span style="color: #56B6C2;">)</span>
+<pre class="src src-emacs-lisp">(elp-instrument-package <span style="color: #98C379;">"elpy-"</span>)
 </pre>
 </div>
 
@@ -442,8 +442,8 @@ do your time-consuming operations, and get a report with <code>[M-x elp-results]
 </div>
 </div>
 
-<div id="outline-container-orgbffc84c" class="outline-4">
-<h4 id="orgbffc84c"><span class="section-number-4">1.1.2</span> <code>[C-h p elp RET]</code></h4>
+<div id="outline-container-org5b15c05" class="outline-4">
+<h4 id="org5b15c05"><span class="section-number-4">1.1.2</span> <code>[C-h p elp RET]</code></h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 If you want to profile a bunch of functions, set elp-function-list
@@ -548,12 +548,12 @@ affect accuracy too.
 </div>
 </div>
 
-<div id="outline-container-orgd2b2455" class="outline-3">
-<h3 id="orgd2b2455"><span class="section-number-3">1.2</span> profile</h3>
+<div id="outline-container-org2105f41" class="outline-3">
+<h3 id="org2105f41"><span class="section-number-3">1.2</span> profile</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-orgbe1eee6" class="outline-4">
-<h4 id="orgbe1eee6"><span class="section-number-4">1.2.1</span> workflow</h4>
+<div id="outline-container-orgde3c894" class="outline-4">
+<h4 id="orgde3c894"><span class="section-number-4">1.2.1</span> workflow</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ol class="org-ol">
 <li><p>
@@ -592,16 +592,16 @@ You need to reset profiler logs before nest new profiling.
 </div>
 </div>
 
-<div id="outline-container-org4e0452a" class="outline-3">
-<h3 id="org4e0452a"><span class="section-number-3">1.3</span> esup</h3>
+<div id="outline-container-orgf88f75a" class="outline-3">
+<h3 id="orgf88f75a"><span class="section-number-3">1.3</span> esup</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 <a href="http://github.com/jschaf/esup">http://github.com/jschaf/esup</a>
 </p>
 </div>
 
-<div id="outline-container-org3ce358d" class="outline-4">
-<h4 id="org3ce358d"><span class="section-number-4">1.3.1</span> workflow</h4>
+<div id="outline-container-org3faa3bd" class="outline-4">
+<h4 id="org3faa3bd"><span class="section-number-4">1.3.1</span> workflow</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <ol class="org-ol">
 <li><p>
@@ -623,16 +623,16 @@ display ESUP result.
 </div>
 </div>
 
-<div id="outline-container-org5f21bb8" class="outline-4">
-<h4 id="org5f21bb8"><span class="section-number-4">1.3.2</span> navigation &#x2013; <code>[n/p/&lt;RET&gt;]</code></h4>
+<div id="outline-container-org4d12f6a" class="outline-4">
+<h4 id="org4d12f6a"><span class="section-number-4">1.3.2</span> navigation &#x2013; <code>[n/p/&lt;RET&gt;]</code></h4>
 </div>
 
-<div id="outline-container-org261e821" class="outline-4">
-<h4 id="org261e821"><span class="section-number-4">1.3.3</span> FAQ</h4>
+<div id="outline-container-orgb727a01" class="outline-4">
+<h4 id="orgb727a01"><span class="section-number-4">1.3.3</span> FAQ</h4>
 <div class="outline-text-4" id="text-1-3-3">
 </div>
 <ol class="org-ol">
-<li><a id="org266999f" name="org266999f"></a>Q: Debugger entered&#x2013;Lisp error: (invalid-read-syntax "#")<br>
+<li><a id="orgb27de15" name="orgb27de15"></a>Q: Debugger entered&#x2013;Lisp error: (invalid-read-syntax "#")<br>
 <div class="outline-text-5" id="text-1-3-3-1">
 <pre class="example">
 Debugger entered--Lisp error: (invalid-read-syntax "#")
@@ -681,8 +681,8 @@ on the read syntax error "#".
 </div>
 
 
-<div id="outline-container-org7580ead" class="outline-2">
-<h2 id="org7580ead"><span class="section-number-2">2</span> The history commits I did which slow down my Emacs</h2>
+<div id="outline-container-org55a482e" class="outline-2">
+<h2 id="org55a482e"><span class="section-number-2">2</span> The history commits I did which slow down my Emacs</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Here is my Emacs config: <a href="https://github.com/stardiviner/emacs.d">https://github.com/stardiviner/emacs.d</a>
@@ -1821,7 +1821,7 @@ Date:   Sun May 11 09:24:33 2014 +0800
 <div id="postamble" class="status">
 <footer>
   Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
-  Last update date: 2018-10-20 Sat 19:57.<br>
+  Last update date: 2019-02-16 Sat 08:17.<br>
   Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.2). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
   
   <!-- Show Org Source -->

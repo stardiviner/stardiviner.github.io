@@ -9,10 +9,6 @@
         color: #ABB2BF;
         background-color: #282C34;
       }
-      .builtin {
-        /* font-lock-builtin-face */
-        color: #828997;
-      }
       .comment {
         /* font-lock-comment-face */
         color: #5C6370;
@@ -66,14 +62,6 @@
         color: #61AFEF;
         text-decoration: underline;
       }
-      .rainbow-delimiters-depth-1 {
-        /* rainbow-delimiters-depth-1-face */
-        color: #56B6C2;
-      }
-      .rainbow-delimiters-depth-2 {
-        /* rainbow-delimiters-depth-2-face */
-        color: #D19A66;
-      }
       .string {
         /* font-lock-string-face */
         color: #98C379;
@@ -116,9 +104,9 @@ property-text or overlay etc.
 </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">+--&gt; define a function named hello-world.
 </span></span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">|   +--&gt; function name.
 </span></span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">|   |          +--&gt; arguments.
-</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="keyword">defn</span></span><span class="org-block"> </span><span class="org-block"><span class="function-name">hello-world</span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-2">[]</span></span><span class="org-block">
+</span></span><span class="org-block">(</span><span class="org-block"><span class="keyword">defn</span></span><span class="org-block"> </span><span class="org-block"><span class="function-name">hello-world</span></span><span class="org-block"> []
   </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">+--&gt; print string "Hello, World!".
-</span></span><span class="org-block">  </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block"><span class="builtin">prn</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Hello, World!"</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
+</span></span><span class="org-block">  (prn </span><span class="org-block"><span class="string">"Hello, World!"</span></span><span class="org-block">))
 </span><span class="org-block-end-line">#+end_src
 </span>
 <span class="custom">*</span><span class="org-level-2">* Python/Ruby/JavaScript
