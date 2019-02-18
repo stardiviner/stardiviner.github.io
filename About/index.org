@@ -38,6 +38,13 @@ suddenly popuped fantasy idea.
 - Keybase: https://keybase.io/stardiviner
 
 
+* 简历
+  :PROPERTIES:
+  :CUSTOM_ID: 简历
+  :END:
+
+
+
 * Resume
 :PROPERTIES:
 :CUSTOM_ID: Resume
@@ -75,7 +82,7 @@ Emacs下了。确实很赞。之后一直都是用Org-mode组织内容。GTD, Wi
 (Personal Knowledge Graph), Blog, Email etc。 [2016-12-16 Fri] 用Elisp
 给很多Emacs插件和Org-mode贡献过一些代码。
 
-*** contributed commits on Org-mode
+*** contributed commits on Org-mode                    :noexport:
 
 #+begin_src shell :dir "~/Code/Emacs/org-mode"
 git log --author=stardiviner
