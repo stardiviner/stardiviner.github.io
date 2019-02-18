@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-02-16 Sat 08:30 -->
+<!-- 2019-02-18 Mon 19:37 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Literate Programming with Org Mode</title>
@@ -322,7 +322,6 @@ for the JavaScript code in this tag.
     <li><a href='/Blog/index.html'>Blog</a></li>
     <li><a href="/Thought/index.html">Thought</a></li>
     <li><a href='/Literature/index.html'>文学</a></li>
-    <li><a href='/Slides/index.html'>Slides</a></li>
     <li><a href='/About/index.html'>About</a></li>
   </ul>
 </div>
@@ -334,49 +333,49 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge27b488">1. Why Literate Programming?</a></li>
-<li><a href="#orge350920">2. How to Literate Programming with Org Mode?</a>
+<li><a href="#org85ddb88">1. Why Literate Programming?</a></li>
+<li><a href="#orgde4be6d">2. How to Literate Programming with Org Mode?</a>
 <ul>
-<li><a href="#org5bf4887">2.1. LP: organize things in text and code</a></li>
-<li><a href="#orgbd57156">2.2. LP: organize logic with "headlines" and "tags"</a></li>
-<li><a href="#orge3402a8">2.3. LP: write code with Org Babel source code blocks</a>
+<li><a href="#orgf208d6d">2.1. LP: organize things in text and code</a></li>
+<li><a href="#org1e4ec4c">2.2. LP: organize logic with "headlines" and "tags"</a></li>
+<li><a href="#orgf7bf9f4">2.3. LP: write code with Org Babel source code blocks</a>
 <ul>
-<li><a href="#orgac66538">2.3.1. LP: support many different languages with Babel languages</a></li>
-<li><a href="#org95f6fae">2.3.2. LP: Babel header arguments</a></li>
+<li><a href="#org7d77a30">2.3.1. LP: support many different languages with Babel languages</a></li>
+<li><a href="#org00566fc">2.3.2. LP: Babel header arguments</a></li>
 </ul>
 </li>
-<li><a href="#org6c6b2d8">2.4. LP: separate code logic and reference with "noweb"</a></li>
-<li><a href="#orge65b885">2.5. LP: export to source code with "tangling"</a>
+<li><a href="#org6ddeee5">2.4. LP: separate code logic and reference with "noweb"</a></li>
+<li><a href="#org31798e8">2.5. LP: export to source code with "tangling"</a>
 <ul>
-<li><a href="#org53f8bd7">2.5.1. LP: tangle single source code block</a></li>
-<li><a href="#org9255616">2.5.2. LP: tangle the section of headline</a></li>
-<li><a href="#org73af6cc">2.5.3. LP: tangle whole file</a></li>
+<li><a href="#orgfffcfa2">2.5.1. LP: tangle single source code block</a></li>
+<li><a href="#org0d4523c">2.5.2. LP: tangle the section of headline</a></li>
+<li><a href="#org7266178">2.5.3. LP: tangle whole file</a></li>
 </ul>
 </li>
-<li><a href="#org90d67cb">2.6. LP: display result</a>
+<li><a href="#orgff03321">2.6. LP: display result</a>
 <ul>
-<li><a href="#org3543f7f">2.6.1. LP: display image result with Org inline image display</a></li>
-<li><a href="#org6b7da3d">2.6.2. LP: display table result with Org table</a></li>
+<li><a href="#org22ace37">2.6.1. LP: display image result with Org inline image display</a></li>
+<li><a href="#org13a6e49">2.6.2. LP: display table result with Org table</a></li>
 </ul>
 </li>
-<li><a href="#org2526566">2.7. LP: reference to text, code and each other</a>
+<li><a href="#org6dfb321">2.7. LP: reference to text, code and each other</a>
 <ul>
-<li><a href="#orgccbeaf4">2.7.1. text-&gt;code with coderef</a></li>
-<li><a href="#org9920cc7">2.7.2. text-&gt;text with link</a></li>
-<li><a href="#org3f5ad46">2.7.3. code-&gt;code with noweb</a></li>
-<li><a href="#orga1bf494">2.7.4. code-&gt;text with link</a></li>
+<li><a href="#org1f2ce4b">2.7.1. text-&gt;code with coderef</a></li>
+<li><a href="#orga0f991c">2.7.2. text-&gt;text with link</a></li>
+<li><a href="#orgace706d">2.7.3. code-&gt;code with noweb</a></li>
+<li><a href="#org2a02524">2.7.4. code-&gt;text with link</a></li>
 </ul>
 </li>
-<li><a href="#orgd839783">2.8. LP: navigation in text and code</a></li>
+<li><a href="#orgb934449">2.8. LP: navigation in text and code</a></li>
 </ul>
 </li>
-<li><a href="#org4673295">3. <span class="todo TODO">TODO</span> complete this post</a></li>
+<li><a href="#orgc696ad1">3. <span class="todo TODO">TODO</span> complete this post</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orge27b488" class="outline-2">
-<h2 id="orge27b488"><span class="section-number-2">1</span> Why Literate Programming?</h2>
+<div id="outline-container-org85ddb88" class="outline-2">
+<h2 id="org85ddb88"><span class="section-number-2">1</span> Why Literate Programming?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 There are lot of data on internet about "Literate Programming" already, I blog about this
@@ -399,16 +398,16 @@ Org Mode.
 </div>
 
 
-<div id="outline-container-orge350920" class="outline-2">
-<h2 id="orge350920"><span class="section-number-2">2</span> How to Literate Programming with Org Mode?</h2>
+<div id="outline-container-orgde4be6d" class="outline-2">
+<h2 id="orgde4be6d"><span class="section-number-2">2</span> How to Literate Programming with Org Mode?</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org5bf4887" class="outline-3">
-<h3 id="org5bf4887"><span class="section-number-3">2.1</span> LP: organize things in text and code</h3>
+<div id="outline-container-orgf208d6d" class="outline-3">
+<h3 id="orgf208d6d"><span class="section-number-3">2.1</span> LP: organize things in text and code</h3>
 </div>
 
-<div id="outline-container-orgbd57156" class="outline-3">
-<h3 id="orgbd57156"><span class="section-number-3">2.2</span> LP: organize logic with "headlines" and "tags"</h3>
+<div id="outline-container-org1e4ec4c" class="outline-3">
+<h3 id="org1e4ec4c"><span class="section-number-3">2.2</span> LP: organize logic with "headlines" and "tags"</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 You can navigation and filter Literate Programming document logic with headlines and tags.
@@ -418,8 +417,8 @@ is very necessary.
 </div>
 </div>
 
-<div id="outline-container-orge3402a8" class="outline-3">
-<h3 id="orge3402a8"><span class="section-number-3">2.3</span> LP: write code with Org Babel source code blocks</h3>
+<div id="outline-container-orgf7bf9f4" class="outline-3">
+<h3 id="orgf7bf9f4"><span class="section-number-3">2.3</span> LP: write code with Org Babel source code blocks</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Org Mode Babel are technology that can evaluate source code blocks and insert result into
@@ -429,8 +428,8 @@ evaluated, then return the result to be inserted in Org buffer.
 </p>
 </div>
 
-<div id="outline-container-orgac66538" class="outline-4">
-<h4 id="orgac66538"><span class="section-number-4">2.3.1</span> LP: support many different languages with Babel languages</h4>
+<div id="outline-container-org7d77a30" class="outline-4">
+<h4 id="org7d77a30"><span class="section-number-4">2.3.1</span> LP: support many different languages with Babel languages</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <p>
 For now, Org Babel has many languages supported now. Official support in Org-mode packages
@@ -495,7 +494,7 @@ Org source code, and GitHub, and maybe somewhere else.
 </div>
 
 <ol class="org-ol">
-<li><a id="orgd7f8a77" name="orgd7f8a77"></a>LP: use different languages to processing data in mixture<br>
+<li><a id="orgd2a6ce6" name="orgd2a6ce6"></a>LP: use different languages to processing data in mixture<br>
 <div class="outline-text-5" id="text-2-3-1-1">
 <p>
 You can process JSON data with JavaScript, then pass result data to Python to process to
@@ -506,8 +505,8 @@ generate XML data, then pass the XML data to gnuplot to generate image result.
 </ol>
 </div>
 
-<div id="outline-container-org95f6fae" class="outline-4">
-<h4 id="org95f6fae"><span class="section-number-4">2.3.2</span> LP: Babel header arguments</h4>
+<div id="outline-container-org00566fc" class="outline-4">
+<h4 id="org00566fc"><span class="section-number-4">2.3.2</span> LP: Babel header arguments</h4>
 <div class="outline-text-4" id="text-2-3-2">
 <p>
 There are many source code block header arguments, you can check out Org Mode Info
@@ -519,8 +518,8 @@ language specific only.
 </div>
 </div>
 
-<div id="outline-container-org6c6b2d8" class="outline-3">
-<h3 id="org6c6b2d8"><span class="section-number-3">2.4</span> LP: separate code logic and reference with "noweb"</h3>
+<div id="outline-container-org6ddeee5" class="outline-3">
+<h3 id="org6ddeee5"><span class="section-number-3">2.4</span> LP: separate code logic and reference with "noweb"</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 Tangling functionality is controlled by the tangle family of tangle header
@@ -591,7 +590,7 @@ source code being written to the <code>hello.sh</code> file:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org8f11612"><span style="color: #828997;">echo</span> <span style="color: #98C379;">"/-----------------------------------------------------------\\"</span>
+<pre class="src src-shell" id="org00ab4c4"><span style="color: #828997;">echo</span> <span style="color: #98C379;">"/-----------------------------------------------------------\\"</span>
 <span style="color: #828997;">echo</span> <span style="color: #98C379;">"|                       hello world                         |"</span>
 <span style="color: #828997;">echo</span> <span style="color: #98C379;">"\-----------------------------------------------------------/"</span>
 </pre>
@@ -599,7 +598,7 @@ source code being written to the <code>hello.sh</code> file:
 
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org24c38c0"><span style="color: #5C6370; font-style: italic;">#</span><span style="color: #5C6370; font-style: italic;">!/usr/bin/</span><span style="color: #E06C75;">env</span><span style="color: #5C6370; font-style: italic;"> sh</span>
+<pre class="src src-shell" id="orge1a4e0b"><span style="color: #5C6370; font-style: italic;">#</span><span style="color: #5C6370; font-style: italic;">!/usr/bin/</span><span style="color: #E06C75;">env</span><span style="color: #5C6370; font-style: italic;"> sh</span>
 
 <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">[[file:~/org/temp/index.org::*Noweb%20test][hello-world]]</span>
 
@@ -639,29 +638,29 @@ evaluated in the current source-code block but are passed literally to
 </div>
 </div>
 
-<div id="outline-container-orge65b885" class="outline-3">
-<h3 id="orge65b885"><span class="section-number-3">2.5</span> LP: export to source code with "tangling"</h3>
+<div id="outline-container-org31798e8" class="outline-3">
+<h3 id="org31798e8"><span class="section-number-3">2.5</span> LP: export to source code with "tangling"</h3>
 <div class="outline-text-3" id="text-2-5">
 </div>
-<div id="outline-container-org53f8bd7" class="outline-4">
-<h4 id="org53f8bd7"><span class="section-number-4">2.5.1</span> LP: tangle single source code block</h4>
+<div id="outline-container-orgfffcfa2" class="outline-4">
+<h4 id="orgfffcfa2"><span class="section-number-4">2.5.1</span> LP: tangle single source code block</h4>
 </div>
 
-<div id="outline-container-org9255616" class="outline-4">
-<h4 id="org9255616"><span class="section-number-4">2.5.2</span> LP: tangle the section of headline</h4>
+<div id="outline-container-org0d4523c" class="outline-4">
+<h4 id="org0d4523c"><span class="section-number-4">2.5.2</span> LP: tangle the section of headline</h4>
 </div>
 
-<div id="outline-container-org73af6cc" class="outline-4">
-<h4 id="org73af6cc"><span class="section-number-4">2.5.3</span> LP: tangle whole file</h4>
+<div id="outline-container-org7266178" class="outline-4">
+<h4 id="org7266178"><span class="section-number-4">2.5.3</span> LP: tangle whole file</h4>
 </div>
 </div>
 
-<div id="outline-container-org90d67cb" class="outline-3">
-<h3 id="org90d67cb"><span class="section-number-3">2.6</span> LP: display result</h3>
+<div id="outline-container-orgff03321" class="outline-3">
+<h3 id="orgff03321"><span class="section-number-3">2.6</span> LP: display result</h3>
 <div class="outline-text-3" id="text-2-6">
 </div>
-<div id="outline-container-org3543f7f" class="outline-4">
-<h4 id="org3543f7f"><span class="section-number-4">2.6.1</span> LP: display image result with Org inline image display</h4>
+<div id="outline-container-org22ace37" class="outline-4">
+<h4 id="org22ace37"><span class="section-number-4">2.6.1</span> LP: display image result with Org inline image display</h4>
 <div class="outline-text-4" id="text-2-6-1">
 <p>
 You can manually insert a file link to image file as inline image. You also can let source
@@ -671,8 +670,8 @@ Org-mode with <code>[M-x org-display-inline-images]</code>.
 </div>
 </div>
 
-<div id="outline-container-org6b7da3d" class="outline-4">
-<h4 id="org6b7da3d"><span class="section-number-4">2.6.2</span> LP: display table result with Org table</h4>
+<div id="outline-container-org13a6e49" class="outline-4">
+<h4 id="org13a6e49"><span class="section-number-4">2.6.2</span> LP: display table result with Org table</h4>
 <div class="outline-text-4" id="text-2-6-2">
 <p>
 Org-mode supports table. Support many manipulations. Also there are many advanced usage of
@@ -682,16 +681,16 @@ Org table, like use table as data input for source code block, radio table, etc.
 </div>
 </div>
 
-<div id="outline-container-org2526566" class="outline-3">
-<h3 id="org2526566"><span class="section-number-3">2.7</span> LP: reference to text, code and each other</h3>
+<div id="outline-container-org6dfb321" class="outline-3">
+<h3 id="org6dfb321"><span class="section-number-3">2.7</span> LP: reference to text, code and each other</h3>
 <div class="outline-text-3" id="text-2-7">
 </div>
-<div id="outline-container-orgccbeaf4" class="outline-4">
-<h4 id="orgccbeaf4"><span class="section-number-4">2.7.1</span> text-&gt;code with coderef</h4>
+<div id="outline-container-org1f2ce4b" class="outline-4">
+<h4 id="org1f2ce4b"><span class="section-number-4">2.7.1</span> text-&gt;code with coderef</h4>
 <div class="outline-text-4" id="text-2-7-1">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="orgd284612">(<span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">hello</span> (name)                               <span style="color: #5C6370; font-style: italic;">; </span><span style="color: #5C6370; font-style: italic;">(ref:define function hello)</span>
-  (print (format <span style="color: #98C379;">"Hello, %s"</span> name)))
+<pre class="src src-emacs-lisp" id="orgbc9445e"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">hello</span> <span style="color: #D19A66;">(</span>name<span style="color: #D19A66;">)</span>                               <span style="color: #5C6370; font-style: italic;">; </span><span style="color: #5C6370; font-style: italic;">(ref:define function hello)</span>
+  <span style="color: #D19A66;">(</span>print <span style="color: #61AFEF;">(</span>format <span style="color: #98C379;">"Hello, %s"</span> name<span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -701,17 +700,17 @@ Org table, like use table as data input for source code block, radio table, etc.
 </div>
 </div>
 
-<div id="outline-container-org9920cc7" class="outline-4">
-<h4 id="org9920cc7"><span class="section-number-4">2.7.2</span> text-&gt;text with link</h4>
+<div id="outline-container-orga0f991c" class="outline-4">
+<h4 id="orga0f991c"><span class="section-number-4">2.7.2</span> text-&gt;text with link</h4>
 </div>
 
-<div id="outline-container-org3f5ad46" class="outline-4">
-<h4 id="org3f5ad46"><span class="section-number-4">2.7.3</span> code-&gt;code with noweb</h4>
+<div id="outline-container-orgace706d" class="outline-4">
+<h4 id="orgace706d"><span class="section-number-4">2.7.3</span> code-&gt;code with noweb</h4>
 <div class="outline-text-4" id="text-2-7-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">&lt;&lt;hello&gt;&gt;
 
-(hello <span style="color: #98C379;">"stardiviner"</span>)
+<span style="color: #56B6C2;">(</span>hello <span style="color: #98C379;">"stardiviner"</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -721,18 +720,18 @@ Hello, stardiviner
 </div>
 </div>
 
-<div id="outline-container-orga1bf494" class="outline-4">
-<h4 id="orga1bf494"><span class="section-number-4">2.7.4</span> code-&gt;text with link</h4>
+<div id="outline-container-org2a02524" class="outline-4">
+<h4 id="org2a02524"><span class="section-number-4">2.7.4</span> code-&gt;text with link</h4>
 <div class="outline-text-4" id="text-2-7-4">
 </div>
 <ol class="org-ol">
-<li><a id="org1048cc8" name="org1048cc8"></a>org-link in source code block comment<br></li>
+<li><a id="org35af6e6" name="org35af6e6"></a>org-link in source code block comment<br></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgd839783" class="outline-3">
-<h3 id="orgd839783"><span class="section-number-3">2.8</span> LP: navigation in text and code</h3>
+<div id="outline-container-orgb934449" class="outline-3">
+<h3 id="orgb934449"><span class="section-number-3">2.8</span> LP: navigation in text and code</h3>
 <div class="outline-text-3" id="text-2-8">
 <ul class="org-ul">
 <li><code>org-babel-goto-named-src-block</code></li>
@@ -748,8 +747,8 @@ You can jump back in mark ring with <code>[M-,]</code> / <code>org-mark-ring-got
 </div>
 
 
-<div id="outline-container-org4673295" class="outline-2">
-<h2 id="org4673295"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> complete this post</h2>
+<div id="outline-container-orgc696ad1" class="outline-2">
+<h2 id="orgc696ad1"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> complete this post</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Still there are many things need to write. But temporary like this for now.

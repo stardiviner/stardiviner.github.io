@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-02-16 Sat 08:30 -->
+<!-- 2019-02-18 Mon 19:38 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Make company-mode support for nginx-mode</title>
@@ -322,7 +322,6 @@ for the JavaScript code in this tag.
     <li><a href='/Blog/index.html'>Blog</a></li>
     <li><a href="/Thought/index.html">Thought</a></li>
     <li><a href='/Literature/index.html'>文学</a></li>
-    <li><a href='/Slides/index.html'>Slides</a></li>
     <li><a href='/About/index.html'>About</a></li>
   </ul>
 </div>
@@ -334,21 +333,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org865288f">1. At the beginning</a></li>
-<li><a href="#org83475f3">2. Fetch all Nginx directives</a>
+<li><a href="#org18a372d">1. At the beginning</a></li>
+<li><a href="#orga3ee6a0">2. Fetch all Nginx directives</a>
 <ul>
-<li><a href="#orgddcda4d">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
-<li><a href="#org2cb009a">2.2. another Python implementation</a></li>
+<li><a href="#org7261416">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
+<li><a href="#orgac19009">2.2. another Python implementation</a></li>
 </ul>
 </li>
-<li><a href="#orgcbbf6a8">3. company-keywords-alist</a></li>
-<li><a href="#org79350b5">4. created package company-nginx</a></li>
+<li><a href="#org58d36c0">3. company-keywords-alist</a></li>
+<li><a href="#org6f52514">4. created package company-nginx</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org865288f" class="outline-2">
-<h2 id="org865288f"><span class="section-number-2">1</span> At the beginning</h2>
+<div id="outline-container-org18a372d" class="outline-2">
+<h2 id="org18a372d"><span class="section-number-2">1</span> At the beginning</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I'm learning a little about Nginx recently, I hope can setup web server by myself
@@ -368,27 +367,27 @@ too.
 </div>
 
 
-<div id="outline-container-org83475f3" class="outline-2">
-<h2 id="org83475f3"><span class="section-number-2">2</span> Fetch all Nginx directives</h2>
+<div id="outline-container-orga3ee6a0" class="outline-2">
+<h2 id="orga3ee6a0"><span class="section-number-2">2</span> Fetch all Nginx directives</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgddcda4d" class="outline-3">
-<h3 id="orgddcda4d"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
+<div id="outline-container-org7261416" class="outline-3">
+<h3 id="org7261416"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #E06C75;">require</span> '<span style="color: #98C379;">elquery</span>)
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">require</span> '<span style="color: #98C379;">elquery</span><span style="color: #56B6C2;">)</span>
 
-(<span style="color: #E06C75;">with-current-buffer</span> (url-retrieve-synchronously <span style="color: #98C379;">"https://nginx.org/en/docs/dirindex.html"</span>)
-  (message <span style="color: #98C379;">"%S"</span>
-           (elquery-$ <span style="color: #98C379;">"body #main #content p"</span>
-                      (elquery-read-string (buffer-string)))))
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">with-current-buffer</span> <span style="color: #D19A66;">(</span>url-retrieve-synchronously <span style="color: #98C379;">"https://nginx.org/en/docs/dirindex.html"</span><span style="color: #D19A66;">)</span>
+  <span style="color: #D19A66;">(</span>message <span style="color: #98C379;">"%S"</span>
+           <span style="color: #61AFEF;">(</span>elquery-$ <span style="color: #98C379;">"body #main #content p"</span>
+                      <span style="color: #C678DD;">(</span>elquery-read-string <span style="color: #98C379;">(</span>buffer-string<span style="color: #98C379;">)</span><span style="color: #C678DD;">)</span><span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 
-(<span style="color: #E06C75;">let</span> ((html (<span style="color: #E06C75;">with-current-buffer</span>
-                (set-buffer-multibyte nil)
-              (url-retrieve-synchronously <span style="color: #98C379;">"https://nginx.org/en/docs/dirindex.html"</span>)
-              (elquery-read-string
-               (buffer-string)))))
-  (elquery-$ <span style="color: #98C379;">"#content p"</span> html))
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">let</span> <span style="color: #D19A66;">(</span><span style="color: #61AFEF;">(</span>html <span style="color: #C678DD;">(</span><span style="color: #E06C75;">with-current-buffer</span>
+                <span style="color: #98C379;">(</span>set-buffer-multibyte nil<span style="color: #98C379;">)</span>
+              <span style="color: #98C379;">(</span>url-retrieve-synchronously <span style="color: #98C379;">"https://nginx.org/en/docs/dirindex.html"</span><span style="color: #98C379;">)</span>
+              <span style="color: #98C379;">(</span>elquery-read-string
+               <span style="color: #BE5046;">(</span>buffer-string<span style="color: #BE5046;">)</span><span style="color: #98C379;">)</span><span style="color: #C678DD;">)</span><span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span>
+  <span style="color: #D19A66;">(</span>elquery-$ <span style="color: #98C379;">"#content p"</span> html<span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -402,25 +401,25 @@ too.
 </div>
 </div>
 
-<div id="outline-container-org2cb009a" class="outline-3">
-<h3 id="org2cb009a"><span class="section-number-3">2.2</span> another Python implementation</h3>
+<div id="outline-container-orgac19009" class="outline-3">
+<h3 id="orgac19009"><span class="section-number-3">2.2</span> another Python implementation</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
-<pre class="src src-python" id="org9533f7d"><span style="color: #E06C75;">import</span> urllib.request
+<pre class="src src-python" id="orge801562"><span style="color: #E06C75;">import</span> urllib.request
 <span style="color: #E06C75;">import</span> urllib.parse
 <span style="color: #E06C75;">import</span> bs4
 
-<span style="color: #ABB2BF; background-color: #282C34;">req</span> = urllib.request.Request(<span style="color: #98C379;">"https://nginx.org/en/docs/dirindex.html"</span>)
-<span style="color: #ABB2BF; background-color: #282C34;">respond</span> = urllib.request.urlopen(req)
-<span style="color: #ABB2BF; background-color: #282C34;">html_page</span> = respond.read().decode(<span style="color: #98C379;">"utf-8"</span>)
-<span style="color: #ABB2BF; background-color: #282C34;">parsed_html</span> = bs4.BeautifulSoup(html_page, <span style="color: #98C379;">"html"</span>)
-<span style="color: #ABB2BF; background-color: #282C34;">p</span> = parsed_html.find(<span style="color: #98C379;">'div'</span>, <span style="color: #ABB2BF; background-color: #282C34;">attrs</span>={<span style="color: #98C379;">'id'</span>: <span style="color: #98C379;">'content'</span>}).find(<span style="color: #98C379;">'p'</span>)
+<span style="color: #E5C07B;">req</span> = urllib.request.Request(<span style="color: #98C379;">"https://nginx.org/en/docs/dirindex.html"</span>)
+<span style="color: #E5C07B;">respond</span> = urllib.request.urlopen(req)
+<span style="color: #E5C07B;">html_page</span> = respond.read().decode(<span style="color: #98C379;">"utf-8"</span>)
+<span style="color: #E5C07B;">parsed_html</span> = bs4.BeautifulSoup(html_page, <span style="color: #98C379;">"html"</span>)
+<span style="color: #E5C07B;">p</span> = parsed_html.find(<span style="color: #98C379;">'div'</span>, attrs={<span style="color: #98C379;">'id'</span>: <span style="color: #98C379;">'content'</span>}).find(<span style="color: #98C379;">'p'</span>)
 <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">print(p)</span>
 
-<span style="color: #ABB2BF; background-color: #282C34;">a</span> = p.find_all(<span style="color: #98C379;">'a'</span>)
+<span style="color: #E5C07B;">a</span> = p.find_all(<span style="color: #98C379;">'a'</span>)
 <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">print(a)</span>
 
-<span style="color: #ABB2BF; background-color: #282C34;">directives</span> = []
+<span style="color: #E5C07B;">directives</span> = []
 
 <span style="color: #E06C75;">for</span> x <span style="color: #E06C75;">in</span> a:
     directives.append(x.text)
@@ -434,19 +433,19 @@ Convert result to Elisp list data structure:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #E06C75;">setq</span> nginx-directives
-      (mapcar
-       (<span style="color: #E06C75;">lambda</span> (element)
-         (replace-regexp-in-string <span style="color: #98C379;">" "</span> <span style="color: #98C379;">""</span> element))
-       (split-string
-        (replace-regexp-in-string
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">setq</span> nginx-directives
+      <span style="color: #D19A66;">(</span>mapcar
+       <span style="color: #61AFEF;">(</span><span style="color: #E06C75;">lambda</span> <span style="color: #C678DD;">(</span>element<span style="color: #C678DD;">)</span>
+         <span style="color: #C678DD;">(</span>replace-regexp-in-string <span style="color: #98C379;">" "</span> <span style="color: #98C379;">""</span> element<span style="color: #C678DD;">)</span><span style="color: #61AFEF;">)</span>
+       <span style="color: #61AFEF;">(</span>split-string
+        <span style="color: #C678DD;">(</span>replace-regexp-in-string
          <span style="color: #98C379;">"\\[</span><span style="color: #E5C07B;">\\</span><span style="color: #C678DD;">|</span><span style="color: #98C379;">\\</span><span style="color: #98C379;">]"</span> <span style="color: #98C379;">""</span>
-         (replace-regexp-in-string
+         <span style="color: #98C379;">(</span>replace-regexp-in-string
           <span style="color: #98C379;">"'"</span> <span style="color: #98C379;">""</span>
-          directives))
-        <span style="color: #98C379;">","</span>)))
+          directives<span style="color: #98C379;">)</span><span style="color: #C678DD;">)</span>
+        <span style="color: #98C379;">","</span><span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 
-(print nginx-directives)
+<span style="color: #56B6C2;">(</span>print nginx-directives<span style="color: #56B6C2;">)</span>
 
 <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">(replace-regexp-in-string "\\[</span><span style="color: #98C379; font-style: italic;">\\|\\</span><span style="color: #5C6370; font-style: italic;">]" "" directives)</span>
 
@@ -455,8 +454,8 @@ Convert result to Elisp list data structure:
 <span style="color: #5C6370; font-style: italic;">;;  </span><span style="color: #5C6370; font-style: italic;">(replace-regexp-in-string "\\[</span><span style="color: #98C379; font-style: italic;">\\|\\</span><span style="color: #5C6370; font-style: italic;">]" "" "['a', 'b']"))</span>
 
 <span style="color: #5C6370; font-style: italic;">;;; </span><span style="color: #5C6370; font-style: italic;">prepend nginx-mode element for `</span><span style="color: #98C379; font-style: italic;">company-keywords-alist</span><span style="color: #5C6370; font-style: italic;">'</span>
-(add-to-list 'company-keywords-alist
-             (cons 'nginx-mode nginx-directives))
+<span style="color: #56B6C2;">(</span>add-to-list 'company-keywords-alist
+             <span style="color: #D19A66;">(</span>cons 'nginx-mode nginx-directives<span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -497,13 +496,13 @@ Convert result to Elisp list data structure:
 </div>
 
 
-<div id="outline-container-orgcbbf6a8" class="outline-2">
-<h2 id="orgcbbf6a8"><span class="section-number-2">3</span> company-keywords-alist</h2>
+<div id="outline-container-org58d36c0" class="outline-2">
+<h2 id="org58d36c0"><span class="section-number-2">3</span> company-keywords-alist</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">company-nginx-keywords</span> ()
-  (add-to-list 'company-keywords-alist
-               '(nginx-mode
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">company-nginx-keywords</span> <span style="color: #D19A66;">()</span>
+  <span style="color: #D19A66;">(</span>add-to-list 'company-keywords-alist
+               '<span style="color: #61AFEF;">(</span>nginx-mode
                  <span style="color: #98C379;">"absolute_redirect"</span> <span style="color: #98C379;">"accept_mutex"</span> <span style="color: #98C379;">"accept_mutex_delay"</span> <span style="color: #98C379;">"access_log"</span> <span style="color: #98C379;">"access_log"</span>
                  <span style="color: #98C379;">"add_after_body"</span> <span style="color: #98C379;">"add_before_body"</span> <span style="color: #98C379;">"add_header"</span> <span style="color: #98C379;">"add_trailer"</span> <span style="color: #98C379;">"addition_types"</span> <span style="color: #98C379;">"aio"</span>
                  <span style="color: #98C379;">"aio_write"</span> <span style="color: #98C379;">"alias"</span> <span style="color: #98C379;">"allow"</span> <span style="color: #98C379;">"allow"</span> <span style="color: #98C379;">"ancient_browser"</span> <span style="color: #98C379;">"ancient_browser_value"</span> <span style="color: #98C379;">"api"</span>
@@ -675,18 +674,18 @@ Convert result to Elisp list data structure:
                  <span style="color: #98C379;">"zone_sync_ssl_certificate_key"</span> <span style="color: #98C379;">"zone_sync_ssl_ciphers"</span> <span style="color: #98C379;">"zone_sync_ssl_crl"</span>
                  <span style="color: #98C379;">"zone_sync_ssl_password_file"</span> <span style="color: #98C379;">"zone_sync_ssl_protocols"</span>
                  <span style="color: #98C379;">"zone_sync_ssl_trusted_certificate"</span> <span style="color: #98C379;">"zone_sync_ssl_verify"</span> <span style="color: #98C379;">"zone_sync_ssl_verify_depth"</span>
-                 <span style="color: #98C379;">"zone_sync_timeout"</span>)))
+                 <span style="color: #98C379;">"zone_sync_timeout"</span><span style="color: #61AFEF;">)</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 
 <span style="color: #5C6370; font-style: italic;">;;;</span><span style="color: #5C6370; font-style: italic;">###</span><span style="color: #BE5046; font-weight: bold; font-style: italic;">autoload</span>
-(eval-after-load 'nginx-mode
-  '(add-hook 'nginx-mode-hook #'company-nginx-keywords))
+<span style="color: #56B6C2;">(</span>eval-after-load 'nginx-mode
+  '<span style="color: #D19A66;">(</span>add-hook 'nginx-mode-hook #'company-nginx-keywords<span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org79350b5" class="outline-2">
-<h2 id="org79350b5"><span class="section-number-2">4</span> created package company-nginx</h2>
+<div id="outline-container-org6f52514" class="outline-2">
+<h2 id="org6f52514"><span class="section-number-2">4</span> created package company-nginx</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 In order to share to others, I created a simple package:

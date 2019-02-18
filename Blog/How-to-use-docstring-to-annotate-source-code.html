@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-02-16 Sat 08:30 -->
+<!-- 2019-02-18 Mon 19:38 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>&lrm;</title>
@@ -322,7 +322,6 @@ for the JavaScript code in this tag.
     <li><a href='/Blog/index.html'>Blog</a></li>
     <li><a href="/Thought/index.html">Thought</a></li>
     <li><a href='/Literature/index.html'>文学</a></li>
-    <li><a href='/Slides/index.html'>Slides</a></li>
     <li><a href='/About/index.html'>About</a></li>
   </ul>
 </div>
@@ -332,24 +331,24 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc878a78">1. How does the idea comes up?</a></li>
-<li><a href="#org2a424ec">2. Emacs ElDoc</a></li>
-<li><a href="#orgcffbcc8">3. My idea details</a></li>
-<li><a href="#org6de5926">4. Examples</a>
+<li><a href="#org9e223d1">1. How does the idea comes up?</a></li>
+<li><a href="#org2703f13">2. Emacs ElDoc</a></li>
+<li><a href="#orgb031546">3. My idea details</a></li>
+<li><a href="#orgd5582a9">4. Examples</a>
 <ul>
-<li><a href="#orgcc71dae">4.1. Lisp dialects</a></li>
-<li><a href="#org2296e7d">4.2. Python/Ruby/JavaScript</a></li>
-<li><a href="#orgf2928fc">4.3. C/C++/Java</a></li>
-<li><a href="#orgf7724ed">4.4. HTML</a></li>
-<li><a href="#org14c71b1">4.5. CSS</a></li>
+<li><a href="#org300582c">4.1. Lisp dialects</a></li>
+<li><a href="#orge6f2493">4.2. Python/Ruby/JavaScript</a></li>
+<li><a href="#org418d52e">4.3. C/C++/Java</a></li>
+<li><a href="#org0841e0b">4.4. HTML</a></li>
+<li><a href="#orgb0300d7">4.5. CSS</a></li>
 </ul>
 </li>
-<li><a href="#org503890c">5. Try to implement in Emacs as an extension</a></li>
+<li><a href="#orgf9ce2b6">5. Try to implement in Emacs as an extension</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgc878a78" class="outline-2">
-<h2 id="orgc878a78"><span class="section-number-2">1</span> How does the idea comes up?</h2>
+<div id="outline-container-org9e223d1" class="outline-2">
+<h2 id="org9e223d1"><span class="section-number-2">1</span> How does the idea comes up?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Sometimes I think what if the source code can be translated into human natural language in
@@ -359,8 +358,8 @@ understand the program source code better and faster.
 </div>
 </div>
 
-<div id="outline-container-org2a424ec" class="outline-2">
-<h2 id="org2a424ec"><span class="section-number-2">2</span> Emacs ElDoc</h2>
+<div id="outline-container-org2703f13" class="outline-2">
+<h2 id="org2703f13"><span class="section-number-2">2</span> Emacs ElDoc</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Emacs ElDoc already display docstring for symbol in minibuffer. There are some packages
@@ -370,49 +369,49 @@ property-text or overlay etc.
 </div>
 </div>
 
-<div id="outline-container-orgcffbcc8" class="outline-2">
-<h2 id="orgcffbcc8"><span class="section-number-2">3</span> My idea details</h2>
+<div id="outline-container-orgb031546" class="outline-2">
+<h2 id="orgb031546"><span class="section-number-2">3</span> My idea details</h2>
 </div>
 
 
-<div id="outline-container-org6de5926" class="outline-2">
-<h2 id="org6de5926"><span class="section-number-2">4</span> Examples</h2>
+<div id="outline-container-orgd5582a9" class="outline-2">
+<h2 id="orgd5582a9"><span class="section-number-2">4</span> Examples</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgcc71dae" class="outline-3">
-<h3 id="orgcc71dae"><span class="section-number-3">4.1</span> Lisp dialects</h3>
+<div id="outline-container-org300582c" class="outline-3">
+<h3 id="org300582c"><span class="section-number-3">4.1</span> Lisp dialects</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">+--&gt; define a function named hello-world.</span>
 <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">|   +--&gt; function name.</span>
 <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">|   |          +--&gt; arguments.</span>
-(<span style="color: #E06C75;">defn</span> <span style="color: #61AFEF;">hello-world</span> []
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defn</span> <span style="color: #61AFEF;">hello-world</span> <span style="color: #D19A66;">[]</span>
   <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">+--&gt; print string "Hello, World!".</span>
-  (prn <span style="color: #98C379;">"Hello, World!"</span>))
+  <span style="color: #D19A66;">(</span><span style="color: #828997;">prn</span> <span style="color: #98C379;">"Hello, World!"</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2296e7d" class="outline-3">
-<h3 id="org2296e7d"><span class="section-number-3">4.2</span> Python/Ruby/JavaScript</h3>
+<div id="outline-container-orge6f2493" class="outline-3">
+<h3 id="orge6f2493"><span class="section-number-3">4.2</span> Python/Ruby/JavaScript</h3>
 </div>
 
-<div id="outline-container-orgf2928fc" class="outline-3">
-<h3 id="orgf2928fc"><span class="section-number-3">4.3</span> C/C++/Java</h3>
+<div id="outline-container-org418d52e" class="outline-3">
+<h3 id="org418d52e"><span class="section-number-3">4.3</span> C/C++/Java</h3>
 </div>
 
-<div id="outline-container-orgf7724ed" class="outline-3">
-<h3 id="orgf7724ed"><span class="section-number-3">4.4</span> HTML</h3>
+<div id="outline-container-org0841e0b" class="outline-3">
+<h3 id="org0841e0b"><span class="section-number-3">4.4</span> HTML</h3>
 </div>
 
-<div id="outline-container-org14c71b1" class="outline-3">
-<h3 id="org14c71b1"><span class="section-number-3">4.5</span> CSS</h3>
+<div id="outline-container-orgb0300d7" class="outline-3">
+<h3 id="orgb0300d7"><span class="section-number-3">4.5</span> CSS</h3>
 </div>
 </div>
 
-<div id="outline-container-org503890c" class="outline-2">
-<h2 id="org503890c"><span class="section-number-2">5</span> Try to implement in Emacs as an extension</h2>
+<div id="outline-container-orgf9ce2b6" class="outline-2">
+<h2 id="orgf9ce2b6"><span class="section-number-2">5</span> Try to implement in Emacs as an extension</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Here is an new created empty repository <a href="https://github.com/stardiviner/eldoc-annotation.el">https://github.com/stardiviner/eldoc-annotation.el</a>

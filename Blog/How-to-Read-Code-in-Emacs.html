@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-02-16 Sat 08:29 -->
+<!-- 2019-02-18 Mon 19:37 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to Read Code in Emacs</title>
@@ -322,7 +322,6 @@ for the JavaScript code in this tag.
     <li><a href='/Blog/index.html'>Blog</a></li>
     <li><a href="/Thought/index.html">Thought</a></li>
     <li><a href='/Literature/index.html'>文学</a></li>
-    <li><a href='/Slides/index.html'>Slides</a></li>
     <li><a href='/About/index.html'>About</a></li>
   </ul>
 </div>
@@ -334,29 +333,29 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org23573ac">1. View</a>
+<li><a href="#orgccd7bef">1. View</a>
 <ul>
-<li><a href="#orgf6507b4">1.1. Highlight Code</a></li>
+<li><a href="#org08d0ba8">1.1. Highlight Code</a></li>
 </ul>
 </li>
-<li><a href="#orgcf5ecd6">2. Navigation</a>
+<li><a href="#org04d7e6f">2. Navigation</a>
 <ul>
-<li><a href="#org4d618f8">2.1. Jump to definition of any code</a></li>
-<li><a href="#org3a5564b">2.2. Jump to definition of thing-at-point</a></li>
+<li><a href="#orgf80e3ae">2.1. Jump to definition of any code</a></li>
+<li><a href="#orge22103b">2.2. Jump to definition of thing-at-point</a></li>
 </ul>
 </li>
-<li><a href="#org2821289">3. Figure out of Code by running it</a></li>
-<li><a href="#org4fa2846">4. <span class="todo TODO">TODO</span> Will add more tricks here in future</a></li>
+<li><a href="#org0b5bcb7">3. Figure out of Code by running it</a></li>
+<li><a href="#org01d121f">4. <span class="todo TODO">TODO</span> Will add more tricks here in future</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org23573ac" class="outline-2">
-<h2 id="org23573ac"><span class="section-number-2">1</span> View</h2>
+<div id="outline-container-orgccd7bef" class="outline-2">
+<h2 id="orgccd7bef"><span class="section-number-2">1</span> View</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgf6507b4" class="outline-3">
-<h3 id="orgf6507b4"><span class="section-number-3">1.1</span> Highlight Code</h3>
+<div id="outline-container-org08d0ba8" class="outline-3">
+<h3 id="org08d0ba8"><span class="section-number-3">1.1</span> Highlight Code</h3>
 <div class="outline-text-3" id="text-1-1">
 <pre class="example">
 Attachments: highlight%20code.png
@@ -382,12 +381,12 @@ distinguish code.
 </div>
 
 
-<div id="outline-container-orgcf5ecd6" class="outline-2">
-<h2 id="orgcf5ecd6"><span class="section-number-2">2</span> Navigation</h2>
+<div id="outline-container-org04d7e6f" class="outline-2">
+<h2 id="org04d7e6f"><span class="section-number-2">2</span> Navigation</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org4d618f8" class="outline-3">
-<h3 id="org4d618f8"><span class="section-number-3">2.1</span> Jump to definition of any code</h3>
+<div id="outline-container-orgf80e3ae" class="outline-3">
+<h3 id="orgf80e3ae"><span class="section-number-3">2.1</span> Jump to definition of any code</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 There are some options to select:
@@ -404,8 +403,8 @@ with package "<code>pcre2el</code>".</li>
 </div>
 </div>
 
-<div id="outline-container-org3a5564b" class="outline-3">
-<h3 id="org3a5564b"><span class="section-number-3">2.2</span> Jump to definition of thing-at-point</h3>
+<div id="outline-container-orge22103b" class="outline-3">
+<h3 id="orge22103b"><span class="section-number-3">2.2</span> Jump to definition of thing-at-point</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 When code definition is not in the same window page area, you want to jump to definition.
@@ -420,8 +419,8 @@ There is an existing package called "<a href="https://github.com/tumashu/posfram
 </div>
 
 
-<div id="outline-container-org2821289" class="outline-2">
-<h2 id="org2821289"><span class="section-number-2">3</span> Figure out of Code by running it</h2>
+<div id="outline-container-org0b5bcb7" class="outline-2">
+<h2 id="org0b5bcb7"><span class="section-number-2">3</span> Figure out of Code by running it</h2>
 <div class="outline-text-2" id="text-3">
 <pre class="example">
 Attachments: Edebug%20result%20at%20point.png
@@ -452,13 +451,13 @@ Here is my trick after I dive into Edebug source code:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">my:edebug-previous-result</span> ()
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">my:edebug-previous-result</span> <span style="color: #D19A66;">()</span>
     <span style="color: #5C6370;">"Print the previous result."</span>
-    (<span style="color: #E06C75;">interactive</span>)
+    <span style="color: #D19A66;">(</span><span style="color: #E06C75;">interactive</span><span style="color: #D19A66;">)</span>
     <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">(pos-tip-show edebug-previous-result 'popup-face) ; slow</span>
-    (popup-tip edebug-previous-result <span style="color: #828997;">:truncate</span> t <span style="color: #828997;">:height</span> 20 <span style="color: #828997;">:width</span> 45 <span style="color: #828997;">:nostrip</span> t <span style="color: #828997;">:margin</span> 1 <span style="color: #828997;">:nowait</span> nil)
-    )
-  (advice-add 'edebug-previous-result <span style="color: #828997;">:override</span> #'my:edebug-previous-result)
+    <span style="color: #D19A66;">(</span>popup-tip edebug-previous-result <span style="color: #828997;">:truncate</span> t <span style="color: #828997;">:height</span> 20 <span style="color: #828997;">:width</span> 45 <span style="color: #828997;">:nostrip</span> t <span style="color: #828997;">:margin</span> 1 <span style="color: #828997;">:nowait</span> nil<span style="color: #D19A66;">)</span>
+    <span style="color: #56B6C2;">)</span>
+  <span style="color: #56B6C2;">(</span>advice-add 'edebug-previous-result <span style="color: #828997;">:override</span> #'my:edebug-previous-result<span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 
@@ -480,8 +479,8 @@ here. Just give out some examples that wish can inspire you. That's all.
 </div>
 </div>
 
-<div id="outline-container-org4fa2846" class="outline-2">
-<h2 id="org4fa2846"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Will add more tricks here in future</h2>
+<div id="outline-container-org01d121f" class="outline-2">
+<h2 id="org01d121f"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Will add more tricks here in future</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Record to My Org node "Read Code" too.

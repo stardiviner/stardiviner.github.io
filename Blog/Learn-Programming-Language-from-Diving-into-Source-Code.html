@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-02-16 Sat 08:29 -->
+<!-- 2019-02-18 Mon 19:37 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Learn Programming Language from Diving into Source Code</title>
@@ -322,7 +322,6 @@ for the JavaScript code in this tag.
     <li><a href='/Blog/index.html'>Blog</a></li>
     <li><a href="/Thought/index.html">Thought</a></li>
     <li><a href='/Literature/index.html'>文学</a></li>
-    <li><a href='/Slides/index.html'>Slides</a></li>
     <li><a href='/About/index.html'>About</a></li>
   </ul>
 </div>
@@ -334,25 +333,25 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org42be64a">1. Master Core Functions</a></li>
-<li><a href="#orgeb24719">2. Dive into Language Source Code</a></li>
-<li><a href="#org655cd00">3. Search code examples on public source code hosting websites</a>
+<li><a href="#orgd1dd937">1. Master Core Functions</a></li>
+<li><a href="#org7c9badc">2. Dive into Language Source Code</a></li>
+<li><a href="#org6798158">3. Search code examples on public source code hosting websites</a>
 <ul>
-<li><a href="#org8b42675">3.1. Emacs package engine-mode</a>
+<li><a href="#org27b7541">3.1. Emacs package engine-mode</a>
 <ul>
-<li><a href="#orgb24c7b0">3.1.1. how to define engine</a></li>
-<li><a href="#orgce9311b">3.1.2. my config part</a></li>
+<li><a href="#orgac4316d">3.1.1. how to define engine</a></li>
+<li><a href="#org7a880d3">3.1.2. my config part</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgbdb75fe">4. More tips will updated on this post</a></li>
+<li><a href="#orgc6f4946">4. More tips will updated on this post</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org42be64a" class="outline-2">
-<h2 id="org42be64a"><span class="section-number-2">1</span> Master Core Functions</h2>
+<div id="outline-container-orgd1dd937" class="outline-2">
+<h2 id="orgd1dd937"><span class="section-number-2">1</span> Master Core Functions</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 If you're a beginner on learning Programming Language, mastering some core and frequently
@@ -367,8 +366,8 @@ this book because I'm learning Clojure, need to master basic of Clojure as a beg
 </div>
 </div>
 
-<div id="outline-container-orgeb24719" class="outline-2">
-<h2 id="orgeb24719"><span class="section-number-2">2</span> Dive into Language Source Code</h2>
+<div id="outline-container-org7c9badc" class="outline-2">
+<h2 id="org7c9badc"><span class="section-number-2">2</span> Dive into Language Source Code</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Programming Language usually has a mechanism to check out source code. For example, Emacs
@@ -379,8 +378,8 @@ or Emacs extensions to support this.
 </div>
 </div>
 
-<div id="outline-container-org655cd00" class="outline-2">
-<h2 id="org655cd00"><span class="section-number-2">3</span> Search code examples on public source code hosting websites</h2>
+<div id="outline-container-org6798158" class="outline-2">
+<h2 id="org6798158"><span class="section-number-2">3</span> Search code examples on public source code hosting websites</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Learning with examples is helpful for beginner, you can search code on public source code
@@ -414,8 +413,8 @@ solutions to every task in every language.</dd>
 </dl>
 </div>
 
-<div id="outline-container-org8b42675" class="outline-3">
-<h3 id="org8b42675"><span class="section-number-3">3.1</span> Emacs package engine-mode</h3>
+<div id="outline-container-org27b7541" class="outline-3">
+<h3 id="org27b7541"><span class="section-number-3">3.1</span> Emacs package engine-mode</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Emacs has a package called "<code>engine-mode</code>" which can define search engine based on URL by
@@ -425,49 +424,49 @@ input.
 </p>
 </div>
 
-<div id="outline-container-orgb24c7b0" class="outline-4">
-<h4 id="orgb24c7b0"><span class="section-number-4">3.1.1</span> how to define engine</h4>
+<div id="outline-container-orgac4316d" class="outline-4">
+<h4 id="orgac4316d"><span class="section-number-4">3.1.1</span> how to define engine</h4>
 <div class="outline-text-4" id="text-3-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="org314128f" name="org314128f"></a>simple<br>
+<li><a id="orgdd5a6a4" name="orgdd5a6a4"></a>simple<br>
 <div class="outline-text-5" id="text-3-1-1-1">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #E06C75;">defengine</span> github
-  <span style="color: #98C379;">"https://github.com/search?ref=simplesearch&amp;q=%s"</span>)
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> github
+  <span style="color: #98C379;">"https://github.com/search?ref=simplesearch&amp;q=%s"</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 </div>
 </li>
 
-<li><a id="org6b46615" name="org6b46615"></a>specify key<br>
+<li><a id="org54f2519" name="org54f2519"></a>specify key<br>
 <div class="outline-text-5" id="text-3-1-1-2">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #E06C75;">defengine</span> duckduckgo
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> duckduckgo
   <span style="color: #98C379;">"https://duckduckgo.com/?q=%s"</span>
-  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"d"</span>)
+  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"d"</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 </div>
 </li>
 
-<li><a id="org97c8847" name="org97c8847"></a>specify browser function<br>
+<li><a id="orgec6c3ce" name="orgec6c3ce"></a>specify browser function<br>
 <div class="outline-text-5" id="text-3-1-1-3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #E06C75;">defengine</span> github
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> github
   <span style="color: #98C379;">"https://github.com/search?ref=simplesearch&amp;q=%s"</span>
-  <span style="color: #828997;">:browser</span> 'eww-browse-url)
+  <span style="color: #828997;">:browser</span> 'eww-browse-url<span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 </div>
 </li>
 
-<li><a id="org67abc7c" name="org67abc7c"></a>specify docstring<br>
+<li><a id="orgca5a9e9" name="orgca5a9e9"></a>specify docstring<br>
 <div class="outline-text-5" id="text-3-1-1-4">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #E06C75;">defengine</span> ctan
+<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> ctan
   <span style="color: #98C379;">"http://www.ctan.org/search/?x=1&amp;PORTAL=on&amp;phrase=%s"</span>
-  <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Search the Comprehensive TeX Archive Network (ctan.org)"</span>)
+  <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Search the Comprehensive TeX Archive Network (ctan.org)"</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 </div>
@@ -475,67 +474,67 @@ input.
 </ol>
 </div>
 
-<div id="outline-container-orgce9311b" class="outline-4">
-<h4 id="orgce9311b"><span class="section-number-4">3.1.2</span> my config part</h4>
+<div id="outline-container-org7a880d3" class="outline-4">
+<h4 id="org7a880d3"><span class="section-number-4">3.1.2</span> my config part</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">general search engines</span>
-(<span style="color: #E06C75;">defengine</span> google
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> google
   <span style="color: #98C379;">"http://www.google.com/search?ie=utf-8&amp;oe=utf-8&amp;q=%s"</span>
   <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">"http://www.google.com/search?q=%s"</span>
   <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Google"</span>
-  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"g"</span>)
-(<span style="color: #E06C75;">defengine</span> duckduckgo
+  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"g"</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> duckduckgo
   <span style="color: #98C379;">"https://duckduckgo.com/?q=%s"</span>
   <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"DuckDuckGo"</span>
-  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"d"</span>)
-(<span style="color: #E06C75;">defengine</span> blekko
+  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"d"</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> blekko
   <span style="color: #98C379;">"https://blekko.com/#?q=%s"</span>
   <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Blekko"</span>
   <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">:keybinding "B"</span>
-  )
-(<span style="color: #E06C75;">defengine</span> bing
+  <span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> bing
   <span style="color: #98C379;">"http://cn.bing.com/search?q="</span>
-  <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Bing"</span>)
-(<span style="color: #E06C75;">defengine</span> baidu
+  <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Bing"</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> baidu
   <span style="color: #98C379;">"http://www.baidu.com/s?wd=%s"</span>
   <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Baidu"</span>
-  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"b"</span>)
+  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"b"</span><span style="color: #56B6C2;">)</span>
 
 <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">Wikipedia</span>
-(<span style="color: #E06C75;">defengine</span> wikipedia
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> wikipedia
   <span style="color: #98C379;">"http://www.wikipedia.org/search-redirect.php?language=en&amp;go=Go&amp;search=%s"</span>
   <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Wikipedia"</span>
-  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"w"</span>)
-(<span style="color: #E06C75;">defengine</span> baidu_baike
+  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"w"</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> baidu_baike
   <span style="color: #98C379;">"http://baike.baidu.com/search/none?word=%s"</span>
   <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Baidu Baike"</span>
-  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"W"</span>)
-(<span style="color: #E06C75;">defengine</span> wolfram-alpha
+  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"W"</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> wolfram-alpha
   <span style="color: #98C379;">"http://www.wolframalpha.com/input/?i=%s"</span>
   <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Wolfram Alpha"</span>
-  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"A"</span>)
+  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"A"</span><span style="color: #56B6C2;">)</span>
 
 <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">programming</span>
 
 <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">Docs: API</span>
-(<span style="color: #E06C75;">defengine</span> APIs
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> APIs
   <span style="color: #98C379;">"http://apis.io/?search=%s"</span>
   <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"APIs"</span>
-  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"a"</span>)
-(<span style="color: #E06C75;">defengine</span> mozilla-developer
+  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"a"</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> mozilla-developer
   <span style="color: #98C379;">"https://developer.mozilla.org/en-US/search?q=%s"</span>
   <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Mozilla Developer"</span>
-  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"m"</span>)
-(<span style="color: #E06C75;">defengine</span> rfcs
+  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"m"</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> rfcs
   <span style="color: #98C379;">"http://pretty-rfc.herokuapp.com/search?q=%s"</span>
   <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">"https://www.rfc-editor.org/search/rfc_search_detail.php?rfc=%s"</span>
   <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"RFC"</span>
-  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"R"</span>)
-(<span style="color: #E06C75;">defengine</span> emacswiki
+  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"R"</span><span style="color: #56B6C2;">)</span>
+<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> emacswiki
   <span style="color: #98C379;">"www.emacswiki.org/emacs?search=%s"</span>
   <span style="color: #828997;">:docstring</span> <span style="color: #98C379;">"Emacs Wiki"</span>
-  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"e"</span>)
+  <span style="color: #828997;">:keybinding</span> <span style="color: #98C379;">"e"</span><span style="color: #56B6C2;">)</span>
 </pre>
 </div>
 </div>
@@ -544,8 +543,8 @@ input.
 </div>
 
 
-<div id="outline-container-orgbdb75fe" class="outline-2">
-<h2 id="orgbdb75fe"><span class="section-number-2">4</span> More tips will updated on this post</h2>
+<div id="outline-container-orgc6f4946" class="outline-2">
+<h2 id="orgc6f4946"><span class="section-number-2">4</span> More tips will updated on this post</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 If anyone suggest more skill tips about learning from diving into source code. I will add
