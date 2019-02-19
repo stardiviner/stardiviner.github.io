@@ -85,21 +85,25 @@ h3::before {
   content: "2. ";
   border-left: 4px solid #93FF72;
   padding-left: 10px;
+  margin-left: 20px;
 }
 h4::before {
   content: "3. ";
   border-left: 4px solid #FDFF70;
   padding-left: 10px;
+  margin-left: 40px;
 }
 h5::before {
   content: "4. ";
   border-left: 4px solid #81E8FF;
   padding-left: 10px;
+  margin-left: 60px;
 }
 h6::before {
   content: "5. ";
   border-left: 4px solid #F290FF;
   padding-left: 10px;
+  margin-left: 80px;
 }
 
 /* headline size */
