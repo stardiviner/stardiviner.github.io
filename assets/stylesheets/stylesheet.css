@@ -87,11 +87,11 @@ h2, h3, h4, h5, h6 {
 }
 /* first level */
 h2 {
-  font-size: 25px;
+  font-size: 30px;
   font-family: 'Lobster', Helvetica, cursive;
 }
 h3 {
-  font-size: 25px;
+  font-size: 20px;
   font-family: unset;
 }
 h4 {
