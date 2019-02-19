@@ -106,7 +106,6 @@ git log --author=stardiviner
   <figure>
     <img src="data/images/DingDing_Admin_Cert.jpg" alt="avatar.jpg" width="300px">
   </figure>
-  <p>This is what I look like.</p>
 </div>
 #+end_export
 

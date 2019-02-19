@@ -76,28 +76,28 @@ p {
 /* headlines */
 
 /* colorful headline levels */
-h2::before, h3::before, h4::before, h5::before, h6::before {
-  content: "";
+h2::before {
+  content: "1. ";
   border-left: 4px solid #FF657C;
   padding-left: 10px;
 }
-h3::before, h4::before, h5::before, h6::before {
-  content: "";
+h3::before {
+  content: "2. ";
   border-left: 4px solid #93FF72;
   padding-left: 10px;
 }
-h4::before, h5::before, h6::before {
-  content: "";
+h4::before {
+  content: "3. ";
   border-left: 4px solid #FDFF70;
   padding-left: 10px;
 }
-h5::before, h6::before {
-  content: "";
+h5::before {
+  content: "4. ";
   border-left: 4px solid #81E8FF;
   padding-left: 10px;
 }
 h6::before {
-  content: "";
+  content: "5. ";
   border-left: 4px solid #F290FF;
   padding-left: 10px;
 }
