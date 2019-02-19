@@ -102,7 +102,7 @@ git log --author=stardiviner
 ** 钉钉初级管理员证书
 
 #+begin_export html
-<div id="avatar">
+<div id="avatar" style="display: inline-block; visibility: visible;">
   <figure>
     <img src="data/images/DingDing_Admin_Cert.jpg" alt="avatar.jpg" width="300px">
   </figure>
