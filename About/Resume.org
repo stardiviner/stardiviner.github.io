@@ -1,6 +1,11 @@
 #+TITLE: 简历
 
-* 我是我
+* 照片
+
+#+ATTR_ORG: :width 300
+#+ATTR_LATEX: :width 3.0in
+#+ATTR_HTML: :width 300px
+[[file:data/images/me_picture%2023.jpg]]
 
 #+begin_export html
 <div id="avatar" style="display: inline-block; visibility: visible;">
@@ -19,13 +24,38 @@
 - Blog: https://stardiviner.github.io/
 - Stack Overflow: https://stackexchange.com/users/366399/stardiviner
 
-* 喜欢电脑技术的原因
+* 编程项目经历
 
-我为什么喜欢电脑技术？因为在电脑组成的电子网络世界，你可以用同样的时间和精力去完
-成远超现实世界中能够完成的事情。尤其是获取信息和节点互联这一点。在现实世界中，你
-可能会受限制于很多条件。但是在网络中，你可以更大程度的发挥功能。
+** 爬虫
 
-虽然都是业余时间在学习电脑，但是这份热情和爱好，从未停止过。
+*** 新旧网站的内容对比程序
+
+项目地址： https://github.com/stardiviner/website-compare
+
+README有详细的记录。
+
+其中爬取页面部分都是简单的，但是真正难的部分是比较部分。而且要求100%的完整性比较
+（包括文本内容，网页上的多媒体附件，以及导航栏的改动等等）。
+
+*** Slack聊天记录的爬虫
+
+项目地址： https://github.com/stardiviner/clojurians-slack-log
+
+README有详细的记录。
+
+打算在其中加入Clojure的并发和并行支持。作为实验性质的。
+
+** Emacs / Org Mode
+
+- 给Emacs写过一些小插件
+- 给Org Mode提交过一些PR，特别是Org Babel Literate Programming 方面的支持，以及
+  ob-clojure 对 CIDER (Emacs 上 的 Clojure IDE) 的支持。
+
+** 小工具
+
+*** Kindle笔记导出工具
+
+写过一个工具支持从Kindle的笔记记录导出到Emacs Org Mode 格式。
 
 * 操作系统：Linux
 
@@ -63,15 +93,11 @@ Org Mode提供了好几个patch和feature了。也谢了几个小功能的Emacs�
 git log --author=stardiviner
 #+end_src
 
-* 我学过的编程语言
+* 编程语言
 
-** C
+** Clojure
 
-[2009-07-16 Thu] 大学学过一点C语言，现在已忘记了。
-
-** Lisp family: Clojure
-
-[2017-08-16 Wed] 现在主要用这个语言 。也会去了解一点 Lisp (Common Lisp)。
+[2017-08-16 Wed] Clojure是我最熟悉的语言，平时都是用它。
 
 ** 了解一点其他语言：Python，Ruby，HTML，CSS，JS
 
@@ -109,24 +135,10 @@ git log --author=stardiviner
 </div>
 #+end_export
 
-* 编程项目经历
-
-** 写过一个简单的新旧网站的内容对比程序
-
-项目地址： https://github.com/stardiviner/website-compare
-
-README有详细的记录。
-
-其中爬取页面部分都是简单的，但是真正难的部分是比较部分。而且要求100%的完整性比较
-（包括文本内容，网页上的多媒体附件，以及导航栏的改动等等）。
-
-** 写过一个Slack聊天记录的爬虫
-
-项目地址： https://github.com/stardiviner/clojurians-slack-log
-
-README有详细的记录。
-
-打算在其中加入Clojure的并发和并行支持。作为实验性质的。
+#+ATTR_ORG: :width 500
+#+ATTR_LATEX: :width 5.0in
+#+ATTR_HTML: :width 500px
+[[file:data/images/DingDing_Admin_Cert.jpg]]
 
 * 关于技术学习规划
 
@@ -136,4 +148,15 @@ README有详细的记录。
 
 * 导出此简历                                           :noexport:
 
-使用浏览器的页面打印为PDF，从而得到PDF文件形式的简历。
+使用浏览器的页面打印为PDF，从而得到PDF文件形式的简历。但是经过测试发现Firefox和
+Chrome对于导出为PDF的支持都不是很好。CSS样式会变得有点糟糕。
+
+用长截图的方式保存为图片，再用命令 =convert= 转化为PDF倒是可以。但是不方便他人浏览。
+
+Org export latex -> PDF 的导出来的PDF文件倒是还可以。就是没有什么样式不好看。一
+个问题是不支持图片链接。
+
+
+# Local Variables:
+# eval: (org-latex-exp-conf-mode t)
+# End:
