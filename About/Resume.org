@@ -1,0 +1,140 @@
+#+TITLE: 简历
+
+* 我是我
+
+#+begin_export html
+<div id="avatar">
+  <figure>
+    <img src="data/images/me_picture 23.jpg" alt="avatar.jpg" width="300px">
+  </figure>
+  <p>This is what I look like.</p>
+</div>
+#+end_export
+
+* 我的网上档案
+
+我大多数公开的东西都在GitHub上，但是笔记之类的都只在本地的Org Mode中。
+
+- GitHub: https://github.com/stardiviner/
+- Blog: https://stardiviner.github.io/
+- Stack Overflow: https://stackexchange.com/users/366399/stardiviner
+
+* 喜欢电脑技术的原因
+
+我为什么喜欢电脑技术？因为在电脑组成的电子网络世界，你可以用同样的时间和精力去完
+成远超现实世界中能够完成的事情。尤其是获取信息和节点互联这一点。在现实世界中，你
+可能会受限制于很多条件。但是在网络中，你可以更大程度的发挥功能。
+
+虽然都是业余时间在学习电脑，但是这份热情和爱好，从未停止过。
+
+* 操作系统：Linux
+
+我在安徽工程大学读高三下半年的时候错学了，那个时候开始，我就开始接触计算机技术这
+方面的东西了。直到现在。
+
+从 [2011-10-10 Mon] 年以来，我一直使用Linux系统作为我的日常系统，完全取代Windows
+系统了。从最开始的Ubuntu用了2年左右，到后来转到Arch Linux下。后来一直在Arch
+Linux上直到现在。
+
+* 编程工具：Emacs + Org-mode
+
+很早以前在学Ubuntu Linux的时候，我学习使用的是Vim，用过大概有2年时间，后来因为
+Org Mode的超级强大的功能的缘故，我转投Emacs了，一开始Emacs的按键我还不适应，但是
+慢慢就好了，在一段时间的浸淫之后，我开始慢慢学习使用Org Mode，到现在，我已经为
+Org Mode提供了好几个patch和feature了。也谢了几个小功能的Emacs插件。我现在已经能
+为我自己想要的功能Hacking了。
+
+现在我已经大多数工作都在Emacs和Org Mode下完成了：
+
+- 写代码 :: 我的主要语言是Clojure，在Emacs下使用CIDER，是我感觉IDE体验最好的工具。
+  Python有Elpy和lsp-python。也能满足大部分需求。而且Org Mode还支持 Literate
+  Programming paradigm，这是我在业余时间用的最多的。
+- 用Org Mode记笔记 :: 我将所有笔记都记录在Org里了，我还自己谢了一个工具来快速准
+  确的搜索我想要的内容。我还打算将Org的内容host为搜索和浏览形式。这样手机上也能
+  快速搜索浏览了。
+- 任务管理 :: Org Mode有一个Agenda功能，用它管理任务，会更贴心。
+- 收发邮件 :: 
+- 和其他程序员在IRC上 :: 
+- 用Org Mode写博客 ::
+
+** contributed commits on Org Mode
+
+#+begin_src shell :dir "~/Code/Emacs/org-mode" :eval no
+git log --author=stardiviner
+#+end_src
+
+* 我学过的编程语言
+
+** C
+
+[2009-07-16 Thu] 大学学过一点C语言，现在已忘记了。
+
+** Lisp family: Clojure
+
+[2017-08-16 Wed] 现在主要用这个语言 。也会去了解一点 Lisp (Common Lisp)。
+
+** 了解一点其他语言：Python，Ruby，HTML，CSS，JS
+
+[2015-03-16 Mon] 很早以前学过一两个月的Python，Ruby。然后对于 HTML，CSS，JS 这些
+语言有一点了解，但是不深入。
+
+* 其他的编程技术
+
+** 我自己用 Linux + Nginx + static site + Dynamic DNS 架过网站
+
+** 会使用 Git 源码版本控制系统
+
+** 会用基本的 Docker 功能
+
+- 了解 Docker Volume
+- 了解 Docker Compose
+
+** Linux Shell Scripting
+
+会用 Linux Shell 写一点脚本。
+
+** 开源社区的贡献
+
+我平常浏览GitHub，看看有什么有意思的东西，关注动向，也会fork下一些插件，去提交几
+个PR。平时在一些邮件列表里混，订阅了几个常看的，Emacs，Org Mode，Lisp，Clojure。
+也会去一些社区论坛，比如 [[https://emacs-china.org/][Emacs China]], [[https://clojureverse.org/][Clojureverse]], 等等。
+
+** 钉钉初级管理员证书
+
+#+begin_export html
+<div id="avatar">
+  <figure>
+    <img src="data/images/DingDing_Admin_Cert.jpg" alt="avatar.jpg" width="300px">
+  </figure>
+  <p>This is what I look like.</p>
+</div>
+#+end_export
+
+* 编程项目经历
+
+** 写过一个简单的新旧网站的内容对比程序
+
+项目地址： https://github.com/stardiviner/website-compare
+
+README有详细的记录。
+
+其中爬取页面部分都是简单的，但是真正难的部分是比较部分。而且要求100%的完整性比较
+（包括文本内容，网页上的多媒体附件，以及导航栏的改动等等）。
+
+** 写过一个Slack聊天记录的爬虫
+
+项目地址： https://github.com/stardiviner/clojurians-slack-log
+
+README有详细的记录。
+
+打算在其中加入Clojure的并发和并行支持。作为实验性质的。
+
+* 关于技术学习规划
+
+- 现在想加深爬虫技术的学习。所以要学习一些JavaScript，反爬虫和反反爬虫技术。
+- 深入学习并发和并行编程，函数式编程。
+- 了解一些数据分析的技术，Clojure上我已经开始关注一些库的使用。掌握统计分析的知识。
+
+* 导出此简历                                           :noexport:
+
+使用浏览器的页面打印为PDF，从而得到PDF文件形式的简历。
