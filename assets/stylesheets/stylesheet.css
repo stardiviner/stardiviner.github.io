@@ -664,14 +664,14 @@ input[type=button]:after {
   color: #ccc;
 }
 
-/* timestamp */
+/* active/inactive timestamp */
 span.timestamp-wrapper {
-  background-color: #f3f3f3cc;
-  border: #b7b7b74d solid 1px;
+  background-color: #f3f3f380;
+  border: #d4d1d14d solid 2px;
   padding: 4px 2px 2px 0px;
   margin: 0px 2px 0px 2px;
 }
-.timestamp {
+span.timestamp {
   color: #727272;
 }
 
