@@ -1,6 +1,6 @@
-# Created 2019-02-18 Mon 19:38
+# Created 2019-02-19 Tue 16:38
 #+TITLE: An amateurish coder's blog
-#+AUTHOR: stardiviner
+#+AUTHOR: Christopher M. Miles
 
 * Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
 :PROPERTIES:
