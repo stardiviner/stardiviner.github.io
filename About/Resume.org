@@ -3,11 +3,11 @@
 * 我是我
 
 #+begin_export html
-<div id="avatar">
+<div id="avatar" style="display: inline-block; visibility: visible;">
   <figure>
     <img src="data/images/me_picture 23.jpg" alt="avatar.jpg" width="300px">
   </figure>
-  <p>This is what I look like.</p>
+  <br />
 </div>
 #+end_export
 
