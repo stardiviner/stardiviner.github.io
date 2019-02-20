@@ -1,5 +1,5 @@
 #+TITLE: 简历
-#+OPTIONS: html5-fancy
+#+OPTIONS: html5-fancy:t
 #+HTML_DOCTYPE: html5
 
 * 照片

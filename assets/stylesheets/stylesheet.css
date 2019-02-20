@@ -132,6 +132,18 @@ h5, h6 {
   font-family: unset;
 }
 
+/* headline sections */
+div.outline-1 {
+}
+div.outline-text-1 {
+}
+.section-number-1 {
+}
+
+/* tag in headline */
+.tag {
+}
+
 /* avatar */
 img#avatar {
   float: left;
@@ -318,9 +330,13 @@ img {
 }
 
 /* inline image */
-figure > img {
+div.figure {
   display: block;
   width: 100%;
+}
+
+/* linked .svg image */
+.org-svg {
 }
 
 /* kbd */
@@ -426,7 +442,7 @@ pre {
   overflow-x: auto;
 }
 
-/* Org src block */
+/* source block */
 .org-src-container {
   display: block;
   margin: 0.5em;
@@ -449,8 +465,11 @@ pre.src {
   /* auto use scroll-bar for over-length code. */
   overflow: auto; /* This also cause lang widget can't display overflow on source block. */
 }
+/* line number in code example */
+.linenr {
+}
 
-/* src block hover language */
+/* source block hover language */
 pre.src::before {
   display: none;
 }
@@ -467,6 +486,11 @@ pre.src:hover::before {
   font-weight: bolder;
 
   white-space: nowrap;
+}
+
+/* coderef highlighted code lines */
+.code-highlighted {
+  background-color: "yellow";
 }
 
 /* inline code */
@@ -526,6 +550,15 @@ table tbody td {
 /* transition animation */
 th, td {
   transition: background 0.2s linear;
+}
+/* table number like "Table 1:" */
+.table-number {
+}
+/* figure label number like "Figure 1:" */
+.figure-number {
+}
+/* listing label number like "Listing 1:" */
+.figure-number {
 }
 
 /* subscript, superscript */
@@ -667,14 +700,24 @@ input[type=button]:after {
 }
 
 /* active/inactive timestamp */
-span.timestamp-wrapper {
+.timestamp-wrapper {
   background-color: #f3f3f380;
   border: #d4d1d14d solid 2px;
   padding: 4px 2px 2px 0px;
   margin: 0px 2px 0px 2px;
 }
-span.timestamp {
+.timestamp-kwd {
+}
+.timestamp {
   color: #727272;
+}
+
+/* footnote */
+p.footnote {
+}
+.footref {
+}
+.footref {
 }
 
 /* audio */
