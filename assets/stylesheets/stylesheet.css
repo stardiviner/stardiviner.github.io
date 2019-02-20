@@ -133,7 +133,7 @@ h5, h6 {
 }
 
 /* avatar */
-div#avatar img {
+image#avatar {
   float: left;
   display: inline-block;
   width: 200px;
