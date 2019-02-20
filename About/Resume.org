@@ -7,7 +7,7 @@
 #+ATTR_ORG: :width 200
 #+ATTR_LATEX: :width 2.0in
 #+ATTR_HTML: :id avatar :width 200px :alt 那时23岁的我
-[[file:data/images/me_picture%2023.jpg]]
+[[file:data/images/me_picture_23.jpg]]
 
 我的网上档案
 
