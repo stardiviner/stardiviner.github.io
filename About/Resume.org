@@ -161,10 +161,16 @@ Raymond 的 《How To Become a Hacker》。我觉得这很适合我，做一个�
 
 * 导出此简历                                           :noexport:
 
+** org-publish online hosting
+
+** use web browser print to PDF file                 :deprecated:
+
 使用浏览器的页面打印为PDF，从而得到PDF文件形式的简历。但是经过测试发现Firefox和
 Chrome对于导出为PDF的支持都不是很好。CSS样式会变得有点糟糕。
 
 用长截图的方式保存为图片，再用命令 =convert= 转化为PDF倒是可以。但是不方便他人浏览。
+
+** org export to PDF
 
 Org export latex -> PDF 的导出来的PDF文件倒是还可以。就是没有什么样式不好看。一
 个问题是不支持图片链接。
