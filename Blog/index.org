@@ -115,5 +115,5 @@
 :PUBDATE:  <2018-04-18 Wed 14:13>
 :END: 
 
-[[file:2016-04-22%2022:54.org][test org-mode ox-publish]]
+[[file:Org-mode-exporter-template-for-testing.org][Test Org Mode ox-publish]]
 
