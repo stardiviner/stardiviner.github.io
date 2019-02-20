@@ -136,6 +136,7 @@ h5, h6 {
 img#avatar {
   float: left;
   display: inline-block;
+  visibility: visible;
   width: 200px;
   margin-right: 20px;
 }
