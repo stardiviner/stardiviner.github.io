@@ -1,23 +1,26 @@
 #+TITLE: 简历
+#+OPTIONS: html5-fancy
+#+HTML_DOCTYPE: html5
 
 * 照片
 
-#+begin_export html
-<div id="avatar" style="display: inline-block; visibility: visible;">
-  <figure>
-    <img src="data/images/me_picture 23.jpg" alt="avatar.jpg" width="300px">
-  </figure>
-  <br />
-</div>
-#+end_export
+#+ATTR_ORG: :width 200
+#+ATTR_LATEX: :width 2.0in
+#+ATTR_HTML: :id avatar :width 200px
+[[file:data/images/me_picture%2023.jpg]]
 
-* 我的网上档案
+我的网上档案
 
-我大多数公开的东西都在GitHub上，但是笔记之类的都只在本地的Org Mode中。
+我大多数公开的东西都在GitHub上，但是笔记之类的都只在本地的Org Mode中，在搭建好平
+台前，都无法在线浏览。
 
-- GitHub: https://github.com/stardiviner/
-- Blog: https://stardiviner.github.io/
-- Stack Overflow: https://stackexchange.com/users/366399/stardiviner
+- [[https://github.com/stardiviner/][GitHub: stardiviner]]
+- [[https://stardiviner.github.io/][Blog]]
+- [[https://stackexchange.com/users/366399/stardiviner][my Stack Overflow profile]]
+
+喜欢电脑技术，喜欢编程，和 Programming Electric Music 编程音乐 Overtone， 喜欢互
+联网。喜欢看哲学书，电影，滑板，和史诗音乐。性格随和，思想开放乐观，接受多元化文
+化。
 
 * 编程项目经历
 
@@ -119,13 +122,10 @@ git log --author=stardiviner
 
 ** 钉钉初级管理员证书
 
-#+begin_export html
-<div id="avatar" style="display: inline-block; visibility: visible;">
-  <figure>
-    <img src="data/images/DingDing_Admin_Cert.jpg" alt="avatar.jpg" width="300px">
-  </figure>
-</div>
-#+end_export
+#+ATTR_ORG: :width 300
+#+ATTR_LATEX: :width 3.0in
+#+ATTR_HTML: :width 300px :style display: inline-block; visibility: visible;
+[[file:data/images/DingDing_Admin_Cert.jpg]]
 
 * 关于技术学习规划
 
