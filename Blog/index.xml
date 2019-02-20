@@ -14,8 +14,8 @@
   <link>https://stardiviner.github.io/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Mon, 18 Feb 2019 19:42:58 +0800</pubDate>
-  <lastBuildDate>Mon, 18 Feb 2019 19:42:58 +0800</lastBuildDate>
+  <pubDate>Wed, 20 Feb 2019 14:41:44 +0800</pubDate>
+  <lastBuildDate>Wed, 20 Feb 2019 14:41:44 +0800</lastBuildDate>
   <generator>Emacs 26.1 Org-mode 9.2</generator>
   <webMaster>numbchild@gmail.com (stardiviner)</webMaster>
   <image>
@@ -287,7 +287,7 @@
     </pre>
 
     <p>
-    <a href="2016-04-22%2022:54.html">test org-mode ox-publish</a>
+    <a href="Org-mode-exporter-template-for-testing.html">Test Org Mode ox-publish</a>
     </p>
     ]]></description>
   </item>
