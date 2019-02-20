@@ -4,14 +4,10 @@
 
 * About Me
 
-#+begin_export html
-<div id="avatar">
-  <figure>
-    <img src="/assets/images/avatar.jpg" alt="avatar.jpg" width="300px">
-  </figure>
-  <p>This is what I look like.</p>
-</div>
-#+end_export
+#+ATTR_ORG: :width 200
+#+ATTR_LATEX: :width 2.0in
+#+ATTR_HTML: :id avatar :float left :width 200px :alt 我的形象
+[[file:assets/images/avatar.jpg]]
 
 I'm an amateurish coder like Lisp, Clojure, I use Emacs (Org Mode) a lot in my
 daily life! My working system is Arch Linux. I contribute some code to open
