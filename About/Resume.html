@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2019-02-21 Thu 13:20 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>简历</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="stardiviner">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+
+<script type="text/javascript" src="/assets/scripts/org-info-src.js">
+/**
+ *
+ * @source: /assets/scripts/org-info-src.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in /assets/scripts/org-info-src.js.
+ *
+ * Copyright (C) 2012-2019 Free Software Foundation, Inc.
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in /assets/scripts/org-info-src.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "3");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<header>
+<h1 class="title">简历</h1>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0762da9">1. 照片</a></li>
+<li><a href="#org71b7237">2. 简述</a></li>
+<li><a href="#orga78d8e3">3. 编程项目经历</a>
+<ul>
+<li><a href="#orgfeb61a9">3.1. 爬虫项目</a>
+<ul>
+<li><a href="#org7ed22b9">3.1.1. 新旧网站的内容对比程序</a></li>
+<li><a href="#orgd018517">3.1.2. Slack聊天记录的爬虫</a></li>
+<li><a href="#org40ce470">3.1.3. 关于爬虫的项目经验</a></li>
+</ul>
+</li>
+<li><a href="#orgffc125e">3.2. Emacs / Org Mode</a></li>
+<li><a href="#org69ffc06">3.3. 小工具</a>
+<ul>
+<li><a href="#org783f25e">3.3.1. Kindle笔记导出工具</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd0e0aa8">4. 编程工具：Emacs + Org-mode</a>
+<ul>
+<li><a href="#org9fdd644">4.1. contributed commits on Org Mode</a></li>
+</ul>
+</li>
+<li><a href="#orgc1e9a41">5. 编程技术</a>
+<ul>
+<li><a href="#org9952842">5.1. 操作系统：Linux</a></li>
+<li><a href="#org2aa11d3">5.2. Clojure: 函数式基于JVM的语言</a></li>
+<li><a href="#orgd8008a3">5.3. Emacs Lisp</a></li>
+<li><a href="#org47cf4bf">5.4. 了解一点其他语言：Python，Ruby，HTML，CSS，JS</a></li>
+<li><a href="#org5011a00">5.5. 熟悉正则表达式</a></li>
+<li><a href="#orgde401a4">5.6. 我自己用 Linux + Nginx + static site + Dynamic DNS 架过网站</a></li>
+<li><a href="#org4449f10">5.7. 会使用 Git 源码版本控制系统</a></li>
+<li><a href="#orgafb8492">5.8. 会用基本的 Docker 功能</a></li>
+<li><a href="#org411eb7e">5.9. 脚本 Linux Shell Scripting</a></li>
+<li><a href="#orge708699">5.10. 参与开源社区的贡献</a></li>
+</ul>
+</li>
+<li><a href="#org6d55c13">6. 其他技能</a>
+<ul>
+<li><a href="#org9f97eca">6.1. 钉钉初级管理员证书</a></li>
+</ul>
+</li>
+<li><a href="#org4ecc075">7. 关于技术学习规划</a></li>
+<li><a href="#org3240e07">8. 选择</a></li>
+<li><a href="#org5fa930b">9. 职业经历</a></li>
+</ul>
+</div>
+</nav>
+
+<div id="outline-container-org0762da9" class="outline-2">
+<h2 id="org0762da9"><span class="section-number-2">1</span> 照片</h2>
+<div class="outline-text-2" id="text-1">
+
+<figure>
+<img src="data/images/me_picture%2023.jpg" alt="那时23岁的我" id="avatar" width="200px">
+
+</figure>
+
+<p>
+我的网上档案
+</p>
+
+<p>
+我大多数公开的东西都在GitHub上，但是笔记之类的都只在本地的Org Mode中，在搭建好平
+台前，都无法在线浏览。
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/stardiviner/">GitHub: stardiviner</a></li>
+<li><a href="https://stardiviner.github.io/">Blog</a></li>
+<li><a href="https://stackexchange.com/users/366399/stardiviner">my Stack Overflow profile</a></li>
+</ul>
+
+<p>
+喜欢电脑技术，喜欢编程，和 Programming Electric Music 编程音乐 Overtone， 喜欢互
+联网。喜欢看哲学书，电影，滑板，和史诗音乐。性格随和，思想开放乐观，接受多元化文
+化。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org71b7237" class="outline-2">
+<h2 id="org71b7237"><span class="section-number-2">2</span> 简述</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+从 <span class="timestamp-wrapper"><span class="timestamp">[2011-10-10 Mon] </span></span> 年以来，我一直使用 Linux 系统作为我的日常系统，完全取代
+Windows系统。使用 Clojure 和 Python, Elisp 编程语言，熟悉 Web 爬虫，正则表达式。
+平常使用 Git 管理代码，用 Docker, Vagrant 设置开发环境。会写一点 Shell 脚本。求
+知欲强，自我学习驱动，解决问题。工作认真，性格平和亲近，和朋友聊天。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga78d8e3" class="outline-2">
+<h2 id="orga78d8e3"><span class="section-number-2">3</span> 编程项目经历</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgfeb61a9" class="outline-3">
+<h3 id="orgfeb61a9"><span class="section-number-3">3.1</span> 爬虫项目</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org7ed22b9" class="outline-4">
+<h4 id="org7ed22b9"><span class="section-number-4">3.1.1</span> 新旧网站的内容对比程序</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<pre class="example">
+DATE: [2018-10-20 Sat 21:30]
+</pre>
+
+<p>
+项目地址： <a href="https://github.com/stardiviner/website-compare">https://github.com/stardiviner/website-compare</a>
+</p>
+
+<p>
+README有详细的记录。
+</p>
+
+<p>
+其中爬取页面部分都是简单的，但是真正难的部分是比较部分。而且要求100%的完整性比较
+（包括文本内容，网页上的多媒体附件，以及导航栏的改动等等）。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd018517" class="outline-4">
+<h4 id="orgd018517"><span class="section-number-4">3.1.2</span> Slack聊天记录的爬虫</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<pre class="example">
+DATE: [2018-11-26 Mon 21:30]
+</pre>
+
+<p>
+项目地址： <a href="https://github.com/stardiviner/clojurians-slack-log">https://github.com/stardiviner/clojurians-slack-log</a>
+</p>
+
+<p>
+README有详细的记录。
+</p>
+
+<p>
+打算在其中加入Clojure的并发和并行支持。作为实验性质的。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org40ce470" class="outline-4">
+<h4 id="org40ce470"><span class="section-number-4">3.1.3</span> 关于爬虫的项目经验</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+由于我还没有在互联网公司真正做过大的爬虫项目，所以算不上有足够经验。但是希望能给
+我一个实习生的机会。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgffc125e" class="outline-3">
+<h3 id="orgffc125e"><span class="section-number-3">3.2</span> Emacs / Org Mode</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>给Emacs写过一些小插件</li>
+<li>给Org Mode提交过一些PR，特别是Org Babel Literate Programming 方面的支持，以及
+ob-clojure 对 CIDER (Emacs 上 的 Clojure IDE) 的支持。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org69ffc06" class="outline-3">
+<h3 id="org69ffc06"><span class="section-number-3">3.3</span> 小工具</h3>
+<div class="outline-text-3" id="text-3-3">
+</div>
+<div id="outline-container-org783f25e" class="outline-4">
+<h4 id="org783f25e"><span class="section-number-4">3.3.1</span> Kindle笔记导出工具</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<p>
+写过一个工具支持从Kindle的笔记记录导出到Emacs Org Mode 格式。
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd0e0aa8" class="outline-2">
+<h2 id="orgd0e0aa8"><span class="section-number-2">4</span> 编程工具：Emacs + Org-mode</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+很早以前在学Ubuntu Linux的时候，我学习使用的是Vim，用过大概有2年时间，后来因为
+Org Mode的超级强大的功能的缘故，我转投Emacs了，一开始Emacs的按键我还不适应，但是
+慢慢就好了，在一段时间的浸淫之后，我开始慢慢学习使用Org Mode，到现在，我已经为
+Org Mode提供了好几个patch和feature了。也写了几个小功能的Emacs插件。我现在已经能
+为我自己想要的功能Hack了。
+</p>
+
+<p>
+现在我已经大多数工作都在Emacs和Org Mode下完成了：
+</p>
+
+<dl class="org-dl">
+<dt>写代码</dt><dd>我的主要语言是Clojure，在Emacs下使用CIDER，是我感觉IDE体验最好的工具。
+Python有Elpy和lsp-python。也能满足大部分需求。而且Org Mode还支持 Literate
+Programming paradigm，这是我在业余时间用的最多的。</dd>
+<dt>用Org Mode记笔记</dt><dd>我将所有笔记都记录在Org里了，我还自己谢了一个工具来快速准
+确的搜索我想要的内容。我还打算将Org的内容host为搜索和浏览形式。这样手机上也能
+快速搜索浏览了。</dd>
+<dt>任务管理</dt><dd>Org Mode有一个Agenda功能，用它管理任务，会更贴心。</dd>
+<dt>收发邮件</dt><dd></dd>
+
+<dt>和其他程序员在IRC上</dt><dd></dd>
+
+<dt>用Org Mode写博客</dt><dd></dd>
+</dl>
+</div>
+
+<div id="outline-container-org9fdd644" class="outline-3">
+<h3 id="org9fdd644"><span class="section-number-3">4.1</span> contributed commits on Org Mode</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-shell">git log --author=stardiviner
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc1e9a41" class="outline-2">
+<h2 id="orgc1e9a41"><span class="section-number-2">5</span> 编程技术</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org9952842" class="outline-3">
+<h3 id="org9952842"><span class="section-number-3">5.1</span> 操作系统：Linux</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+从 <span class="timestamp-wrapper"><span class="timestamp">[2011-10-10 Mon] </span></span> 年以来，我一直使用Linux系统作为我的日常系统，完全取代Windows
+系统了。从最开始的Ubuntu用了2年左右，到后来转到Arch Linux下。后来一直使用Arch
+Linux到现在。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2aa11d3" class="outline-3">
+<h3 id="org2aa11d3"><span class="section-number-3">5.2</span> Clojure: 函数式基于JVM的语言</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2017-08-16 Wed] </span></span> Clojure是我最熟悉的语言，平时都是用它。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd8008a3" class="outline-3">
+<h3 id="orgd8008a3"><span class="section-number-3">5.3</span> Emacs Lisp</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+熟悉 Emacs Lisp 语言。经常自己写一些插件和功能。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org47cf4bf" class="outline-3">
+<h3 id="org47cf4bf"><span class="section-number-3">5.4</span> 了解一点其他语言：Python，Ruby，HTML，CSS，JS</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2015-03-16 Mon] </span></span> 很早以前学过一两个月的Python，Ruby。然后对于 HTML，CSS，JS 这些
+语言有一点了解，但是不深入。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5011a00" class="outline-3">
+<h3 id="org5011a00"><span class="section-number-3">5.5</span> 熟悉正则表达式</h3>
+</div>
+
+<div id="outline-container-orgde401a4" class="outline-3">
+<h3 id="orgde401a4"><span class="section-number-3">5.6</span> 我自己用 Linux + Nginx + static site + Dynamic DNS 架过网站</h3>
+</div>
+
+<div id="outline-container-org4449f10" class="outline-3">
+<h3 id="org4449f10"><span class="section-number-3">5.7</span> 会使用 Git 源码版本控制系统</h3>
+</div>
+
+<div id="outline-container-orgafb8492" class="outline-3">
+<h3 id="orgafb8492"><span class="section-number-3">5.8</span> 会用基本的 Docker 功能</h3>
+<div class="outline-text-3" id="text-5-8">
+<ul class="org-ul">
+<li>了解 Docker Volume</li>
+<li>了解 Docker Compose</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org411eb7e" class="outline-3">
+<h3 id="org411eb7e"><span class="section-number-3">5.9</span> 脚本 Linux Shell Scripting</h3>
+<div class="outline-text-3" id="text-5-9">
+<p>
+会用 Linux Shell 写一点脚本。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge708699" class="outline-3">
+<h3 id="orge708699"><span class="section-number-3">5.10</span> 参与开源社区的贡献</h3>
+<div class="outline-text-3" id="text-5-10">
+<p>
+我平常浏览GitHub，看看有什么有意思的东西，关注动向，也会fork下一些插件，去提交几
+个PR。平时在一些邮件列表里混，订阅了几个常看的，Emacs，Org Mode，Lisp，Clojure。
+也会去一些社区论坛，比如 <a href="https://emacs-china.org/">Emacs China</a>, <a href="https://clojureverse.org/">Clojureverse</a>, 等等。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6d55c13" class="outline-2">
+<h2 id="org6d55c13"><span class="section-number-2">6</span> 其他技能</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org9f97eca" class="outline-3">
+<h3 id="org9f97eca"><span class="section-number-3">6.1</span> 钉钉初级管理员证书</h3>
+<div class="outline-text-3" id="text-6-1">
+
+<figure>
+<img src="data/images/DingDing%20Admin%20Cert.jpg" alt="DingDing%20Admin%20Cert.jpg" width="300px" style="display: inline-block; visibility: visible;">
+
+</figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4ecc075" class="outline-2">
+<h2 id="org4ecc075"><span class="section-number-2">7</span> 关于技术学习规划</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>现在想加深爬虫技术的学习。所以要学习一些JavaScript，反爬虫和反反爬虫技术。</li>
+<li>深入学习并发和并行编程，函数式编程。</li>
+<li>了解一些数据分析的技术，Clojure上我已经开始关注一些库的使用。掌握统计分析的知识。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3240e07" class="outline-2">
+<h2 id="org3240e07"><span class="section-number-2">8</span> 选择</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+我在安徽工程大学读大三下半年的时候辍学了，大学时学习一般，觉得学习很枯燥，以前念
+书，是因为身边的人都在念书，可以这么说，以前念书是为了他人而念书，但是当我在大学
+里想，我为什么念书？想的多了，人就困惑起来，和很多有过类似经历的人一样，在迷茫的
+时期，经历过内心的挣扎，和煎熬。生活的面貌也仿佛隐隐看到背后的一些意义和灵动。
+</p>
+
+<p>
+于是乎就去图书馆里看书，看计算机类的书，哲学类的书，也会偶尔看看小说，和传记。突
+然明白，生命中重要的，不是做什么好，而是想去做什么。我要实现生命的意义，要有梦想，
+一个真正意义上的梦想，那就是在技术浪潮下实现带给人们幸福的事情。当时看了 Eric S.
+Raymond 的 《How To Become a Hacker》。我觉得这很适合我，做一个电脑技术人员，用
+互联网技术去创造点什么。听我们老师说我们专业的学生从事本专业的人一个班级里最多
+1~2个，我觉得继续浑浑噩噩的继续大学读下去也没有意思了，索性从现在开始去做自己喜
+欢的事情，现在开始至少比等一年半开始要早一点。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5fa930b" class="outline-2">
+<h2 id="org5fa930b"><span class="section-number-2">9</span> 职业经历</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+我以前做过绿城房地产的销售，必胜客的服务员，去云南大理做过私房菜的客服，和朋友参
+与过民宿的开始阶段。从云南回来后，后来又做过一段时间的机器人编程的幼教老师，给小
+公司做过IT设备维修支持。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: stardiviner</p>
+<p class="date">Created: 2019-02-21 Thu 13:20</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

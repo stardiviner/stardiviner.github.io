@@ -1,6 +1,4 @@
 #+TITLE: Self Introduction (哲学命题：我)
-#+OPTIONS: toc:nil
-
 
 #+ATTR_ORG: :width 200
 #+ATTR_LATEX: :width 2.0in

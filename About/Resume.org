@@ -7,7 +7,7 @@
 #+ATTR_ORG: :width 200
 #+ATTR_LATEX: :width 2.0in
 #+ATTR_HTML: :id avatar :width 200px :alt 那时23岁的我
-[[file:data/images/me_picture_23.jpg]]
+[[file:data/images/me_picture%2023.jpg]]
 
 我的网上档案
 
@@ -22,11 +22,30 @@
 联网。喜欢看哲学书，电影，滑板，和史诗音乐。性格随和，思想开放乐观，接受多元化文
 化。
 
+* 简述
+
+从 [2011-10-10 Mon] 年以来，我一直使用 Linux 系统作为我的日常系统，完全取代
+Windows系统。使用 Clojure 和 Python, Elisp 编程语言，熟悉 Web 爬虫，正则表达式。
+平常使用 Git 管理代码，用 Docker, Vagrant 设置开发环境。会写一点 Shell 脚本。求
+知欲强，自我学习驱动，解决问题。工作认真，性格平和亲近，和朋友聊天。
+
 * 编程项目经历
 
-** 爬虫
+** 爬虫项目
+
+*** TODO 淘宝数据爬取                                  :noexport:
+    :PROPERTIES:
+    :DATE:     [2019-02-20 Wed 21:30]
+    :END:
+    :LOGBOOK:
+    - State "TODO"       from              [2019-02-20 Wed 21:31] \\
+      remove "noexport" tag after you finish this project.
+    :END:
 
 *** 新旧网站的内容对比程序
+    :PROPERTIES:
+    :DATE:     [2018-10-20 Sat 21:30]
+    :END:
 
 项目地址： https://github.com/stardiviner/website-compare
 
@@ -36,6 +55,9 @@ README有详细的记录。
 （包括文本内容，网页上的多媒体附件，以及导航栏的改动等等）。
 
 *** Slack聊天记录的爬虫
+    :PROPERTIES:
+    :DATE:     [2018-11-26 Mon 21:30]
+    :END:
 
 项目地址： https://github.com/stardiviner/clojurians-slack-log
 
@@ -59,12 +81,6 @@ README有详细的记录。
 *** Kindle笔记导出工具
 
 写过一个工具支持从Kindle的笔记记录导出到Emacs Org Mode 格式。
-
-* 操作系统：Linux
-
-从 [2011-10-10 Mon] 年以来，我一直使用Linux系统作为我的日常系统，完全取代Windows
-系统了。从最开始的Ubuntu用了2年左右，到后来转到Arch Linux下。后来一直使用Arch
-Linux到现在。
 
 * 编程工具：Emacs + Org-mode
 
@@ -93,18 +109,28 @@ Org Mode提供了好几个patch和feature了。也写了几个小功能的Emacs�
 git log --author=stardiviner
 #+end_src
 
-* 编程语言
+* 编程技术
 
-** Clojure
+** 操作系统：Linux
+
+从 [2011-10-10 Mon] 年以来，我一直使用Linux系统作为我的日常系统，完全取代Windows
+系统了。从最开始的Ubuntu用了2年左右，到后来转到Arch Linux下。后来一直使用Arch
+Linux到现在。
+
+** Clojure: 函数式基于JVM的语言
 
 [2017-08-16 Wed] Clojure是我最熟悉的语言，平时都是用它。
+
+** Emacs Lisp
+
+熟悉 Emacs Lisp 语言。经常自己写一些插件和功能。
 
 ** 了解一点其他语言：Python，Ruby，HTML，CSS，JS
 
 [2015-03-16 Mon] 很早以前学过一两个月的Python，Ruby。然后对于 HTML，CSS，JS 这些
 语言有一点了解，但是不深入。
 
-* 其他的编程技术
+** 熟悉正则表达式
 
 ** 我自己用 Linux + Nginx + static site + Dynamic DNS 架过网站
 
@@ -115,22 +141,24 @@ git log --author=stardiviner
 - 了解 Docker Volume
 - 了解 Docker Compose
 
-** Linux Shell Scripting
+** 脚本 Linux Shell Scripting
 
 会用 Linux Shell 写一点脚本。
 
-** 开源社区的贡献
+** 参与开源社区的贡献
 
 我平常浏览GitHub，看看有什么有意思的东西，关注动向，也会fork下一些插件，去提交几
 个PR。平时在一些邮件列表里混，订阅了几个常看的，Emacs，Org Mode，Lisp，Clojure。
 也会去一些社区论坛，比如 [[https://emacs-china.org/][Emacs China]], [[https://clojureverse.org/][Clojureverse]], 等等。
+
+* 其他技能
 
 ** 钉钉初级管理员证书
 
 #+ATTR_ORG: :width 300
 #+ATTR_LATEX: :width 3.0in
 #+ATTR_HTML: :width 300px :style display: inline-block; visibility: visible;
-[[file:data/images/DingDing_Admin_Cert.jpg]]
+[[file:data/images/DingDing%20Admin%20Cert.jpg]]
 
 * 关于技术学习规划
 
