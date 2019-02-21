@@ -18,7 +18,7 @@ suddenly popuped fantasy idea.
 #+ATTR_ORG: :width 200
 #+ATTR_LATEX: :width 2.0in
 #+ATTR_HTML: :id avatar :float left :width 200px :alt 那时23岁的我
-[[file:data/images/me_picture_23.jpg]]
+[[file:data/images/me_picture%2023.jpg]]
 
 喜欢电脑技术，喜欢编程，是一名Coder，喜欢Lisp，Clojure。在生活中主要用Emacs (Org
 Mode)。我的笔记本上安装的是Arch GNU/Linux。这是我从2012年开始用到现在的。平常会
