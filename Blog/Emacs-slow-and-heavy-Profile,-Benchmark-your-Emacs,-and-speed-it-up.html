@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-02-21 Thu 13:32 -->
+<!-- 2019-03-07 Thu 19:41 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</title>
@@ -334,35 +334,35 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org12b419a">1. Is your Emacs slow and heavy?</a>
+<li><a href="#org4bf7198">1. Is your Emacs slow and heavy?</a>
 <ul>
-<li><a href="#orgf5d0663">1.1. elp</a>
+<li><a href="#org1ed3211">1.1. elp</a>
 <ul>
-<li><a href="#orgf4b8c7a">1.1.1. workflow</a></li>
-<li><a href="#org2c00cb8">1.1.2. <code>[C-h p elp RET]</code></a></li>
+<li><a href="#org1261538">1.1.1. workflow</a></li>
+<li><a href="#org22da9f9">1.1.2. <code>[C-h p elp RET]</code></a></li>
 </ul>
 </li>
-<li><a href="#org3a3ae98">1.2. profile</a>
+<li><a href="#org6e4299d">1.2. profile</a>
 <ul>
-<li><a href="#org626005e">1.2.1. workflow</a></li>
+<li><a href="#org93d639d">1.2.1. workflow</a></li>
 </ul>
 </li>
-<li><a href="#org7faba5b">1.3. esup</a>
+<li><a href="#org957261b">1.3. esup</a>
 <ul>
-<li><a href="#org992b281">1.3.1. workflow</a></li>
-<li><a href="#org1a84466">1.3.2. navigation &#x2013; <code>[n/p/&lt;RET&gt;]</code></a></li>
-<li><a href="#orgc4f2c51">1.3.3. FAQ</a></li>
+<li><a href="#org40bafeb">1.3.1. workflow</a></li>
+<li><a href="#orgd86f6ff">1.3.2. navigation &#x2013; <code>[n/p/&lt;RET&gt;]</code></a></li>
+<li><a href="#org6f377ac">1.3.3. FAQ</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org32574f5">2. The history commits I did which slow down my Emacs</a></li>
+<li><a href="#orgb03d222">2. The history commits I did which slow down my Emacs</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org12b419a" class="outline-2">
-<h2 id="org12b419a"><span class="section-number-2">1</span> Is your Emacs slow and heavy?</h2>
+<div id="outline-container-org4bf7198" class="outline-2">
+<h2 id="org4bf7198"><span class="section-number-2">1</span> Is your Emacs slow and heavy?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 When you installed many Emacs packages, or you set up many configurations. You found your
@@ -382,12 +382,12 @@ Here are some ways you can find out the reaons:
 </dl>
 </div>
 
-<div id="outline-container-orgf5d0663" class="outline-3">
-<h3 id="orgf5d0663"><span class="section-number-3">1.1</span> elp</h3>
+<div id="outline-container-org1ed3211" class="outline-3">
+<h3 id="org1ed3211"><span class="section-number-3">1.1</span> elp</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-orgf4b8c7a" class="outline-4">
-<h4 id="orgf4b8c7a"><span class="section-number-4">1.1.1</span> workflow</h4>
+<div id="outline-container-org1261538" class="outline-4">
+<h4 id="org1261538"><span class="section-number-4">1.1.1</span> workflow</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 Profile the code while executing the function that takes a long time.
@@ -442,8 +442,8 @@ do your time-consuming operations, and get a report with <code>[M-x elp-results]
 </div>
 </div>
 
-<div id="outline-container-org2c00cb8" class="outline-4">
-<h4 id="org2c00cb8"><span class="section-number-4">1.1.2</span> <code>[C-h p elp RET]</code></h4>
+<div id="outline-container-org22da9f9" class="outline-4">
+<h4 id="org22da9f9"><span class="section-number-4">1.1.2</span> <code>[C-h p elp RET]</code></h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 If you want to profile a bunch of functions, set elp-function-list
@@ -548,12 +548,12 @@ affect accuracy too.
 </div>
 </div>
 
-<div id="outline-container-org3a3ae98" class="outline-3">
-<h3 id="org3a3ae98"><span class="section-number-3">1.2</span> profile</h3>
+<div id="outline-container-org6e4299d" class="outline-3">
+<h3 id="org6e4299d"><span class="section-number-3">1.2</span> profile</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org626005e" class="outline-4">
-<h4 id="org626005e"><span class="section-number-4">1.2.1</span> workflow</h4>
+<div id="outline-container-org93d639d" class="outline-4">
+<h4 id="org93d639d"><span class="section-number-4">1.2.1</span> workflow</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ol class="org-ol">
 <li><p>
@@ -592,16 +592,16 @@ You need to reset profiler logs before nest new profiling.
 </div>
 </div>
 
-<div id="outline-container-org7faba5b" class="outline-3">
-<h3 id="org7faba5b"><span class="section-number-3">1.3</span> esup</h3>
+<div id="outline-container-org957261b" class="outline-3">
+<h3 id="org957261b"><span class="section-number-3">1.3</span> esup</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 <a href="http://github.com/jschaf/esup">http://github.com/jschaf/esup</a>
 </p>
 </div>
 
-<div id="outline-container-org992b281" class="outline-4">
-<h4 id="org992b281"><span class="section-number-4">1.3.1</span> workflow</h4>
+<div id="outline-container-org40bafeb" class="outline-4">
+<h4 id="org40bafeb"><span class="section-number-4">1.3.1</span> workflow</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <ol class="org-ol">
 <li><p>
@@ -623,16 +623,16 @@ display ESUP result.
 </div>
 </div>
 
-<div id="outline-container-org1a84466" class="outline-4">
-<h4 id="org1a84466"><span class="section-number-4">1.3.2</span> navigation &#x2013; <code>[n/p/&lt;RET&gt;]</code></h4>
+<div id="outline-container-orgd86f6ff" class="outline-4">
+<h4 id="orgd86f6ff"><span class="section-number-4">1.3.2</span> navigation &#x2013; <code>[n/p/&lt;RET&gt;]</code></h4>
 </div>
 
-<div id="outline-container-orgc4f2c51" class="outline-4">
-<h4 id="orgc4f2c51"><span class="section-number-4">1.3.3</span> FAQ</h4>
+<div id="outline-container-org6f377ac" class="outline-4">
+<h4 id="org6f377ac"><span class="section-number-4">1.3.3</span> FAQ</h4>
 <div class="outline-text-4" id="text-1-3-3">
 </div>
 <ol class="org-ol">
-<li><a id="org02a1825" name="org02a1825"></a>Q: Debugger entered&#x2013;Lisp error: (invalid-read-syntax "#")<br>
+<li><a id="orgd726160" name="orgd726160"></a>Q: Debugger entered&#x2013;Lisp error: (invalid-read-syntax "#")<br>
 <div class="outline-text-5" id="text-1-3-3-1">
 <pre class="example">
 Debugger entered--Lisp error: (invalid-read-syntax "#")
@@ -681,8 +681,8 @@ on the read syntax error "#".
 </div>
 
 
-<div id="outline-container-org32574f5" class="outline-2">
-<h2 id="org32574f5"><span class="section-number-2">2</span> The history commits I did which slow down my Emacs</h2>
+<div id="outline-container-orgb03d222" class="outline-2">
+<h2 id="orgb03d222"><span class="section-number-2">2</span> The history commits I did which slow down my Emacs</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Here is my Emacs config: <a href="https://github.com/stardiviner/emacs.d">https://github.com/stardiviner/emacs.d</a>
@@ -1822,7 +1822,7 @@ Date:   Sun May 11 09:24:33 2014 +0800
 <footer>
   Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
   Last update date: 2019-02-16 Sat 08:17.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.2). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.0.50 (<a href="https://orgmode.org">Org</a> mode 9.2.1). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
   
   <!-- Show Org Source -->
   <script>
