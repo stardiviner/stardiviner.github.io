@@ -1,4 +1,4 @@
-# Created 2019-03-07 Thu 19:54
+# Created 2019-03-07 Thu 19:57
 #+TITLE: Make company-mode support for nginx-mode
 #+AUTHOR: stardiviner
 
@@ -17,7 +17,7 @@ too.
 * Fetch all Nginx directives
 
 ** TODO Elisp implementation
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval no
 (require 'elquery)
 
 (with-current-buffer (url-retrieve-synchronously "https://nginx.org/en/docs/dirindex.html")
@@ -40,7 +40,7 @@ https://github.com/AdamNiederer/elquery/issues/5
 ** another Python implementation
 
 #+name: get-directives
-#+begin_src python :session
+#+begin_src python :eval no
 import urllib.request
 import urllib.parse
 import bs4
@@ -65,7 +65,7 @@ print(directives)
 
 Convert result to Elisp list data structure:
 
-#+begin_src emacs-lisp :var directives=get-directives() :results pp
+#+begin_src emacs-lisp :var directives=get-directives() :results pp :eval no
 (setq nginx-directives
       (mapcar
        (lambda (element)
@@ -128,7 +128,7 @@ Convert result to Elisp list data structure:
 
 * company-keywords-alist
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval no
 (defun company-nginx-keywords ()
   (add-to-list 'company-keywords-alist
                '(nginx-mode

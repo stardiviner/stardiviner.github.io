@@ -24,11 +24,11 @@ too.
 <span class="org-level-1">* Fetch all Nginx directives
 </span>
 <span class="custom-1">*</span><span class="org-level-2">* </span><span class="org-todo-keyword-todo">TODO</span><span class="org-level-2"> Elisp implementation
-</span><span class="org-special-keyword">       :LOGBOOK:</span>
-       - State "TODO"       from              <span class="org-date">[2018-05-14 Mon 11:08]</span>
-<span class="org-special-keyword">       :END:</span>
+</span><span class="org-special-keyword">    :LOGBOOK:</span>
+    - State "TODO"       from              <span class="org-date">[2018-05-14 Mon 11:08]</span>
+<span class="org-special-keyword">    :END:</span>
 
-<span class="org-block-begin-line">#+begin_src emacs-lisp
+<span class="org-block-begin-line">#+begin_src emacs-lisp :eval no
 </span><span class="org-block">(</span><span class="org-block"><span class="keyword">require</span></span><span class="org-block"> '</span><span class="org-block"><span class="constant">elquery</span></span><span class="org-block">)
 
 (</span><span class="org-block"><span class="keyword">with-current-buffer</span></span><span class="org-block"> (url-retrieve-synchronously </span><span class="org-block"><span class="string">"<a href="https://nginx.org/en/docs/dirindex.html">https://nginx.org/en/docs/dirindex.html</a>"</span></span><span class="org-block">)
@@ -51,7 +51,7 @@ too.
 <span class="custom-1">*</span><span class="org-level-2">* another Python implementation
 </span>
 <span class="org-meta-line">#+NAME: get-directives</span>
-<span class="org-block-begin-line">#+begin_src python :session
+<span class="org-block-begin-line">#+begin_src python :eval no
 </span><span class="org-block"><span class="keyword">import</span></span><span class="org-block"> urllib.request
 </span><span class="org-block"><span class="keyword">import</span></span><span class="org-block"> urllib.parse
 </span><span class="org-block"><span class="keyword">import</span></span><span class="org-block"> bs4
@@ -76,7 +76,7 @@ too.
 </span>
 Convert result to Elisp list data structure:
 
-<span class="org-block-begin-line">#+begin_src emacs-lisp :var directives=get-directives() :results pp
+<span class="org-block-begin-line">#+begin_src emacs-lisp :var directives=get-directives() :results pp :eval no
 </span><span class="org-block">(</span><span class="org-block"><span class="keyword">setq</span></span><span class="org-block"> nginx-directives
       (mapcar
        (</span><span class="org-block"><span class="keyword">lambda</span></span><span class="org-block"> (element)
@@ -139,7 +139,7 @@ Convert result to Elisp list data structure:
 
 <span class="org-level-1">* company-keywords-alist
 </span>
-<span class="org-block-begin-line">#+begin_src emacs-lisp
+<span class="org-block-begin-line">#+begin_src emacs-lisp :eval no
 </span><span class="org-block">(</span><span class="org-block"><span class="keyword">defun</span></span><span class="org-block"> </span><span class="org-block"><span class="function-name">company-nginx-keywords</span></span><span class="org-block"> ()
   (add-to-list 'company-keywords-alist
                '(nginx-mode
