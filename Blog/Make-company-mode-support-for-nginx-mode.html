@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-03-07 Thu 19:57 -->
+<!-- 2019-03-07 Thu 20:00 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Make company-mode support for nginx-mode</title>
@@ -320,7 +320,6 @@ for the JavaScript code in this tag.
   <ul>
     <li><a href='/'>Home</a></li>
     <li><a href='/Blog/index.html'>Blog</a></li>
-    <li><a href='/index.xml'>Blog RSS</a></li>
     <li><a href="/Thought/index.html">Thought</a></li>
     <li><a href='/Literature/index.html'>文学</a></li>
     <li><a href='/About/index.html'>About</a></li>
@@ -334,21 +333,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org395f98b">1. At the beginning</a></li>
-<li><a href="#org7cd6287">2. Fetch all Nginx directives</a>
+<li><a href="#org7743bc0">1. At the beginning</a></li>
+<li><a href="#org7991105">2. Fetch all Nginx directives</a>
 <ul>
-<li><a href="#org01bc024">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
-<li><a href="#org778c4bf">2.2. another Python implementation</a></li>
+<li><a href="#orgc78b81b">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
+<li><a href="#org905d29b">2.2. another Python implementation</a></li>
 </ul>
 </li>
-<li><a href="#org29b7ff4">3. company-keywords-alist</a></li>
-<li><a href="#org54cc418">4. created package company-nginx</a></li>
+<li><a href="#orge176cf7">3. company-keywords-alist</a></li>
+<li><a href="#orga30ddff">4. created package company-nginx</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org395f98b" class="outline-2">
-<h2 id="org395f98b"><span class="section-number-2">1</span> At the beginning</h2>
+<div id="outline-container-org7743bc0" class="outline-2">
+<h2 id="org7743bc0"><span class="section-number-2">1</span> At the beginning</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I'm learning a little about Nginx recently, I hope can setup web server by myself
@@ -368,12 +367,12 @@ too.
 </div>
 
 
-<div id="outline-container-org7cd6287" class="outline-2">
-<h2 id="org7cd6287"><span class="section-number-2">2</span> Fetch all Nginx directives</h2>
+<div id="outline-container-org7991105" class="outline-2">
+<h2 id="org7991105"><span class="section-number-2">2</span> Fetch all Nginx directives</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org01bc024" class="outline-3">
-<h3 id="org01bc024"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
+<div id="outline-container-orgc78b81b" class="outline-3">
+<h3 id="orgc78b81b"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">require</span> '<span style="color: #98C379;">elquery</span><span style="color: #56B6C2;">)</span>
@@ -402,11 +401,11 @@ too.
 </div>
 </div>
 
-<div id="outline-container-org778c4bf" class="outline-3">
-<h3 id="org778c4bf"><span class="section-number-3">2.2</span> another Python implementation</h3>
+<div id="outline-container-org905d29b" class="outline-3">
+<h3 id="org905d29b"><span class="section-number-3">2.2</span> another Python implementation</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
-<pre class="src src-python" id="org6031e15"><span style="color: #E06C75;">import</span> urllib.request
+<pre class="src src-python" id="orgf32ae74"><span style="color: #E06C75;">import</span> urllib.request
 <span style="color: #E06C75;">import</span> urllib.parse
 <span style="color: #E06C75;">import</span> bs4
 
@@ -497,8 +496,8 @@ Convert result to Elisp list data structure:
 </div>
 
 
-<div id="outline-container-org29b7ff4" class="outline-2">
-<h2 id="org29b7ff4"><span class="section-number-2">3</span> company-keywords-alist</h2>
+<div id="outline-container-orge176cf7" class="outline-2">
+<h2 id="orge176cf7"><span class="section-number-2">3</span> company-keywords-alist</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">company-nginx-keywords</span> <span style="color: #D19A66;">()</span>
@@ -685,8 +684,8 @@ Convert result to Elisp list data structure:
 </div>
 </div>
 
-<div id="outline-container-org54cc418" class="outline-2">
-<h2 id="org54cc418"><span class="section-number-2">4</span> created package company-nginx</h2>
+<div id="outline-container-orga30ddff" class="outline-2">
+<h2 id="orga30ddff"><span class="section-number-2">4</span> created package company-nginx</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 In order to share to others, I created a simple package:
@@ -707,6 +706,9 @@ I will push to MELPA.
   Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
   Last update date: 2019-03-07 Thu 19:56.<br>
   Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.0.50 (<a href="https://orgmode.org">Org</a> mode 9.2.1). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
+
+  <!-- RSS -->
+  You can <a href='/index.xml'>subscribe</a> my blog through RSS.
   
   <!-- Show Org Source -->
   <script>
