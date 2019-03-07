@@ -1,4 +1,4 @@
-# Created 2019-03-07 Thu 19:49
+# Created 2019-03-07 Thu 19:54
 #+TITLE: An amateurish coder's blog
 #+AUTHOR: stardiviner
 

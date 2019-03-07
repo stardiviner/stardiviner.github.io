@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-03-07 Thu 19:41 -->
+<!-- 2019-03-07 Thu 19:53 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Learn Programming Language from Diving into Source Code</title>
@@ -334,25 +334,25 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8255656">1. Master Core Functions</a></li>
-<li><a href="#org5d97fd9">2. Dive into Language Source Code</a></li>
-<li><a href="#org5b7aa28">3. Search code examples on public source code hosting websites</a>
+<li><a href="#orgec99f11">1. Master Core Functions</a></li>
+<li><a href="#orgccae766">2. Dive into Language Source Code</a></li>
+<li><a href="#org4870184">3. Search code examples on public source code hosting websites</a>
 <ul>
-<li><a href="#orga0f79c9">3.1. Emacs package engine-mode</a>
+<li><a href="#org8ff5cca">3.1. Emacs package engine-mode</a>
 <ul>
-<li><a href="#orge97fc7a">3.1.1. how to define engine</a></li>
-<li><a href="#orgf042d87">3.1.2. my config part</a></li>
+<li><a href="#org8eb1b69">3.1.1. how to define engine</a></li>
+<li><a href="#orgfcebe61">3.1.2. my config part</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org31fb017">4. More tips will updated on this post</a></li>
+<li><a href="#orga02e12b">4. More tips will updated on this post</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org8255656" class="outline-2">
-<h2 id="org8255656"><span class="section-number-2">1</span> Master Core Functions</h2>
+<div id="outline-container-orgec99f11" class="outline-2">
+<h2 id="orgec99f11"><span class="section-number-2">1</span> Master Core Functions</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 If you're a beginner on learning Programming Language, mastering some core and frequently
@@ -367,8 +367,8 @@ this book because I'm learning Clojure, need to master basic of Clojure as a beg
 </div>
 </div>
 
-<div id="outline-container-org5d97fd9" class="outline-2">
-<h2 id="org5d97fd9"><span class="section-number-2">2</span> Dive into Language Source Code</h2>
+<div id="outline-container-orgccae766" class="outline-2">
+<h2 id="orgccae766"><span class="section-number-2">2</span> Dive into Language Source Code</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Programming Language usually has a mechanism to check out source code. For example, Emacs
@@ -379,8 +379,8 @@ or Emacs extensions to support this.
 </div>
 </div>
 
-<div id="outline-container-org5b7aa28" class="outline-2">
-<h2 id="org5b7aa28"><span class="section-number-2">3</span> Search code examples on public source code hosting websites</h2>
+<div id="outline-container-org4870184" class="outline-2">
+<h2 id="org4870184"><span class="section-number-2">3</span> Search code examples on public source code hosting websites</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Learning with examples is helpful for beginner, you can search code on public source code
@@ -414,8 +414,8 @@ solutions to every task in every language.</dd>
 </dl>
 </div>
 
-<div id="outline-container-orga0f79c9" class="outline-3">
-<h3 id="orga0f79c9"><span class="section-number-3">3.1</span> Emacs package engine-mode</h3>
+<div id="outline-container-org8ff5cca" class="outline-3">
+<h3 id="org8ff5cca"><span class="section-number-3">3.1</span> Emacs package engine-mode</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Emacs has a package called "<code>engine-mode</code>" which can define search engine based on URL by
@@ -425,12 +425,12 @@ input.
 </p>
 </div>
 
-<div id="outline-container-orge97fc7a" class="outline-4">
-<h4 id="orge97fc7a"><span class="section-number-4">3.1.1</span> how to define engine</h4>
+<div id="outline-container-org8eb1b69" class="outline-4">
+<h4 id="org8eb1b69"><span class="section-number-4">3.1.1</span> how to define engine</h4>
 <div class="outline-text-4" id="text-3-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="org95c3382" name="org95c3382"></a>simple<br>
+<li><a id="org15a0c25" name="org15a0c25"></a>simple<br>
 <div class="outline-text-5" id="text-3-1-1-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> github
@@ -440,7 +440,7 @@ input.
 </div>
 </li>
 
-<li><a id="org58c08ca" name="org58c08ca"></a>specify key<br>
+<li><a id="org7d144a8" name="org7d144a8"></a>specify key<br>
 <div class="outline-text-5" id="text-3-1-1-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> duckduckgo
@@ -451,7 +451,7 @@ input.
 </div>
 </li>
 
-<li><a id="orge08fccc" name="orge08fccc"></a>specify browser function<br>
+<li><a id="orgb3a7b7c" name="orgb3a7b7c"></a>specify browser function<br>
 <div class="outline-text-5" id="text-3-1-1-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> github
@@ -462,7 +462,7 @@ input.
 </div>
 </li>
 
-<li><a id="orge7da6b1" name="orge7da6b1"></a>specify docstring<br>
+<li><a id="orgadf7b13" name="orgadf7b13"></a>specify docstring<br>
 <div class="outline-text-5" id="text-3-1-1-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defengine</span> ctan
@@ -475,8 +475,8 @@ input.
 </ol>
 </div>
 
-<div id="outline-container-orgf042d87" class="outline-4">
-<h4 id="orgf042d87"><span class="section-number-4">3.1.2</span> my config part</h4>
+<div id="outline-container-orgfcebe61" class="outline-4">
+<h4 id="orgfcebe61"><span class="section-number-4">3.1.2</span> my config part</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">general search engines</span>
@@ -544,8 +544,8 @@ input.
 </div>
 
 
-<div id="outline-container-org31fb017" class="outline-2">
-<h2 id="org31fb017"><span class="section-number-2">4</span> More tips will updated on this post</h2>
+<div id="outline-container-orga02e12b" class="outline-2">
+<h2 id="orga02e12b"><span class="section-number-2">4</span> More tips will updated on this post</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 If anyone suggest more skill tips about learning from diving into source code. I will add
