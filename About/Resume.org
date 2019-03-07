@@ -1,15 +1,45 @@
 #+TITLE: 简历
-#+OPTIONS: html5-fancy:t
+:PREAMBLE:
+#+OPTIONS: html5-fancy:t toc:nil text:t
 #+HTML_DOCTYPE: html5
+:END:
+
+* set document watermark or background                 :noexport:
+
+#+begin_src latex
+,#+LATEX_HEADER: \usepackage{graphicx}
+,#+LATEX_HEADER_EXTRA: \usepackage{background}
+,#+LATEX: \SetBgContents{stardiviner}
+,#+LATEX: \SetBgPosition{0,0}
+,#+LATEX: \SetBgColor{black!40}
+,#+LATEX: \SetBgScale{4}
+,#+LATEX: \SetBgAngle{0}
+,#+LATEX: \SetBgHshift{10}
+,#+LATEX: \SetBgVshift{-5}
+#+end_src
 
 * 照片
 
+#+CAPTION: 那时23岁的我
 #+ATTR_ORG: :width 200
 #+ATTR_LATEX: :width 2.0in
 #+ATTR_HTML: :id avatar :width 200px :alt 那时23岁的我
 [[file:data/images/me_picture%2023.jpg]]
 
-我的网上档案
+
+从 [2011-10-10 Mon] 年以来，我一直使用 Linux 系统作为我的日常系统，完全取代
+Windows系统。使用 Clojure 和 Python, Elisp 编程语言，熟悉 Web，App 爬虫。平常使
+用 Git 管理代码，经常在GitHub上出没。用 Docker, Vagrant 设置开发环境。会写一点
+Shell 脚本。求知欲强，自我学习驱动，解决问题。工作认真，性格平和亲近，和朋友聊天。
+
+喜欢电脑技术，喜欢编程，和 Programming Electric Music 编程音乐 Overtone， 喜欢互
+联网。喜欢看哲学书，电影，滑板，和史诗音乐。性格随和，思想开放乐观，接受多元化文
+化。
+
+#+ATTR_LATEX: :width \textwidth :thickness 0.8pt
+-----
+
+* 我的网上档案
 
 我大多数公开的东西都在GitHub上，但是笔记之类的都只在本地的Org Mode中，在搭建好平
 台前，都无法在线浏览。
@@ -18,16 +48,8 @@
 - [[https://stardiviner.github.io/][Blog]]
 - [[https://stackexchange.com/users/366399/stardiviner][my Stack Overflow profile]]
 
-喜欢电脑技术，喜欢编程，和 Programming Electric Music 编程音乐 Overtone， 喜欢互
-联网。喜欢看哲学书，电影，滑板，和史诗音乐。性格随和，思想开放乐观，接受多元化文
-化。
-
-* 简述
-
-从 [2011-10-10 Mon] 年以来，我一直使用 Linux 系统作为我的日常系统，完全取代
-Windows系统。使用 Clojure 和 Python, Elisp 编程语言，熟悉 Web 爬虫，正则表达式。
-平常使用 Git 管理代码，用 Docker, Vagrant 设置开发环境。会写一点 Shell 脚本。求
-知欲强，自我学习驱动，解决问题。工作认真，性格平和亲近，和朋友聊天。
+#+ATTR_LATEX: :width \textwidth :thickness 0.8pt
+-----
 
 * 编程项目经历
 
@@ -82,6 +104,9 @@ README有详细的记录。
 
 写过一个工具支持从Kindle的笔记记录导出到Emacs Org Mode 格式。
 
+#+ATTR_LATEX: :width \textwidth :thickness 0.8pt
+-----
+
 * 编程工具：Emacs + Org-mode
 
 很早以前在学Ubuntu Linux的时候，我学习使用的是Vim，用过大概有2年时间，后来因为
@@ -109,6 +134,10 @@ Org Mode提供了好几个patch和feature了。也写了几个小功能的Emacs�
 git log --author=stardiviner
 #+end_src
 
+
+#+ATTR_LATEX: :width \textwidth :thickness 0.8pt
+-----
+
 * 编程技术
 
 ** 操作系统：Linux
@@ -132,6 +161,8 @@ Linux到现在。
 
 ** 熟悉正则表达式
 
+** 熟悉 Redis 和 MongoDB 的基础使用
+
 ** 我自己用 Linux + Nginx + static site + Dynamic DNS 架过网站
 
 ** 会使用 Git 源码版本控制系统
@@ -151,6 +182,10 @@ Linux到现在。
 个PR。平时在一些邮件列表里混，订阅了几个常看的，Emacs，Org Mode，Lisp，Clojure。
 也会去一些社区论坛，比如 [[https://emacs-china.org/][Emacs China]], [[https://clojureverse.org/][Clojureverse]], 等等。
 
+
+#+ATTR_LATEX: :width \textwidth :thickness 0.8pt
+-----
+
 * 其他技能
 
 ** 英语四级，良好的英语阅读能力
@@ -164,11 +199,17 @@ Linux到现在。
 #+ATTR_HTML: :width 300px :style display: inline-block; visibility: visible;
 [[file:data/images/DingDing%20Admin%20Cert.jpg]]
 
+#+ATTR_LATEX: :width \textwidth :thickness 0.8pt
+-----
+
 * 关于技术学习规划
 
 - 现在想加深爬虫技术的学习。所以要学习一些JavaScript，反爬虫和反反爬虫技术。
 - 深入学习并发和并行编程，函数式编程。
 - 了解一些数据分析的技术，Clojure上我已经开始关注一些库的使用。掌握统计分析的知识。
+
+#+ATTR_LATEX: :width \textwidth :thickness 0.8pt
+-----
 
 * 选择
 
@@ -185,11 +226,19 @@ Raymond 的 《How To Become a Hacker》。我觉得这很适合我，做一个�
 1~2个，我觉得继续浑浑噩噩的继续大学读下去也没有意思了，索性从现在开始去做自己喜
 欢的事情，现在开始至少比等一年半开始要早一点。
 
+#+ATTR_LATEX: :width \textwidth :thickness 0.8pt
+-----
+
 * 职业经历
 
 我以前做过绿城房地产的销售，必胜客的服务员，去云南大理做过私房菜的客服，和朋友参
 与过民宿的开始阶段。从云南回来后，后来又做过一段时间的机器人编程的幼教老师，给小
 公司做过IT设备维修支持。
+
+#+ATTR_LATEX: :width \textwidth :thickness 0.8pt
+-----
+
+此文档由Org Mode嵌入LaTeX，导出为PDF文件。
 
 * 导出此简历                                           :noexport:
 
