@@ -120,10 +120,11 @@ Having an awesome desktop is a cool thing.
 </style>
 #+end_export
 
+** Digital Concurrency
+
+*** Bitcoin Wallet (BTC)
 
 注册 Coinbase 即可获得Bitcoin。 https://www.coinbase.com/join/53b8ac3eed744366f7000001
-
-** Bitcoin Wallet (BTC)
 
 My BitCoin Wallet Address:
 
@@ -131,13 +132,13 @@ My BitCoin Wallet Address:
 3QrdhGw9N1Jm1QLct74A46NPLHmjpw3yJk
 #+end_example
 
-** BitCoin Cash Wallet (BTH)
+*** BitCoin Cash Wallet (BTH)
 
 #+begin_example
 qr7gc5z0zml5g2tj2d88yzxqx7t2wd0gtucugd2fdl
 #+end_example
 
-** Ethereum Wallet (ETH)
+*** Ethereum Wallet (ETH)
 
 #+begin_example
 0x04cdae4Db1dbbe29C7F98B6bA14C727Be98f658A
