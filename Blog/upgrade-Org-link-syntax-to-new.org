@@ -1,0 +1,101 @@
+#+TITLE: upgrade Org link syntax to new
+#+AUTHOR: stardiviner <numbchild@gmail.com>
+
+* which Org version using new link syntax?
+
+Since commit "=a486d9cbd=" in Git repo, Org start this change. You might want to
+check out =ORG-NEWS= file about this.
+
+
+* Conversations in Org Mode mailing list
+
+If you don't want to know the background or already know this background, you
+can just skip bellowing links.
+
+Here is the original discussion in Org Mode mailing list for reference:
+
+- [[https://lists.gnu.org/archive/html/emacs-orgmode/2019-02/msg00320.html][[RFC] Fixing link encoding once and for all]]
+- [[https://lists.gnu.org/archive/html/emacs-orgmode/2019-03/msg00114.html][[ANN] Changes to link syntax]]
+
+
+* How to upgrade Org links to new syntax
+  
+If you need this, you must have lot of Org files need to be updated, you will
+not want to do it manually one by one. So here is my way.
+
+** Using a search tool with wgrep mode
+
+1. I use =rg.el= (you can use any other searching command-line tools like =ag= etc
+   if you want, but need be supported by =wgrep=.) to search recursively over my
+   ~org-directory~ which is =~/Org/= (I store all Org files in one place for easy
+   backup.). So in Emacs, press command =[M-x rg]= to start search. You need to
+   search all of those urlfied characters "=%20, %25, %5B and %5D=" one by one.
+
+   *NOTE*: If your Org files are written in only English language, then that's all
+   characters to search. If you have Chinese text, then you also need to search
+   pattern "=file:.*%=". This pattern will find out all ~file:~ links contains
+   Chinese text.
+
+2. =rg= is really very fast, I have about 10000 Org files, just spent about more
+   than 1 minute.
+
+3. In the rg searching result buffer, press =[C-c C-x C-p]= to enable =wgrep-mode=.
+
+4. Add Elisp command for update Org link.
+
+   You need to evaluate following elisp code.
+
+   #+begin_src emacs-lisp
+   (defun org-update-link-syntax (&optional no-query)
+     "Update syntax for links in current buffer."
+     (interactive)
+     (org-with-point-at 1
+       (let ((case-fold-search t))
+         ;; (re-search-forward "\\[\\[[^]]*?%\\(?:2[05]\\|5[BD]\\)" nil t) ; safer matching
+         (while (re-search-forward "\\[\\[[^]]*?%" nil t) ; wider matching
+           (let ((object (save-match-data (org-element-context))))
+             (when (and (eq 'link (org-element-type object))
+                        (= (match-beginning 0)
+                           (org-element-property :begin object)))
+               (goto-char (org-element-property :end object))
+               (let* ((uri-start (+ 2 (match-beginning 0)))
+                      (uri-end (save-excursion
+                                 (goto-char uri-start)
+                                 (re-search-forward "\\][][]" nil t)
+                                 (match-beginning 0)))
+                      (uri (buffer-substring-no-properties uri-start uri-end)))
+                 (when
+                     ;; t ; if you don't want to confirm every one link, just use this t for automatically modify link.
+                   (or no-query
+                       (y-or-n-p
+                        (format "Possibly obsolete URI syntax: %S.  Fix? "
+                                uri)))
+                   (setf (buffer-substring uri-start uri-end)
+                         (org-link-escape (org-link-decode uri)))))))))))
+   #+end_src
+
+   *NOTE*: If you don't want to confirm every one link, just use the ~t~ in ~when~ for
+   automatically modify link.
+
+   *Thanks Nicolas Goaziou for this Elisp code*.
+
+5. save all modifications in wgrep with =[C-x C-s]=.
+
+6. repeat this step for all searching characters.
+
+** use org-lint to checking Org file
+   
+In latest Org version, there is already support use command =org-lint= to checking
+Org buffer.
+
+
+* At the end
+
+There are might more places have not noticed by me. If you found someplace need
+to be updated, please send email to Org Mode mailing list, or email me is ok.
+
+Because I mainly use Chinese text in =file:= link, so that's where I searched.
+Might there are more link types need to searched like =pdfview:= which from
+package =org-pdfview=.
+
+I will update here if there are new updates.

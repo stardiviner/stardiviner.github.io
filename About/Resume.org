@@ -24,7 +24,7 @@
 #+ATTR_ORG: :width 200
 #+ATTR_LATEX: :width 2.0in
 #+ATTR_HTML: :id avatar :width 200px :alt 那时23岁的我
-[[file:data/images/me_picture%2023.jpg]]
+[[file:data/images/me_picture 23.jpg]]
 
 
 从 [2011-10-10 Mon] 年以来，我一直使用 Linux 系统作为我的日常系统，完全取代
@@ -197,7 +197,7 @@ Linux到现在。
 #+ATTR_ORG: :width 300
 #+ATTR_LATEX: :width 3.0in
 #+ATTR_HTML: :width 300px :style display: inline-block; visibility: visible;
-[[file:data/images/DingDing%20Admin%20Cert.jpg]]
+[[file:data/images/DingDing Admin Cert.jpg]]
 
 #+ATTR_LATEX: :width \textwidth :thickness 0.8pt
 -----
