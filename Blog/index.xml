@@ -14,8 +14,8 @@
   <link>https://stardiviner.github.io/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Thu, 07 Mar 2019 20:01:14 +0800</pubDate>
-  <lastBuildDate>Thu, 07 Mar 2019 20:01:14 +0800</lastBuildDate>
+  <pubDate>Sun, 07 Apr 2019 19:15:58 +0800</pubDate>
+  <lastBuildDate>Sun, 07 Apr 2019 19:15:58 +0800</lastBuildDate>
   <generator>Emacs 27.0 Org-mode 9.2.1</generator>
   <webMaster>numbchild@gmail.com (stardiviner)</webMaster>
   <image>
@@ -28,6 +28,7 @@
     <h2>Table of Contents</h2>
     <div id="text-table-of-contents">
       <ul>
+        <li><a href="#orgcfa0881">upgrade Org link syntax to new</a></li>
         <li><a href="#orgc236d4d">Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</a></li>
         <li><a href="#orge03ca88">How to use docstring to annotate source code</a></li>
         <li><a href="#org3c6e9fb">Learn Programming Language from Diving into Source Code</a></li>
@@ -44,6 +45,25 @@
       </ul>
     </div>
   </nav>
+
+  <item>
+    <title>upgrade Org link syntax to new</title>
+    <link>https://stardiviner.github.io/index.html#orgcfa0881</link>
+    <author>numbchild@gmail.com (stardiviner)</author>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#orgcfa0881</guid>
+    <pubDate>Sun, 07 Apr 2019 19:15:00 +0800</pubDate>
+
+    <description><![CDATA[<pre class="example">
+    DATE: [2019-04-07 Sun 18:46]
+    ID: 4e50ff41-fa57-437d-b816-043ad7bfccbe
+    PUBDATE: <2019-04-07 Sun 19:15>
+    </pre>
+
+    <p>
+    <a href="upgrade-Org-link-syntax-to-new.html">upgrade Org link syntax to new</a>
+    </p>
+    ]]></description>
+  </item>
 
   <item>
     <title>Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</title>

@@ -1,4 +1,4 @@
-# Created 2019-03-07 Thu 20:00
+# Created 2019-04-07 Sun 19:15
 #+TITLE: Literate Programming with Org Mode
 #+AUTHOR: stardiviner
 
@@ -170,7 +170,7 @@ echo "\-----------------------------------------------------------/"
 #+begin_src shell
 #!/usr/bin/env sh
 
-# [[file:~/org/temp/index.org::*Noweb%20test][hello-world]]
+# [[file:~/org/temp/index.org::*Noweb test][hello-world]]
 
 echo "/-----------------------------------------------------------\\"
 echo "|                       hello world                         |"

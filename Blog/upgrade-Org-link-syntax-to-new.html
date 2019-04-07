@@ -4,9 +4,9 @@
 <!-- 2019-04-07 Sun 19:15 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How to Read Code in Emacs</title>
+<title>upgrade Org link syntax to new</title>
 <meta name="generator" content="Org mode">
-<meta name="author" content="stardiviner">
+<meta name="author" content="stardiviner &lt;numbchild@gmail.com&gt;">
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -328,170 +328,178 @@ for the JavaScript code in this tag.
 </div>
 <div id="content">
 <header>
-<h1 class="title">How to Read Code in Emacs</h1>
+<h1 class="title">upgrade Org link syntax to new</h1>
 </header><nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4687779">1. View</a>
+<li><a href="#orgc472f6f">1. which Org version using new link syntax?</a></li>
+<li><a href="#orgab5b356">2. Conversations in Org Mode mailing list</a></li>
+<li><a href="#orgf5fb850">3. How to upgrade Org links to new syntax</a>
 <ul>
-<li><a href="#orgc0c4f02">1.1. Highlight Code</a></li>
+<li><a href="#orga60875c">3.1. Using a search tool with wgrep mode</a></li>
+<li><a href="#org1bd940a">3.2. use org-lint to checking Org file</a></li>
 </ul>
 </li>
-<li><a href="#orgeae2540">2. Navigation</a>
-<ul>
-<li><a href="#orge7a0df5">2.1. Jump to definition of any code</a></li>
-<li><a href="#orga960d79">2.2. Jump to definition of thing-at-point</a></li>
-</ul>
-</li>
-<li><a href="#orgc201262">3. Figure out of Code by running it</a></li>
-<li><a href="#org50bba7c">4. <span class="todo TODO">TODO</span> Will add more tricks here in future</a></li>
+<li><a href="#org22ce1d6">4. At the end</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org4687779" class="outline-2">
-<h2 id="org4687779"><span class="section-number-2">1</span> View</h2>
+<div id="outline-container-orgc472f6f" class="outline-2">
+<h2 id="orgc472f6f"><span class="section-number-2">1</span> which Org version using new link syntax?</h2>
 <div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-orgc0c4f02" class="outline-3">
-<h3 id="orgc0c4f02"><span class="section-number-3">1.1</span> Highlight Code</h3>
-<div class="outline-text-3" id="text-1-1">
-<pre class="example">
-Attachments: highlight%20code.png
-ID: 98ca483b-70bd-4a8b-b1b9-d604672fb8f3
-</pre>
-
-
-<figure>
-<img src="data/98/ca483b-70bd-4a8b-b1b9-d604672fb8f3/highlight code.png" alt="highlight code.png" width="600px">
-
-</figure>
-
 <p>
-You can use highlighting tools to mark code with different colors like taking notes to
-distinguish code.
+Since commit "<code>a486d9cbd</code>" in Git repo, Org start this change. You might want to
+check out <code>ORG-NEWS</code> file about this.
 </p>
-
-<ul class="org-ul">
-<li>I used Emacs package <a href="https://github.com/wolray/symbol-overlay/">symbol-overlay</a> or other similar highlighting packages.</li>
-</ul>
-</div>
 </div>
 </div>
 
 
-<div id="outline-container-orgeae2540" class="outline-2">
-<h2 id="orgeae2540"><span class="section-number-2">2</span> Navigation</h2>
+<div id="outline-container-orgab5b356" class="outline-2">
+<h2 id="orgab5b356"><span class="section-number-2">2</span> Conversations in Org Mode mailing list</h2>
 <div class="outline-text-2" id="text-2">
-</div>
-<div id="outline-container-orge7a0df5" class="outline-3">
-<h3 id="orge7a0df5"><span class="section-number-3">2.1</span> Jump to definition of any code</h3>
-<div class="outline-text-3" id="text-2-1">
 <p>
-There are some options to select:
+If you don't want to know the background or already know this background, you
+can just skip bellowing links.
+</p>
+
+<p>
+Here is the original discussion in Org Mode mailing list for reference:
 </p>
 
 <ul class="org-ul">
-<li>Use text searching tools directly, Emacs <code>isearch</code>, <code>grep</code>, <code>ag</code>, <code>pt</code>, <code>rg</code> etc.</li>
-<li>If you want advanced text searching, can use "<code>regexp</code> search", Emacs has built-in
-support, and has some packages to help you, even can use PCRE (Perl regexp) in Emacs
-with package "<code>pcre2el</code>".</li>
-<li>In current buffer, you can use <code>Imenu</code>, etc to jump.</li>
-<li>Or even open an class/functions definitions sidebar to have an overview of your code.</li>
+<li><a href="https://lists.gnu.org/archive/html/emacs-orgmode/2019-02/msg00320.html">[RFC] Fixing link encoding once and for all</a></li>
+<li><a href="https://lists.gnu.org/archive/html/emacs-orgmode/2019-03/msg00114.html">[ANN] Changes to link syntax</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga960d79" class="outline-3">
-<h3 id="orga960d79"><span class="section-number-3">2.2</span> Jump to definition of thing-at-point</h3>
-<div class="outline-text-3" id="text-2-2">
-<p>
-When code definition is not in the same window page area, you want to jump to definition.
-You can use <code>xref.el</code> (which is Emacs built-in support now). If you want to keep current
-code viewing, you can create a function to accept universal prefix argument
-<kbd>C-u</kbd> for <code>[M-.]</code> to open code definition in other window. If you don't
-want to mess your windows up, you also can try Emacs new feature (from 26?) "child-frame".
-There is an existing package called "<a href="https://github.com/tumashu/posframe">posframe</a>" can be helpful.
-</p>
-</div>
-</div>
-</div>
 
-
-<div id="outline-container-orgc201262" class="outline-2">
-<h2 id="orgc201262"><span class="section-number-2">3</span> Figure out of Code by running it</h2>
+<div id="outline-container-orgf5fb850" class="outline-2">
+<h2 id="orgf5fb850"><span class="section-number-2">3</span> How to upgrade Org links to new syntax</h2>
 <div class="outline-text-2" id="text-3">
-<pre class="example">
-Attachments: Edebug%20result%20at%20point.png
-ID: 6c961996-eff9-41fa-a420-9272520996af
-</pre>
-
 <p>
-Sometimes I can't understand the code by reading, then I try to run code with debugger/tracer.
+If you need this, you must have lot of Org files need to be updated, you will
+not want to do it manually one by one. So here is my way.
+</p>
+</div>
+
+<div id="outline-container-orga60875c" class="outline-3">
+<h3 id="orga60875c"><span class="section-number-3">3.1</span> Using a search tool with wgrep mode</h3>
+<div class="outline-text-3" id="text-3-1">
+<ol class="org-ol">
+<li><p>
+I use <code>rg.el</code> (you can use any other searching command-line tools like <code>ag</code> etc
+if you want, but need be supported by <code>wgrep</code>.) to search recursively over my
+<code>org-directory</code> which is <code>~/Org/</code> (I store all Org files in one place for easy
+backup.). So in Emacs, press command <code>[M-x rg]</code> to start search. You need to
+search all of those urlfied characters "<code>%20, %25, %5B and %5D</code>" one by one.
 </p>
 
 <p>
-For example, Elisp code, Emacs has built-in tool <code>Edebug</code>.
+<b>NOTE</b>: If your Org files are written in only English language, then that's all
+characters to search. If you have Chinese text, then you also need to search
+pattern "<code>file:.*%</code>". This pattern will find out all <code>file:</code> links contains
+Chinese text.
+</p></li>
+
+<li><code>rg</code> is really very fast, I have about 10000 Org files, just spent about more
+than 1 minute.</li>
+
+<li>In the rg searching result buffer, press <code>[C-c C-x C-p]</code> to enable <code>wgrep-mode</code>.</li>
+
+<li><p>
+Add Elisp command for update Org link.
 </p>
 
 <p>
-Because Edebug show stop point result in echo-area (minibuffer). It is not convinient for
-me. I want it displayed at point.
-</p>
-
-
-<figure>
-<img src="data/6c/961996-eff9-41fa-a420-9272520996af/Edebug result at point.png" alt="Edebug result at point.png">
-
-</figure>
-
-<p>
-Here is my trick after I dive into Edebug source code:
+You need to evaluate following elisp code.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #707183;">(</span><span style="color: #0000FF;">defun</span> <span style="color: #006699;">my:edebug-previous-result</span> <span style="color: #7388D6;">()</span>
-    <span style="color: #036A07;">"Print the previous result."</span>
-    <span style="color: #7388D6;">(</span><span style="color: #0000FF;">interactive</span><span style="color: #7388D6;">)</span>
-    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">(pos-tip-show edebug-previous-result 'popup-face) ; slow</span>
-    <span style="color: #7388D6;">(</span>popup-tip edebug-previous-result <span style="color: #006FE0;">:truncate</span> t <span style="color: #006FE0;">:height</span> 20 <span style="color: #006FE0;">:width</span> 45 <span style="color: #006FE0;">:nostrip</span> t <span style="color: #006FE0;">:margin</span> 1 <span style="color: #006FE0;">:nowait</span> nil<span style="color: #7388D6;">)</span>
-    <span style="color: #707183;">)</span>
-  <span style="color: #707183;">(</span>advice-add 'edebug-previous-result <span style="color: #006FE0;">:override</span> #'my:edebug-previous-result<span style="color: #707183;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #707183;">(</span><span style="color: #0000FF;">defun</span> <span style="color: #006699;">org-update-link-syntax</span> <span style="color: #7388D6;">(</span><span style="color: #6434A3;">&amp;optional</span> no-query<span style="color: #7388D6;">)</span>
+  <span style="color: #036A07;">"Update syntax for links in current buffer."</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">interactive</span><span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">org-with-point-at</span> 1
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span>case-fold-search t<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">(re-search-forward "\\[\\[[</span><span style="color: #8D8D84; font-style: italic;">^</span><span style="color: #8D8D84; font-style: italic;">]]*?%\\(?:2[05]\\|5[BD]\\)" nil t) ; safer matching</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">while</span> <span style="color: #907373;">(</span>re-search-forward <span style="color: #008000;">"\\[\\[[</span><span style="color: #008000;">^</span><span style="color: #008000;">]]*?%"</span> nil t<span style="color: #907373;">)</span> <span style="color: #8D8D84;">; </span><span style="color: #8D8D84; font-style: italic;">wider matching</span>
+        <span style="color: #907373;">(</span><span style="color: #0000FF;">let</span> <span style="color: #6276BA;">(</span><span style="color: #858580;">(</span>object <span style="color: #80A880;">(</span><span style="color: #0000FF;">save-match-data</span> <span style="color: #887070;">(</span>org-element-context<span style="color: #887070;">)</span><span style="color: #80A880;">)</span><span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+          <span style="color: #6276BA;">(</span><span style="color: #0000FF;">when</span> <span style="color: #858580;">(</span><span style="color: #0000FF;">and</span> <span style="color: #80A880;">(</span>eq 'link <span style="color: #887070;">(</span>org-element-type object<span style="color: #887070;">)</span><span style="color: #80A880;">)</span>
+                     <span style="color: #80A880;">(</span>= <span style="color: #887070;">(</span>match-beginning 0<span style="color: #887070;">)</span>
+                        <span style="color: #887070;">(</span>org-element-property <span style="color: #006FE0;">:begin</span> object<span style="color: #887070;">)</span><span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+            <span style="color: #858580;">(</span>goto-char <span style="color: #80A880;">(</span>org-element-property <span style="color: #006FE0;">:end</span> object<span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+            <span style="color: #858580;">(</span><span style="color: #0000FF;">let*</span> <span style="color: #80A880;">(</span><span style="color: #887070;">(</span>uri-start <span style="color: #707183;">(</span>+ 2 <span style="color: #7388D6;">(</span>match-beginning 0<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span><span style="color: #887070;">)</span>
+                   <span style="color: #887070;">(</span>uri-end <span style="color: #707183;">(</span><span style="color: #0000FF;">save-excursion</span>
+                              <span style="color: #7388D6;">(</span>goto-char uri-start<span style="color: #7388D6;">)</span>
+                              <span style="color: #7388D6;">(</span>re-search-forward <span style="color: #008000;">"\\][][]"</span> nil t<span style="color: #7388D6;">)</span>
+                              <span style="color: #7388D6;">(</span>match-beginning 0<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span><span style="color: #887070;">)</span>
+                   <span style="color: #887070;">(</span>uri <span style="color: #707183;">(</span>buffer-substring-no-properties uri-start uri-end<span style="color: #707183;">)</span><span style="color: #887070;">)</span><span style="color: #80A880;">)</span>
+              <span style="color: #80A880;">(</span><span style="color: #0000FF;">when</span>
+                  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">t ; if you don't want to confirm every one link, just use this t for automatically modify link.</span>
+                <span style="color: #887070;">(</span><span style="color: #0000FF;">or</span> no-query
+                    <span style="color: #707183;">(</span>y-or-n-p
+                     <span style="color: #7388D6;">(</span>format <span style="color: #008000;">"Possibly obsolete URI syntax: %S.  Fix? "</span>
+                             uri<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span><span style="color: #887070;">)</span>
+                <span style="color: #887070;">(</span><span style="color: #0000FF;">setf</span> <span style="color: #707183;">(</span>buffer-substring uri-start uri-end<span style="color: #707183;">)</span>
+                      <span style="color: #707183;">(</span>org-link-escape <span style="color: #7388D6;">(</span>org-link-decode uri<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span><span style="color: #887070;">)</span><span style="color: #80A880;">)</span><span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
 </pre>
 </div>
 
 <p>
-<b>Tip</b>: Sometimes edebug will auto scroll down, when stop point moves to bottom of window,
- the result popup is truncated, you can use <kbd>C-l</kbd> (<code>recenter-top-bottom</code>)
- to recenter window. Then redisplay result popup with <code>[r]</code>.
+<b>NOTE</b>: If you don't want to confirm every one link, just use the <code>t</code> in <code>when</code> for
+automatically modify link.
 </p>
 
 <p>
-About other programming languages, like C, C++, there are tools for static diagnostic as
-<a href="https://github.com/MaskRay/ccls/wiki/Emacs">@MaskRay wiki mentioned</a>, and dynamic diagnostic like <a href="http://cgdb.github.io/">cgdb</a> (<a href="https://emacs-china.org/t/topic/5855/27">@MaskRay mentioned</a>).
-</p>
+<b>Thanks Nicolas Goaziou for this Elisp code</b>.
+</p></li>
 
+<li>save all modifications in wgrep with <code>[C-x C-s]</code>.</li>
+
+<li>repeat this step for all searching characters.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org1bd940a" class="outline-3">
+<h3 id="org1bd940a"><span class="section-number-3">3.2</span> use org-lint to checking Org file</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
-More programming languages has more relative tools. I will not list them one by one at
-here. Just give out some examples that wish can inspire you. That's all.
+In latest Org version, there is already support use command <code>org-lint</code> to checking
+Org buffer.
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org50bba7c" class="outline-2">
-<h2 id="org50bba7c"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Will add more tricks here in future</h2>
+
+<div id="outline-container-org22ce1d6" class="outline-2">
+<h2 id="org22ce1d6"><span class="section-number-2">4</span> At the end</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-Record to My Org node "Read Code" too.
+There are might more places have not noticed by me. If you found someplace need
+to be updated, please send email to Org Mode mailing list, or email me is ok.
+</p>
+
+<p>
+Because I mainly use Chinese text in <code>file:</code> link, so that's where I searched.
+Might there are more link types need to searched like <code>pdfview:</code> which from
+package <code>org-pdfview</code>.
+</p>
+
+<p>
+I will update here if there are new updates.
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <footer>
-  Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
-  Last update date: 2019-03-27 Wed 00:14.<br>
+  Copyright 2011, Author: stardiviner &lt;numbchild@gmail.com&gt; (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
+  Last update date: 2019-04-07 Sun 19:14.<br>
   Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.0.50 (<a href="https://orgmode.org">Org</a> mode 9.2.1). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
   <!-- RSS -->
