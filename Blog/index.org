@@ -1,10 +1,12 @@
-# Created 2019-04-07 Sun 19:15
+# Created 2019-04-07 Sun 19:40
 #+TITLE: An amateurish coder's blog
 #+AUTHOR: stardiviner
 
 * upgrade Org link syntax to new
 :PROPERTIES:
 :DATE:     [2019-04-07 Sun 18:46]
+:ID:       4e50ff41-fa57-437d-b816-043ad7bfccbe
+:PUBDATE:  <2019-04-07 Sun 19:15>
 :END:
 
 [[file:upgrade-Org-link-syntax-to-new.org][upgrade Org link syntax to new]]
