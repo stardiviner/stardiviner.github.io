@@ -1,4 +1,4 @@
-# Created 2019-04-16 Tue 19:23
+# Created 2019-04-25 Thu 09:57
 #+OPTIONS: num:t toc:1 H:4
 #+TITLE: Org-mode exporter template for testing
 #+AUTHOR: stardiviner
@@ -478,3 +478,9 @@ foo
 :END:
 
 In line [[(sc)]] we remember the current position. [[(jump)][Line (jump)]] jumps to point-min.
+
+* Footnotes
+:PROPERTIES:
+:ID:       f932913d-ca3e-4895-b9fc-c19b7a79d99d
+:PUBDATE:  <2018-04-03 Tue 21:59>
+:END:

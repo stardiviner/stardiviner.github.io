@@ -52,21 +52,21 @@ too.
 </span>
 <span class="org-meta-line">#+NAME: get-directives</span>
 <span class="org-block-begin-line">#+begin_src python :eval no
-</span><span class="org-block"><span class="py-import-from">import</span></span><span class="org-block"> urllib.request
-</span><span class="org-block"><span class="py-import-from">import</span></span><span class="org-block"> urllib.parse
-</span><span class="org-block"><span class="py-import-from">import</span></span><span class="org-block"> bs4
+</span><span class="org-block"><span class="keyword">import</span></span><span class="org-block"> urllib.request
+</span><span class="org-block"><span class="keyword">import</span></span><span class="org-block"> urllib.parse
+</span><span class="org-block"><span class="keyword">import</span></span><span class="org-block"> bs4
 
-</span><span class="org-block"><span class="py-variable-name">req</span></span><span class="org-block"> = urllib.request.Request(</span><span class="org-block"><span class="string">"<a href="https://nginx.org/en/docs/dirindex.html">https://nginx.org/en/docs/dirindex.html</a>"</span></span><span class="org-block">)
-</span><span class="org-block"><span class="py-variable-name">respond</span></span><span class="org-block"> = urllib.request.urlopen(req)
-</span><span class="org-block"><span class="py-variable-name">html_page</span></span><span class="org-block"> = respond.read().decode(</span><span class="org-block"><span class="string">"utf-8"</span></span><span class="org-block">)
-</span><span class="org-block"><span class="py-variable-name">parsed_html</span></span><span class="org-block"> = bs4.BeautifulSoup(html_page, </span><span class="org-block"><span class="string">"html"</span></span><span class="org-block">)
-</span><span class="org-block"><span class="py-variable-name">p</span></span><span class="org-block"> = parsed_html.find(</span><span class="org-block"><span class="string">'div'</span></span><span class="org-block">, </span><span class="org-block"><span class="py-variable-name">attrs</span></span><span class="org-block">={</span><span class="org-block"><span class="string">'id'</span></span><span class="org-block">: </span><span class="org-block"><span class="string">'content'</span></span><span class="org-block">}).find(</span><span class="org-block"><span class="string">'p'</span></span><span class="org-block">)
+</span><span class="org-block"><span class="variable-name">req</span></span><span class="org-block"> = urllib.request.Request(</span><span class="org-block"><span class="string">"<a href="https://nginx.org/en/docs/dirindex.html">https://nginx.org/en/docs/dirindex.html</a>"</span></span><span class="org-block">)
+</span><span class="org-block"><span class="variable-name">respond</span></span><span class="org-block"> = urllib.request.urlopen(req)
+</span><span class="org-block"><span class="variable-name">html_page</span></span><span class="org-block"> = respond.read().decode(</span><span class="org-block"><span class="string">"utf-8"</span></span><span class="org-block">)
+</span><span class="org-block"><span class="variable-name">parsed_html</span></span><span class="org-block"> = bs4.BeautifulSoup(html_page, </span><span class="org-block"><span class="string">"html"</span></span><span class="org-block">)
+</span><span class="org-block"><span class="variable-name">p</span></span><span class="org-block"> = parsed_html.find(</span><span class="org-block"><span class="string">'div'</span></span><span class="org-block">, attrs={</span><span class="org-block"><span class="string">'id'</span></span><span class="org-block">: </span><span class="org-block"><span class="string">'content'</span></span><span class="org-block">}).find(</span><span class="org-block"><span class="string">'p'</span></span><span class="org-block">)
 </span><span class="org-block"><span class="comment-delimiter"># </span></span><span class="org-block"><span class="comment">print(p)
 </span></span><span class="org-block">
-</span><span class="org-block"><span class="py-variable-name">a</span></span><span class="org-block"> = p.find_all(</span><span class="org-block"><span class="string">'a'</span></span><span class="org-block">)
+</span><span class="org-block"><span class="variable-name">a</span></span><span class="org-block"> = p.find_all(</span><span class="org-block"><span class="string">'a'</span></span><span class="org-block">)
 </span><span class="org-block"><span class="comment-delimiter"># </span></span><span class="org-block"><span class="comment">print(a)
 </span></span><span class="org-block">
-</span><span class="org-block"><span class="py-variable-name">directives</span></span><span class="org-block"> = []
+</span><span class="org-block"><span class="variable-name">directives</span></span><span class="org-block"> = []
 
 </span><span class="org-block"><span class="keyword">for</span></span><span class="org-block"> x </span><span class="org-block"><span class="keyword">in</span></span><span class="org-block"> a:
     directives.append(x.text)
