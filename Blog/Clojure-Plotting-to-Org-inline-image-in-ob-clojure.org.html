@@ -25,7 +25,7 @@ So, there is no reliable way to do this in pure Java. Setting the <span class="o
 <span class="italic">property</span> via <span class="org-code">System.setProperty()</span> or <span class="org-code">java -Duser.dir=...</span> does seem to affect
 subsequent creations of Files, but not e.g. <span class="org-code">FileOutputStreams</span>.
 
-<span class="custom">*</span><span class="org-level-2">* I create Org-mode library "</span><span class="org-level-2"><span class="org-verbatim">ob-clojure-literate</span></span><span class="org-level-2">" and improve Org Babel "</span><span class="org-level-2"><span class="org-verbatim">ob-core.el</span></span><span class="org-level-2">" for plotting support
+<span class="custom">*</span><span class="org-level-2">* I create Org-mode library "</span><span class="org-verbatim"><span class="org-level-2">ob-clojure-literate</span></span><span class="org-level-2">" and improve Org Babel "</span><span class="org-verbatim"><span class="org-level-2">ob-core.el</span></span><span class="org-level-2">" for plotting support
 </span>
 Because changing Clojure/JVM working directory is not available, so I find
 method on Emacs side, Org-mode other Babel lanaguages like R, Python have good
@@ -35,7 +35,7 @@ function to "<span class="org-verbatim">ob-clojure</span>". But I found some lim
 <span class="org-link"><a href="https://code.orgmode.org/bzg/org-mode/src/master/contrib/lisp/ob-clojure-literate.el">Org-mode
 contrib lib</a></span>).
 
-<span class="custom">*</span><span class="org-level-2">* use more better solution by passing target path into Clojure with header argument </span><span class="org-level-2"><span class="org-code">:var</span></span><span class="org-level-2">
+<span class="custom">*</span><span class="org-level-2">* use more better solution by passing target path into Clojure with header argument </span><span class="org-code"><span class="org-level-2">:var</span></span><span class="org-level-2">
 </span>
 You can fake change Clojure REPL working directory by passing header argument
 variable into Clojure code. Like this:
