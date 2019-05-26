@@ -11,6 +11,8 @@ function scrollFunction() {
 
 // When the user clicks on the button, scroll to the top of the document
 function myScrollTop() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  // document.body.scrollTop = 0; // For Safari
+  // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  // or use jQuery
+  $('html, body').animate({ scrollTop: 0 }, 'fast');
 }
