@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-05-22 Wed 08:49 -->
+<!-- 2019-05-26 Sun 11:38 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Make company-mode support for nginx-mode</title>
@@ -336,21 +336,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1c1ecf1">1. At the beginning</a></li>
-<li><a href="#orga09197f">2. Fetch all Nginx directives</a>
+<li><a href="#orgfca45f7">1. At the beginning</a></li>
+<li><a href="#org80ef084">2. Fetch all Nginx directives</a>
 <ul>
-<li><a href="#orgd1ef93c">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
-<li><a href="#orgdb2d752">2.2. another Python implementation</a></li>
+<li><a href="#org343306b">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
+<li><a href="#org921dc01">2.2. another Python implementation</a></li>
 </ul>
 </li>
-<li><a href="#orgf83d530">3. company-keywords-alist</a></li>
-<li><a href="#org831d2ad">4. created package company-nginx</a></li>
+<li><a href="#orgad5ebfb">3. company-keywords-alist</a></li>
+<li><a href="#org789927b">4. created package company-nginx</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org1c1ecf1" class="outline-2">
-<h2 id="org1c1ecf1"><span class="section-number-2">1</span> At the beginning</h2>
+<div id="outline-container-orgfca45f7" class="outline-2">
+<h2 id="orgfca45f7"><span class="section-number-2">1</span> At the beginning</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I'm learning a little about Nginx recently, I hope can setup web server by myself
@@ -370,12 +370,12 @@ too.
 </div>
 
 
-<div id="outline-container-orga09197f" class="outline-2">
-<h2 id="orga09197f"><span class="section-number-2">2</span> Fetch all Nginx directives</h2>
+<div id="outline-container-org80ef084" class="outline-2">
+<h2 id="org80ef084"><span class="section-number-2">2</span> Fetch all Nginx directives</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgd1ef93c" class="outline-3">
-<h3 id="orgd1ef93c"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
+<div id="outline-container-org343306b" class="outline-3">
+<h3 id="org343306b"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">require</span> '<span style="color: #98C379;">elquery</span><span style="color: #56B6C2;">)</span>
@@ -404,11 +404,11 @@ too.
 </div>
 </div>
 
-<div id="outline-container-orgdb2d752" class="outline-3">
-<h3 id="orgdb2d752"><span class="section-number-3">2.2</span> another Python implementation</h3>
+<div id="outline-container-org921dc01" class="outline-3">
+<h3 id="org921dc01"><span class="section-number-3">2.2</span> another Python implementation</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
-<pre class="src src-python" id="org977864b"><span style="color: #E06C75;">import</span> urllib.request
+<pre class="src src-python" id="orgd83ca0d"><span style="color: #E06C75;">import</span> urllib.request
 <span style="color: #E06C75;">import</span> urllib.parse
 <span style="color: #E06C75;">import</span> bs4
 
@@ -499,8 +499,8 @@ Convert result to Elisp list data structure:
 </div>
 
 
-<div id="outline-container-orgf83d530" class="outline-2">
-<h2 id="orgf83d530"><span class="section-number-2">3</span> company-keywords-alist</h2>
+<div id="outline-container-orgad5ebfb" class="outline-2">
+<h2 id="orgad5ebfb"><span class="section-number-2">3</span> company-keywords-alist</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">company-nginx-keywords</span> <span style="color: #D19A66;">()</span>
@@ -687,8 +687,8 @@ Convert result to Elisp list data structure:
 </div>
 </div>
 
-<div id="outline-container-org831d2ad" class="outline-2">
-<h2 id="org831d2ad"><span class="section-number-2">4</span> created package company-nginx</h2>
+<div id="outline-container-org789927b" class="outline-2">
+<h2 id="org789927b"><span class="section-number-2">4</span> created package company-nginx</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 In order to share to others, I created a simple package:
