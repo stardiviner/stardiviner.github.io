@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-05-26 Sun 11:37 -->
+<!-- 2019-05-26 Sun 11:53 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>multilingual support with ob-translate and google-translate</title>
@@ -191,7 +191,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
 <script type="text/javascript" src="/assets/scripts/org-info-src.js">
 /**
  *
@@ -326,7 +326,7 @@ for the JavaScript code in this tag.
   </ul>
 </div>
 <div class="epilogue">
-  <p>道，非道德，非人性，天道也。天地运行不怠，人心由始至终。非人即魔之倔驴，自谓魔驴。</p>
+  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
 </div>
 </div>
 <div id="content">
@@ -336,38 +336,38 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc1b94f5">1. Why multilingual support?</a></li>
-<li><a href="#org316d305">2. How it looks like</a></li>
-<li><a href="#orgb9c1d47">3. Multilingual support setup</a>
+<li><a href="#orgf3b4ef1">1. Why multilingual support?</a></li>
+<li><a href="#orga16599d">2. How it looks like</a></li>
+<li><a href="#org895459c">3. Multilingual support setup</a>
 <ul>
-<li><a href="#org0ffa276">3.1. configure ob-translate</a>
+<li><a href="#org8271a9f">3.1. configure ob-translate</a>
 <ul>
-<li><a href="#org59507b1">3.1.1. require org-mode export src blocks export with results</a></li>
-<li><a href="#orga6df569">3.1.2. create a snippet for easy inserting template</a></li>
+<li><a href="#orga21c4a4">3.1.1. require org-mode export src blocks export with results</a></li>
+<li><a href="#orgba06f5f">3.1.2. create a snippet for easy inserting template</a></li>
 </ul>
 </li>
-<li><a href="#orgdd070f5">3.2. configure google-translate if you use it interactively</a></li>
-<li><a href="#orgd07119c">3.3. about Google Translate service not accessible issue</a></li>
+<li><a href="#orge9f4d46">3.2. configure google-translate if you use it interactively</a></li>
+<li><a href="#org7808c00">3.3. about Google Translate service not accessible issue</a></li>
 </ul>
 </li>
-<li><a href="#orge4e0c4b">4. Some issues</a>
+<li><a href="#orgb7f3a18">4. Some issues</a>
 <ul>
-<li><a href="#orgd2424b7">4.1. the Babel result output type is table</a></li>
-<li><a href="#org45309e4">4.2. ob-translate can't be used anywhere in Org-mode buffer</a></li>
+<li><a href="#org20570eb">4.1. the Babel result output type is table</a></li>
+<li><a href="#orgaf03735">4.2. ob-translate can't be used anywhere in Org-mode buffer</a></li>
 </ul>
 </li>
-<li><a href="#org1af5e03">5. Any updates will updated in this post</a></li>
-<li><a href="#org777507f">6. use external tools to translate with ob-shell</a>
+<li><a href="#org36aa19c">5. Any updates will updated in this post</a></li>
+<li><a href="#orgda482a9">6. use external tools to translate with ob-shell</a>
 <ul>
-<li><a href="#org7ecafa3">6.1. fanyi</a></li>
+<li><a href="#org44c3b8e">6.1. fanyi</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgc1b94f5" class="outline-2">
-<h2 id="orgc1b94f5"><span class="section-number-2">1</span> Why multilingual support?</h2>
+<div id="outline-container-orgf3b4ef1" class="outline-2">
+<h2 id="orgf3b4ef1"><span class="section-number-2">1</span> Why multilingual support?</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-translate">On the internet, English is the main language. But currently translation is good
@@ -410,8 +410,8 @@ much time. I want t a simpler automatic way to do this.
 </div>
 
 
-<div id="outline-container-org316d305" class="outline-2">
-<h2 id="org316d305"><span class="section-number-2">2</span> How it looks like</h2>
+<div id="outline-container-orga16599d" class="outline-2">
+<h2 id="orga16599d"><span class="section-number-2">2</span> How it looks like</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-org"><span style="color: #828997; background-color: #363C47;">#+begin_src translate :src zh-CN :dest en,zh-TW,ja,ko</span>
@@ -433,8 +433,8 @@ much time. I want t a simpler automatic way to do this.
 </div>
 </div>
 
-<div id="outline-container-orgb9c1d47" class="outline-2">
-<h2 id="orgb9c1d47"><span class="section-number-2">3</span> Multilingual support setup</h2>
+<div id="outline-container-org895459c" class="outline-2">
+<h2 id="org895459c"><span class="section-number-2">3</span> Multilingual support setup</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Multilingual support is simple to integrate. Especially like great tool Emacs
@@ -444,8 +444,8 @@ and Org-mode. I remember a great tool "ob-translate" which use
 </p>
 </div>
 
-<div id="outline-container-org0ffa276" class="outline-3">
-<h3 id="org0ffa276"><span class="section-number-3">3.1</span> configure ob-translate</h3>
+<div id="outline-container-org8271a9f" class="outline-3">
+<h3 id="org8271a9f"><span class="section-number-3">3.1</span> configure ob-translate</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 My sample config here:
@@ -467,8 +467,8 @@ I added ob-translate src block into Org-mode new structure template alist.
 </p>
 </div>
 
-<div id="outline-container-org59507b1" class="outline-4">
-<h4 id="org59507b1"><span class="section-number-4">3.1.1</span> require org-mode export src blocks export with results</h4>
+<div id="outline-container-orga21c4a4" class="outline-4">
+<h4 id="orga21c4a4"><span class="section-number-4">3.1.1</span> require org-mode export src blocks export with results</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span>add-to-list 'org-babel-default-header-args '<span style="color: #D19A66;">(</span><span style="color: #828997;">:eval</span> . <span style="color: #98C379;">"never-export"</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
@@ -483,8 +483,8 @@ I added ob-translate src block into Org-mode new structure template alist.
 </div>
 </div>
 
-<div id="outline-container-orga6df569" class="outline-4">
-<h4 id="orga6df569"><span class="section-number-4">3.1.2</span> create a snippet for easy inserting template</h4>
+<div id="outline-container-orgba06f5f" class="outline-4">
+<h4 id="orgba06f5f"><span class="section-number-4">3.1.2</span> create a snippet for easy inserting template</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <div class="org-src-container">
 <pre class="src src-snippet"><span style="color: #5C6370; font-style: italic;"># -*- mode: snippet -*-</span>
@@ -502,8 +502,8 @@ I added ob-translate src block into Org-mode new structure template alist.
 </div>
 </div>
 
-<div id="outline-container-orgdd070f5" class="outline-3">
-<h3 id="orgdd070f5"><span class="section-number-3">3.2</span> configure google-translate if you use it interactively</h3>
+<div id="outline-container-orge9f4d46" class="outline-3">
+<h3 id="orge9f4d46"><span class="section-number-3">3.2</span> configure google-translate if you use it interactively</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Here is my config example:
@@ -545,8 +545,8 @@ You should explore google-translate features on its readme page, really convinie
 </div>
 </div>
 
-<div id="outline-container-orgd07119c" class="outline-3">
-<h3 id="orgd07119c"><span class="section-number-3">3.3</span> about Google Translate service not accessible issue</h3>
+<div id="outline-container-org7808c00" class="outline-3">
+<h3 id="org7808c00"><span class="section-number-3">3.3</span> about Google Translate service not accessible issue</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 I'm writing a simple global minor mode to toggle proxy (support HTTP, socks)
@@ -600,12 +600,12 @@ For now, you can simply use my helper function:
 </div>
 
 
-<div id="outline-container-orge4e0c4b" class="outline-2">
-<h2 id="orge4e0c4b"><span class="section-number-2">4</span> Some issues</h2>
+<div id="outline-container-orgb7f3a18" class="outline-2">
+<h2 id="orgb7f3a18"><span class="section-number-2">4</span> Some issues</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgd2424b7" class="outline-3">
-<h3 id="orgd2424b7"><span class="section-number-3">4.1</span> the Babel result output type is table</h3>
+<div id="outline-container-org20570eb" class="outline-3">
+<h3 id="org20570eb"><span class="section-number-3">4.1</span> the Babel result output type is table</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 The Babel result output type is table, it seems is forced, I will try to figure
@@ -614,8 +614,8 @@ a way to fix this problem. Might add an PR to "ob-translate".
 </div>
 </div>
 
-<div id="outline-container-org45309e4" class="outline-3">
-<h3 id="org45309e4"><span class="section-number-3">4.2</span> ob-translate can't be used anywhere in Org-mode buffer</h3>
+<div id="outline-container-orgaf03735" class="outline-3">
+<h3 id="orgaf03735"><span class="section-number-3">4.2</span> ob-translate can't be used anywhere in Org-mode buffer</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Like headlines, ob-translate can't apply on them. But google-translate does not
@@ -628,12 +628,12 @@ current buffer (insert at point).
 </div>
 
 
-<div id="outline-container-org1af5e03" class="outline-2">
-<h2 id="org1af5e03"><span class="section-number-2">5</span> Any updates will updated in this post</h2>
+<div id="outline-container-org36aa19c" class="outline-2">
+<h2 id="org36aa19c"><span class="section-number-2">5</span> Any updates will updated in this post</h2>
 </div>
 
-<div id="outline-container-org777507f" class="outline-2">
-<h2 id="org777507f"><span class="section-number-2">6</span> use external tools to translate with ob-shell</h2>
+<div id="outline-container-orgda482a9" class="outline-2">
+<h2 id="orgda482a9"><span class="section-number-2">6</span> use external tools to translate with ob-shell</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 There are some command-lines tools can translate text. For example, <a href="https://github.com/afc163/fanyi">fanyi</a>. Unfortunally,
@@ -651,8 +651,8 @@ might need other text processing commands like <code>sed</code>, <code>awk</code
 </p>
 </div>
 
-<div id="outline-container-org7ecafa3" class="outline-3">
-<h3 id="org7ecafa3"><span class="section-number-3">6.1</span> fanyi</h3>
+<div id="outline-container-org44c3b8e" class="outline-3">
+<h3 id="org44c3b8e"><span class="section-number-3">6.1</span> fanyi</h3>
 <div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
 <pre class="src src-shell">fanyi <span style="color: #98C379;">"&#20320;&#22909;&#65292;&#19990;&#30028;"</span>
@@ -699,12 +699,8 @@ might need other text processing commands like <code>sed</code>, <code>awk</code
 
 </footer>
 
-<!-- jump to beginning -->
-<div id="jumptobeginning">
-  <a href="#content" alt="Back to Top" style="text-decoration: none;">
-    <i id="backtotop" style="color: lightsalmon;"></i>
-  </a>
-</div>
+<!-- scroll to top -->
+<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
 
 <!-- payment -->
 <div class='payment'>

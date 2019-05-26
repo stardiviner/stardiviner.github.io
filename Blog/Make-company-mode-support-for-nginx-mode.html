@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-05-26 Sun 11:38 -->
+<!-- 2019-05-26 Sun 11:54 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Make company-mode support for nginx-mode</title>
@@ -191,7 +191,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
 <script type="text/javascript" src="/assets/scripts/org-info-src.js">
 /**
  *
@@ -326,7 +326,7 @@ for the JavaScript code in this tag.
   </ul>
 </div>
 <div class="epilogue">
-  <p>道，非道德，非人性，天道也。天地运行不怠，人心由始至终。非人即魔之倔驴，自谓魔驴。</p>
+  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
 </div>
 </div>
 <div id="content">
@@ -336,21 +336,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfca45f7">1. At the beginning</a></li>
-<li><a href="#org80ef084">2. Fetch all Nginx directives</a>
+<li><a href="#org98f2f8f">1. At the beginning</a></li>
+<li><a href="#org99add90">2. Fetch all Nginx directives</a>
 <ul>
-<li><a href="#org343306b">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
-<li><a href="#org921dc01">2.2. another Python implementation</a></li>
+<li><a href="#org9bf27cb">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
+<li><a href="#orgd70e918">2.2. another Python implementation</a></li>
 </ul>
 </li>
-<li><a href="#orgad5ebfb">3. company-keywords-alist</a></li>
-<li><a href="#org789927b">4. created package company-nginx</a></li>
+<li><a href="#orgd726ed3">3. company-keywords-alist</a></li>
+<li><a href="#org88a5055">4. created package company-nginx</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgfca45f7" class="outline-2">
-<h2 id="orgfca45f7"><span class="section-number-2">1</span> At the beginning</h2>
+<div id="outline-container-org98f2f8f" class="outline-2">
+<h2 id="org98f2f8f"><span class="section-number-2">1</span> At the beginning</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I'm learning a little about Nginx recently, I hope can setup web server by myself
@@ -370,12 +370,12 @@ too.
 </div>
 
 
-<div id="outline-container-org80ef084" class="outline-2">
-<h2 id="org80ef084"><span class="section-number-2">2</span> Fetch all Nginx directives</h2>
+<div id="outline-container-org99add90" class="outline-2">
+<h2 id="org99add90"><span class="section-number-2">2</span> Fetch all Nginx directives</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org343306b" class="outline-3">
-<h3 id="org343306b"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
+<div id="outline-container-org9bf27cb" class="outline-3">
+<h3 id="org9bf27cb"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">require</span> '<span style="color: #98C379;">elquery</span><span style="color: #56B6C2;">)</span>
@@ -404,11 +404,11 @@ too.
 </div>
 </div>
 
-<div id="outline-container-org921dc01" class="outline-3">
-<h3 id="org921dc01"><span class="section-number-3">2.2</span> another Python implementation</h3>
+<div id="outline-container-orgd70e918" class="outline-3">
+<h3 id="orgd70e918"><span class="section-number-3">2.2</span> another Python implementation</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
-<pre class="src src-python" id="orgd83ca0d"><span style="color: #E06C75;">import</span> urllib.request
+<pre class="src src-python" id="orged69367"><span style="color: #E06C75;">import</span> urllib.request
 <span style="color: #E06C75;">import</span> urllib.parse
 <span style="color: #E06C75;">import</span> bs4
 
@@ -499,8 +499,8 @@ Convert result to Elisp list data structure:
 </div>
 
 
-<div id="outline-container-orgad5ebfb" class="outline-2">
-<h2 id="orgad5ebfb"><span class="section-number-2">3</span> company-keywords-alist</h2>
+<div id="outline-container-orgd726ed3" class="outline-2">
+<h2 id="orgd726ed3"><span class="section-number-2">3</span> company-keywords-alist</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">company-nginx-keywords</span> <span style="color: #D19A66;">()</span>
@@ -687,8 +687,8 @@ Convert result to Elisp list data structure:
 </div>
 </div>
 
-<div id="outline-container-org789927b" class="outline-2">
-<h2 id="org789927b"><span class="section-number-2">4</span> created package company-nginx</h2>
+<div id="outline-container-org88a5055" class="outline-2">
+<h2 id="org88a5055"><span class="section-number-2">4</span> created package company-nginx</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 In order to share to others, I created a simple package:
@@ -725,12 +725,8 @@ I will push to MELPA.
 
 </footer>
 
-<!-- jump to beginning -->
-<div id="jumptobeginning">
-  <a href="#content" alt="Back to Top" style="text-decoration: none;">
-    <i id="backtotop" style="color: lightsalmon;"></i>
-  </a>
-</div>
+<!-- scroll to top -->
+<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
 
 <!-- payment -->
 <div class='payment'>

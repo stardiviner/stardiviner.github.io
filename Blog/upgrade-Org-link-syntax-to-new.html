@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-05-26 Sun 11:37 -->
+<!-- 2019-05-26 Sun 11:53 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>upgrade Org link syntax to new</title>
@@ -191,7 +191,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
 <script type="text/javascript" src="/assets/scripts/org-info-src.js">
 /**
  *
@@ -326,7 +326,7 @@ for the JavaScript code in this tag.
   </ul>
 </div>
 <div class="epilogue">
-  <p>道，非道德，非人性，天道也。天地运行不怠，人心由始至终。非人即魔之倔驴，自谓魔驴。</p>
+  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
 </div>
 </div>
 <div id="content">
@@ -336,21 +336,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org93bf638">1. which Org version using new link syntax?</a></li>
-<li><a href="#org2faccfe">2. Conversations in Org Mode mailing list</a></li>
-<li><a href="#org658f6f9">3. How to upgrade Org links to new syntax</a>
+<li><a href="#org223c2d1">1. which Org version using new link syntax?</a></li>
+<li><a href="#orgd8a6c50">2. Conversations in Org Mode mailing list</a></li>
+<li><a href="#org0346eb1">3. How to upgrade Org links to new syntax</a>
 <ul>
-<li><a href="#org125c522">3.1. Using a search tool with wgrep mode</a></li>
-<li><a href="#org0c7a64c">3.2. use org-lint to checking Org file</a></li>
+<li><a href="#org1282763">3.1. Using a search tool with wgrep mode</a></li>
+<li><a href="#org2fe975e">3.2. use org-lint to checking Org file</a></li>
 </ul>
 </li>
-<li><a href="#org08c1f98">4. At the end</a></li>
+<li><a href="#orgb767f43">4. At the end</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org93bf638" class="outline-2">
-<h2 id="org93bf638"><span class="section-number-2">1</span> which Org version using new link syntax?</h2>
+<div id="outline-container-org223c2d1" class="outline-2">
+<h2 id="org223c2d1"><span class="section-number-2">1</span> which Org version using new link syntax?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Since commit "<code>a486d9cbd</code>" in Git repo, Org start this change. You might want to
@@ -360,8 +360,8 @@ check out <code>ORG-NEWS</code> file about this.
 </div>
 
 
-<div id="outline-container-org2faccfe" class="outline-2">
-<h2 id="org2faccfe"><span class="section-number-2">2</span> Conversations in Org Mode mailing list</h2>
+<div id="outline-container-orgd8a6c50" class="outline-2">
+<h2 id="orgd8a6c50"><span class="section-number-2">2</span> Conversations in Org Mode mailing list</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 If you don't want to know the background or already know this background, you
@@ -380,8 +380,8 @@ Here is the original discussion in Org Mode mailing list for reference:
 </div>
 
 
-<div id="outline-container-org658f6f9" class="outline-2">
-<h2 id="org658f6f9"><span class="section-number-2">3</span> How to upgrade Org links to new syntax</h2>
+<div id="outline-container-org0346eb1" class="outline-2">
+<h2 id="org0346eb1"><span class="section-number-2">3</span> How to upgrade Org links to new syntax</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 If you need this, you must have lot of Org files need to be updated, you will
@@ -389,8 +389,8 @@ not want to do it manually one by one. So here is my way.
 </p>
 </div>
 
-<div id="outline-container-org125c522" class="outline-3">
-<h3 id="org125c522"><span class="section-number-3">3.1</span> Using a search tool with wgrep mode</h3>
+<div id="outline-container-org1282763" class="outline-3">
+<h3 id="org1282763"><span class="section-number-3">3.1</span> Using a search tool with wgrep mode</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
 <li><p>
@@ -467,8 +467,8 @@ automatically modify link.
 </div>
 </div>
 
-<div id="outline-container-org0c7a64c" class="outline-3">
-<h3 id="org0c7a64c"><span class="section-number-3">3.2</span> use org-lint to checking Org file</h3>
+<div id="outline-container-org2fe975e" class="outline-3">
+<h3 id="org2fe975e"><span class="section-number-3">3.2</span> use org-lint to checking Org file</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 In latest Org version, there is already support use command <code>org-lint</code> to checking
@@ -479,8 +479,8 @@ Org buffer.
 </div>
 
 
-<div id="outline-container-org08c1f98" class="outline-2">
-<h2 id="org08c1f98"><span class="section-number-2">4</span> At the end</h2>
+<div id="outline-container-orgb767f43" class="outline-2">
+<h2 id="orgb767f43"><span class="section-number-2">4</span> At the end</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 There are might more places have not noticed by me. If you found someplace need
@@ -520,12 +520,8 @@ I will update here if there are new updates.
 
 </footer>
 
-<!-- jump to beginning -->
-<div id="jumptobeginning">
-  <a href="#content" alt="Back to Top" style="text-decoration: none;">
-    <i id="backtotop" style="color: lightsalmon;"></i>
-  </a>
-</div>
+<!-- scroll to top -->
+<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
 
 <!-- payment -->
 <div class='payment'>
