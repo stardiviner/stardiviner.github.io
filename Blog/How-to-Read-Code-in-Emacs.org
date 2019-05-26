@@ -1,15 +1,10 @@
-# Created 2019-05-26 Sun 12:37
+# Created 2019-05-26 Sun 18:41
 #+TITLE: How to Read Code in Emacs
 #+AUTHOR: stardiviner
 
 * View
 
 ** Highlight Code
-:PROPERTIES:
-:Attachments: highlight%20code.png
-:ID:       98ca483b-70bd-4a8b-b1b9-d604672fb8f3
-:END:
-
 [[file:data/98/ca483b-70bd-4a8b-b1b9-d604672fb8f3/highlight code.png]]
 
 You can use highlighting tools to mark code with different colors like taking notes to
@@ -42,11 +37,6 @@ There is an existing package called "[[https://github.com/tumashu/posframe][posf
 
 
 * Figure out of Code by running it
-:PROPERTIES:
-:Attachments: Edebug%20result%20at%20point.png
-:ID:       6c961996-eff9-41fa-a420-9272520996af
-:END:
-
 Sometimes I can't understand the code by reading, then I try to run code with debugger/tracer.
 
 For example, Elisp code, Emacs has built-in tool =Edebug=.
