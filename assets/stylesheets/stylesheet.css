@@ -796,7 +796,7 @@ footer, #postamble {
 }
 
 /* jump to beginning */
-div#jumptobeginning {
+div#scrollTop {
   position: sticky;
   left: 100%;
   width: 60px;
@@ -804,10 +804,6 @@ div#jumptobeginning {
   border-radius: 4px;
   background-color: #fffc;
   opacity: 1;
-}
-i#backtotop::before {
-  content: "^";
-  font-size: 2rem;
 }
 
 /* payment */
