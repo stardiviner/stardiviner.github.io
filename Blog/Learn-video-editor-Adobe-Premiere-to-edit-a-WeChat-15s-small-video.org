@@ -1,3 +1,5 @@
+#+TITLE: Learn video editor Adobe Premiere to edit a WeChat 15s small video
+
 * The need for sharing small video on WeChat Moments
   
 As current company need to attract people on WeChat, decide to make a great
