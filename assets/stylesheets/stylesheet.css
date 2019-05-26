@@ -179,20 +179,6 @@ img#avatar {
   margin-bottom: 20px;
 }
 
-/* drawers: properties, logbook, */
-/* example block */
-pre.example {
-  display: block;
-  color: #7b7b7b;
-  border-color: #ccc;
-  font-size: 10px;
-  padding: 5px 5px 5px 5px;
-  margin: 0 0 10px 20px;
-  border-radius: unset;
-  box-shadow: none;
-  text-shadow: unset;
-}
-
 /* MathJax */
 div.MathJax_Display {
   text-align: center;
@@ -534,6 +520,20 @@ pre > code {
   border-radius: 3px;
   /* white neon effect text */
   text-shadow: 0 0 2px rgba(255,255,255,0.7);
+}
+
+/* drawers: properties, logbook, */
+/* example block */
+pre.example {
+  display: block;
+  color: #7b7b7b;
+  border-color: #ccc;
+  font-size: 10px;
+  padding: 1px;
+  margin: 0 0 10px 10px;
+  border-radius: 8px;
+  box-shadow: none;
+  text-shadow: unset;
 }
 
 /* table */
