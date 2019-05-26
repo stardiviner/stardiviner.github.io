@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-05-26 Sun 11:53 -->
+<!-- 2019-05-26 Sun 12:10 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>multilingual support with ob-translate and google-translate</title>
@@ -336,38 +336,38 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf3b4ef1">1. Why multilingual support?</a></li>
-<li><a href="#orga16599d">2. How it looks like</a></li>
-<li><a href="#org895459c">3. Multilingual support setup</a>
+<li><a href="#org7a4fe83">1. Why multilingual support?</a></li>
+<li><a href="#orge76c130">2. How it looks like</a></li>
+<li><a href="#org320817d">3. Multilingual support setup</a>
 <ul>
-<li><a href="#org8271a9f">3.1. configure ob-translate</a>
+<li><a href="#orgb1886b2">3.1. configure ob-translate</a>
 <ul>
-<li><a href="#orga21c4a4">3.1.1. require org-mode export src blocks export with results</a></li>
-<li><a href="#orgba06f5f">3.1.2. create a snippet for easy inserting template</a></li>
+<li><a href="#org23f39c0">3.1.1. require org-mode export src blocks export with results</a></li>
+<li><a href="#orgab5fa64">3.1.2. create a snippet for easy inserting template</a></li>
 </ul>
 </li>
-<li><a href="#orge9f4d46">3.2. configure google-translate if you use it interactively</a></li>
-<li><a href="#org7808c00">3.3. about Google Translate service not accessible issue</a></li>
+<li><a href="#org3a5a2e0">3.2. configure google-translate if you use it interactively</a></li>
+<li><a href="#org8dbc7db">3.3. about Google Translate service not accessible issue</a></li>
 </ul>
 </li>
-<li><a href="#orgb7f3a18">4. Some issues</a>
+<li><a href="#orgfef7088">4. Some issues</a>
 <ul>
-<li><a href="#org20570eb">4.1. the Babel result output type is table</a></li>
-<li><a href="#orgaf03735">4.2. ob-translate can't be used anywhere in Org-mode buffer</a></li>
+<li><a href="#org84fe9ae">4.1. the Babel result output type is table</a></li>
+<li><a href="#orgdec5509">4.2. ob-translate can't be used anywhere in Org-mode buffer</a></li>
 </ul>
 </li>
-<li><a href="#org36aa19c">5. Any updates will updated in this post</a></li>
-<li><a href="#orgda482a9">6. use external tools to translate with ob-shell</a>
+<li><a href="#org8aae50a">5. Any updates will updated in this post</a></li>
+<li><a href="#orgf9a90f2">6. use external tools to translate with ob-shell</a>
 <ul>
-<li><a href="#org44c3b8e">6.1. fanyi</a></li>
+<li><a href="#org1fd85b1">6.1. fanyi</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgf3b4ef1" class="outline-2">
-<h2 id="orgf3b4ef1"><span class="section-number-2">1</span> Why multilingual support?</h2>
+<div id="outline-container-org7a4fe83" class="outline-2">
+<h2 id="org7a4fe83"><span class="section-number-2">1</span> Why multilingual support?</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-translate">On the internet, English is the main language. But currently translation is good
@@ -410,8 +410,8 @@ much time. I want t a simpler automatic way to do this.
 </div>
 
 
-<div id="outline-container-orga16599d" class="outline-2">
-<h2 id="orga16599d"><span class="section-number-2">2</span> How it looks like</h2>
+<div id="outline-container-orge76c130" class="outline-2">
+<h2 id="orge76c130"><span class="section-number-2">2</span> How it looks like</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-org"><span style="color: #828997; background-color: #363C47;">#+begin_src translate :src zh-CN :dest en,zh-TW,ja,ko</span>
@@ -433,8 +433,8 @@ much time. I want t a simpler automatic way to do this.
 </div>
 </div>
 
-<div id="outline-container-org895459c" class="outline-2">
-<h2 id="org895459c"><span class="section-number-2">3</span> Multilingual support setup</h2>
+<div id="outline-container-org320817d" class="outline-2">
+<h2 id="org320817d"><span class="section-number-2">3</span> Multilingual support setup</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Multilingual support is simple to integrate. Especially like great tool Emacs
@@ -444,8 +444,8 @@ and Org-mode. I remember a great tool "ob-translate" which use
 </p>
 </div>
 
-<div id="outline-container-org8271a9f" class="outline-3">
-<h3 id="org8271a9f"><span class="section-number-3">3.1</span> configure ob-translate</h3>
+<div id="outline-container-orgb1886b2" class="outline-3">
+<h3 id="orgb1886b2"><span class="section-number-3">3.1</span> configure ob-translate</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 My sample config here:
@@ -467,8 +467,8 @@ I added ob-translate src block into Org-mode new structure template alist.
 </p>
 </div>
 
-<div id="outline-container-orga21c4a4" class="outline-4">
-<h4 id="orga21c4a4"><span class="section-number-4">3.1.1</span> require org-mode export src blocks export with results</h4>
+<div id="outline-container-org23f39c0" class="outline-4">
+<h4 id="org23f39c0"><span class="section-number-4">3.1.1</span> require org-mode export src blocks export with results</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span>add-to-list 'org-babel-default-header-args '<span style="color: #D19A66;">(</span><span style="color: #828997;">:eval</span> . <span style="color: #98C379;">"never-export"</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
@@ -483,8 +483,8 @@ I added ob-translate src block into Org-mode new structure template alist.
 </div>
 </div>
 
-<div id="outline-container-orgba06f5f" class="outline-4">
-<h4 id="orgba06f5f"><span class="section-number-4">3.1.2</span> create a snippet for easy inserting template</h4>
+<div id="outline-container-orgab5fa64" class="outline-4">
+<h4 id="orgab5fa64"><span class="section-number-4">3.1.2</span> create a snippet for easy inserting template</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <div class="org-src-container">
 <pre class="src src-snippet"><span style="color: #5C6370; font-style: italic;"># -*- mode: snippet -*-</span>
@@ -502,8 +502,8 @@ I added ob-translate src block into Org-mode new structure template alist.
 </div>
 </div>
 
-<div id="outline-container-orge9f4d46" class="outline-3">
-<h3 id="orge9f4d46"><span class="section-number-3">3.2</span> configure google-translate if you use it interactively</h3>
+<div id="outline-container-org3a5a2e0" class="outline-3">
+<h3 id="org3a5a2e0"><span class="section-number-3">3.2</span> configure google-translate if you use it interactively</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Here is my config example:
@@ -545,8 +545,8 @@ You should explore google-translate features on its readme page, really convinie
 </div>
 </div>
 
-<div id="outline-container-org7808c00" class="outline-3">
-<h3 id="org7808c00"><span class="section-number-3">3.3</span> about Google Translate service not accessible issue</h3>
+<div id="outline-container-org8dbc7db" class="outline-3">
+<h3 id="org8dbc7db"><span class="section-number-3">3.3</span> about Google Translate service not accessible issue</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 I'm writing a simple global minor mode to toggle proxy (support HTTP, socks)
@@ -600,12 +600,12 @@ For now, you can simply use my helper function:
 </div>
 
 
-<div id="outline-container-orgb7f3a18" class="outline-2">
-<h2 id="orgb7f3a18"><span class="section-number-2">4</span> Some issues</h2>
+<div id="outline-container-orgfef7088" class="outline-2">
+<h2 id="orgfef7088"><span class="section-number-2">4</span> Some issues</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org20570eb" class="outline-3">
-<h3 id="org20570eb"><span class="section-number-3">4.1</span> the Babel result output type is table</h3>
+<div id="outline-container-org84fe9ae" class="outline-3">
+<h3 id="org84fe9ae"><span class="section-number-3">4.1</span> the Babel result output type is table</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 The Babel result output type is table, it seems is forced, I will try to figure
@@ -614,8 +614,8 @@ a way to fix this problem. Might add an PR to "ob-translate".
 </div>
 </div>
 
-<div id="outline-container-orgaf03735" class="outline-3">
-<h3 id="orgaf03735"><span class="section-number-3">4.2</span> ob-translate can't be used anywhere in Org-mode buffer</h3>
+<div id="outline-container-orgdec5509" class="outline-3">
+<h3 id="orgdec5509"><span class="section-number-3">4.2</span> ob-translate can't be used anywhere in Org-mode buffer</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Like headlines, ob-translate can't apply on them. But google-translate does not
@@ -628,12 +628,12 @@ current buffer (insert at point).
 </div>
 
 
-<div id="outline-container-org36aa19c" class="outline-2">
-<h2 id="org36aa19c"><span class="section-number-2">5</span> Any updates will updated in this post</h2>
+<div id="outline-container-org8aae50a" class="outline-2">
+<h2 id="org8aae50a"><span class="section-number-2">5</span> Any updates will updated in this post</h2>
 </div>
 
-<div id="outline-container-orgda482a9" class="outline-2">
-<h2 id="orgda482a9"><span class="section-number-2">6</span> use external tools to translate with ob-shell</h2>
+<div id="outline-container-orgf9a90f2" class="outline-2">
+<h2 id="orgf9a90f2"><span class="section-number-2">6</span> use external tools to translate with ob-shell</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 There are some command-lines tools can translate text. For example, <a href="https://github.com/afc163/fanyi">fanyi</a>. Unfortunally,
@@ -651,8 +651,8 @@ might need other text processing commands like <code>sed</code>, <code>awk</code
 </p>
 </div>
 
-<div id="outline-container-org44c3b8e" class="outline-3">
-<h3 id="org44c3b8e"><span class="section-number-3">6.1</span> fanyi</h3>
+<div id="outline-container-org1fd85b1" class="outline-3">
+<h3 id="org1fd85b1"><span class="section-number-3">6.1</span> fanyi</h3>
 <div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
 <pre class="src src-shell">fanyi <span style="color: #98C379;">"&#20320;&#22909;&#65292;&#19990;&#30028;"</span>
