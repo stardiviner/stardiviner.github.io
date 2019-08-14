@@ -1,6 +1,10 @@
 #+TITLE: How to Read Code in Emacs
 
 * View
+  :PROPERTIES:
+  :ID:       94a69f55-ee1b-4cbe-bbc9-b8de28b99273
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
 
 ** Highlight Code
   :PROPERTIES:
@@ -20,8 +24,15 @@ distinguish code.
 
 
 * Navigation
+  :PROPERTIES:
+  :ID:       7e88b2b1-98a6-4813-b8be-5d2c8a33cdd5
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
 
 ** Jump to definition of any code
+   :PROPERTIES:
+   :ID:       ecfb3da0-5777-4f50-bcbb-63318c9e3ccf
+   :END:
 
 There are some options to select:
 
@@ -33,6 +44,9 @@ There are some options to select:
 - Or even open an class/functions definitions sidebar to have an overview of your code.
 
 ** Jump to definition of thing-at-point
+   :PROPERTIES:
+   :ID:       3879abc2-861c-407e-9cab-bd08ed1fe9cd
+   :END:
 
 When code definition is not in the same window page area, you want to jump to definition.
 You can use =xref.el= (which is Emacs built-in support now). If you want to keep current
@@ -46,6 +60,7 @@ There is an existing package called "[[https://github.com/tumashu/posframe][posf
   :PROPERTIES:
   :Attachments: Edebug%20result%20at%20point.png
   :ID:       6c961996-eff9-41fa-a420-9272520996af
+  :PUBDATE:  <2019-08-14 Wed 19:46>
   :END:
 
 Sometimes I can't understand the code by reading, then I try to run code with debugger/tracer.
@@ -80,6 +95,10 @@ More programming languages has more relative tools. I will not list them one by 
 here. Just give out some examples that wish can inspire you. That's all.
 
 * TODO Will add more tricks here in future
+  :PROPERTIES:
+  :ID:       d2ef0e02-e352-4728-b9f8-1d44f8a6cc9a
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
   :LOGBOOK:
   - State "TODO"       from              [2018-05-17 Thu 08:53]
   :END:

@@ -1,3 +1,7 @@
 * Test org-capture template for org-publish blog post convert space into dash
+  :PROPERTIES:
+  :ID:       34e7d28e-128a-4e61-b279-96809e23016d
+  :PUBDATE:  <2019-08-14 Wed 19:08>
+  :END:
 
 

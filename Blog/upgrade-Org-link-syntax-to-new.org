@@ -2,12 +2,20 @@
 #+AUTHOR: stardiviner <numbchild@gmail.com>
 
 * which Org version using new link syntax?
+  :PROPERTIES:
+  :ID:       73b7751f-038f-4c15-bbbf-5b52f95997fd
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
 
 Since commit "=a486d9cbd=" in Git repo, Org start this change. You might want to
 check out =ORG-NEWS= file about this.
 
 
 * Conversations in Org Mode mailing list
+  :PROPERTIES:
+  :ID:       f7c9a782-786f-401c-a911-b8ebd6e099f1
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
 
 If you don't want to know the background or already know this background, you
 can just skip bellowing links.
@@ -19,11 +27,18 @@ Here is the original discussion in Org Mode mailing list for reference:
 
 
 * How to upgrade Org links to new syntax
+  :PROPERTIES:
+  :ID:       1a855b98-db9d-4702-9afa-76b39829c171
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
   
 If you need this, you must have lot of Org files need to be updated, you will
 not want to do it manually one by one. So here is my way.
 
 ** Using a search tool with wgrep mode
+   :PROPERTIES:
+   :ID:       640d5225-d011-42b8-ae5b-3c3953885cd1
+   :END:
 
 1. I use =rg.el= (you can use any other searching command-line tools like =ag= etc
    if you want, but need be supported by =wgrep=.) to search recursively over my
@@ -84,12 +99,19 @@ not want to do it manually one by one. So here is my way.
 6. repeat this step for all searching characters.
 
 ** use org-lint to checking Org file
+   :PROPERTIES:
+   :ID:       3923f696-9c43-4e37-90e2-3052809cab77
+   :END:
    
 In latest Org version, there is already support use command =org-lint= to checking
 Org buffer.
 
 
 * At the end
+  :PROPERTIES:
+  :ID:       b135cef2-ea39-4834-a37b-422a22db6cb8
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
 
 There are might more places have not noticed by me. If you found someplace need
 to be updated, please send email to Org Mode mailing list, or email me is ok.

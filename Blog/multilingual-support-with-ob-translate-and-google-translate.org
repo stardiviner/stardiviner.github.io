@@ -1,6 +1,10 @@
 #+TITLE: multilingual support with ob-translate and google-translate
 
 * Why multilingual support?
+  :PROPERTIES:
+  :ID:       89eb36af-621b-4cf0-8a26-fb5363523f34
+  :PUBDATE:  <2019-08-14 Wed 19:47>
+  :END:
 
 #+begin_src translate :src auto :dest zh-CN,zh-TW,ja,ko
 On the internet, English is the main language. But currently translation is good
@@ -16,6 +20,10 @@ much time. I want t a simpler automatic way to do this.
 
 
 * How it looks like
+  :PROPERTIES:
+  :ID:       2a4cc1ca-603a-4bde-b514-2a54c4c8b618
+  :PUBDATE:  <2019-08-14 Wed 19:47>
+  :END:
 
 #+begin_src org
 ,#+begin_src translate :src zh-CN :dest en,zh-TW,ja,ko
@@ -33,6 +41,10 @@ much time. I want t a simpler automatic way to do this.
 *NOTE*: Not allow space between langs (~en,zh-TW,ja,ko~). Other wise it does not wok.
 
 * Multilingual support setup
+  :PROPERTIES:
+  :ID:       4bf5688c-1cf9-4f8e-b029-a8cbfd05de01
+  :PUBDATE:  <2019-08-14 Wed 19:47>
+  :END:
 
 Multilingual support is simple to integrate. Especially like great tool Emacs
 and Org-mode. I remember a great tool "ob-translate" which use
@@ -40,6 +52,9 @@ and Org-mode. I remember a great tool "ob-translate" which use
 (especial I publish whole website with Org-mode org-publish).
 
 ** configure ob-translate
+   :PROPERTIES:
+   :ID:       d3438fac-e61d-41f8-89bd-a1149555d11e
+   :END:
 
 My sample config here:
 
@@ -56,6 +71,9 @@ My sample config here:
 I added ob-translate src block into Org-mode new structure template alist.
 
 *** require org-mode export src blocks export with results
+    :PROPERTIES:
+    :ID:       68991e81-f2b4-43ca-a71d-b81e85ae0e07
+    :END:
 
 #+begin_src emacs-lisp
 (add-to-list 'org-babel-default-header-args '(:eval . "never-export"))
@@ -66,6 +84,9 @@ I added ob-translate src block into Org-mode new structure template alist.
 - The second let Org-mode export src blocks with results.
 
 *** create a snippet for easy inserting template
+    :PROPERTIES:
+    :ID:       57f31085-c85b-4dd7-9f75-dabbbb283dc0
+    :END:
 
 #+begin_src snippet
 # -*- mode: snippet -*-
@@ -80,6 +101,9 @@ $0
 #+end_src
 
 ** configure google-translate if you use it interactively
+   :PROPERTIES:
+   :ID:       d8651489-18df-4f7d-88f5-80d9e54fc30a
+   :END:
 
 Here is my config example:
 
@@ -115,6 +139,9 @@ Here is my config example:
 You should explore google-translate features on its readme page, really convinient.
 
 ** about Google Translate service not accessible issue
+   :PROPERTIES:
+   :ID:       9a201c6a-3dec-401b-9789-6dc80da8eea8
+   :END:
 
 I'm writing a simple global minor mode to toggle proxy (support HTTP, socks)
 from inside of Emacs, instead of system global.
@@ -161,13 +188,23 @@ Used by function `my:proxy-toggle'.")
 
 
 * Some issues
+  :PROPERTIES:
+  :ID:       d8acb8d5-15e6-49fd-88a7-7baded863c4d
+  :PUBDATE:  <2019-08-14 Wed 19:47>
+  :END:
 
 ** the Babel result output type is table
+   :PROPERTIES:
+   :ID:       d217c234-d73f-4107-9874-2b7eb5d8cd61
+   :END:
 
 The Babel result output type is table, it seems is forced, I will try to figure
 a way to fix this problem. Might add an PR to "ob-translate".
 
 ** ob-translate can't be used anywhere in Org-mode buffer
+   :PROPERTIES:
+   :ID:       35ee5b8d-9ce5-4594-8b84-0d51e904a92e
+   :END:
 
 Like headlines, ob-translate can't apply on them. But google-translate does not
 support output to current buffer with option
@@ -176,8 +213,16 @@ current buffer (insert at point).
 
 
 * Any updates will updated in this post
+  :PROPERTIES:
+  :ID:       62f990e7-4b7a-4101-bd5d-b3693a54a0ce
+  :PUBDATE:  <2019-08-14 Wed 19:47>
+  :END:
 
 * use external tools to translate with ob-shell
+  :PROPERTIES:
+  :ID:       8524b659-aa14-4eca-981f-0b821a7d25aa
+  :PUBDATE:  <2019-08-14 Wed 19:47>
+  :END:
 
 There are some command-lines tools can translate text. For example, [[https://github.com/afc163/fanyi][fanyi]]. Unfortunally,
 some tools use online service which only support Chinese<->English.
@@ -189,6 +234,9 @@ Another problem is that the result usually formatted by command-line tools separ
 might need other text processing commands like =sed=, =awk= etc to strip some text.
 
 ** fanyi
+   :PROPERTIES:
+   :ID:       c2947e8d-c810-4431-861e-a87db6872f18
+   :END:
 
 #+begin_src shell :results raw
 fanyi "你好，世界"

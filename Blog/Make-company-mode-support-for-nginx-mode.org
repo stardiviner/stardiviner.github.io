@@ -1,6 +1,10 @@
 #+TITLE: Make company-mode support for nginx-mode
 
 * At the beginning
+  :PROPERTIES:
+  :ID:       656815d3-f5ed-4d62-944f-9e21c4ef8185
+  :PUBDATE:  <2019-08-14 Wed 19:08>
+  :END:
 
 I'm learning a little about Nginx recently, I hope can setup web server by myself
 when someday I want to build up a website for startup or something else.
@@ -13,8 +17,15 @@ too.
 
 
 * Fetch all Nginx directives
+  :PROPERTIES:
+  :ID:       63351be9-d9a8-4553-91c8-956bf458cf8a
+  :PUBDATE:  <2019-08-14 Wed 19:08>
+  :END:
 
 ** TODO Elisp implementation
+   :PROPERTIES:
+   :ID:       541fd566-a66c-442a-aaf1-3b0939946fea
+   :END:
     :LOGBOOK:
     - State "TODO"       from              [2018-05-14 Mon 11:08]
     :END:
@@ -40,6 +51,9 @@ too.
 https://github.com/AdamNiederer/elquery/issues/5
 
 ** another Python implementation
+   :PROPERTIES:
+   :ID:       0d37c0b2-6484-40ab-b29b-045437c7da6c
+   :END:
 
 #+NAME: get-directives
 #+begin_src python :eval no
@@ -129,6 +143,10 @@ Convert result to Elisp list data structure:
 
 
 * company-keywords-alist
+  :PROPERTIES:
+  :ID:       49891b01-c0cb-482c-97a1-a95fdd6771a5
+  :PUBDATE:  <2019-08-14 Wed 19:08>
+  :END:
 
 #+begin_src emacs-lisp :eval no
 (defun company-nginx-keywords ()
@@ -313,6 +331,10 @@ Convert result to Elisp list data structure:
 #+end_src
 
 * created package company-nginx
+  :PROPERTIES:
+  :ID:       5857b6a8-8f01-4f98-b42c-a58c3e385017
+  :PUBDATE:  <2019-08-14 Wed 19:08>
+  :END:
 
 In order to share to others, I created a simple package:
 

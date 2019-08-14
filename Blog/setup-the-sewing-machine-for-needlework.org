@@ -2,6 +2,10 @@
 #+AUTHOR: stardiviner
 
 * Handicraft is fun (手工艺是好玩的)
+  :PROPERTIES:
+  :ID:       a3a90016-6882-490d-b90f-1cdae4918e79
+  :PUBDATE:  <2019-08-14 Wed 19:09>
+  :END:
 
 I first learned to cut my own hair by myself abour 3 years ago. Even though it
 is not good enough. But it already works now.
@@ -21,6 +25,7 @@ can't get myself cormfortable. So I have to do it by myself.
 :PROPERTIES:
 :Attachments: 芳华%20700.jpg
 :ID:       ce6423b8-3283-4cb9-843a-022a5e2a7124
+:PUBDATE:  <2019-08-14 Wed 19:09>
 :END:
 
 Few years ago, I use taobao.com, it is hard to find suitble clothes for me, most
@@ -50,6 +55,10 @@ think.
 操作完成。比想的要容易的多。
 
 * Future next handicraft: woodwork (下一样想学习的手工艺： 木工)
+  :PROPERTIES:
+  :ID:       a1e112b4-fefa-4320-a68b-5a28d177182a
+  :PUBDATE:  <2019-08-14 Wed 19:09>
+  :END:
 
 I already downloaded some woodwork data sources. Until someday I have this
 motion to start learn. I will be able to make some woodworking in future.

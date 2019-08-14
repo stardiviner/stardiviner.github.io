@@ -414,14 +414,24 @@ const double pi = 3.1415926535
 \end{minted}
 
 * Blocks
+  :PROPERTIES:
+  :ID:       07a279b5-4105-45ad-a1b6-99c77b511335
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
 
 ** Quote block
+   :PROPERTIES:
+   :ID:       d0ff3d55-7517-42d9-9981-a0c2fcb0d74a
+   :END:
 
 #+begin_quote
 This is a quote block.
 #+end_quote
 
 ** LaTeX export block
+   :PROPERTIES:
+   :ID:       238bc88c-219c-47ef-be8c-1789b9f83e9f
+   :END:
 
 #+begin_export latex
 \begin{equation} \label{sqrt equation}
@@ -430,6 +440,9 @@ y = \sqrt{r^2 - x^2}
 #+end_export
 
 ** ASCII export block
+   :PROPERTIES:
+   :ID:       cd71c785-f264-4ef1-9b9c-660d420687a4
+   :END:
 
 #+begin_src shell :results output :wrap export ascii
 tree .
@@ -459,6 +472,9 @@ tree .
 #+end_export
 
 ** HTML export block
+   :PROPERTIES:
+   :ID:       1c841e94-df44-461a-9b11-8d9b1ecb4bd3
+   :END:
 
 #+begin_export html
 <div id="html-export">

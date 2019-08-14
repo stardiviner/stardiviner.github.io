@@ -1,6 +1,10 @@
 #+TITLE: Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
 
 * Is your Emacs slow and heavy?
+  :PROPERTIES:
+  :ID:       9348a942-1e91-4587-a10f-9dd769a32a9a
+  :PUBDATE:  <2019-08-14 Wed 19:10>
+  :END:
 
 When you installed many Emacs packages, or you set up many configurations. You found your
 Emacs is slow, and heavy. I have this situation many times. I can feel my typing in Emacs
@@ -14,8 +18,14 @@ Here are some ways you can find out the reaons:
 - esup :: Emacs start-up profiler
 
 ** elp
+   :PROPERTIES:
+   :ID:       a5357d0e-a3e2-46c8-8cbb-8f51117e5121
+   :END:
 
 *** workflow
+    :PROPERTIES:
+    :ID:       05782c93-bcee-4c8d-852c-822a213ad0ab
+    :END:
 
 Profile the code while executing the function that takes a long time.
 
@@ -48,6 +58,9 @@ You can start monitoring the whole =elpy= package with:
 do your time-consuming operations, and get a report with =[M-x elp-results]=.
 
 *** =[C-h p elp RET]=
+    :PROPERTIES:
+    :ID:       e5cd4631-becc-4b9d-b833-bd82705c66bc
+    :END:
 
 If you want to profile a bunch of functions, set elp-function-list
 to the list of symbols, then do a M-x elp-instrument-list.  This
@@ -128,8 +141,14 @@ are calculated using wall-clock time, so other system load will
 affect accuracy too.
 
 ** profile
+   :PROPERTIES:
+   :ID:       d00418dd-365e-4ba4-8a7d-369a8d510fba
+   :END:
 
 *** workflow
+    :PROPERTIES:
+    :ID:       59726f18-c60f-4b0e-b461-bdbd2d41fef5
+    :END:
 
 1. active profiler
 
@@ -148,10 +167,16 @@ affect accuracy too.
    =[M-x profiler-reset]=
 
 ** esup
+   :PROPERTIES:
+   :ID:       48787dca-ae17-4b0b-8d80-7e7dfd692236
+   :END:
 
 http://github.com/jschaf/esup
 
 *** workflow
+    :PROPERTIES:
+    :ID:       c01cc663-044d-41fd-b25f-3dee48c3e9af
+    :END:
 
 1. start a new Emacs instance for ESUP.
 
@@ -162,10 +187,19 @@ http://github.com/jschaf/esup
    =[M-x esup-display-results]= it will read buffer =*esup-results*=.
 
 *** navigation -- =[n/p/<RET>]=
+    :PROPERTIES:
+    :ID:       f23ffbbe-237d-48f0-8ed9-8961f97f958e
+    :END:
 
 *** FAQ
+    :PROPERTIES:
+    :ID:       bd1a8483-a23e-4155-b32b-eb41dd2c6856
+    :END:
 
 **** Q: Debugger entered--Lisp error: (invalid-read-syntax "#")
+     :PROPERTIES:
+     :ID:       4801fa59-d0f8-4f60-ad7e-4b656f53b01c
+     :END:
 
 #+begin_example
 Debugger entered--Lisp error: (invalid-read-syntax "#")
@@ -199,6 +233,10 @@ Debugger entered--Lisp error: (invalid-read-syntax "#")
 
 
 * The history commits I did which slow down my Emacs
+  :PROPERTIES:
+  :ID:       ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba
+  :PUBDATE:  <2019-08-14 Wed 19:10>
+  :END:
 
 Here is my Emacs config: https://github.com/stardiviner/emacs.d
 

@@ -1,6 +1,10 @@
 #+TITLE: Learn Programming Language from Diving into Source Code
 
 * Master Core Functions
+  :PROPERTIES:
+  :ID:       4df69bd2-3b91-4f61-ab75-a7bf83761e1b
+  :PUBDATE:  <2019-08-14 Wed 19:09>
+  :END:
 
 If you're a beginner on learning Programming Language, mastering some core and frequently
 used functions is really helpful. This can let you write better code.
@@ -10,6 +14,10 @@ a free chance to choose an ebook after filled a form from Manning Publications. 
 this book because I'm learning Clojure, need to master basic of Clojure as a beginner.)
 
 * Dive into Language Source Code
+  :PROPERTIES:
+  :ID:       fe16cda6-4303-41ca-9a35-48a8b1e6c854
+  :PUBDATE:  <2019-08-14 Wed 19:09>
+  :END:
 
 Programming Language usually has a mechanism to check out source code. For example, Emacs
 Lisp, it can use @@html:<kbd>M-.</kbd>@@ to jump to function definition. Clojure is same.
@@ -17,6 +25,10 @@ About other languages like Python, Ruby etc. In Emacs also can use @@html:<kbd>M
 or Emacs extensions to support this.
 
 * Search code examples on public source code hosting websites
+  :PROPERTIES:
+  :ID:       225b3e31-c8e2-4e48-b725-1584a3f0dcdf
+  :PUBDATE:  <2019-08-14 Wed 19:09>
+  :END:
 
 Learning with examples is helpful for beginner, you can search code on public source code
 hosting websites. Here is my collected list:
@@ -46,6 +58,9 @@ hosting websites. Here is my collected list:
 - https://codesearch.debian.net/
 
 ** Emacs package engine-mode
+   :PROPERTIES:
+   :ID:       6c3ffd6f-1c43-490e-ac65-528c3f03c6dd
+   :END:
 
 Emacs has a package called "=engine-mode=" which can define search engine based on URL by
 replacing query keyword with "~%s~". It is quite quick to use it to open a search query in
@@ -53,8 +68,14 @@ web browser. Even can use ~thing-at-point~ to get word or symbol at point to avo
 input.
 
 *** how to define engine
+    :PROPERTIES:
+    :ID:       5771d61a-a49c-49f8-9f9e-d5b762857537
+    :END:
 
 **** simple
+     :PROPERTIES:
+     :ID:       b1d53db2-70c9-400a-8068-87b2b0b59bb4
+     :END:
 
 #+begin_src emacs-lisp
 (defengine github
@@ -62,6 +83,9 @@ input.
 #+end_src
 
 **** specify key
+     :PROPERTIES:
+     :ID:       b4d6e855-00e6-4919-8aa0-2d34bc58f76c
+     :END:
 
 #+begin_src emacs-lisp
 (defengine duckduckgo
@@ -70,6 +94,9 @@ input.
 #+end_src
 
 **** specify browser function
+     :PROPERTIES:
+     :ID:       cf89a876-7da0-48fc-a1cb-e58270fbead2
+     :END:
 
 #+begin_src emacs-lisp
 (defengine github
@@ -78,6 +105,9 @@ input.
 #+end_src
 
 **** specify docstring
+     :PROPERTIES:
+     :ID:       7c1d115d-c6c7-4bab-aff6-7aa570211df2
+     :END:
 
 #+begin_src emacs-lisp
 (defengine ctan
@@ -86,6 +116,9 @@ input.
 #+end_src
 
 *** my config part
+    :PROPERTIES:
+    :ID:       a8323cd7-a7c8-4347-9e4b-9cffff2c569f
+    :END:
 
   #+begin_src emacs-lisp
   ;; general search engines
@@ -149,6 +182,10 @@ input.
 
 
 * More tips will updated on this post
+  :PROPERTIES:
+  :ID:       b38fbf60-66e3-4c18-8069-769b0bc656db
+  :PUBDATE:  <2019-08-14 Wed 19:09>
+  :END:
 
 If anyone suggest more skill tips about learning from diving into source code. I will add
 them at this post.

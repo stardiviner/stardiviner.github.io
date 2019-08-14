@@ -3,6 +3,10 @@
 #+AUTHOR: stardiviner
 
 * WARNING (警告)
+  :PROPERTIES:
+  :ID:       4e0a9294-af15-4407-8de3-231f5490c17c
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
 
 If you feel pain after you saw this. Please be careful!!!
 I can't cure your pain inside. Only yourself can figure out a way!!! Just like me now.
@@ -12,6 +16,10 @@ I can't cure your pain inside. Only yourself can figure out a way!!! Just like m
 
 
 * Set my mind free at first (没有固定的思想规则)
+  :PROPERTIES:
+  :ID:       0ef4edc7-1e6e-4318-9f16-3fdfc4ad1406
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
 
 I first learned that this world has not static rules of though, society trends.
 This is the main thing I learned from most of my experience and knowledge. Don't
@@ -24,6 +32,10 @@ Everything is not static anymore. They're changing, dynamiclly changing.
 
 
 * Set my body free then (解除肉身的限制)
+  :PROPERTIES:
+  :ID:       521320fe-2999-4592-919c-5f54d202c1bd
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
 
 Set mind free is hard for most people, they have diffcult to accept new thought,
 to enbrace thought freedom. It is not hard for me. The more diffcult step is to
@@ -38,6 +50,10 @@ first, then you're limited by your environment around things.
 
 
 * I try to be free (我想要自由之身)
+  :PROPERTIES:
+  :ID:       08366403-109c-42bb-bcf1-617ffdb88739
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
 
 Now my free mind is limited by reality. I feel hard, inside. I need to figure
 out a way to get out.
@@ -54,6 +70,10 @@ Internet is a good way to be free to go anywhere, touch anything.
 
 
 * Live on Internet (以互联网为生)
+  :PROPERTIES:
+  :ID:       63def87d-a956-4f8f-ab45-cc9d483c5904
+  :PUBDATE:  <2019-08-14 Wed 19:46>
+  :END:
 
 Information time, how to make use of this time evolution?
 
