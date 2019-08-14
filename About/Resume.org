@@ -18,7 +18,7 @@
 ,#+LATEX: \SetBgVshift{-5}
 #+end_src
 
-* 照片
+* 自我介绍
 
 #+CAPTION: 那时23岁的我
 #+ATTR_ORG: :width 200
@@ -30,23 +30,25 @@
 从 [2011-10-10 Mon] 年以来，我一直使用 Linux 系统作为我的日常系统，完全取代
 Windows系统。使用 Clojure 和 Python, Elisp 编程语言，熟悉 Web，App 爬虫。平常使
 用 Git 管理代码，经常在GitHub上出没。用 Docker, Vagrant 设置开发环境。会写一点
-Shell 脚本。求知欲强，自我学习驱动，解决问题。工作认真，性格平和亲近，和朋友聊天。
+Shell 脚本。求知欲强，自我学习驱动，善于解决问题。工作认真，性格平和亲近，擅长和
+朋友聊天。
 
-喜欢电脑技术，喜欢编程，和 Programming Electric Music 编程音乐 Overtone， 喜欢互
-联网。喜欢看哲学书，电影，滑板，和史诗音乐。性格随和，思想开放乐观，接受多元化文
-化。
+喜欢电脑技术，喜欢编程，喜欢互联网技术。喜欢看哲学书，电影，滑板，和史诗音乐。性
+格随和，思想开放乐观，接受多元化文化。
 
 #+ATTR_LATEX: :width \textwidth :thickness 0.8pt
 -----
 
-* 我的网上档案
+* 职业经历
 
-我大多数公开的东西都在GitHub上，但是笔记之类的都只在本地的Org Mode中，在搭建好平
-台前，都无法在线浏览。
+2011 年大学三年级辍学后：
 
-- [[https://github.com/stardiviner/][GitHub: stardiviner]]
-- [[https://stardiviner.github.io/][Blog]]
-- [[https://stackexchange.com/users/366399/stardiviner][my Stack Overflow profile]]
+- 在家自学过一段时间
+- 第一份工作是做的绿城房地产的销售
+- 之后必胜客的服务员，再做了一段时间的经理预备
+- 后来又做过一段时间的机器人编程的幼教老师
+- 给小公司做过IT设备维修支持，提供常见的IT维修服务。
+- 在一家网络公司“尚游网络科技有限公司”担任过推广，半个程序员运维工作。
 
 #+ATTR_LATEX: :width \textwidth :thickness 0.8pt
 -----
@@ -107,33 +109,32 @@ README有详细的记录。
 #+ATTR_LATEX: :width \textwidth :thickness 0.8pt
 -----
 
-* 编程工具：Emacs + Org-mode
+* 很多人都会问的关于我大学辍学这个选择
 
-很早以前在学Ubuntu Linux的时候，我学习使用的是Vim，用过大概有2年时间，后来因为
-Org Mode的超级强大的功能的缘故，我转投Emacs了，一开始Emacs的按键我还不适应，但是
-慢慢就好了，在一段时间的浸淫之后，我开始慢慢学习使用Org Mode，到现在，我已经为
-Org Mode提供了好几个patch和feature了。也写了几个小功能的Emacs插件。我现在已经能
-为我自己想要的功能Hack了。
+我在安徽工程大学读大三下半年的时候辍学了，大学时学习一般，觉得学习很枯燥，以前念
+书，是因为身边的人都在念书，可以这么说，以前念书是为了他人而念书，但是当我在大学
+里想，我为什么念书？想的多了，人就困惑起来，和很多有过类似经历的人一样，在迷茫的
+时期，经历过内心的挣扎，和煎熬。生活的面貌也仿佛隐隐看到背后的一些意义和灵动。
 
-现在我已经大多数工作都在Emacs和Org Mode下完成了：
+于是乎就去图书馆里看书，看计算机类的书，哲学类的书，也会偶尔看看小说，和传记。突
+然明白，生命中重要的，不是做什么好，而是想去做什么。我要实现生命的意义，要有梦想，
+一个真正意义上的梦想，那就是在技术浪潮下实现带给人们幸福的事情。当时看了 Eric S.
+Raymond 的 《How To Become a Hacker》。我觉得这很适合我，做一个电脑技术人员，用
+互联网技术去创造点什么。听我们老师说我们专业的学生从事本专业的人一个班级里最多
+1~2个，我觉得继续浑浑噩噩的继续大学读下去也没有意思了，索性从现在开始去做自己喜
+欢的事情，现在开始至少比等一年半开始要早一点。
 
-- 写代码 :: 我的主要语言是Clojure，在Emacs下使用CIDER，是我感觉IDE体验最好的工具。
-  Python有Elpy和lsp-python。也能满足大部分需求。而且Org Mode还支持 Literate
-  Programming paradigm，这是我在业余时间用的最多的。
-- 用Org Mode记笔记 :: 我将所有笔记都记录在Org里了，我还自己谢了一个工具来快速准
-  确的搜索我想要的内容。我还打算将Org的内容host为搜索和浏览形式。这样手机上也能
-  快速搜索浏览了。
-- 任务管理 :: Org Mode有一个Agenda功能，用它管理任务，会更贴心。
-- 收发邮件 :: 
-- 和其他程序员在IRC上 :: 
-- 用Org Mode写博客 ::
+#+ATTR_LATEX: :width \textwidth :thickness 0.8pt
+-----
 
-** contributed commits on Org Mode
+* 我的网上档案
 
-#+begin_src shell :dir "~/Code/Emacs/org-mode" :eval no
-git log --author=stardiviner
-#+end_src
+我大多数公开的东西都在GitHub上，但是笔记之类的都只在本地的Org Mode中，在搭建好平
+台前，都无法在线浏览。
 
+- [[https://github.com/stardiviner/][GitHub: stardiviner]]
+- [[https://stardiviner.github.io/][Blog]]
+- [[https://stackexchange.com/users/366399/stardiviner][my Stack Overflow profile]]
 
 #+ATTR_LATEX: :width \textwidth :thickness 0.8pt
 -----
@@ -146,26 +147,26 @@ git log --author=stardiviner
 系统了。从最开始的Ubuntu用了2年左右，到后来转到Arch Linux下。后来一直使用Arch
 Linux到现在。
 
-** Clojure: 函数式基于JVM的语言
+** Clojure: 函数式基于 JVM 的 Lisp 语言
 
 [2017-08-16 Wed] Clojure是我最熟悉的语言，平时都是用它。
 
 ** Emacs Lisp
 
-熟悉 Emacs Lisp 语言。经常自己写一些插件和功能。
+熟悉 Emacs Lisp 语言。会自己写一些小的插件和功能。
 
 ** 了解一点其他语言：Python，Ruby，HTML，CSS，JS
 
 [2015-03-16 Mon] 很早以前学过一两个月的Python，Ruby。然后对于 HTML，CSS，JS 这些
 语言有一点了解，但是不深入。
 
-** 熟悉正则表达式
+** 熟悉正则表达式 regexp
 
 ** 熟悉 Redis 和 MongoDB 的基础使用
 
 ** 我自己用 Linux + Nginx + static site + Dynamic DNS 架过网站
 
-** 会使用 Git 源码版本控制系统
+** 使用Git和开源社区的程序员协作，贡献patch
 
 ** 会用基本的 Docker 功能
 
@@ -186,18 +187,33 @@ Linux到现在。
 #+ATTR_LATEX: :width \textwidth :thickness 0.8pt
 -----
 
-* 其他技能
+* 编程工具：Emacs + Org-mode
 
-** 英语四级，良好的英语阅读能力
+很早以前在学Ubuntu Linux的时候，我学习使用的是Vim，用过大概有2年时间，后来因为
+Org Mode的超级强大的功能的缘故，我转投Emacs了，一开始Emacs的按键我还不适应，但是
+慢慢就好了，在一段时间的浸淫之后，我开始慢慢学习使用Org Mode，到现在，我已经为
+Org Mode提供了好几个patch和feature了。也写了几个小功能的Emacs插件。我现在已经能
+为我自己想要的功能Hack了。
 
-大学的时候通过了国家英语四级考试。
+现在我已经大多数工作都在Emacs和Org Mode下完成了：
 
-** 钉钉初级管理员证书
+- 写代码：我的主要语言是Clojure，在Emacs下使用CIDER，是我感觉IDE体验最好的工具。
+  Python有Elpy和lsp-python。也能满足大部分需求。而且Org Mode还支持 Literate
+  Programming paradigm，这是我在业余时间用的最多的。
+- 用Org Mode记笔记：我将所有笔记都记录在Org里了，我还自己谢了一个工具来快速准确
+  的搜索我想要的内容。我还打算将Org的内容host为搜索和浏览形式。这样手机上也能快
+  速搜索浏览了。
+- 任务管理：Org Mode有一个Agenda功能，用它管理任务，会更贴心。
+- 收发邮件
+- 和其他程序员在IRC上
+- 用Org Mode写博客
 
-#+ATTR_ORG: :width 300
-#+ATTR_LATEX: :width 3.0in
-#+ATTR_HTML: :width 300px :style display: inline-block; visibility: visible;
-[[file:data/images/DingDing Admin Cert.jpg]]
+** contributed commits on Org Mode
+
+#+begin_src shell :dir "~/Code/Emacs/org-mode" :eval no
+git log --author=stardiviner
+#+end_src
+
 
 #+ATTR_LATEX: :width \textwidth :thickness 0.8pt
 -----
@@ -211,37 +227,29 @@ Linux到现在。
 #+ATTR_LATEX: :width \textwidth :thickness 0.8pt
 -----
 
-* 选择
+* 其他技能
 
-我在安徽工程大学读大三下半年的时候辍学了，大学时学习一般，觉得学习很枯燥，以前念
-书，是因为身边的人都在念书，可以这么说，以前念书是为了他人而念书，但是当我在大学
-里想，我为什么念书？想的多了，人就困惑起来，和很多有过类似经历的人一样，在迷茫的
-时期，经历过内心的挣扎，和煎熬。生活的面貌也仿佛隐隐看到背后的一些意义和灵动。
+** 英语四级，良好的英语阅读能力
 
-于是乎就去图书馆里看书，看计算机类的书，哲学类的书，也会偶尔看看小说，和传记。突
-然明白，生命中重要的，不是做什么好，而是想去做什么。我要实现生命的意义，要有梦想，
-一个真正意义上的梦想，那就是在技术浪潮下实现带给人们幸福的事情。当时看了 Eric S.
-Raymond 的 《How To Become a Hacker》。我觉得这很适合我，做一个电脑技术人员，用
-互联网技术去创造点什么。听我们老师说我们专业的学生从事本专业的人一个班级里最多
-1~2个，我觉得继续浑浑噩噩的继续大学读下去也没有意思了，索性从现在开始去做自己喜
-欢的事情，现在开始至少比等一年半开始要早一点。
+大学的时候通过了国家英语四级考试。
 
-#+ATTR_LATEX: :width \textwidth :thickness 0.8pt
------
+** Windows 桌面系统下
 
-* 职业经历
+- 重装系统
+- 安装 pojie 软件
+- 会Windows下的高级设置，Windows下很多东西和Linux下都是很相似的。只是形式不一样。
 
-- 我以前做过绿城房地产的销售
-- 必胜客的服务员
-- 去云南大理做过私房菜的销售
-- 和朋友参与过民宿的开始阶段
-- 从云南回来后，后来又做过一段时间的机器人编程的幼教老师
-- 给小公司做过IT设备维修支持
-- 在一家小网络公司“尚游网络科技有限公司”担任过推广，半个产品经理，半个程序员工作。
-  伴随公司从0起步到每日15W人的规模。
+** 钉钉初级管理员证书                                  :noexport:
+
+#+ATTR_ORG: :width 300
+#+ATTR_LATEX: :width 3.0in
+#+ATTR_HTML: :width 300px :style display: inline-block; visibility: visible;
+[[file:data/images/DingDing Admin Cert.jpg]]
 
 #+ATTR_LATEX: :width \textwidth :thickness 0.8pt
 -----
+
+* 结尾语
 
 此文档由Org Mode嵌入LaTeX，导出为PDF文件。
 
