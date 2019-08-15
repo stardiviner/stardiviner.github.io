@@ -1,11 +1,10 @@
-# Created 2019-05-26 Sun 18:42
+# Created 2019-08-15 Thu 20:24
 #+TITLE: Clojure Plotting to Org inline image in ob-clojure
 #+AUTHOR: stardiviner
 
 * The Process of my Clojure Plotting
 
 ** ask whether Clojure/JVM can change working directory
-
 I did some hard search, found some links
 
 - https://stackoverflow.com/questions/840190/changing-the-current-working-directory-in-java
@@ -19,7 +18,6 @@ So, there is no reliable way to do this in pure Java. Setting the ~user.dir~
 subsequent creations of Files, but not e.g. ~FileOutputStreams~.
 
 ** I create Org-mode library "=ob-clojure-literate=" and improve Org Babel "=ob-core.el=" for plotting support
-
 Because changing Clojure/JVM working directory is not available, so I find
 method on Emacs side, Org-mode other Babel lanaguages like R, Python have good
 image file result support. So I dive into source code, and try to add similar
@@ -29,7 +27,6 @@ function to "=ob-clojure=". But I found some limites, then I created
 contrib lib]]).
 
 ** use more better solution by passing target path into Clojure with header argument ~:var~
-
 You can fake change Clojure REPL working directory by passing header argument
 variable into Clojure code. Like this:
 
@@ -65,7 +62,6 @@ correct absolute path:
 [[file:data/images/ob-clojure-literate.png]]
 
 ** use final solution by move image file to target path with Clojure function
-
 #+begin_src org
 ,#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (use '(incanter core stats datasets charts io pdf))
@@ -91,7 +87,6 @@ correct absolute path:
 
 
 * Incanter
-
 #+begin_src org
 ,#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (use '(incanter core stats datasets charts io pdf))
@@ -111,7 +106,6 @@ correct absolute path:
 
 
 * clj-xchart
-
 #+begin_src org
 ,#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (require '[com.hypirion.clj-xchart :as xchart])
@@ -150,13 +144,11 @@ correct absolute path:
 
 
 * References
-
 I also posted this method on Org Mode Worg documentations:
 https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html
 
 
 * Make use of CIDER new support of image content-type
-
 Since the PR https://github.com/clojure-emacs/cider-nrepl/pull/517 got merged
 into CIDER. It is realsed in CIDER 0.17 (Andalucía).
 
@@ -168,6 +160,5 @@ content-type as file.
 
 
 * Literaral Org-mode version
-
 If you want to see Literal Org-mode version of this post, click the "Show Org
 Source" button!

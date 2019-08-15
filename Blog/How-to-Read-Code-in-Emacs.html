@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-05-26 Sun 18:41 -->
+<!-- 2019-08-15 Thu 20:23 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to Read Code in Emacs</title>
@@ -336,29 +336,30 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org03a79bd">1. View</a>
+<li><a href="#org98497f7">1. View</a>
 <ul>
-<li><a href="#orgd446352">1.1. Highlight Code</a></li>
+<li><a href="#org0b67bae">1.1. Highlight Code</a></li>
 </ul>
 </li>
-<li><a href="#orge3b7fc5">2. Navigation</a>
+<li><a href="#orgd3c8fe3">2. Navigation</a>
 <ul>
-<li><a href="#org14c6a86">2.1. Jump to definition of any code</a></li>
-<li><a href="#orgc8b4480">2.2. Jump to definition of thing-at-point</a></li>
+<li><a href="#org3f47ea1">2.1. Jump to definition of any code</a></li>
+<li><a href="#orgcf6dfb5">2.2. Jump to definition of thing-at-point</a></li>
 </ul>
 </li>
-<li><a href="#org85cf8e4">3. Figure out of Code by running it</a></li>
-<li><a href="#org94bb708">4. <span class="todo TODO">TODO</span> Will add more tricks here in future</a></li>
+<li><a href="#orgcdf9e9f">3. Figure out of Code by running it</a></li>
+<li><a href="#org789d5c5">4. <span class="todo TODO">TODO</span> Will add more tricks here in future</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org03a79bd" class="outline-2">
-<h2 id="org03a79bd"><span class="section-number-2">1</span> View</h2>
+<div id="outline-container-org98497f7" class="outline-2">
+<h2 id="org98497f7"><span class="section-number-2">1</span> View</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgd446352" class="outline-3">
-<h3 id="orgd446352"><span class="section-number-3">1.1</span> Highlight Code</h3>
+
+<div id="outline-container-org0b67bae" class="outline-3">
+<h3 id="org0b67bae"><span class="section-number-3">1.1</span> Highlight Code</h3>
 <div class="outline-text-3" id="text-1-1">
 
 <figure>
@@ -379,12 +380,13 @@ distinguish code.
 </div>
 
 
-<div id="outline-container-orge3b7fc5" class="outline-2">
-<h2 id="orge3b7fc5"><span class="section-number-2">2</span> Navigation</h2>
+<div id="outline-container-orgd3c8fe3" class="outline-2">
+<h2 id="orgd3c8fe3"><span class="section-number-2">2</span> Navigation</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org14c6a86" class="outline-3">
-<h3 id="org14c6a86"><span class="section-number-3">2.1</span> Jump to definition of any code</h3>
+
+<div id="outline-container-org3f47ea1" class="outline-3">
+<h3 id="org3f47ea1"><span class="section-number-3">2.1</span> Jump to definition of any code</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 There are some options to select:
@@ -401,8 +403,8 @@ with package "<code>pcre2el</code>".</li>
 </div>
 </div>
 
-<div id="outline-container-orgc8b4480" class="outline-3">
-<h3 id="orgc8b4480"><span class="section-number-3">2.2</span> Jump to definition of thing-at-point</h3>
+<div id="outline-container-orgcf6dfb5" class="outline-3">
+<h3 id="orgcf6dfb5"><span class="section-number-3">2.2</span> Jump to definition of thing-at-point</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 When code definition is not in the same window page area, you want to jump to definition.
@@ -417,8 +419,8 @@ There is an existing package called "<a href="https://github.com/tumashu/posfram
 </div>
 
 
-<div id="outline-container-org85cf8e4" class="outline-2">
-<h2 id="org85cf8e4"><span class="section-number-2">3</span> Figure out of Code by running it</h2>
+<div id="outline-container-orgcdf9e9f" class="outline-2">
+<h2 id="orgcdf9e9f"><span class="section-number-2">3</span> Figure out of Code by running it</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Sometimes I can't understand the code by reading, then I try to run code with debugger/tracer.
@@ -444,13 +446,13 @@ Here is my trick after I dive into Edebug source code:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">my:edebug-previous-result</span> <span style="color: #D19A66;">()</span>
-    <span style="color: #5C6370;">"Print the previous result."</span>
-    <span style="color: #D19A66;">(</span><span style="color: #E06C75;">interactive</span><span style="color: #D19A66;">)</span>
-    <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">(pos-tip-show edebug-previous-result 'popup-face) ; slow</span>
-    <span style="color: #D19A66;">(</span>popup-tip edebug-previous-result <span style="color: #828997;">:truncate</span> t <span style="color: #828997;">:height</span> 20 <span style="color: #828997;">:width</span> 45 <span style="color: #828997;">:nostrip</span> t <span style="color: #828997;">:margin</span> 1 <span style="color: #828997;">:nowait</span> nil<span style="color: #D19A66;">)</span>
-    <span style="color: #56B6C2;">)</span>
-  <span style="color: #56B6C2;">(</span>advice-add 'edebug-previous-result <span style="color: #828997;">:override</span> #'my:edebug-previous-result<span style="color: #56B6C2;">)</span>
+<pre class="src src-emacs-lisp"><code><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defun</span> <span style="color: #61AFEF;">my:edebug-previous-result</span> <span style="color: #D19A66;">()</span></code>
+<code>    <span style="color: #5C6370;">"Print the previous result."</span></code>
+<code>    <span style="color: #D19A66;">(</span><span style="color: #E06C75;">interactive</span><span style="color: #D19A66;">)</span></code>
+<code>    <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">(pos-tip-show edebug-previous-result 'popup-face) ; slow</span></code>
+<code>    <span style="color: #D19A66;">(</span>popup-tip edebug-previous-result <span style="color: #828997;">:truncate</span> t <span style="color: #828997;">:height</span> 20 <span style="color: #828997;">:width</span> 45 <span style="color: #828997;">:nostrip</span> t <span style="color: #828997;">:margin</span> 1 <span style="color: #828997;">:nowait</span> nil<span style="color: #D19A66;">)</span></code>
+<code>    <span style="color: #56B6C2;">)</span></code>
+<code>  <span style="color: #56B6C2;">(</span>advice-add 'edebug-previous-result <span style="color: #828997;">:override</span> #'my:edebug-previous-result<span style="color: #56B6C2;">)</span></code>
 </pre>
 </div>
 
@@ -472,8 +474,8 @@ here. Just give out some examples that wish can inspire you. That's all.
 </div>
 </div>
 
-<div id="outline-container-org94bb708" class="outline-2">
-<h2 id="org94bb708"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Will add more tricks here in future</h2>
+<div id="outline-container-org789d5c5" class="outline-2">
+<h2 id="org789d5c5"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Will add more tricks here in future</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Record to My Org node "Read Code" too.
@@ -484,11 +486,11 @@ Record to My Org node "Read Code" too.
 <div id="postamble" class="status">
 <footer>
   Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
-  Last update date: 2019-03-27 Wed 00:14.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.0.50 (<a href="https://orgmode.org">Org</a> mode 9.2.1). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
+  Last update date: 2019-08-14 Wed 19:46.<br>
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.2 (<a href="https://orgmode.org">Org</a> mode 9.2.1). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
   <!-- RSS -->
-  You can <a href='/index.xml'>subscribe</a> my blog through RSS.
+  You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
   
   <!-- Show Org Source -->
   <script>

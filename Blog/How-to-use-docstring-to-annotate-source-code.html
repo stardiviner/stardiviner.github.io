@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-05-26 Sun 18:42 -->
+<!-- 2019-08-15 Thu 20:24 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>&lrm;</title>
@@ -334,24 +334,24 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1ccabbe">1. How does the idea comes up?</a></li>
-<li><a href="#orgc246bdd">2. Emacs ElDoc</a></li>
-<li><a href="#orge7bb9e7">3. My idea details</a></li>
-<li><a href="#orgc9228e0">4. Examples</a>
+<li><a href="#orgbcb278c">1. How does the idea comes up?</a></li>
+<li><a href="#org936c526">2. Emacs ElDoc</a></li>
+<li><a href="#org120b6a7">3. My idea details</a></li>
+<li><a href="#org09b89bd">4. Examples</a>
 <ul>
-<li><a href="#org145980c">4.1. Lisp dialects</a></li>
-<li><a href="#orgc457f20">4.2. Python/Ruby/JavaScript</a></li>
-<li><a href="#org3ba9471">4.3. C/C++/Java</a></li>
-<li><a href="#org46d4f3b">4.4. HTML</a></li>
-<li><a href="#org312a8c0">4.5. CSS</a></li>
+<li><a href="#org15cb8fc">4.1. Lisp dialects</a></li>
+<li><a href="#org79be08c">4.2. Python/Ruby/JavaScript</a></li>
+<li><a href="#org0062d6f">4.3. C/C++/Java</a></li>
+<li><a href="#orgf1cec9d">4.4. HTML</a></li>
+<li><a href="#org7279607">4.5. CSS</a></li>
 </ul>
 </li>
-<li><a href="#org5161252">5. Try to implement in Emacs as an extension</a></li>
+<li><a href="#org888f90b">5. Try to implement in Emacs as an extension</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org1ccabbe" class="outline-2">
-<h2 id="org1ccabbe"><span class="section-number-2">1</span> How does the idea comes up?</h2>
+<div id="outline-container-orgbcb278c" class="outline-2">
+<h2 id="orgbcb278c"><span class="section-number-2">1</span> How does the idea comes up?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Sometimes I think what if the source code can be translated into human natural language in
@@ -361,8 +361,8 @@ understand the program source code better and faster.
 </div>
 </div>
 
-<div id="outline-container-orgc246bdd" class="outline-2">
-<h2 id="orgc246bdd"><span class="section-number-2">2</span> Emacs ElDoc</h2>
+<div id="outline-container-org936c526" class="outline-2">
+<h2 id="org936c526"><span class="section-number-2">2</span> Emacs ElDoc</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Emacs ElDoc already display docstring for symbol in minibuffer. There are some packages
@@ -372,49 +372,60 @@ property-text or overlay etc.
 </div>
 </div>
 
-<div id="outline-container-orge7bb9e7" class="outline-2">
-<h2 id="orge7bb9e7"><span class="section-number-2">3</span> My idea details</h2>
+<div id="outline-container-org120b6a7" class="outline-2">
+<h2 id="org120b6a7"><span class="section-number-2">3</span> My idea details</h2>
+<div class="outline-text-2" id="text-3">
+</div>
 </div>
 
 
-<div id="outline-container-orgc9228e0" class="outline-2">
-<h2 id="orgc9228e0"><span class="section-number-2">4</span> Examples</h2>
+<div id="outline-container-org09b89bd" class="outline-2">
+<h2 id="org09b89bd"><span class="section-number-2">4</span> Examples</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org145980c" class="outline-3">
-<h3 id="org145980c"><span class="section-number-3">4.1</span> Lisp dialects</h3>
+
+<div id="outline-container-org15cb8fc" class="outline-3">
+<h3 id="org15cb8fc"><span class="section-number-3">4.1</span> Lisp dialects</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">+--&gt; define a function named hello-world.</span>
-<span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">|   +--&gt; function name.</span>
-<span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">|   |          +--&gt; arguments.</span>
-<span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defn</span> <span style="color: #61AFEF;">hello-world</span> <span style="color: #D19A66;">[]</span>
-  <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">+--&gt; print string "Hello, World!".</span>
-  <span style="color: #D19A66;">(</span><span style="color: #828997;">prn</span> <span style="color: #98C379;">"Hello, World!"</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span>
+<pre class="src src-clojure"><code><span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">+--&gt; define a function named hello-world.</span></code>
+<code><span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">|   +--&gt; function name.</span></code>
+<code><span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">|   |          +--&gt; arguments.</span></code>
+<code><span style="color: #56B6C2;">(</span><span style="color: #E06C75;">defn</span> <span style="color: #61AFEF;">hello-world</span> <span style="color: #D19A66;">[]</span></code>
+<code>  <span style="color: #5C6370; font-style: italic;">;; </span><span style="color: #5C6370; font-style: italic;">+--&gt; print string "Hello, World!".</span></code>
+<code>  <span style="color: #D19A66;">(</span><span style="color: #828997;">prn</span> <span style="color: #98C379;">"Hello, World!"</span><span style="color: #D19A66;">)</span><span style="color: #56B6C2;">)</span></code>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc457f20" class="outline-3">
-<h3 id="orgc457f20"><span class="section-number-3">4.2</span> Python/Ruby/JavaScript</h3>
-</div>
-
-<div id="outline-container-org3ba9471" class="outline-3">
-<h3 id="org3ba9471"><span class="section-number-3">4.3</span> C/C++/Java</h3>
-</div>
-
-<div id="outline-container-org46d4f3b" class="outline-3">
-<h3 id="org46d4f3b"><span class="section-number-3">4.4</span> HTML</h3>
-</div>
-
-<div id="outline-container-org312a8c0" class="outline-3">
-<h3 id="org312a8c0"><span class="section-number-3">4.5</span> CSS</h3>
+<div id="outline-container-org79be08c" class="outline-3">
+<h3 id="org79be08c"><span class="section-number-3">4.2</span> Python/Ruby/JavaScript</h3>
+<div class="outline-text-3" id="text-4-2">
 </div>
 </div>
 
-<div id="outline-container-org5161252" class="outline-2">
-<h2 id="org5161252"><span class="section-number-2">5</span> Try to implement in Emacs as an extension</h2>
+<div id="outline-container-org0062d6f" class="outline-3">
+<h3 id="org0062d6f"><span class="section-number-3">4.3</span> C/C++/Java</h3>
+<div class="outline-text-3" id="text-4-3">
+</div>
+</div>
+
+<div id="outline-container-orgf1cec9d" class="outline-3">
+<h3 id="orgf1cec9d"><span class="section-number-3">4.4</span> HTML</h3>
+<div class="outline-text-3" id="text-4-4">
+</div>
+</div>
+
+<div id="outline-container-org7279607" class="outline-3">
+<h3 id="org7279607"><span class="section-number-3">4.5</span> CSS</h3>
+<div class="outline-text-3" id="text-4-5">
+</div>
+</div>
+</div>
+
+<div id="outline-container-org888f90b" class="outline-2">
+<h2 id="org888f90b"><span class="section-number-2">5</span> Try to implement in Emacs as an extension</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Here is an new created empty repository <a href="https://github.com/stardiviner/eldoc-annotation.el">https://github.com/stardiviner/eldoc-annotation.el</a>
@@ -426,11 +437,11 @@ that I will add code in future.
 <div id="postamble" class="status">
 <footer>
   Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
-  Last update date: 2019-02-16 Sat 08:17.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.0.50 (<a href="https://orgmode.org">Org</a> mode 9.2.1). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
+  Last update date: 2019-08-14 Wed 19:08.<br>
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.2 (<a href="https://orgmode.org">Org</a> mode 9.2.1). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="http://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
   <!-- RSS -->
-  You can <a href='/index.xml'>subscribe</a> my blog through RSS.
+  You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
   
   <!-- Show Org Source -->
   <script>

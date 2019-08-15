@@ -1,9 +1,8 @@
-# Created 2019-05-26 Sun 18:42
+# Created 2019-08-15 Thu 20:24
 #+TITLE: Literate Programming with Org Mode
 #+AUTHOR: stardiviner
 
 * Why Literate Programming?
-
 There are lot of data on internet about "Literate Programming" already, I blog about this
 just for personal opinion.
 
@@ -22,20 +21,17 @@ Org Mode.
 ** LP: organize things in text and code
 
 ** LP: organize logic with "headlines" and "tags"
-
 You can navigation and filter Literate Programming document logic with headlines and tags.
 When a file grows large, organize your document with clear structure and better tags group
 is very necessary.
 
 ** LP: write code with Org Babel source code blocks
-
 Org Mode Babel are technology that can evaluate source code blocks and insert result into
 Org buffer. Babel is powerful by backend with many different programming languages and
 tools. On essention, Babel is send source code block text to another binary to be
 evaluated, then return the result to be inserted in Org buffer.
 
 *** LP: support many different languages with Babel languages
-
 For now, Org Babel has many languages supported now. Official support in Org-mode packages
 has a lot. Here is my loaded languages alist. They are many more, and you can search in
 Org source code, and GitHub, and maybe somewhere else.
@@ -96,19 +92,16 @@ org-babel-load-languages
 #+end_example
 
 **** LP: use different languages to processing data in mixture
-
 You can process JSON data with JavaScript, then pass result data to Python to process to
 generate XML data, then pass the XML data to gnuplot to generate image result.
 
 *** LP: Babel header arguments
-
 There are many source code block header arguments, you can check out Org Mode Info
 document. And I after some years usage of Org Mode, I found there are some merely used
 header arguments are not mentioned in Org Mode Manual. And some header arguments are
 language specific only.
 
 ** LP: separate code logic and reference with "noweb"
-
 Tangling functionality is controlled by the tangle family of tangle header
 arguments. These arguments can be used to turn tangling on or off (the default),
 either for the code block or the Org-mode heading level.
@@ -208,20 +201,17 @@ evaluated in the current source-code block but are passed literally to
 ** LP: display result
 
 *** LP: display image result with Org inline image display
-
 You can manually insert a file link to image file as inline image. You also can let source
 code block generate a file link to plot image file. Toggle inline image display in
 Org-mode with =[M-x org-display-inline-images]=.
 
 *** LP: display table result with Org table
-
 Org-mode supports table. Support many manipulations. Also there are many advanced usage of
 Org table, like use table as data input for source code block, radio table, etc.
 
 ** LP: reference to text, code and each other
 
 *** text->code with coderef
-
 #+name: hello
 #+begin_src emacs-lisp
 (defun hello (name)                               ; (ref:define function hello)
@@ -233,7 +223,6 @@ Org table, like use table as data input for source code block, radio table, etc.
 *** text->text with link
 
 *** code->code with noweb
-
 #+begin_src emacs-lisp :noweb yes
 <<hello>>
 
@@ -248,7 +237,6 @@ Org table, like use table as data input for source code block, radio table, etc.
 **** org-link in source code block comment
 
 ** LP: navigation in text and code
-
 - ~org-babel-goto-named-src-block~
 - ~org-babel-goto-named-result~
 - ~org-babel-goto-src-block-head~
@@ -257,5 +245,4 @@ You can jump back in mark ring with =[M-,]= / ~org-mark-ring-goto~.
 
 
 * TODO complete this post
-
 Still there are many things need to write. But temporary like this for now.

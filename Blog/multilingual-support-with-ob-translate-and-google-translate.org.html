@@ -10,7 +10,11 @@
 <span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">multilingual support with ob-translate and google-translate
 </span>
 <span class="org-level-1">* Why multilingual support?
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">89eb36af-621b-4cf0-8a26-fb5363523f34</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:47&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 <span class="org-block-begin-line">#+begin_src translate :src auto :dest zh-CN,zh-TW,ja,ko
 </span><span class="org-block">On the internet, English is the main language. But currently translation is good
 enough now. In my previous blog posts I use two languages to write, it is take
@@ -25,7 +29,11 @@ much time. I want t a simpler automatic way to do this.
 
 
 <span class="org-level-1">* How it looks like
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">2a4cc1ca-603a-4bde-b514-2a54c4c8b618</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-property-value">&lt;2019-08-14 Wed 19:47&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 <span class="org-block-begin-line">#+begin_src org
 </span><span class="org-block">,#+begin_src translate :src zh-CN :dest en,zh-TW,ja,ko
 &#20320;&#22909;&#65292;&#25105;&#21483;&#38463;&#22269;&#12290;
@@ -42,14 +50,21 @@ much time. I want t a simpler automatic way to do this.
 <span class="bold">NOTE</span>: Not allow space between langs (<span class="org-code">en,zh-TW,ja,ko</span>). Other wise it does not wok.
 
 <span class="org-level-1">* Multilingual support setup
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">4bf5688c-1cf9-4f8e-b029-a8cbfd05de01</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-property-value">&lt;2019-08-14 Wed 19:47&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 Multilingual support is simple to integrate. Especially like great tool Emacs
 and Org-mode. I remember a great tool "ob-translate" which use
 "<span class="org-link"><a href="https://github.com/atykhonov/google-translate">google-translate</a></span>" as backend support. Really simple to use in Org-mode
 (especial I publish whole website with Org-mode org-publish).
 
 <span class="custom">*</span><span class="org-level-2">* configure ob-translate
-</span>
+</span><span class="org-special-keyword">   :PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">d3438fac-e61d-41f8-89bd-a1149555d11e</span>
+<span class="org-special-keyword">   :END:</span>
+
 My sample config here:
 
 <span class="org-block-begin-line">#+begin_src emacs-lisp
@@ -65,7 +80,10 @@ My sample config here:
 I added ob-translate src block into Org-mode new structure template alist.
 
 <span class="custom">**</span><span class="org-level-3">* require org-mode export src blocks export with results
-</span>
+</span><span class="org-special-keyword">    :PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">68991e81-f2b4-43ca-a71d-b81e85ae0e07</span>
+<span class="org-special-keyword">    :END:</span>
+
 <span class="org-block-begin-line">#+begin_src emacs-lisp
 </span><span class="org-block">(add-to-list 'org-babel-default-header-args '(</span><span class="org-block"><span class="builtin">:eval</span></span><span class="org-block"> . </span><span class="org-block"><span class="string">"never-export"</span></span><span class="org-block">))
 (add-to-list 'org-babel-default-header-args '(</span><span class="org-block"><span class="builtin">:exports</span></span><span class="org-block"> . </span><span class="org-block"><span class="string">"both"</span></span><span class="org-block">))
@@ -75,7 +93,10 @@ I added ob-translate src block into Org-mode new structure template alist.
 - The second let Org-mode export src blocks with results.
 
 <span class="custom">**</span><span class="org-level-3">* create a snippet for easy inserting template
-</span>
+</span><span class="org-special-keyword">    :PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">57f31085-c85b-4dd7-9f75-dabbbb283dc0</span>
+<span class="org-special-keyword">    :END:</span>
+
 <span class="org-block-begin-line">#+begin_src snippet
 </span><span class="org-block"><span class="comment"># -*- mode: snippet -*-</span></span><span class="org-block">
 </span><span class="org-block"><span class="comment"># name: ob-translate</span></span><span class="org-block">
@@ -89,7 +110,10 @@ I added ob-translate src block into Org-mode new structure template alist.
 </span><span class="org-block-end-line">#+end_src
 </span>
 <span class="custom">*</span><span class="org-level-2">* configure google-translate if you use it interactively
-</span>
+</span><span class="org-special-keyword">   :PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">d8651489-18df-4f7d-88f5-80d9e54fc30a</span>
+<span class="org-special-keyword">   :END:</span>
+
 Here is my config example:
 
 <span class="org-block-begin-line">#+begin_src emacs-lisp
@@ -124,7 +148,10 @@ Here is my config example:
 You should explore google-translate features on its readme page, really convinient.
 
 <span class="custom">*</span><span class="org-level-2">* about Google Translate service not accessible issue
-</span>
+</span><span class="org-special-keyword">   :PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">9a201c6a-3dec-401b-9789-6dc80da8eea8</span>
+<span class="org-special-keyword">   :END:</span>
+
 I'm writing a simple global minor mode to toggle proxy (support HTTP, socks)
 from inside of Emacs, instead of system global.
 
@@ -170,14 +197,24 @@ Used by function `</span></span><span class="org-block"><span class="doc"><span 
 </span>
 
 <span class="org-level-1">* Some issues
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">d8acb8d5-15e6-49fd-88a7-7baded863c4d</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-property-value">&lt;2019-08-14 Wed 19:47&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 <span class="custom">*</span><span class="org-level-2">* the Babel result output type is table
-</span>
+</span><span class="org-special-keyword">   :PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">d217c234-d73f-4107-9874-2b7eb5d8cd61</span>
+<span class="org-special-keyword">   :END:</span>
+
 The Babel result output type is table, it seems is forced, I will try to figure
 a way to fix this problem. Might add an PR to "ob-translate".
 
 <span class="custom">*</span><span class="org-level-2">* ob-translate can't be used anywhere in Org-mode buffer
-</span>
+</span><span class="org-special-keyword">   :PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">35ee5b8d-9ce5-4594-8b84-0d51e904a92e</span>
+<span class="org-special-keyword">   :END:</span>
+
 Like headlines, ob-translate can't apply on them. But google-translate does not
 support output to current buffer with option
 <span class="org-code">google-translate-output-destination</span>. This should be improved like output to
@@ -185,9 +222,17 @@ current buffer (insert at point).
 
 
 <span class="org-level-1">* Any updates will updated in this post
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">62f990e7-4b7a-4101-bd5d-b3693a54a0ce</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-property-value">&lt;2019-08-14 Wed 19:47&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 <span class="org-level-1">* use external tools to translate with ob-shell
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">8524b659-aa14-4eca-981f-0b821a7d25aa</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-property-value">&lt;2019-08-14 Wed 19:47&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 There are some command-lines tools can translate text. For example, <span class="org-link"><a href="https://github.com/afc163/fanyi">fanyi</a></span>. Unfortunally,
 some tools use online service which only support Chinese&lt;-&gt;English.
 
@@ -198,7 +243,10 @@ Another problem is that the result usually formatted by command-line tools separ
 might need other text processing commands like <span class="org-verbatim">sed</span>, <span class="org-verbatim">awk</span> etc to strip some text.
 
 <span class="custom">*</span><span class="org-level-2">* fanyi
-</span>
+</span><span class="org-special-keyword">   :PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">c2947e8d-c810-4431-861e-a87db6872f18</span>
+<span class="org-special-keyword">   :END:</span>
+
 <span class="org-block-begin-line">#+begin_src shell :results raw
 </span><span class="org-block">fanyi </span><span class="org-block"><span class="string">"&#20320;&#22909;&#65292;&#19990;&#30028;"</span></span><span class="org-block">
 </span><span class="org-block-end-line">#+end_src

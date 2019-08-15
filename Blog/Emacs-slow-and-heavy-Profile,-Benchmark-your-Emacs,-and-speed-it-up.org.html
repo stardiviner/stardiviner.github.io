@@ -10,7 +10,11 @@
 <span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
 </span>
 <span class="org-level-1">* Is your Emacs slow and heavy?
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">9348a942-1e91-4587-a10f-9dd769a32a9a</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:10&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 When you installed many Emacs packages, or you set up many configurations. You found your
 Emacs is slow, and heavy. I have this situation many times. I can feel my typing in Emacs
 Org Mode. when code completion, and search, generating results etc. This makes me dive
@@ -23,9 +27,15 @@ Here are some ways you can find out the reaons:
 - <span class="org-list-dt">esup ::</span> Emacs start-up profiler
 
 <span class="custom-1">*</span><span class="org-level-2">* elp
-</span>
+</span><span class="org-special-keyword">   :PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">a5357d0e-a3e2-46c8-8cbb-8f51117e5121</span>
+<span class="org-special-keyword">   :END:</span>
+
 <span class="custom-1">**</span><span class="org-level-3">* workflow
-</span>
+</span><span class="org-special-keyword">    :PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">05782c93-bcee-4c8d-852c-822a213ad0ab</span>
+<span class="org-special-keyword">    :END:</span>
+
 Profile the code while executing the function that takes a long time.
 
 1. instrument code
@@ -56,8 +66,11 @@ You can start monitoring the whole <span class="org-verbatim">elpy</span> packag
 
 do your time-consuming operations, and get a report with <span class="org-verbatim">[M-x elp-results]</span>.
 
-<span class="custom-1">**</span><span class="org-level-3">* </span><span class="org-verbatim"><span class="org-level-3">[C-h p elp RET]</span></span><span class="org-level-3">
-</span>
+<span class="custom-1">**</span><span class="org-level-3">* </span><span class="org-level-3"><span class="org-verbatim">[C-h p elp RET]</span></span><span class="org-level-3">
+</span><span class="org-special-keyword">    :PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">e5cd4631-becc-4b9d-b833-bd82705c66bc</span>
+<span class="org-special-keyword">    :END:</span>
+
 If you want to profile a bunch of functions, set elp-function-list
 to the list of symbols, then do a M-x elp-instrument-list.  This
 hacks those functions so that profiling information is recorded
@@ -137,9 +150,15 @@ are calculated using wall-clock time, so other system load will
 affect accuracy too.
 
 <span class="custom-1">*</span><span class="org-level-2">* profile
-</span>
+</span><span class="org-special-keyword">   :PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">d00418dd-365e-4ba4-8a7d-369a8d510fba</span>
+<span class="org-special-keyword">   :END:</span>
+
 <span class="custom-1">**</span><span class="org-level-3">* workflow
-</span>
+</span><span class="org-special-keyword">    :PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">59726f18-c60f-4b0e-b461-bdbd2d41fef5</span>
+<span class="org-special-keyword">    :END:</span>
+
 1. active profiler
 
    <span class="org-verbatim">[M-x profiler-start]</span>
@@ -157,11 +176,17 @@ affect accuracy too.
    <span class="org-verbatim">[M-x profiler-reset]</span>
 
 <span class="custom-1">*</span><span class="org-level-2">* esup
-</span>
+</span><span class="org-special-keyword">   :PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">48787dca-ae17-4b0b-8d80-7e7dfd692236</span>
+<span class="org-special-keyword">   :END:</span>
+
 <span class="org-link"><a href="http://github.com/jschaf/esup">http://github.com/jschaf/esup</a></span>
 
 <span class="custom-1">**</span><span class="org-level-3">* workflow
-</span>
+</span><span class="org-special-keyword">    :PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">c01cc663-044d-41fd-b25f-3dee48c3e9af</span>
+<span class="org-special-keyword">    :END:</span>
+
 1. start a new Emacs instance for ESUP.
 
    <span class="org-verbatim">[M-x esup]</span>
@@ -170,12 +195,21 @@ affect accuracy too.
 
    <span class="org-verbatim">[M-x esup-display-results]</span> it will read buffer <span class="org-verbatim">*esup-results*</span>.
 
-<span class="custom-1">**</span><span class="org-level-3">* navigation -- </span><span class="org-verbatim"><span class="org-level-3">[n/p/&lt;RET&gt;]</span></span><span class="org-level-3">
-</span>
+<span class="custom-1">**</span><span class="org-level-3">* navigation -- </span><span class="org-level-3"><span class="org-verbatim">[n/p/&lt;RET&gt;]</span></span><span class="org-level-3">
+</span><span class="org-special-keyword">    :PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">f23ffbbe-237d-48f0-8ed9-8961f97f958e</span>
+<span class="org-special-keyword">    :END:</span>
+
 <span class="custom-1">**</span><span class="org-level-3">* FAQ
-</span>
+</span><span class="org-special-keyword">    :PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">bd1a8483-a23e-4155-b32b-eb41dd2c6856</span>
+<span class="org-special-keyword">    :END:</span>
+
 <span class="custom-1">***</span><span class="org-level-4">* Q: Debugger entered--Lisp error: (invalid-read-syntax "#")
-</span>
+</span><span class="org-special-keyword">     :PROPERTIES:</span>
+     <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">4801fa59-d0f8-4f60-ad7e-4b656f53b01c</span>
+<span class="org-special-keyword">     :END:</span>
+
 <span class="org-block-begin-line">#+begin_example
 </span><span class="custom">Debugger entered--Lisp error: (invalid-read-syntax "#")
   read(#&lt;buffer *esup-results*&gt;)
@@ -208,7 +242,11 @@ affect accuracy too.
 
 
 <span class="org-level-1">* The history commits I did which slow down my Emacs
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-property-value">&lt;2019-08-14 Wed 19:10&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 Here is my Emacs config: <span class="org-link"><a href="https://github.com/stardiviner/emacs.d">https://github.com/stardiviner/emacs.d</a></span>
 
 Let's search all my commits which slow down my Emacs and what I did to improve the

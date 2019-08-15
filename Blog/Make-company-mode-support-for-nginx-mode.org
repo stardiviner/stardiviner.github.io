@@ -1,9 +1,8 @@
-# Created 2019-05-26 Sun 18:42
+# Created 2019-08-15 Thu 20:24
 #+TITLE: Make company-mode support for nginx-mode
 #+AUTHOR: stardiviner
 
 * At the beginning
-
 I'm learning a little about Nginx recently, I hope can setup web server by myself
 when someday I want to build up a website for startup or something else.
 
@@ -38,7 +37,6 @@ too.
 https://github.com/AdamNiederer/elquery/issues/5
 
 ** another Python implementation
-
 #+name: get-directives
 #+begin_src python :eval no
 import urllib.request
@@ -127,7 +125,6 @@ Convert result to Elisp list data structure:
 
 
 * company-keywords-alist
-
 #+begin_src emacs-lisp :eval no
 (defun company-nginx-keywords ()
   (add-to-list 'company-keywords-alist
@@ -311,7 +308,6 @@ Convert result to Elisp list data structure:
 #+end_src
 
 * created package company-nginx
-
 In order to share to others, I created a simple package:
 
 https://github.com/stardiviner/company-nginx

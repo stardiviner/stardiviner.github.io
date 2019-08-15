@@ -1,9 +1,8 @@
-# Created 2019-05-26 Sun 18:41
+# Created 2019-08-15 Thu 20:23
 #+TITLE: Learn Programming Language from Diving into Source Code
 #+AUTHOR: stardiviner
 
 * Master Core Functions
-
 If you're a beginner on learning Programming Language, mastering some core and frequently
 used functions is really helpful. This can let you write better code.
 
@@ -12,14 +11,12 @@ a free chance to choose an ebook after filled a form from Manning Publications. 
 this book because I'm learning Clojure, need to master basic of Clojure as a beginner.)
 
 * Dive into Language Source Code
-
 Programming Language usually has a mechanism to check out source code. For example, Emacs
 Lisp, it can use  to jump to function definition. Clojure is same.
 About other languages like Python, Ruby etc. In Emacs also can use 
 or Emacs extensions to support this.
 
 * Search code examples on public source code hosting websites
-
 Learning with examples is helpful for beginner, you can search code on public source code
 hosting websites. Here is my collected list:
 
@@ -48,7 +45,6 @@ hosting websites. Here is my collected list:
 - https://codesearch.debian.net/
 
 ** Emacs package engine-mode
-
 Emacs has a package called "=engine-mode=" which can define search engine based on URL by
 replacing query keyword with "~%s~". It is quite quick to use it to open a search query in
 web browser. Even can use ~thing-at-point~ to get word or symbol at point to avoid manually
@@ -57,14 +53,12 @@ input.
 *** how to define engine
 
 **** simple
-
 #+begin_src emacs-lisp
 (defengine github
   "https://github.com/search?ref=simplesearch&q=%s")
 #+end_src
 
 **** specify key
-
 #+begin_src emacs-lisp
 (defengine duckduckgo
   "https://duckduckgo.com/?q=%s"
@@ -72,7 +66,6 @@ input.
 #+end_src
 
 **** specify browser function
-
 #+begin_src emacs-lisp
 (defengine github
   "https://github.com/search?ref=simplesearch&q=%s"
@@ -80,7 +73,6 @@ input.
 #+end_src
 
 **** specify docstring
-
 #+begin_src emacs-lisp
 (defengine ctan
   "http://www.ctan.org/search/?x=1&PORTAL=on&phrase=%s"
@@ -88,7 +80,6 @@ input.
 #+end_src
 
 *** my config part
-
 #+begin_src emacs-lisp
 ;; general search engines
 (defengine google
@@ -151,6 +142,5 @@ input.
 
 
 * More tips will updated on this post
-
 If anyone suggest more skill tips about learning from diving into source code. I will add
 them at this post.

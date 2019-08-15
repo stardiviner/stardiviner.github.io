@@ -1,4 +1,4 @@
-# Created 2019-05-26 Sun 18:42
+# Created 2019-08-15 Thu 20:25
 #+TITLE: 
 #+AUTHOR: stardiviner
 * Test org-capture template for org-publish blog post convert space into dash

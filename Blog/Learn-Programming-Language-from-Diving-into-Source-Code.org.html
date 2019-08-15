@@ -10,7 +10,11 @@
 <span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">Learn Programming Language from Diving into Source Code
 </span>
 <span class="org-level-1">* Master Core Functions
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">4df69bd2-3b91-4f61-ab75-a7bf83761e1b</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:09&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 If you're a beginner on learning Programming Language, mastering some core and frequently
 used functions is really helpful. This can let you write better code.
 
@@ -19,14 +23,22 @@ a free chance to choose an ebook after filled a form from Manning Publications. 
 this book because I'm learning Clojure, need to master basic of Clojure as a beginner.)
 
 <span class="org-level-1">* Dive into Language Source Code
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">fe16cda6-4303-41ca-9a35-48a8b1e6c854</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:09&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 Programming Language usually has a mechanism to check out source code. For example, Emacs
 Lisp, it can use @@html:&lt;kbd&gt;M-.&lt;/kbd&gt;@@ to jump to function definition. Clojure is same.
 About other languages like Python, Ruby etc. In Emacs also can use @@html:&lt;kbd&gt;M-.&lt;/kbd&gt;@@
 or Emacs extensions to support this.
 
 <span class="org-level-1">* Search code examples on public source code hosting websites
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">225b3e31-c8e2-4e48-b725-1584a3f0dcdf</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:09&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 Learning with examples is helpful for beginner, you can search code on public source code
 hosting websites. Here is my collected list:
 
@@ -55,23 +67,35 @@ hosting websites. Here is my collected list:
 - <span class="org-link"><a href="https://codesearch.debian.net/">https://codesearch.debian.net/</a></span>
 
 <span class="custom">*</span><span class="org-level-2">* Emacs package engine-mode
-</span>
+</span><span class="org-special-keyword">   :PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">6c3ffd6f-1c43-490e-ac65-528c3f03c6dd</span>
+<span class="org-special-keyword">   :END:</span>
+
 Emacs has a package called "<span class="org-verbatim">engine-mode</span>" which can define search engine based on URL by
 replacing query keyword with "<span class="org-code">%s</span>". It is quite quick to use it to open a search query in
 web browser. Even can use <span class="org-code">thing-at-point</span> to get word or symbol at point to avoid manually
 input.
 
 <span class="custom">**</span><span class="org-level-3">* how to define engine
-</span>
+</span><span class="org-special-keyword">    :PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">5771d61a-a49c-49f8-9f9e-d5b762857537</span>
+<span class="org-special-keyword">    :END:</span>
+
 <span class="custom">***</span><span class="org-level-4">* simple
-</span>
+</span><span class="org-special-keyword">     :PROPERTIES:</span>
+     <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">b1d53db2-70c9-400a-8068-87b2b0b59bb4</span>
+<span class="org-special-keyword">     :END:</span>
+
 <span class="org-block-begin-line">#+begin_src emacs-lisp
 </span><span class="org-block">(</span><span class="org-block"><span class="keyword">defengine</span></span><span class="org-block"> github
   </span><span class="org-block"><span class="string">"<a href="https://github.com/search?ref=simplesearch&amp;q=%s">https://github.com/search?ref=simplesearch&amp;q=%s</a>"</span></span><span class="org-block">)
 </span><span class="org-block-end-line">#+end_src
 </span>
 <span class="custom">***</span><span class="org-level-4">* specify key
-</span>
+</span><span class="org-special-keyword">     :PROPERTIES:</span>
+     <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">b4d6e855-00e6-4919-8aa0-2d34bc58f76c</span>
+<span class="org-special-keyword">     :END:</span>
+
 <span class="org-block-begin-line">#+begin_src emacs-lisp
 </span><span class="org-block">(</span><span class="org-block"><span class="keyword">defengine</span></span><span class="org-block"> duckduckgo
   </span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=%s">https://duckduckgo.com/?q=%s</a>"</span></span><span class="org-block">
@@ -79,7 +103,10 @@ input.
 </span><span class="org-block-end-line">#+end_src
 </span>
 <span class="custom">***</span><span class="org-level-4">* specify browser function
-</span>
+</span><span class="org-special-keyword">     :PROPERTIES:</span>
+     <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">cf89a876-7da0-48fc-a1cb-e58270fbead2</span>
+<span class="org-special-keyword">     :END:</span>
+
 <span class="org-block-begin-line">#+begin_src emacs-lisp
 </span><span class="org-block">(</span><span class="org-block"><span class="keyword">defengine</span></span><span class="org-block"> github
   </span><span class="org-block"><span class="string">"<a href="https://github.com/search?ref=simplesearch&amp;q=%s">https://github.com/search?ref=simplesearch&amp;q=%s</a>"</span></span><span class="org-block">
@@ -87,7 +114,10 @@ input.
 </span><span class="org-block-end-line">#+end_src
 </span>
 <span class="custom">***</span><span class="org-level-4">* specify docstring
-</span>
+</span><span class="org-special-keyword">     :PROPERTIES:</span>
+     <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">7c1d115d-c6c7-4bab-aff6-7aa570211df2</span>
+<span class="org-special-keyword">     :END:</span>
+
 <span class="org-block-begin-line">#+begin_src emacs-lisp
 </span><span class="org-block">(</span><span class="org-block"><span class="keyword">defengine</span></span><span class="org-block"> ctan
   </span><span class="org-block"><span class="string">"<a href="http://www.ctan.org/search/?x=1&amp;PORTAL=on&amp;phrase=%s">http://www.ctan.org/search/?x=1&amp;PORTAL=on&amp;phrase=%s</a>"</span></span><span class="org-block">
@@ -95,7 +125,10 @@ input.
 </span><span class="org-block-end-line">#+end_src
 </span>
 <span class="custom">**</span><span class="org-level-3">* my config part
-</span>
+</span><span class="org-special-keyword">    :PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">a8323cd7-a7c8-4347-9e4b-9cffff2c569f</span>
+<span class="org-special-keyword">    :END:</span>
+
 <span class="org-block-begin-line">  #+begin_src emacs-lisp
 </span><span class="org-block">  </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">general search engines
 </span></span><span class="org-block">  (</span><span class="org-block"><span class="keyword">defengine</span></span><span class="org-block"> google
@@ -158,7 +191,11 @@ input.
 </span>
 
 <span class="org-level-1">* More tips will updated on this post
-</span>
+</span><span class="org-special-keyword">  :PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">b38fbf60-66e3-4c18-8069-769b0bc656db</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:09&gt;</span>
+<span class="org-special-keyword">  :END:</span>
+
 If anyone suggest more skill tips about learning from diving into source code. I will add
 them at this post.
 

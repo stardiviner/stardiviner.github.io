@@ -1,4 +1,4 @@
-# Created 2019-05-26 Sun 18:41
+# Created 2019-08-15 Thu 20:23
 #+TITLE: How to Read Code in Emacs
 #+AUTHOR: stardiviner
 
@@ -16,7 +16,6 @@ distinguish code.
 * Navigation
 
 ** Jump to definition of any code
-
 There are some options to select:
 
 - Use text searching tools directly, Emacs =isearch=, =grep=, =ag=, =pt=, =rg= etc.
@@ -27,7 +26,6 @@ There are some options to select:
 - Or even open an class/functions definitions sidebar to have an overview of your code.
 
 ** Jump to definition of thing-at-point
-
 When code definition is not in the same window page area, you want to jump to definition.
 You can use =xref.el= (which is Emacs built-in support now). If you want to keep current
 code viewing, you can create a function to accept universal prefix argument

@@ -1,15 +1,13 @@
-# Created 2019-05-26 Sun 18:41
+# Created 2019-08-15 Thu 20:23
 #+TITLE: upgrade Org link syntax to new
 #+AUTHOR: stardiviner <numbchild@gmail.com>
 
 * which Org version using new link syntax?
-
 Since commit "=a486d9cbd=" in Git repo, Org start this change. You might want to
 check out =ORG-NEWS= file about this.
 
 
 * Conversations in Org Mode mailing list
-
 If you don't want to know the background or already know this background, you
 can just skip bellowing links.
 
@@ -20,12 +18,10 @@ Here is the original discussion in Org Mode mailing list for reference:
 
 
 * How to upgrade Org links to new syntax
-
 If you need this, you must have lot of Org files need to be updated, you will
 not want to do it manually one by one. So here is my way.
 
 ** Using a search tool with wgrep mode
-
 1. I use =rg.el= (you can use any other searching command-line tools like =ag= etc
    if you want, but need be supported by =wgrep=.) to search recursively over my
    ~org-directory~ which is =~/Org/= (I store all Org files in one place for easy
@@ -85,13 +81,11 @@ not want to do it manually one by one. So here is my way.
 6. repeat this step for all searching characters.
 
 ** use org-lint to checking Org file
-
 In latest Org version, there is already support use command =org-lint= to checking
 Org buffer.
 
 
 * At the end
-
 There are might more places have not noticed by me. If you found someplace need
 to be updated, please send email to Org Mode mailing list, or email me is ok.
 

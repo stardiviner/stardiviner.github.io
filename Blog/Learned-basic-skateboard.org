@@ -1,9 +1,8 @@
-# Created 2019-05-26 Sun 18:41
+# Created 2019-08-15 Thu 20:23
 #+TITLE: Learned basic skateboard
 #+AUTHOR: stardiviner
 
 * I want to learn skateboard from colledge
-
 I think skateboard is cool. And it is simpler and portable for walk around. Not
 like roller skating shoes. It is diffcult to switch mode when switching scene. I
 think skateboard is the best fit for my need when I'm in college.
@@ -12,7 +11,6 @@ think skateboard is the best fit for my need when I'm in college.
 鞋，它在切换场景的时候非常不方便。大学的时候我就觉得滑板很适合我的需求了。
 
 * Some points of learning skateboard from zero
-
 - Try to feel your balance on skateboard when you stand on the skateboard.
 - Learn some basic knowledge and watch some simple skateboard videos to have an
   overview of how does it work.

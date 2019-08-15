@@ -1,9 +1,8 @@
-# Created 2019-05-26 Sun 18:41
+# Created 2019-08-15 Thu 20:23
 #+TITLE: Needlework: Setup the sewing machine
 #+AUTHOR: stardiviner
 
 * Handicraft is fun (手工艺是好玩的)
-
 I first learned to cut my own hair by myself abour 3 years ago. Even though it
 is not good enough. But it already works now.
 
@@ -43,7 +42,6 @@ think.
 操作完成。比想的要容易的多。
 
 * Future next handicraft: woodwork (下一样想学习的手工艺： 木工)
-
 I already downloaded some woodwork data sources. Until someday I have this
 motion to start learn. I will be able to make some woodworking in future.
 
