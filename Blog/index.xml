@@ -14,9 +14,9 @@
   <link>https://stardiviner.github.io/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Thu, 15 Aug 2019 20:25:08 +0800</pubDate>
-  <lastBuildDate>Thu, 15 Aug 2019 20:25:08 +0800</lastBuildDate>
-  <generator>Emacs 26.2 Org-mode 9.2.1</generator>
+  <pubDate>Fri, 20 Sep 2019 15:50:57 +0800</pubDate>
+  <lastBuildDate>Fri, 20 Sep 2019 15:50:57 +0800</lastBuildDate>
+  <generator>Emacs 26.3 Org-mode 9.2.1</generator>
   <webMaster>numbchild@gmail.com (stardiviner)</webMaster>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
@@ -28,6 +28,7 @@
     <h2>Table of Contents</h2>
     <div id="text-table-of-contents">
       <ul>
+        <li><a href="#org76becbd">implement H5 jump to WeChat mini program</a></li>
         <li><a href="#org6e9f4ff">Learn video editor Adobe Premiere to edit a WeChat 15s small video</a></li>
         <li><a href="#org412b291">upgrade Org link syntax to new</a></li>
         <li><a href="#org67f401f">Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</a></li>
@@ -46,6 +47,19 @@
       </ul>
     </div>
   </nav>
+
+  <item>
+    <title>implement H5 jump to WeChat mini program</title>
+    <link>https://stardiviner.github.io/index.html#org76becbd</link>
+    <author>numbchild@gmail.com (stardiviner)</author>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org76becbd</guid>
+    <pubDate>Fri, 20 Sep 2019 15:50:00 +0800</pubDate>
+
+    <description><![CDATA[<p>
+    <a href="implement-H5-jump-to-WeChat-mini-program.html">implement H5 jump to WeChat mini program</a>
+    </p>
+    ]]></description>
+  </item>
 
   <item>
     <title>Learn video editor Adobe Premiere to edit a WeChat 15s small video</title>
