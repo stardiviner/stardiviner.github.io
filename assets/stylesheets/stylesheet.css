@@ -515,9 +515,6 @@ pre.src:hover::before {
 
 /* inline code */
 pre > code {
-  border-style: solid;
-  border-color: #ccc;
-  border-radius: 3px;
   /* white neon effect text */
   text-shadow: 0 0 2px rgba(255,255,255,0.7);
 }
