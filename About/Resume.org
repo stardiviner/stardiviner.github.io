@@ -271,5 +271,5 @@ Org export latex -> PDF 的导出来的PDF文件倒是还可以。就是没有�
 
 
 # Local Variables:
-# eval: (org-latex-exp-conf-mode t)
+# eval: (org-latex-export-chinese-conf-mode 1)
 # End:
