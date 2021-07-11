@@ -1,0 +1,8 @@
+# Created 2021-07-11 Sun 15:01
+#+TITLE: stardiviner's site
+#+AUTHOR: stardiviner
+- data
+  - images
+    - [[file:data/images/org-babel-plot-test][org-babel-plot-test]]
+- [[file:2016-04-22 22:54][2016-04-22 22:54]]
+- [[file:index][index]]

@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.56 in css mode. -->
+<html>
+  <head>
+    <title>upgrade-Org-link-syntax-to-new.org</title>
+    <link rel="stylesheet" type="text/css" href="t">
+  </head>
+  <body>
+    <pre>
+<span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">upgrade Org link syntax to new
+</span><span class="org-document-info-keyword">#+AUTHOR:</span> <span class="org-document-info">stardiviner <a href="mailto:numbchild%40gmail.com">&lt;numbchild@gmail.com&gt;</a>
+</span>
+<span class="org-level-1"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-1"> which Org version using new link syntax?
+</span>  <span class="org-drawer">:PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">73b7751f-038f-4c15-bbbf-5b52f95997fd</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:46&gt;</span>
+  <span class="org-drawer">:END:</span>
+
+Since commit "<span class="org-verbatim">a486d9cbd</span>" in Git repo, Org start this change. You might want to
+check out <span class="org-verbatim">ORG-NEWS</span> file about this.
+
+
+<span class="org-level-1"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-1"> Conversations in Org Mode mailing list
+</span>  <span class="org-drawer">:PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">f7c9a782-786f-401c-a911-b8ebd6e099f1</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:46&gt;</span>
+  <span class="org-drawer">:END:</span>
+
+If you don't want to know the background or already know this background, you
+can just skip bellowing links.
+
+Here is the original discussion in Org Mode mailing list for reference:
+
+<span class="org-superstar-item">-</span> [[RFC] Fixing link encoding once and for all](&#61612;)
+<span class="org-superstar-item">-</span> [[ANN] Changes to link syntax](&#61612;)
+
+
+<span class="org-level-1"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-1"> How to upgrade Org links to new syntax
+</span>  <span class="org-drawer">:PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">1a855b98-db9d-4702-9afa-76b39829c171</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:46&gt;</span>
+  <span class="org-drawer">:END:</span>
+  
+If you need this, you must have lot of Org files need to be updated, you will
+not want to do it manually one by one. So here is my way.
+
+<span class="org-superstar-leading">*</span><span class="org-level-2"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-2"> Using a search tool with wgrep mode
+</span>   <span class="org-drawer">:PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">640d5225-d011-42b8-ae5b-3c3953885cd1</span>
+   <span class="org-drawer">:END:</span>
+
+1. I use <span class="org-verbatim">rg.el</span> (you can use any other searching command-line tools like <span class="org-verbatim">ag</span> etc
+   if you want, but need be supported by <span class="org-verbatim">wgrep</span>.) to search recursively over my
+   <span class="org-code">org-directory</span> which is <span class="org-verbatim">~/Org/</span> (I store all Org files in one place for easy
+   backup.). So in Emacs, press command <span class="org-verbatim">[M-x rg]</span> to start search. You need to
+   search all of those urlfied characters "<span class="org-verbatim">%20, %25, %5B and %5D</span>" one by one.
+
+   <span class="bold">NOTE</span>: If your Org files are written in only English language, then that's all
+   characters to search. If you have Chinese text, then you also need to search
+   pattern "<span class="org-verbatim">file:.*%</span>". This pattern will find out all <span class="org-code">file:</span> links contains
+   Chinese text.
+
+2. <span class="org-verbatim">rg</span> is really very fast, I have about 10000 Org files, just spent about more
+   than 1 minute.
+
+3. In the rg searching result buffer, press <span class="org-verbatim">[C-c C-x C-p]</span> to enable <span class="org-verbatim">wgrep-mode</span>.
+
+4. Add Elisp command for update Org link.
+
+   You need to evaluate following elisp code.
+
+<span class="org-block-begin-line">   #+begin_src emacs-lisp
+</span><span class="org-block">   (</span><span class="org-block"><span class="keyword">defun</span></span><span class="org-block"> </span><span class="org-block"><span class="function-name">org-update-link-syntax</span></span><span class="org-block"> (</span><span class="org-block"><span class="type">&amp;optional</span></span><span class="org-block"> no-query)
+     </span><span class="org-block"><span class="doc">"Update syntax for links in current buffer."</span></span><span class="org-block">
+     (</span><span class="org-block"><span class="keyword">interactive</span></span><span class="org-block">)
+     (</span><span class="org-block"><span class="keyword">org-with-point-at</span></span><span class="org-block"> 1
+       (</span><span class="org-block"><span class="keyword">let</span></span><span class="org-block"> ((case-fold-search t))
+         </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">(re-search-forward "\\[\\<a href="^">[[</a></span></span><span class="org-block"><span class="comment"><span class="negation-char"><a href="^">^</a></span></span></span><span class="org-block"><span class="comment"><a href="^">]]</a>*?%\\(?:2[05]\\|5[BD]\\)" nil t) ; safer matching
+</span></span><span class="org-block">         (</span><span class="org-block"><span class="keyword">while</span></span><span class="org-block"> (re-search-forward </span><span class="org-block"><span class="string">"\\[\\<a href="^">[[</a></span></span><span class="org-block"><span class="string"><span class="negation-char"><a href="^">^</a></span></span></span><span class="org-block"><span class="string"><a href="^">]]</a>*?%"</span></span><span class="org-block"> nil t) </span><span class="org-block"><span class="comment-delimiter">; </span></span><span class="org-block"><span class="comment">wider matching
+</span></span><span class="org-block">           (</span><span class="org-block"><span class="keyword">let</span></span><span class="org-block"> ((object (</span><span class="org-block"><span class="keyword">save-match-data</span></span><span class="org-block"> (org-element-context))))
+             (</span><span class="org-block"><span class="keyword">when</span></span><span class="org-block"> (</span><span class="org-block"><span class="keyword">and</span></span><span class="org-block"> (eq 'link (org-element-type object))
+                        (= (match-beginning 0)
+                           (org-element-property </span><span class="org-block"><span class="builtin">:begin</span></span><span class="org-block"> object)))
+               (goto-char (org-element-property </span><span class="org-block"><span class="builtin">:end</span></span><span class="org-block"> object))
+               (</span><span class="org-block"><span class="keyword">let*</span></span><span class="org-block"> ((uri-start (+ 2 (match-beginning 0)))
+                      (uri-end (</span><span class="org-block"><span class="keyword">save-excursion</span></span><span class="org-block">
+                                 (goto-char uri-start)
+                                 (re-search-forward </span><span class="org-block"><span class="string">"\\][][]"</span></span><span class="org-block"> nil t)
+                                 (match-beginning 0)))
+                      (uri (buffer-substring-no-properties uri-start uri-end)))
+                 (</span><span class="org-block"><span class="keyword">when</span></span><span class="org-block">
+                     </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">t ; if you don't want to confirm every one link, just use this t for automatically modify link.
+</span></span><span class="org-block">                   (</span><span class="org-block"><span class="keyword">or</span></span><span class="org-block"> no-query
+                       (y-or-n-p
+                        (format </span><span class="org-block"><span class="string">"Possibly obsolete URI syntax: %S.  Fix? "</span></span><span class="org-block">
+                                uri)))
+                   (</span><span class="org-block"><span class="keyword">setf</span></span><span class="org-block"> (buffer-substring uri-start uri-end)
+                         (org-link-escape (org-link-decode uri)))))))))))
+</span><span class="org-block-end-line">   #+end_src
+</span>
+   <span class="bold">NOTE</span>: If you don't want to confirm every one link, just use the <span class="org-code">t</span> in <span class="org-code">when</span> for
+   automatically modify link.
+
+   <span class="bold">Thanks Nicolas Goaziou for this Elisp code</span>.
+
+5. save all modifications in wgrep with <span class="org-verbatim">[C-x C-s]</span>.
+
+6. repeat this step for all searching characters.
+
+<span class="org-superstar-leading">*</span><span class="org-level-2"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-2"> use org-lint to checking Org file
+</span>   <span class="org-drawer">:PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">3923f696-9c43-4e37-90e2-3052809cab77</span>
+   <span class="org-drawer">:END:</span>
+   
+In latest Org version, there is already support use command <span class="org-verbatim">org-lint</span> to checking
+Org buffer.
+
+
+<span class="org-level-1"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-1"> At the end
+</span>  <span class="org-drawer">:PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">b135cef2-ea39-4834-a37b-422a22db6cb8</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:46&gt;</span>
+  <span class="org-drawer">:END:</span>
+
+There are might more places have not noticed by me. If you found someplace need
+to be updated, please send email to Org Mode mailing list, or email me is ok.
+
+Because I mainly use Chinese text in <span class="org-verbatim">file:</span> link, so that's where I searched.
+Might there are more link types need to searched like <span class="org-verbatim">pdfview:</span> which from
+package <span class="org-verbatim">org-pdfview</span>.
+
+I will update here if there are new updates.
+</pre>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.56 in css mode. -->
+<html>
+  <head>
+    <title>Learn-Programming-Language-from-Diving-into-Source-Code.org</title>
+    <link rel="stylesheet" type="text/css" href="t">
+  </head>
+  <body>
+    <pre>
+<span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">Learn Programming Language from Diving into Source Code
+</span>
+<span class="org-level-1"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-1"> Master Core Functions
+</span>  <span class="org-drawer">:PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">4df69bd2-3b91-4f61-ab75-a7bf83761e1b</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:09&gt;</span>
+  <span class="org-drawer">:END:</span>
+
+If you're a beginner on learning Programming Language, mastering some core and frequently
+used functions is really helpful. This can let you write better code.
+
+This thought is comes from book &lt;[Clojure Standard Library: An annotated reference](&#61612;)&gt;. I get
+a free chance to choose an ebook after filled a form from Manning Publications. (I choose
+this book because I'm learning Clojure, need to master basic of Clojure as a beginner.)
+
+<span class="org-level-1"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-1"> Dive into Language Source Code
+</span>  <span class="org-drawer">:PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">fe16cda6-4303-41ca-9a35-48a8b1e6c854</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:09&gt;</span>
+  <span class="org-drawer">:END:</span>
+
+Programming Language usually has a mechanism to check out source code. For example, Emacs
+Lisp, it can use <span class="comment">@@</span><span class="org-tag">html:</span>&lt;kbd&gt;M-.&lt;/kbd&gt;<span class="comment">@@</span> to jump to function definition. Clojure is same.
+About other languages like Python, Ruby etc. In Emacs also can use <span class="comment">@@</span><span class="org-tag">html:</span>&lt;kbd&gt;M-.&lt;/kbd&gt;<span class="comment">@@</span>
+or Emacs extensions to support this.
+
+<span class="org-level-1"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-1"> Search code examples on public source code hosting websites
+</span>  <span class="org-drawer">:PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">225b3e31-c8e2-4e48-b725-1584a3f0dcdf</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:09&gt;</span>
+  <span class="org-drawer">:END:</span>
+
+Learning with examples is helpful for beginner, you can search code on public source code
+hosting websites. Here is my collected list:
+
+<span class="org-superstar-item">-</span> [Rosetta Code](&#61612;)<span class="org-list-dt"> ::</span> Rosetta Code is a programming chrestomathy site. The idea is to present
+     solutions to the same task in as many different languages as possible, to demonstrate
+     how languages are similar and different, and to aid a person with a grounding in one
+     approach to a problem in learning another. Rosetta Code currently has 874 tasks, 223
+     draft tasks, and is aware of 687 languages, though we do not (and cannot) have
+     solutions to every task in every language.
+
+<span class="org-superstar-item">-</span> [CoCycles](&#61612;)<span class="org-list-dt"> ::</span> search for open source code by functionality.
+<span class="org-superstar-item">-</span> [Sourcegraph](&#61612;)<span class="org-list-dt"> ::</span> search for code, docs, and usage examples.
+
+<span class="org-superstar-item">-</span> [https://github.com/search](&#61450;)
+<span class="org-superstar-item">-</span> [https://bitbucket.org/](&#61809;)
+<span class="org-superstar-item">-</span> [https://cloud.google.com/tools/cloud-repositories/](&#61856;)
+<span class="org-superstar-item">-</span> [https://www.codeplex.com/](&#61612;)
+<span class="org-superstar-item">-</span> [https://gitorious.org/](&#61612;)
+<span class="org-superstar-item">-</span> [https://code.google.com/](&#61856;)
+<span class="org-superstar-item">-</span> [SourceForge](&#61612;)<span class="org-list-dt"> ::</span> The Complete Open-Source Software Platform. Create, collaborate
+     &amp; distribute to over 33 million users worldwide.
+<span class="org-superstar-item">-</span> [http://freecode.com/](&#61612;)
+<span class="org-superstar-item">-</span> [https://gitlab.com/public](&#62102;)
+<span class="org-superstar-item">-</span> [https://www.openhub.net/](&#61612;)
+<span class="org-superstar-item">-</span> [http://sources.debian.net/](&#61612;)
+<span class="org-superstar-item">-</span> [https://codesearch.debian.net/](&#61612;)
+
+<span class="org-superstar-leading">*</span><span class="org-level-2"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-2"> Emacs package engine-mode
+</span>   <span class="org-drawer">:PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">6c3ffd6f-1c43-490e-ac65-528c3f03c6dd</span>
+   <span class="org-drawer">:END:</span>
+
+Emacs has a package called "<span class="org-verbatim">engine-mode</span>" which can define search engine based on URL by
+replacing query keyword with "<span class="org-code">%s</span>". It is quite quick to use it to open a search query in
+web browser. Even can use <span class="org-code">thing-at-point</span> to get word or symbol at point to avoid manually
+input.
+
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> how to define engine
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">5771d61a-a49c-49f8-9f9e-d5b762857537</span>
+    <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">***</span><span class="org-level-4"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-4"> simple
+</span>     <span class="org-drawer">:PROPERTIES:</span>
+     <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">b1d53db2-70c9-400a-8068-87b2b0b59bb4</span>
+     <span class="org-drawer">:END:</span>
+
+<span class="org-block-begin-line">#+begin_src emacs-lisp
+</span><span class="org-block">(defengine github
+  </span><span class="org-block"><span class="string">"<a href="https://github.com/search?ref=simplesearch&amp;q=%s">https://github.com/search?ref=simplesearch&amp;q=%s</a>"</span></span><span class="org-block">)
+</span><span class="org-block-end-line">#+end_src
+</span>
+<span class="org-superstar-leading">***</span><span class="org-level-4"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-4"> specify key
+</span>     <span class="org-drawer">:PROPERTIES:</span>
+     <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">b4d6e855-00e6-4919-8aa0-2d34bc58f76c</span>
+     <span class="org-drawer">:END:</span>
+
+<span class="org-block-begin-line">#+begin_src emacs-lisp
+</span><span class="org-block">(defengine duckduckgo
+  </span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=%s">https://duckduckgo.com/?q=%s</a>"</span></span><span class="org-block">
+  </span><span class="org-block"><span class="builtin">:keybinding</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"d"</span></span><span class="org-block">)
+</span><span class="org-block-end-line">#+end_src
+</span>
+<span class="org-superstar-leading">***</span><span class="org-level-4"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-4"> specify browser function
+</span>     <span class="org-drawer">:PROPERTIES:</span>
+     <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">cf89a876-7da0-48fc-a1cb-e58270fbead2</span>
+     <span class="org-drawer">:END:</span>
+
+<span class="org-block-begin-line">#+begin_src emacs-lisp
+</span><span class="org-block">(defengine github
+  </span><span class="org-block"><span class="string">"<a href="https://github.com/search?ref=simplesearch&amp;q=%s">https://github.com/search?ref=simplesearch&amp;q=%s</a>"</span></span><span class="org-block">
+  </span><span class="org-block"><span class="builtin">:browser</span></span><span class="org-block"> 'eww-browse-url)
+</span><span class="org-block-end-line">#+end_src
+</span>
+<span class="org-superstar-leading">***</span><span class="org-level-4"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-4"> specify docstring
+</span>     <span class="org-drawer">:PROPERTIES:</span>
+     <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">7c1d115d-c6c7-4bab-aff6-7aa570211df2</span>
+     <span class="org-drawer">:END:</span>
+
+<span class="org-block-begin-line">#+begin_src emacs-lisp
+</span><span class="org-block">(defengine ctan
+  </span><span class="org-block"><span class="string">"<a href="http://www.ctan.org/search/?x=1&amp;PORTAL=on&amp;phrase=%s">http://www.ctan.org/search/?x=1&amp;PORTAL=on&amp;phrase=%s</a>"</span></span><span class="org-block">
+  </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Search the Comprehensive TeX Archive Network (ctan.org)"</span></span><span class="org-block">)
+</span><span class="org-block-end-line">#+end_src
+</span>
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> my config part
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">a8323cd7-a7c8-4347-9e4b-9cffff2c569f</span>
+    <span class="org-drawer">:END:</span>
+
+<span class="org-block-begin-line">  #+begin_src emacs-lisp
+</span><span class="org-block">  </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">general search engines
+</span></span><span class="org-block">  (defengine google
+    </span><span class="org-block"><span class="string">"<a href="http://www.google.com/search?ie=utf-8&amp;oe=utf-8&amp;q=%s">http://www.google.com/search?ie=utf-8&amp;oe=utf-8&amp;q=%s</a>"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">"<a href="http://www.google.com/search?q=%s">http://www.google.com/search?q=%s</a>"
+</span></span><span class="org-block">    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Google"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:keybinding</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"g"</span></span><span class="org-block">)
+  (defengine duckduckgo
+    </span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=%s">https://duckduckgo.com/?q=%s</a>"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"DuckDuckGo"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:keybinding</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"d"</span></span><span class="org-block">)
+  (defengine blekko
+    </span><span class="org-block"><span class="string">"<a href="https://blekko.com/#?q=%s">https://blekko.com/#?q=%s</a>"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Blekko"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">:keybinding "B"
+</span></span><span class="org-block">    )
+  (defengine bing
+    </span><span class="org-block"><span class="string">"<a href="http://cn.bing.com/search?q">http://cn.bing.com/search?q</a>="</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Bing"</span></span><span class="org-block">)
+  (defengine baidu
+    </span><span class="org-block"><span class="string">"<a href="http://www.baidu.com/s?wd=%s">http://www.baidu.com/s?wd=%s</a>"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Baidu"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:keybinding</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"b"</span></span><span class="org-block">)
+  
+  </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">Wikipedia
+</span></span><span class="org-block">  (defengine wikipedia
+    </span><span class="org-block"><span class="string">"<a href="http://www.wikipedia.org/search-redirect.php?language=en&amp;go=Go&amp;search=%s">http://www.wikipedia.org/search-redirect.php?language=en&amp;go=Go&amp;search=%s</a>"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Wikipedia"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:keybinding</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"w"</span></span><span class="org-block">)
+  (defengine baidu_baike
+    </span><span class="org-block"><span class="string">"<a href="http://baike.baidu.com/search/none?word=%s">http://baike.baidu.com/search/none?word=%s</a>"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Baidu Baike"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:keybinding</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"W"</span></span><span class="org-block">)
+  (defengine wolfram-alpha
+    </span><span class="org-block"><span class="string">"<a href="http://www.wolframalpha.com/input/?i=%s">http://www.wolframalpha.com/input/?i=%s</a>"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Wolfram Alpha"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:keybinding</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"A"</span></span><span class="org-block">)
+  
+  </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">programming
+</span></span><span class="org-block">  
+  </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">Docs: API
+</span></span><span class="org-block">  (defengine APIs
+    </span><span class="org-block"><span class="string">"<a href="http://apis.io/?search=%s">http://apis.io/?search=%s</a>"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"APIs"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:keybinding</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"a"</span></span><span class="org-block">)
+  (defengine mozilla-developer
+    </span><span class="org-block"><span class="string">"<a href="https://developer.mozilla.org/en-US/search?q=%s">https://developer.mozilla.org/en-US/search?q=%s</a>"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Mozilla Developer"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:keybinding</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"m"</span></span><span class="org-block">)
+  (defengine rfcs
+    </span><span class="org-block"><span class="string">"<a href="http://pretty-rfc.herokuapp.com/search?q=%s">http://pretty-rfc.herokuapp.com/search?q=%s</a>"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">"<a href="https://www.rfc-editor.org/search/rfc_search_detail.php?rfc=%s">https://www.rfc-editor.org/search/rfc_search_detail.php?rfc=%s</a>"
+</span></span><span class="org-block">    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"RFC"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:keybinding</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"R"</span></span><span class="org-block">)
+  (defengine emacswiki
+    </span><span class="org-block"><span class="string">"www.emacswiki.org/emacs?search=%s"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:docstring</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"Emacs Wiki"</span></span><span class="org-block">
+    </span><span class="org-block"><span class="builtin">:keybinding</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"e"</span></span><span class="org-block">)
+</span><span class="org-block-end-line">  #+end_src
+</span>
+
+<span class="org-level-1"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-1"> More tips will updated on this post
+</span>  <span class="org-drawer">:PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">b38fbf60-66e3-4c18-8069-769b0bc656db</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:09&gt;</span>
+  <span class="org-drawer">:END:</span>
+
+If anyone suggest more skill tips about learning from diving into source code. I will add
+them at this post.
+
+</pre>
+  </body>
+</html>

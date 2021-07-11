@@ -1,0 +1,12 @@
+# Created 2021-07-11 Sun 15:01
+#+TITLE: Implement H5 jump to WeChat mini program
+#+AUTHOR: stardiviner
+
+* 使用太阳码
+:PROPERTIES:
+:ID:       b0d38fbf-1124-4b1d-8dd3-2970483514e7
+:END:
+
+[[file:data/b0/d38fbf-1124-4b1d-8dd3-2970483514e7/WeChat_Sun_Code.jpg]]
+
+* 使用JS代码跳转

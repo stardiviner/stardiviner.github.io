@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.56 in css mode. -->
+<html>
+  <head>
+    <title>Literate-Programming-with-Org-Mode.org</title>
+    <link rel="stylesheet" type="text/css" href="t">
+  </head>
+  <body>
+    <pre>
+<span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">Literate Programming with Org Mode
+</span>
+<span class="org-level-1"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-1"> Why Literate Programming?
+</span>  <span class="org-drawer">:PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">fe22d012-f3a5-4d86-81aa-5d94a7456dee</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:08&gt;</span>
+  <span class="org-drawer">:END:</span>
+
+There are lot of data on internet about "Literate Programming" already, I blog about this
+just for personal opinion.
+
+It can organize things better with literal document style. Code is just another kind of
+text or meta-text used to generate other data like text results, tables, images, JSON, XML
+data etc.
+
+Anyway, the start point is that I like Emacs and Org-mode very much, they are powerful,
+organize anything with them can be very flexible. I use Org-mode as the ultimate tool to
+organize knowledge and data as my external brain database, and my other applications of
+Org Mode.
+
+
+<span class="org-level-1"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-1"> How to Literate Programming with Org Mode?
+</span>  <span class="org-drawer">:PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">9436231d-4932-4749-9bb0-7785af55becf</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-date">&lt;2019-08-14 Wed 19:08&gt;</span>
+  <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">*</span><span class="org-level-2"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-2"> LP: organize things in text and code
+</span>   <span class="org-drawer">:PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">7e07417f-cef1-49bd-8703-0ef845001ec2</span>
+   <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">*</span><span class="org-level-2"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-2"> LP: organize logic with "headlines" and "tags"
+</span>   <span class="org-drawer">:PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">06d74faa-da70-407a-a202-77b0f61748ab</span>
+   <span class="org-drawer">:END:</span>
+
+You can navigation and filter Literate Programming document logic with headlines and tags.
+When a file grows large, organize your document with clear structure and better tags group
+is very necessary.
+
+<span class="org-superstar-leading">*</span><span class="org-level-2"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-2"> LP: write code with Org Babel source code blocks
+</span>   <span class="org-drawer">:PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">05476eca-8292-44f8-b2d1-ed6802148604</span>
+   <span class="org-drawer">:END:</span>
+
+Org Mode Babel are technology that can evaluate source code blocks and insert result into
+Org buffer. Babel is powerful by backend with many different programming languages and
+tools. On essention, Babel is send source code block text to another binary to be
+evaluated, then return the result to be inserted in Org buffer.
+
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> LP: support many different languages with Babel languages
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">b1eac9c7-333f-4b25-98a8-5381a0b50ba9</span>
+    <span class="org-drawer">:END:</span>
+
+For now, Org Babel has many languages supported now. Official support in Org-mode packages
+has a lot. Here is my loaded languages alist. They are many more, and you can search in
+Org source code, and GitHub, and maybe somewhere else.
+
+<span class="org-block-begin-line">#+begin_src emacs-lisp :results list
+</span><span class="org-block">org-babel-load-languages
+</span><span class="org-block-end-line">#+end_src
+</span>
+<span class="org-meta-line">#+RESULTS[&lt;2018-05-16 22:33:24&gt; 9e1c07de675e9f640b64e6c91fee8a59f9dae26b]:</span>
+<span class="org-block-begin-line">#+begin_example
+</span><span class="custom">- (sclang . t)
+- (spice . t)
+- (lilypond . t)
+- (smiles . t)
+- (coq . t)
+- (arduino . t)
+- (http . t)
+- (restclient . t)
+- (elasticsearch . t)
+- (prolog . t)
+- (matlab . t)
+- (octave . t)
+- (gnuplot . t)
+- (julia . t)
+- (R . t)
+- (haskell . t)
+- (redis . t)
+- (mongo . t)
+- (sqlite . t)
+- (sql . t)
+- (js . t)
+- (css . t)
+- (php . t)
+- (java . t)
+- (swift . t)
+- (lua . t)
+- (rust . t)
+- (go . t)
+- (C . t)
+- (ruby . t)
+- (python . t)
+- (clojurescript . t)
+- (scheme . t)
+- (lisp . t)
+- (emacs-lisp . t)
+- (makefile . t)
+- (ledger . t)
+- (blockdiag . t)
+- (ditaa . t)
+- (dot . t)
+- (clojure . t)
+- (asymptote . t)
+- (translate . t)
+- (latex . t)
+- (org . t)
+- (shell . t)
+- (calc . t)
+</span><span class="org-block-end-line">#+end_example
+</span>
+<span class="org-superstar-leading">***</span><span class="org-level-4"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-4"> LP: use different languages to processing data in mixture
+</span>     <span class="org-drawer">:PROPERTIES:</span>
+     <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">94039fc1-8a02-4ccf-a5d2-0ec54c0c7b47</span>
+     <span class="org-drawer">:END:</span>
+
+You can process JSON data with JavaScript, then pass result data to Python to process to
+generate XML data, then pass the XML data to gnuplot to generate image result.
+
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> LP: Babel header arguments
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">2a8f8ec9-e4e0-4002-aa56-069a342f480e</span>
+    <span class="org-drawer">:END:</span>
+
+There are many source code block header arguments, you can check out Org Mode Info
+document. And I after some years usage of Org Mode, I found there are some merely used
+header arguments are not mentioned in Org Mode Manual. And some header arguments are
+language specific only.
+
+<span class="org-superstar-leading">*</span><span class="org-level-2"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-2"> LP: separate code logic and reference with "noweb"
+</span>   <span class="org-drawer">:PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">daada930-a7fb-4a06-9839-4420a47a6712</span>
+   <span class="org-drawer">:END:</span>
+
+Tangling functionality is controlled by the tangle family of tangle header
+arguments. These arguments can be used to turn tangling on or off (the default),
+either for the code block or the Org-mode heading level.
+
+The following code blocks demonstrate how to tangle them into a single source
+code file using <span class="org-code">org-babel-tangle</span>.
+
+The following two code blocks have no tangle header arguments and so will not,
+by themselves, create source code files. They are included in the source code
+file by the third code block, which does have a tangle header argument.
+
+In the Org-mode file:
+
+<span class="org-block-begin-line">#+begin_src org
+</span><span class="org-block">,#+name: hello-world-prefix
+,#+begin_src shell :exports none
+  echo "/-----------------------------------------------------------\\"
+,#+end_src
+</span><span class="org-block-end-line">#+end_src
+</span>
+HTML export of code: In the Org-mode file
+
+<span class="org-block-begin-line">#+begin_src org
+</span><span class="org-block">,#+name: hello-world-postfix
+,#+begin_src shell :exports none
+  echo "\-----------------------------------------------------------/"
+,#+end_src
+</span><span class="org-block-end-line">#+end_src
+</span>
+HTML export of code: The third code block does have a tangle header argument
+indicating the name of the file to which the tangled source code will be
+written. It also has Noweb style references to the two previous code blocks.
+These references will be expanded during tangling to include them in the output
+file as well.
+
+In the Org-mode file:
+
+<span class="org-block-begin-line">#+begin_src org
+</span><span class="org-block">,#+name: hello-world
+,#+begin_src shell :tangle hello.sh :exports none :noweb yes
+  </span><span class="org-block"><span class="org-target">&lt;&lt;hello-world-prefix&gt;&gt;</span></span><span class="org-block">
+  echo "|                       hello world                         |"
+  </span><span class="org-block"><span class="org-target">&lt;&lt;hello-world-postfix&gt;&gt;</span></span><span class="org-block">
+,#+end_src
+</span><span class="org-block-end-line">#+end_src
+</span>
+HTML export of code: Calling <span class="org-code">org-babel-tangle</span> will result in the following shell
+source code being written to the <span class="org-code">hello.sh</span> file:
+
+<span class="org-meta-line">#+NAME: hello.sh</span>
+<span class="org-block-begin-line">#+begin_src shell
+</span><span class="org-block"><span class="builtin">echo</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"/-----------------------------------------------------------\\"</span></span><span class="org-block">
+</span><span class="org-block"><span class="builtin">echo</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"|                       hello world                         |"</span></span><span class="org-block">
+</span><span class="org-block"><span class="builtin">echo</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"\-----------------------------------------------------------/"</span></span><span class="org-block">
+</span><span class="org-block-end-line">#+end_src
+</span>
+
+<span class="org-meta-line">#+NAME: hello.sh</span>
+<span class="org-block-begin-line">#+begin_src shell
+</span><span class="org-block"><span class="comment-delimiter">#</span></span><span class="org-block"><span class="comment">!/usr/bin/env sh
+</span></span><span class="org-block">
+</span><span class="org-block"><span class="comment-delimiter"># </span></span><span class="org-block"><span class="comment"><a href="file:~/org/temp/index.org::*Noweb test">[[file:~/org/temp/index.org::*Noweb test][hello-world]]</a>
+</span></span><span class="org-block">
+</span><span class="org-block"><span class="builtin">echo</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"/-----------------------------------------------------------\\"</span></span><span class="org-block">
+</span><span class="org-block"><span class="builtin">echo</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"|                       hello world                         |"</span></span><span class="org-block">
+</span><span class="org-block"><span class="builtin">echo</span></span><span class="org-block"> </span><span class="org-block"><span class="string">"\-----------------------------------------------------------/"</span></span><span class="org-block">
+</span><span class="org-block"><span class="comment-delimiter"># </span></span><span class="org-block"><span class="comment">hello-world ends here
+</span></span><span class="org-block-end-line">#+end_src
+</span>
+In addition, the following syntax can be used to insert the results of
+evaluating a code block, in this case one named example-block.
+
+<span class="org-block-begin-line">#+begin_src org
+</span><span class="org-block"><span class="comment"># &lt;&lt;example-block()&gt;&gt;</span></span><span class="org-block">
+</span><span class="org-block-end-line">#+end_src
+</span>
+Any optional arguments can be passed to <span class="org-code">example-block()</span> by placing the arguments
+inside the parentheses following the convention defined when calling source
+block functions (see the Library of babel). For example,
+
+<span class="org-block-begin-line">#+begin_src org
+</span><span class="org-block"><span class="comment"># &lt;&lt;example-block(a=9)&gt;&gt;</span></span><span class="org-block">
+</span><span class="org-block-end-line">#+end_src
+</span>
+sets the value of argument <span class="org-code">a</span> equal to <span class="org-code">9</span>. Note that these arguments are not
+evaluated in the current source-code block but are passed literally to
+<span class="org-code">example-block()</span>.
+
+<span class="org-superstar-leading">*</span><span class="org-level-2"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-2"> LP: export to source code with "tangling"
+</span>   <span class="org-drawer">:PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">83350f14-12bb-4ede-b8b1-b2c4ec1b7fdb</span>
+   <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> LP: tangle single source code block
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">f7cf5698-02bb-4afe-96b2-eefbc668c3cc</span>
+    <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> LP: tangle the section of headline
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">1d430a6a-dc4d-44d3-9692-d7c305a8f6a3</span>
+    <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> LP: tangle whole file
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">582436f3-89cc-44c1-aef6-44498833925d</span>
+    <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">*</span><span class="org-level-2"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-2"> LP: display result
+</span>   <span class="org-drawer">:PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">6bb1c422-9ba9-4b57-aeab-8474aad9ae66</span>
+   <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> LP: display image result with Org inline image display
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">c39df5f2-4a3b-4acf-a2e2-ec02ab17b97f</span>
+    <span class="org-drawer">:END:</span>
+
+You can manually insert a file link to image file as inline image. You also can let source
+code block generate a file link to plot image file. Toggle inline image display in
+Org-mode with <span class="org-verbatim">[M-x org-display-inline-images]</span>.
+
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> LP: display table result with Org table
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">2d248cb5-fdb4-4b1c-be72-720e47dd96b1</span>
+    <span class="org-drawer">:END:</span>
+
+Org-mode supports table. Support many manipulations. Also there are many advanced usage of
+Org table, like use table as data input for source code block, radio table, etc.
+
+<span class="org-superstar-leading">*</span><span class="org-level-2"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-2"> LP: reference to text, code and each other
+</span>   <span class="org-drawer">:PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">1e1bd0e0-06c8-4617-87e3-83f407b38555</span>
+   <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> text-&gt;code with coderef
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">baf81c8a-cf61-4971-90b3-cf77acc5b10f</span>
+    <span class="org-drawer">:END:</span>
+
+<span class="org-meta-line">#+NAME: hello</span>
+<span class="org-block-begin-line">#+begin_src emacs-lisp
+</span><span class="org-block">(</span><span class="org-block"><span class="keyword">defun</span></span><span class="org-block"> </span><span class="org-block"><span class="function-name">hello</span></span><span class="org-block"> (name)                               </span><span class="org-block"><span class="comment-delimiter">; </span></span><span class="org-block"><span class="comment">(ref:define function hello)
+</span></span><span class="org-block">  (print (format </span><span class="org-block"><span class="string">"Hello, %s"</span></span><span class="org-block"> name)))
+</span><span class="org-block-end-line">#+end_src
+</span>
+<span class="org-link"><a href="(define function hello)">(define function hello)</a></span>
+
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> text-&gt;text with link
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">9b5015bb-b446-4578-9dd7-601889f28a38</span>
+    <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> code-&gt;code with noweb
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">502e7979-5746-4596-be87-257a4882c947</span>
+    <span class="org-drawer">:END:</span>
+
+<span class="org-block-begin-line">#+begin_src emacs-lisp :noweb yes
+</span><span class="org-block">&lt;&lt;hello&gt;&gt;
+
+(hello </span><span class="org-block"><span class="string">"stardiviner"</span></span><span class="org-block">)
+</span><span class="org-block-end-line">#+end_src
+</span>
+<span class="org-meta-line">#+RESULTS[&lt;2018-05-15 17:52:00&gt; 02e3921eec72f7200c882e875e3a26ec1963f443]:</span>
+<span class="org-code">: Hello, stardiviner
+</span>
+<span class="org-superstar-leading">**</span><span class="org-level-3"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-3"> code-&gt;text with link
+</span>    <span class="org-drawer">:PROPERTIES:</span>
+    <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">3b51bf70-f94b-4c51-b19c-97c11aff13eb</span>
+    <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">***</span><span class="org-level-4"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-4"> org-link in source code block comment
+</span>     <span class="org-drawer">:PROPERTIES:</span>
+     <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">6d6d31f4-58a0-4ac2-a84b-735622708875</span>
+     <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-leading">*</span><span class="org-level-2"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-2"> LP: navigation in text and code
+</span>   <span class="org-drawer">:PROPERTIES:</span>
+   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">c2e0e53d-01c3-40f7-9081-6ecd7c0f20c7</span>
+   <span class="org-drawer">:END:</span>
+
+<span class="org-superstar-item">-</span> <span class="org-code">org-babel-goto-named-src-block</span>
+<span class="org-superstar-item">-</span> <span class="org-code">org-babel-goto-named-result</span>
+<span class="org-superstar-item">-</span> <span class="org-code">org-babel-goto-src-block-head</span>
+
+You can jump back in mark ring with <span class="org-verbatim">[M-,]</span> / <span class="org-code">org-mark-ring-goto</span>.
+
+
+<span class="org-level-1"><span class="org-superstar-header-bullet">*</span></span><span class="org-level-1"> </span><span class="org-level-1"><span class="org-todo-keyword-todo">TODO</span></span><span class="org-level-1"> complete this post
+</span>  <span class="org-drawer">:PROPERTIES:</span>
+  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">62431107-1dd5-4e78-ac34-514ed3bed771</span>
+  <span class="org-special-keyword">:PUBDATE:</span>  <span class="org-property-value">&lt;2019-08-14 Wed 19:08&gt;</span>
+  <span class="org-drawer">:END:</span>
+
+Still there are many things need to write. But temporary like this for now.
+</pre>
+  </body>
+</html>
