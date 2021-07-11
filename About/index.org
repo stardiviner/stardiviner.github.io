@@ -44,14 +44,12 @@ Mode)。我的笔记本上安装的是Arch GNU/Linux。这是我从2012年开始
 - Keybase: https://keybase.io/stardiviner
 - Savannah GNU (Emacs): https://savannah.gnu.org/users/stardiviner
 
-
 * Resume
 :PROPERTIES:
 :CUSTOM_ID: Resume
 :END:
 
 [[file:Resume.org][我的在线简历]]
-
 
 * My Tools
 
@@ -83,7 +81,6 @@ Having an awesome desktop is a cool thing.
 #+ATTR_LATEX: :width 5.0in
 #+ATTR_HTML: :width 500px
 [[file:data/images/conky.png]]
-
 
 * Payment
 :PROPERTIES:
@@ -144,7 +141,6 @@ qr7gc5z0zml5g2tj2d88yzxqx7t2wd0gtucugd2fdl
 #+begin_example
 0x04cdae4Db1dbbe29C7F98B6bA14C727Be98f658A
 #+end_example
-
 
 * Nagato Pain
 
