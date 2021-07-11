@@ -50,7 +50,7 @@ variable into Clojure code. Like this:
 ,#+end_src
 
 ,#+RESULTS[<2018-05-17 01:12:55> 73be0ca9a40a4f1e4fdee8e535991955f77b034a]:
-: "/home/stardiviner/Org/Wiki/Computer Technology/Programming/Emacs/Data/Emacs Packages/Org mode/data/images/ob-clojure-literate.png"
+: "/home/stardiviner/Org/Wiki/Computer Technology/Programming/Emacs/data/Emacs Packages/Org mode/data/images/ob-clojure-literate.png"
 #+END_SRC
 
 Then you can use Clojure funciton to save graphics object to target file with
