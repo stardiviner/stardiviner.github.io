@@ -34,7 +34,7 @@ Mode)。我的笔记本上安装的是Arch GNU/Linux。这是我从2012年开始
 - [[https://stardiviner.github.io/][Blog]]
 - [[https://stackexchange.com/users/366399/stardiviner][my Stack Overflow profile]]
 
-* Contact
+* Contact & Profiles
 :PROPERTIES:
 :CUSTOM_ID: Contact
 :END:
@@ -42,6 +42,7 @@ Mode)。我的笔记本上安装的是Arch GNU/Linux。这是我从2012年开始
 - Email: numbchild A/T gmail |. COM
 - IRC: stardiviner on Freenode
 - Keybase: https://keybase.io/stardiviner
+- Savannah GNU (Emacs): https://savannah.gnu.org/users/stardiviner
 
 
 * Resume
