@@ -348,6 +348,9 @@ img {
   border: 3px solid white;
   box-shadow: 12px 10px 1px -3px whitesmoke;
 }
+body img {
+    width: 100%;
+}
 
 /* inline image */
 div.figure {
