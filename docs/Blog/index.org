@@ -1,4 +1,4 @@
-# Created 2021-07-18 Sun 08:35
+# Created 2021-07-18 Sun 09:02
 #+TITLE: An amateurish coder's blog
 #+AUTHOR: stardiviner
 
