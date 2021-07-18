@@ -14,8 +14,8 @@
   <link>https://stardiviner.github.io/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Sun, 11 Jul 2021 15:02:34 +0800</pubDate>
-  <lastBuildDate>Sun, 11 Jul 2021 15:02:34 +0800</lastBuildDate>
+  <pubDate>Sun, 18 Jul 2021 07:56:21 +0800</pubDate>
+  <lastBuildDate>Sun, 18 Jul 2021 07:56:21 +0800</lastBuildDate>
   <generator>Emacs 28.0 Org-mode 9.3.4</generator>
   <webMaster>numbchild@gmail.com (stardiviner)</webMaster>
   <image>
@@ -28,6 +28,7 @@
     <h2>Table of Contents</h2>
     <div id="text-table-of-contents">
       <ul>
+        <li><a href="#org4390a19">现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了</a></li>
         <li><a href="#org8419914">implement H5 jump to WeChat mini program</a></li>
         <li><a href="#orgef8bc6e">Learn video editor Adobe Premiere to edit a WeChat 15s small video</a></li>
         <li><a href="#org2555996">upgrade Org link syntax to new</a></li>
@@ -47,6 +48,25 @@
       </ul>
     </div>
   </nav>
+
+  <item>
+    <title>现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了</title>
+    <link>https://stardiviner.github.io/index.html#org4390a19</link>
+    <author>numbchild@gmail.com (stardiviner)</author>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org4390a19</guid>
+    <pubDate>Sun, 18 Jul 2021 07:56:00 +0800</pubDate>
+
+    <description><![CDATA[<pre class="example">
+    DATE: [2021-07-18 Sun 00:38]
+    ID: 170718D8-0EC1-4604-9510-27B1BF444E2F
+    PUBDATE: <2021-07-18 Sun 07:56>
+    </pre>
+
+    <p>
+    <a href="现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了.html">现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了</a>
+    </p>
+    ]]></description>
+  </item>
 
   <item>
     <title>implement H5 jump to WeChat mini program</title>

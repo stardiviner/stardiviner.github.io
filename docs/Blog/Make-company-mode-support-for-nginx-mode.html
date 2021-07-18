@@ -1,323 +1,721 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<!-- 2021-07-11 Sun 15:01 -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Make company-mode support for nginx-mode</title>
-<meta name="author" content="stardiviner" />
-<meta name="generator" content="Org Mode" />
-<style type="text/css">
-  #content { max-width: 60em; margin: auto; }
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #e6e6e6;
-    border-radius: 3px;
-    background-color: #f2f2f2;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: auto;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    top: -8px;
-    right: 12px;
-    padding: 3px;
-    color: #555;
-    background-color: #f2f2f299;
-  }
-  pre.src:hover:before { display: inline; margin-top: 14px;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
+    <!-- 2021-07-18 Sun 07:53 -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Make company-mode support for nginx-mode</title>
+    <meta name="author" content="stardiviner" />
+    <meta name="generator" content="Org Mode" />
+    <style type="text/css">
+        #content {
+            max-width: 60em;
+            margin: auto;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: .2em;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: medium;
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .todo {
+            font-family: monospace;
+            color: red;
+        }
+
+        .done {
+            font-family: monospace;
+            color: green;
+        }
+
+        .priority {
+            font-family: monospace;
+            color: orange;
+        }
+
+        .tag {
+            background-color: #eee;
+            font-family: monospace;
+            padding: 2px;
+            font-size: 80%;
+            font-weight: normal;
+        }
+
+        .timestamp {
+            color: #bebebe;
+        }
+
+        .timestamp-kwd {
+            color: #5f9ea0;
+        }
+
+        .org-right {
+            margin-left: auto;
+            margin-right: 0px;
+            text-align: right;
+        }
+
+        .org-left {
+            margin-left: 0px;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .org-center {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        #postamble p,
+        #preamble p {
+            font-size: 90%;
+            margin: .2em;
+        }
+
+        p.verse {
+            margin-left: 3%;
+        }
+
+        pre {
+            border: 1px solid #e6e6e6;
+            border-radius: 3px;
+            background-color: #f2f2f2;
+            padding: 8pt;
+            font-family: monospace;
+            overflow: auto;
+            margin: 1.2em;
+        }
+
+        pre.src {
+            position: relative;
+            overflow: auto;
+        }
+
+        pre.src:before {
+            display: none;
+            position: absolute;
+            top: -8px;
+            right: 12px;
+            padding: 3px;
+            color: #555;
+            background-color: #f2f2f299;
+        }
+
+        pre.src:hover:before {
+            display: inline;
+            margin-top: 14px;
+        }
+
+        /* Languages per Org manual */
+        pre.src-asymptote:before {
+            content: 'Asymptote';
+        }
+
+        pre.src-awk:before {
+            content: 'Awk';
+        }
+
+        pre.src-authinfo::before {
+            content: 'Authinfo';
+        }
+
+        pre.src-C:before {
+            content: 'C';
+        }
+
+        /* pre.src-C++ doesn't work in CSS */
+        pre.src-clojure:before {
+            content: 'Clojure';
+        }
+
+        pre.src-css:before {
+            content: 'CSS';
+        }
+
+        pre.src-D:before {
+            content: 'D';
+        }
+
+        pre.src-ditaa:before {
+            content: 'ditaa';
+        }
+
+        pre.src-dot:before {
+            content: 'Graphviz';
+        }
+
+        pre.src-calc:before {
+            content: 'Emacs Calc';
+        }
+
+        pre.src-emacs-lisp:before {
+            content: 'Emacs Lisp';
+        }
+
+        pre.src-fortran:before {
+            content: 'Fortran';
+        }
+
+        pre.src-gnuplot:before {
+            content: 'gnuplot';
+        }
+
+        pre.src-haskell:before {
+            content: 'Haskell';
+        }
+
+        pre.src-hledger:before {
+            content: 'hledger';
+        }
+
+        pre.src-java:before {
+            content: 'Java';
+        }
+
+        pre.src-js:before {
+            content: 'Javascript';
+        }
+
+        pre.src-latex:before {
+            content: 'LaTeX';
+        }
+
+        pre.src-ledger:before {
+            content: 'Ledger';
+        }
+
+        pre.src-lisp:before {
+            content: 'Lisp';
+        }
+
+        pre.src-lilypond:before {
+            content: 'Lilypond';
+        }
+
+        pre.src-lua:before {
+            content: 'Lua';
+        }
+
+        pre.src-matlab:before {
+            content: 'MATLAB';
+        }
+
+        pre.src-mscgen:before {
+            content: 'Mscgen';
+        }
+
+        pre.src-ocaml:before {
+            content: 'Objective Caml';
+        }
+
+        pre.src-octave:before {
+            content: 'Octave';
+        }
+
+        pre.src-org:before {
+            content: 'Org mode';
+        }
+
+        pre.src-oz:before {
+            content: 'OZ';
+        }
+
+        pre.src-plantuml:before {
+            content: 'Plantuml';
+        }
+
+        pre.src-processing:before {
+            content: 'Processing.js';
+        }
+
+        pre.src-python:before {
+            content: 'Python';
+        }
+
+        pre.src-R:before {
+            content: 'R';
+        }
+
+        pre.src-ruby:before {
+            content: 'Ruby';
+        }
+
+        pre.src-sass:before {
+            content: 'Sass';
+        }
+
+        pre.src-scheme:before {
+            content: 'Scheme';
+        }
+
+        pre.src-screen:before {
+            content: 'Gnu Screen';
+        }
+
+        pre.src-sed:before {
+            content: 'Sed';
+        }
+
+        pre.src-sh:before {
+            content: 'shell';
+        }
+
+        pre.src-sql:before {
+            content: 'SQL';
+        }
+
+        pre.src-sqlite:before {
+            content: 'SQLite';
+        }
+
+        /* additional languages in org.el's org-babel-load-languages alist */
+        pre.src-forth:before {
+            content: 'Forth';
+        }
+
+        pre.src-io:before {
+            content: 'IO';
+        }
+
+        pre.src-J:before {
+            content: 'J';
+        }
+
+        pre.src-makefile:before {
+            content: 'Makefile';
+        }
+
+        pre.src-maxima:before {
+            content: 'Maxima';
+        }
+
+        pre.src-perl:before {
+            content: 'Perl';
+        }
+
+        pre.src-picolisp:before {
+            content: 'Pico Lisp';
+        }
+
+        pre.src-scala:before {
+            content: 'Scala';
+        }
+
+        pre.src-shell:before {
+            content: 'Shell Script';
+        }
+
+        pre.src-ebnf2ps:before {
+            content: 'ebfn2ps';
+        }
+
+        /* additional language identifiers per "defun org-babel-execute"
        in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
+        pre.src-cpp:before {
+            content: 'C++';
+        }
+
+        pre.src-abc:before {
+            content: 'ABC';
+        }
+
+        pre.src-coq:before {
+            content: 'Coq';
+        }
+
+        pre.src-groovy:before {
+            content: 'Groovy';
+        }
+
+        /* additional language identifiers from org-babel-shell-names in
      ob-shell.el: ob-shell is the only babel language using a lambda to put
      the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
+        pre.src-bash:before {
+            content: 'bash';
+        }
+
+        pre.src-csh:before {
+            content: 'csh';
+        }
+
+        pre.src-ash:before {
+            content: 'ash';
+        }
+
+        pre.src-dash:before {
+            content: 'dash';
+        }
+
+        pre.src-ksh:before {
+            content: 'ksh';
+        }
+
+        pre.src-mksh:before {
+            content: 'mksh';
+        }
+
+        pre.src-posh:before {
+            content: 'posh';
+        }
+
+        /* Additional Emacs modes also supported by the LaTeX listings package */
+        pre.src-ada:before {
+            content: 'Ada';
+        }
+
+        pre.src-asm:before {
+            content: 'Assembler';
+        }
+
+        pre.src-caml:before {
+            content: 'Caml';
+        }
+
+        pre.src-delphi:before {
+            content: 'Delphi';
+        }
+
+        pre.src-html:before {
+            content: 'HTML';
+        }
+
+        pre.src-idl:before {
+            content: 'IDL';
+        }
+
+        pre.src-mercury:before {
+            content: 'Mercury';
+        }
+
+        pre.src-metapost:before {
+            content: 'MetaPost';
+        }
+
+        pre.src-modula-2:before {
+            content: 'Modula-2';
+        }
+
+        pre.src-pascal:before {
+            content: 'Pascal';
+        }
+
+        pre.src-ps:before {
+            content: 'PostScript';
+        }
+
+        pre.src-prolog:before {
+            content: 'Prolog';
+        }
+
+        pre.src-simula:before {
+            content: 'Simula';
+        }
+
+        pre.src-tcl:before {
+            content: 'tcl';
+        }
+
+        pre.src-tex:before {
+            content: 'TeX';
+        }
+
+        pre.src-plain-tex:before {
+            content: 'Plain TeX';
+        }
+
+        pre.src-verilog:before {
+            content: 'Verilog';
+        }
+
+        pre.src-vhdl:before {
+            content: 'VHDL';
+        }
+
+        pre.src-xml:before {
+            content: 'XML';
+        }
+
+        pre.src-nxml:before {
+            content: 'XML';
+        }
+
+        /* add a generic configuration mode; LaTeX export needs an additional
      (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+        pre.src-conf:before {
+            content: 'Configuration File';
+        }
 
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
-  }
-  .equation {
-    vertical-align: middle;
-  }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-  }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-</style>
-<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="/assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-<script src="/assets/scripts/org-info-src.js">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-// @license-end
-</script>
+        table {
+            border-collapse: collapse;
+        }
 
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-org_html_manager.set("TOC_DEPTH", "3");
-org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
-org_html_manager.set("LINK_UP", "");
-org_html_manager.set("LOCAL_TOC", "3");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "2");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "showall");
-org_html_manager.setup();  // activate after the parameters are set
-// @license-end
-</script>
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
+        caption.t-above {
+            caption-side: top;
+        }
+
+        caption.t-bottom {
+            caption-side: bottom;
+        }
+
+        td,
+        th {
+            vertical-align: top;
+        }
+
+        th.org-right {
+            text-align: center;
+        }
+
+        th.org-left {
+            text-align: center;
+        }
+
+        th.org-center {
+            text-align: center;
+        }
+
+        td.org-right {
+            text-align: right;
+        }
+
+        td.org-left {
+            text-align: left;
+        }
+
+        td.org-center {
+            text-align: center;
+        }
+
+        dt {
+            font-weight: bold;
+        }
+
+        .footpara {
+            display: inline;
+        }
+
+        .footdef {
+            margin-bottom: 1em;
+        }
+
+        .figure {
+            padding: 1em;
+        }
+
+        .figure p {
+            text-align: center;
+        }
+
+        .equation-container {
+            display: table;
+            text-align: center;
+            width: 100%;
+        }
+
+        .equation {
+            vertical-align: middle;
+        }
+
+        .equation-label {
+            display: table-cell;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        .inlinetask {
+            padding: 10px;
+            border: 2px solid gray;
+            margin: 10px;
+            background: #ffffcc;
+        }
+
+        #org-div-home-and-up {
+            text-align: right;
+            font-size: 70%;
+            white-space: nowrap;
+        }
+
+        textarea {
+            overflow-x: auto;
+        }
+
+        .linenr {
+            font-size: smaller
+        }
+
+        .code-highlighted {
+            background-color: #ffff00;
+        }
+
+        .org-info-js_info-navigation {
+            border-style: none;
+        }
+
+        #org-info-js_console-label {
+            font-size: 10px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .org-info-js_search-highlight {
+            background-color: #ffff00;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .org-svg {
+            width: 90%;
+        }
+    </style>
+    <link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16">
+    <link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32">
+    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css" />
+    <link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml">
+    <script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/assets/scripts/main.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="/assets/scripts/org-info-src.js">
+        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+        // @license-end
+    </script>
+
+    <script>
+        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+        org_html_manager.set("TOC_DEPTH", "3");
+        org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
+        org_html_manager.set("LINK_UP", "");
+        org_html_manager.set("LOCAL_TOC", "3");
+        org_html_manager.set("VIEW_BUTTONS", "0");
+        org_html_manager.set("MOUSE_HINT", "underline");
+        org_html_manager.set("FIXED_TOC", "2");
+        org_html_manager.set("TOC", "0");
+        org_html_manager.set("VIEW", "showall");
+        org_html_manager.setup(); // activate after the parameters are set
+        // @license-end
+    </script>
+    <script>
+        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+        function CodeHighlightOn(elem, id) {
+            var target = document.getElementById(id);
+            if (null != target) {
+                elem.classList.add("code-highlighted");
+                target.classList.add("code-highlighted");
+            }
+        }
+
+        function CodeHighlightOff(elem, id) {
+            var target = document.getElementById(id);
+            if (null != target) {
+                elem.classList.remove("code-highlighted");
+                target.classList.remove("code-highlighted");
+            }
+        }
+        // @license-end
+    </script>
 </head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href=""> UP </a>
- |
- <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
-</div><div id="preamble" class="status">
-<div class='nav'>
-  <ul>
-    <li><a href='/'>Home</a></li>
-    <li><a href='/Blog/index.html'>Blog</a></li>
-    <li><a href="/Thought/index.html">Thought</a></li>
-    <li><a href='/Literature/index.html'>文学</a></li>
-    <li><a href='/About/index.html'>About</a></li>
-  </ul>
-</div>
-<div class="epilogue">
-  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
-</div>
-</div>
-<div id="content" class="content">
-<header>
-<h1 class="title">Make company-mode support for nginx-mode</h1>
-</header><nav id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org43d31a2">1. At the beginning</a></li>
-<li><a href="#orgb468878">2. Fetch all Nginx directives</a>
-<ul>
-<li><a href="#orgea3501b">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
-<li><a href="#org065e213">2.2. another Python implementation</a></li>
-</ul>
-</li>
-<li><a href="#org3675482">3. company-keywords-alist</a></li>
-<li><a href="#org8583ce8">4. created package company-nginx</a></li>
-</ul>
-</div>
-</nav>
 
-<div id="outline-container-org43d31a2" class="outline-2">
-<h2 id="org43d31a2"><span class="section-number-2">1.</span> At the beginning</h2>
-<div class="outline-text-2" id="text-1">
-<pre class="example">
+<body>
+    <div id="org-div-home-and-up">
+        <a accesskey="h" href=""> UP </a>
+        |
+        <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
+    </div>
+    <div id="preamble" class="status">
+        <div class='nav'>
+            <ul>
+                <li><a href='/'>Home</a></li>
+                <li><a href='/Blog/index.html'>Blog</a></li>
+                <li><a href="/Thought/index.html">Thought</a></li>
+                <li><a href='/Literature/index.html'>文学</a></li>
+                <li><a href='/About/index.html'>About</a></li>
+            </ul>
+        </div>
+        <div class="epilogue">
+            <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
+        </div>
+    </div>
+    <div id="content" class="content">
+        <header>
+            <h1 class="title">Make company-mode support for nginx-mode</h1>
+        </header>
+        <nav id="table-of-contents">
+            <h2>Table of Contents</h2>
+            <div id="text-table-of-contents">
+                <ul>
+                    <li><a href="#org1bd4043">1. At the beginning</a></li>
+                    <li><a href="#orgef08b50">2. Fetch all Nginx directives</a>
+                        <ul>
+                            <li><a href="#org21c6e1e">2.1. <span class="todo TODO">TODO</span> Elisp implementation</a></li>
+                            <li><a href="#orgd5483dc">2.2. another Python implementation</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#org853e16f">3. company-keywords-alist</a></li>
+                    <li><a href="#orgdd3f408">4. created package company-nginx</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="outline-container-org1bd4043" class="outline-2">
+            <h2 id="org1bd4043"><span class="section-number-2">1.</span> At the beginning</h2>
+            <div class="outline-text-2" id="text-1">
+                <pre class="example">
 ID: 656815d3-f5ed-4d62-944f-9e21c4ef8185
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
 
-<p>
-I'm learning a little about Nginx recently, I hope can setup web server by myself
-when someday I want to build up a website for startup or something else.
-</p>
+                <p>
+                    I'm learning a little about Nginx recently, I hope can setup web server by myself
+                    when someday I want to build up a website for startup or something else.
+                </p>
 
-<p>
-Like Ansible, Terraform, they all have keywords completions support.
-</p>
+                <p>
+                    Like Ansible, Terraform, they all have keywords completions support.
+                </p>
 
-<p>
-Emacs already has an major mode <code>nginx-mode</code>, but it does not provide Nginx directives
-completion. I know <code>company-mode</code> has <code>company-keywords-alist</code>. So I can support for Nginx
-too.
-</p>
-</div>
-</div>
+                <p>
+                    Emacs already has an major mode <code>nginx-mode</code>, but it does not provide Nginx directives
+                    completion. I know <code>company-mode</code> has <code>company-keywords-alist</code>. So I can support for Nginx
+                    too.
+                </p>
+            </div>
+        </div>
 
 
-<div id="outline-container-orgb468878" class="outline-2">
-<h2 id="orgb468878"><span class="section-number-2">2.</span> Fetch all Nginx directives</h2>
-<div class="outline-text-2" id="text-2">
-<pre class="example">
+        <div id="outline-container-orgef08b50" class="outline-2">
+            <h2 id="orgef08b50"><span class="section-number-2">2.</span> Fetch all Nginx directives</h2>
+            <div class="outline-text-2" id="text-2">
+                <pre class="example">
 ID: 63351be9-d9a8-4553-91c8-956bf458cf8a
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
-</div>
+            </div>
 
-<div id="outline-container-orgea3501b" class="outline-3">
-<h3 id="orgea3501b"><span class="section-number-3">2.1.</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
-<div class="outline-text-3" id="text-2-1">
-<pre class="example">
+            <div id="outline-container-org21c6e1e" class="outline-3">
+                <h3 id="org21c6e1e"><span class="section-number-3">2.1.</span> <span class="todo TODO">TODO</span> Elisp implementation</h3>
+                <div class="outline-text-3" id="text-2-1">
+                    <pre class="example">
 ID: 541fd566-a66c-442a-aaf1-3b0939946fea
 </pre>
-<ul class="org-ul">
-<li>State "TODO"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-05-14 Mon 11:08]</span></span></li>
-</ul>
+                    <ul class="org-ul">
+                        <li>State "TODO" from <span class="timestamp-wrapper"><span class="timestamp">[2018-05-14 Mon 11:08]</span></span></li>
+                    </ul>
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span style="color: #707183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">require</span> '<span style="color: var(--clr-constant); background-color: var(--bg-constant);">elquery</span><span style="color: #707183;">)</span></code>
+                    <div class="org-src-container">
+                        <pre class="src src-emacs-lisp"><code><span style="color: #707183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">require</span> '<span style="color: var(--clr-constant); background-color: var(--bg-constant);">elquery</span><span style="color: #707183;">)</span></code>
 <code></code>
 <code><span style="color: #707183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">with-current-buffer</span> <span style="color: #7388D6;">(</span>url-retrieve-synchronously <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://nginx.org/en/docs/dirindex.html"</span><span style="color: #7388D6;">)</span></code>
 <code>  <span style="color: #7388D6;">(</span>message <span style="color: var(--clr-string); background-color: var(--bg-string);">"%S"</span></code>
@@ -331,27 +729,27 @@ ID: 541fd566-a66c-442a-aaf1-3b0939946fea
 <code>               <span style="color: #6276BA;">(</span>buffer-string<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span></code>
 <code>  <span style="color: #7388D6;">(</span>elquery-$ <span style="color: var(--clr-string); background-color: var(--bg-string);">"#content p"</span> html<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </pre>
-</div>
+                    </div>
 
-<p>
-<b>NOTE</b>: This version does not work, because some low-level reason.
-</p>
+                    <p>
+                        <b>NOTE</b>: This version does not work, because some low-level reason.
+                    </p>
 
-<p>
-<a href="https://github.com/AdamNiederer/elquery/issues/5">https://github.com/AdamNiederer/elquery/issues/5</a>
-</p>
-</div>
-</div>
+                    <p>
+                        <a href="https://github.com/AdamNiederer/elquery/issues/5">https://github.com/AdamNiederer/elquery/issues/5</a>
+                    </p>
+                </div>
+            </div>
 
-<div id="outline-container-org065e213" class="outline-3">
-<h3 id="org065e213"><span class="section-number-3">2.2.</span> another Python implementation</h3>
-<div class="outline-text-3" id="text-2-2">
-<pre class="example">
+            <div id="outline-container-orgd5483dc" class="outline-3">
+                <h3 id="orgd5483dc"><span class="section-number-3">2.2.</span> another Python implementation</h3>
+                <div class="outline-text-3" id="text-2-2">
+                    <pre class="example">
 ID: 0d37c0b2-6484-40ab-b29b-045437c7da6c
 </pre>
 
-<div class="org-src-container">
-<pre class="src src-python" id="orgef9e2da"><code><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">import</span> urllib.request</code>
+                    <div class="org-src-container">
+                        <pre class="src src-python" id="org918b034"><code><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">import</span> urllib.request</code>
 <code><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">import</span> urllib.parse</code>
 <code><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">import</span> bs4</code>
 <code></code>
@@ -372,14 +770,14 @@ ID: 0d37c0b2-6484-40ab-b29b-045437c7da6c
 <code></code>
 <code><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">print</span>(directives)</code>
 </pre>
-</div>
+                    </div>
 
-<p>
-Convert result to Elisp list data structure:
-</p>
+                    <p>
+                        Convert result to Elisp list data structure:
+                    </p>
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span style="color: #707183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nginx-directives</code>
+                    <div class="org-src-container">
+                        <pre class="src src-emacs-lisp"><code><span style="color: #707183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nginx-directives</code>
 <code>      <span style="color: #7388D6;">(</span>mapcar</code>
 <code>       <span style="color: #909183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> <span style="color: #709870;">(</span>element<span style="color: #709870;">)</span></code>
 <code>         <span style="color: #709870;">(</span>replace-regexp-in-string <span style="color: var(--clr-string); background-color: var(--bg-string);">" "</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span> element<span style="color: #709870;">)</span><span style="color: #909183;">)</span></code>
@@ -403,9 +801,9 @@ Convert result to Elisp list data structure:
 <code><span style="color: #707183;">(</span>add-to-list 'company-keywords-alist</code>
 <code>             <span style="color: #7388D6;">(</span>cons 'nginx-mode nginx-directives<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </pre>
-</div>
+                    </div>
 
-<pre class="example" id="orgd4c2e0a">
+                    <pre class="example" id="org7aa52ae">
 <code>((nginx-mode "absolute_redirect" "accept_mutex" "accept_mutex_delay" "access_log" "access_log" "add_after_body" "add_before_body" "add_header" "add_trailer" "addition_types" "aio" "aio_write" "alias" "allow" "allow" "ancient_browser" "ancient_browser_value" "api" "auth_basic" "auth_basic_user_file" "auth_http" "auth_http_header" "auth_http_pass_client_cert" "auth_http_timeout" "auth_jwt" "auth_jwt_claim_set" "auth_jwt_header_set" "auth_jwt_key_file" "auth_jwt_leeway" "auth_request" "auth_request_set" "autoindex" "autoindex_exact_size" "autoindex_format" "autoindex_localtime" "break" "charset" "charset_map" "charset_types" "chunked_transfer_encoding" "client_body_buffer_size" "client_body_in_file_only" "client_body_in_single_buffer" "client_body_temp_path" "client_body_timeout" "client_header_buffer_size" "client_header_timeout" "client_max_body_size" "connection_pool_size" "create_full_put_path" "daemon" "dav_access" "dav_methods" "debug_connection" "debug_points" "default_type" "deny" "deny" "directio" "directio_alignment" "disable_symlinks" "empty_gif" "env" "error_log" "error_page" "etag" "events" "expires" "f4f" "f4f_buffer_size" "fastcgi_bind" "fastcgi_buffer_size" "fastcgi_buffering" "fastcgi_buffers" "fastcgi_busy_buffers_size" "fastcgi_cache" "fastcgi_cache_background_update" "fastcgi_cache_bypass" "fastcgi_cache_key" "fastcgi_cache_lock" "fastcgi_cache_lock_age" "fastcgi_cache_lock_timeout" "fastcgi_cache_max_range_offset" "fastcgi_cache_methods" "fastcgi_cache_min_uses" "fastcgi_cache_path" "fastcgi_cache_purge" "fastcgi_cache_revalidate" "fastcgi_cache_use_stale" "fastcgi_cache_valid" "fastcgi_catch_stderr" "fastcgi_connect_timeout" "fastcgi_force_ranges" "fastcgi_hide_header" "fastcgi_ignore_client_abort" "fastcgi_ignore_headers" "fastcgi_index" "fastcgi_intercept_errors" "fastcgi_keep_conn" "fastcgi_limit_rate" "fastcgi_max_temp_file_size" "fastcgi_next_upstream" "fastcgi_next_upstream_timeout" "fastcgi_next_upstream_tries" "fastcgi_no_cache" "fastcgi_param" "fastcgi_pass" "fastcgi_pass_header" "fastcgi_pass_request_body" "fastcgi_pass_request_headers" "fastcgi_read_timeout" "fastcgi_request_buffering" "fastcgi_send_lowat" "fastcgi_send_timeout" "fastcgi_split_path_info" "fastcgi_store" "fastcgi_store_access" "fastcgi_temp_file_write_size" "fastcgi_temp_path" "flv" "geo" "geo" "geoip_city" "geoip_city" "geoip_country" "geoip_country" "geoip_org" "geoip_org" "geoip_proxy" "geoip_proxy_recursive" "google_perftools_profiles" "grpc_bind" "grpc_buffer_size" "grpc_connect_timeout" "grpc_hide_header" "grpc_ignore_headers" "grpc_intercept_errors" "grpc_next_upstream" "grpc_next_upstream_timeout" "grpc_next_upstream_tries" "grpc_pass" "grpc_pass_header" "grpc_read_timeout" "grpc_send_timeout" "grpc_set_header" "grpc_ssl_certificate" "grpc_ssl_certificate_key" "grpc_ssl_ciphers" "grpc_ssl_crl" "grpc_ssl_name" "grpc_ssl_password_file" "grpc_ssl_protocols" "grpc_ssl_server_name" "grpc_ssl_session_reuse" "grpc_ssl_trusted_certificate" "grpc_ssl_verify" "grpc_ssl_verify_depth" "gunzip" "gunzip_buffers" "gzip" "gzip_buffers" "gzip_comp_level" "gzip_disable" "gzip_http_version" "gzip_min_length" "gzip_proxied" "gzip_static" "gzip_types" "gzip_vary" "hash" "hash" "health_check" "health_check" "health_check_timeout" "hls" "hls_buffers" "hls_forward_args" "hls_fragment" "hls_mp4_buffer_size" "hls_mp4_max_buffer_size" "http" "http2_body_preread_size" "http2_chunk_size" "http2_idle_timeout" "http2_max_concurrent_pushes" "http2_max_concurrent_streams" "http2_max_field_size" "http2_max_header_size" "http2_max_requests" "http2_push" "http2_push_preload" "http2_recv_buffer_size" "http2_recv_timeout" "if" "if_modified_since" "ignore_invalid_headers" "image_filter" "image_filter_buffer" "image_filter_interlace" "image_filter_jpeg_quality" "image_filter_sharpen" "image_filter_transparency" "image_filter_webp_quality" "imap_auth" "imap_capabilities" "imap_client_buffer" "include" "index" "internal" "ip_hash" "js_access" "js_content" "js_filter" "js_include" "js_include" "js_preread" "js_set" "js_set" "keepalive" "keepalive_disable" "keepalive_requests" "keepalive_timeout" "keyval" "keyval" "keyval_zone" "keyval_zone" "large_client_header_buffers" "least_conn" "least_conn" "least_time" "least_time" "limit_conn" "limit_conn" "limit_conn_log_level" "limit_conn_log_level" "limit_conn_status" "limit_conn_zone" "limit_conn_zone" "limit_except" "limit_rate" "limit_rate_after" "limit_req" "limit_req_log_level" "limit_req_status" "limit_req_zone" "limit_zone" "lingering_close" "lingering_time" "lingering_timeout" "listen" "listen" "listen" "load_module" "location" "lock_file" "log_format" "log_format" "log_not_found" "log_subrequest" "mail" "map" "map" "map_hash_bucket_size" "map_hash_bucket_size" "map_hash_max_size" "map_hash_max_size" "master_process" "match" "match" "max_ranges" "memcached_bind" "memcached_buffer_size" "memcached_connect_timeout" "memcached_force_ranges" "memcached_gzip_flag" "memcached_next_upstream" "memcached_next_upstream_timeout" "memcached_next_upstream_tries" "memcached_pass" "memcached_read_timeout" "memcached_send_timeout" "merge_slashes" "min_delete_depth" "mirror" "mirror_request_body" "modern_browser" "modern_browser_value" "mp4" "mp4_buffer_size" "mp4_limit_rate" "mp4_limit_rate_after" "mp4_max_buffer_size" "msie_padding" "msie_refresh" "multi_accept" "ntlm" "open_file_cache" "open_file_cache_errors" "open_file_cache_min_uses" "open_file_cache_valid" "open_log_file_cache" "open_log_file_cache" "output_buffers" "override_charset" "pcre_jit" "perl" "perl_modules" "perl_require" "perl_set" "pid" "pop3_auth" "pop3_capabilities" "port_in_redirect" "postpone_output" "preread_buffer_size" "preread_timeout" "protocol" "proxy_bind" "proxy_bind" "proxy_buffer" "proxy_buffer_size" "proxy_buffer_size" "proxy_buffering" "proxy_buffers" "proxy_busy_buffers_size" "proxy_cache" "proxy_cache_background_update" "proxy_cache_bypass" "proxy_cache_convert_head" "proxy_cache_key" "proxy_cache_lock" "proxy_cache_lock_age" "proxy_cache_lock_timeout" "proxy_cache_max_range_offset" "proxy_cache_methods" "proxy_cache_min_uses" "proxy_cache_path" "proxy_cache_purge" "proxy_cache_revalidate" "proxy_cache_use_stale" "proxy_cache_valid" "proxy_connect_timeout" "proxy_connect_timeout" "proxy_cookie_domain" "proxy_cookie_path" "proxy_download_rate" "proxy_force_ranges" "proxy_headers_hash_bucket_size" "proxy_headers_hash_max_size" "proxy_hide_header" "proxy_http_version" "proxy_ignore_client_abort" "proxy_ignore_headers" "proxy_intercept_errors" "proxy_limit_rate" "proxy_max_temp_file_size" "proxy_method" "proxy_next_upstream" "proxy_next_upstream" "proxy_next_upstream_timeout" "proxy_next_upstream_timeout" "proxy_next_upstream_tries" "proxy_next_upstream_tries" "proxy_no_cache" "proxy_pass" "proxy_pass" "proxy_pass_error_message" "proxy_pass_header" "proxy_pass_request_body" "proxy_pass_request_headers" "proxy_protocol" "proxy_protocol_timeout" "proxy_read_timeout" "proxy_redirect" "proxy_request_buffering" "proxy_responses" "proxy_send_lowat" "proxy_send_timeout" "proxy_set_body" "proxy_set_header" "proxy_ssl" "proxy_ssl_certificate" "proxy_ssl_certificate" "proxy_ssl_certificate_key" "proxy_ssl_certificate_key" "proxy_ssl_ciphers" "proxy_ssl_ciphers" "proxy_ssl_crl" "proxy_ssl_crl" "proxy_ssl_name" "proxy_ssl_name" "proxy_ssl_password_file" "proxy_ssl_password_file" "proxy_ssl_protocols" "proxy_ssl_protocols" "proxy_ssl_server_name" "proxy_ssl_server_name" "proxy_ssl_session_reuse" "proxy_ssl_session_reuse" "proxy_ssl_trusted_certificate" "proxy_ssl_trusted_certificate" "proxy_ssl_verify" "proxy_ssl_verify" "proxy_ssl_verify_depth" "proxy_ssl_verify_depth" "proxy_store" "proxy_store_access" "proxy_temp_file_write_size" "proxy_temp_path" "proxy_timeout" "proxy_timeout" "proxy_upload_rate" "queue" "random_index" "read_ahead" "real_ip_header" "real_ip_recursive" "recursive_error_pages" "referer_hash_bucket_size" "referer_hash_max_size" "request_pool_size" "reset_timedout_connection" "resolver" "resolver" "resolver" "resolver_timeout" "resolver_timeout" "resolver_timeout" "return" "return" "rewrite" "rewrite_log" "root" "satisfy" "scgi_bind" "scgi_buffer_size" "scgi_buffering" "scgi_buffers" "scgi_busy_buffers_size" "scgi_cache" "scgi_cache_background_update" "scgi_cache_bypass" "scgi_cache_key" "scgi_cache_lock" "scgi_cache_lock_age" "scgi_cache_lock_timeout" "scgi_cache_max_range_offset" "scgi_cache_methods" "scgi_cache_min_uses" "scgi_cache_path" "scgi_cache_purge" "scgi_cache_revalidate" "scgi_cache_use_stale" "scgi_cache_valid" "scgi_connect_timeout" "scgi_force_ranges" "scgi_hide_header" "scgi_ignore_client_abort" "scgi_ignore_headers" "scgi_intercept_errors" "scgi_limit_rate" "scgi_max_temp_file_size" "scgi_next_upstream" "scgi_next_upstream_timeout" "scgi_next_upstream_tries" "scgi_no_cache" "scgi_param" "scgi_pass" "scgi_pass_header" "scgi_pass_request_body" "scgi_pass_request_headers" "scgi_read_timeout" "scgi_request_buffering" "scgi_send_timeout" "scgi_store" "scgi_store_access" "scgi_temp_file_write_size" "scgi_temp_path" "secure_link" "secure_link_md5" "secure_link_secret" "send_lowat" "send_timeout" "sendfile" "sendfile_max_chunk" "server" "server" "server" "server" "server" "server_name" "server_name" "server_name_in_redirect" "server_names_hash_bucket_size" "server_names_hash_max_size" "server_tokens" "session_log" "session_log_format" "session_log_zone" "set" "set_real_ip_from" "set_real_ip_from" "slice" "smtp_auth" "smtp_capabilities" "smtp_client_buffer" "smtp_greeting_delay" "source_charset" "spdy_chunk_size" "spdy_headers_comp" "split_clients" "split_clients" "ssi" "ssi_last_modified" "ssi_min_file_chunk" "ssi_silent_errors" "ssi_types" "ssi_value_length" "ssl" "ssl" "ssl_buffer_size" "ssl_certificate" "ssl_certificate" "ssl_certificate" "ssl_certificate_key" "ssl_certificate_key" "ssl_certificate_key" "ssl_ciphers" "ssl_ciphers" "ssl_ciphers" "ssl_client_certificate" "ssl_client_certificate" "ssl_client_certificate" "ssl_crl" "ssl_crl" "ssl_crl" "ssl_dhparam" "ssl_dhparam" "ssl_dhparam" "ssl_ecdh_curve" "ssl_ecdh_curve" "ssl_ecdh_curve" "ssl_engine" "ssl_handshake_timeout" "ssl_password_file" "ssl_password_file" "ssl_password_file" "ssl_prefer_server_ciphers" "ssl_prefer_server_ciphers" "ssl_prefer_server_ciphers" "ssl_preread" "ssl_protocols" "ssl_protocols" "ssl_protocols" "ssl_session_cache" "ssl_session_cache" "ssl_session_cache" "ssl_session_ticket_key" "ssl_session_ticket_key" "ssl_session_ticket_key" "ssl_session_tickets" "ssl_session_tickets" "ssl_session_tickets" "ssl_session_timeout" "ssl_session_timeout" "ssl_session_timeout" "ssl_stapling" "ssl_stapling_file" "ssl_stapling_responder" "ssl_stapling_verify" "ssl_trusted_certificate" "ssl_trusted_certificate" "ssl_trusted_certificate" "ssl_verify_client" "ssl_verify_client" "ssl_verify_client" "ssl_verify_depth" "ssl_verify_depth" "ssl_verify_depth" "starttls" "state" "state" "status" "status_format" "status_zone" "sticky" "sticky_cookie_insert" "stream" "stub_status" "sub_filter" "sub_filter_last_modified" "sub_filter_once" "sub_filter_types" "subrequest_output_buffer_size" "tcp_nodelay" "tcp_nodelay" "tcp_nopush" "thread_pool" "timeout" "timer_resolution" "try_files" "types" "types_hash_bucket_size" "types_hash_max_size" "underscores_in_headers" "uninitialized_variable_warn" "upstream" "upstream" "upstream_conf" "use" "user" "userid" "userid_domain" "userid_expires" "userid_mark" "userid_name" "userid_p3p" "userid_path" "userid_service" "uwsgi_bind" "uwsgi_buffer_size" "uwsgi_buffering" "uwsgi_buffers" "uwsgi_busy_buffers_size" "uwsgi_cache" "uwsgi_cache_background_update" "uwsgi_cache_bypass" "uwsgi_cache_key" "uwsgi_cache_lock" "uwsgi_cache_lock_age" "uwsgi_cache_lock_timeout" "uwsgi_cache_max_range_offset" "uwsgi_cache_methods" "uwsgi_cache_min_uses" "uwsgi_cache_path" "uwsgi_cache_purge" "uwsgi_cache_revalidate" "uwsgi_cache_use_stale" "uwsgi_cache_valid" "uwsgi_connect_timeout" "uwsgi_force_ranges" "uwsgi_hide_header" "uwsgi_ignore_client_abort" "uwsgi_ignore_headers" "uwsgi_intercept_errors" "uwsgi_limit_rate" "uwsgi_max_temp_file_size" "uwsgi_modifier1" "uwsgi_modifier2" "uwsgi_next_upstream" "uwsgi_next_upstream_timeout" "uwsgi_next_upstream_tries" "uwsgi_no_cache" "uwsgi_param" "uwsgi_pass" "uwsgi_pass_header" "uwsgi_pass_request_body" "uwsgi_pass_request_headers" "uwsgi_read_timeout" "uwsgi_request_buffering" "uwsgi_send_timeout" "uwsgi_ssl_certificate" "uwsgi_ssl_certificate_key" "uwsgi_ssl_ciphers" "uwsgi_ssl_crl" "uwsgi_ssl_name" "uwsgi_ssl_password_file" "uwsgi_ssl_protocols" "uwsgi_ssl_server_name" "uwsgi_ssl_session_reuse" "uwsgi_ssl_trusted_certificate" "uwsgi_ssl_verify" "uwsgi_ssl_verify_depth" "uwsgi_store" "uwsgi_store_access" "uwsgi_temp_file_write_size" "uwsgi_temp_path" "valid_referers" "variables_hash_bucket_size" "variables_hash_bucket_size" "variables_hash_max_size" "variables_hash_max_size" "worker_aio_requests" "worker_connections" "worker_cpu_affinity" "worker_priority" "worker_processes" "worker_rlimit_core" "worker_rlimit_nofile" "worker_shutdown_timeout" "working_directory" "xclient" "xml_entities" "xslt_last_modified" "xslt_param" "xslt_string_param" "xslt_stylesheet" "xslt_types" "zone" "zone" "zone_sync" "zone_sync_buffers" "zone_sync_connect_retry_interval" "zone_sync_connect_timeout" "zone_sync_interval" "zone_sync_recv_buffer_size" "zone_sync_server" "zone_sync_ssl" "zone_sync_ssl_certificate" "zone_sync_ssl_certificate_key" "zone_sync_ssl_ciphers" "zone_sync_ssl_crl" "zone_sync_ssl_password_file" "zone_sync_ssl_protocols" "zone_sync_ssl_trusted_certificate" "zone_sync_ssl_verify" "zone_sync_ssl_verify_depth" "zone_sync_timeout")</code>
 <code> (cons 'nginx-mode nginx-directives)</code>
 <code> (c++-mode "alignas" "alignof" "asm" "auto" "bool" "break" "case" "catch" "char" "char16_t" "char32_t" "class" "const" "const_cast" "constexpr" "continue" "decltype" "default" "delete" "do" "double" "dynamic_cast" "else" "enum" "explicit" "export" "extern" "false" "final" "float" "for" "friend" "goto" "if" "inline" "int" "long" "mutable" "namespace" "new" "noexcept" "nullptr" "operator" "override" "private" "protected" "public" "register" "reinterpret_cast" "return" "short" "signed" "sizeof" "static" "static_assert" "static_cast" "struct" "switch" "template" "this" "thread_local" "throw" "true" "try" "typedef" "typeid" "typename" "union" "unsigned" "using" "virtual" "void" "volatile" "wchar_t" "while")</code>
@@ -437,21 +835,21 @@ Convert result to Elisp list data structure:
 <code> (ess-julia-mode . julia-mode)</code>
 <code> (enh-ruby-mode . ruby-mode))</code>
 </pre>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
 
 
-<div id="outline-container-org3675482" class="outline-2">
-<h2 id="org3675482"><span class="section-number-2">3.</span> company-keywords-alist</h2>
-<div class="outline-text-2" id="text-3">
-<pre class="example">
+        <div id="outline-container-org853e16f" class="outline-2">
+            <h2 id="org853e16f"><span class="section-number-2">3.</span> company-keywords-alist</h2>
+            <div class="outline-text-2" id="text-3">
+                <pre class="example">
 ID: 49891b01-c0cb-482c-97a1-a95fdd6771a5
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span style="color: #707183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">company-nginx-keywords</span> <span style="color: #7388D6;">()</span></code>
+                <div class="org-src-container">
+                    <pre class="src src-emacs-lisp"><code><span style="color: #707183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">company-nginx-keywords</span> <span style="color: #7388D6;">()</span></code>
 <code>  <span style="color: #7388D6;">(</span>add-to-list 'company-keywords-alist</code>
 <code>               '<span style="color: #909183;">(</span>nginx-mode</code>
 <code>                 <span style="color: var(--clr-string); background-color: var(--bg-string);">"absolute_redirect"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"accept_mutex"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"accept_mutex_delay"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"access_log"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"access_log"</span></code>
@@ -631,70 +1029,71 @@ PUBDATE: <2019-08-14 Wed 19:08>
 <code><span style="color: #707183;">(</span>eval-after-load 'nginx-mode</code>
 <code>  '<span style="color: #7388D6;">(</span>add-hook 'nginx-mode-hook #'company-nginx-keywords<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </pre>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
 
-<div id="outline-container-org8583ce8" class="outline-2">
-<h2 id="org8583ce8"><span class="section-number-2">4.</span> created package company-nginx</h2>
-<div class="outline-text-2" id="text-4">
-<pre class="example">
+        <div id="outline-container-orgdd3f408" class="outline-2">
+            <h2 id="orgdd3f408"><span class="section-number-2">4.</span> created package company-nginx</h2>
+            <div class="outline-text-2" id="text-4">
+                <pre class="example">
 ID: 5857b6a8-8f01-4f98-b42c-a58c3e385017
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
 
-<p>
-In order to share to others, I created a simple package:
-</p>
+                <p>
+                    In order to share to others, I created a simple package:
+                </p>
 
-<p>
-<a href="https://github.com/stardiviner/company-nginx">https://github.com/stardiviner/company-nginx</a>
-</p>
+                <p>
+                    <a href="https://github.com/stardiviner/company-nginx">https://github.com/stardiviner/company-nginx</a>
+                </p>
 
-<p>
-I will push to MELPA.
-</p>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-<footer>
-  Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
-  Last update date: 2019-08-14 Wed 19:08.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.4). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+                <p>
+                    I will push to MELPA.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="postamble" class="status">
+        <footer>
+            Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
+            Last update date: 2021-07-11 Sun 17:23.<br>
+            Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.4). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
-  <!-- RSS -->
-  You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
-  
-  <!-- Show Org Source -->
-  <script>
-   var url = document.location.href;
-   var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
-   function show_org_source(){
-     document.location.href = orgsource;
-   }
-  </script>
-  <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
+            <!-- RSS -->
+            You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
 
-</footer>
+            <!-- Show Org Source -->
+            <script>
+                var url = document.location.href;
+                var orgsource = url.substring(0, url.lastIndexOf(".")) + ".org.html";
 
-<!-- scroll to top -->
-<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
+                function show_org_source() {
+                    document.location.href = orgsource;
+                }
+            </script>
+            <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
 
-<!-- payment -->
-<div class='payment'>
-  <!-- use two inline aligned small thumb QR code image -->
-  <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
+        </footer>
+
+        <!-- scroll to top -->
+        <button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
+
+        <!-- payment -->
+        <div class='payment'>
+            <!-- use two inline aligned small thumb QR code image -->
+            <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
        <div id='wechat-payment'><a href="/About/index.html#Payment"><img src="/assets/images/wechat_payment.png" title="打赏" /></a></div> -->
-  
-  <!-- use a custom reward image to be more friendly -->
-  <div id="payment-icon">
-    <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
-  </div>
-</div>
 
-<!-- Google Analytics -->
-<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+            <!-- use a custom reward image to be more friendly -->
+            <div id="payment-icon">
+                <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
+            </div>
+        </div>
+
+        <!-- Google Analytics -->
+        <!-- <script async src="//www.google-analytics.com/analytics.js"></script>
      <script type="text/javascript">
      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -704,8 +1103,8 @@ I will push to MELPA.
      ga('create', 'UA-63992234-1', 'auto');
      ga('send', 'pageview');
      </script> -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
      <script>
      window.dataLayer = window.dataLayer || [];
      function gtag(){dataLayer.push(arguments);}
@@ -714,8 +1113,8 @@ I will push to MELPA.
      gtag('config', 'UA-63992234-1');
      </script> -->
 
-<!-- Disqus -->
-<!-- <div class="comments">
+        <!-- Disqus -->
+        <!-- <div class="comments">
      <style>
      /* hide comment policy */
      .comment-policy {
@@ -737,6 +1136,7 @@ I will push to MELPA.
      })();
      </script>
      </div> -->
-</div>
+    </div>
 </body>
+
 </html>

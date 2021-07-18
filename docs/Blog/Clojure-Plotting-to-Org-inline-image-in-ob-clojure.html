@@ -1,400 +1,798 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<!-- 2021-07-11 Sun 15:00 -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Clojure Plotting to Org inline image in ob-clojure</title>
-<meta name="author" content="stardiviner" />
-<meta name="generator" content="Org Mode" />
-<style type="text/css">
-  #content { max-width: 60em; margin: auto; }
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #e6e6e6;
-    border-radius: 3px;
-    background-color: #f2f2f2;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: auto;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    top: -8px;
-    right: 12px;
-    padding: 3px;
-    color: #555;
-    background-color: #f2f2f299;
-  }
-  pre.src:hover:before { display: inline; margin-top: 14px;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
+    <!-- 2021-07-18 Sun 07:50 -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clojure Plotting to Org inline image in ob-clojure</title>
+    <meta name="author" content="stardiviner" />
+    <meta name="generator" content="Org Mode" />
+    <style type="text/css">
+        #content {
+            max-width: 60em;
+            margin: auto;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: .2em;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: medium;
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .todo {
+            font-family: monospace;
+            color: red;
+        }
+
+        .done {
+            font-family: monospace;
+            color: green;
+        }
+
+        .priority {
+            font-family: monospace;
+            color: orange;
+        }
+
+        .tag {
+            background-color: #eee;
+            font-family: monospace;
+            padding: 2px;
+            font-size: 80%;
+            font-weight: normal;
+        }
+
+        .timestamp {
+            color: #bebebe;
+        }
+
+        .timestamp-kwd {
+            color: #5f9ea0;
+        }
+
+        .org-right {
+            margin-left: auto;
+            margin-right: 0px;
+            text-align: right;
+        }
+
+        .org-left {
+            margin-left: 0px;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .org-center {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        #postamble p,
+        #preamble p {
+            font-size: 90%;
+            margin: .2em;
+        }
+
+        p.verse {
+            margin-left: 3%;
+        }
+
+        pre {
+            border: 1px solid #e6e6e6;
+            border-radius: 3px;
+            background-color: #f2f2f2;
+            padding: 8pt;
+            font-family: monospace;
+            overflow: auto;
+            margin: 1.2em;
+        }
+
+        pre.src {
+            position: relative;
+            overflow: auto;
+        }
+
+        pre.src:before {
+            display: none;
+            position: absolute;
+            top: -8px;
+            right: 12px;
+            padding: 3px;
+            color: #555;
+            background-color: #f2f2f299;
+        }
+
+        pre.src:hover:before {
+            display: inline;
+            margin-top: 14px;
+        }
+
+        /* Languages per Org manual */
+        pre.src-asymptote:before {
+            content: 'Asymptote';
+        }
+
+        pre.src-awk:before {
+            content: 'Awk';
+        }
+
+        pre.src-authinfo::before {
+            content: 'Authinfo';
+        }
+
+        pre.src-C:before {
+            content: 'C';
+        }
+
+        /* pre.src-C++ doesn't work in CSS */
+        pre.src-clojure:before {
+            content: 'Clojure';
+        }
+
+        pre.src-css:before {
+            content: 'CSS';
+        }
+
+        pre.src-D:before {
+            content: 'D';
+        }
+
+        pre.src-ditaa:before {
+            content: 'ditaa';
+        }
+
+        pre.src-dot:before {
+            content: 'Graphviz';
+        }
+
+        pre.src-calc:before {
+            content: 'Emacs Calc';
+        }
+
+        pre.src-emacs-lisp:before {
+            content: 'Emacs Lisp';
+        }
+
+        pre.src-fortran:before {
+            content: 'Fortran';
+        }
+
+        pre.src-gnuplot:before {
+            content: 'gnuplot';
+        }
+
+        pre.src-haskell:before {
+            content: 'Haskell';
+        }
+
+        pre.src-hledger:before {
+            content: 'hledger';
+        }
+
+        pre.src-java:before {
+            content: 'Java';
+        }
+
+        pre.src-js:before {
+            content: 'Javascript';
+        }
+
+        pre.src-latex:before {
+            content: 'LaTeX';
+        }
+
+        pre.src-ledger:before {
+            content: 'Ledger';
+        }
+
+        pre.src-lisp:before {
+            content: 'Lisp';
+        }
+
+        pre.src-lilypond:before {
+            content: 'Lilypond';
+        }
+
+        pre.src-lua:before {
+            content: 'Lua';
+        }
+
+        pre.src-matlab:before {
+            content: 'MATLAB';
+        }
+
+        pre.src-mscgen:before {
+            content: 'Mscgen';
+        }
+
+        pre.src-ocaml:before {
+            content: 'Objective Caml';
+        }
+
+        pre.src-octave:before {
+            content: 'Octave';
+        }
+
+        pre.src-org:before {
+            content: 'Org mode';
+        }
+
+        pre.src-oz:before {
+            content: 'OZ';
+        }
+
+        pre.src-plantuml:before {
+            content: 'Plantuml';
+        }
+
+        pre.src-processing:before {
+            content: 'Processing.js';
+        }
+
+        pre.src-python:before {
+            content: 'Python';
+        }
+
+        pre.src-R:before {
+            content: 'R';
+        }
+
+        pre.src-ruby:before {
+            content: 'Ruby';
+        }
+
+        pre.src-sass:before {
+            content: 'Sass';
+        }
+
+        pre.src-scheme:before {
+            content: 'Scheme';
+        }
+
+        pre.src-screen:before {
+            content: 'Gnu Screen';
+        }
+
+        pre.src-sed:before {
+            content: 'Sed';
+        }
+
+        pre.src-sh:before {
+            content: 'shell';
+        }
+
+        pre.src-sql:before {
+            content: 'SQL';
+        }
+
+        pre.src-sqlite:before {
+            content: 'SQLite';
+        }
+
+        /* additional languages in org.el's org-babel-load-languages alist */
+        pre.src-forth:before {
+            content: 'Forth';
+        }
+
+        pre.src-io:before {
+            content: 'IO';
+        }
+
+        pre.src-J:before {
+            content: 'J';
+        }
+
+        pre.src-makefile:before {
+            content: 'Makefile';
+        }
+
+        pre.src-maxima:before {
+            content: 'Maxima';
+        }
+
+        pre.src-perl:before {
+            content: 'Perl';
+        }
+
+        pre.src-picolisp:before {
+            content: 'Pico Lisp';
+        }
+
+        pre.src-scala:before {
+            content: 'Scala';
+        }
+
+        pre.src-shell:before {
+            content: 'Shell Script';
+        }
+
+        pre.src-ebnf2ps:before {
+            content: 'ebfn2ps';
+        }
+
+        /* additional language identifiers per "defun org-babel-execute"
        in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
+        pre.src-cpp:before {
+            content: 'C++';
+        }
+
+        pre.src-abc:before {
+            content: 'ABC';
+        }
+
+        pre.src-coq:before {
+            content: 'Coq';
+        }
+
+        pre.src-groovy:before {
+            content: 'Groovy';
+        }
+
+        /* additional language identifiers from org-babel-shell-names in
      ob-shell.el: ob-shell is the only babel language using a lambda to put
      the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
+        pre.src-bash:before {
+            content: 'bash';
+        }
+
+        pre.src-csh:before {
+            content: 'csh';
+        }
+
+        pre.src-ash:before {
+            content: 'ash';
+        }
+
+        pre.src-dash:before {
+            content: 'dash';
+        }
+
+        pre.src-ksh:before {
+            content: 'ksh';
+        }
+
+        pre.src-mksh:before {
+            content: 'mksh';
+        }
+
+        pre.src-posh:before {
+            content: 'posh';
+        }
+
+        /* Additional Emacs modes also supported by the LaTeX listings package */
+        pre.src-ada:before {
+            content: 'Ada';
+        }
+
+        pre.src-asm:before {
+            content: 'Assembler';
+        }
+
+        pre.src-caml:before {
+            content: 'Caml';
+        }
+
+        pre.src-delphi:before {
+            content: 'Delphi';
+        }
+
+        pre.src-html:before {
+            content: 'HTML';
+        }
+
+        pre.src-idl:before {
+            content: 'IDL';
+        }
+
+        pre.src-mercury:before {
+            content: 'Mercury';
+        }
+
+        pre.src-metapost:before {
+            content: 'MetaPost';
+        }
+
+        pre.src-modula-2:before {
+            content: 'Modula-2';
+        }
+
+        pre.src-pascal:before {
+            content: 'Pascal';
+        }
+
+        pre.src-ps:before {
+            content: 'PostScript';
+        }
+
+        pre.src-prolog:before {
+            content: 'Prolog';
+        }
+
+        pre.src-simula:before {
+            content: 'Simula';
+        }
+
+        pre.src-tcl:before {
+            content: 'tcl';
+        }
+
+        pre.src-tex:before {
+            content: 'TeX';
+        }
+
+        pre.src-plain-tex:before {
+            content: 'Plain TeX';
+        }
+
+        pre.src-verilog:before {
+            content: 'Verilog';
+        }
+
+        pre.src-vhdl:before {
+            content: 'VHDL';
+        }
+
+        pre.src-xml:before {
+            content: 'XML';
+        }
+
+        pre.src-nxml:before {
+            content: 'XML';
+        }
+
+        /* add a generic configuration mode; LaTeX export needs an additional
      (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+        pre.src-conf:before {
+            content: 'Configuration File';
+        }
 
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
-  }
-  .equation {
-    vertical-align: middle;
-  }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-  }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-</style>
-<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="/assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-<script src="/assets/scripts/org-info-src.js">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-// @license-end
-</script>
+        table {
+            border-collapse: collapse;
+        }
 
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-org_html_manager.set("TOC_DEPTH", "3");
-org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
-org_html_manager.set("LINK_UP", "");
-org_html_manager.set("LOCAL_TOC", "3");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "2");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "showall");
-org_html_manager.setup();  // activate after the parameters are set
-// @license-end
-</script>
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
+        caption.t-above {
+            caption-side: top;
+        }
+
+        caption.t-bottom {
+            caption-side: bottom;
+        }
+
+        td,
+        th {
+            vertical-align: top;
+        }
+
+        th.org-right {
+            text-align: center;
+        }
+
+        th.org-left {
+            text-align: center;
+        }
+
+        th.org-center {
+            text-align: center;
+        }
+
+        td.org-right {
+            text-align: right;
+        }
+
+        td.org-left {
+            text-align: left;
+        }
+
+        td.org-center {
+            text-align: center;
+        }
+
+        dt {
+            font-weight: bold;
+        }
+
+        .footpara {
+            display: inline;
+        }
+
+        .footdef {
+            margin-bottom: 1em;
+        }
+
+        .figure {
+            padding: 1em;
+        }
+
+        .figure p {
+            text-align: center;
+        }
+
+        .equation-container {
+            display: table;
+            text-align: center;
+            width: 100%;
+        }
+
+        .equation {
+            vertical-align: middle;
+        }
+
+        .equation-label {
+            display: table-cell;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        .inlinetask {
+            padding: 10px;
+            border: 2px solid gray;
+            margin: 10px;
+            background: #ffffcc;
+        }
+
+        #org-div-home-and-up {
+            text-align: right;
+            font-size: 70%;
+            white-space: nowrap;
+        }
+
+        textarea {
+            overflow-x: auto;
+        }
+
+        .linenr {
+            font-size: smaller
+        }
+
+        .code-highlighted {
+            background-color: #ffff00;
+        }
+
+        .org-info-js_info-navigation {
+            border-style: none;
+        }
+
+        #org-info-js_console-label {
+            font-size: 10px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .org-info-js_search-highlight {
+            background-color: #ffff00;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .org-svg {
+            width: 90%;
+        }
+    </style>
+    <link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16">
+    <link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32">
+    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css" />
+    <link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml">
+    <script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/assets/scripts/main.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="/assets/scripts/org-info-src.js">
+        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+        // @license-end
+    </script>
+
+    <script>
+        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+        org_html_manager.set("TOC_DEPTH", "3");
+        org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
+        org_html_manager.set("LINK_UP", "");
+        org_html_manager.set("LOCAL_TOC", "3");
+        org_html_manager.set("VIEW_BUTTONS", "0");
+        org_html_manager.set("MOUSE_HINT", "underline");
+        org_html_manager.set("FIXED_TOC", "2");
+        org_html_manager.set("TOC", "0");
+        org_html_manager.set("VIEW", "showall");
+        org_html_manager.setup(); // activate after the parameters are set
+        // @license-end
+    </script>
+    <script>
+        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+        function CodeHighlightOn(elem, id) {
+            var target = document.getElementById(id);
+            if (null != target) {
+                elem.classList.add("code-highlighted");
+                target.classList.add("code-highlighted");
+            }
+        }
+
+        function CodeHighlightOff(elem, id) {
+            var target = document.getElementById(id);
+            if (null != target) {
+                elem.classList.remove("code-highlighted");
+                target.classList.remove("code-highlighted");
+            }
+        }
+        // @license-end
+    </script>
 </head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href=""> UP </a>
- |
- <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
-</div><div id="preamble" class="status">
-<div class='nav'>
-  <ul>
-    <li><a href='/'>Home</a></li>
-    <li><a href='/Blog/index.html'>Blog</a></li>
-    <li><a href="/Thought/index.html">Thought</a></li>
-    <li><a href='/Literature/index.html'>文学</a></li>
-    <li><a href='/About/index.html'>About</a></li>
-  </ul>
-</div>
-<div class="epilogue">
-  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
-</div>
-</div>
-<div id="content" class="content">
-<header>
-<h1 class="title">Clojure Plotting to Org inline image in ob-clojure</h1>
-</header><nav id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org2b13600">1. The Process of my Clojure Plotting</a>
-<ul>
-<li><a href="#orgfc4fd13">1.1. ask whether Clojure/JVM can change working directory</a></li>
-<li><a href="#orgc7782a3">1.2. I create Org-mode library "<code>ob-clojure-literate</code>" and improve Org Babel "<code>ob-core.el</code>" for plotting support</a></li>
-<li><a href="#orgea9a5c7">1.3. use more better solution by passing target path into Clojure with header argument <code>:var</code></a></li>
-<li><a href="#org5fcaafb">1.4. use final solution by move image file to target path with Clojure function</a></li>
-</ul>
-</li>
-<li><a href="#org970ce86">2. Incanter</a></li>
-<li><a href="#org2ca3549">3. clj-xchart</a></li>
-<li><a href="#orgaade8b7">4. ggplot2</a></li>
-<li><a href="#org02b5999">5. jutsu</a></li>
-<li><a href="#orgc0add37">6. References</a></li>
-<li><a href="#orgec14373">7. Make use of CIDER new support of image content-type</a></li>
-<li><a href="#org2cbaa37">8. Literaral Org-mode version</a></li>
-</ul>
-</div>
-</nav>
 
-<div id="outline-container-org2b13600" class="outline-2">
-<h2 id="org2b13600"><span class="section-number-2">1.</span> The Process of my Clojure Plotting</h2>
-<div class="outline-text-2" id="text-1">
-<pre class="example">
+<body>
+    <div id="org-div-home-and-up">
+        <a accesskey="h" href=""> UP </a>
+        |
+        <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
+    </div>
+    <div id="preamble" class="status">
+        <div class='nav'>
+            <ul>
+                <li><a href='/'>Home</a></li>
+                <li><a href='/Blog/index.html'>Blog</a></li>
+                <li><a href="/Thought/index.html">Thought</a></li>
+                <li><a href='/Literature/index.html'>文学</a></li>
+                <li><a href='/About/index.html'>About</a></li>
+            </ul>
+        </div>
+        <div class="epilogue">
+            <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
+        </div>
+    </div>
+    <div id="content" class="content">
+        <header>
+            <h1 class="title">Clojure Plotting to Org inline image in ob-clojure</h1>
+        </header>
+        <nav id="table-of-contents">
+            <h2>Table of Contents</h2>
+            <div id="text-table-of-contents">
+                <ul>
+                    <li><a href="#org156982c">1. The Process of my Clojure Plotting</a>
+                        <ul>
+                            <li><a href="#org0c347d7">1.1. ask whether Clojure/JVM can change working directory</a></li>
+                            <li><a href="#orgcbc01a3">1.2. I create Org-mode library "<code>ob-clojure-literate</code>" and improve Org Babel "<code>ob-core.el</code>" for plotting support</a></li>
+                            <li><a href="#org375e313">1.3. use more better solution by passing target path into Clojure with header argument <code>:var</code></a></li>
+                            <li><a href="#orgd921472">1.4. use final solution by move image file to target path with Clojure function</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#orgc4f696e">2. Incanter</a></li>
+                    <li><a href="#org7416675">3. clj-xchart</a></li>
+                    <li><a href="#orgc778e7a">4. ggplot2</a></li>
+                    <li><a href="#org307d22c">5. jutsu</a></li>
+                    <li><a href="#orgab4b16d">6. References</a></li>
+                    <li><a href="#orgbe731a2">7. Make use of CIDER new support of image content-type</a></li>
+                    <li><a href="#org2bed40f">8. Literaral Org-mode version</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="outline-container-org156982c" class="outline-2">
+            <h2 id="org156982c"><span class="section-number-2">1.</span> The Process of my Clojure Plotting</h2>
+            <div class="outline-text-2" id="text-1">
+                <pre class="example">
 ID: ea7fb5d6-b228-450f-8bb2-502cd5020404
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
-</div>
+            </div>
 
-<div id="outline-container-orgfc4fd13" class="outline-3">
-<h3 id="orgfc4fd13"><span class="section-number-3">1.1.</span> ask whether Clojure/JVM can change working directory</h3>
-<div class="outline-text-3" id="text-1-1">
-<pre class="example">
+            <div id="outline-container-org0c347d7" class="outline-3">
+                <h3 id="org0c347d7"><span class="section-number-3">1.1.</span> ask whether Clojure/JVM can change working directory</h3>
+                <div class="outline-text-3" id="text-1-1">
+                    <pre class="example">
 ID: c63620be-3661-443f-9251-faa7d4e3666d
 </pre>
 
-<p>
-I did some hard search, found some links
-</p>
+                    <p>
+                        I did some hard search, found some links
+                    </p>
 
-<ul class="org-ul">
-<li><a href="https://stackoverflow.com/questions/840190/changing-the-current-working-directory-in-java">https://stackoverflow.com/questions/840190/changing-the-current-working-directory-in-java</a></li>
-<li><a href="https://stackoverflow.com/questions/19008592/java-change-file-working-directory">https://stackoverflow.com/questions/19008592/java-change-file-working-directory</a></li>
-</ul>
+                    <ul class="org-ul">
+                        <li><a href="https://stackoverflow.com/questions/840190/changing-the-current-working-directory-in-java">https://stackoverflow.com/questions/840190/changing-the-current-working-directory-in-java</a></li>
+                        <li><a href="https://stackoverflow.com/questions/19008592/java-change-file-working-directory">https://stackoverflow.com/questions/19008592/java-change-file-working-directory</a></li>
+                    </ul>
 
-<p>
-Then I found JVM does not allow to change working directory because of security
-reason <a href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688">https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688</a>.
-</p>
+                    <p>
+                        Then I found JVM does not allow to change working directory because of security
+                        reason <a href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688">https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688</a>.
+                    </p>
 
-<p>
-So, there is no reliable way to do this in pure Java. Setting the <code>user.dir</code>
-<i>property</i> via <code>System.setProperty()</code> or <code>java -Duser.dir=...</code> does seem to affect
-subsequent creations of Files, but not e.g. <code>FileOutputStreams</code>.
-</p>
-</div>
-</div>
+                    <p>
+                        So, there is no reliable way to do this in pure Java. Setting the <code>user.dir</code>
+                        <i>property</i> via <code>System.setProperty()</code> or <code>java -Duser.dir=...</code> does seem to affect
+                        subsequent creations of Files, but not e.g. <code>FileOutputStreams</code>.
+                    </p>
+                </div>
+            </div>
 
-<div id="outline-container-orgc7782a3" class="outline-3">
-<h3 id="orgc7782a3"><span class="section-number-3">1.2.</span> I create Org-mode library "<code>ob-clojure-literate</code>" and improve Org Babel "<code>ob-core.el</code>" for plotting support</h3>
-<div class="outline-text-3" id="text-1-2">
-<pre class="example">
+            <div id="outline-container-orgcbc01a3" class="outline-3">
+                <h3 id="orgcbc01a3"><span class="section-number-3">1.2.</span> I create Org-mode library "<code>ob-clojure-literate</code>" and improve Org Babel "<code>ob-core.el</code>" for plotting support</h3>
+                <div class="outline-text-3" id="text-1-2">
+                    <pre class="example">
 ID: 0720a1e8-a039-48e5-8d49-c174b9f4cf64
 </pre>
 
-<p>
-Because changing Clojure/JVM working directory is not available, so I find
-method on Emacs side, Org-mode other Babel lanaguages like R, Python have good
-image file result support. So I dive into source code, and try to add similar
-function to "<code>ob-clojure</code>". But I found some limites, then I created
-"<a href="https://github.com/stardiviner/ob-clojure-literate">ob-clojure-literate (GitHub repo)</a>" (Now it is in
-<a href="https://code.orgmode.org/bzg/org-mode/src/master/contrib/lisp/ob-clojure-literate.el">Org-mode
-contrib lib</a>).
-</p>
-</div>
-</div>
+                    <p>
+                        Because changing Clojure/JVM working directory is not available, so I find
+                        method on Emacs side, Org-mode other Babel lanaguages like R, Python have good
+                        image file result support. So I dive into source code, and try to add similar
+                        function to "<code>ob-clojure</code>". But I found some limites, then I created
+                        "<a href="https://github.com/stardiviner/ob-clojure-literate">ob-clojure-literate (GitHub repo)</a>" (Now it is in
+                        <a href="https://code.orgmode.org/bzg/org-mode/src/master/contrib/lisp/ob-clojure-literate.el">Org-mode
+                            contrib lib</a>).
+                    </p>
+                </div>
+            </div>
 
-<div id="outline-container-orgea9a5c7" class="outline-3">
-<h3 id="orgea9a5c7"><span class="section-number-3">1.3.</span> use more better solution by passing target path into Clojure with header argument <code>:var</code></h3>
-<div class="outline-text-3" id="text-1-3">
-<pre class="example">
+            <div id="outline-container-org375e313" class="outline-3">
+                <h3 id="org375e313"><span class="section-number-3">1.3.</span> use more better solution by passing target path into Clojure with header argument <code>:var</code></h3>
+                <div class="outline-text-3" id="text-1-3">
+                    <pre class="example">
 ID: cc6d0973-7a2a-4dfd-aa09-511142b0692c
 </pre>
 
-<p>
-You can fake change Clojure REPL working directory by passing header argument
-variable into Clojure code. Like this:
-</p>
+                    <p>
+                        You can fake change Clojure REPL working directory by passing header argument
+                        variable into Clojure code. Like this:
+                    </p>
 
-<div class="org-src-container">
-<pre class="src src-org"><code><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results value :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span></code>
+                    <div class="org-src-container">
+                        <pre class="src src-org"><code><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results value :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span></code>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">str</span><span style="color: #000088; background-color: #FFFFE0;"> dir </span><span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-literate.png"</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code><span style="color: #555555; background-color: #E2E1D5;">#+end_src</span></code>
 <code></code>
 <code><span style="color: #008ED1; background-color: #EAEAFF;">#+RESULTS[&lt;2018-05-17 01:12:55&gt; 73be0ca9a40a4f1e4fdee8e535991955f77b034a]:</span></code>
 <code><span style="color: #006400; background-color: #E2E9CB;">: "/home/stardiviner/Org/Wiki/Computer Technology/Programming/Emacs/data/Emacs Packages/Org mode/data/images/ob-clojure-literate.png"</span></code>
 </pre>
-</div>
+                    </div>
 
-<p>
-Then you can use Clojure funciton to save graphics object to target file with
-correct absolute path:
-</p>
+                    <p>
+                        Then you can use Clojure funciton to save graphics object to target file with
+                        correct absolute path:
+                    </p>
 
-<div class="org-src-container">
-<pre class="src src-org"><code><span style="color: #008ED1; background-color: #EAEAFF;">#+HEADERS: :var cwd=(concat (file-name-directory (buffer-file-name)) "data/images/")</span></code>
+                    <div class="org-src-container">
+                        <pre class="src src-org"><code><span style="color: #008ED1; background-color: #EAEAFF;">#+HEADERS: :var cwd=(concat (file-name-directory (buffer-file-name)) "data/images/")</span></code>
 <code><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-literate.png"</span></code>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">use</span><span style="color: #000088; background-color: #FFFFE0;"> '</span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">incanter core stats datasets charts io pdf</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">def</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">hist</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">histogram </span><span style="color: #909183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">sample-normal 1000</span><span style="color: #909183; background-color: #FFFFE0;">)</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">save hist </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">str</span><span style="color: #000088; background-color: #FFFFE0;"> cwd </span><span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-literate.png"</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code><span style="color: #555555; background-color: #E2E1D5;">#+end_src</span></code>
 </pre>
-</div>
+                    </div>
 
-<div class="org-src-container">
-<pre class="src src-clojure"><code><span style="color: #707183;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">use</span> '<span style="color: #7388D6;">(</span>incanter core stats datasets charts io pdf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
+                    <div class="org-src-container">
+                        <pre class="src src-clojure"><code><span style="color: #707183;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">use</span> '<span style="color: #7388D6;">(</span>incanter core stats datasets charts io pdf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 <code><span style="color: #707183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">def</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">hist</span> <span style="color: #7388D6;">(</span>histogram <span style="color: #909183;">(</span>sample-normal 1000<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 <code><span style="color: #707183;">(</span>save hist <span style="color: #7388D6;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">str</span> cwd <span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-literate.png"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </pre>
-</div>
+                    </div>
 
 
-<figure id="orgd5d4a2c">
-<img src="data/images/ob-clojure-literate.png" alt="ob-clojure-literate.png">
+                    <figure id="org6ebd6b0">
+                        <img src="data/images/ob-clojure-literate.png" alt="ob-clojure-literate.png">
 
-</figure>
-</div>
-</div>
+                    </figure>
+                </div>
+            </div>
 
-<div id="outline-container-org5fcaafb" class="outline-3">
-<h3 id="org5fcaafb"><span class="section-number-3">1.4.</span> use final solution by move image file to target path with Clojure function</h3>
-<div class="outline-text-3" id="text-1-4">
-<pre class="example">
+            <div id="outline-container-orgd921472" class="outline-3">
+                <h3 id="orgd921472"><span class="section-number-3">1.4.</span> use final solution by move image file to target path with Clojure function</h3>
+                <div class="outline-text-3" id="text-1-4">
+                    <pre class="example">
 ID: ac0e66d2-e034-45d4-907c-d10a0d413ff2
 </pre>
 
-<div class="org-src-container">
-<pre class="src src-org"><code><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span></code>
+                    <div class="org-src-container">
+                        <pre class="src src-org"><code><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span></code>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">use</span><span style="color: #000088; background-color: #FFFFE0;"> '</span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">incanter core stats datasets charts io pdf</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">import '</span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">java.io File</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code></code>
@@ -403,71 +801,71 @@ ID: ac0e66d2-e034-45d4-907c-d10a0d413ff2
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">.renameTo </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">File. </span><span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-incanter-move.png"</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">File. </span><span style="color: #909183; background-color: #FFFFE0;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">str</span><span style="color: #000088; background-color: #FFFFE0;"> dir </span><span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-incanter-move.png"</span><span style="color: #909183; background-color: #FFFFE0;">)</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code><span style="color: #555555; background-color: #E2E1D5;">#+end_src</span></code>
 </pre>
-</div>
+                    </div>
 
-<div class="org-src-container">
-<pre class="src src-clojure"><code><span style="color: #707183;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">use</span> '<span style="color: #7388D6;">(</span>incanter core stats datasets charts io pdf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
+                    <div class="org-src-container">
+                        <pre class="src src-clojure"><code><span style="color: #707183;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">use</span> '<span style="color: #7388D6;">(</span>incanter core stats datasets charts io pdf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 <code><span style="color: #707183;">(</span>import '<span style="color: #7388D6;">(</span>java.io File<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 <code></code>
 <code><span style="color: #707183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">def</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">hist</span> <span style="color: #7388D6;">(</span>histogram <span style="color: #909183;">(</span>sample-normal 1000<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 <code><span style="color: #707183;">(</span>save hist <span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-incanter-move.png"</span><span style="color: #707183;">)</span></code>
 <code><span style="color: #707183;">(</span>.renameTo <span style="color: #7388D6;">(</span>File. <span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-incanter-move.png"</span><span style="color: #7388D6;">)</span> <span style="color: #7388D6;">(</span>File. <span style="color: #909183;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">str</span> dir <span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-incanter-move.png"</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </pre>
-</div>
+                    </div>
 
 
-<figure id="org554526c">
-<img src="data/images/ob-clojure-incanter-move.png" alt="ob-clojure-incanter-move.png">
+                    <figure id="org301295e">
+                        <img src="data/images/ob-clojure-incanter-move.png" alt="ob-clojure-incanter-move.png">
 
-</figure>
-</div>
-</div>
-</div>
+                    </figure>
+                </div>
+            </div>
+        </div>
 
 
-<div id="outline-container-org970ce86" class="outline-2">
-<h2 id="org970ce86"><span class="section-number-2">2.</span> Incanter</h2>
-<div class="outline-text-2" id="text-2">
-<pre class="example">
+        <div id="outline-container-orgc4f696e" class="outline-2">
+            <h2 id="orgc4f696e"><span class="section-number-2">2.</span> Incanter</h2>
+            <div class="outline-text-2" id="text-2">
+                <pre class="example">
 ID: 147a25a2-ea60-4b37-ae1d-d5a58872908b
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
 
-<div class="org-src-container">
-<pre class="src src-org"><code><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span></code>
+                <div class="org-src-container">
+                    <pre class="src src-org"><code><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span></code>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">use</span><span style="color: #000088; background-color: #FFFFE0;"> '</span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">incanter core stats datasets charts io pdf</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">def</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">hist</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">histogram </span><span style="color: #909183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">sample-normal 1000</span><span style="color: #909183; background-color: #FFFFE0;">)</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #000088; background-color: #FFFFE0;">save hist </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">str</span><span style="color: #000088; background-color: #FFFFE0;"> dir </span><span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-literate.png"</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code><span style="color: #555555; background-color: #E2E1D5;">#+end_src</span></code>
 </pre>
-</div>
+                </div>
 
-<div class="org-src-container">
-<pre class="src src-clojure"><code><span style="color: #707183;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">use</span> '<span style="color: #7388D6;">(</span>incanter core stats datasets charts io pdf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
+                <div class="org-src-container">
+                    <pre class="src src-clojure"><code><span style="color: #707183;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">use</span> '<span style="color: #7388D6;">(</span>incanter core stats datasets charts io pdf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 <code><span style="color: #707183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">def</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">hist</span> <span style="color: #7388D6;">(</span>histogram <span style="color: #909183;">(</span>sample-normal 1000<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 <code><span style="color: #707183;">(</span>save hist <span style="color: #7388D6;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">str</span> dir <span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-literate.png"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </pre>
-</div>
+                </div>
 
 
-<figure id="org3733d67">
-<img src="data/images/ob-clojure-literate.png" alt="ob-clojure-literate.png">
+                <figure id="org486295b">
+                    <img src="data/images/ob-clojure-literate.png" alt="ob-clojure-literate.png">
 
-</figure>
-</div>
-</div>
+                </figure>
+            </div>
+        </div>
 
 
-<div id="outline-container-org2ca3549" class="outline-2">
-<h2 id="org2ca3549"><span class="section-number-2">3.</span> clj-xchart</h2>
-<div class="outline-text-2" id="text-3">
-<pre class="example">
+        <div id="outline-container-org7416675" class="outline-2">
+            <h2 id="org7416675"><span class="section-number-2">3.</span> clj-xchart</h2>
+            <div class="outline-text-2" id="text-3">
+                <pre class="example">
 ID: 75039b3a-a2ef-40b8-89fa-2522728deb59
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
 
-<div class="org-src-container">
-<pre class="src src-org"><code><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span></code>
+                <div class="org-src-container">
+                    <pre class="src src-org"><code><span style="color: #555555; background-color: #E2E1D5;">#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span></code>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">require</span><span style="color: #000088; background-color: #FFFFE0;"> '</span><span style="color: #7388D6; background-color: #FFFFE0;">[</span><span style="color: #000088; background-color: #FFFFE0;">com.hypirion.clj-xchart </span><span style="color: #D0372D; background-color: #FFFFE0;">:as</span><span style="color: #000088; background-color: #FFFFE0;"> xchart</span><span style="color: #7388D6; background-color: #FFFFE0;">]</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code></code>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">def</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">ob-clojure-clj-xchart</span></code>
@@ -478,10 +876,10 @@ PUBDATE: <2019-08-14 Wed 19:08>
 <code><span style="color: #707183; background-color: #FFFFE0;">(</span><span style="color: #6434A3; background-color: #FFFFE0;">xchart</span><span style="color: #000088; background-color: #FFFFE0;">/</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">spit</span><span style="color: #000088; background-color: #FFFFE0;"> ob-clojure-clj-xchart </span><span style="color: #7388D6; background-color: #FFFFE0;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">str</span><span style="color: #000088; background-color: #FFFFE0;"> dir </span><span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-clj-xchart.png"</span><span style="color: #7388D6; background-color: #FFFFE0;">)</span><span style="color: #707183; background-color: #FFFFE0;">)</span></code>
 <code><span style="color: #555555; background-color: #E2E1D5;">#+end_src</span></code>
 </pre>
-</div>
+                </div>
 
-<div class="org-src-container">
-<pre class="src src-clojure"><code><span style="color: #707183;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">require</span> '<span style="color: #7388D6;">[</span>com.hypirion.clj-xchart <span style="color: #D0372D;">:as</span> xchart<span style="color: #7388D6;">]</span><span style="color: #707183;">)</span></code>
+                <div class="org-src-container">
+                    <pre class="src src-clojure"><code><span style="color: #707183;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">require</span> '<span style="color: #7388D6;">[</span>com.hypirion.clj-xchart <span style="color: #D0372D;">:as</span> xchart<span style="color: #7388D6;">]</span><span style="color: #707183;">)</span></code>
 <code></code>
 <code><span style="color: #707183;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">def</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">ob-clojure-clj-xchart</span></code>
 <code>  <span style="color: #7388D6;">(</span><span style="color: #6434A3;">xchart</span>/xy-chart <span style="color: #909183;">{</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Expected rate"</span> <span style="color: #709870;">[</span><span style="color: #907373;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">range</span> 10<span style="color: #907373;">)</span> <span style="color: #907373;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">range</span> 10<span style="color: #907373;">)</span><span style="color: #709870;">]</span></code>
@@ -490,137 +888,138 @@ PUBDATE: <2019-08-14 Wed 19:08>
 <code><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(xchart/view ob-clojure-clj-xchart)</span></code>
 <code><span style="color: #707183;">(</span><span style="color: #6434A3;">xchart</span>/<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">spit</span> ob-clojure-clj-xchart <span style="color: #7388D6;">(</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">str</span> dir <span style="color: var(--clr-string); background-color: var(--bg-string);">"ob-clojure-clj-xchart.png"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </pre>
-</div>
+                </div>
 
 
-<figure id="org3ee39fc">
-<img src="data/images/ob-clojure-clj-xchart.png" alt="ob-clojure-clj-xchart.png">
+                <figure id="orgc2f4b40">
+                    <img src="data/images/ob-clojure-clj-xchart.png" alt="ob-clojure-clj-xchart.png">
 
-</figure>
-</div>
-</div>
+                </figure>
+            </div>
+        </div>
 
 
-<div id="outline-container-orgaade8b7" class="outline-2">
-<h2 id="orgaade8b7"><span class="section-number-2">4.</span> ggplot2</h2>
-<div class="outline-text-2" id="text-4">
-<pre class="example">
+        <div id="outline-container-orgc778e7a" class="outline-2">
+            <h2 id="orgc778e7a"><span class="section-number-2">4.</span> ggplot2</h2>
+            <div class="outline-text-2" id="text-4">
+                <pre class="example">
 ID: 1e093992-48d3-4936-888b-8f1d229ae1d2
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
-</div>
-</div>
+            </div>
+        </div>
 
 
 
 
-<div id="outline-container-org02b5999" class="outline-2">
-<h2 id="org02b5999"><span class="section-number-2">5.</span> jutsu</h2>
-<div class="outline-text-2" id="text-5">
-<pre class="example">
+        <div id="outline-container-org307d22c" class="outline-2">
+            <h2 id="org307d22c"><span class="section-number-2">5.</span> jutsu</h2>
+            <div class="outline-text-2" id="text-5">
+                <pre class="example">
 ID: bda68b36-d3ee-4e74-899b-187837ceaac0
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
-</div>
-</div>
+            </div>
+        </div>
 
 
 
-<div id="outline-container-orgc0add37" class="outline-2">
-<h2 id="orgc0add37"><span class="section-number-2">6.</span> References</h2>
-<div class="outline-text-2" id="text-6">
-<pre class="example">
+        <div id="outline-container-orgab4b16d" class="outline-2">
+            <h2 id="orgab4b16d"><span class="section-number-2">6.</span> References</h2>
+            <div class="outline-text-2" id="text-6">
+                <pre class="example">
 ID: 86190f87-a4d6-4364-8b7b-560b13252e4f
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
 
-<p>
-I also posted this method on Org Mode Worg documentations:
-<a href="https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html">https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html</a>
-</p>
-</div>
-</div>
+                <p>
+                    I also posted this method on Org Mode Worg documentations:
+                    <a href="https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html">https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html</a>
+                </p>
+            </div>
+        </div>
 
 
-<div id="outline-container-orgec14373" class="outline-2">
-<h2 id="orgec14373"><span class="section-number-2">7.</span> Make use of CIDER new support of image content-type</h2>
-<div class="outline-text-2" id="text-7">
-<pre class="example">
+        <div id="outline-container-orgbe731a2" class="outline-2">
+            <h2 id="orgbe731a2"><span class="section-number-2">7.</span> Make use of CIDER new support of image content-type</h2>
+            <div class="outline-text-2" id="text-7">
+                <pre class="example">
 ID: 20bedc46-cea4-488b-ba17-d46552ea513d
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
 
-<p>
-Since the PR <a href="https://github.com/clojure-emacs/cider-nrepl/pull/517">https://github.com/clojure-emacs/cider-nrepl/pull/517</a> got merged
-into CIDER. It is realsed in CIDER 0.17 (Andalucía).
-</p>
+                <p>
+                    Since the PR <a href="https://github.com/clojure-emacs/cider-nrepl/pull/517">https://github.com/clojure-emacs/cider-nrepl/pull/517</a> got merged
+                    into CIDER. It is realsed in CIDER 0.17 (Andalucía).
+                </p>
 
-<p>
-CIDER in Emacs can handle various image content-types now and render image in
-the REPL.
-</p>
+                <p>
+                    CIDER in Emacs can handle various image content-types now and render image in
+                    the REPL.
+                </p>
 
-<p>
-I'm considering how to integrate this feature into <code>ob-clojure.el</code> to save image
-content-type as file.
-</p>
-</div>
-</div>
+                <p>
+                    I'm considering how to integrate this feature into <code>ob-clojure.el</code> to save image
+                    content-type as file.
+                </p>
+            </div>
+        </div>
 
 
-<div id="outline-container-org2cbaa37" class="outline-2">
-<h2 id="org2cbaa37"><span class="section-number-2">8.</span> Literaral Org-mode version</h2>
-<div class="outline-text-2" id="text-8">
-<pre class="example">
+        <div id="outline-container-org2bed40f" class="outline-2">
+            <h2 id="org2bed40f"><span class="section-number-2">8.</span> Literaral Org-mode version</h2>
+            <div class="outline-text-2" id="text-8">
+                <pre class="example">
 ID: 57506a9a-3534-40ca-aef2-59b12d66fdc8
 PUBDATE: <2019-08-14 Wed 19:08>
 </pre>
 
-<p>
-If you want to see Literal Org-mode version of this post, click the "Show Org
-Source" button!
-</p>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-<footer>
-  Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
-  Last update date: 2021-05-05 Wed 22:54.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.4). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+                <p>
+                    If you want to see Literal Org-mode version of this post, click the "Show Org
+                    Source" button!
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="postamble" class="status">
+        <footer>
+            Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
+            Last update date: 2021-07-11 Sun 17:23.<br>
+            Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.4). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
-  <!-- RSS -->
-  You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
-  
-  <!-- Show Org Source -->
-  <script>
-   var url = document.location.href;
-   var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
-   function show_org_source(){
-     document.location.href = orgsource;
-   }
-  </script>
-  <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
+            <!-- RSS -->
+            You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
 
-</footer>
+            <!-- Show Org Source -->
+            <script>
+                var url = document.location.href;
+                var orgsource = url.substring(0, url.lastIndexOf(".")) + ".org.html";
 
-<!-- scroll to top -->
-<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
+                function show_org_source() {
+                    document.location.href = orgsource;
+                }
+            </script>
+            <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
 
-<!-- payment -->
-<div class='payment'>
-  <!-- use two inline aligned small thumb QR code image -->
-  <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
+        </footer>
+
+        <!-- scroll to top -->
+        <button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
+
+        <!-- payment -->
+        <div class='payment'>
+            <!-- use two inline aligned small thumb QR code image -->
+            <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
        <div id='wechat-payment'><a href="/About/index.html#Payment"><img src="/assets/images/wechat_payment.png" title="打赏" /></a></div> -->
-  
-  <!-- use a custom reward image to be more friendly -->
-  <div id="payment-icon">
-    <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
-  </div>
-</div>
 
-<!-- Google Analytics -->
-<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+            <!-- use a custom reward image to be more friendly -->
+            <div id="payment-icon">
+                <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
+            </div>
+        </div>
+
+        <!-- Google Analytics -->
+        <!-- <script async src="//www.google-analytics.com/analytics.js"></script>
      <script type="text/javascript">
      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -630,8 +1029,8 @@ Source" button!
      ga('create', 'UA-63992234-1', 'auto');
      ga('send', 'pageview');
      </script> -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
      <script>
      window.dataLayer = window.dataLayer || [];
      function gtag(){dataLayer.push(arguments);}
@@ -640,8 +1039,8 @@ Source" button!
      gtag('config', 'UA-63992234-1');
      </script> -->
 
-<!-- Disqus -->
-<!-- <div class="comments">
+        <!-- Disqus -->
+        <!-- <div class="comments">
      <style>
      /* hide comment policy */
      .comment-policy {
@@ -663,6 +1062,7 @@ Source" button!
      })();
      </script>
      </div> -->
-</div>
+    </div>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-# Created 2021-07-11 Sun 15:02
+# Created 2021-07-18 Sun 07:55
 #+TITLE: upgrade Org link syntax to new
 #+AUTHOR: stardiviner <numbchild@gmail.com>
 

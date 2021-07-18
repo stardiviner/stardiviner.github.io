@@ -1,4 +1,4 @@
-# Created 2021-07-11 Sun 15:00
+# Created 2021-07-18 Sun 07:50
 #+TITLE: Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
 #+AUTHOR: stardiviner
 
