@@ -7,7 +7,7 @@
 :PUBDATE:  <2021-07-18 Sun 07:56>
 :END:
 
-[[file:现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了.org][现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了]]
+[[file:more-restrict-censorship-on-platforms.org][现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了]]
 
 * implement H5 jump to WeChat mini program
 :PROPERTIES:
