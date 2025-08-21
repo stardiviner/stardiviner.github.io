@@ -1,6 +1,6 @@
-# Created 2021-07-18 Sun 07:50
-#+TITLE: stardiviner's site
-#+AUTHOR: stardiviner
+# Created 2025-08-21 Thu 19:54
+#+title: stardiviner's site
+#+author: Christopher M. Miles
 - data
   - images
     - [[file:data/images/org-babel-plot-test][org-babel-plot-test]]

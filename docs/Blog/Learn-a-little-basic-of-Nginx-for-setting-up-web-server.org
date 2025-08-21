@@ -1,6 +1,6 @@
-# Created 2021-07-18 Sun 07:52
-#+TITLE: 
-#+AUTHOR: stardiviner
+# Created 2025-08-21 Thu 19:52
+#+title: 
+#+author: Christopher M. Miles
 * Test org-capture template for org-publish blog post convert space into dash
 :PROPERTIES:
 :ID:       34e7d28e-128a-4e61-b279-96809e23016d

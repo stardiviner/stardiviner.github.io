@@ -1,1027 +1,599 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- 2021-07-18 Sun 07:50 -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</title>
-    <meta name="author" content="stardiviner" />
-    <meta name="generator" content="Org Mode" />
-    <style type="text/css">
-        #content {
-            max-width: 60em;
-            margin: auto;
-        }
-
-        .title {
-            text-align: center;
-            margin-bottom: .2em;
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: medium;
-            font-weight: bold;
-            margin-top: 0;
-        }
-
-        .todo {
-            font-family: monospace;
-            color: red;
-        }
-
-        .done {
-            font-family: monospace;
-            color: green;
-        }
-
-        .priority {
-            font-family: monospace;
-            color: orange;
-        }
-
-        .tag {
-            background-color: #eee;
-            font-family: monospace;
-            padding: 2px;
-            font-size: 80%;
-            font-weight: normal;
-        }
-
-        .timestamp {
-            color: #bebebe;
-        }
-
-        .timestamp-kwd {
-            color: #5f9ea0;
-        }
-
-        .org-right {
-            margin-left: auto;
-            margin-right: 0px;
-            text-align: right;
-        }
-
-        .org-left {
-            margin-left: 0px;
-            margin-right: auto;
-            text-align: left;
-        }
-
-        .org-center {
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-
-        .underline {
-            text-decoration: underline;
-        }
-
-        #postamble p,
-        #preamble p {
-            font-size: 90%;
-            margin: .2em;
-        }
-
-        p.verse {
-            margin-left: 3%;
-        }
-
-        pre {
-            border: 1px solid #e6e6e6;
-            border-radius: 3px;
-            background-color: #f2f2f2;
-            padding: 8pt;
-            font-family: monospace;
-            overflow: auto;
-            margin: 1.2em;
-        }
-
-        pre.src {
-            position: relative;
-            overflow: auto;
-        }
-
-        pre.src:before {
-            display: none;
-            position: absolute;
-            top: -8px;
-            right: 12px;
-            padding: 3px;
-            color: #555;
-            background-color: #f2f2f299;
-        }
-
-        pre.src:hover:before {
-            display: inline;
-            margin-top: 14px;
-        }
-
-        /* Languages per Org manual */
-        pre.src-asymptote:before {
-            content: 'Asymptote';
-        }
-
-        pre.src-awk:before {
-            content: 'Awk';
-        }
-
-        pre.src-authinfo::before {
-            content: 'Authinfo';
-        }
-
-        pre.src-C:before {
-            content: 'C';
-        }
-
-        /* pre.src-C++ doesn't work in CSS */
-        pre.src-clojure:before {
-            content: 'Clojure';
-        }
-
-        pre.src-css:before {
-            content: 'CSS';
-        }
-
-        pre.src-D:before {
-            content: 'D';
-        }
-
-        pre.src-ditaa:before {
-            content: 'ditaa';
-        }
-
-        pre.src-dot:before {
-            content: 'Graphviz';
-        }
-
-        pre.src-calc:before {
-            content: 'Emacs Calc';
-        }
-
-        pre.src-emacs-lisp:before {
-            content: 'Emacs Lisp';
-        }
-
-        pre.src-fortran:before {
-            content: 'Fortran';
-        }
-
-        pre.src-gnuplot:before {
-            content: 'gnuplot';
-        }
-
-        pre.src-haskell:before {
-            content: 'Haskell';
-        }
-
-        pre.src-hledger:before {
-            content: 'hledger';
-        }
-
-        pre.src-java:before {
-            content: 'Java';
-        }
-
-        pre.src-js:before {
-            content: 'Javascript';
-        }
-
-        pre.src-latex:before {
-            content: 'LaTeX';
-        }
-
-        pre.src-ledger:before {
-            content: 'Ledger';
-        }
-
-        pre.src-lisp:before {
-            content: 'Lisp';
-        }
-
-        pre.src-lilypond:before {
-            content: 'Lilypond';
-        }
-
-        pre.src-lua:before {
-            content: 'Lua';
-        }
-
-        pre.src-matlab:before {
-            content: 'MATLAB';
-        }
-
-        pre.src-mscgen:before {
-            content: 'Mscgen';
-        }
-
-        pre.src-ocaml:before {
-            content: 'Objective Caml';
-        }
-
-        pre.src-octave:before {
-            content: 'Octave';
-        }
-
-        pre.src-org:before {
-            content: 'Org mode';
-        }
-
-        pre.src-oz:before {
-            content: 'OZ';
-        }
-
-        pre.src-plantuml:before {
-            content: 'Plantuml';
-        }
-
-        pre.src-processing:before {
-            content: 'Processing.js';
-        }
-
-        pre.src-python:before {
-            content: 'Python';
-        }
-
-        pre.src-R:before {
-            content: 'R';
-        }
-
-        pre.src-ruby:before {
-            content: 'Ruby';
-        }
-
-        pre.src-sass:before {
-            content: 'Sass';
-        }
-
-        pre.src-scheme:before {
-            content: 'Scheme';
-        }
-
-        pre.src-screen:before {
-            content: 'Gnu Screen';
-        }
-
-        pre.src-sed:before {
-            content: 'Sed';
-        }
-
-        pre.src-sh:before {
-            content: 'shell';
-        }
-
-        pre.src-sql:before {
-            content: 'SQL';
-        }
-
-        pre.src-sqlite:before {
-            content: 'SQLite';
-        }
-
-        /* additional languages in org.el's org-babel-load-languages alist */
-        pre.src-forth:before {
-            content: 'Forth';
-        }
-
-        pre.src-io:before {
-            content: 'IO';
-        }
-
-        pre.src-J:before {
-            content: 'J';
-        }
-
-        pre.src-makefile:before {
-            content: 'Makefile';
-        }
-
-        pre.src-maxima:before {
-            content: 'Maxima';
-        }
-
-        pre.src-perl:before {
-            content: 'Perl';
-        }
-
-        pre.src-picolisp:before {
-            content: 'Pico Lisp';
-        }
-
-        pre.src-scala:before {
-            content: 'Scala';
-        }
-
-        pre.src-shell:before {
-            content: 'Shell Script';
-        }
-
-        pre.src-ebnf2ps:before {
-            content: 'ebfn2ps';
-        }
-
-        /* additional language identifiers per "defun org-babel-execute"
+<!-- 2025-08-21 Thu 19:51 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</title>
+<meta name="author" content="Christopher M. Miles" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
        in ob-*.el */
-        pre.src-cpp:before {
-            content: 'C++';
-        }
-
-        pre.src-abc:before {
-            content: 'ABC';
-        }
-
-        pre.src-coq:before {
-            content: 'Coq';
-        }
-
-        pre.src-groovy:before {
-            content: 'Groovy';
-        }
-
-        /* additional language identifiers from org-babel-shell-names in
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
      ob-shell.el: ob-shell is the only babel language using a lambda to put
      the execution function name together. */
-        pre.src-bash:before {
-            content: 'bash';
-        }
-
-        pre.src-csh:before {
-            content: 'csh';
-        }
-
-        pre.src-ash:before {
-            content: 'ash';
-        }
-
-        pre.src-dash:before {
-            content: 'dash';
-        }
-
-        pre.src-ksh:before {
-            content: 'ksh';
-        }
-
-        pre.src-mksh:before {
-            content: 'mksh';
-        }
-
-        pre.src-posh:before {
-            content: 'posh';
-        }
-
-        /* Additional Emacs modes also supported by the LaTeX listings package */
-        pre.src-ada:before {
-            content: 'Ada';
-        }
-
-        pre.src-asm:before {
-            content: 'Assembler';
-        }
-
-        pre.src-caml:before {
-            content: 'Caml';
-        }
-
-        pre.src-delphi:before {
-            content: 'Delphi';
-        }
-
-        pre.src-html:before {
-            content: 'HTML';
-        }
-
-        pre.src-idl:before {
-            content: 'IDL';
-        }
-
-        pre.src-mercury:before {
-            content: 'Mercury';
-        }
-
-        pre.src-metapost:before {
-            content: 'MetaPost';
-        }
-
-        pre.src-modula-2:before {
-            content: 'Modula-2';
-        }
-
-        pre.src-pascal:before {
-            content: 'Pascal';
-        }
-
-        pre.src-ps:before {
-            content: 'PostScript';
-        }
-
-        pre.src-prolog:before {
-            content: 'Prolog';
-        }
-
-        pre.src-simula:before {
-            content: 'Simula';
-        }
-
-        pre.src-tcl:before {
-            content: 'tcl';
-        }
-
-        pre.src-tex:before {
-            content: 'TeX';
-        }
-
-        pre.src-plain-tex:before {
-            content: 'Plain TeX';
-        }
-
-        pre.src-verilog:before {
-            content: 'Verilog';
-        }
-
-        pre.src-vhdl:before {
-            content: 'VHDL';
-        }
-
-        pre.src-xml:before {
-            content: 'XML';
-        }
-
-        pre.src-nxml:before {
-            content: 'XML';
-        }
-
-        /* add a generic configuration mode; LaTeX export needs an additional
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
      (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-        pre.src-conf:before {
-            content: 'Configuration File';
-        }
+  pre.src-conf:before { content: 'Configuration File'; }
 
-        table {
-            border-collapse: collapse;
-        }
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="/assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="/assets/scripts/org-info-src.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
 
-        caption.t-above {
-            caption-side: top;
-        }
-
-        caption.t-bottom {
-            caption-side: bottom;
-        }
-
-        td,
-        th {
-            vertical-align: top;
-        }
-
-        th.org-right {
-            text-align: center;
-        }
-
-        th.org-left {
-            text-align: center;
-        }
-
-        th.org-center {
-            text-align: center;
-        }
-
-        td.org-right {
-            text-align: right;
-        }
-
-        td.org-left {
-            text-align: left;
-        }
-
-        td.org-center {
-            text-align: center;
-        }
-
-        dt {
-            font-weight: bold;
-        }
-
-        .footpara {
-            display: inline;
-        }
-
-        .footdef {
-            margin-bottom: 1em;
-        }
-
-        .figure {
-            padding: 1em;
-        }
-
-        .figure p {
-            text-align: center;
-        }
-
-        .equation-container {
-            display: table;
-            text-align: center;
-            width: 100%;
-        }
-
-        .equation {
-            vertical-align: middle;
-        }
-
-        .equation-label {
-            display: table-cell;
-            text-align: right;
-            vertical-align: middle;
-        }
-
-        .inlinetask {
-            padding: 10px;
-            border: 2px solid gray;
-            margin: 10px;
-            background: #ffffcc;
-        }
-
-        #org-div-home-and-up {
-            text-align: right;
-            font-size: 70%;
-            white-space: nowrap;
-        }
-
-        textarea {
-            overflow-x: auto;
-        }
-
-        .linenr {
-            font-size: smaller
-        }
-
-        .code-highlighted {
-            background-color: #ffff00;
-        }
-
-        .org-info-js_info-navigation {
-            border-style: none;
-        }
-
-        #org-info-js_console-label {
-            font-size: 10px;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        .org-info-js_search-highlight {
-            background-color: #ffff00;
-            color: #000000;
-            font-weight: bold;
-        }
-
-        .org-svg {
-            width: 90%;
-        }
-    </style>
-    <link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16">
-    <link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32">
-    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css" />
-    <link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml">
-    <script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="/assets/scripts/main.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-    <script src="/assets/scripts/org-info-src.js">
-        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-        // @license-end
-    </script>
-
-    <script>
-        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-        org_html_manager.set("TOC_DEPTH", "3");
-        org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
-        org_html_manager.set("LINK_UP", "");
-        org_html_manager.set("LOCAL_TOC", "3");
-        org_html_manager.set("VIEW_BUTTONS", "0");
-        org_html_manager.set("MOUSE_HINT", "underline");
-        org_html_manager.set("FIXED_TOC", "2");
-        org_html_manager.set("TOC", "0");
-        org_html_manager.set("VIEW", "showall");
-        org_html_manager.setup(); // activate after the parameters are set
-        // @license-end
-    </script>
-    <script>
-        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-        function CodeHighlightOn(elem, id) {
-            var target = document.getElementById(id);
-            if (null != target) {
-                elem.classList.add("code-highlighted");
-                target.classList.add("code-highlighted");
-            }
-        }
-
-        function CodeHighlightOff(elem, id) {
-            var target = document.getElementById(id);
-            if (null != target) {
-                elem.classList.remove("code-highlighted");
-                target.classList.remove("code-highlighted");
-            }
-        }
-        // @license-end
-    </script>
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "3");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "2");
+org_html_manager.set("TOC", "0");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
 </head>
-
 <body>
-    <div id="org-div-home-and-up">
-        <a accesskey="h" href=""> UP </a>
-        |
-        <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
-    </div>
-    <div id="preamble" class="status">
-        <div class='nav'>
-            <ul>
-                <li><a href='/'>Home</a></li>
-                <li><a href='/Blog/index.html'>Blog</a></li>
-                <li><a href="/Thought/index.html">Thought</a></li>
-                <li><a href='/Literature/index.html'>文学</a></li>
-                <li><a href='/About/index.html'>About</a></li>
-            </ul>
-        </div>
-        <div class="epilogue">
-            <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
-        </div>
-    </div>
-    <div id="content" class="content">
-        <header>
-            <h1 class="title">Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</h1>
-        </header>
-        <nav id="table-of-contents">
-            <h2>Table of Contents</h2>
-            <div id="text-table-of-contents">
-                <ul>
-                    <li><a href="#org4f856f1">1. Is your Emacs slow and heavy?</a>
-                        <ul>
-                            <li><a href="#orgd49003c">1.1. elp</a>
-                                <ul>
-                                    <li><a href="#org09b6090">1.1.1. workflow</a></li>
-                                    <li><a href="#orgca0d370">1.1.2. <code>[C-h p elp RET]</code></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#org64e23e2">1.2. profile</a>
-                                <ul>
-                                    <li><a href="#org92cd154">1.2.1. workflow</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#orgc427bcd">1.3. esup</a>
-                                <ul>
-                                    <li><a href="#org500154b">1.3.1. workflow</a></li>
-                                    <li><a href="#orgecb0343">1.3.2. navigation &#x2013; <code>[n/p/&lt;RET&gt;]</code></a></li>
-                                    <li><a href="#orga73fde7">1.3.3. FAQ</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#orgf39d2fd">2. The history commits I did which slow down my Emacs</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <div id="outline-container-org4f856f1" class="outline-2">
-            <h2 id="org4f856f1"><span class="section-number-2">1.</span> Is your Emacs slow and heavy?</h2>
-            <div class="outline-text-2" id="text-1">
-                <pre class="example">
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
+</div><div id="preamble" class="status">
+<div class='nav'>
+  <ul>
+    <li><a href='/'>Home</a></li>
+    <li><a href='/Blog/index.html'>Blog</a></li>
+    <li><a href="/Thought/index.html">Thought</a></li>
+    <li><a href='/Literature/index.html'>文学</a></li>
+    <li><a href='/About/index.html'>About</a></li>
+  </ul>
+</div>
+<div class="epilogue">
+  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
+</div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#ID-9348a942-1e91-4587-a10f-9dd769a32a9a">1. Is your Emacs slow and heavy?</a>
+<ul>
+<li><a href="#ID-a5357d0e-a3e2-46c8-8cbb-8f51117e5121">1.1. elp</a>
+<ul>
+<li><a href="#ID-05782c93-bcee-4c8d-852c-822a213ad0ab">1.1.1. workflow</a></li>
+<li><a href="#ID-e5cd4631-becc-4b9d-b833-bd82705c66bc">1.1.2. <code>[C-h p elp RET]</code></a></li>
+</ul>
+</li>
+<li><a href="#ID-d00418dd-365e-4ba4-8a7d-369a8d510fba">1.2. profile</a>
+<ul>
+<li><a href="#ID-59726f18-c60f-4b0e-b461-bdbd2d41fef5">1.2.1. workflow</a></li>
+</ul>
+</li>
+<li><a href="#ID-48787dca-ae17-4b0b-8d80-7e7dfd692236">1.3. esup</a>
+<ul>
+<li><a href="#ID-c01cc663-044d-41fd-b25f-3dee48c3e9af">1.3.1. workflow</a></li>
+<li><a href="#ID-f23ffbbe-237d-48f0-8ed9-8961f97f958e">1.3.2. navigation &ndash; <code>[n/p/&lt;RET&gt;]</code></a></li>
+<li><a href="#ID-bd1a8483-a23e-4155-b32b-eb41dd2c6856">1.3.3. FAQ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#ID-ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba">2. The history commits I did which slow down my Emacs</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-ID-9348a942-1e91-4587-a10f-9dd769a32a9a" class="outline-2">
+<h2 id="ID-9348a942-1e91-4587-a10f-9dd769a32a9a"><span class="section-number-2">1.</span> <a href="#ID-9348a942-1e91-4587-a10f-9dd769a32a9a">Is your Emacs slow and heavy?</a></h2>
+<div class="outline-text-2" id="text-1">
+<pre class="example">
 ID: 9348a942-1e91-4587-a10f-9dd769a32a9a
 PUBDATE: <2019-08-14 Wed 19:10>
 </pre>
 
-                <p>
-                    When you installed many Emacs packages, or you set up many configurations. You found your
-                    Emacs is slow, and heavy. I have this situation many times. I can feel my typing in Emacs
-                    Org Mode. when code completion, and search, generating results etc. This makes me dive
-                    into problems and find solution for it.
-                </p>
+<p>
+When you installed many Emacs packages, or you set up many configurations. You found your
+Emacs is slow, and heavy. I have this situation many times. I can feel my typing in Emacs
+Org Mode. when code completion, and search, generating results etc. This makes me dive
+into problems and find solution for it.
+</p>
 
-                <p>
-                    Here are some ways you can find out the reaons:
-                </p>
+<p>
+Here are some ways you can find out the reaons:
+</p>
 
-                <dl class="org-dl">
-                    <dt>elp</dt>
-                    <dd>Emacs built-in Emacs Lisp profiler</dd>
-                    <dt>profiler</dt>
-                    <dd>Emacs built-in profiler</dd>
-                    <dt>esup</dt>
-                    <dd>Emacs start-up profiler</dd>
-                </dl>
-            </div>
-
-            <div id="outline-container-orgd49003c" class="outline-3">
-                <h3 id="orgd49003c"><span class="section-number-3">1.1.</span> elp</h3>
-                <div class="outline-text-3" id="text-1-1">
-                    <pre class="example">
+<dl class="org-dl">
+<dt>elp</dt><dd>Emacs built-in Emacs Lisp profiler</dd>
+<dt>profiler</dt><dd>Emacs built-in profiler</dd>
+<dt>esup</dt><dd>Emacs start-up profiler</dd>
+</dl>
+</div>
+<div id="outline-container-ID-a5357d0e-a3e2-46c8-8cbb-8f51117e5121" class="outline-3">
+<h3 id="ID-a5357d0e-a3e2-46c8-8cbb-8f51117e5121"><span class="section-number-3">1.1.</span> <a href="#ID-a5357d0e-a3e2-46c8-8cbb-8f51117e5121">elp</a></h3>
+<div class="outline-text-3" id="text-1-1">
+<pre class="example">
 ID: a5357d0e-a3e2-46c8-8cbb-8f51117e5121
 </pre>
-                </div>
-
-                <div id="outline-container-org09b6090" class="outline-4">
-                    <h4 id="org09b6090"><span class="section-number-4">1.1.1.</span> workflow</h4>
-                    <div class="outline-text-4" id="text-1-1-1">
-                        <pre class="example">
+</div>
+<div id="outline-container-ID-05782c93-bcee-4c8d-852c-822a213ad0ab" class="outline-4">
+<h4 id="ID-05782c93-bcee-4c8d-852c-822a213ad0ab"><span class="section-number-4">1.1.1.</span> <a href="#ID-05782c93-bcee-4c8d-852c-822a213ad0ab">workflow</a></h4>
+<div class="outline-text-4" id="text-1-1-1">
+<pre class="example">
 ID: 05782c93-bcee-4c8d-852c-822a213ad0ab
 </pre>
 
-                        <p>
-                            Profile the code while executing the function that takes a long time.
-                        </p>
+<p>
+Profile the code while executing the function that takes a long time.
+</p>
 
-                        <ol class="org-ol">
-                            <li>instrument code
+<ol class="org-ol">
+<li>instrument code
 
-                                <ul class="org-ul">
-                                    <li>
-                                        <p>
-                                            instrument package
-                                            <code>[M-x elp-instrument-package RET &lt;package&gt; RET]</code>
-                                        </p>
+<ul class="org-ul">
+<li><p>
+instrument package
+<code>[M-x elp-instrument-package RET &lt;package&gt; RET]</code>
+</p>
 
-                                        <p>
-                                            Like <code>[M-x elp-instrument-package RET org- RET]</code>
-                                        </p>
-                                    </li>
+<p>
+Like <code>[M-x elp-instrument-package RET org- RET]</code>
+</p></li>
 
-                                    <li>instrument function
-                                        <code>[M-x elp-instrument-function RET &lt;function&gt; RET]</code>
-                                    </li>
-                                </ul>
-                            </li>
+<li>instrument function
+<code>[M-x elp-instrument-function RET &lt;function&gt; RET]</code></li>
+</ul></li>
 
-                            <li>execute code you want to profiling.</li>
+<li>execute code you want to profiling.</li>
 
-                            <li>show results with <code>[M-x elp-results]</code>.</li>
-                        </ol>
+<li>show results with <code>[M-x elp-results]</code>.</li>
+</ol>
 
-                        <p>
-                            For example:
-                        </p>
+<p>
+For example:
+</p>
 
-                        <p>
-                            use <code>elp</code> to see what is slowing down <code>elpy</code>.
-                        </p>
+<p>
+use <code>elp</code> to see what is slowing down <code>elpy</code>.
+</p>
 
-                        <p>
-                            You can start monitoring the whole <code>elpy</code> package with:
-                        </p>
+<p>
+You can start monitoring the whole <code>elpy</code> package with:
+</p>
 
-                        <div class="org-src-container">
-                            <pre class="src src-emacs-lisp"><code><span style="color: #707183;">(</span>elp-instrument-package <span style="color: var(--clr-string); background-color: var(--bg-string);">"elpy-"</span><span style="color: #707183;">)</span></code>
-</pre>
-                        </div>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span>elp-instrument-package <span style="color: #c3e88d;">"elpy-"</span><span style="color: #c792ea;">)</span></code>
+</code></pre>
+</div>
 
-                        <p>
-                            #+RESULTS[<span class="timestamp-wrapper"><span class="timestamp">&lt;2018-10-18 Thu 14:16&gt; </span></span> 195bb60d4648549a9e035f99aebac8fd7feaa2a0]:
-                        </p>
+<p>
+#+RESULTS[<span class="timestamp-wrapper"><time class="timestamp" datetime="2018-10-18T14:16:00">&lt;2018-10-18 Thu 14:16&gt;</time></span> 195bb60d4648549a9e035f99aebac8fd7feaa2a0]:
+</p>
 
-                        <p>
-                            do your time-consuming operations, and get a report with <code>[M-x elp-results]</code>.
-                        </p>
-                    </div>
-                </div>
-
-                <div id="outline-container-orgca0d370" class="outline-4">
-                    <h4 id="orgca0d370"><span class="section-number-4">1.1.2.</span> <code>[C-h p elp RET]</code></h4>
-                    <div class="outline-text-4" id="text-1-1-2">
-                        <pre class="example">
+<p>
+do your time-consuming operations, and get a report with <code>[M-x elp-results]</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-ID-e5cd4631-becc-4b9d-b833-bd82705c66bc" class="outline-4">
+<h4 id="ID-e5cd4631-becc-4b9d-b833-bd82705c66bc"><span class="section-number-4">1.1.2.</span> <a href="#ID-e5cd4631-becc-4b9d-b833-bd82705c66bc"><code>[C-h p elp RET]</code></a></h4>
+<div class="outline-text-4" id="text-1-1-2">
+<pre class="example">
 ID: e5cd4631-becc-4b9d-b833-bd82705c66bc
 </pre>
 
-                        <p>
-                            If you want to profile a bunch of functions, set elp-function-list
-                            to the list of symbols, then do a M-x elp-instrument-list. This
-                            hacks those functions so that profiling information is recorded
-                            whenever they are called. To print out the current results, use
-                            M-x elp-results. If you want output to go to standard-output
-                            instead of a separate buffer, setq elp-use-standard-output to
-                            non-nil. With elp-reset-after-results set to non-nil, profiling
-                            information will be reset whenever the results are displayed. You
-                            can also reset all profiling info at any time with M-x
-                            elp-reset-all.
-                        </p>
+<p>
+If you want to profile a bunch of functions, set elp-function-list
+to the list of symbols, then do a M-x elp-instrument-list.  This
+hacks those functions so that profiling information is recorded
+whenever they are called.  To print out the current results, use
+M-x elp-results.  If you want output to go to standard-output
+instead of a separate buffer, setq elp-use-standard-output to
+non-nil.  With elp-reset-after-results set to non-nil, profiling
+information will be reset whenever the results are displayed.  You
+can also reset all profiling info at any time with M-x
+elp-reset-all.
+</p>
 
-                        <p>
-                            You can also instrument all functions in a package, provided that
-                            the package follows the GNU coding standard of a common textual
-                            prefix. Use M-x elp-instrument-package for this.
-                        </p>
+<p>
+You can also instrument all functions in a package, provided that
+the package follows the GNU coding standard of a common textual
+prefix.  Use M-x elp-instrument-package for this.
+</p>
 
-                        <p>
-                            If you want to sort the results, set elp-sort-by-function to some
-                            predicate function. The three most obvious choices are predefined:
-                            elp-sort-by-call-count, elp-sort-by-average-time, and
-                            elp-sort-by-total-time. Also, you can prune from the output, all
-                            functions that have been called fewer than a given number of times
-                            by setting elp-report-limit.
-                        </p>
+<p>
+If you want to sort the results, set elp-sort-by-function to some
+predicate function.  The three most obvious choices are predefined:
+elp-sort-by-call-count, elp-sort-by-average-time, and
+elp-sort-by-total-time.  Also, you can prune from the output, all
+functions that have been called fewer than a given number of times
+by setting elp-report-limit.
+</p>
 
-                        <p>
-                            Elp can instrument byte-compiled functions just as easily as
-                            interpreted functions, but it cannot instrument macros. However,
-                            when you redefine a function (e.g. with eval-defun), you'll need to
-                            re-instrument it with M-x elp-instrument-function. This will also
-                            reset profiling information for that function. Elp can handle
-                            interactive functions (i.e. commands), but of course any time spent
-                            idling for user prompts will show up in the timing results.
-                        </p>
+<p>
+Elp can instrument byte-compiled functions just as easily as
+interpreted functions, but it cannot instrument macros.  However,
+when you redefine a function (e.g. with eval-defun), you'll need to
+re-instrument it with M-x elp-instrument-function.  This will also
+reset profiling information for that function.  Elp can handle
+interactive functions (i.e. commands), but of course any time spent
+idling for user prompts will show up in the timing results.
+</p>
 
-                        <p>
-                            You can also designate a `master' function. Profiling times will
-                            be gathered for instrumented functions only during execution of
-                            this master function. Thus, if you have some defuns like:
-                        </p>
+<p>
+You can also designate a `master' function.  Profiling times will
+be gathered for instrumented functions only during execution of
+this master function.  Thus, if you have some defuns like:
+</p>
 
-                        <p>
-                            (defun foo () (do-something-time-intensive))
-                            (defun bar () (foo))
-                            (defun baz () (bar) (foo))
-                        </p>
+<p>
+(defun foo () (do-something-time-intensive))
+(defun bar () (foo))
+(defun baz () (bar) (foo))
+</p>
 
-                        <p>
-                            and you want to find out the amount of time spent in bar and foo,
-                            but only during execution of bar, make bar the master. The call of
-                            foo from baz will not add to foo's total timing sums. Use M-x
-                            elp-set-master and M-x elp-unset-master to utilize this feature.
-                            Only one master function can be set at a time.
-                        </p>
+<p>
+and you want to find out the amount of time spent in bar and foo,
+but only during execution of bar, make bar the master.  The call of
+foo from baz will not add to foo's total timing sums.  Use M-x
+elp-set-master and M-x elp-unset-master to utilize this feature.
+Only one master function can be set at a time.
+</p>
 
-                        <p>
-                            You can restore any function's original function definition with
-                            elp-restore-function. The other instrument, restore, and reset
-                            functions are provided for symmetry.
-                        </p>
+<p>
+You can restore any function's original function definition with
+elp-restore-function.  The other instrument, restore, and reset
+functions are provided for symmetry.
+</p>
 
-                        <p>
-                            Here is a list of variable you can use to customize elp:
-                            elp-function-list
-                            elp-reset-after-results
-                            elp-sort-by-function
-                            elp-report-limit
-                        </p>
+<p>
+Here is a list of variable you can use to customize elp:
+  elp-function-list
+  elp-reset-after-results
+  elp-sort-by-function
+  elp-report-limit
+</p>
 
-                        <p>
-                            Here is a list of the interactive commands you can use:
-                            elp-instrument-function
-                            elp-restore-function
-                            elp-instrument-list
-                            elp-restore-list
-                            elp-instrument-package
-                            elp-restore-all
-                            elp-reset-function
-                            elp-reset-list
-                            elp-reset-all
-                            elp-set-master
-                            elp-unset-master
-                            elp-results
-                        </p>
+<p>
+Here is a list of the interactive commands you can use:
+  elp-instrument-function
+  elp-restore-function
+  elp-instrument-list
+  elp-restore-list
+  elp-instrument-package
+  elp-restore-all
+  elp-reset-function
+  elp-reset-list
+  elp-reset-all
+  elp-set-master
+  elp-unset-master
+  elp-results
+</p>
 
-                        <p>
-                            Note that there are plenty of factors that could make the times
-                            reported unreliable, including the accuracy and granularity of your
-                            system clock, and the overhead spent in lisp calculating and
-                            recording the intervals. I figure the latter is pretty constant,
-                            so while the times may not be entirely accurate, I think they'll
-                            give you a good feel for the relative amount of work spent in the
-                            various lisp routines you are profiling. Note further that times
-                            are calculated using wall-clock time, so other system load will
-                            affect accuracy too.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="outline-container-org64e23e2" class="outline-3">
-                <h3 id="org64e23e2"><span class="section-number-3">1.2.</span> profile</h3>
-                <div class="outline-text-3" id="text-1-2">
-                    <pre class="example">
+<p>
+Note that there are plenty of factors that could make the times
+reported unreliable, including the accuracy and granularity of your
+system clock, and the overhead spent in lisp calculating and
+recording the intervals.  I figure the latter is pretty constant,
+so while the times may not be entirely accurate, I think they'll
+give you a good feel for the relative amount of work spent in the
+various lisp routines you are profiling.  Note further that times
+are calculated using wall-clock time, so other system load will
+affect accuracy too.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-d00418dd-365e-4ba4-8a7d-369a8d510fba" class="outline-3">
+<h3 id="ID-d00418dd-365e-4ba4-8a7d-369a8d510fba"><span class="section-number-3">1.2.</span> <a href="#ID-d00418dd-365e-4ba4-8a7d-369a8d510fba">profile</a></h3>
+<div class="outline-text-3" id="text-1-2">
+<pre class="example">
 ID: d00418dd-365e-4ba4-8a7d-369a8d510fba
 </pre>
-                </div>
-
-                <div id="outline-container-org92cd154" class="outline-4">
-                    <h4 id="org92cd154"><span class="section-number-4">1.2.1.</span> workflow</h4>
-                    <div class="outline-text-4" id="text-1-2-1">
-                        <pre class="example">
+</div>
+<div id="outline-container-ID-59726f18-c60f-4b0e-b461-bdbd2d41fef5" class="outline-4">
+<h4 id="ID-59726f18-c60f-4b0e-b461-bdbd2d41fef5"><span class="section-number-4">1.2.1.</span> <a href="#ID-59726f18-c60f-4b0e-b461-bdbd2d41fef5">workflow</a></h4>
+<div class="outline-text-4" id="text-1-2-1">
+<pre class="example">
 ID: 59726f18-c60f-4b0e-b461-bdbd2d41fef5
 </pre>
 
-                        <ol class="org-ol">
-                            <li>
-                                <p>
-                                    active profiler
-                                </p>
+<ol class="org-ol">
+<li><p>
+active profiler
+</p>
 
-                                <p>
-                                    <code>[M-x profiler-start]</code>
-                                </p>
-                            </li>
+<p>
+<code>[M-x profiler-start]</code>
+</p></li>
 
-                            <li>
-                                <p>
-                                    show profiler result report
-                                </p>
+<li><p>
+show profiler result report
+</p>
 
-                                <p>
-                                    <code>[M-x profiler-report]</code>
-                                </p>
-                            </li>
+<p>
+<code>[M-x profiler-report]</code>
+</p></li>
 
-                            <li>
-                                <p>
-                                    stop profiler
-                                </p>
+<li><p>
+stop profiler
+</p>
 
-                                <p>
-                                    <code>[M-x profiler-stop]</code>
-                                </p>
-                            </li>
+<p>
+<code>[M-x profiler-stop]</code>
+</p></li>
 
-                            <li>
-                                <p>
-                                    You need to reset profiler logs before nest new profiling.
-                                </p>
+<li><p>
+You need to reset profiler logs before nest new profiling.
+</p>
 
-                                <p>
-                                    <code>[M-x profiler-reset]</code>
-                                </p>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-
-            <div id="outline-container-orgc427bcd" class="outline-3">
-                <h3 id="orgc427bcd"><span class="section-number-3">1.3.</span> esup</h3>
-                <div class="outline-text-3" id="text-1-3">
-                    <pre class="example">
+<p>
+<code>[M-x profiler-reset]</code>
+</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-48787dca-ae17-4b0b-8d80-7e7dfd692236" class="outline-3">
+<h3 id="ID-48787dca-ae17-4b0b-8d80-7e7dfd692236"><span class="section-number-3">1.3.</span> <a href="#ID-48787dca-ae17-4b0b-8d80-7e7dfd692236">esup</a></h3>
+<div class="outline-text-3" id="text-1-3">
+<pre class="example">
 ID: 48787dca-ae17-4b0b-8d80-7e7dfd692236
 </pre>
 
-                    <p>
-                        <a href="http://github.com/jschaf/esup">http://github.com/jschaf/esup</a>
-                    </p>
-                </div>
-
-                <div id="outline-container-org500154b" class="outline-4">
-                    <h4 id="org500154b"><span class="section-number-4">1.3.1.</span> workflow</h4>
-                    <div class="outline-text-4" id="text-1-3-1">
-                        <pre class="example">
+<p>
+<a href="http://github.com/jschaf/esup">http://github.com/jschaf/esup</a>
+</p>
+</div>
+<div id="outline-container-ID-c01cc663-044d-41fd-b25f-3dee48c3e9af" class="outline-4">
+<h4 id="ID-c01cc663-044d-41fd-b25f-3dee48c3e9af"><span class="section-number-4">1.3.1.</span> <a href="#ID-c01cc663-044d-41fd-b25f-3dee48c3e9af">workflow</a></h4>
+<div class="outline-text-4" id="text-1-3-1">
+<pre class="example">
 ID: c01cc663-044d-41fd-b25f-3dee48c3e9af
 </pre>
 
-                        <ol class="org-ol">
-                            <li>
-                                <p>
-                                    start a new Emacs instance for ESUP.
-                                </p>
+<ol class="org-ol">
+<li><p>
+start a new Emacs instance for ESUP.
+</p>
 
-                                <p>
-                                    <code>[M-x esup]</code>
-                                </p>
-                            </li>
+<p>
+<code>[M-x esup]</code>
+</p></li>
 
-                            <li>
-                                <p>
-                                    display ESUP result.
-                                </p>
+<li><p>
+display ESUP result.
+</p>
 
-                                <p>
-                                    <code>[M-x esup-display-results]</code> it will read buffer <code>*esup-results*</code>.
-                                </p>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-
-                <div id="outline-container-orgecb0343" class="outline-4">
-                    <h4 id="orgecb0343"><span class="section-number-4">1.3.2.</span> navigation &#x2013; <code>[n/p/&lt;RET&gt;]</code></h4>
-                    <div class="outline-text-4" id="text-1-3-2">
-                        <pre class="example">
+<p>
+<code>[M-x esup-display-results]</code> it will read buffer <code>*esup-results*</code>.
+</p></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-ID-f23ffbbe-237d-48f0-8ed9-8961f97f958e" class="outline-4">
+<h4 id="ID-f23ffbbe-237d-48f0-8ed9-8961f97f958e"><span class="section-number-4">1.3.2.</span> <a href="#ID-f23ffbbe-237d-48f0-8ed9-8961f97f958e">navigation &ndash; <code>[n/p/&lt;RET&gt;]</code></a></h4>
+<div class="outline-text-4" id="text-1-3-2">
+<pre class="example">
 ID: f23ffbbe-237d-48f0-8ed9-8961f97f958e
 </pre>
-                    </div>
-                </div>
-
-                <div id="outline-container-orga73fde7" class="outline-4">
-                    <h4 id="orga73fde7"><span class="section-number-4">1.3.3.</span> FAQ</h4>
-                    <div class="outline-text-4" id="text-1-3-3">
-                        <pre class="example">
+</div>
+</div>
+<div id="outline-container-ID-bd1a8483-a23e-4155-b32b-eb41dd2c6856" class="outline-4">
+<h4 id="ID-bd1a8483-a23e-4155-b32b-eb41dd2c6856"><span class="section-number-4">1.3.3.</span> <a href="#ID-bd1a8483-a23e-4155-b32b-eb41dd2c6856">FAQ</a></h4>
+<div class="outline-text-4" id="text-1-3-3">
+<pre class="example">
 ID: bd1a8483-a23e-4155-b32b-eb41dd2c6856
 </pre>
-                    </div>
-
-                    <ol class="org-ol">
-                        <li><a id="orgf0f9374" name="orgf0f9374"></a>Q: Debugger entered&#x2013;Lisp error: (invalid-read-syntax "#")<br>
-                            <div class="outline-text-5" id="text-1-3-3-1">
-                                <pre class="example">
+</div>
+<ol class="org-ol">
+<li><a id="ID-4801fa59-d0f8-4f60-ad7e-4b656f53b01c" name="ID-4801fa59-d0f8-4f60-ad7e-4b656f53b01c"></a><a href="#ID-4801fa59-d0f8-4f60-ad7e-4b656f53b01c">Q: Debugger entered&ndash;Lisp error: (invalid-read-syntax "#")</a><br>
+<div class="outline-text-5" id="text-1-3-3-1">
+<pre class="example">
 ID: 4801fa59-d0f8-4f60-ad7e-4b656f53b01c
 </pre>
 
-                                <pre class="example" id="org1ecc619">
+<pre class="example" id="orgb79f90c">
 <code>Debugger entered--Lisp error: (invalid-read-syntax "#")</code>
 <code>  read(#&lt;buffer *esup-results*&gt;)</code>
 <code>  esup-read-result(1344074)</code>
@@ -1030,17 +602,16 @@ ID: 4801fa59-d0f8-4f60-ad7e-4b656f53b01c
 <code>  esup-child-process-sentinel(#&lt;process *esup-child*&gt; "finished\n")</code>
 </pre>
 
-                                <ul class="org-ul">
-                                    <li class="trans"><code>[-]</code> use edebug on <code>esup-read-results</code>, then <code>[M-x esup-display-results]</code>
-                                        <ul class="org-ul">
-                                            <li class="on"><code>[X]</code> disable package
-                                                <ul class="org-ul">
-                                                    <li class="on"><code>[X]</code>
-                                                        <p>
-                                                            comment-tags
-                                                        </p>
+<ul class="org-ul">
+<li class="trans"><code>[-]</code> use edebug on <code>esup-read-results</code>, then <code>[M-x esup-display-results]</code>
+<ul class="org-ul">
+<li class="on"><code>[X]</code> disable package
+<ul class="org-ul">
+<li class="on"><code>[X]</code> <p>
+comment-tags
+</p>
 
-                                                        <pre class="example" id="org1ca47f0">
+<pre class="example" id="orga8d5b2a">
 <code>(esup-result "esup-result" :file "/home/stardiviner/.emacs.d/init/programming/languages/Query/init-prog-lang-database-mongodb.el" :start-point 402 :line-number 26 :expression-string #("(use-package ob-mongo</code>
 <code>:ensure t</code>
 <code>:defer t</code>
@@ -1049,54 +620,48 @@ ID: 4801fa59-d0f8-4f60-ad7e-4b656f53b01c
 <code>(org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)</code>
 <code>;; FIXME: (add-to-list 'org-babel-tangle-lang-exts '(\"mongo\" . \"??\"))</code>
 <code>)" 0 22 (fontified nil) 22 32 (fontified nil) 32 41 (fontified nil) 41 47 (fontified nil) 47 100 (fontified nil) 100 181 (fontified nil) 181 184 (fontified nil) 184 190 (comment-tags-highlight (#&lt;marker at 598 in init-prog-lang-database-mongodb.el&gt; #&lt;marker at 604 in init-prog-lang-database-mongodb.el&gt;) fontified nil) 190 251 (fontified nil) 251 252 (fontified nil)) :end-point 668 :exec-time 0.070872 :gc-number 0 :gc-time 0.000000)</code>
-</pre>
-                                                    </li>
-                                                </ul>
-                                            </li>
+</pre></li>
+</ul></li>
 
-                                            <li class="off"><code>[&#xa0;]</code> execute <code>(esup-read-result (point))</code> in <code>*esup-results*</code> buffer, it will put point
-                                                on the read syntax error "#".
-                                                <ul class="org-ul">
-                                                    <li class="off"><code>[&#xa0;]</code> (#&lt;marker at 477 in init-prog-lsp.el&gt; #&lt;marker at 481 in init-prog-lsp.el&gt;)</li>
-                                                    <li class="off"><code>[&#xa0;]</code> init-prog-lang-javascript.el</li>
-                                                    <li class="off"><code>[&#xa0;]</code> init-prog-lang-database-mongodb</li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-
-        <div id="outline-container-orgf39d2fd" class="outline-2">
-            <h2 id="orgf39d2fd"><span class="section-number-2">2.</span> The history commits I did which slow down my Emacs</h2>
-            <div class="outline-text-2" id="text-2">
-                <pre class="example">
+<li class="off"><code>[&nbsp;]</code> execute <code>(esup-read-result (point))</code> in <code>*esup-results*</code> buffer, it will put point
+on the read syntax error "#".
+<ul class="org-ul">
+<li class="off"><code>[&nbsp;]</code> (#&lt;marker at 477 in init-prog-lsp.el&gt; #&lt;marker at 481 in init-prog-lsp.el&gt;)</li>
+<li class="off"><code>[&nbsp;]</code> init-prog-lang-javascript.el</li>
+<li class="off"><code>[&nbsp;]</code> init-prog-lang-database-mongodb</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba" class="outline-2">
+<h2 id="ID-ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba"><span class="section-number-2">2.</span> <a href="#ID-ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba">The history commits I did which slow down my Emacs</a></h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
 ID: ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba
 PUBDATE: <2019-08-14 Wed 19:10>
 </pre>
 
-                <p>
-                    Here is my Emacs config: <a href="https://github.com/stardiviner/emacs.d">https://github.com/stardiviner/emacs.d</a>
-                </p>
+<p>
+Here is my Emacs config: <a href="https://github.com/stardiviner/emacs.d">https://github.com/stardiviner/emacs.d</a>
+</p>
 
-                <p>
-                    Let's search all my commits which slow down my Emacs and what I did to improve the
-                    performance. (If you have similar situation, you can find some hints about what might slow
-                    Emacs.)
-                </p>
+<p>
+Let's search all my commits which slow down my Emacs and what I did to improve the
+performance. (If you have similar situation, you can find some hints about what might slow
+Emacs.)
+</p>
 
-                <div class="org-src-container">
-                    <pre class="src src-sh"><code>git log --grep <span style="color: var(--clr-string); background-color: var(--bg-string);">"performance"</span> --grep <span style="color: var(--clr-string); background-color: var(--bg-string);">"speed"</span> --grep <span style="color: var(--clr-string); background-color: var(--bg-string);">"slow"</span></code>
-</pre>
-                </div>
+<div class="org-src-container">
+<pre class="src src-sh"><code><code>git log --grep <span style="color: #c3e88d;">"performance"</span> --grep <span style="color: #c3e88d;">"speed"</span> --grep <span style="color: #c3e88d;">"slow"</span></code>
+</code></pre>
+</div>
 
-                <pre class="example" id="orgc866f9f">
+<pre class="example" id="orgf3bcd4e">
 <code>commit fce52322ddae88d9fad148447c6141edd8bc10fb</code>
 <code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
 <code>Date:   Fri Oct 19 17:21:24 2018 +0800</code>
@@ -2212,48 +1777,47 @@ PUBDATE: <2019-08-14 Wed 19:10>
 <code></code>
 <code>    longer time to delay for guide-key to speed up Emacs. and reduce distribution in keybindings.</code>
 </pre>
-            </div>
-        </div>
-    </div>
-    <div id="postamble" class="status">
-        <footer>
-            Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
-            Last update date: 2021-07-11 Sun 17:23.<br>
-            Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.4). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<footer>
+  Copyright 2011, Author: Christopher M. Miles (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
+  Last update date: 2024-04-28 Sun 12:27.<br>
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
-            <!-- RSS -->
-            You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
+  <!-- RSS -->
+  You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
+  
+  <!-- Show Org Source -->
+  <script>
+   var url = document.location.href;
+   var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+   function show_org_source(){
+     document.location.href = orgsource;
+   }
+  </script>
+  <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
 
-            <!-- Show Org Source -->
-            <script>
-                var url = document.location.href;
-                var orgsource = url.substring(0, url.lastIndexOf(".")) + ".org.html";
+</footer>
 
-                function show_org_source() {
-                    document.location.href = orgsource;
-                }
-            </script>
-            <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
+<!-- scroll to top -->
+<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
 
-        </footer>
-
-        <!-- scroll to top -->
-        <button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
-
-        <!-- payment -->
-        <div class='payment'>
-            <!-- use two inline aligned small thumb QR code image -->
-            <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
+<!-- payment -->
+<div class='payment'>
+  <!-- use two inline aligned small thumb QR code image -->
+  <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
        <div id='wechat-payment'><a href="/About/index.html#Payment"><img src="/assets/images/wechat_payment.png" title="打赏" /></a></div> -->
+  
+  <!-- use a custom reward image to be more friendly -->
+  <div id="payment-icon">
+    <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
+  </div>
+</div>
 
-            <!-- use a custom reward image to be more friendly -->
-            <div id="payment-icon">
-                <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
-            </div>
-        </div>
-
-        <!-- Google Analytics -->
-        <!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+<!-- Google Analytics -->
+<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
      <script type="text/javascript">
      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -2263,8 +1827,8 @@ PUBDATE: <2019-08-14 Wed 19:10>
      ga('create', 'UA-63992234-1', 'auto');
      ga('send', 'pageview');
      </script> -->
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
      <script>
      window.dataLayer = window.dataLayer || [];
      function gtag(){dataLayer.push(arguments);}
@@ -2273,8 +1837,8 @@ PUBDATE: <2019-08-14 Wed 19:10>
      gtag('config', 'UA-63992234-1');
      </script> -->
 
-        <!-- Disqus -->
-        <!-- <div class="comments">
+<!-- Disqus -->
+<!-- <div class="comments">
      <style>
      /* hide comment policy */
      .comment-policy {
@@ -2296,7 +1860,6 @@ PUBDATE: <2019-08-14 Wed 19:10>
      })();
      </script>
      </div> -->
-    </div>
+</div>
 </body>
-
 </html>

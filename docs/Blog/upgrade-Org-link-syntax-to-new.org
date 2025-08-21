@@ -1,7 +1,6 @@
-# Created 2021-07-18 Sun 07:55
-#+TITLE: upgrade Org link syntax to new
-#+AUTHOR: stardiviner <numbchild@gmail.com>
-
+# Created 2025-08-21 Thu 19:54
+#+title: upgrade Org link syntax to new
+#+author: stardiviner <numbchild@gmail.com>
 * which Org version using new link syntax?
 :PROPERTIES:
 :ID:       73b7751f-038f-4c15-bbbf-5b52f95997fd
@@ -10,8 +9,6 @@
 
 Since commit "=a486d9cbd=" in Git repo, Org start this change. You might want to
 check out =ORG-NEWS= file about this.
-
-
 * Conversations in Org Mode mailing list
 :PROPERTIES:
 :ID:       f7c9a782-786f-401c-a911-b8ebd6e099f1
@@ -25,8 +22,6 @@ Here is the original discussion in Org Mode mailing list for reference:
 
 - [[https://lists.gnu.org/archive/html/emacs-orgmode/2019-02/msg00320.html][[RFC] Fixing link encoding once and for all]]
 - [[https://lists.gnu.org/archive/html/emacs-orgmode/2019-03/msg00114.html][[ANN] Changes to link syntax]]
-
-
 * How to upgrade Org links to new syntax
 :PROPERTIES:
 :ID:       1a855b98-db9d-4702-9afa-76b39829c171
@@ -35,7 +30,6 @@ Here is the original discussion in Org Mode mailing list for reference:
 
 If you need this, you must have lot of Org files need to be updated, you will
 not want to do it manually one by one. So here is my way.
-
 ** Using a search tool with wgrep mode
 :PROPERTIES:
 :ID:       640d5225-d011-42b8-ae5b-3c3953885cd1
@@ -98,7 +92,6 @@ not want to do it manually one by one. So here is my way.
 5. save all modifications in wgrep with =[C-x C-s]=.
 
 6. repeat this step for all searching characters.
-
 ** use org-lint to checking Org file
 :PROPERTIES:
 :ID:       3923f696-9c43-4e37-90e2-3052809cab77
@@ -106,8 +99,6 @@ not want to do it manually one by one. So here is my way.
 
 In latest Org version, there is already support use command =org-lint= to checking
 Org buffer.
-
-
 * At the end
 :PROPERTIES:
 :ID:       b135cef2-ea39-4834-a37b-422a22db6cb8

@@ -1,7 +1,6 @@
-# Created 2021-07-18 Sun 09:02
-#+TITLE: An amateurish coder's blog
-#+AUTHOR: stardiviner
-
+# Created 2025-08-21 Thu 20:19
+#+title: An amateurish coder's blog
+#+author: Christopher M. Miles
 * 现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了
 :PROPERTIES:
 :DATE:     [2021-07-18 Sun 00:38]
@@ -10,7 +9,6 @@
 :END:
 
 [[file:more-restrict-censorship-on-platforms.org][现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了]]
-
 * implement H5 jump to WeChat mini program
 :PROPERTIES:
 :DATE:     [2019-09-20 Fri 15:29]
@@ -19,7 +17,6 @@
 :END:
 
 [[file:implement-H5-jump-to-WeChat-mini-program.org][implement H5 jump to WeChat mini program]]
-
 * Learn video editor Adobe Premiere to edit a WeChat 15s small video
 :PROPERTIES:
 :DATE:     [2019-05-22 Wed 07:15]
@@ -28,7 +25,6 @@
 :END:
 
 [[file:Learn-video-editor-Adobe-Premiere-to-edit-a-WeChat-15s-small-video.org][Learn video editor Adobe Premiere to edit a WeChat 15s small video]]
-
 * upgrade Org link syntax to new
 :PROPERTIES:
 :DATE:     [2019-04-07 Sun 18:46]
@@ -37,7 +33,6 @@
 :END:
 
 [[file:upgrade-Org-link-syntax-to-new.org][upgrade Org link syntax to new]]
-
 * Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
 :PROPERTIES:
 :DATE:     [2018-10-20 Sat 19:43]
@@ -46,7 +41,6 @@
 :END:
 
 [[file:Emacs-slow-and-heavy-Profile,-Benchmark-your-Emacs,-and-speed-it-up.org][Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up]]
-
 * How to use docstring to annotate source code
 :PROPERTIES:
 :DATE:     [2018-09-28 Fri 11:00]
@@ -55,7 +49,6 @@
 :END:
 
 [[file:How-to-use-docstring-to-annotate-source-code.org][How to use docstring to annotate source code]]
-
 * Learn Programming Language from Diving into Source Code
 :PROPERTIES:
 :DATE:     [2018-05-28 Mon 20:25]
@@ -64,7 +57,6 @@
 :END:
 
 [[file:Learn-Programming-Language-from-Diving-into-Source-Code.org][Learn Programming Language from Diving into Source Code]]
-
 * Learn a little basic of Nginx for setting up web server
 :PROPERTIES:
 :DATE:     [2018-05-22 Tue 11:11]
@@ -73,7 +65,6 @@
 :END:
 
 [[file:Learn-a-little-basic-of-Nginx-for-setting-up-web-server.org][Learn a little basic of Nginx for setting up web server]]
-
 * Make company-mode support for nginx-mode
 :PROPERTIES:
 :DATE:     [2018-05-20 Sun 16:43]
@@ -82,7 +73,6 @@
 :END:
 
 [[file:Make-company-mode-support-for-nginx-mode.org][Make company-mode support for nginx-mode]]
-
 * Clojure Plotting to Org inline image in ob-clojure
 :PROPERTIES:
 :DATE:     [2018-05-17 Thu 10:01]
@@ -91,7 +81,6 @@
 :END:
 
 [[file:Clojure-Plotting-to-Org-inline-image-in-ob-clojure.org][Clojure Plotting to Org inline image in ob-clojure]]
-
 * How to Read Code in Emacs
 :PROPERTIES:
 :DATE:     [2018-05-17 Thu 08:31]
@@ -100,7 +89,6 @@
 :END:
 
 [[file:How-to-Read-Code-in-Emacs.org][How to Read Code in Emacs]]
-
 * Literate Programming with Org Mode
 :PROPERTIES:
 :DATE:     [2018-05-15 Tue 17:40]
@@ -109,7 +97,6 @@
 :END:
 
 [[file:Literate-Programming-with-Org-Mode.org][Literate Programming with Org Mode]]
-
 * multilingual support with ob-translate and google-translate
 :PROPERTIES:
 :DATE:     [2018-04-21 Sat 15:57]
@@ -118,7 +105,6 @@
 :END:
 
 [[file:multilingual-support-with-ob-translate-and-google-translate.org][multilingual support with ob-translate and google-translate]]
-
 * Learned basic skateboard
 :PROPERTIES:
 :DATE:     [2018-04-21 Sat 11:15]
@@ -127,7 +113,6 @@
 :END:
 
 [[file:Learned-basic-skateboard.org][Learned basic skateboard]]
-
 * Needlework: Setup the sewing machine
 :PROPERTIES:
 :DATE:     [2018-04-20 Fri 11:41]
@@ -136,7 +121,6 @@
 :END:
 
 [[file:setup-the-sewing-machine-for-needlework.org][setup the sewing machine for needlework]]
-
 * How to BANISH myself
 :PROPERTIES:
 :DATE:     [2018-04-18 Wed]
@@ -145,7 +129,6 @@
 :END:
 
 [[file:How-to-BANISH-myself.org][How to BANISH myself]]
-
 * test org-mode ox-publish
 :PROPERTIES:
 :TIME:     [2016-04-22 Fri 22:54]

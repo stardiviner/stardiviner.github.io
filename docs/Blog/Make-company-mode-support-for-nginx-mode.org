@@ -1,7 +1,6 @@
-# Created 2021-07-18 Sun 07:53
-#+TITLE: Make company-mode support for nginx-mode
-#+AUTHOR: stardiviner
-
+# Created 2025-08-21 Thu 19:52
+#+title: Make company-mode support for nginx-mode
+#+author: Christopher M. Miles
 * At the beginning
 :PROPERTIES:
 :ID:       656815d3-f5ed-4d62-944f-9e21c4ef8185
@@ -16,14 +15,11 @@ Like Ansible, Terraform, they all have keywords completions support.
 Emacs already has an major mode =nginx-mode=, but it does not provide Nginx directives
 completion. I know =company-mode= has ~company-keywords-alist~. So I can support for Nginx
 too.
-
-
 * Fetch all Nginx directives
 :PROPERTIES:
 :ID:       63351be9-d9a8-4553-91c8-956bf458cf8a
 :PUBDATE:  <2019-08-14 Wed 19:08>
 :END:
-
 ** TODO Elisp implementation
 :PROPERTIES:
 :ID:       541fd566-a66c-442a-aaf1-3b0939946fea
@@ -51,7 +47,6 @@ too.
 *NOTE*: This version does not work, because some low-level reason.
 
 https://github.com/AdamNiederer/elquery/issues/5
-
 ** another Python implementation
 :PROPERTIES:
 :ID:       0d37c0b2-6484-40ab-b29b-045437c7da6c
@@ -142,8 +137,6 @@ Convert result to Elisp list data structure:
  (ess-julia-mode . julia-mode)
  (enh-ruby-mode . ruby-mode))
 #+end_example
-
-
 * company-keywords-alist
 :PROPERTIES:
 :ID:       49891b01-c0cb-482c-97a1-a95fdd6771a5
@@ -331,7 +324,6 @@ Convert result to Elisp list data structure:
 (eval-after-load 'nginx-mode
   '(add-hook 'nginx-mode-hook #'company-nginx-keywords))
 #+end_src
-
 * created package company-nginx
 :PROPERTIES:
 :ID:       5857b6a8-8f01-4f98-b42c-a58c3e385017

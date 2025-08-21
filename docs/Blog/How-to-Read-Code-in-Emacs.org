@@ -1,13 +1,11 @@
-# Created 2021-07-18 Sun 07:51
-#+TITLE: How to Read Code in Emacs
-#+AUTHOR: stardiviner
-
+# Created 2025-08-21 Thu 19:51
+#+title: How to Read Code in Emacs
+#+author: Christopher M. Miles
 * View
 :PROPERTIES:
 :ID:       94a69f55-ee1b-4cbe-bbc9-b8de28b99273
 :PUBDATE:  <2019-08-14 Wed 19:46>
 :END:
-
 ** Highlight Code
 :PROPERTIES:
 :Attachments: highlight%20code.png
@@ -20,14 +18,11 @@ You can use highlighting tools to mark code with different colors like taking no
 distinguish code.
 
 - I used Emacs package [[https://github.com/wolray/symbol-overlay/][symbol-overlay]] or other similar highlighting packages.
-
-
 * Navigation
 :PROPERTIES:
 :ID:       7e88b2b1-98a6-4813-b8be-5d2c8a33cdd5
 :PUBDATE:  <2019-08-14 Wed 19:46>
 :END:
-
 ** Jump to definition of any code
 :PROPERTIES:
 :ID:       ecfb3da0-5777-4f50-bcbb-63318c9e3ccf
@@ -41,7 +36,6 @@ There are some options to select:
   with package "=pcre2el=".
 - In current buffer, you can use =Imenu=, etc to jump.
 - Or even open an class/functions definitions sidebar to have an overview of your code.
-
 ** Jump to definition of thing-at-point
 :PROPERTIES:
 :ID:       3879abc2-861c-407e-9cab-bd08ed1fe9cd
@@ -50,11 +44,9 @@ There are some options to select:
 When code definition is not in the same window page area, you want to jump to definition.
 You can use =xref.el= (which is Emacs built-in support now). If you want to keep current
 code viewing, you can create a function to accept universal prefix argument
- for =[M-.]= to open code definition in other window. If you don't
+for =[M-.]= to open code definition in other window. If you don't
 want to mess your windows up, you also can try Emacs new feature (from 26?) "child-frame".
 There is an existing package called "[[https://github.com/tumashu/posframe][posframe]]" can be helpful.
-
-
 * Figure out of Code by running it
 :PROPERTIES:
 :Attachments: Edebug%20result%20at%20point.png
@@ -84,7 +76,7 @@ Here is my trick after I dive into Edebug source code:
 #+end_src
 
 *Tip*: Sometimes edebug will auto scroll down, when stop point moves to bottom of window,
- the result popup is truncated, you can use  (~recenter-top-bottom~)
+ the result popup is truncated, you can use (~recenter-top-bottom~)
  to recenter window. Then redisplay result popup with =[r]=.
 
 About other programming languages, like C, C++, there are tools for static diagnostic as
@@ -92,7 +84,6 @@ About other programming languages, like C, C++, there are tools for static diagn
 
 More programming languages has more relative tools. I will not list them one by one at
 here. Just give out some examples that wish can inspire you. That's all.
-
 * TODO Will add more tricks here in future
 :PROPERTIES:
 :ID:       d2ef0e02-e352-4728-b9f8-1d44f8a6cc9a

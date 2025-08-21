@@ -1,983 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- 2021-07-18 Sun 07:51 -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Learn Programming Language from Diving into Source Code</title>
-    <meta name="author" content="stardiviner" />
-    <meta name="generator" content="Org Mode" />
-    <style type="text/css">
-        #content {
-            max-width: 60em;
-            margin: auto;
-        }
-
-        .title {
-            text-align: center;
-            margin-bottom: .2em;
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: medium;
-            font-weight: bold;
-            margin-top: 0;
-        }
-
-        .todo {
-            font-family: monospace;
-            color: red;
-        }
-
-        .done {
-            font-family: monospace;
-            color: green;
-        }
-
-        .priority {
-            font-family: monospace;
-            color: orange;
-        }
-
-        .tag {
-            background-color: #eee;
-            font-family: monospace;
-            padding: 2px;
-            font-size: 80%;
-            font-weight: normal;
-        }
-
-        .timestamp {
-            color: #bebebe;
-        }
-
-        .timestamp-kwd {
-            color: #5f9ea0;
-        }
-
-        .org-right {
-            margin-left: auto;
-            margin-right: 0px;
-            text-align: right;
-        }
-
-        .org-left {
-            margin-left: 0px;
-            margin-right: auto;
-            text-align: left;
-        }
-
-        .org-center {
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-
-        .underline {
-            text-decoration: underline;
-        }
-
-        #postamble p,
-        #preamble p {
-            font-size: 90%;
-            margin: .2em;
-        }
-
-        p.verse {
-            margin-left: 3%;
-        }
-
-        pre {
-            border: 1px solid #e6e6e6;
-            border-radius: 3px;
-            background-color: #f2f2f2;
-            padding: 8pt;
-            font-family: monospace;
-            overflow: auto;
-            margin: 1.2em;
-        }
-
-        pre.src {
-            position: relative;
-            overflow: auto;
-        }
-
-        pre.src:before {
-            display: none;
-            position: absolute;
-            top: -8px;
-            right: 12px;
-            padding: 3px;
-            color: #555;
-            background-color: #f2f2f299;
-        }
-
-        pre.src:hover:before {
-            display: inline;
-            margin-top: 14px;
-        }
-
-        /* Languages per Org manual */
-        pre.src-asymptote:before {
-            content: 'Asymptote';
-        }
-
-        pre.src-awk:before {
-            content: 'Awk';
-        }
-
-        pre.src-authinfo::before {
-            content: 'Authinfo';
-        }
-
-        pre.src-C:before {
-            content: 'C';
-        }
-
-        /* pre.src-C++ doesn't work in CSS */
-        pre.src-clojure:before {
-            content: 'Clojure';
-        }
-
-        pre.src-css:before {
-            content: 'CSS';
-        }
-
-        pre.src-D:before {
-            content: 'D';
-        }
-
-        pre.src-ditaa:before {
-            content: 'ditaa';
-        }
-
-        pre.src-dot:before {
-            content: 'Graphviz';
-        }
-
-        pre.src-calc:before {
-            content: 'Emacs Calc';
-        }
-
-        pre.src-emacs-lisp:before {
-            content: 'Emacs Lisp';
-        }
-
-        pre.src-fortran:before {
-            content: 'Fortran';
-        }
-
-        pre.src-gnuplot:before {
-            content: 'gnuplot';
-        }
-
-        pre.src-haskell:before {
-            content: 'Haskell';
-        }
-
-        pre.src-hledger:before {
-            content: 'hledger';
-        }
-
-        pre.src-java:before {
-            content: 'Java';
-        }
-
-        pre.src-js:before {
-            content: 'Javascript';
-        }
-
-        pre.src-latex:before {
-            content: 'LaTeX';
-        }
-
-        pre.src-ledger:before {
-            content: 'Ledger';
-        }
-
-        pre.src-lisp:before {
-            content: 'Lisp';
-        }
-
-        pre.src-lilypond:before {
-            content: 'Lilypond';
-        }
-
-        pre.src-lua:before {
-            content: 'Lua';
-        }
-
-        pre.src-matlab:before {
-            content: 'MATLAB';
-        }
-
-        pre.src-mscgen:before {
-            content: 'Mscgen';
-        }
-
-        pre.src-ocaml:before {
-            content: 'Objective Caml';
-        }
-
-        pre.src-octave:before {
-            content: 'Octave';
-        }
-
-        pre.src-org:before {
-            content: 'Org mode';
-        }
-
-        pre.src-oz:before {
-            content: 'OZ';
-        }
-
-        pre.src-plantuml:before {
-            content: 'Plantuml';
-        }
-
-        pre.src-processing:before {
-            content: 'Processing.js';
-        }
-
-        pre.src-python:before {
-            content: 'Python';
-        }
-
-        pre.src-R:before {
-            content: 'R';
-        }
-
-        pre.src-ruby:before {
-            content: 'Ruby';
-        }
-
-        pre.src-sass:before {
-            content: 'Sass';
-        }
-
-        pre.src-scheme:before {
-            content: 'Scheme';
-        }
-
-        pre.src-screen:before {
-            content: 'Gnu Screen';
-        }
-
-        pre.src-sed:before {
-            content: 'Sed';
-        }
-
-        pre.src-sh:before {
-            content: 'shell';
-        }
-
-        pre.src-sql:before {
-            content: 'SQL';
-        }
-
-        pre.src-sqlite:before {
-            content: 'SQLite';
-        }
-
-        /* additional languages in org.el's org-babel-load-languages alist */
-        pre.src-forth:before {
-            content: 'Forth';
-        }
-
-        pre.src-io:before {
-            content: 'IO';
-        }
-
-        pre.src-J:before {
-            content: 'J';
-        }
-
-        pre.src-makefile:before {
-            content: 'Makefile';
-        }
-
-        pre.src-maxima:before {
-            content: 'Maxima';
-        }
-
-        pre.src-perl:before {
-            content: 'Perl';
-        }
-
-        pre.src-picolisp:before {
-            content: 'Pico Lisp';
-        }
-
-        pre.src-scala:before {
-            content: 'Scala';
-        }
-
-        pre.src-shell:before {
-            content: 'Shell Script';
-        }
-
-        pre.src-ebnf2ps:before {
-            content: 'ebfn2ps';
-        }
-
-        /* additional language identifiers per "defun org-babel-execute"
+<!-- 2025-08-21 Thu 19:51 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Learn Programming Language from Diving into Source Code</title>
+<meta name="author" content="Christopher M. Miles" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
        in ob-*.el */
-        pre.src-cpp:before {
-            content: 'C++';
-        }
-
-        pre.src-abc:before {
-            content: 'ABC';
-        }
-
-        pre.src-coq:before {
-            content: 'Coq';
-        }
-
-        pre.src-groovy:before {
-            content: 'Groovy';
-        }
-
-        /* additional language identifiers from org-babel-shell-names in
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
      ob-shell.el: ob-shell is the only babel language using a lambda to put
      the execution function name together. */
-        pre.src-bash:before {
-            content: 'bash';
-        }
-
-        pre.src-csh:before {
-            content: 'csh';
-        }
-
-        pre.src-ash:before {
-            content: 'ash';
-        }
-
-        pre.src-dash:before {
-            content: 'dash';
-        }
-
-        pre.src-ksh:before {
-            content: 'ksh';
-        }
-
-        pre.src-mksh:before {
-            content: 'mksh';
-        }
-
-        pre.src-posh:before {
-            content: 'posh';
-        }
-
-        /* Additional Emacs modes also supported by the LaTeX listings package */
-        pre.src-ada:before {
-            content: 'Ada';
-        }
-
-        pre.src-asm:before {
-            content: 'Assembler';
-        }
-
-        pre.src-caml:before {
-            content: 'Caml';
-        }
-
-        pre.src-delphi:before {
-            content: 'Delphi';
-        }
-
-        pre.src-html:before {
-            content: 'HTML';
-        }
-
-        pre.src-idl:before {
-            content: 'IDL';
-        }
-
-        pre.src-mercury:before {
-            content: 'Mercury';
-        }
-
-        pre.src-metapost:before {
-            content: 'MetaPost';
-        }
-
-        pre.src-modula-2:before {
-            content: 'Modula-2';
-        }
-
-        pre.src-pascal:before {
-            content: 'Pascal';
-        }
-
-        pre.src-ps:before {
-            content: 'PostScript';
-        }
-
-        pre.src-prolog:before {
-            content: 'Prolog';
-        }
-
-        pre.src-simula:before {
-            content: 'Simula';
-        }
-
-        pre.src-tcl:before {
-            content: 'tcl';
-        }
-
-        pre.src-tex:before {
-            content: 'TeX';
-        }
-
-        pre.src-plain-tex:before {
-            content: 'Plain TeX';
-        }
-
-        pre.src-verilog:before {
-            content: 'Verilog';
-        }
-
-        pre.src-vhdl:before {
-            content: 'VHDL';
-        }
-
-        pre.src-xml:before {
-            content: 'XML';
-        }
-
-        pre.src-nxml:before {
-            content: 'XML';
-        }
-
-        /* add a generic configuration mode; LaTeX export needs an additional
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
      (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-        pre.src-conf:before {
-            content: 'Configuration File';
-        }
+  pre.src-conf:before { content: 'Configuration File'; }
 
-        table {
-            border-collapse: collapse;
-        }
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="/assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="/assets/scripts/org-info-src.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
 
-        caption.t-above {
-            caption-side: top;
-        }
-
-        caption.t-bottom {
-            caption-side: bottom;
-        }
-
-        td,
-        th {
-            vertical-align: top;
-        }
-
-        th.org-right {
-            text-align: center;
-        }
-
-        th.org-left {
-            text-align: center;
-        }
-
-        th.org-center {
-            text-align: center;
-        }
-
-        td.org-right {
-            text-align: right;
-        }
-
-        td.org-left {
-            text-align: left;
-        }
-
-        td.org-center {
-            text-align: center;
-        }
-
-        dt {
-            font-weight: bold;
-        }
-
-        .footpara {
-            display: inline;
-        }
-
-        .footdef {
-            margin-bottom: 1em;
-        }
-
-        .figure {
-            padding: 1em;
-        }
-
-        .figure p {
-            text-align: center;
-        }
-
-        .equation-container {
-            display: table;
-            text-align: center;
-            width: 100%;
-        }
-
-        .equation {
-            vertical-align: middle;
-        }
-
-        .equation-label {
-            display: table-cell;
-            text-align: right;
-            vertical-align: middle;
-        }
-
-        .inlinetask {
-            padding: 10px;
-            border: 2px solid gray;
-            margin: 10px;
-            background: #ffffcc;
-        }
-
-        #org-div-home-and-up {
-            text-align: right;
-            font-size: 70%;
-            white-space: nowrap;
-        }
-
-        textarea {
-            overflow-x: auto;
-        }
-
-        .linenr {
-            font-size: smaller
-        }
-
-        .code-highlighted {
-            background-color: #ffff00;
-        }
-
-        .org-info-js_info-navigation {
-            border-style: none;
-        }
-
-        #org-info-js_console-label {
-            font-size: 10px;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        .org-info-js_search-highlight {
-            background-color: #ffff00;
-            color: #000000;
-            font-weight: bold;
-        }
-
-        .org-svg {
-            width: 90%;
-        }
-    </style>
-    <link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16">
-    <link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32">
-    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css" />
-    <link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml">
-    <script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="/assets/scripts/main.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-    <script src="/assets/scripts/org-info-src.js">
-        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-        // @license-end
-    </script>
-
-    <script>
-        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-        org_html_manager.set("TOC_DEPTH", "3");
-        org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
-        org_html_manager.set("LINK_UP", "");
-        org_html_manager.set("LOCAL_TOC", "3");
-        org_html_manager.set("VIEW_BUTTONS", "0");
-        org_html_manager.set("MOUSE_HINT", "underline");
-        org_html_manager.set("FIXED_TOC", "2");
-        org_html_manager.set("TOC", "0");
-        org_html_manager.set("VIEW", "showall");
-        org_html_manager.setup(); // activate after the parameters are set
-        // @license-end
-    </script>
-    <script>
-        // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-        function CodeHighlightOn(elem, id) {
-            var target = document.getElementById(id);
-            if (null != target) {
-                elem.classList.add("code-highlighted");
-                target.classList.add("code-highlighted");
-            }
-        }
-
-        function CodeHighlightOff(elem, id) {
-            var target = document.getElementById(id);
-            if (null != target) {
-                elem.classList.remove("code-highlighted");
-                target.classList.remove("code-highlighted");
-            }
-        }
-        // @license-end
-    </script>
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "3");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "2");
+org_html_manager.set("TOC", "0");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
 </head>
-
 <body>
-    <div id="org-div-home-and-up">
-        <a accesskey="h" href=""> UP </a>
-        |
-        <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
-    </div>
-    <div id="preamble" class="status">
-        <div class='nav'>
-            <ul>
-                <li><a href='/'>Home</a></li>
-                <li><a href='/Blog/index.html'>Blog</a></li>
-                <li><a href="/Thought/index.html">Thought</a></li>
-                <li><a href='/Literature/index.html'>文学</a></li>
-                <li><a href='/About/index.html'>About</a></li>
-            </ul>
-        </div>
-        <div class="epilogue">
-            <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
-        </div>
-    </div>
-    <div id="content" class="content">
-        <header>
-            <h1 class="title">Learn Programming Language from Diving into Source Code</h1>
-        </header>
-        <nav id="table-of-contents">
-            <h2>Table of Contents</h2>
-            <div id="text-table-of-contents">
-                <ul>
-                    <li><a href="#org7008f30">1. Master Core Functions</a></li>
-                    <li><a href="#org97e999f">2. Dive into Language Source Code</a></li>
-                    <li><a href="#org0b7c973">3. Search code examples on public source code hosting websites</a>
-                        <ul>
-                            <li><a href="#org66be49d">3.1. Emacs package engine-mode</a>
-                                <ul>
-                                    <li><a href="#orgd9eeb6d">3.1.1. how to define engine</a></li>
-                                    <li><a href="#org88ecc76">3.1.2. my config part</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#org69d36ef">4. More tips will updated on this post</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <div id="outline-container-org7008f30" class="outline-2">
-            <h2 id="org7008f30"><span class="section-number-2">1.</span> Master Core Functions</h2>
-            <div class="outline-text-2" id="text-1">
-                <pre class="example">
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
+</div><div id="preamble" class="status">
+<div class='nav'>
+  <ul>
+    <li><a href='/'>Home</a></li>
+    <li><a href='/Blog/index.html'>Blog</a></li>
+    <li><a href="/Thought/index.html">Thought</a></li>
+    <li><a href='/Literature/index.html'>文学</a></li>
+    <li><a href='/About/index.html'>About</a></li>
+  </ul>
+</div>
+<div class="epilogue">
+  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
+</div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Learn Programming Language from Diving into Source Code</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#ID-4df69bd2-3b91-4f61-ab75-a7bf83761e1b">1. Master Core Functions</a></li>
+<li><a href="#ID-fe16cda6-4303-41ca-9a35-48a8b1e6c854">2. Dive into Language Source Code</a></li>
+<li><a href="#ID-225b3e31-c8e2-4e48-b725-1584a3f0dcdf">3. Search code examples on public source code hosting websites</a>
+<ul>
+<li><a href="#ID-6c3ffd6f-1c43-490e-ac65-528c3f03c6dd">3.1. Emacs package engine-mode</a>
+<ul>
+<li><a href="#ID-5771d61a-a49c-49f8-9f9e-d5b762857537">3.1.1. how to define engine</a></li>
+<li><a href="#ID-a8323cd7-a7c8-4347-9e4b-9cffff2c569f">3.1.2. my config part</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#ID-b38fbf60-66e3-4c18-8069-769b0bc656db">4. More tips will updated on this post</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-ID-4df69bd2-3b91-4f61-ab75-a7bf83761e1b" class="outline-2">
+<h2 id="ID-4df69bd2-3b91-4f61-ab75-a7bf83761e1b"><span class="section-number-2">1.</span> <a href="#ID-4df69bd2-3b91-4f61-ab75-a7bf83761e1b">Master Core Functions</a></h2>
+<div class="outline-text-2" id="text-1">
+<pre class="example">
 ID: 4df69bd2-3b91-4f61-ab75-a7bf83761e1b
 PUBDATE: <2019-08-14 Wed 19:09>
 </pre>
 
-                <p>
-                    If you're a beginner on learning Programming Language, mastering some core and frequently
-                    used functions is really helpful. This can let you write better code.
-                </p>
+<p>
+If you're a beginner on learning Programming Language, mastering some core and frequently
+used functions is really helpful. This can let you write better code.
+</p>
 
-                <p>
-                    This thought is comes from book &lt;<a href="https://www.manning.com/books/clojure-standard-library">Clojure Standard Library: An annotated reference</a>&gt;. I get
-                    a free chance to choose an ebook after filled a form from Manning Publications. (I choose
-                    this book because I'm learning Clojure, need to master basic of Clojure as a beginner.)
-                </p>
-            </div>
-        </div>
-
-        <div id="outline-container-org97e999f" class="outline-2">
-            <h2 id="org97e999f"><span class="section-number-2">2.</span> Dive into Language Source Code</h2>
-            <div class="outline-text-2" id="text-2">
-                <pre class="example">
+<p>
+This thought is comes from book &lt;<a href="https://www.manning.com/books/clojure-standard-library">Clojure Standard Library: An annotated reference</a>&gt;. I get
+a free chance to choose an ebook after filled a form from Manning Publications. (I choose
+this book because I'm learning Clojure, need to master basic of Clojure as a beginner.)
+</p>
+</div>
+</div>
+<div id="outline-container-ID-fe16cda6-4303-41ca-9a35-48a8b1e6c854" class="outline-2">
+<h2 id="ID-fe16cda6-4303-41ca-9a35-48a8b1e6c854"><span class="section-number-2">2.</span> <a href="#ID-fe16cda6-4303-41ca-9a35-48a8b1e6c854">Dive into Language Source Code</a></h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
 ID: fe16cda6-4303-41ca-9a35-48a8b1e6c854
 PUBDATE: <2019-08-14 Wed 19:09>
 </pre>
 
-                <p>
-                    Programming Language usually has a mechanism to check out source code. For example, Emacs
-                    Lisp, it can use <kbd>M-.</kbd> to jump to function definition. Clojure is same.
-                    About other languages like Python, Ruby etc. In Emacs also can use <kbd>M-.</kbd>
-                    or Emacs extensions to support this.
-                </p>
-            </div>
-        </div>
-
-        <div id="outline-container-org0b7c973" class="outline-2">
-            <h2 id="org0b7c973"><span class="section-number-2">3.</span> Search code examples on public source code hosting websites</h2>
-            <div class="outline-text-2" id="text-3">
-                <pre class="example">
+<p>
+Programming Language usually has a mechanism to check out source code. For example, Emacs
+Lisp, it can use <kbd>M-.</kbd> to jump to function definition. Clojure is same.
+About other languages like Python, Ruby etc. In Emacs also can use <kbd>M-.</kbd>
+or Emacs extensions to support this.
+</p>
+</div>
+</div>
+<div id="outline-container-ID-225b3e31-c8e2-4e48-b725-1584a3f0dcdf" class="outline-2">
+<h2 id="ID-225b3e31-c8e2-4e48-b725-1584a3f0dcdf"><span class="section-number-2">3.</span> <a href="#ID-225b3e31-c8e2-4e48-b725-1584a3f0dcdf">Search code examples on public source code hosting websites</a></h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
 ID: 225b3e31-c8e2-4e48-b725-1584a3f0dcdf
 PUBDATE: <2019-08-14 Wed 19:09>
 </pre>
 
-                <p>
-                    Learning with examples is helpful for beginner, you can search code on public source code
-                    hosting websites. Here is my collected list:
-                </p>
+<p>
+Learning with examples is helpful for beginner, you can search code on public source code
+hosting websites. Here is my collected list:
+</p>
 
-                <dl class="org-dl">
-                    <dt><a href="https://www.rosettacode.org/wiki/Rosetta_Code">Rosetta Code</a></dt>
-                    <dd>Rosetta Code is a programming chrestomathy site. The idea is to present
-                        solutions to the same task in as many different languages as possible, to demonstrate
-                        how languages are similar and different, and to aid a person with a grounding in one
-                        approach to a problem in learning another. Rosetta Code currently has 874 tasks, 223
-                        draft tasks, and is aware of 687 languages, though we do not (and cannot) have
-                        solutions to every task in every language.</dd>
+<dl class="org-dl">
+<dt><a href="https://www.rosettacode.org/wiki/Rosetta_Code">Rosetta Code</a></dt><dd>Rosetta Code is a programming chrestomathy site. The idea is to present
+solutions to the same task in as many different languages as possible, to demonstrate
+how languages are similar and different, and to aid a person with a grounding in one
+approach to a problem in learning another. Rosetta Code currently has 874 tasks, 223
+draft tasks, and is aware of 687 languages, though we do not (and cannot) have
+solutions to every task in every language.</dd>
 
-                    <dt><a href="https://cocycles.com/">CoCycles</a></dt>
-                    <dd>search for open source code by functionality.</dd>
-                    <dt><a href="https://sourcegraph.com/">Sourcegraph</a></dt>
-                    <dd>search for code, docs, and usage examples.</dd>
+<dt><a href="https://cocycles.com/">CoCycles</a></dt><dd>search for open source code by functionality.</dd>
+<dt><a href="https://sourcegraph.com/">Sourcegraph</a></dt><dd>search for code, docs, and usage examples.</dd>
 
-                    <dt>(no term)</dt>
-                    <dd><a href="https://github.com/search">https://github.com/search</a></dd>
-                    <dt>(no term)</dt>
-                    <dd><a href="https://bitbucket.org/">https://bitbucket.org/</a></dd>
-                    <dt>(no term)</dt>
-                    <dd><a href="https://cloud.google.com/tools/cloud-repositories/">https://cloud.google.com/tools/cloud-repositories/</a></dd>
-                    <dt>(no term)</dt>
-                    <dd><a href="https://www.codeplex.com/">https://www.codeplex.com/</a></dd>
-                    <dt>(no term)</dt>
-                    <dd><a href="https://gitorious.org/">https://gitorious.org/</a></dd>
-                    <dt>(no term)</dt>
-                    <dd><a href="https://code.google.com/">https://code.google.com/</a></dd>
-                    <dt><a href="https://sourceforge.net/">SourceForge</a></dt>
-                    <dd>The Complete Open-Source Software Platform. Create, collaborate
-                        &amp; distribute to over 33 million users worldwide.</dd>
-                    <dt>(no term)</dt>
-                    <dd><a href="http://freecode.com/">http://freecode.com/</a></dd>
-                    <dt>(no term)</dt>
-                    <dd><a href="https://gitlab.com/public">https://gitlab.com/public</a></dd>
-                    <dt>(no term)</dt>
-                    <dd><a href="https://www.openhub.net/">https://www.openhub.net/</a></dd>
-                    <dt>(no term)</dt>
-                    <dd><a href="http://sources.debian.net/">http://sources.debian.net/</a></dd>
-                    <dt>(no term)</dt>
-                    <dd><a href="https://codesearch.debian.net/">https://codesearch.debian.net/</a></dd>
-                </dl>
-            </div>
-
-            <div id="outline-container-org66be49d" class="outline-3">
-                <h3 id="org66be49d"><span class="section-number-3">3.1.</span> Emacs package engine-mode</h3>
-                <div class="outline-text-3" id="text-3-1">
-                    <pre class="example">
+<dt>(no term)</dt><dd><a href="https://github.com/search">https://github.com/search</a></dd>
+<dt>(no term)</dt><dd><a href="https://bitbucket.org/">https://bitbucket.org/</a></dd>
+<dt>(no term)</dt><dd><a href="https://cloud.google.com/tools/cloud-repositories/">https://cloud.google.com/tools/cloud-repositories/</a></dd>
+<dt>(no term)</dt><dd><a href="https://www.codeplex.com/">https://www.codeplex.com/</a></dd>
+<dt>(no term)</dt><dd><a href="https://gitorious.org/">https://gitorious.org/</a></dd>
+<dt>(no term)</dt><dd><a href="https://code.google.com/">https://code.google.com/</a></dd>
+<dt><a href="https://sourceforge.net/">SourceForge</a></dt><dd>The Complete Open-Source Software Platform. Create, collaborate
+&amp; distribute to over 33 million users worldwide.</dd>
+<dt>(no term)</dt><dd><a href="http://freecode.com/">http://freecode.com/</a></dd>
+<dt>(no term)</dt><dd><a href="https://gitlab.com/public">https://gitlab.com/public</a></dd>
+<dt>(no term)</dt><dd><a href="https://www.openhub.net/">https://www.openhub.net/</a></dd>
+<dt>(no term)</dt><dd><a href="http://sources.debian.net/">http://sources.debian.net/</a></dd>
+<dt>(no term)</dt><dd><a href="https://codesearch.debian.net/">https://codesearch.debian.net/</a></dd>
+</dl>
+</div>
+<div id="outline-container-ID-6c3ffd6f-1c43-490e-ac65-528c3f03c6dd" class="outline-3">
+<h3 id="ID-6c3ffd6f-1c43-490e-ac65-528c3f03c6dd"><span class="section-number-3">3.1.</span> <a href="#ID-6c3ffd6f-1c43-490e-ac65-528c3f03c6dd">Emacs package engine-mode</a></h3>
+<div class="outline-text-3" id="text-3-1">
+<pre class="example">
 ID: 6c3ffd6f-1c43-490e-ac65-528c3f03c6dd
 </pre>
 
-                    <p>
-                        Emacs has a package called "<code>engine-mode</code>" which can define search engine based on URL by
-                        replacing query keyword with "<code>%s</code>". It is quite quick to use it to open a search query in
-                        web browser. Even can use <code>thing-at-point</code> to get word or symbol at point to avoid manually
-                        input.
-                    </p>
-                </div>
-
-                <div id="outline-container-orgd9eeb6d" class="outline-4">
-                    <h4 id="orgd9eeb6d"><span class="section-number-4">3.1.1.</span> how to define engine</h4>
-                    <div class="outline-text-4" id="text-3-1-1">
-                        <pre class="example">
+<p>
+Emacs has a package called "<code>engine-mode</code>" which can define search engine based on URL by
+replacing query keyword with "<code>%s</code>". It is quite quick to use it to open a search query in
+web browser. Even can use <code>thing-at-point</code> to get word or symbol at point to avoid manually
+input.
+</p>
+</div>
+<div id="outline-container-ID-5771d61a-a49c-49f8-9f9e-d5b762857537" class="outline-4">
+<h4 id="ID-5771d61a-a49c-49f8-9f9e-d5b762857537"><span class="section-number-4">3.1.1.</span> <a href="#ID-5771d61a-a49c-49f8-9f9e-d5b762857537">how to define engine</a></h4>
+<div class="outline-text-4" id="text-3-1-1">
+<pre class="example">
 ID: 5771d61a-a49c-49f8-9f9e-d5b762857537
 </pre>
-                    </div>
-
-                    <ol class="org-ol">
-                        <li><a id="org4fd231f" name="org4fd231f"></a>simple<br>
-                            <div class="outline-text-5" id="text-3-1-1-1">
-                                <pre class="example">
+</div>
+<ol class="org-ol">
+<li><a id="ID-b1d53db2-70c9-400a-8068-87b2b0b59bb4" name="ID-b1d53db2-70c9-400a-8068-87b2b0b59bb4"></a><a href="#ID-b1d53db2-70c9-400a-8068-87b2b0b59bb4">simple</a><br>
+<div class="outline-text-5" id="text-3-1-1-1">
+<pre class="example">
 ID: b1d53db2-70c9-400a-8068-87b2b0b59bb4
 </pre>
 
-                                <div class="org-src-container">
-                                    <pre class="src src-emacs-lisp"><code><span style="color: #707183;">(</span>defengine github</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/search?ref=simplesearch&amp;q=%s"</span><span style="color: #707183;">)</span></code>
-</pre>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li><a id="org04dac31" name="org04dac31"></a>specify key<br>
-                            <div class="outline-text-5" id="text-3-1-1-2">
-                                <pre class="example">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span>defengine github</code>
+<code>  <span style="color: #c3e88d;">"https://github.com/search?ref=simplesearch&amp;q=</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span><span style="color: #c792ea;">)</span></code>
+</code></pre>
+</div>
+</div>
+</li>
+<li><a id="ID-b4d6e855-00e6-4919-8aa0-2d34bc58f76c" name="ID-b4d6e855-00e6-4919-8aa0-2d34bc58f76c"></a><a href="#ID-b4d6e855-00e6-4919-8aa0-2d34bc58f76c">specify key</a><br>
+<div class="outline-text-5" id="text-3-1-1-2">
+<pre class="example">
 ID: b4d6e855-00e6-4919-8aa0-2d34bc58f76c
 </pre>
 
-                                <div class="org-src-container">
-                                    <pre class="src src-emacs-lisp"><code><span style="color: #707183;">(</span>defengine duckduckgo</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://duckduckgo.com/?q=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keybinding</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"d"</span><span style="color: #707183;">)</span></code>
-</pre>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li><a id="orgd3c05d1" name="orgd3c05d1"></a>specify browser function<br>
-                            <div class="outline-text-5" id="text-3-1-1-3">
-                                <pre class="example">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span>defengine duckduckgo</code>
+<code>  <span style="color: #c3e88d;">"https://duckduckgo.com/?q=</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span></code>
+<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"d"</span><span style="color: #c792ea;">)</span></code>
+</code></pre>
+</div>
+</div>
+</li>
+<li><a id="ID-cf89a876-7da0-48fc-a1cb-e58270fbead2" name="ID-cf89a876-7da0-48fc-a1cb-e58270fbead2"></a><a href="#ID-cf89a876-7da0-48fc-a1cb-e58270fbead2">specify browser function</a><br>
+<div class="outline-text-5" id="text-3-1-1-3">
+<pre class="example">
 ID: cf89a876-7da0-48fc-a1cb-e58270fbead2
 </pre>
 
-                                <div class="org-src-container">
-                                    <pre class="src src-emacs-lisp"><code><span style="color: #707183;">(</span>defengine github</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/search?ref=simplesearch&amp;q=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:browser</span> 'eww-browse-url<span style="color: #707183;">)</span></code>
-</pre>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li><a id="org2ba9398" name="org2ba9398"></a>specify docstring<br>
-                            <div class="outline-text-5" id="text-3-1-1-4">
-                                <pre class="example">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span>defengine github</code>
+<code>  <span style="color: #c3e88d;">"https://github.com/search?ref=simplesearch&amp;q=</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span></code>
+<code>  <span style="color: #82aaff;">:browser</span> 'eww-browse-url<span style="color: #c792ea;">)</span></code>
+</code></pre>
+</div>
+</div>
+</li>
+<li><a id="ID-7c1d115d-c6c7-4bab-aff6-7aa570211df2" name="ID-7c1d115d-c6c7-4bab-aff6-7aa570211df2"></a><a href="#ID-7c1d115d-c6c7-4bab-aff6-7aa570211df2">specify docstring</a><br>
+<div class="outline-text-5" id="text-3-1-1-4">
+<pre class="example">
 ID: 7c1d115d-c6c7-4bab-aff6-7aa570211df2
 </pre>
 
-                                <div class="org-src-container">
-                                    <pre class="src src-emacs-lisp"><code><span style="color: #707183;">(</span>defengine ctan</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://www.ctan.org/search/?x=1&amp;PORTAL=on&amp;phrase=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Search the Comprehensive TeX Archive Network (ctan.org)"</span><span style="color: #707183;">)</span></code>
-</pre>
-                                </div>
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-
-                <div id="outline-container-org88ecc76" class="outline-4">
-                    <h4 id="org88ecc76"><span class="section-number-4">3.1.2.</span> my config part</h4>
-                    <div class="outline-text-4" id="text-3-1-2">
-                        <pre class="example">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span>defengine ctan</code>
+<code>  <span style="color: #c3e88d;">"http://www.ctan.org/search/?x=1&amp;PORTAL=on&amp;phrase=</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span></code>
+<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Search the Comprehensive TeX Archive Network (ctan.org)"</span><span style="color: #c792ea;">)</span></code>
+</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-ID-a8323cd7-a7c8-4347-9e4b-9cffff2c569f" class="outline-4">
+<h4 id="ID-a8323cd7-a7c8-4347-9e4b-9cffff2c569f"><span class="section-number-4">3.1.2.</span> <a href="#ID-a8323cd7-a7c8-4347-9e4b-9cffff2c569f">my config part</a></h4>
+<div class="outline-text-4" id="text-3-1-2">
+<pre class="example">
 ID: a8323cd7-a7c8-4347-9e4b-9cffff2c569f
 </pre>
 
-                        <div class="org-src-container">
-                            <pre class="src src-emacs-lisp"><code><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">general search engines</span></code>
-<code><span style="color: #707183;">(</span>defengine google</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://www.google.com/search?ie=utf-8&amp;oe=utf-8&amp;q=%s"</span></code>
-<code>  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">"http://www.google.com/search?q=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Google"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keybinding</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"g"</span><span style="color: #707183;">)</span></code>
-<code><span style="color: #707183;">(</span>defengine duckduckgo</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://duckduckgo.com/?q=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"DuckDuckGo"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keybinding</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"d"</span><span style="color: #707183;">)</span></code>
-<code><span style="color: #707183;">(</span>defengine blekko</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://blekko.com/#?q=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Blekko"</span></code>
-<code>  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:keybinding "B"</span></code>
-<code>  <span style="color: #707183;">)</span></code>
-<code><span style="color: #707183;">(</span>defengine bing</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://cn.bing.com/search?q="</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Bing"</span><span style="color: #707183;">)</span></code>
-<code><span style="color: #707183;">(</span>defengine baidu</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://www.baidu.com/s?wd=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Baidu"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keybinding</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"b"</span><span style="color: #707183;">)</span></code>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><code><span style="color: #676E95;">;; </span><span style="color: #676E95;">general search engines</code>
+<code></span><span style="color: #c792ea;">(</span>defengine google</code>
+<code>  <span style="color: #c3e88d;">"http://www.google.com/search?ie=utf-8&amp;oe=utf-8&amp;q=</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span></code>
+<code>  <span style="color: #676E95;">;; </span><span style="color: #676E95;">"http://www.google.com/search?q=%s"</code>
+<code></span>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Google"</span></code>
+<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"g"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #c792ea;">(</span>defengine duckduckgo</code>
+<code>  <span style="color: #c3e88d;">"https://duckduckgo.com/?q=%s"</span></code>
+<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"DuckDuckGo"</span></code>
+<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"d"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #c792ea;">(</span>defengine blekko</code>
+<code>  <span style="color: #c3e88d;">"https://blekko.com/#?q=%s"</span></code>
+<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Blekko"</span></code>
+<code>  <span style="color: #676E95;">;; </span><span style="color: #676E95;">:keybinding "B"</code>
+<code></span>  <span style="color: #c792ea;">)</span></code>
+<code><span style="color: #c792ea;">(</span>defengine bing</code>
+<code>  <span style="color: #c3e88d;">"http://cn.bing.com/search?q="</span></code>
+<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Bing"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #c792ea;">(</span>defengine baidu</code>
+<code>  <span style="color: #c3e88d;">"http://www.baidu.com/s?wd=%s"</span></code>
+<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Baidu"</span></code>
+<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"b"</span><span style="color: #c792ea;">)</span></code>
 <code></code>
-<code><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Wikipedia</span></code>
-<code><span style="color: #707183;">(</span>defengine wikipedia</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://www.wikipedia.org/search-redirect.php?language=en&amp;go=Go&amp;search=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Wikipedia"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keybinding</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"w"</span><span style="color: #707183;">)</span></code>
-<code><span style="color: #707183;">(</span>defengine baidu_baike</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://baike.baidu.com/search/none?word=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Baidu Baike"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keybinding</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"W"</span><span style="color: #707183;">)</span></code>
-<code><span style="color: #707183;">(</span>defengine wolfram-alpha</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://www.wolframalpha.com/input/?i=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Wolfram Alpha"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keybinding</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"A"</span><span style="color: #707183;">)</span></code>
+<code><span style="color: #676E95;">;; </span><span style="color: #676E95;">Wikipedia</code>
+<code></span><span style="color: #c792ea;">(</span>defengine wikipedia</code>
+<code>  <span style="color: #c3e88d;">"http://www.wikipedia.org/search-redirect.php?language=en&amp;go=Go&amp;search=%s"</span></code>
+<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Wikipedia"</span></code>
+<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"w"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #c792ea;">(</span>defengine baidu_baike</code>
+<code>  <span style="color: #c3e88d;">"http://baike.baidu.com/search/none?word=%s"</span></code>
+<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Baidu Baike"</span></code>
+<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"W"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #c792ea;">(</span>defengine wolfram-alpha</code>
+<code>  <span style="color: #c3e88d;">"http://www.wolframalpha.com/input/?i=%s"</span></code>
+<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Wolfram Alpha"</span></code>
+<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"A"</span><span style="color: #c792ea;">)</span></code>
 <code></code>
-<code><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">programming</span></code>
-<code></code>
-<code><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Docs: API</span></code>
-<code><span style="color: #707183;">(</span>defengine APIs</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://apis.io/?search=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"APIs"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keybinding</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"a"</span><span style="color: #707183;">)</span></code>
-<code><span style="color: #707183;">(</span>defengine mozilla-developer</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://developer.mozilla.org/en-US/search?q=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Mozilla Developer"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keybinding</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"m"</span><span style="color: #707183;">)</span></code>
-<code><span style="color: #707183;">(</span>defengine rfcs</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://pretty-rfc.herokuapp.com/search?q=%s"</span></code>
-<code>  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">"https://www.rfc-editor.org/search/rfc_search_detail.php?rfc=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"RFC"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keybinding</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"R"</span><span style="color: #707183;">)</span></code>
-<code><span style="color: #707183;">(</span>defengine emacswiki</code>
-<code>  <span style="color: var(--clr-string); background-color: var(--bg-string);">"www.emacswiki.org/emacs?search=%s"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:docstring</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Emacs Wiki"</span></code>
-<code>  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keybinding</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"e"</span><span style="color: #707183;">)</span></code>
-</pre>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div id="outline-container-org69d36ef" class="outline-2">
-            <h2 id="org69d36ef"><span class="section-number-2">4.</span> More tips will updated on this post</h2>
-            <div class="outline-text-2" id="text-4">
-                <pre class="example">
+<code><span style="color: #676E95;">;; </span><span style="color: #676E95;">programming</code>
+<code></span></code>
+<code><span style="color: #676E95;">;; </span><span style="color: #676E95;">Docs: API</code>
+<code></span><span style="color: #c792ea;">(</span>defengine APIs</code>
+<code>  <span style="color: #c3e88d;">"http://apis.io/?search=%s"</span></code>
+<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"APIs"</span></code>
+<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"a"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #c792ea;">(</span>defengine mozilla-developer</code>
+<code>  <span style="color: #c3e88d;">"https://developer.mozilla.org/en-US/search?q=%s"</span></code>
+<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Mozilla Developer"</span></code>
+<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"m"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #c792ea;">(</span>defengine rfcs</code>
+<code>  <span style="color: #c3e88d;">"http://pretty-rfc.herokuapp.com/search?q=%s"</span></code>
+<code>  <span style="color: #676E95;">;; </span><span style="color: #676E95;">"https://www.rfc-editor.org/search/rfc_search_detail.php?rfc=%s"</code>
+<code></span>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"RFC"</span></code>
+<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"R"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #c792ea;">(</span>defengine emacswiki</code>
+<code>  <span style="color: #c3e88d;">"www.emacswiki.org/emacs?search=%s"</span></code>
+<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Emacs Wiki"</span></code>
+<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"e"</span><span style="color: #c792ea;">)</span></code>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-b38fbf60-66e3-4c18-8069-769b0bc656db" class="outline-2">
+<h2 id="ID-b38fbf60-66e3-4c18-8069-769b0bc656db"><span class="section-number-2">4.</span> <a href="#ID-b38fbf60-66e3-4c18-8069-769b0bc656db">More tips will updated on this post</a></h2>
+<div class="outline-text-2" id="text-4">
+<pre class="example">
 ID: b38fbf60-66e3-4c18-8069-769b0bc656db
 PUBDATE: <2019-08-14 Wed 19:09>
 </pre>
 
-                <p>
-                    If anyone suggest more skill tips about learning from diving into source code. I will add
-                    them at this post.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div id="postamble" class="status">
-        <footer>
-            Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
-            Last update date: 2021-07-11 Sun 17:23.<br>
-            Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.4). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+<p>
+If anyone suggest more skill tips about learning from diving into source code. I will add
+them at this post.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<footer>
+  Copyright 2011, Author: Christopher M. Miles (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
+  Last update date: 2024-04-28 Sun 12:27.<br>
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
-            <!-- RSS -->
-            You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
+  <!-- RSS -->
+  You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
+  
+  <!-- Show Org Source -->
+  <script>
+   var url = document.location.href;
+   var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+   function show_org_source(){
+     document.location.href = orgsource;
+   }
+  </script>
+  <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
 
-            <!-- Show Org Source -->
-            <script>
-                var url = document.location.href;
-                var orgsource = url.substring(0, url.lastIndexOf(".")) + ".org.html";
+</footer>
 
-                function show_org_source() {
-                    document.location.href = orgsource;
-                }
-            </script>
-            <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
+<!-- scroll to top -->
+<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
 
-        </footer>
-
-        <!-- scroll to top -->
-        <button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
-
-        <!-- payment -->
-        <div class='payment'>
-            <!-- use two inline aligned small thumb QR code image -->
-            <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
+<!-- payment -->
+<div class='payment'>
+  <!-- use two inline aligned small thumb QR code image -->
+  <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
        <div id='wechat-payment'><a href="/About/index.html#Payment"><img src="/assets/images/wechat_payment.png" title="打赏" /></a></div> -->
+  
+  <!-- use a custom reward image to be more friendly -->
+  <div id="payment-icon">
+    <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
+  </div>
+</div>
 
-            <!-- use a custom reward image to be more friendly -->
-            <div id="payment-icon">
-                <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
-            </div>
-        </div>
-
-        <!-- Google Analytics -->
-        <!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+<!-- Google Analytics -->
+<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
      <script type="text/javascript">
      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -987,8 +561,8 @@ PUBDATE: <2019-08-14 Wed 19:09>
      ga('create', 'UA-63992234-1', 'auto');
      ga('send', 'pageview');
      </script> -->
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
      <script>
      window.dataLayer = window.dataLayer || [];
      function gtag(){dataLayer.push(arguments);}
@@ -997,8 +571,8 @@ PUBDATE: <2019-08-14 Wed 19:09>
      gtag('config', 'UA-63992234-1');
      </script> -->
 
-        <!-- Disqus -->
-        <!-- <div class="comments">
+<!-- Disqus -->
+<!-- <div class="comments">
      <style>
      /* hide comment policy */
      .comment-policy {
@@ -1020,7 +594,6 @@ PUBDATE: <2019-08-14 Wed 19:09>
      })();
      </script>
      </div> -->
-    </div>
+</div>
 </body>
-
 </html>

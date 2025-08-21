@@ -1,7 +1,6 @@
-# Created 2021-07-18 Sun 07:53
-#+TITLE: Literate Programming with Org Mode
-#+AUTHOR: stardiviner
-
+# Created 2025-08-21 Thu 19:52
+#+title: Literate Programming with Org Mode
+#+author: Christopher M. Miles
 * Why Literate Programming?
 :PROPERTIES:
 :ID:       fe22d012-f3a5-4d86-81aa-5d94a7456dee
@@ -19,19 +18,15 @@ Anyway, the start point is that I like Emacs and Org-mode very much, they are po
 organize anything with them can be very flexible. I use Org-mode as the ultimate tool to
 organize knowledge and data as my external brain database, and my other applications of
 Org Mode.
-
-
 * How to Literate Programming with Org Mode?
 :PROPERTIES:
 :ID:       9436231d-4932-4749-9bb0-7785af55becf
 :PUBDATE:  <2019-08-14 Wed 19:08>
 :END:
-
 ** LP: organize things in text and code
 :PROPERTIES:
 :ID:       7e07417f-cef1-49bd-8703-0ef845001ec2
 :END:
-
 ** LP: organize logic with "headlines" and "tags"
 :PROPERTIES:
 :ID:       06d74faa-da70-407a-a202-77b0f61748ab
@@ -40,7 +35,6 @@ Org Mode.
 You can navigation and filter Literate Programming document logic with headlines and tags.
 When a file grows large, organize your document with clear structure and better tags group
 is very necessary.
-
 ** LP: write code with Org Babel source code blocks
 :PROPERTIES:
 :ID:       05476eca-8292-44f8-b2d1-ed6802148604
@@ -50,7 +44,6 @@ Org Mode Babel are technology that can evaluate source code blocks and insert re
 Org buffer. Babel is powerful by backend with many different programming languages and
 tools. On essention, Babel is send source code block text to another binary to be
 evaluated, then return the result to be inserted in Org buffer.
-
 *** LP: support many different languages with Babel languages
 :PROPERTIES:
 :ID:       b1eac9c7-333f-4b25-98a8-5381a0b50ba9
@@ -114,7 +107,6 @@ org-babel-load-languages
 - (shell . t)
 - (calc . t)
 #+end_example
-
 **** LP: use different languages to processing data in mixture
 :PROPERTIES:
 :ID:       94039fc1-8a02-4ccf-a5d2-0ec54c0c7b47
@@ -122,7 +114,6 @@ org-babel-load-languages
 
 You can process JSON data with JavaScript, then pass result data to Python to process to
 generate XML data, then pass the XML data to gnuplot to generate image result.
-
 *** LP: Babel header arguments
 :PROPERTIES:
 :ID:       2a8f8ec9-e4e0-4002-aa56-069a342f480e
@@ -132,7 +123,6 @@ There are many source code block header arguments, you can check out Org Mode In
 document. And I after some years usage of Org Mode, I found there are some merely used
 header arguments are not mentioned in Org Mode Manual. And some header arguments are
 language specific only.
-
 ** LP: separate code logic and reference with "noweb"
 :PROPERTIES:
 :ID:       daada930-a7fb-4a06-9839-4420a47a6712
@@ -225,32 +215,26 @@ block functions (see the Library of babel). For example,
 sets the value of argument ~a~ equal to ~9~. Note that these arguments are not
 evaluated in the current source-code block but are passed literally to
 ~example-block()~.
-
 ** LP: export to source code with "tangling"
 :PROPERTIES:
 :ID:       83350f14-12bb-4ede-b8b1-b2c4ec1b7fdb
 :END:
-
 *** LP: tangle single source code block
 :PROPERTIES:
 :ID:       f7cf5698-02bb-4afe-96b2-eefbc668c3cc
 :END:
-
 *** LP: tangle the section of headline
 :PROPERTIES:
 :ID:       1d430a6a-dc4d-44d3-9692-d7c305a8f6a3
 :END:
-
 *** LP: tangle whole file
 :PROPERTIES:
 :ID:       582436f3-89cc-44c1-aef6-44498833925d
 :END:
-
 ** LP: display result
 :PROPERTIES:
 :ID:       6bb1c422-9ba9-4b57-aeab-8474aad9ae66
 :END:
-
 *** LP: display image result with Org inline image display
 :PROPERTIES:
 :ID:       c39df5f2-4a3b-4acf-a2e2-ec02ab17b97f
@@ -259,7 +243,6 @@ evaluated in the current source-code block but are passed literally to
 You can manually insert a file link to image file as inline image. You also can let source
 code block generate a file link to plot image file. Toggle inline image display in
 Org-mode with =[M-x org-display-inline-images]=.
-
 *** LP: display table result with Org table
 :PROPERTIES:
 :ID:       2d248cb5-fdb4-4b1c-be72-720e47dd96b1
@@ -267,12 +250,10 @@ Org-mode with =[M-x org-display-inline-images]=.
 
 Org-mode supports table. Support many manipulations. Also there are many advanced usage of
 Org table, like use table as data input for source code block, radio table, etc.
-
 ** LP: reference to text, code and each other
 :PROPERTIES:
 :ID:       1e1bd0e0-06c8-4617-87e3-83f407b38555
 :END:
-
 *** text->code with coderef
 :PROPERTIES:
 :ID:       baf81c8a-cf61-4971-90b3-cf77acc5b10f
@@ -285,12 +266,10 @@ Org table, like use table as data input for source code block, radio table, etc.
 #+end_src
 
 [[(define function hello)]]
-
 *** text->text with link
 :PROPERTIES:
 :ID:       9b5015bb-b446-4578-9dd7-601889f28a38
 :END:
-
 *** code->code with noweb
 :PROPERTIES:
 :ID:       502e7979-5746-4596-be87-257a4882c947
@@ -304,17 +283,14 @@ Org table, like use table as data input for source code block, radio table, etc.
 
 #+results[<2018-05-15 17:52:00> 02e3921eec72f7200c882e875e3a26ec1963f443]: 
 : Hello, stardiviner
-
 *** code->text with link
 :PROPERTIES:
 :ID:       3b51bf70-f94b-4c51-b19c-97c11aff13eb
 :END:
-
 **** org-link in source code block comment
 :PROPERTIES:
 :ID:       6d6d31f4-58a0-4ac2-a84b-735622708875
 :END:
-
 ** LP: navigation in text and code
 :PROPERTIES:
 :ID:       c2e0e53d-01c3-40f7-9081-6ecd7c0f20c7
@@ -325,8 +301,6 @@ Org table, like use table as data input for source code block, radio table, etc.
 - ~org-babel-goto-src-block-head~
 
 You can jump back in mark ring with =[M-,]= / ~org-mark-ring-goto~.
-
-
 * TODO complete this post
 :PROPERTIES:
 :ID:       62431107-1dd5-4e78-ac34-514ed3bed771

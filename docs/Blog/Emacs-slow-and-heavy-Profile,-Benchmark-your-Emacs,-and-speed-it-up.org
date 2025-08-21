@@ -1,7 +1,6 @@
-# Created 2021-07-18 Sun 07:50
-#+TITLE: Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
-#+AUTHOR: stardiviner
-
+# Created 2025-08-21 Thu 19:51
+#+title: Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
+#+author: Christopher M. Miles
 * Is your Emacs slow and heavy?
 :PROPERTIES:
 :ID:       9348a942-1e91-4587-a10f-9dd769a32a9a
@@ -18,12 +17,10 @@ Here are some ways you can find out the reaons:
 - elp :: Emacs built-in Emacs Lisp profiler
 - profiler :: Emacs built-in profiler
 - esup :: Emacs start-up profiler
-
 ** elp
 :PROPERTIES:
 :ID:       a5357d0e-a3e2-46c8-8cbb-8f51117e5121
 :END:
-
 *** workflow
 :PROPERTIES:
 :ID:       05782c93-bcee-4c8d-852c-822a213ad0ab
@@ -58,7 +55,6 @@ You can start monitoring the whole =elpy= package with:
 #+RESULTS[<2018-10-18 Thu 14:16>  195bb60d4648549a9e035f99aebac8fd7feaa2a0]:
 
 do your time-consuming operations, and get a report with =[M-x elp-results]=.
-
 *** =[C-h p elp RET]=
 :PROPERTIES:
 :ID:       e5cd4631-becc-4b9d-b833-bd82705c66bc
@@ -141,12 +137,10 @@ give you a good feel for the relative amount of work spent in the
 various lisp routines you are profiling.  Note further that times
 are calculated using wall-clock time, so other system load will
 affect accuracy too.
-
 ** profile
 :PROPERTIES:
 :ID:       d00418dd-365e-4ba4-8a7d-369a8d510fba
 :END:
-
 *** workflow
 :PROPERTIES:
 :ID:       59726f18-c60f-4b0e-b461-bdbd2d41fef5
@@ -167,14 +161,12 @@ affect accuracy too.
 4. You need to reset profiler logs before nest new profiling.
 
    =[M-x profiler-reset]=
-
 ** esup
 :PROPERTIES:
 :ID:       48787dca-ae17-4b0b-8d80-7e7dfd692236
 :END:
 
 http://github.com/jschaf/esup
-
 *** workflow
 :PROPERTIES:
 :ID:       c01cc663-044d-41fd-b25f-3dee48c3e9af
@@ -187,17 +179,14 @@ http://github.com/jschaf/esup
 2. display ESUP result.
 
    =[M-x esup-display-results]= it will read buffer =*esup-results*=.
-
 *** navigation -- =[n/p/<RET>]=
 :PROPERTIES:
 :ID:       f23ffbbe-237d-48f0-8ed9-8961f97f958e
 :END:
-
 *** FAQ
 :PROPERTIES:
 :ID:       bd1a8483-a23e-4155-b32b-eb41dd2c6856
 :END:
-
 **** Q: Debugger entered--Lisp error: (invalid-read-syntax "#")
 :PROPERTIES:
 :ID:       4801fa59-d0f8-4f60-ad7e-4b656f53b01c
@@ -232,8 +221,6 @@ Debugger entered--Lisp error: (invalid-read-syntax "#")
     - [ ] (#<marker at 477 in init-prog-lsp.el> #<marker at 481 in init-prog-lsp.el>)
     - [ ] init-prog-lang-javascript.el
     - [ ] init-prog-lang-database-mongodb
-
-
 * The history commits I did which slow down my Emacs
 :PROPERTIES:
 :ID:       ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba

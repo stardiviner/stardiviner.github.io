@@ -1,7 +1,6 @@
-# Created 2021-07-18 Sun 07:55
-#+TITLE: multilingual support with ob-translate and google-translate
-#+AUTHOR: stardiviner
-
+# Created 2025-08-21 Thu 19:53
+#+title: multilingual support with ob-translate and google-translate
+#+author: Christopher M. Miles
 * Why multilingual support?
 :PROPERTIES:
 :ID:       89eb36af-621b-4cf0-8a26-fb5363523f34
@@ -15,12 +14,10 @@ much time. I want t a simpler automatic way to do this.
 #+end_src
 
 #+results[<2018-04-21 16:14:47> f94aff19787f76c9e0faea4cf7522a0c6259765d]: 
-| zh-CN | 在互联网上，英语是主要的语言。但是现在翻译已经够好了。在我以前的博客文章中，我使用两种语言编写，这需要很长时间。我想要一个更简单的自动方式来做到这一点。                                      |
-| zh-TW | 在互聯網上，英語是主要的語言。但是現在翻譯已經夠好了。在我以前的博客文章中，我使用兩種語言編寫，這需要很長時間。我想要一個更簡單的自動方式來做到這一點。                                      |
+| zh-CN | 在互联网上，英语是主要的语言。但是现在翻译已经够好了。在我以前的博客文章中，我使用两种语言编写，这需要很长时间。我想要一个更简单的自动方式来做到这一点。                                 |
+| zh-TW | 在互聯網上，英語是主要的語言。但是現在翻譯已經夠好了。在我以前的博客文章中，我使用兩種語言編寫，這需要很長時間。我想要一個更簡單的自動方式來做到這一點。                                 |
 | ja    | インターネットでは、英語が主要言語です。しかし、現在のところ翻訳は十分です。以前のブログ記事では、2つの言語を使って書きましたが、時間がかかります。私はこれを行う簡単な自動方法をしたいです。 |
-| ko    | 인터넷에서 영어가 주요 언어입니다. 그러나 현재 번역은 현재 충분합니다. 이전 글에서 두 언어를 사용하여 글을 쓸 때 시간이 많이 걸립니다. 이 작업을 수행하는 더 간단한 자동 방법을 원합니다.     |
-
-
+| ko    | 인터넷에서 영어가 주요 언어입니다. 그러나 현재 번역은 현재 충분합니다. 이전 글에서 두 언어를 사용하여 글을 쓸 때 시간이 많이 걸립니다. 이 작업을 수행하는 더 간단한 자동 방법을 원합니다.                      |
 * How it looks like
 :PROPERTIES:
 :ID:       2a4cc1ca-603a-4bde-b514-2a54c4c8b618
@@ -41,7 +38,6 @@ much time. I want t a simpler automatic way to do this.
 
 
 *NOTE*: Not allow space between langs (~en,zh-TW,ja,ko~). Other wise it does not wok.
-
 * Multilingual support setup
 :PROPERTIES:
 :ID:       4bf5688c-1cf9-4f8e-b029-a8cbfd05de01
@@ -52,7 +48,6 @@ Multilingual support is simple to integrate. Especially like great tool Emacs
 and Org-mode. I remember a great tool "ob-translate" which use
 "[[https://github.com/atykhonov/google-translate][google-translate]]" as backend support. Really simple to use in Org-mode
 (especial I publish whole website with Org-mode org-publish).
-
 ** configure ob-translate
 :PROPERTIES:
 :ID:       d3438fac-e61d-41f8-89bd-a1149555d11e
@@ -71,7 +66,6 @@ My sample config here:
 #+end_src
 
 I added ob-translate src block into Org-mode new structure template alist.
-
 *** require org-mode export src blocks export with results
 :PROPERTIES:
 :ID:       68991e81-f2b4-43ca-a71d-b81e85ae0e07
@@ -84,7 +78,6 @@ I added ob-translate src block into Org-mode new structure template alist.
 
 - The first let Org-mode don't evaluate src blocks when exporting.
 - The second let Org-mode export src blocks with results.
-
 *** create a snippet for easy inserting template
 :PROPERTIES:
 :ID:       57f31085-c85b-4dd7-9f75-dabbbb283dc0
@@ -101,7 +94,6 @@ I added ob-translate src block into Org-mode new structure template alist.
 $0
 ,#+end_src
 #+end_src
-
 ** configure google-translate if you use it interactively
 :PROPERTIES:
 :ID:       d8651489-18df-4f7d-88f5-80d9e54fc30a
@@ -139,7 +131,6 @@ Here is my config example:
 #+end_src
 
 You should explore google-translate features on its readme page, really convinient.
-
 ** about Google Translate service not accessible issue
 :PROPERTIES:
 :ID:       9a201c6a-3dec-401b-9789-6dc80da8eea8
@@ -187,14 +178,11 @@ Used by function `my:proxy-toggle'.")
      (setenv "HTTPS_PROXY" nil))
     ))
 #+end_src
-
-
 * Some issues
 :PROPERTIES:
 :ID:       d8acb8d5-15e6-49fd-88a7-7baded863c4d
 :PUBDATE:  <2019-08-14 Wed 19:47>
 :END:
-
 ** the Babel result output type is table
 :PROPERTIES:
 :ID:       d217c234-d73f-4107-9874-2b7eb5d8cd61
@@ -202,7 +190,6 @@ Used by function `my:proxy-toggle'.")
 
 The Babel result output type is table, it seems is forced, I will try to figure
 a way to fix this problem. Might add an PR to "ob-translate".
-
 ** ob-translate can't be used anywhere in Org-mode buffer
 :PROPERTIES:
 :ID:       35ee5b8d-9ce5-4594-8b84-0d51e904a92e
@@ -212,14 +199,11 @@ Like headlines, ob-translate can't apply on them. But google-translate does not
 support output to current buffer with option
 ~google-translate-output-destination~. This should be improved like output to
 current buffer (insert at point).
-
-
 * Any updates will updated in this post
 :PROPERTIES:
 :ID:       62f990e7-4b7a-4101-bd5d-b3693a54a0ce
 :PUBDATE:  <2019-08-14 Wed 19:47>
 :END:
-
 * use external tools to translate with ob-shell
 :PROPERTIES:
 :ID:       8524b659-aa14-4eca-981f-0b821a7d25aa
@@ -234,7 +218,6 @@ header argument ~:results raw~.
 
 Another problem is that the result usually formatted by command-line tools separately. You
 might need other text processing commands like =sed=, =awk= etc to strip some text.
-
 ** fanyi
 :PROPERTIES:
 :ID:       c2947e8d-c810-4431-861e-a87db6872f18
