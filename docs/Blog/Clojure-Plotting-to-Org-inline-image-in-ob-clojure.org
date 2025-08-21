@@ -71,7 +71,7 @@ correct absolute path:
 #+end_src
 
 #+results[<2018-05-17 10:40:29> bbff27177a545feba5ed98a467689eb91ce7e501]: 
-[[file:data/images/ob-clojure-literate.png]]
+[[file:images/ob-clojure-literate.png]]
 ** use final solution by move image file to target path with Clojure function
 :PROPERTIES:
 :ID:       ac0e66d2-e034-45d4-907c-d10a0d413ff2
@@ -98,7 +98,7 @@ correct absolute path:
 #+end_src
 
 #+results[<2018-05-17 11:46:15> ff75cfacbf1e10441f0349531db625b77acc7368]: 
-[[file:data/images/ob-clojure-incanter-move.png]]
+[[file:images/ob-clojure-incanter-move.png]]
 * Incanter
 :PROPERTIES:
 :ID:       147a25a2-ea60-4b37-ae1d-d5a58872908b
@@ -120,7 +120,7 @@ correct absolute path:
 #+end_src
 
 #+results[<2018-05-17 10:40:29> bbff27177a545feba5ed98a467689eb91ce7e501]: 
-[[file:data/images/ob-clojure-literate.png]]
+[[file:images/ob-clojure-literate.png]]
 * clj-xchart
 :PROPERTIES:
 :ID:       75039b3a-a2ef-40b8-89fa-2522728deb59
@@ -152,7 +152,7 @@ correct absolute path:
 #+end_src
 
 #+results[<2018-05-17 10:52:37> 0ada10eaeabcc1c8431c9805a3bc03c9c388fbd9]: 
-[[file:data/images/ob-clojure-clj-xchart.png]]
+[[file:images/ob-clojure-clj-xchart.png]]
 * ggplot2
 :PROPERTIES:
 :ID:       1e093992-48d3-4936-888b-8f1d229ae1d2

@@ -4,7 +4,6 @@
 
 [[file:Poem/index.org][Poem]]
 
-
 * Novel (小说)
 
 [[file:Novel/index.org][Novel]]

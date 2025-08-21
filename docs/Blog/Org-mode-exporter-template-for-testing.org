@@ -270,13 +270,13 @@ This is inside the drawer.
 
 #+name: fig:bldg-1-5-seq
 #+caption: This is an image
-[[file:data/images/babel_lang_dot_example1.png]]
+[[file:images/babel_lang_dot_example1.png]]
 ** Image attributes and values
 :PROPERTIES:
 :ID:       d89c0016-df43-44f3-88b8-535975506317
 :END:
 
-[[file:data/images/babel_lang_dot_example1.png]]
+[[file:images/babel_lang_dot_example1.png]]
 * Footnote
 :PROPERTIES:
 :ID:       6c577429-a3f6-4c14-9794-c50a3753e49f
@@ -421,7 +421,7 @@ plot sin(x)
 #+end_src
 
 #+results[<2018-04-03 21:54:38> ed8d07c969050af99dda8a1e782e7aa404b80da0]: 
-[[file:data/images/babel-gnuplot-graphics-test.png]]
+[[file:images/babel-gnuplot-graphics-test.png]]
 * 中文测试
 :PROPERTIES:
 :ID:       87084b84-e7f2-4eda-b689-44155df7fd18

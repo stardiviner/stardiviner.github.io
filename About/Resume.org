@@ -1,6 +1,6 @@
 #+TITLE: 简历
 :PREAMBLE:
-#+OPTIONS: html5-fancy:t toc:nil text:t
+#+OPTIONS: html5-fancy:t toc:nil
 #+HTML_DOCTYPE: html5
 :END:
 
@@ -24,7 +24,7 @@
 #+ATTR_ORG: :width 200
 #+ATTR_LATEX: :width 2.0in
 #+ATTR_HTML: :id avatar :width 200px :alt 那时23岁的我
-[[file:data/images/me_picture 23.jpg]]
+[[file:images/me_picture 23.jpg]]
 
 
 从 [2011-10-10 Mon] 年以来，我一直使用 Linux 系统作为我的日常系统，完全取代
@@ -58,18 +58,18 @@ Shell 脚本。求知欲强，自我学习驱动，善于解决问题。工作�
 ** 爬虫项目
 
 *** TODO 淘宝数据爬取                                  :noexport:
-    :PROPERTIES:
-    :DATE:     [2019-02-20 Wed 21:30]
-    :END:
-    :LOGBOOK:
-    - State "TODO"       from              [2019-02-20 Wed 21:31] \\
-      remove "noexport" tag after you finish this project.
-    :END:
+:PROPERTIES:
+:DATE:     [2019-02-20 Wed 21:30]
+:END:
+:LOGBOOK:
+- State "TODO"       from              [2019-02-20 Wed 21:31] \\
+  remove "noexport" tag after you finish this project.
+:END:
 
 *** 新旧网站的内容对比程序
-    :PROPERTIES:
-    :DATE:     [2018-10-20 Sat 21:30]
-    :END:
+:PROPERTIES:
+:DATE:     [2018-10-20 Sat 21:30]
+:END:
 
 项目地址： https://github.com/stardiviner/website-compare
 
@@ -79,9 +79,9 @@ README有详细的记录。
 （包括文本内容，网页上的多媒体附件，以及导航栏的改动等等）。
 
 *** Slack聊天记录的爬虫
-    :PROPERTIES:
-    :DATE:     [2018-11-26 Mon 21:30]
-    :END:
+:PROPERTIES:
+:DATE:     [2018-11-26 Mon 21:30]
+:END:
 
 项目地址： https://github.com/stardiviner/clojurians-slack-log
 
@@ -238,13 +238,6 @@ git log --author=stardiviner
 - 重装系统
 - 安装 pojie 软件
 - 会Windows下的高级设置，Windows下很多东西和Linux下都是很相似的。只是形式不一样。
-
-** 钉钉初级管理员证书                                  :noexport:
-
-#+ATTR_ORG: :width 300
-#+ATTR_LATEX: :width 3.0in
-#+ATTR_HTML: :width 300px :style display: inline-block; visibility: visible;
-[[file:data/images/DingDing Admin Cert.jpg]]
 
 #+ATTR_LATEX: :width \textwidth :thickness 0.8pt
 -----
