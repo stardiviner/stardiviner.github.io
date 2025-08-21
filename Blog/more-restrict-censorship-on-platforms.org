@@ -1,4 +1,4 @@
-# Created 2025-08-21 Thu 23:07
+# Created 2025-08-21 Thu 23:50
 #+title: 在B站提交一片简单的文章被锁定了不允许修改发表，这让我感慨现在网站对内容审查的严重和阉割
 #+author: Christopher M. Miles
 * B站没有通过我第一次的发文的截图

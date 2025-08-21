@@ -11,49 +11,49 @@
 </span><span class="keyword">
 &#61600;</span><span class="org-level-1"> The Process of my Clojure Plotting
 </span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">ea7fb5d6-b228-450f-8bb2-502cd5020404</span>
-  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span>
-  <span class="org-drawer">:END:</span><span class="keyword">
-</span>
-<span class="org-hide">*&#61716;</span><span class="org-level-2"> ask whether Clojure/JVM can change working directory
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">ea7fb5d6-b228-450f-8bb2-502cd5020404</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
+
+</span><span class="org-hide">*&#61716;</span><span class="org-level-2"> ask whether Clojure/JVM can change working directory
 </span>   <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">c63620be-3661-443f-9251-faa7d4e3666d</span>
-   <span class="org-drawer">:END:</span><span class="keyword">
-</span>
-I did some hard search, found some links
+</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">c63620be-3661-443f-9251-faa7d4e3666d</span><span class="keyword">
+</span>   <span class="org-drawer">:END:</span><span class="keyword">
 
-&#8211; [https://stackoverflow.com/questions/840190/changing-the-current-working-directory-in-java][&#61804;]
-&#8211; [https://stackoverflow.com/questions/19008592/java-change-file-working-directory][&#61804;]
+</span>I did some hard search, found some links<span class="keyword">
 
-Then I found JVM does not allow to change working directory because of security
-reason [https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688][&#61612;].
+&#8211;</span> <span class="org-link"><a href="https://stackoverflow.com/questions/840190/changing-the-current-working-directory-in-java">https://stackoverflow.com/questions/840190/changing-the-current-working-directory-in-java</a></span><span class="keyword">
+&#8211;</span> <span class="org-link"><a href="https://stackoverflow.com/questions/19008592/java-change-file-working-directory">https://stackoverflow.com/questions/19008592/java-change-file-working-directory</a></span><span class="keyword">
 
-So, there is no reliable way to do this in pure Java. Setting the <span class="org-code">user.dir</span>
-<span class="italic">property</span> via <span class="org-code">System.setProperty()</span> or <span class="org-code">java -Duser.dir=...</span> does seem to affect
-subsequent creations of Files, but not e.g. <span class="org-code">FileOutputStreams</span>.
+</span>Then I found JVM does not allow to change working directory because of security<span class="keyword">
+</span>reason <span class="org-link"><a href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688">https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4045688</a></span>.<span class="keyword">
 
-<span class="org-hide">*&#61716;</span><span class="org-level-2"> I create Org-mode library "</span><span class="org-level-2"><span class="org-verbatim">ob-clojure-literate</span></span><span class="org-level-2">" and improve Org Babel "</span><span class="org-level-2"><span class="org-verbatim">ob-core.el</span></span><span class="org-level-2">" for plotting support
+</span>So, there is no reliable way to do this in pure Java. Setting the <span class="org-code">user.dir</span><span class="keyword">
+</span><span class="italic">property</span> via <span class="org-code">System.setProperty()</span> or <span class="org-code">java -Duser.dir=...</span> does seem to affect<span class="keyword">
+</span>subsequent creations of Files, but not e.g. <span class="org-code">FileOutputStreams</span>.<span class="keyword">
+
+</span><span class="org-hide">*&#61716;</span><span class="org-level-2"> I create Org-mode library "</span><span class="org-level-2"><span class="org-verbatim">ob-clojure-literate</span></span><span class="org-level-2">" and improve Org Babel "</span><span class="org-level-2"><span class="org-verbatim">ob-core.el</span></span><span class="org-level-2">" for plotting support
 </span>   <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">0720a1e8-a039-48e5-8d49-c174b9f4cf64</span>
-   <span class="org-drawer">:END:</span><span class="keyword">
-</span>
-Because changing Clojure/JVM working directory is not available, so I find
-method on Emacs side, Org-mode other Babel lanaguages like R, Python have good
-image file result support. So I dive into source code, and try to add similar
-function to "<span class="org-verbatim">ob-clojure</span>". But I found some limites, then I created
-"<span class="org-link"><a href="https://github.com/stardiviner/ob-clojure-literate">ob-clojure-literate (GitHub repo)</a></span>" (Now it is in
-<span class="org-link"><a href="https://code.orgmode.org/bzg/org-mode/src/master/contrib/lisp/ob-clojure-literate.el">Org-mode
-contrib lib</a></span>).
+</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">0720a1e8-a039-48e5-8d49-c174b9f4cf64</span><span class="keyword">
+</span>   <span class="org-drawer">:END:</span><span class="keyword">
 
-<span class="org-hide">*&#61716;</span><span class="org-level-2"> use more better solution by passing target path into Clojure with header argument </span><span class="org-level-2"><span class="org-code">:var</span></span><span class="org-level-2">
+</span>Because changing Clojure/JVM working directory is not available, so I find<span class="keyword">
+</span>method on Emacs side, Org-mode other Babel lanaguages like R, Python have good<span class="keyword">
+</span>image file result support. So I dive into source code, and try to add similar<span class="keyword">
+</span>function to "<span class="org-verbatim">ob-clojure</span>". But I found some limites, then I created<span class="keyword">
+</span>"<span class="org-link"><a href="https://github.com/stardiviner/ob-clojure-literate">ob-clojure-literate (GitHub repo)</a></span>" (Now it is in<span class="keyword">
+</span><span class="org-link"><a href="https://code.orgmode.org/bzg/org-mode/src/master/contrib/lisp/ob-clojure-literate.el">Org-mode
+contrib lib</a></span>).<span class="keyword">
+
+</span><span class="org-hide">*&#61716;</span><span class="org-level-2"> use more better solution by passing target path into Clojure with header argument </span><span class="org-level-2"><span class="org-code">:var</span></span><span class="org-level-2">
 </span>   <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">cc6d0973-7a2a-4dfd-aa09-511142b0692c</span>
-   <span class="org-drawer">:END:</span><span class="keyword">
-</span>
-You can fake change Clojure REPL working directory by passing header argument
-variable into Clojure code. Like this:
+</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">cc6d0973-7a2a-4dfd-aa09-511142b0692c</span><span class="keyword">
+</span>   <span class="org-drawer">:END:</span><span class="keyword">
 
-&#60100;<span class="org-block-begin-line"> org
+</span>You can fake change Clojure REPL working directory by passing header argument<span class="keyword">
+</span>variable into Clojure code. Like this:<span class="keyword">
+
+&#60100;</span><span class="org-block-begin-line"> org
 </span><span class="org-block">,#+begin_src clojure :results value :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">(str dir "ob-clojure-literate.png")</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">,#+end_src</span><span class="org-block"><span class="keyword">
@@ -61,11 +61,11 @@ variable into Clojure code. Like this:
 </span></span><span class="org-block">,#+RESULTS[ </span><span class="org-modern-date-active">2018-05-17 </span><span class="org-modern-time-active"> 01:12:55 </span><span class="org-block"> 73be0ca9a40a4f1e4fdee8e535991955f77b034a]:</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block"><span class="org-code">: "/home/stardiviner/Org/Wiki/Computer Technology/Programming/Emacs/Emacs Packages/Org mode/data/images/ob-clojure-literate.png"
 &#986659;</span></span><span class="org-block-end-line">
-</span>
-Then you can use Clojure funciton to save graphics object to target file with
-correct absolute path:
+</span><span class="keyword">
+</span>Then you can use Clojure funciton to save graphics object to target file with<span class="keyword">
+</span>correct absolute path:<span class="keyword">
 
-&#60100;<span class="org-block-begin-line"> org
+&#60100;</span><span class="org-block-begin-line"> org
 </span><span class="org-block">,#+HEADERS: :var cwd=(concat (file-name-directory (buffer-file-name)) "data/images/")</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">,#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-literate.png"</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">(use '(incanter core stats datasets charts io pdf))</span><span class="org-block"><span class="keyword">
@@ -73,23 +73,23 @@ correct absolute path:
 </span></span><span class="org-block">(save hist (str cwd "ob-clojure-literate.png"))</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">,#+end_src</span><span class="org-block"><span class="keyword">
 &#986659;</span></span><span class="org-block-end-line">
-</span>
-<span class="org-meta-line">HEADERS: :var cwd=(concat (file-name-directory (buffer-file-name)) "data/images/")</span>
-&#60100;<span class="org-block-begin-line"> clojure :results graphics file link :dir "data/images" :file "ob-clojure-literate.png"
+</span><span class="keyword">
+</span><span class="org-meta-line">HEADERS: :var cwd=(concat (file-name-directory (buffer-file-name)) "data/images/")</span><span class="keyword">
+&#60100;</span><span class="org-block-begin-line"> clojure :results graphics file link :dir "data/images" :file "ob-clojure-literate.png"
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block">use '</span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">incanter core stats datasets charts io pdf</span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="keyword">def</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">hist</span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">histogram </span><span class="org-block"><span class="rainbow-delimiters-depth-3">(</span></span><span class="org-block">sample-normal 1000</span><span class="org-block"><span class="rainbow-delimiters-depth-3">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block">save hist </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">str cwd </span><span class="org-block"><span class="string">"ob-clojure-literate.png"</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 &#986659;</span><span class="org-block-end-line">
-</span>
-<span class="org-meta-line">#+RESULTS[ </span><span class="org-modern-date-active">2018-05-17 </span><span class="org-modern-time-active"> 10:40:29 </span><span class="org-meta-line"> bbff27177a545feba5ed98a467689eb91ce7e501]:</span>
-<span class="org-link"><a href="file:images/ob-clojure-literate.png">file:images/ob-clojure-literate.png</a></span>
+</span><span class="keyword">
+</span><span class="org-meta-line">#+RESULTS[ </span><span class="org-modern-date-active">2018-05-17 </span><span class="org-modern-time-active"> 10:40:29 </span><span class="org-meta-line"> bbff27177a545feba5ed98a467689eb91ce7e501]:</span><span class="keyword">
+</span><span class="org-link"><a href="file:images/ob-clojure-literate.png">file:images/ob-clojure-literate.png</a></span><span class="keyword">
 
-<span class="org-hide">*&#61716;</span><span class="org-level-2"> use final solution by move image file to target path with Clojure function
+</span><span class="org-hide">*&#61716;</span><span class="org-level-2"> use final solution by move image file to target path with Clojure function
 </span>   <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">ac0e66d2-e034-45d4-907c-d10a0d413ff2</span>
-   <span class="org-drawer">:END:</span><span class="keyword">
-</span>
-&#60100;<span class="org-block-begin-line"> org
+</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">ac0e66d2-e034-45d4-907c-d10a0d413ff2</span><span class="keyword">
+</span>   <span class="org-drawer">:END:</span><span class="keyword">
+
+&#60100;</span><span class="org-block-begin-line"> org
 </span><span class="org-block">,#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">(use '(incanter core stats datasets charts io pdf))</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">(import '(java.io File))</span><span class="org-block"><span class="keyword">
@@ -99,8 +99,8 @@ correct absolute path:
 </span></span><span class="org-block">(.renameTo (File. "ob-clojure-incanter-move.png") (File. (str dir "ob-clojure-incanter-move.png")))</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">,#+end_src</span><span class="org-block"><span class="keyword">
 &#986659;</span></span><span class="org-block-end-line">
-</span>
-&#60100;<span class="org-block-begin-line"> clojure :eval no-export
+</span><span class="keyword">
+&#60100;</span><span class="org-block-begin-line"> clojure :eval no-export
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block">use '</span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">incanter core stats datasets charts io pdf</span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="keyword">import</span></span><span class="org-block"> '</span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">java.io File</span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 
@@ -108,42 +108,42 @@ correct absolute path:
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block">save hist </span><span class="org-block"><span class="string">"ob-clojure-incanter-move.png"</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block">.renameTo </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">File. </span><span class="org-block"><span class="string">"ob-clojure-incanter-move.png"</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">File. </span><span class="org-block"><span class="rainbow-delimiters-depth-3">(</span></span><span class="org-block">str dir </span><span class="org-block"><span class="string">"ob-clojure-incanter-move.png"</span></span><span class="org-block"><span class="rainbow-delimiters-depth-3">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 &#986659;</span><span class="org-block-end-line">
-</span>
-<span class="org-meta-line">#+RESULTS[ </span><span class="org-modern-date-active">2018-05-17 </span><span class="org-modern-time-active"> 11:46:15 </span><span class="org-meta-line"> ff75cfacbf1e10441f0349531db625b77acc7368]:</span>
-<span class="org-link"><a href="file:images/ob-clojure-incanter-move.png">file:images/ob-clojure-incanter-move.png</a></span>
-<span class="keyword">
+</span><span class="keyword">
+</span><span class="org-meta-line">#+RESULTS[ </span><span class="org-modern-date-active">2018-05-17 </span><span class="org-modern-time-active"> 11:46:15 </span><span class="org-meta-line"> ff75cfacbf1e10441f0349531db625b77acc7368]:</span><span class="keyword">
+</span><span class="org-link"><a href="file:images/ob-clojure-incanter-move.png">file:images/ob-clojure-incanter-move.png</a></span><span class="keyword">
+
 
 &#61600;</span><span class="org-level-1"> Incanter
 </span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">147a25a2-ea60-4b37-ae1d-d5a58872908b</span>
-  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span>
-  <span class="org-drawer">:END:</span><span class="keyword">
-</span>
-&#60100;<span class="org-block-begin-line"> org
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">147a25a2-ea60-4b37-ae1d-d5a58872908b</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
+
+&#60100;</span><span class="org-block-begin-line"> org
 </span><span class="org-block">,#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">(use '(incanter core stats datasets charts io pdf))</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">(def hist (histogram (sample-normal 1000)))</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">(save hist (str dir "ob-clojure-literate.png"))</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">,#+end_src</span><span class="org-block"><span class="keyword">
 &#986659;</span></span><span class="org-block-end-line">
-</span>
-&#60100;<span class="org-block-begin-line"> clojure :eval no-export
+</span><span class="keyword">
+&#60100;</span><span class="org-block-begin-line"> clojure :eval no-export
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block">use '</span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">incanter core stats datasets charts io pdf</span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="keyword">def</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">hist</span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">histogram </span><span class="org-block"><span class="rainbow-delimiters-depth-3">(</span></span><span class="org-block">sample-normal 1000</span><span class="org-block"><span class="rainbow-delimiters-depth-3">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block">save hist </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">str dir </span><span class="org-block"><span class="string">"ob-clojure-literate.png"</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 &#986659;</span><span class="org-block-end-line">
-</span>
-<span class="org-meta-line">#+RESULTS[ </span><span class="org-modern-date-active">2018-05-17 </span><span class="org-modern-time-active"> 10:40:29 </span><span class="org-meta-line"> bbff27177a545feba5ed98a467689eb91ce7e501]:</span>
-<span class="org-link"><a href="file:images/ob-clojure-literate.png">file:images/ob-clojure-literate.png</a></span>
-<span class="keyword">
+</span><span class="keyword">
+</span><span class="org-meta-line">#+RESULTS[ </span><span class="org-modern-date-active">2018-05-17 </span><span class="org-modern-time-active"> 10:40:29 </span><span class="org-meta-line"> bbff27177a545feba5ed98a467689eb91ce7e501]:</span><span class="keyword">
+</span><span class="org-link"><a href="file:images/ob-clojure-literate.png">file:images/ob-clojure-literate.png</a></span><span class="keyword">
+
 
 &#61600;</span><span class="org-level-1"> clj-xchart
 </span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">75039b3a-a2ef-40b8-89fa-2522728deb59</span>
-  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span>
-  <span class="org-drawer">:END:</span><span class="keyword">
-</span>
-&#60100;<span class="org-block-begin-line"> org
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">75039b3a-a2ef-40b8-89fa-2522728deb59</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
+
+&#60100;</span><span class="org-block-begin-line"> org
 </span><span class="org-block">,#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">(require '[com.hypirion.clj-xchart :as xchart])</span><span class="org-block"><span class="keyword">
 
@@ -155,8 +155,8 @@ correct absolute path:
 </span></span><span class="org-block">(xchart/spit ob-clojure-clj-xchart (str dir "ob-clojure-clj-xchart.png"))</span><span class="org-block"><span class="keyword">
 </span></span><span class="org-block">,#+end_src</span><span class="org-block"><span class="keyword">
 &#986659;</span></span><span class="org-block-end-line">
-</span>
-&#60100;<span class="org-block-begin-line"> clojure :eval no-export :results graphics file link :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+</span><span class="keyword">
+&#60100;</span><span class="org-block-begin-line"> clojure :eval no-export :results graphics file link :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block">require '</span><span class="org-block"><span class="rainbow-delimiters-depth-2">[</span></span><span class="org-block">com.hypirion.clj-xchart </span><span class="org-block"><span class="clojure-keyword">:as</span></span><span class="org-block"> xchart</span><span class="org-block"><span class="rainbow-delimiters-depth-2">]</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 
 </span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="keyword">def</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">ob-clojure-clj-xchart</span></span><span class="org-block">
@@ -166,59 +166,59 @@ correct absolute path:
 </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">(xchart/view ob-clojure-clj-xchart)
 </span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="type">xchart</span></span><span class="org-block">/spit ob-clojure-clj-xchart </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">str dir </span><span class="org-block"><span class="string">"ob-clojure-clj-xchart.png"</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
 &#986659;</span><span class="org-block-end-line">
-</span>
-<span class="org-meta-line">#+RESULTS[ </span><span class="org-modern-date-active">2018-05-17 </span><span class="org-modern-time-active"> 10:52:37 </span><span class="org-meta-line"> 0ada10eaeabcc1c8431c9805a3bc03c9c388fbd9]:</span>
-<span class="org-link"><a href="file:images/ob-clojure-clj-xchart.png">file:images/ob-clojure-clj-xchart.png</a></span>
-<span class="keyword">
+</span><span class="keyword">
+</span><span class="org-meta-line">#+RESULTS[ </span><span class="org-modern-date-active">2018-05-17 </span><span class="org-modern-time-active"> 10:52:37 </span><span class="org-meta-line"> 0ada10eaeabcc1c8431c9805a3bc03c9c388fbd9]:</span><span class="keyword">
+</span><span class="org-link"><a href="file:images/ob-clojure-clj-xchart.png">file:images/ob-clojure-clj-xchart.png</a></span><span class="keyword">
+
 
 &#61600;</span><span class="org-level-1"> ggplot2
 </span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">1e093992-48d3-4936-888b-8f1d229ae1d2</span>
-  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span>
-  <span class="org-drawer">:END:</span><span class="keyword">
-</span>
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">1e093992-48d3-4936-888b-8f1d229ae1d2</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
 
-<span class="keyword">
+
+
 
 &#61600;</span><span class="org-level-1"> jutsu
 </span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">bda68b36-d3ee-4e74-899b-187837ceaac0</span>
-  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span>
-  <span class="org-drawer">:END:</span><span class="keyword">
-</span>
-<span class="keyword">
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">bda68b36-d3ee-4e74-899b-187837ceaac0</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
+
+
 
 &#61600;</span><span class="org-level-1"> References
 </span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">86190f87-a4d6-4364-8b7b-560b13252e4f</span>
-  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span>
-  <span class="org-drawer">:END:</span><span class="keyword">
-</span>
-I also posted this method on Org Mode Worg documentations:
-<span class="org-link"><a href="https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html">https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html</a></span>
-<span class="keyword">
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">86190f87-a4d6-4364-8b7b-560b13252e4f</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
+
+</span>I also posted this method on Org Mode Worg documentations:<span class="keyword">
+</span><span class="org-link"><a href="https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html">https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html</a></span><span class="keyword">
+
 
 &#61600;</span><span class="org-level-1"> Make use of CIDER new support of image content-type
 </span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">20bedc46-cea4-488b-ba17-d46552ea513d</span>
-  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span>
-  <span class="org-drawer">:END:</span><span class="keyword">
-</span>
-Since the PR <span class="org-link"><a href="https://github.com/clojure-emacs/cider-nrepl/pull/517">https://github.com/clojure-emacs/cider-nrepl/pull/517</a></span> got merged
-into CIDER. It is realsed in CIDER 0.17 (Andaluc&#237;a).
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">20bedc46-cea4-488b-ba17-d46552ea513d</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
 
-CIDER in Emacs can handle various image content-types now and render image in
-the REPL.
+</span>Since the PR <span class="org-link"><a href="https://github.com/clojure-emacs/cider-nrepl/pull/517">https://github.com/clojure-emacs/cider-nrepl/pull/517</a></span> got merged<span class="keyword">
+</span>into CIDER. It is realsed in CIDER 0.17 (Andaluc&#237;a).<span class="keyword">
 
-I'm considering how to integrate this feature into <span class="org-verbatim">ob-clojure.el</span> to save image
-content-type as file.
-<span class="keyword">
+</span>CIDER in Emacs can handle various image content-types now and render image in<span class="keyword">
+</span>the REPL.<span class="keyword">
+
+</span>I'm considering how to integrate this feature into <span class="org-verbatim">ob-clojure.el</span> to save image<span class="keyword">
+</span>content-type as file.<span class="keyword">
+
 
 &#61600;</span><span class="org-level-1"> Literaral Org-mode version
 </span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
-</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">57506a9a-3534-40ca-aef2-59b12d66fdc8</span>
-  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span>
-  <span class="org-drawer">:END:</span><span class="keyword">
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">57506a9a-3534-40ca-aef2-59b12d66fdc8</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
 </span>
 If you want to see Literal Org-mode version of this post, click the "Show Org
 Source" button!<span class="keyword">

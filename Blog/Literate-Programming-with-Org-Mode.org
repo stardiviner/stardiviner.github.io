@@ -1,4 +1,4 @@
-# Created 2025-08-21 Thu 23:07
+# Created 2025-08-21 Thu 23:50
 #+title: Literate Programming with Org Mode
 #+author: Christopher M. Miles
 * Why Literate Programming?
