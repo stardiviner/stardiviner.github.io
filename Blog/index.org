@@ -1,27 +1,139 @@
-# Created 2018-04-06 Fri 09:01
-#+TITLE: Blog
-#+AUTHOR: stardiviner
-
-* 2016
+# Created 2025-08-21 Thu 23:07
+#+title: An amateurish coder's blog
+#+author: Christopher M. Miles
+* 现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了
 :PROPERTIES:
-:ID:       bc5e06a2-08bd-49ef-ab42-449a641cdaee
-:PUBDATE:  <2016-04-23 Sat 17:03>
+:DATE:     [2021-07-18 Sun 00:38]
+:ID:       170718D8-0EC1-4604-9510-27B1BF444E2F
+:PUBDATE:  <2021-07-18 Sun 07:56>
 :END:
 
-** 2016-04 April
+[[file:more-restrict-censorship-on-platforms.org][现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了]]
+* implement H5 jump to WeChat mini program
 :PROPERTIES:
-:ID:       0b1a19cd-cf46-4d80-897d-cd5a7856fa52
+:DATE:     [2019-09-20 Fri 15:29]
+:ID:       83a27f52-9420-457b-ae0f-2b49e31e482d
+:PUBDATE:  <2019-09-20 Fri 15:50>
 :END:
 
-*** 2016-04-22 Friday
+[[file:implement-H5-jump-to-WeChat-mini-program.org][implement H5 jump to WeChat mini program]]
+* Learn video editor Adobe Premiere to edit a WeChat 15s small video
 :PROPERTIES:
-:ID:       2f9f4005-1913-41a0-866a-0f45b67ec2ee
+:DATE:     [2019-05-22 Wed 07:15]
+:ID:       cebe95a2-5f8f-4a80-9304-385ceabfa6f6
+:PUBDATE:  <2019-05-22 Wed 08:50>
 :END:
 
-**** test org-mode ox-publish
+[[file:Learn-video-editor-Adobe-Premiere-to-edit-a-WeChat-15s-small-video.org][Learn video editor Adobe Premiere to edit a WeChat 15s small video]]
+* upgrade Org link syntax to new
+:PROPERTIES:
+:DATE:     [2019-04-07 Sun 18:46]
+:ID:       4e50ff41-fa57-437d-b816-043ad7bfccbe
+:PUBDATE:  <2019-04-07 Sun 19:15>
+:END:
+
+[[file:upgrade-Org-link-syntax-to-new.org][upgrade Org link syntax to new]]
+* Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
+:PROPERTIES:
+:DATE:     [2018-10-20 Sat 19:43]
+:ID:       8879a709-020b-4b28-b32b-fa2e4bef3336
+:PUBDATE:  <2018-10-20 Sat 20:00>
+:END:
+
+[[file:Emacs-slow-and-heavy-Profile,-Benchmark-your-Emacs,-and-speed-it-up.org][Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up]]
+* How to use docstring to annotate source code
+:PROPERTIES:
+:DATE:     [2018-09-28 Fri 11:00]
+:ID:       a5088ae4-7e8a-4351-b51e-7a55bbf04ce4
+:PUBDATE:  <2018-09-28 Fri 12:41>
+:END:
+
+[[file:How-to-use-docstring-to-annotate-source-code.org][How to use docstring to annotate source code]]
+* Learn Programming Language from Diving into Source Code
+:PROPERTIES:
+:DATE:     [2018-05-28 Mon 20:25]
+:ID:       187b85cb-b92d-49d7-b66e-e6c79b902266
+:PUBDATE:  <2018-05-29 Tue 08:40>
+:END:
+
+[[file:Learn-Programming-Language-from-Diving-into-Source-Code.org][Learn Programming Language from Diving into Source Code]]
+* Learn a little basic of Nginx for setting up web server
+:PROPERTIES:
+:DATE:     [2018-05-22 Tue 11:11]
+:ID:       2de740e7-d646-4ae3-88a9-2e4a7adca39a
+:PUBDATE:  <2018-05-22 Tue 11:13>
+:END:
+
+[[file:Learn-a-little-basic-of-Nginx-for-setting-up-web-server.org][Learn a little basic of Nginx for setting up web server]]
+* Make company-mode support for nginx-mode
+:PROPERTIES:
+:DATE:     [2018-05-20 Sun 16:43]
+:ID:       0de8004e-db90-4182-b07a-97f5acf0a513
+:PUBDATE:  <2018-05-20 Sun 18:06>
+:END:
+
+[[file:Make-company-mode-support-for-nginx-mode.org][Make company-mode support for nginx-mode]]
+* Clojure Plotting to Org inline image in ob-clojure
+:PROPERTIES:
+:DATE:     [2018-05-17 Thu 10:01]
+:ID:       e1e67b92-9153-4ec2-8c59-df4619a0c994
+:PUBDATE:  <2018-05-17 Thu 11:47>
+:END:
+
+[[file:Clojure-Plotting-to-Org-inline-image-in-ob-clojure.org][Clojure Plotting to Org inline image in ob-clojure]]
+* How to Read Code in Emacs
+:PROPERTIES:
+:DATE:     [2018-05-17 Thu 08:31]
+:ID:       42d79395-841e-4e5c-81a9-d586e70ed44a
+:PUBDATE:  <2018-05-17 Thu 09:00>
+:END:
+
+[[file:How-to-Read-Code-in-Emacs.org][How to Read Code in Emacs]]
+* Literate Programming with Org Mode
+:PROPERTIES:
+:DATE:     [2018-05-15 Tue 17:40]
+:ID:       f7e17854-2da5-4530-a2d4-dc896c963fd6
+:PUBDATE:  <2018-05-17 Thu 09:00>
+:END:
+
+[[file:Literate-Programming-with-Org-Mode.org][Literate Programming with Org Mode]]
+* multilingual support with ob-translate and google-translate
+:PROPERTIES:
+:DATE:     [2018-04-21 Sat 15:57]
+:ID:       b7e86ca8-367c-4ba0-8ebb-ba37860958c0
+:PUBDATE:  <2018-04-21 Sat 16:30>
+:END:
+
+[[file:multilingual-support-with-ob-translate-and-google-translate.org][multilingual support with ob-translate and google-translate]]
+* Learned basic skateboard
+:PROPERTIES:
+:DATE:     [2018-04-21 Sat 11:15]
+:ID:       dc0b9dbc-8abd-42ba-834d-e5205a99910b
+:PUBDATE:  <2018-04-21 Sat 11:32>
+:END:
+
+[[file:Learned-basic-skateboard.org][Learned basic skateboard]]
+* Needlework: Setup the sewing machine
+:PROPERTIES:
+:DATE:     [2018-04-20 Fri 11:41]
+:ID:       62bcea74-3133-4a44-adda-bd71f977c8fc
+:PUBDATE:  <2018-04-20 Fri 12:32>
+:END:
+
+[[file:setup-the-sewing-machine-for-needlework.org][setup the sewing machine for needlework]]
+* How to BANISH myself
+:PROPERTIES:
+:DATE:     [2018-04-18 Wed]
+:ID:       ecd128b5-33b0-42f8-bfa1-8a9134d697fa
+:PUBDATE:  <2018-04-18 Wed 14:13>
+:END:
+
+[[file:How-to-BANISH-myself.org][How to BANISH myself]]
+* test org-mode ox-publish
 :PROPERTIES:
 :TIME:     [2016-04-22 Fri 22:54]
 :ID:       b80c8cad-9403-4533-9cd4-cb2fd5b92678
+:PUBDATE:  <2018-04-18 Wed 14:13>
 :END:
 
-[[file:2016-04-22 22:54.org][test org-mode ox-publish]]
+[[file:Org-mode-exporter-template-for-testing.org][Test Org Mode ox-publish]]

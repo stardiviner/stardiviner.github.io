@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-08-21 Thu 23:05 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>简历</title>
+<meta name="author" content="Christopher M. Miles" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="/assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="/assets/scripts/org-info-src.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "3");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "2");
+org_html_manager.set("TOC", "0");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
+</div><div id="preamble" class="status">
+<div class='nav'>
+  <ul>
+    <li><a href='/'>Home</a></li>
+    <li><a href='/Blog/index.html'>Blog</a></li>
+    <li><a href="/Thought/index.html">Thought</a></li>
+    <li><a href='/Literature/index.html'>文学</a></li>
+    <li><a href='/About/index.html'>About</a></li>
+  </ul>
+</div>
+<div class="epilogue">
+  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
+</div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">简历</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge72f5da">自我介绍</a></li>
+<li><a href="#orgf428ab4">职业经历</a></li>
+<li><a href="#orge50a387">编程项目经历</a>
+<ul>
+<li><a href="#org968c1b8">爬虫项目</a>
+<ul>
+<li><a href="#org6c67261">新旧网站的内容对比程序</a></li>
+<li><a href="#org1850dd5">Slack聊天记录的爬虫</a></li>
+<li><a href="#orgebf9423">关于爬虫的项目经验</a></li>
+</ul>
+</li>
+<li><a href="#org591195b">Emacs / Org Mode</a></li>
+<li><a href="#org1e249ec">小工具</a>
+<ul>
+<li><a href="#org96dd7c0">Kindle笔记导出工具</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6da58a7">很多人都会问的关于我大学辍学这个选择</a></li>
+<li><a href="#org46f284a">我的网上档案</a></li>
+<li><a href="#org2f4953a">编程技术</a>
+<ul>
+<li><a href="#orga7913f2">操作系统：Linux</a></li>
+<li><a href="#orgcaaf54c">Clojure: 函数式基于 JVM 的 Lisp 语言</a></li>
+<li><a href="#orgbd9e1a8">Emacs Lisp</a></li>
+<li><a href="#org43dd0a9">了解一点其他语言：Python，Ruby，HTML，CSS，JS</a></li>
+<li><a href="#orgcf66fcf">熟悉正则表达式 regexp</a></li>
+<li><a href="#org026a6a0">熟悉 Redis 和 MongoDB 的基础使用</a></li>
+<li><a href="#org16d5827">我自己用 Linux + Nginx + static site + Dynamic DNS 架过网站</a></li>
+<li><a href="#org54539a1">使用Git和开源社区的程序员协作，贡献patch</a></li>
+<li><a href="#org46b24ac">会用基本的 Docker 功能</a></li>
+<li><a href="#orgb37ab93">脚本 Linux Shell Scripting</a></li>
+<li><a href="#org3f5da24">参与开源社区的贡献</a></li>
+</ul>
+</li>
+<li><a href="#orgef2cf54">编程工具：Emacs + Org-mode</a>
+<ul>
+<li><a href="#orgfe2c585">contributed commits on Org Mode</a></li>
+</ul>
+</li>
+<li><a href="#orgee43145">关于技术学习规划</a></li>
+<li><a href="#org721e7e6">其他技能</a>
+<ul>
+<li><a href="#orgfb21b82">英语四级，良好的英语阅读能力</a></li>
+<li><a href="#orga8cd0eb">Windows 桌面系统下</a></li>
+</ul>
+</li>
+<li><a href="#orge0450c5">结尾语</a></li>
+</ul>
+</div>
+</nav>
+
+<div id="outline-container-orge72f5da" class="outline-2">
+<h2 id="orge72f5da"><a href="#orge72f5da">自我介绍</a></h2>
+<div class="outline-text-2" id="text-orge72f5da">
+
+<figure id="org8a31d03">
+<img src="images/me_picture 23.jpg" alt="那时23岁的我" id="avatar" width="200px">
+
+<figcaption><span class="figure-number">Figure 1: </span>那时23岁的我</figcaption>
+</figure>
+
+
+<p>
+从 <span class="timestamp-wrapper"><time class="timestamp" datetime="2011-10-10">[2011-10-10 Mon]</time></span> 年以来，我一直使用 Linux 系统作为我的日常系统，完全取代
+Windows系统。使用 Clojure 和 Python, Elisp 编程语言，熟悉 Web，App 爬虫。平常使
+用 Git 管理代码，经常在GitHub上出没。用 Docker, Vagrant 设置开发环境。会写一点
+Shell 脚本。求知欲强，自我学习驱动，善于解决问题。工作认真，性格平和亲近，擅长和
+朋友聊天。
+</p>
+
+<p>
+喜欢电脑技术，喜欢编程，喜欢互联网技术。喜欢看哲学书，电影，滑板，和史诗音乐。性
+格随和，思想开放乐观，接受多元化文化。
+</p>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-orgf428ab4" class="outline-2">
+<h2 id="orgf428ab4"><a href="#orgf428ab4">职业经历</a></h2>
+<div class="outline-text-2" id="text-orgf428ab4">
+<p>
+2011 年大学三年级辍学后：
+</p>
+
+<ul class="org-ul">
+<li>在家自学过一段时间</li>
+<li>第一份工作是做的绿城房地产的销售</li>
+<li>之后必胜客的服务员，再做了一段时间的经理预备</li>
+<li>后来又做过一段时间的机器人编程的幼教老师</li>
+<li>给小公司做过IT设备维修支持，提供常见的IT维修服务。</li>
+<li>在一家网络公司“尚游网络科技有限公司”担任过推广，半个程序员运维工作。</li>
+</ul>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-orge50a387" class="outline-2">
+<h2 id="orge50a387"><a href="#orge50a387">编程项目经历</a></h2>
+<div class="outline-text-2" id="text-orge50a387">
+</div>
+<div id="outline-container-org968c1b8" class="outline-3">
+<h3 id="org968c1b8"><a href="#org968c1b8">爬虫项目</a></h3>
+<div class="outline-text-3" id="text-org968c1b8">
+</div>
+<div id="outline-container-org6c67261" class="outline-4">
+<h4 id="org6c67261"><a href="#org6c67261">新旧网站的内容对比程序</a></h4>
+<div class="outline-text-4" id="text-org6c67261">
+<pre class="example">
+DATE: [2018-10-20 Sat 21:30]
+</pre>
+
+<p>
+项目地址： <a href="https://github.com/stardiviner/website-compare">https://github.com/stardiviner/website-compare</a>
+</p>
+
+<p>
+README有详细的记录。
+</p>
+
+<p>
+其中爬取页面部分都是简单的，但是真正难的部分是比较部分。而且要求100%的完整性比较
+（包括文本内容，网页上的多媒体附件，以及导航栏的改动等等）。
+</p>
+</div>
+</div>
+<div id="outline-container-org1850dd5" class="outline-4">
+<h4 id="org1850dd5"><a href="#org1850dd5">Slack聊天记录的爬虫</a></h4>
+<div class="outline-text-4" id="text-org1850dd5">
+<pre class="example">
+DATE: [2018-11-26 Mon 21:30]
+</pre>
+
+<p>
+项目地址： <a href="https://github.com/stardiviner/clojurians-slack-log">https://github.com/stardiviner/clojurians-slack-log</a>
+</p>
+
+<p>
+README有详细的记录。
+</p>
+
+<p>
+打算在其中加入Clojure的并发和并行支持。作为实验性质的。
+</p>
+</div>
+</div>
+<div id="outline-container-orgebf9423" class="outline-4">
+<h4 id="orgebf9423"><a href="#orgebf9423">关于爬虫的项目经验</a></h4>
+<div class="outline-text-4" id="text-orgebf9423">
+<p>
+由于我还没有在互联网公司真正做过大的爬虫项目，所以算不上有足够经验。但是希望能给
+我一个实习生的机会。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org591195b" class="outline-3">
+<h3 id="org591195b"><a href="#org591195b">Emacs / Org Mode</a></h3>
+<div class="outline-text-3" id="text-org591195b">
+<ul class="org-ul">
+<li>给Emacs写过一些小插件</li>
+<li>给Org Mode提交过一些PR，特别是Org Babel Literate Programming 方面的支持，以及
+ob-clojure 对 CIDER (Emacs 上 的 Clojure IDE) 的支持。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1e249ec" class="outline-3">
+<h3 id="org1e249ec"><a href="#org1e249ec">小工具</a></h3>
+<div class="outline-text-3" id="text-org1e249ec">
+</div>
+<div id="outline-container-org96dd7c0" class="outline-4">
+<h4 id="org96dd7c0"><a href="#org96dd7c0">Kindle笔记导出工具</a></h4>
+<div class="outline-text-4" id="text-org96dd7c0">
+<p>
+写过一个工具支持从Kindle的笔记记录导出到Emacs Org Mode 格式。
+</p>
+
+<hr>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org6da58a7" class="outline-2">
+<h2 id="org6da58a7"><a href="#org6da58a7">很多人都会问的关于我大学辍学这个选择</a></h2>
+<div class="outline-text-2" id="text-org6da58a7">
+<p>
+我在安徽工程大学读大三下半年的时候辍学了，大学时学习一般，觉得学习很枯燥，以前念
+书，是因为身边的人都在念书，可以这么说，以前念书是为了他人而念书，但是当我在大学
+里想，我为什么念书？想的多了，人就困惑起来，和很多有过类似经历的人一样，在迷茫的
+时期，经历过内心的挣扎，和煎熬。生活的面貌也仿佛隐隐看到背后的一些意义和灵动。
+</p>
+
+<p>
+于是乎就去图书馆里看书，看计算机类的书，哲学类的书，也会偶尔看看小说，和传记。突
+然明白，生命中重要的，不是做什么好，而是想去做什么。我要实现生命的意义，要有梦想，
+一个真正意义上的梦想，那就是在技术浪潮下实现带给人们幸福的事情。当时看了 Eric S.
+Raymond 的 《How To Become a Hacker》。我觉得这很适合我，做一个电脑技术人员，用
+互联网技术去创造点什么。听我们老师说我们专业的学生从事本专业的人一个班级里最多
+1~2个，我觉得继续浑浑噩噩的继续大学读下去也没有意思了，索性从现在开始去做自己喜
+欢的事情，现在开始至少比等一年半开始要早一点。
+</p>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-org46f284a" class="outline-2">
+<h2 id="org46f284a"><a href="#org46f284a">我的网上档案</a></h2>
+<div class="outline-text-2" id="text-org46f284a">
+<p>
+我大多数公开的东西都在GitHub上，但是笔记之类的都只在本地的Org Mode中，在搭建好平
+台前，都无法在线浏览。
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/stardiviner/">GitHub: stardiviner</a></li>
+<li><a href="https://stardiviner.github.io/">Blog</a></li>
+<li><a href="https://stackexchange.com/users/366399/stardiviner">my Stack Overflow profile</a></li>
+</ul>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-org2f4953a" class="outline-2">
+<h2 id="org2f4953a"><a href="#org2f4953a">编程技术</a></h2>
+<div class="outline-text-2" id="text-org2f4953a">
+</div>
+<div id="outline-container-orga7913f2" class="outline-3">
+<h3 id="orga7913f2"><a href="#orga7913f2">操作系统：Linux</a></h3>
+<div class="outline-text-3" id="text-orga7913f2">
+<p>
+从 <span class="timestamp-wrapper"><time class="timestamp" datetime="2011-10-10">[2011-10-10 Mon]</time></span> 年以来，我一直使用Linux系统作为我的日常系统，完全取代Windows
+系统了。从最开始的Ubuntu用了2年左右，到后来转到Arch Linux下。后来一直使用Arch
+Linux到现在。
+</p>
+</div>
+</div>
+<div id="outline-container-orgcaaf54c" class="outline-3">
+<h3 id="orgcaaf54c"><a href="#orgcaaf54c">Clojure: 函数式基于 JVM 的 Lisp 语言</a></h3>
+<div class="outline-text-3" id="text-orgcaaf54c">
+<p>
+<span class="timestamp-wrapper"><time class="timestamp" datetime="2017-08-16">[2017-08-16 Wed]</time></span> Clojure是我最熟悉的语言，平时都是用它。
+</p>
+</div>
+</div>
+<div id="outline-container-orgbd9e1a8" class="outline-3">
+<h3 id="orgbd9e1a8"><a href="#orgbd9e1a8">Emacs Lisp</a></h3>
+<div class="outline-text-3" id="text-orgbd9e1a8">
+<p>
+熟悉 Emacs Lisp 语言。会自己写一些小的插件和功能。
+</p>
+</div>
+</div>
+<div id="outline-container-org43dd0a9" class="outline-3">
+<h3 id="org43dd0a9"><a href="#org43dd0a9">了解一点其他语言：Python，Ruby，HTML，CSS，JS</a></h3>
+<div class="outline-text-3" id="text-org43dd0a9">
+<p>
+<span class="timestamp-wrapper"><time class="timestamp" datetime="2015-03-16">[2015-03-16 Mon]</time></span> 很早以前学过一两个月的Python，Ruby。然后对于 HTML，CSS，JS 这些
+语言有一点了解，但是不深入。
+</p>
+</div>
+</div>
+<div id="outline-container-orgcf66fcf" class="outline-3">
+<h3 id="orgcf66fcf"><a href="#orgcf66fcf">熟悉正则表达式 regexp</a></h3>
+</div>
+
+<div id="outline-container-org026a6a0" class="outline-3">
+<h3 id="org026a6a0"><a href="#org026a6a0">熟悉 Redis 和 MongoDB 的基础使用</a></h3>
+</div>
+
+<div id="outline-container-org16d5827" class="outline-3">
+<h3 id="org16d5827"><a href="#org16d5827">我自己用 Linux + Nginx + static site + Dynamic DNS 架过网站</a></h3>
+</div>
+
+<div id="outline-container-org54539a1" class="outline-3">
+<h3 id="org54539a1"><a href="#org54539a1">使用Git和开源社区的程序员协作，贡献patch</a></h3>
+</div>
+
+<div id="outline-container-org46b24ac" class="outline-3">
+<h3 id="org46b24ac"><a href="#org46b24ac">会用基本的 Docker 功能</a></h3>
+<div class="outline-text-3" id="text-org46b24ac">
+<ul class="org-ul">
+<li>了解 Docker Volume</li>
+<li>了解 Docker Compose</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb37ab93" class="outline-3">
+<h3 id="orgb37ab93"><a href="#orgb37ab93">脚本 Linux Shell Scripting</a></h3>
+<div class="outline-text-3" id="text-orgb37ab93">
+<p>
+会用 Linux Shell 写一点脚本。
+</p>
+</div>
+</div>
+<div id="outline-container-org3f5da24" class="outline-3">
+<h3 id="org3f5da24"><a href="#org3f5da24">参与开源社区的贡献</a></h3>
+<div class="outline-text-3" id="text-org3f5da24">
+<p>
+我平常浏览GitHub，看看有什么有意思的东西，关注动向，也会fork下一些插件，去提交几
+个PR。平时在一些邮件列表里混，订阅了几个常看的，Emacs，Org Mode，Lisp，Clojure。
+也会去一些社区论坛，比如 <a href="https://emacs-china.org/">Emacs China</a>, <a href="https://clojureverse.org/">Clojureverse</a>, 等等。
+</p>
+
+
+<hr>
+</div>
+</div>
+</div>
+<div id="outline-container-orgef2cf54" class="outline-2">
+<h2 id="orgef2cf54"><a href="#orgef2cf54">编程工具：Emacs + Org-mode</a></h2>
+<div class="outline-text-2" id="text-orgef2cf54">
+<p>
+很早以前在学Ubuntu Linux的时候，我学习使用的是Vim，用过大概有2年时间，后来因为
+Org Mode的超级强大的功能的缘故，我转投Emacs了，一开始Emacs的按键我还不适应，但是
+慢慢就好了，在一段时间的浸淫之后，我开始慢慢学习使用Org Mode，到现在，我已经为
+Org Mode提供了好几个patch和feature了。也写了几个小功能的Emacs插件。我现在已经能
+为我自己想要的功能Hack了。
+</p>
+
+<p>
+现在我已经大多数工作都在Emacs和Org Mode下完成了：
+</p>
+
+<ul class="org-ul">
+<li>写代码：我的主要语言是Clojure，在Emacs下使用CIDER，是我感觉IDE体验最好的工具。
+Python有Elpy和lsp-python。也能满足大部分需求。而且Org Mode还支持 Literate
+Programming paradigm，这是我在业余时间用的最多的。</li>
+<li>用Org Mode记笔记：我将所有笔记都记录在Org里了，我还自己谢了一个工具来快速准确
+的搜索我想要的内容。我还打算将Org的内容host为搜索和浏览形式。这样手机上也能快
+速搜索浏览了。</li>
+<li>任务管理：Org Mode有一个Agenda功能，用它管理任务，会更贴心。</li>
+<li>收发邮件</li>
+<li>和其他程序员在IRC上</li>
+<li>用Org Mode写博客</li>
+</ul>
+</div>
+<div id="outline-container-orgfe2c585" class="outline-3">
+<h3 id="orgfe2c585"><a href="#orgfe2c585">contributed commits on Org Mode</a></h3>
+<div class="outline-text-3" id="text-orgfe2c585">
+<div class="org-src-container">
+<pre class="src src-shell"><code><code>git log --author=stardiviner</code>
+</code></pre>
+</div>
+
+
+<hr>
+</div>
+</div>
+</div>
+<div id="outline-container-orgee43145" class="outline-2">
+<h2 id="orgee43145"><a href="#orgee43145">关于技术学习规划</a></h2>
+<div class="outline-text-2" id="text-orgee43145">
+<ul class="org-ul">
+<li>现在想加深爬虫技术的学习。所以要学习一些JavaScript，反爬虫和反反爬虫技术。</li>
+<li>深入学习并发和并行编程，函数式编程。</li>
+<li>了解一些数据分析的技术，Clojure上我已经开始关注一些库的使用。掌握统计分析的知识。</li>
+</ul>
+
+<hr>
+</div>
+</div>
+<div id="outline-container-org721e7e6" class="outline-2">
+<h2 id="org721e7e6"><a href="#org721e7e6">其他技能</a></h2>
+<div class="outline-text-2" id="text-org721e7e6">
+</div>
+<div id="outline-container-orgfb21b82" class="outline-3">
+<h3 id="orgfb21b82"><a href="#orgfb21b82">英语四级，良好的英语阅读能力</a></h3>
+<div class="outline-text-3" id="text-orgfb21b82">
+<p>
+大学的时候通过了国家英语四级考试。
+</p>
+</div>
+</div>
+<div id="outline-container-orga8cd0eb" class="outline-3">
+<h3 id="orga8cd0eb"><a href="#orga8cd0eb">Windows 桌面系统下</a></h3>
+<div class="outline-text-3" id="text-orga8cd0eb">
+<ul class="org-ul">
+<li>重装系统</li>
+<li>安装 pojie 软件</li>
+<li>会Windows下的高级设置，Windows下很多东西和Linux下都是很相似的。只是形式不一样。</li>
+</ul>
+
+<hr>
+</div>
+</div>
+</div>
+<div id="outline-container-orge0450c5" class="outline-2">
+<h2 id="orge0450c5"><a href="#orge0450c5">结尾语</a></h2>
+<div class="outline-text-2" id="text-orge0450c5">
+<p>
+此文档由Org Mode嵌入LaTeX，导出为PDF文件。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<footer>
+  Copyright 2011, Author: Christopher M. Miles (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
+  Last update date: 2025-08-21 Thu 21:50.<br>
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+
+  <!-- RSS -->
+  You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
+  
+  <!-- Show Org Source -->
+  <script>
+   var url = document.location.href;
+   var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+   function show_org_source(){
+     document.location.href = orgsource;
+   }
+  </script>
+  <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
+
+</footer>
+
+<!-- scroll to top -->
+<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
+
+<!-- payment -->
+<div class='payment'>
+  <!-- use two inline aligned small thumb QR code image -->
+  <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
+       <div id='wechat-payment'><a href="/About/index.html#Payment"><img src="/assets/images/wechat_payment.png" title="打赏" /></a></div> -->
+  
+  <!-- use a custom reward image to be more friendly -->
+  <div id="payment-icon">
+    <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
+  </div>
+</div>
+
+<!-- Google Analytics -->
+<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+     <script type="text/javascript">
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-63992234-1', 'auto');
+     ga('send', 'pageview');
+     </script> -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+     <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-63992234-1');
+     </script> -->
+
+<!-- Disqus -->
+<!-- <div class="comments">
+     <style>
+     /* hide comment policy */
+     .comment-policy {
+     display: none;
+     }
+     /* hide Disqus footer */
+     .disqus-footer__wrapper {
+     display: none;
+     } 
+     </style>
+     
+     <div id="disqus_thread"></div>
+     <script>
+     (function() {
+     var d = document, s = d.createElement('script');
+     s.src = 'https://stardiviner.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+     })();
+     </script>
+     </div> -->
+</div>
+</body>
+</html>

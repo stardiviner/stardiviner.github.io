@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-08-21 Thu 23:08 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>upgrade Org link syntax to new</title>
+<meta name="author" content="stardiviner &lt;numbchild@gmail.com&gt;" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="/assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="/assets/scripts/org-info-src.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "3");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "2");
+org_html_manager.set("TOC", "0");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
+</div><div id="preamble" class="status">
+<div class='nav'>
+  <ul>
+    <li><a href='/'>Home</a></li>
+    <li><a href='/Blog/index.html'>Blog</a></li>
+    <li><a href="/Thought/index.html">Thought</a></li>
+    <li><a href='/Literature/index.html'>文学</a></li>
+    <li><a href='/About/index.html'>About</a></li>
+  </ul>
+</div>
+<div class="epilogue">
+  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
+</div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">upgrade Org link syntax to new</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#ID-73b7751f-038f-4c15-bbbf-5b52f95997fd">1. which Org version using new link syntax?</a></li>
+<li><a href="#ID-f7c9a782-786f-401c-a911-b8ebd6e099f1">2. Conversations in Org Mode mailing list</a></li>
+<li><a href="#ID-1a855b98-db9d-4702-9afa-76b39829c171">3. How to upgrade Org links to new syntax</a>
+<ul>
+<li><a href="#ID-640d5225-d011-42b8-ae5b-3c3953885cd1">3.1. Using a search tool with wgrep mode</a></li>
+<li><a href="#ID-3923f696-9c43-4e37-90e2-3052809cab77">3.2. use org-lint to checking Org file</a></li>
+</ul>
+</li>
+<li><a href="#ID-b135cef2-ea39-4834-a37b-422a22db6cb8">4. At the end</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-ID-73b7751f-038f-4c15-bbbf-5b52f95997fd" class="outline-2">
+<h2 id="ID-73b7751f-038f-4c15-bbbf-5b52f95997fd"><span class="section-number-2">1.</span> <a href="#ID-73b7751f-038f-4c15-bbbf-5b52f95997fd">which Org version using new link syntax?</a></h2>
+<div class="outline-text-2" id="text-1">
+<pre class="example">
+ID: 73b7751f-038f-4c15-bbbf-5b52f95997fd
+PUBDATE: <2019-08-14 Wed 19:46>
+</pre>
+
+<p>
+Since commit "<code>a486d9cbd</code>" in Git repo, Org start this change. You might want to
+check out <code>ORG-NEWS</code> file about this.
+</p>
+</div>
+</div>
+<div id="outline-container-ID-f7c9a782-786f-401c-a911-b8ebd6e099f1" class="outline-2">
+<h2 id="ID-f7c9a782-786f-401c-a911-b8ebd6e099f1"><span class="section-number-2">2.</span> <a href="#ID-f7c9a782-786f-401c-a911-b8ebd6e099f1">Conversations in Org Mode mailing list</a></h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
+ID: f7c9a782-786f-401c-a911-b8ebd6e099f1
+PUBDATE: <2019-08-14 Wed 19:46>
+</pre>
+
+<p>
+If you don't want to know the background or already know this background, you
+can just skip bellowing links.
+</p>
+
+<p>
+Here is the original discussion in Org Mode mailing list for reference:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://lists.gnu.org/archive/html/emacs-orgmode/2019-02/msg00320.html">[RFC] Fixing link encoding once and for all</a></li>
+<li><a href="https://lists.gnu.org/archive/html/emacs-orgmode/2019-03/msg00114.html">[ANN] Changes to link syntax</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-ID-1a855b98-db9d-4702-9afa-76b39829c171" class="outline-2">
+<h2 id="ID-1a855b98-db9d-4702-9afa-76b39829c171"><span class="section-number-2">3.</span> <a href="#ID-1a855b98-db9d-4702-9afa-76b39829c171">How to upgrade Org links to new syntax</a></h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
+ID: 1a855b98-db9d-4702-9afa-76b39829c171
+PUBDATE: <2019-08-14 Wed 19:46>
+</pre>
+
+<p>
+If you need this, you must have lot of Org files need to be updated, you will
+not want to do it manually one by one. So here is my way.
+</p>
+</div>
+<div id="outline-container-ID-640d5225-d011-42b8-ae5b-3c3953885cd1" class="outline-3">
+<h3 id="ID-640d5225-d011-42b8-ae5b-3c3953885cd1"><span class="section-number-3">3.1.</span> <a href="#ID-640d5225-d011-42b8-ae5b-3c3953885cd1">Using a search tool with wgrep mode</a></h3>
+<div class="outline-text-3" id="text-3-1">
+<pre class="example">
+ID: 640d5225-d011-42b8-ae5b-3c3953885cd1
+</pre>
+
+<ol class="org-ol">
+<li><p>
+I use <code>rg.el</code> (you can use any other searching command-line tools like <code>ag</code> etc
+if you want, but need be supported by <code>wgrep</code>.) to search recursively over my
+<code>org-directory</code> which is <code>~/Org/</code> (I store all Org files in one place for easy
+backup.). So in Emacs, press command <code>[M-x rg]</code> to start search. You need to
+search all of those urlfied characters "<code>%20, %25, %5B and %5D</code>" one by one.
+</p>
+
+<p>
+<b>NOTE</b>: If your Org files are written in only English language, then that's all
+characters to search. If you have Chinese text, then you also need to search
+pattern "<code>file:.*%</code>". This pattern will find out all <code>file:</code> links contains
+Chinese text.
+</p></li>
+
+<li><code>rg</code> is really very fast, I have about 10000 Org files, just spent about more
+than 1 minute.</li>
+
+<li>In the rg searching result buffer, press <code>[C-c C-x C-p]</code> to enable <code>wgrep-mode</code>.</li>
+
+<li><p>
+Add Elisp command for update Org link.
+</p>
+
+<p>
+You need to evaluate following elisp code.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #82aaff;">org-update-link-syntax</span> <span style="color: #f78c6c;">(</span><span style="color: #c792ea; font-style: italic;">&amp;optional</span> no-query<span style="color: #f78c6c;">)</span></code>
+<code>  <span style="color: #8d92af;">"Update syntax for links in current buffer."</span></code>
+<code>  <span style="color: #f78c6c;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">interactive</span><span style="color: #f78c6c;">)</span></code>
+<code>  <span style="color: #f78c6c;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">org-with-point-at</span> 1</code>
+<code>    <span style="color: #c3e88d;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">let</span> <span style="color: #89DDFF;">(</span><span style="color: #bb80b3;">(</span>case-fold-search t<span style="color: #bb80b3;">)</span><span style="color: #89DDFF;">)</span></code>
+<code>      <span style="color: #676E95;">;; </span><span style="color: #676E95;">(re-search-forward "\\[\\[[</span><span style="color: #89DDFF; font-weight: bold;">^</span><span style="color: #676E95;">]]*?%\\(?:2[05]\\|5[BD]\\)" nil t) ; safer matching</code>
+<code></span>      <span style="color: #89DDFF;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">while</span> <span style="color: #bb80b3;">(</span>re-search-forward <span style="color: #c3e88d;">"\\[\\[[</span><span style="color: #89DDFF; font-weight: bold;">^</span><span style="color: #c3e88d;">]]*?%"</span> nil t<span style="color: #bb80b3;">)</span> <span style="color: #676E95;">; </span><span style="color: #676E95;">wider matching</code>
+<code></span>        <span style="color: #bb80b3;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">let</span> <span style="color: #ffcb6b;">(</span><span style="color: #82aaff;">(</span>object <span style="color: #44b9b1;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">save-match-data</span> <span style="color: #80cbc4;">(</span>org-element-context<span style="color: #80cbc4;">)</span><span style="color: #44b9b1;">)</span><span style="color: #82aaff;">)</span><span style="color: #ffcb6b;">)</span></code>
+<code>          <span style="color: #ffcb6b;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">when</span> <span style="color: #82aaff;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">and</span> <span style="color: #44b9b1;">(</span>eq 'link <span style="color: #80cbc4;">(</span>org-element-type object<span style="color: #80cbc4;">)</span><span style="color: #44b9b1;">)</span></code>
+<code>                     <span style="color: #44b9b1;">(</span>= <span style="color: #80cbc4;">(</span>match-beginning 0<span style="color: #80cbc4;">)</span></code>
+<code>                        <span style="color: #80cbc4;">(</span>org-element-property <span style="color: #82aaff;">:begin</span> object<span style="color: #80cbc4;">)</span><span style="color: #44b9b1;">)</span><span style="color: #82aaff;">)</span></code>
+<code>            <span style="color: #82aaff;">(</span>goto-char <span style="color: #44b9b1;">(</span>org-element-property <span style="color: #82aaff;">:end</span> object<span style="color: #44b9b1;">)</span><span style="color: #82aaff;">)</span></code>
+<code>            <span style="color: #82aaff;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">let*</span> <span style="color: #44b9b1;">(</span><span style="color: #80cbc4;">(</span>uri-start <span style="color: #c792ea;">(</span>+ 2 <span style="color: #f78c6c;">(</span>match-beginning 0<span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span><span style="color: #80cbc4;">)</span></code>
+<code>                   <span style="color: #80cbc4;">(</span>uri-end <span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">save-excursion</span></code>
+<code>                              <span style="color: #f78c6c;">(</span>goto-char uri-start<span style="color: #f78c6c;">)</span></code>
+<code>                              <span style="color: #f78c6c;">(</span>re-search-forward <span style="color: #c3e88d;">"\\][][]"</span> nil t<span style="color: #f78c6c;">)</span></code>
+<code>                              <span style="color: #f78c6c;">(</span>match-beginning 0<span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span><span style="color: #80cbc4;">)</span></code>
+<code>                   <span style="color: #80cbc4;">(</span>uri <span style="color: #c792ea;">(</span>buffer-substring-no-properties uri-start uri-end<span style="color: #c792ea;">)</span><span style="color: #80cbc4;">)</span><span style="color: #44b9b1;">)</span></code>
+<code>              <span style="color: #44b9b1;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">when</span></code>
+<code>                  <span style="color: #676E95;">;; </span><span style="color: #676E95;">t ; if you don't want to confirm every one link, just use this t for automatically modify link.</code>
+<code></span>                <span style="color: #80cbc4;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">or</span> no-query</code>
+<code>                    <span style="color: #c792ea;">(</span>y-or-n-p</code>
+<code>                     <span style="color: #f78c6c;">(</span>format <span style="color: #c3e88d;">"Possibly obsolete URI syntax: %S.  Fix? "</span></code>
+<code>                             uri<span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span><span style="color: #80cbc4;">)</span></code>
+<code>                <span style="color: #80cbc4;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">setf</span> <span style="color: #c792ea;">(</span>buffer-substring uri-start uri-end<span style="color: #c792ea;">)</span></code>
+<code>                      <span style="color: #c792ea;">(</span>org-link-escape <span style="color: #f78c6c;">(</span>org-link-decode uri<span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span><span style="color: #80cbc4;">)</span><span style="color: #44b9b1;">)</span><span style="color: #82aaff;">)</span><span style="color: #ffcb6b;">)</span><span style="color: #bb80b3;">)</span><span style="color: #89DDFF;">)</span><span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code>
+</code></pre>
+</div>
+
+<p>
+<b>NOTE</b>: If you don't want to confirm every one link, just use the <code>t</code> in <code>when</code> for
+automatically modify link.
+</p>
+
+<p>
+<b>Thanks Nicolas Goaziou for this Elisp code</b>.
+</p></li>
+
+<li>save all modifications in wgrep with <code>[C-x C-s]</code>.</li>
+
+<li>repeat this step for all searching characters.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-ID-3923f696-9c43-4e37-90e2-3052809cab77" class="outline-3">
+<h3 id="ID-3923f696-9c43-4e37-90e2-3052809cab77"><span class="section-number-3">3.2.</span> <a href="#ID-3923f696-9c43-4e37-90e2-3052809cab77">use org-lint to checking Org file</a></h3>
+<div class="outline-text-3" id="text-3-2">
+<pre class="example">
+ID: 3923f696-9c43-4e37-90e2-3052809cab77
+</pre>
+
+<p>
+In latest Org version, there is already support use command <code>org-lint</code> to checking
+Org buffer.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-b135cef2-ea39-4834-a37b-422a22db6cb8" class="outline-2">
+<h2 id="ID-b135cef2-ea39-4834-a37b-422a22db6cb8"><span class="section-number-2">4.</span> <a href="#ID-b135cef2-ea39-4834-a37b-422a22db6cb8">At the end</a></h2>
+<div class="outline-text-2" id="text-4">
+<pre class="example">
+ID: b135cef2-ea39-4834-a37b-422a22db6cb8
+PUBDATE: <2019-08-14 Wed 19:46>
+</pre>
+
+<p>
+There are might more places have not noticed by me. If you found someplace need
+to be updated, please send email to Org Mode mailing list, or email me is ok.
+</p>
+
+<p>
+Because I mainly use Chinese text in <code>file:</code> link, so that's where I searched.
+Might there are more link types need to searched like <code>pdfview:</code> which from
+package <code>org-pdfview</code>.
+</p>
+
+<p>
+I will update here if there are new updates.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<footer>
+  Copyright 2011, Author: stardiviner &lt;numbchild@gmail.com&gt; (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
+  Last update date: 2025-08-21 Thu 21:50.<br>
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+
+  <!-- RSS -->
+  You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
+  
+  <!-- Show Org Source -->
+  <script>
+   var url = document.location.href;
+   var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+   function show_org_source(){
+     document.location.href = orgsource;
+   }
+  </script>
+  <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
+
+</footer>
+
+<!-- scroll to top -->
+<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
+
+<!-- payment -->
+<div class='payment'>
+  <!-- use two inline aligned small thumb QR code image -->
+  <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
+       <div id='wechat-payment'><a href="/About/index.html#Payment"><img src="/assets/images/wechat_payment.png" title="打赏" /></a></div> -->
+  
+  <!-- use a custom reward image to be more friendly -->
+  <div id="payment-icon">
+    <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
+  </div>
+</div>
+
+<!-- Google Analytics -->
+<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+     <script type="text/javascript">
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-63992234-1', 'auto');
+     ga('send', 'pageview');
+     </script> -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+     <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-63992234-1');
+     </script> -->
+
+<!-- Disqus -->
+<!-- <div class="comments">
+     <style>
+     /* hide comment policy */
+     .comment-policy {
+     display: none;
+     }
+     /* hide Disqus footer */
+     .disqus-footer__wrapper {
+     display: none;
+     } 
+     </style>
+     
+     <div id="disqus_thread"></div>
+     <script>
+     (function() {
+     var d = document, s = d.createElement('script');
+     s.src = 'https://stardiviner.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+     })();
+     </script>
+     </div> -->
+</div>
+</body>
+</html>

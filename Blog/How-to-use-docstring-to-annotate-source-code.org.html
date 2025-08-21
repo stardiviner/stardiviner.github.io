@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.59 in css mode. -->
+<html>
+  <head>
+    <title>How-to-use-docstring-to-annotate-source-code.org</title>
+    <link rel="stylesheet" type="text/css" href="t">
+  </head>
+  <body>
+    <pre>
+<span class="org-level-1">&#61600; How does the idea comes up?
+</span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">32bc9bda-7433-46e3-9172-ea22915b2e77</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
+
+</span>Sometimes I think what if the source code can be translated into human natural language in<span class="keyword">
+</span>some way. Or display annotation beside of source code. It would help newbie (like me) to<span class="keyword">
+</span>understand the program source code better and faster.<span class="keyword">
+
+&#61600;</span><span class="org-level-1"> Emacs ElDoc
+</span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">c46d01e3-26fb-4ddc-a851-0bfdc360d4ea</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
+
+</span>Emacs ElDoc already display docstring for symbol in minibuffer. There are some packages<span class="keyword">
+</span>can change its display place like "eldoc-overlay". Can be displayed in context with popup,<span class="keyword">
+</span>property-text or overlay etc.<span class="keyword">
+
+&#61600;</span><span class="org-level-1"> My idea details
+</span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">6240c2d2-7a67-4f0c-a5cd-aeec003502ff</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
+
+
+&#61600;</span><span class="org-level-1"> Examples
+</span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">bb04a9a0-f4db-4b61-9b73-7292e1a1cf25</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
+
+</span><span class="org-hide">*&#61716;</span><span class="org-level-2"> Lisp dialects
+</span>   <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
+</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">1a80705f-783e-48b4-87ce-f7885bd0f16b</span><span class="keyword">
+</span>   <span class="org-drawer">:END:</span><span class="keyword">
+
+&#60100;</span><span class="org-block-begin-line"> clojure :eval no
+</span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">+--&gt; define a function named hello-world.
+</span></span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">|   +--&gt; function name.
+</span></span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">|   |          +--&gt; arguments.
+</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">(</span></span><span class="org-block"><span class="keyword">defn</span></span><span class="org-block"> </span><span class="org-block"><span class="function-name">hello-world</span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-2">[]</span></span><span class="org-block">
+  </span><span class="org-block"><span class="comment-delimiter">;; </span></span><span class="org-block"><span class="comment">+--&gt; print string "Hello, World!".
+</span></span><span class="org-block">  </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">prn </span><span class="org-block"><span class="string">"Hello, World!"</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block"><span class="rainbow-delimiters-depth-1">)</span></span><span class="org-block">
+&#986659;</span><span class="org-block-end-line">
+</span><span class="keyword">
+</span><span class="org-hide">*&#61716;</span><span class="org-level-2"> Python/Ruby/JavaScript
+</span>   <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
+</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">21cbbb4f-7785-4c44-b6fd-ee9eb331b98a</span><span class="keyword">
+</span>   <span class="org-drawer">:END:</span><span class="keyword">
+
+</span><span class="org-hide">*&#61716;</span><span class="org-level-2"> C/C++/Java
+</span>   <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
+</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">b93ee6a6-203d-41b1-bf52-08095f9cdb01</span><span class="keyword">
+</span>   <span class="org-drawer">:END:</span><span class="keyword">
+
+</span><span class="org-hide">*&#61716;</span><span class="org-level-2"> HTML
+</span>   <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
+</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">5b311bd9-227c-47c7-abca-cb1825607ed9</span><span class="keyword">
+</span>   <span class="org-drawer">:END:</span><span class="keyword">
+
+</span><span class="org-hide">*&#61716;</span><span class="org-level-2"> CSS
+</span>   <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
+</span>   <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">e41180a5-4c21-4b40-8ad7-562408d7ef5b</span><span class="keyword">
+</span>   <span class="org-drawer">:END:</span><span class="keyword">
+
+&#61600;</span><span class="org-level-1"> Try to implement in Emacs as an extension
+</span>  <span class="org-drawer">:PROPERTIES:</span><span class="keyword">
+</span>  <span class="org-special-keyword">:ID:</span>       <span class="org-property-value">061cbe7c-d82f-4c69-b536-d8a5bbfae8f5</span><span class="keyword">
+</span>  <span class="org-special-keyword">:PUBDATE:</span>   <span class="org-modern-date-active">2019-08-14 Wed </span><span class="org-modern-time-active"> 19:08 </span><span class="keyword">
+</span>  <span class="org-drawer">:END:</span><span class="keyword">
+
+</span>Here is an new created empty repository <span class="org-link"><a href="https://github.com/stardiviner/eldoc-annotation.el">https://github.com/stardiviner/eldoc-annotation.el</a></span><span class="keyword">
+</span>that I will add code in future.<span class="keyword">
+</span></pre>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+# Created 2025-08-21 Thu 23:06
+#+title: Learn video editor Adobe Premiere to edit a WeChat 15s small video
+#+author: Christopher M. Miles
+* The need for sharing small video on WeChat Moments
+:PROPERTIES:
+:ID:       c509be90-da51-465e-88df-e8c28a37f9ff
+:PUBDATE:  <2019-08-14 Wed 19:46>
+:END:
+
+As current company need to attract people on WeChat, decide to make a great
+small video for sharing on WeChat Moments. But no one has this skill. So I said
+I might can learn to take a quick try. It should not be too difficult.
+* Is it difficult to learn Adobe Premiere?
+:PROPERTIES:
+:ID:       aca64a96-a031-48f3-b8d4-20c545487af1
+:PUBDATE:  <2019-08-14 Wed 19:46>
+:END:
+
+Well, that depend on your understanding some basic concepts like video linear
+editing, affects, layers, priorieties of layers, etc. And you're satisfied to
+play around softwares. Then find some simple tutorials on Internet. Do some
+test, and adjustment. That's all. So you can assessment how difficult for you.
+* Here is my final work after about 3~4 days learning
+:PROPERTIES:
+:Attachments: 去水印对比.mp4 去水印教程%2015s.mp4 蜜桃成熟时%202%20（第一帧插入美女图）.mp4
+:ID:       45541ab8-cc68-4c14-a1f2-46cd925fa306
+:PUBDATE:  <2019-08-14 Wed 19:46>
+:END:
+
+- [[file:data/45/541ab8-cc68-4c14-a1f2-46cd925fa306/去水印对比.mp4][去水印对比.mp4]]
+- [[file:data/45/541ab8-cc68-4c14-a1f2-46cd925fa306/去水印教程 15s.mp4][去水印教程 15s.mp4]]
+- [[file:data/45/541ab8-cc68-4c14-a1f2-46cd925fa306/蜜桃成熟时 2 （第一帧插入美女图）.mp4][蜜桃成熟时.mp4]]

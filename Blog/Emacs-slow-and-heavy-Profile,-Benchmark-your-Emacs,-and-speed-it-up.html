@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-08-21 Thu 23:05 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</title>
+<meta name="author" content="Christopher M. Miles" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="/assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="/assets/scripts/org-info-src.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "3");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "2");
+org_html_manager.set("TOC", "0");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
+</div><div id="preamble" class="status">
+<div class='nav'>
+  <ul>
+    <li><a href='/'>Home</a></li>
+    <li><a href='/Blog/index.html'>Blog</a></li>
+    <li><a href="/Thought/index.html">Thought</a></li>
+    <li><a href='/Literature/index.html'>文学</a></li>
+    <li><a href='/About/index.html'>About</a></li>
+  </ul>
+</div>
+<div class="epilogue">
+  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
+</div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#ID-9348a942-1e91-4587-a10f-9dd769a32a9a">1. Is your Emacs slow and heavy?</a>
+<ul>
+<li><a href="#ID-a5357d0e-a3e2-46c8-8cbb-8f51117e5121">1.1. elp</a>
+<ul>
+<li><a href="#ID-05782c93-bcee-4c8d-852c-822a213ad0ab">1.1.1. workflow</a></li>
+<li><a href="#ID-e5cd4631-becc-4b9d-b833-bd82705c66bc">1.1.2. <code>[C-h p elp RET]</code></a></li>
+</ul>
+</li>
+<li><a href="#ID-d00418dd-365e-4ba4-8a7d-369a8d510fba">1.2. profile</a>
+<ul>
+<li><a href="#ID-59726f18-c60f-4b0e-b461-bdbd2d41fef5">1.2.1. workflow</a></li>
+</ul>
+</li>
+<li><a href="#ID-48787dca-ae17-4b0b-8d80-7e7dfd692236">1.3. esup</a>
+<ul>
+<li><a href="#ID-c01cc663-044d-41fd-b25f-3dee48c3e9af">1.3.1. workflow</a></li>
+<li><a href="#ID-f23ffbbe-237d-48f0-8ed9-8961f97f958e">1.3.2. navigation &ndash; <code>[n/p/&lt;RET&gt;]</code></a></li>
+<li><a href="#ID-bd1a8483-a23e-4155-b32b-eb41dd2c6856">1.3.3. FAQ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#ID-ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba">2. The history commits I did which slow down my Emacs</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-ID-9348a942-1e91-4587-a10f-9dd769a32a9a" class="outline-2">
+<h2 id="ID-9348a942-1e91-4587-a10f-9dd769a32a9a"><span class="section-number-2">1.</span> <a href="#ID-9348a942-1e91-4587-a10f-9dd769a32a9a">Is your Emacs slow and heavy?</a></h2>
+<div class="outline-text-2" id="text-1">
+<pre class="example">
+ID: 9348a942-1e91-4587-a10f-9dd769a32a9a
+PUBDATE: <2019-08-14 Wed 19:10>
+</pre>
+
+<p>
+When you installed many Emacs packages, or you set up many configurations. You found your
+Emacs is slow, and heavy. I have this situation many times. I can feel my typing in Emacs
+Org Mode. when code completion, and search, generating results etc. This makes me dive
+into problems and find solution for it.
+</p>
+
+<p>
+Here are some ways you can find out the reaons:
+</p>
+
+<dl class="org-dl">
+<dt>elp</dt><dd>Emacs built-in Emacs Lisp profiler</dd>
+<dt>profiler</dt><dd>Emacs built-in profiler</dd>
+<dt>esup</dt><dd>Emacs start-up profiler</dd>
+</dl>
+</div>
+<div id="outline-container-ID-a5357d0e-a3e2-46c8-8cbb-8f51117e5121" class="outline-3">
+<h3 id="ID-a5357d0e-a3e2-46c8-8cbb-8f51117e5121"><span class="section-number-3">1.1.</span> <a href="#ID-a5357d0e-a3e2-46c8-8cbb-8f51117e5121">elp</a></h3>
+<div class="outline-text-3" id="text-1-1">
+<pre class="example">
+ID: a5357d0e-a3e2-46c8-8cbb-8f51117e5121
+</pre>
+</div>
+<div id="outline-container-ID-05782c93-bcee-4c8d-852c-822a213ad0ab" class="outline-4">
+<h4 id="ID-05782c93-bcee-4c8d-852c-822a213ad0ab"><span class="section-number-4">1.1.1.</span> <a href="#ID-05782c93-bcee-4c8d-852c-822a213ad0ab">workflow</a></h4>
+<div class="outline-text-4" id="text-1-1-1">
+<pre class="example">
+ID: 05782c93-bcee-4c8d-852c-822a213ad0ab
+</pre>
+
+<p>
+Profile the code while executing the function that takes a long time.
+</p>
+
+<ol class="org-ol">
+<li>instrument code
+
+<ul class="org-ul">
+<li><p>
+instrument package
+<code>[M-x elp-instrument-package RET &lt;package&gt; RET]</code>
+</p>
+
+<p>
+Like <code>[M-x elp-instrument-package RET org- RET]</code>
+</p></li>
+
+<li>instrument function
+<code>[M-x elp-instrument-function RET &lt;function&gt; RET]</code></li>
+</ul></li>
+
+<li>execute code you want to profiling.</li>
+
+<li>show results with <code>[M-x elp-results]</code>.</li>
+</ol>
+
+<p>
+For example:
+</p>
+
+<p>
+use <code>elp</code> to see what is slowing down <code>elpy</code>.
+</p>
+
+<p>
+You can start monitoring the whole <code>elpy</code> package with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span>elp-instrument-package <span style="color: #c3e88d;">"elpy-"</span><span style="color: #c792ea;">)</span></code>
+</code></pre>
+</div>
+
+<p>
+#+RESULTS[<span class="timestamp-wrapper"><time class="timestamp" datetime="2018-10-18T14:16:00">&lt;2018-10-18 Thu 14:16&gt;</time></span> 195bb60d4648549a9e035f99aebac8fd7feaa2a0]:
+</p>
+
+<p>
+do your time-consuming operations, and get a report with <code>[M-x elp-results]</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-ID-e5cd4631-becc-4b9d-b833-bd82705c66bc" class="outline-4">
+<h4 id="ID-e5cd4631-becc-4b9d-b833-bd82705c66bc"><span class="section-number-4">1.1.2.</span> <a href="#ID-e5cd4631-becc-4b9d-b833-bd82705c66bc"><code>[C-h p elp RET]</code></a></h4>
+<div class="outline-text-4" id="text-1-1-2">
+<pre class="example">
+ID: e5cd4631-becc-4b9d-b833-bd82705c66bc
+</pre>
+
+<p>
+If you want to profile a bunch of functions, set elp-function-list
+to the list of symbols, then do a M-x elp-instrument-list.  This
+hacks those functions so that profiling information is recorded
+whenever they are called.  To print out the current results, use
+M-x elp-results.  If you want output to go to standard-output
+instead of a separate buffer, setq elp-use-standard-output to
+non-nil.  With elp-reset-after-results set to non-nil, profiling
+information will be reset whenever the results are displayed.  You
+can also reset all profiling info at any time with M-x
+elp-reset-all.
+</p>
+
+<p>
+You can also instrument all functions in a package, provided that
+the package follows the GNU coding standard of a common textual
+prefix.  Use M-x elp-instrument-package for this.
+</p>
+
+<p>
+If you want to sort the results, set elp-sort-by-function to some
+predicate function.  The three most obvious choices are predefined:
+elp-sort-by-call-count, elp-sort-by-average-time, and
+elp-sort-by-total-time.  Also, you can prune from the output, all
+functions that have been called fewer than a given number of times
+by setting elp-report-limit.
+</p>
+
+<p>
+Elp can instrument byte-compiled functions just as easily as
+interpreted functions, but it cannot instrument macros.  However,
+when you redefine a function (e.g. with eval-defun), you'll need to
+re-instrument it with M-x elp-instrument-function.  This will also
+reset profiling information for that function.  Elp can handle
+interactive functions (i.e. commands), but of course any time spent
+idling for user prompts will show up in the timing results.
+</p>
+
+<p>
+You can also designate a `master' function.  Profiling times will
+be gathered for instrumented functions only during execution of
+this master function.  Thus, if you have some defuns like:
+</p>
+
+<p>
+(defun foo () (do-something-time-intensive))
+(defun bar () (foo))
+(defun baz () (bar) (foo))
+</p>
+
+<p>
+and you want to find out the amount of time spent in bar and foo,
+but only during execution of bar, make bar the master.  The call of
+foo from baz will not add to foo's total timing sums.  Use M-x
+elp-set-master and M-x elp-unset-master to utilize this feature.
+Only one master function can be set at a time.
+</p>
+
+<p>
+You can restore any function's original function definition with
+elp-restore-function.  The other instrument, restore, and reset
+functions are provided for symmetry.
+</p>
+
+<p>
+Here is a list of variable you can use to customize elp:
+  elp-function-list
+  elp-reset-after-results
+  elp-sort-by-function
+  elp-report-limit
+</p>
+
+<p>
+Here is a list of the interactive commands you can use:
+  elp-instrument-function
+  elp-restore-function
+  elp-instrument-list
+  elp-restore-list
+  elp-instrument-package
+  elp-restore-all
+  elp-reset-function
+  elp-reset-list
+  elp-reset-all
+  elp-set-master
+  elp-unset-master
+  elp-results
+</p>
+
+<p>
+Note that there are plenty of factors that could make the times
+reported unreliable, including the accuracy and granularity of your
+system clock, and the overhead spent in lisp calculating and
+recording the intervals.  I figure the latter is pretty constant,
+so while the times may not be entirely accurate, I think they'll
+give you a good feel for the relative amount of work spent in the
+various lisp routines you are profiling.  Note further that times
+are calculated using wall-clock time, so other system load will
+affect accuracy too.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-d00418dd-365e-4ba4-8a7d-369a8d510fba" class="outline-3">
+<h3 id="ID-d00418dd-365e-4ba4-8a7d-369a8d510fba"><span class="section-number-3">1.2.</span> <a href="#ID-d00418dd-365e-4ba4-8a7d-369a8d510fba">profile</a></h3>
+<div class="outline-text-3" id="text-1-2">
+<pre class="example">
+ID: d00418dd-365e-4ba4-8a7d-369a8d510fba
+</pre>
+</div>
+<div id="outline-container-ID-59726f18-c60f-4b0e-b461-bdbd2d41fef5" class="outline-4">
+<h4 id="ID-59726f18-c60f-4b0e-b461-bdbd2d41fef5"><span class="section-number-4">1.2.1.</span> <a href="#ID-59726f18-c60f-4b0e-b461-bdbd2d41fef5">workflow</a></h4>
+<div class="outline-text-4" id="text-1-2-1">
+<pre class="example">
+ID: 59726f18-c60f-4b0e-b461-bdbd2d41fef5
+</pre>
+
+<ol class="org-ol">
+<li><p>
+active profiler
+</p>
+
+<p>
+<code>[M-x profiler-start]</code>
+</p></li>
+
+<li><p>
+show profiler result report
+</p>
+
+<p>
+<code>[M-x profiler-report]</code>
+</p></li>
+
+<li><p>
+stop profiler
+</p>
+
+<p>
+<code>[M-x profiler-stop]</code>
+</p></li>
+
+<li><p>
+You need to reset profiler logs before nest new profiling.
+</p>
+
+<p>
+<code>[M-x profiler-reset]</code>
+</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-48787dca-ae17-4b0b-8d80-7e7dfd692236" class="outline-3">
+<h3 id="ID-48787dca-ae17-4b0b-8d80-7e7dfd692236"><span class="section-number-3">1.3.</span> <a href="#ID-48787dca-ae17-4b0b-8d80-7e7dfd692236">esup</a></h3>
+<div class="outline-text-3" id="text-1-3">
+<pre class="example">
+ID: 48787dca-ae17-4b0b-8d80-7e7dfd692236
+</pre>
+
+<p>
+<a href="http://github.com/jschaf/esup">http://github.com/jschaf/esup</a>
+</p>
+</div>
+<div id="outline-container-ID-c01cc663-044d-41fd-b25f-3dee48c3e9af" class="outline-4">
+<h4 id="ID-c01cc663-044d-41fd-b25f-3dee48c3e9af"><span class="section-number-4">1.3.1.</span> <a href="#ID-c01cc663-044d-41fd-b25f-3dee48c3e9af">workflow</a></h4>
+<div class="outline-text-4" id="text-1-3-1">
+<pre class="example">
+ID: c01cc663-044d-41fd-b25f-3dee48c3e9af
+</pre>
+
+<ol class="org-ol">
+<li><p>
+start a new Emacs instance for ESUP.
+</p>
+
+<p>
+<code>[M-x esup]</code>
+</p></li>
+
+<li><p>
+display ESUP result.
+</p>
+
+<p>
+<code>[M-x esup-display-results]</code> it will read buffer <code>*esup-results*</code>.
+</p></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-ID-f23ffbbe-237d-48f0-8ed9-8961f97f958e" class="outline-4">
+<h4 id="ID-f23ffbbe-237d-48f0-8ed9-8961f97f958e"><span class="section-number-4">1.3.2.</span> <a href="#ID-f23ffbbe-237d-48f0-8ed9-8961f97f958e">navigation &ndash; <code>[n/p/&lt;RET&gt;]</code></a></h4>
+<div class="outline-text-4" id="text-1-3-2">
+<pre class="example">
+ID: f23ffbbe-237d-48f0-8ed9-8961f97f958e
+</pre>
+</div>
+</div>
+<div id="outline-container-ID-bd1a8483-a23e-4155-b32b-eb41dd2c6856" class="outline-4">
+<h4 id="ID-bd1a8483-a23e-4155-b32b-eb41dd2c6856"><span class="section-number-4">1.3.3.</span> <a href="#ID-bd1a8483-a23e-4155-b32b-eb41dd2c6856">FAQ</a></h4>
+<div class="outline-text-4" id="text-1-3-3">
+<pre class="example">
+ID: bd1a8483-a23e-4155-b32b-eb41dd2c6856
+</pre>
+</div>
+<ol class="org-ol">
+<li><a id="ID-4801fa59-d0f8-4f60-ad7e-4b656f53b01c" name="ID-4801fa59-d0f8-4f60-ad7e-4b656f53b01c"></a><a href="#ID-4801fa59-d0f8-4f60-ad7e-4b656f53b01c">Q: Debugger entered&ndash;Lisp error: (invalid-read-syntax "#")</a><br>
+<div class="outline-text-5" id="text-1-3-3-1">
+<pre class="example">
+ID: 4801fa59-d0f8-4f60-ad7e-4b656f53b01c
+</pre>
+
+<pre class="example" id="org6ddc5f1">
+<code>Debugger entered--Lisp error: (invalid-read-syntax "#")</code>
+<code>  read(#&lt;buffer *esup-results*&gt;)</code>
+<code>  esup-read-result(1344074)</code>
+<code>  esup-read-results()</code>
+<code>  esup-display-results()</code>
+<code>  esup-child-process-sentinel(#&lt;process *esup-child*&gt; "finished\n")</code>
+</pre>
+
+<ul class="org-ul">
+<li class="trans"><code>[-]</code> use edebug on <code>esup-read-results</code>, then <code>[M-x esup-display-results]</code>
+<ul class="org-ul">
+<li class="on"><code>[X]</code> disable package
+<ul class="org-ul">
+<li class="on"><code>[X]</code> <p>
+comment-tags
+</p>
+
+<pre class="example" id="orgb791a26">
+<code>(esup-result "esup-result" :file "/home/stardiviner/.emacs.d/init/programming/languages/Query/init-prog-lang-database-mongodb.el" :start-point 402 :line-number 26 :expression-string #("(use-package ob-mongo</code>
+<code>:ensure t</code>
+<code>:defer t</code>
+<code>:init</code>
+<code>(add-to-list 'org-babel-load-languages '(mongo . t))</code>
+<code>(org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)</code>
+<code>;; FIXME: (add-to-list 'org-babel-tangle-lang-exts '(\"mongo\" . \"??\"))</code>
+<code>)" 0 22 (fontified nil) 22 32 (fontified nil) 32 41 (fontified nil) 41 47 (fontified nil) 47 100 (fontified nil) 100 181 (fontified nil) 181 184 (fontified nil) 184 190 (comment-tags-highlight (#&lt;marker at 598 in init-prog-lang-database-mongodb.el&gt; #&lt;marker at 604 in init-prog-lang-database-mongodb.el&gt;) fontified nil) 190 251 (fontified nil) 251 252 (fontified nil)) :end-point 668 :exec-time 0.070872 :gc-number 0 :gc-time 0.000000)</code>
+</pre></li>
+</ul></li>
+
+<li class="off"><code>[&nbsp;]</code> execute <code>(esup-read-result (point))</code> in <code>*esup-results*</code> buffer, it will put point
+on the read syntax error "#".
+<ul class="org-ul">
+<li class="off"><code>[&nbsp;]</code> (#&lt;marker at 477 in init-prog-lsp.el&gt; #&lt;marker at 481 in init-prog-lsp.el&gt;)</li>
+<li class="off"><code>[&nbsp;]</code> init-prog-lang-javascript.el</li>
+<li class="off"><code>[&nbsp;]</code> init-prog-lang-database-mongodb</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba" class="outline-2">
+<h2 id="ID-ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba"><span class="section-number-2">2.</span> <a href="#ID-ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba">The history commits I did which slow down my Emacs</a></h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
+ID: ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba
+PUBDATE: <2019-08-14 Wed 19:10>
+</pre>
+
+<p>
+Here is my Emacs config: <a href="https://github.com/stardiviner/emacs.d">https://github.com/stardiviner/emacs.d</a>
+</p>
+
+<p>
+Let's search all my commits which slow down my Emacs and what I did to improve the
+performance. (If you have similar situation, you can find some hints about what might slow
+Emacs.)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><code>git log --grep <span style="color: #c3e88d;">"performance"</span> --grep <span style="color: #c3e88d;">"speed"</span> --grep <span style="color: #c3e88d;">"slow"</span></code>
+</code></pre>
+</div>
+
+<pre class="example" id="org0ef6417">
+<code>commit fce52322ddae88d9fad148447c6141edd8bc10fb</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Oct 19 17:21:24 2018 +0800</code>
+<code></code>
+<code>    [performance] disable blink-cursor-mode to speedup Emacs.</code>
+<code></code>
+<code>commit a4414d5fb4c38e99188d597d610f5a2a2cbe4d7c</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Oct 19 17:19:16 2018 +0800</code>
+<code></code>
+<code>    [performance] disable org-table-sticky-header to speedup in Org Mode.</code>
+<code></code>
+<code>commit 0040ad77c82e99db28c894b80572b0516aad475f</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Oct 18 13:29:19 2018 +0800</code>
+<code></code>
+<code>    [performance] remove symbol-overlay-mode auto highlight to speedup Emacs.</code>
+<code></code>
+<code>commit 8dfffae3564ce3805e3882f429384c57b73a27ad</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun Oct 14 09:35:07 2018 +0800</code>
+<code></code>
+<code>    [performance] disable smartparens in org-mode.</code>
+<code></code>
+<code>commit ec243beba814a1a321d5ce39b90db19e44ee2b85</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun Oct 14 09:08:02 2018 +0800</code>
+<code></code>
+<code>    [performance] put all opened files behinde Emacs after-init-hook.</code>
+<code></code>
+<code>commit 443a73342ce6b1330b9dd8af8e05fb95743a5c90</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun Oct 14 09:05:05 2018 +0800</code>
+<code></code>
+<code>    [performance] disable some packages slow down editing.</code>
+<code></code>
+<code>commit 994aabdae68b4539c75187f52e4efa19a606cdd9</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Oct 9 19:37:08 2018 +0800</code>
+<code></code>
+<code>    [performance] disable line number info in mode-line.</code>
+<code></code>
+<code>commit c7076dd7d5911ce1d93dcbb79a1da4950d39bf74</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Oct 9 19:35:48 2018 +0800</code>
+<code></code>
+<code>    [performance] disable blink cursor.</code>
+<code></code>
+<code>commit 2c54e9546a7b6cb38e4d5f0819b16af9a39e8be1</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Mon Aug 13 21:58:15 2018 +0800</code>
+<code></code>
+<code>    [performance] make lot of small optimization on Emacs startup performance.</code>
+<code></code>
+<code>commit cadd4eb41e83dd3bac2a162379ffff9518ad137f</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun Aug 12 10:07:34 2018 +0800</code>
+<code></code>
+<code>    [performance] define empty function before really loading custom mode-line fragments.</code>
+<code></code>
+<code>commit bff7aae3e80eeed66204ba643dd4c44169628dd5</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Aug 10 14:47:58 2018 +0800</code>
+<code></code>
+<code>    [performance] adjust some packages' configuration to speedup Emacs startup time.</code>
+<code></code>
+<code>commit efc90339cd33d05e01ad69fb141b8e4f6eaade6e</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Aug 10 14:45:54 2018 +0800</code>
+<code></code>
+<code>    [performance] disable custom mode-line fragments:</code>
+<code>    </code>
+<code>    projectile, github-notifications, copy-file-on-save.</code>
+<code></code>
+<code>commit d624a3cfb229d49ecbaaf875cae21e4ccb7c363f</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Aug 8 15:52:51 2018 +0800</code>
+<code></code>
+<code>    disable company-box.</code>
+<code>    </code>
+<code>    - Because no need for icons.</code>
+<code>    - and company-box tooltip is slower than company-mode default tooltip popup.</code>
+<code>    - disable one package to speedup Emacs startup performance.</code>
+<code>    - company-box's company-doc great support can be replaced by</code>
+<code>      company-mode [F1]/[M-h] open in a new buffer.</code>
+<code></code>
+<code>commit dc16fd58cd2128ec1a99465ab10d3a6811cebd54</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Aug 2 08:53:47 2018 +0800</code>
+<code></code>
+<code>    [performance] speed-up Emacs startup time (2)</code>
+<code></code>
+<code>commit 27d707fc63f2d1ae04979e80b98d9dc108842b22</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Jul 26 13:55:08 2018 +0800</code>
+<code></code>
+<code>    [performance] reduce Emacs startup time.</code>
+<code>    </code>
+<code>    - disable desktop-save-mode</code>
+<code>    - improve use-package :init and :config usage</code>
+<code>    - disable some packages and init files</code>
+<code></code>
+<code>commit 10ce8ff506bceb52adb60998a2980ec86dc861d6</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Jun 5 12:16:27 2018 +0800</code>
+<code></code>
+<code>    [mode-line] disable ruby env info and increase *github interval to speedup performance.</code>
+<code></code>
+<code>commit b4422fcf0d69120600d0e181c4df767c976f01e1</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Jun 1 10:06:58 2018 +0800</code>
+<code></code>
+<code>    [performance] to speed-up Emacs startup time.</code>
+<code>    </code>
+<code>    use (with-eval-after-load 'majro-mode (require 'init-prog-lang-*))</code>
+<code></code>
+<code>commit 2f573892c4533766a88f7629b2668ce1c2366c03</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri May 25 09:45:43 2018 +0800</code>
+<code></code>
+<code>    [performance] disable custom place Info directory to fix Emacs start-up freeze issue.</code>
+<code></code>
+<code>commit 0b5cf1e43115b6f333e1ceea56aac6c283df8d9f</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed May 23 12:35:22 2018 +0800</code>
+<code></code>
+<code>    [performance] improve Emacs performance by disable somethings.</code>
+<code>    </code>
+<code>    - increase company-box doc delay.</code>
+<code>    - disable aggressive-fill-paragraph in org-mode-hook</code>
+<code>    - disable undo-tree</code>
+<code>    - increase minibuffer savehist auto save interval</code>
+<code>    - disable indent-guide-mode in prog-mode-hook</code>
+<code>    - disable ob-clojure-literate-mode auto enable in org-mode-hook</code>
+<code></code>
+<code>commit 1a9f7748dfbdb8eb484498d0ca31031d0ff8237c</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed May 23 12:31:15 2018 +0800</code>
+<code></code>
+<code>    [performance] disable many init files to reduce Emacs startup time.</code>
+<code></code>
+<code>commit f93fdd8f687f2141f46a3189d95c07f58bf45c87</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun May 13 08:07:59 2018 +0800</code>
+<code></code>
+<code>    [mode-line] disable *company-lighter fragement to improve Emacs performance.</code>
+<code>    </code>
+<code>    Make company-mode smoother.</code>
+<code></code>
+<code>commit 65e2e523237f8f80f486924a1189e2b71afa1732</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat May 12 10:54:11 2018 +0800</code>
+<code></code>
+<code>    [mode-line] improve mode-line fragments condition performance.</code>
+<code></code>
+<code>commit c2f675709fb1c4190a5cb9b2dab137481cfb6aa0</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu May 10 17:15:12 2018 +0800</code>
+<code></code>
+<code>    [minibuffer] disable eldoc-mode in minibuffer.</code>
+<code>    </code>
+<code>    - it is enabled already (display in mode-line)</code>
+<code>    - affect company-mode, eldoc-eval performance</code>
+<code></code>
+<code>commit 96990a44a7c36d08299c2137b5e41c2a9c21c174</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu May 10 16:29:55 2018 +0800</code>
+<code></code>
+<code>    [Org-mode] disable my custom org faces init file to speed-up Emacs Org-mode performance.</code>
+<code></code>
+<code>commit 1d8e3f4baac11f8e40695db1473eabd91db697e7</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu May 10 10:15:07 2018 +0800</code>
+<code></code>
+<code>    [mode-line] simplify *buffer-info fragment to improve Emacs performance.</code>
+<code></code>
+<code>commit cf53ee515a2ffdfb2e507bc84a9263a14bfa5265</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed May 9 09:43:33 2018 +0800</code>
+<code></code>
+<code>    [mode-line] disable *selection-info fragment to speed-up Emacs performance:</code>
+<code>    </code>
+<code>    when region select large text.</code>
+<code></code>
+<code>commit 977d11e15f445ec21eebda3998a03e49b4206212</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Mon May 7 11:55:42 2018 +0800</code>
+<code></code>
+<code>    [performance] improve custom mode-line fragments.</code>
+<code>    </code>
+<code>    - those mode-line fragments are frequently invoked by many other functions.</code>
+<code>    - use buffer local variables to avoid frequently re-eval of FORMS.</code>
+<code></code>
+<code>commit 5b55bf82129bca8efe84ac578de656def1dd3c57</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat May 5 18:15:53 2018 +0800</code>
+<code></code>
+<code>    [performance] speed-up Emacs performance.</code>
+<code>    </code>
+<code>    - disable org-indent-mode</code>
+<code>    - remove company-quickhelp (fontify is ugly, *Help* [F1] is better)</code>
+<code>    - lightweight company-transformers</code>
+<code>    - lightweight custom mode-line fragment *buffer-info</code>
+<code>    - disable custom mode-line fragment *keycast</code>
+<code>    - disable custom mode-line fragment *major-mode timers</code>
+<code>    - disable beacon</code>
+<code>    - increase desktop-save-mode interval</code>
+<code>    - increase savehist interval</code>
+<code>    - vc only support Git backend</code>
+<code>    - remove lot of pdf-tools default options</code>
+<code>    - lightweight projectile config</code>
+<code></code>
+<code>commit be0083109e1281c9419510198ab311c0195aacc1</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri May 4 08:13:04 2018 +0800</code>
+<code></code>
+<code>    [company-box] disable split window performance slow for `company-box-doc'.</code>
+<code>    </code>
+<code>    Because `company-box` use `describe-function` to get doc for `company-box-doc`.</code>
+<code></code>
+<code>commit b990950eaeeba85cdd953b09928376fa6e2a2cd5</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed May 2 21:04:35 2018 +0800</code>
+<code></code>
+<code>    [performance] put Emacs startup set GC at very beginning of init.el</code>
+<code></code>
+<code>commit 5360490ad5be3687e048f4f1c14b4fc4304e224a</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue May 1 20:52:36 2018 +0800</code>
+<code></code>
+<code>    [git gutter] disable git-gutter+-mode to speed-up performance.</code>
+<code></code>
+<code>commit 7bec33db01ab40f63b0e1523b29f6294d96adecc</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue May 1 20:50:42 2018 +0800</code>
+<code></code>
+<code>    [HTML] disable cakecrumbs to speed-up performance.</code>
+<code>    </code>
+<code>    - disable auto-started timers in Org-mode src blocks.</code>
+<code></code>
+<code>commit 461f4cec450a960242d0ffca46efcd762fdff80f</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue May 1 20:49:58 2018 +0800</code>
+<code></code>
+<code>    [spelling] disable flyspell auto start to speed-up performance.</code>
+<code></code>
+<code>commit 126bf909f969ae3a2da004afd16aec4e79665a50</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue May 1 10:24:14 2018 +0800</code>
+<code></code>
+<code>    [performance] increase GC at Emacs startup.</code>
+<code></code>
+<code>commit 150d54db26a3355192e0643698f52f1a5fe5731e</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Mon Apr 16 16:22:32 2018 +0800</code>
+<code></code>
+<code>    [flycheck] enable flycheck manually instead of auto to speedup Emacs performance.</code>
+<code></code>
+<code>commit 8970e1ff9994686315bb6ce561782b4b4bcd4fd1</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Apr 14 15:21:44 2018 +0800</code>
+<code></code>
+<code>    [performance] disable many packages and refactor Emacs configurations.</code>
+<code>    </code>
+<code>    - disable company-mode, flyspell-mode in org-mode to speed-up Org-mode.</code>
+<code>    - enable many init files after improved performance.</code>
+<code></code>
+<code>commit 7de2373c231a51eb275a58dc4ba69328fc94c682</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Apr 11 00:37:42 2018 +0800</code>
+<code></code>
+<code>    [performance] disable many init files to speed-up Emacs.</code>
+<code></code>
+<code>commit db54a8a9f0613b839a0581a13af1ead119daaa94</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Apr 11 15:02:57 2018 +0800</code>
+<code></code>
+<code>    [mu4e] speedup mu4e indexing by lazy indexing. increase mu4e results limit.</code>
+<code></code>
+<code>commit 35d1e9cc952571dee44e267e3dcd3e5e38af60ea</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Apr 6 15:10:57 2018 +0800</code>
+<code></code>
+<code>    [mu4e] speedup mu4e indexing by lazy indexing. increase mu4e results limit.</code>
+<code></code>
+<code>commit fa296e5d95ec203ddc2eb8df1000247dfec0ab8c</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Mar 14 10:05:13 2018 +0800</code>
+<code></code>
+<code>    [tags] totally disable rtags to speed-up Emacs performance.</code>
+<code></code>
+<code>commit 844f4f9b709b80507223326f1a74462c3e0b8d5e</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Mon Feb 19 20:11:40 2018 +0800</code>
+<code></code>
+<code>    [performance] add use-package :defer keyword to speedup Emacs startup time.</code>
+<code></code>
+<code>commit 63ff95c9288835a2020d0cdaa117dcd122c49d39</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Feb 6 16:43:30 2018 +0800</code>
+<code></code>
+<code>    [company-mode] speed-up company-mode.</code>
+<code>    </code>
+<code>    - smaller delay on company-idle.</code>
+<code>    - put enable global-company-mode ahead.</code>
+<code>    - group company-abbrev with company-dabbrev-code</code>
+<code></code>
+<code>commit 927737d7a698158008190cf517737ff1e768396b</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Feb 3 09:03:27 2018 +0800</code>
+<code></code>
+<code>    [org-mode] disable all extra org-mode modules to speed-up Org-mode file opening.</code>
+<code></code>
+<code>commit 915eb18498038ad775c01c53a891e3d404823577</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Jan 30 17:38:22 2018 +0800</code>
+<code></code>
+<code>    [performance] disable some auto-revert in Dired buffer to fix Emacs suspend performance issues.</code>
+<code></code>
+<code>commit 35aa03ab55a6ecfed88334507affab6a66e388d4</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Jan 27 18:33:33 2018 +0800</code>
+<code></code>
+<code>    [flycheck] only start flycheck automatically after saving buffer.</code>
+<code>    </code>
+<code>    - speedup typing performance.</code>
+<code></code>
+<code>commit 92bd20cd8f2ba823cb6493b2ba5045331f9b2aa9</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Jan 26 21:04:24 2018 +0800</code>
+<code></code>
+<code>    [flyspell] improve flyspell performance.</code>
+<code>    </code>
+<code>    - disable flyspell in Org-mode to speed-up.</code>
+<code>    - refactor flyspell-use-meta-tab option with use-package :prefix section.</code>
+<code>    - only trigger flyspell in very small situations to speedup flyspell.</code>
+<code></code>
+<code>commit 8c49301743d3aa3a28e15f4b6ffd189edff15cda</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Jan 25 12:00:30 2018 +0800</code>
+<code></code>
+<code>    [pdf-tools] don't use mode-line unicode light to speed-up pdf-tools.</code>
+<code></code>
+<code>commit 410a5ed172ee71550fa81dbc6c632357f94d34ce</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Mon Jan 8 13:25:47 2018 +0800</code>
+<code></code>
+<code>    [performance] disable org-notify to speed up Emacs.</code>
+<code></code>
+<code>commit 7ef57d093b7a4d93da35f33765fbc902f3ad370c</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Dec 30 18:58:49 2017 +0800</code>
+<code></code>
+<code>    improve Emacs performance.</code>
+<code>    </code>
+<code>    - trigger flycheck only when saving buffer.</code>
+<code>    - disable eldoc-overlay-mode.</code>
+<code>    - disable org-mode startup inline-image display.</code>
+<code>    - remove lisp-extra-font-lock-global-mode.</code>
+<code></code>
+<code>commit fe2899dbe91a2151da3cc8bf9a9129dc74db0a12</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Dec 13 10:50:57 2017 +0800</code>
+<code></code>
+<code>    refactor to speedup Emacs config:</code>
+<code>    </code>
+<code>    - remove all other packages like js-refactor except basic packages</code>
+<code>    - disable other unless init files except elisp, clojure etc</code>
+<code></code>
+<code>commit b881ad1db88cfd6e624d6d7815eaa915457f5d92</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Dec 5 18:30:01 2017 +0800</code>
+<code></code>
+<code>    improve calendar markers:</code>
+<code>    </code>
+<code>    - disable marking calendar holidays to speed up org-time-stamp-interactive command performance</code>
+<code>    - change calendar-today face</code>
+<code>    - comment marking diary entries option</code>
+<code></code>
+<code>commit 4976f70bfe01260d2c8f75802ba4b098859facc9</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Nov 17 23:51:17 2017 +0800</code>
+<code></code>
+<code>    disable beacon-mode to speed-up Emacs normal move around performance.</code>
+<code></code>
+<code>commit 0555b618511fd5fda0046e46cdf87f7767386ce1</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Nov 7 14:58:22 2017 +0800</code>
+<code></code>
+<code>    disable org-agenda include diary to speed up org agenda entries generation.</code>
+<code></code>
+<code>commit 4293927e958e74454320e638b749cf18ad08f25b</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Mon Nov 6 22:19:45 2017 +0800</code>
+<code></code>
+<code>    add :defer to speed up Emacs startup.</code>
+<code></code>
+<code>commit d8511554cee61a3a99d413a6beb30c2c41987ad4</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Mon Nov 6 10:41:48 2017 +0800</code>
+<code></code>
+<code>    move reveal.js local library out of init/ path to speed up Emacs initializing.</code>
+<code></code>
+<code>commit 25c4de0cedc3f48debb4319993af48a25ba742ab</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun Oct 8 11:38:08 2017 +0800</code>
+<code></code>
+<code>    change irfc RFC documentations location.</code>
+<code>    </code>
+<code>    Delete all RFC documentations files to speed up .emacs.d/ project directory text search engine speed.</code>
+<code></code>
+<code>commit 3476df47fc5124634abe64857237f5e7aa66c39c</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Sep 28 19:31:26 2017 +0800</code>
+<code></code>
+<code>    disable erc-image and erc-crypt to speedup ERC loading.</code>
+<code></code>
+<code>commit ae101803619b89ad6c99b95677c63fa6a06b3b81</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Aug 24 10:06:26 2017 +0800</code>
+<code></code>
+<code>    change org-refile max level to speed up org-refile and reduce targets number.</code>
+<code></code>
+<code>commit 74f372612c155aa3123b487b62398b55ebb92a4f</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Aug 24 10:05:43 2017 +0800</code>
+<code></code>
+<code>    enable org-mode auto show inline images at startup after speed-up org-mode.</code>
+<code></code>
+<code>commit bd06474eed93054b3061638640e7cb4048be7789</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Aug 24 09:52:37 2017 +0800</code>
+<code></code>
+<code>    disable org-bullets to speed-up opening big org-mode files.</code>
+<code></code>
+<code>commit 85d9b0db640ff4736a4d02700e7ad538d1d5f9c8</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun Aug 13 10:04:30 2017 +0800</code>
+<code></code>
+<code>    disable company-shell to speed up.</code>
+<code></code>
+<code>commit d3ea8d029f2f90a6b7df885d96c9d873fa9cdeda</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Jul 25 09:09:27 2017 +0800</code>
+<code></code>
+<code>    improve Magit performance by:</code>
+<code>    </code>
+<code>    - disable status buffer refresh.</code>
+<code>    - disable auto revert Magit related buffers.</code>
+<code>    - disable Emacs built-in VC backends only for Git.</code>
+<code></code>
+<code>commit d24ae4c0ba8c65a138397993e2261677e53d97f7</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Jun 6 19:53:26 2017 +0800</code>
+<code></code>
+<code>    Speed up Emacs performance by disable many packages.</code>
+<code>    </code>
+<code>    - remove package wotd.</code>
+<code>    - disable mu4e-alert desktop notifications.</code>
+<code>    - disable package swift3-mode.</code>
+<code>    - disable ruby-test-mode.</code>
+<code>    - migrate EIN and ob-ipython to Data Science init file.</code>
+<code>    - disable global hl-todo-mode.</code>
+<code>    - disable eldoc-overlay-mode.</code>
+<code>    - disable org-drill-table.</code>
+<code>    - disable package etable.</code>
+<code>    - disable some init files to reduce Emacs require loading time.</code>
+<code>    - add package qt-pro-mode.</code>
+<code>    - disable json-mode.</code>
+<code>    - disable some Java related packages.</code>
+<code>    - disable ob-php.</code>
+<code>    - disable pygen package.</code>
+<code>    - disable bibtex related packages.</code>
+<code>    - disable hideshow.</code>
+<code></code>
+<code>commit 98d0897f2ec36ffda5fc2f1c5f51552071ba9e8d</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat May 13 15:56:15 2017 +0800</code>
+<code></code>
+<code>    disable aggressive-indent to speedup Emacs.</code>
+<code></code>
+<code>commit 0fa74addab531efa8e1cbafb4d17a2018b410ecb</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Apr 28 12:18:08 2017 +0800</code>
+<code></code>
+<code>    disable org-table chinese &amp; english mixing fonts settings to improve org-mode performance.</code>
+<code></code>
+<code>commit 5896368afb1f076ea5efead7b2292f9822f7132b</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Apr 28 12:17:41 2017 +0800</code>
+<code></code>
+<code>    disable org-indent settings to improve org-mode performance.</code>
+<code></code>
+<code>commit 2ac8c7c31ae889a1af75ff750b8a3d1024b964f6</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Apr 19 13:53:45 2017 +0800</code>
+<code></code>
+<code>    fix flyspell-mode performance issue which cause Org-mode suspend.</code>
+<code>    </code>
+<code>    - disable package guess-language.</code>
+<code>    - disable package flyspell-correct-popup.</code>
+<code></code>
+<code>commit edf33affb2b83bcab1943bc7212d31769c086212</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Apr 14 10:34:30 2017 +0800</code>
+<code></code>
+<code>    Speedup Emacs by improve custom mode-line fragments.</code>
+<code>    </code>
+<code>    - fix custom mode-line fragment *major-mode missing major-mode name in fallback condition.</code>
+<code>    - speedup *major-mode condition detect.</code>
+<code>    - change all-the-icons function in custom mode-line fragment *major-mode to speedup Emacs.</code>
+<code>    - remove flycheck issues string for decrease length.</code>
+<code>    - remove redundant space to decrease length.</code>
+<code>    - decrease some all-the-icons size.</code>
+<code>    - improve custom mode-line fragment *current.</code>
+<code></code>
+<code>commit e75ebb449c5017efe1d21c12f5ea8c056090d774</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Nov 24 22:44:55 2016 +0800</code>
+<code></code>
+<code>    speed-up Emacs: disable some init files and some packages.</code>
+<code></code>
+<code>commit ba562a7afef6a5d09398a356ed825601a8a6846a</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Nov 22 18:40:31 2016 +0800</code>
+<code></code>
+<code>    disable a lot of init files to speed-up Emacs.</code>
+<code>    </code>
+<code>    - migrate org-mode babel language specific settings to corresponding init files.</code>
+<code>    - disable some modes.</code>
+<code></code>
+<code>commit ace5bc229be0924ebdc7a4c07762d9580c3b5649</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Oct 28 10:54:43 2016 +0800</code>
+<code></code>
+<code>    remove sr-speedbar deprecated options.</code>
+<code></code>
+<code>commit 549112e8c5d2841dae457f469fb43416cde91188</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Oct 19 16:29:14 2016 +0800</code>
+<code></code>
+<code>    refactor Emacs init files.</code>
+<code>    </code>
+<code>    - improve packages config of use-package :defer and :init.</code>
+<code>    </code>
+<code>    disable ejc-sql.</code>
+<code>    </code>
+<code>    enable Perl init file.</code>
+<code>    </code>
+<code>    configure plsense.</code>
+<code>    </code>
+<code>    define search engine for Google Translate.</code>
+<code>    </code>
+<code>    add :defer to lazy loading with use-package.</code>
+<code>    </code>
+<code>    disable some init files.</code>
+<code>    </code>
+<code>    remove package col-highlight.</code>
+<code>    </code>
+<code>    remove package pretty-mode.</code>
+<code>    </code>
+<code>    remove package package-break-lines.</code>
+<code>    </code>
+<code>    remove package ace-popup-menu.</code>
+<code>    </code>
+<code>    remove package discover.</code>
+<code>    </code>
+<code>    remove package apropos+.</code>
+<code>    </code>
+<code>    remove package icomplete.</code>
+<code>    </code>
+<code>    remove package eldoc-eval.</code>
+<code>    </code>
+<code>    enable feature help-at-pt.</code>
+<code>    </code>
+<code>    remove package E2WM.</code>
+<code>    </code>
+<code>    remove package ne2wm.</code>
+<code>    </code>
+<code>    remove perspective package usage comments.</code>
+<code>    </code>
+<code>    remove package window-purpose.</code>
+<code>    </code>
+<code>    remove package perspective.</code>
+<code>    </code>
+<code>    remove package golden-ratio.</code>
+<code>    </code>
+<code>    remove package shackle.</code>
+<code>    </code>
+<code>    remove package elscreen.</code>
+<code>    </code>
+<code>    remove package zone-nyan.</code>
+<code>    </code>
+<code>    remove package whitespace-mode.</code>
+<code>    </code>
+<code>    remove undo-tree usage comments.</code>
+<code>    </code>
+<code>    remove package kill-ring-ido.</code>
+<code>    </code>
+<code>    remove package kill-ring-search.</code>
+<code>    </code>
+<code>    remove package awk-it.</code>
+<code>    </code>
+<code>    remove package visual-mark.</code>
+<code>    </code>
+<code>    remove ace-jump-mode usage comments.</code>
+<code>    </code>
+<code>    remove package ace-isearch.</code>
+<code>    </code>
+<code>    remove package pophint.</code>
+<code>    </code>
+<code>    remove package popup-imenu.</code>
+<code>    </code>
+<code>    remove bookmark usage comments.</code>
+<code>    </code>
+<code>    remove package bind-key</code>
+<code>    </code>
+<code>    remove package outline.</code>
+<code>    </code>
+<code>    remove allout useless config.</code>
+<code>    </code>
+<code>    remove package allout-widgets &amp; outshine.</code>
+<code>    </code>
+<code>    remove package chinese-pyim and quail.</code>
+<code>    </code>
+<code>    remove chinese input method init file.</code>
+<code>    </code>
+<code>    remove package flyspell-lazy.</code>
+<code>    </code>
+<code>    remove package flyspell-correct-ivy, flyguess.</code>
+<code>    </code>
+<code>    remove package auto-dictionary.</code>
+<code>    </code>
+<code>    remove package docview-mode usage comments.</code>
+<code>    </code>
+<code>    remove docview-mode configuration.</code>
+<code>    </code>
+<code>    enable package vlf.</code>
+<code>    </code>
+<code>    remove package kurecolor.</code>
+<code>    </code>
+<code>    enable package image+.</code>
+<code>    </code>
+<code>    remove doc-view configuration.</code>
+<code>    </code>
+<code>    refactor Dired init file.</code>
+<code>    </code>
+<code>    refactor mmm-mode config.</code>
+<code>    </code>
+<code>    refactor dabbrev usage comments.</code>
+<code>    </code>
+<code>    remove Isearch usage comments.</code>
+<code>    </code>
+<code>    remove package Isearch+.</code>
+<code>    </code>
+<code>    refactor anzu config.</code>
+<code>    </code>
+<code>    remove package color-moccur.</code>
+<code>    </code>
+<code>    remove package swoop.</code>
+<code>    </code>
+<code>    remove package helm-swoop.</code>
+<code>    </code>
+<code>    remove package find-fine-in-project.</code>
+<code>    </code>
+<code>    disable package f3.</code>
+<code>    </code>
+<code>    remove package highlight-quoted.</code>
+<code>    </code>
+<code>    remove package highlight-numbers.</code>
+<code>    </code>
+<code>    remove package highlight-escape-sequences.</code>
+<code>    </code>
+<code>    remove package highlight-stages.</code>
+<code>    </code>
+<code>    remove package pcre2el usage comments.</code>
+<code>    </code>
+<code>    remove duplicate swiper config in regexp init file.</code>
+<code>    </code>
+<code>    remove package shelldoc.</code>
+<code>    </code>
+<code>    remove package dizzee.</code>
+<code>    </code>
+<code>    remove package org-time-budgets.</code>
+<code>    </code>
+<code>    remove calc usage comments.</code>
+<code>    </code>
+<code>    remove package calculator-mode.</code>
+<code>    </code>
+<code>    remove package conkeror-minor-mode.</code>
+<code>    </code>
+<code>    remove package speedread.</code>
+<code>    </code>
+<code>    remove newsticker init file.</code>
+<code>    </code>
+<code>    remove package gist.el</code>
+<code>    </code>
+<code>    remove package mingus.</code>
+<code>    </code>
+<code>    remove Bongo init file.</code>
+<code>    </code>
+<code>    remove package capture.</code>
+<code>    </code>
+<code>    remove package mwe-log-commands.</code>
+<code>    </code>
+<code>    fix package glasses name.</code>
+<code>    </code>
+<code>    enable glasses-mode.</code>
+<code>    </code>
+<code>    remove ycmd init file.</code>
+<code>    </code>
+<code>    remove package etags-update.</code>
+<code>    </code>
+<code>    remove package etags-u.</code>
+<code>    </code>
+<code>    enable package helm-gtags.</code>
+<code>    </code>
+<code>    change ggtags keybindings prefix.</code>
+<code>    </code>
+<code>    remove rtags usage comments.</code>
+<code>    </code>
+<code>    remove redundant comments of temp config.</code>
+<code>    </code>
+<code>    refactor neotree config with use-package.</code>
+<code>    </code>
+<code>    migrate separate sidebar package init files into one init file.</code>
+<code>    </code>
+<code>    remove package howdoi.</code>
+<code>    </code>
+<code>    remove package which-function-mode.</code>
+<code>    </code>
+<code>    enable programming inferior init file.</code>
+<code>    </code>
+<code>    remove package flycheck-tip.</code>
+<code>    </code>
+<code>    remove emr usage comments.</code>
+<code>    </code>
+<code>    refactor projectile config.</code>
+<code>    </code>
+<code>    refactor vcs init files require.</code>
+<code>    </code>
+<code>    refactor magit config.</code>
+<code>    </code>
+<code>    refactor git-messenger config.</code>
+<code>    </code>
+<code>    remove package git-gutter-fringe.</code>
+<code>    </code>
+<code>    remove package diff-hl.</code>
+<code>    </code>
+<code>    remove git-gutter+ usage comments.</code>
+<code>    </code>
+<code>    remove package magit-filenotify.</code>
+<code>    </code>
+<code>    refactor magit-gerrit config.</code>
+<code>    </code>
+<code>    remove duplicate magit-gerrit config.</code>
+<code>    </code>
+<code>    refactor package bts config.</code>
+<code>    </code>
+<code>    remove package paren-face.</code>
+<code>    </code>
+<code>    refactor programming electric packages.</code>
+<code>    </code>
+<code>    refactor indent-guide config.</code>
+<code>    </code>
+<code>    refactor aggressive-indent config.</code>
+<code>    </code>
+<code>    refactor ac-capf config.</code>
+<code>    </code>
+<code>    refactor bm config.</code>
+<code>    </code>
+<code>    refactor slime config.</code>
+<code>    </code>
+<code>    refactor slime-company config.</code>
+<code>    </code>
+<code>    refactor sly config.</code>
+<code>    </code>
+<code>    refactor CIDER config.</code>
+<code>    </code>
+<code>    remove package pry.</code>
+<code>    </code>
+<code>    remove package anaconda-mode, company-anaconda.</code>
+<code>    </code>
+<code>    remove package company-shell.</code>
+<code>    </code>
+<code>    remove package bash-completion.</code>
+<code>    </code>
+<code>    remove package insert-shebang.</code>
+<code>    </code>
+<code>    remove package company-clang.</code>
+<code>    </code>
+<code>    remove package company-c-headers.</code>
+<code>    </code>
+<code>    remove package function-args.</code>
+<code>    </code>
+<code>    remove package ejc-sql.</code>
+<code>    </code>
+<code>    remove Matlab init file.</code>
+<code>    </code>
+<code>    remove packages ac-html-* and web-beautify.</code>
+<code>    </code>
+<code>    refactor Emacs init files.</code>
+<code>    </code>
+<code>    - improve packages config of use-package :defer and :init.</code>
+<code>    </code>
+<code>    refactor Emacs init files.</code>
+<code>    </code>
+<code>    refactor Org-mode init files.</code>
+<code></code>
+<code>commit 38c1e3f0700e51dae10f060854418591f795cafd</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun Oct 9 20:49:50 2016 +0800</code>
+<code></code>
+<code>    disable helm-dash debug output to speed up query.</code>
+<code></code>
+<code>commit be50a8d814dd3ab83a5bd80a16760a7be4e5454c</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Sep 30 14:21:24 2016 +0800</code>
+<code></code>
+<code>    increase company idle delay from 0.2 to 0.4.</code>
+<code>    </code>
+<code>    For Clojure. speed up my code typing.</code>
+<code></code>
+<code>commit 8a638648ed75c9aa5f26f0dd627db99d694e666d</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Sep 14 14:31:20 2016 +0800</code>
+<code></code>
+<code>    disable some elisp extra fontify and functionalities to speed-up.</code>
+<code></code>
+<code>commit 3551c2433c020787098c9c1fea94af8d1ef6855b</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Jun 10 15:24:27 2016 +0800</code>
+<code></code>
+<code>    replace project-explorer with sr-speedbar.</code>
+<code></code>
+<code>commit 583a29bc02074e362021577cf37d4af7f9fbe6e3</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Jun 10 15:23:28 2016 +0800</code>
+<code></code>
+<code>    wrap sr-speedbar with use-package.</code>
+<code>    </code>
+<code>    improve sr-speedbar config.</code>
+<code></code>
+<code>commit be706c45307c21d67c210e5f3148bb24a8d4edf4</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Mar 18 20:20:11 2016 +0800</code>
+<code></code>
+<code>    speedup Tramp with set re-read dir timeout to nil.</code>
+<code></code>
+<code>commit 50f358f665d92cac50af8ba79bf5c281d49b2fbd</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Mon Mar 14 23:43:20 2016 +0800</code>
+<code></code>
+<code>    replace elpy with python-mode + anaconda-mode again.</code>
+<code>    </code>
+<code>    Because it is too slow when completion.</code>
+<code></code>
+<code>commit ff88ff554674ee474a01cf7540f3391589ea20da</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Mar 11 16:04:13 2016 +0800</code>
+<code></code>
+<code>    disable eldoc in org-mode to speed-up.</code>
+<code></code>
+<code>commit 90abed0f952531239155a07cf964caad34bf44e4</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Mar 9 18:51:39 2016 +0800</code>
+<code></code>
+<code>    disable company-shell to speed up typing in shell script.</code>
+<code></code>
+<code>commit ed20b9084fcd9c8a7ba687db40225859de317d97</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Mar 8 19:03:09 2016 +0800</code>
+<code></code>
+<code>    disable flyspell-prog-mode in prog-mode to fix completion slow issue.</code>
+<code></code>
+<code>commit e488f60d1f11926960467bf79183ceab3c039aa2</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Mar 8 19:01:53 2016 +0800</code>
+<code></code>
+<code>    speedup Emacs by disabling a lot of things.</code>
+<code>    </code>
+<code>    - disable many init files.</code>
+<code>    - disable many packages.</code>
+<code>    - disable some features.</code>
+<code></code>
+<code>commit d29a21e921337245a33d6068bedad1e37aac5562</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Mar 5 11:02:37 2016 +0800</code>
+<code></code>
+<code>    remove spray &amp; speedread usage comments.</code>
+<code></code>
+<code>commit 02e62c764d9767267f60705e511b66f123bf0396</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Mar 3 19:21:45 2016 +0800</code>
+<code></code>
+<code>    Do not check for old-style (K&amp;R) function declarations;</code>
+<code>    </code>
+<code>    this speeds up indenting a lot.</code>
+<code></code>
+<code>commit fdd52725b5551748904ea7aa842a04b974acdba6</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Jan 21 20:44:25 2016 +0800</code>
+<code></code>
+<code>    notify user snippet placeholders exit with message instead of popup to speedup.</code>
+<code></code>
+<code>commit 69188d1fc8e44b6c18547859a98dd6fe3cad6818</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Dec 9 21:54:24 2015 +0800</code>
+<code></code>
+<code>    enable CDLaTeX for speeding up input Math in Org-mode.</code>
+<code></code>
+<code>commit e9a299c968f1af03c1ab4776d0136f287978b413</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Dec 1 12:38:48 2015 +0800</code>
+<code></code>
+<code>    disable org-contacts use gravatar to speedup query time.</code>
+<code></code>
+<code>commit 37d2937a608c10332bf57ad42d5626465f788cc5</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Oct 13 21:34:08 2015 +0800</code>
+<code></code>
+<code>    speedup helm delay.</code>
+<code></code>
+<code>commit 8af3c91be48ee12dc17cea4e2cc7a9a88e248f55</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun Sep 27 18:13:54 2015 +0800</code>
+<code></code>
+<code>    increase delay to speedup typing in code.</code>
+<code></code>
+<code>commit 18b593c48710ae0e943005144f46a3cd51bde293</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Sep 19 10:59:31 2015 +0800</code>
+<code></code>
+<code>    increase helm display delay to speedup helm response.</code>
+<code></code>
+<code>commit 41d8ab212ae842875ea1a2c5c24677bab28a5210</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Aug 25 09:43:44 2015 +0800</code>
+<code></code>
+<code>    remove R extension support in speedbar.</code>
+<code></code>
+<code>commit d9c5fcee41b1874e8c213b773ad9653e69ec16d5</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Aug 1 10:00:50 2015 +0800</code>
+<code></code>
+<code>    speed up company-quickhelp popup display.</code>
+<code></code>
+<code>commit 54d7c18872d4b7801995a745b1ac788b4a7d22ba</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Jul 31 11:17:20 2015 +0800</code>
+<code></code>
+<code>    disable helm-dash debugging to speed-up queries.</code>
+<code></code>
+<code>commit cf3ce0a5bd1ea41446e99f5e0323876cd40b64e1</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Jul 2 09:14:05 2015 +0800</code>
+<code></code>
+<code>    add *.R R files support to sr-speedbar.</code>
+<code></code>
+<code>commit cd70684fd35ac5f3256aea8f859f8d34fc15e650</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun Jun 28 05:27:34 2015 +0800</code>
+<code></code>
+<code>    disable Org-mode startup toggle inline-image &amp; latex-preview for performance.</code>
+<code></code>
+<code>commit ca6f6e0a9def7120ff2e2856c4f5e7963ade8d1f</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Mon Jun 22 11:03:05 2015 +0800</code>
+<code></code>
+<code>    decrease spray speed. and reduce spray top margin to fit for small window.</code>
+<code></code>
+<code>commit 752f7124633104c913adb47b663ec4059c6e0cdb</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed May 27 22:15:15 2015 +0800</code>
+<code></code>
+<code>    disable company-quickhelp to speedup company-mode.</code>
+<code></code>
+<code>commit 75e4a8ccda13c51a7deeaa540c01539f7e2ac43b</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu May 14 12:01:58 2015 +0800</code>
+<code></code>
+<code>    slow down spray-mode speed.</code>
+<code></code>
+<code>commit ee90f1dd85d8a73ea8b9886d8331921c8855e896</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Apr 30 18:08:34 2015 +0800</code>
+<code></code>
+<code>    increase company-mode menu popup speed.</code>
+<code></code>
+<code>commit 301cd1fc40481bf4a8a2199009206abc5170a5c7</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Apr 29 12:14:42 2015 +0800</code>
+<code></code>
+<code>    add CDLaTeX mode to Org-mode to speed-up math input.</code>
+<code></code>
+<code>commit 7109c9098eda051c6271ee8f1d2cb12a44317a7e</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun Apr 5 17:54:25 2015 +0800</code>
+<code></code>
+<code>    speedup org agenda with disable some agenda heavy parsing.</code>
+<code></code>
+<code>commit ef98f60bdf76b3a6b366f2025a1cd92a65504ab9</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Feb 24 13:35:01 2015 +0800</code>
+<code></code>
+<code>    disable helm fuzzy feature. to fix helm slow issue.</code>
+<code></code>
+<code>commit 027f178495c0fa06538e11bbf648fe6f9f3136f2</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Mon Feb 23 16:37:01 2015 +0800</code>
+<code></code>
+<code>    disable SLIME in Emacs to speed up, and reduce memory usage.</code>
+<code></code>
+<code>commit 7162be000afaace726adcd2a1e32fec4b2452b5f</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Mon Feb 23 16:33:04 2015 +0800</code>
+<code></code>
+<code>    change speed-read (spray-mode) keybinding into [F9].</code>
+<code></code>
+<code>commit 2767d666477bcbb8971da2435cc0dba8017b75ad</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Feb 7 21:38:48 2015 +0800</code>
+<code></code>
+<code>    disable a lot of startup opened files to speedup Emacs.</code>
+<code></code>
+<code>commit 63bdc69d5fa21ef679a60b64e62828ee610a1120</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Jan 30 10:09:10 2015 +0800</code>
+<code></code>
+<code>    add a hook to open sr-speedbar when I open mu4e main view.</code>
+<code></code>
+<code>commit 444d55df1774e9697e9ba1d1cf171aa718e954d9</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Jan 30 10:06:32 2015 +0800</code>
+<code></code>
+<code>    improved my sr-speedbar toggle custom function.</code>
+<code></code>
+<code>commit ff2ce34a3f790db48c70d103197c8bdbfe54cffd</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Jan 22 13:36:00 2015 +0800</code>
+<code></code>
+<code>    disable sr-speedbar startup open.</code>
+<code></code>
+<code>commit ffad72f99bf9b38b2b1f11ccdaf4f67f5a97af8d</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Jan 21 13:01:00 2015 +0800</code>
+<code></code>
+<code>    migrate sr-speedbar startup enabled into startup init file.</code>
+<code></code>
+<code>commit 0f54b5be3d83c9c4c8c818a9088654c97e44702d</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Jan 17 19:04:41 2015 +0800</code>
+<code></code>
+<code>    add speedbar (functions, variables, etc) support for .R</code>
+<code></code>
+<code>commit 425caacc2740cf0a16dee47a6b618186103c1be3</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Tue Dec 16 12:44:34 2014 +0800</code>
+<code></code>
+<code>    use a smart custom function for sr-speedbar file explorer for key [F8].</code>
+<code></code>
+<code>commit cd096d5243c6345aedb44436f5e3f9913189fb80</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Fri Nov 7 13:57:34 2014 +0800</code>
+<code></code>
+<code>    use `autoload' for flyspell and ispell to replace the `require' to speed up.</code>
+<code></code>
+<code>commit 4e49fb86a43d05723f39ea6f86c88df342b51775</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Aug 9 22:19:03 2014 +0800</code>
+<code></code>
+<code>    swap sauron and speedbar toggle key.</code>
+<code></code>
+<code>commit 036fc962e7e8b4e970b8a4ed972787e6d0c462ee</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Aug 9 22:18:48 2014 +0800</code>
+<code></code>
+<code>    adjust speedbar size.</code>
+<code></code>
+<code>commit ccbb3ffae8e02ecdbd236d15311d5f4105a45412</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Aug 7 14:29:03 2014 +0800</code>
+<code></code>
+<code>    don't load speedread.</code>
+<code></code>
+<code>commit e0d1180f38cf276192a690fe90176913259472a7</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Aug 7 11:59:44 2014 +0800</code>
+<code></code>
+<code>    do not load extension speedread.</code>
+<code></code>
+<code>commit b0fd316f4b8fb4623d0b70cf45445a40fb013e6a</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Thu Aug 7 11:58:13 2014 +0800</code>
+<code></code>
+<code>    add SpeedReading (OpenSpritz) with two extensions: spray, speedread.</code>
+<code></code>
+<code>commit ab84ea6e2a67326a8038bad83651828206c2b3d9</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Wed Aug 6 17:17:15 2014 +0800</code>
+<code></code>
+<code>    separate neotree, sr-speedbar, project-explorer into files. and migrate them into init-my-prog-sidebar.el file.</code>
+<code></code>
+<code>commit f358585c3712c459eb62f586b8a539554715021e</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sat Jun 14 11:27:16 2014 +0800</code>
+<code></code>
+<code>    disable auto-complete in Org-mode to speed up Org-mode.</code>
+<code></code>
+<code>commit de677a79739e2e4fa86552cbba058012e53f26d7</code>
+<code>Author: stardiviner &lt;numbchild@gmail.com&gt;</code>
+<code>Date:   Sun May 11 09:24:33 2014 +0800</code>
+<code></code>
+<code>    longer time to delay for guide-key to speed up Emacs. and reduce distribution in keybindings.</code>
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<footer>
+  Copyright 2011, Author: Christopher M. Miles (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
+  Last update date: 2025-08-21 Thu 21:50.<br>
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+
+  <!-- RSS -->
+  You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
+  
+  <!-- Show Org Source -->
+  <script>
+   var url = document.location.href;
+   var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+   function show_org_source(){
+     document.location.href = orgsource;
+   }
+  </script>
+  <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
+
+</footer>
+
+<!-- scroll to top -->
+<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
+
+<!-- payment -->
+<div class='payment'>
+  <!-- use two inline aligned small thumb QR code image -->
+  <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
+       <div id='wechat-payment'><a href="/About/index.html#Payment"><img src="/assets/images/wechat_payment.png" title="打赏" /></a></div> -->
+  
+  <!-- use a custom reward image to be more friendly -->
+  <div id="payment-icon">
+    <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
+  </div>
+</div>
+
+<!-- Google Analytics -->
+<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+     <script type="text/javascript">
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-63992234-1', 'auto');
+     ga('send', 'pageview');
+     </script> -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+     <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-63992234-1');
+     </script> -->
+
+<!-- Disqus -->
+<!-- <div class="comments">
+     <style>
+     /* hide comment policy */
+     .comment-policy {
+     display: none;
+     }
+     /* hide Disqus footer */
+     .disqus-footer__wrapper {
+     display: none;
+     } 
+     </style>
+     
+     <div id="disqus_thread"></div>
+     <script>
+     (function() {
+     var d = document, s = d.createElement('script');
+     s.src = 'https://stardiviner.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+     })();
+     </script>
+     </div> -->
+</div>
+</body>
+</html>

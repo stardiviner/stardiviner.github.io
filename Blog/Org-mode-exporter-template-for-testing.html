@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-08-21 Thu 23:07 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Org-mode exporter template for testing</title>
+<meta name="author" content="stardiviner" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="/assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="/assets/scripts/org-info-src.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "1");
+org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "3");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "2");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
+</div><div id="preamble" class="status">
+<div class='nav'>
+  <ul>
+    <li><a href='/'>Home</a></li>
+    <li><a href='/Blog/index.html'>Blog</a></li>
+    <li><a href="/Thought/index.html">Thought</a></li>
+    <li><a href='/Literature/index.html'>文学</a></li>
+    <li><a href='/About/index.html'>About</a></li>
+  </ul>
+</div>
+<div class="epilogue">
+  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
+</div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Org-mode exporter template for testing</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#ID-3897afe8-36d6-4b4b-83b2-de19c268f996">1. Comment</a></li>
+<li><a href="#ID-e8cdddae-a0ad-4cb9-bb70-25e36cfe4d17">2. Property</a></li>
+<li><a href="#ID-6268e637-e022-4a5d-8c3e-d3975841334e">3. Paragraph</a>
+<ul>
+<li><a href="#ID-75ae6f4c-9b97-485f-a41b-07ff6f5b706e">3.1. horizontal rules</a></li>
+</ul>
+</li>
+<li><a href="#ID-c840528f-b708-412a-b33d-2212d8c7ec88">4. Formatting text</a>
+<ul>
+<li><a href="#ID-fb4ca44c-6b6d-4f32-a489-8d6281363300">4.1. bold &amp; italic</a></li>
+<li><a href="#ID-6db24646-62fa-49ea-adaa-a56fb8d4bfb7">4.2. monospace, superscript and subscript</a></li>
+<li><a href="#ID-50e9abd8-45ed-42d1-8ba5-d3209ecc4ded">4.3. Inline code</a></li>
+</ul>
+</li>
+<li><a href="#ID-a738b9bc-b97b-4901-bb01-3eb3f6cc995d">5. Smart punctuation</a></li>
+<li><a href="#ID-fbbd5b73-5594-4db4-94e3-d8141dc17a36">6. Plain lists</a>
+<ul>
+<li><a href="#ID-067cafb7-cd55-47b1-b54b-6e6ff4dc41ce">6.1. un-ordered lists</a></li>
+<li><a href="#ID-02dc3830-0639-44b0-9799-f971853661fe">6.2. ordered lists</a>
+<ul>
+<li><a href="#ID-0220a1cf-2fc4-47dd-a2bf-6d3637d80529">6.2.1. ordered list with jumping numbers</a></li>
+</ul>
+</li>
+<li><a href="#ID-5e91b15b-79d1-4ea5-b679-0ab67ee3e2ab">6.3. checklists</a></li>
+<li><a href="#ID-e154cd3e-3b23-42ce-abeb-c54518f6ee85">6.4. definition list</a></li>
+<li><a href="#ID-342c7589-ce8c-4eee-9fcb-07eb72d9eec8">6.5. separating lists</a></li>
+</ul>
+</li>
+<li><a href="#ID-335af6e1-9cad-47c4-acb4-f4f6b21d7183">7. Tables</a>
+<ul>
+<li><a href="#ID-d8d91db5-e30d-48b3-b9ac-c5c521bb78bc">7.1. simple table</a></li>
+<li><a href="#ID-f9fa207e-1c43-4dd6-a08e-888023bca5e9">7.2. Table with aligned cells</a></li>
+<li><a href="#ID-7200d3ae-4bb1-40bd-9055-9932371e6448">7.3. Header row</a></li>
+</ul>
+</li>
+<li><a href="#ID-cc6c5740-3a87-402e-addd-d42c6e77b6df">8. Hyperlinks</a>
+<ul>
+<li><a href="#ID-d0993c1f-7a37-4972-afea-bb8cc35dde36">8.1. Internal links</a>
+<ul>
+<li><a href="#ID-912f6a31-553a-4e73-be0c-769643d56cc2">8.1.1. radio target link</a>
+<ul>
+<li><a href="#ID-fcb882a4-a428-44ba-9beb-c032b2d5e7b1">8.1.1.1. foo</a></li>
+<li><a href="#ID-b16096d0-d147-4872-8394-e982c0562994">8.1.1.2. bar</a></li>
+</ul>
+</li>
+<li><a href="#ID-127550da-5a57-42bf-bbdc-0c25b6fcc8eb">8.1.2. <span class="todo TODO">TODO</span> coderef</a></li>
+</ul>
+</li>
+<li><a href="#ID-147feca3-3651-4c29-9e46-b9c08f332d4b">8.2. External links</a></li>
+</ul>
+</li>
+<li><a href="#ID-2d62890f-ced7-4f7b-9746-8fa1835d5704">9. Drawers</a>
+<ul>
+<li><a href="#ID-8ac3c6c8-14ef-4b21-8efd-8dc5d91daee0">9.1. test drawer</a></li>
+</ul>
+</li>
+<li><a href="#ID-a839d0ae-63bc-42fa-84fe-92b33b9d533c">10. Dynamic blocks</a></li>
+<li><a href="#ID-af09b5b2-5882-4a36-88f5-d00733fad636">11. ASCII export</a></li>
+<li><a href="#ID-14207a95-e121-47fd-9bba-63f4392e7181">12. Inline Images</a>
+<ul>
+<li><a href="#ID-d89c0016-df43-44f3-88b8-535975506317">12.1. Image attributes and values</a></li>
+</ul>
+</li>
+<li><a href="#ID-6c577429-a3f6-4c14-9794-c50a3753e49f">13. Footnote</a></li>
+<li><a href="#ID-a4dc8312-be47-4a4c-bdbe-ea4c36fbd186">14. Entity</a></li>
+<li><a href="#ID-0f7f4e61-cc38-45d4-a821-72871d220707">15. LaTeX</a>
+<ul>
+<li><a href="#ID-0cf98440-5210-4193-8f8e-7e85abbae324">15.1. Inline LaTeX</a></li>
+<li><a href="#ID-3fcbf355-d843-4cf0-9679-f406e83ba8cc">15.2. LaTeX block</a></li>
+<li><a href="#ID-85b239ed-cfdd-4dbd-850d-9a80b0957da0">15.3. a more complex latex block</a></li>
+</ul>
+</li>
+<li><a href="#ID-07a279b5-4105-45ad-a1b6-99c77b511335">16. Blocks</a>
+<ul>
+<li><a href="#ID-d0ff3d55-7517-42d9-9981-a0c2fcb0d74a">16.1. Quote block</a></li>
+<li><a href="#ID-238bc88c-219c-47ef-be8c-1789b9f83e9f">16.2. LaTeX export block</a></li>
+<li><a href="#ID-cd71c785-f264-4ef1-9b9c-660d420687a4">16.3. ASCII export block</a></li>
+<li><a href="#ID-1c841e94-df44-461a-9b11-8d9b1ecb4bd3">16.4. HTML export block</a></li>
+</ul>
+</li>
+<li><a href="#ID-0bbfd97e-52f8-4e75-968b-79a71f5a316a">17. src blocks</a>
+<ul>
+<li><a href="#ID-68e01fc8-0e03-4179-8ab4-a23ce58b9a20">17.1. syntax highlighting</a></li>
+<li><a href="#ID-cbed519a-be32-47f8-a7c4-beb408f632e9">17.2. escape math formulas in src block</a></li>
+<li><a href="#ID-92432324-3cf9-4152-aeb8-d5539137240f">17.3. highlight code tags</a></li>
+<li><a href="#ID-9e5200c5-3655-477e-ab20-b9a9fdda3857">17.4. src block with inline image result</a></li>
+</ul>
+</li>
+<li><a href="#ID-87084b84-e7f2-4eda-b689-44155df7fd18">18. 中文测试</a></li>
+<li><a href="#ID-e056308d-32c2-470a-b623-1635665b5a20">19. Reference to previous pages links</a>
+<ul>
+<li><a href="#ID-3a96566e-c212-4174-a576-08a154502a33">19.1. radio target link reference</a></li>
+<li><a href="#ID-b01f97a7-9e77-44a9-ab89-cce03e5edad5">19.2. coderef</a></li>
+</ul>
+</li>
+<li><a href="#ID-f932913d-ca3e-4895-b9fc-c19b7a79d99d">20. Footnotes</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-ID-3897afe8-36d6-4b4b-83b2-de19c268f996" class="outline-2">
+<h2 id="ID-3897afe8-36d6-4b4b-83b2-de19c268f996"><span class="section-number-2">1.</span> <a href="#ID-3897afe8-36d6-4b4b-83b2-de19c268f996">Comment</a></h2>
+<div class="outline-text-2" id="text-1">
+<pre class="example">
+ID: 3897afe8-36d6-4b4b-83b2-de19c268f996
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+</div>
+<div id="outline-container-ID-e8cdddae-a0ad-4cb9-bb70-25e36cfe4d17" class="outline-2">
+<h2 id="ID-e8cdddae-a0ad-4cb9-bb70-25e36cfe4d17"><span class="section-number-2">2.</span> <a href="#ID-e8cdddae-a0ad-4cb9-bb70-25e36cfe4d17">Property</a></h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
+URL: http://localhost
+ID: e8cdddae-a0ad-4cb9-bb70-25e36cfe4d17
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+</div>
+<div id="outline-container-ID-6268e637-e022-4a5d-8c3e-d3975841334e" class="outline-2">
+<h2 id="ID-6268e637-e022-4a5d-8c3e-d3975841334e"><span class="section-number-2">3.</span> <a href="#ID-6268e637-e022-4a5d-8c3e-d3975841334e">Paragraph</a></h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
+ID: 6268e637-e022-4a5d-8c3e-d3975841334e
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+<div id="outline-container-ID-75ae6f4c-9b97-485f-a41b-07ff6f5b706e" class="outline-3">
+<h3 id="ID-75ae6f4c-9b97-485f-a41b-07ff6f5b706e"><span class="section-number-3">3.1.</span> <a href="#ID-75ae6f4c-9b97-485f-a41b-07ff6f5b706e">horizontal rules</a></h3>
+<div class="outline-text-3" id="text-3-1">
+<pre class="example">
+ID: 75ae6f4c-9b97-485f-a41b-07ff6f5b706e
+</pre>
+
+<p>
+AAAAAAAAAAAAAA
+</p>
+
+<hr>
+
+<p>
+BBBBBBBBBBBBB
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-c840528f-b708-412a-b33d-2212d8c7ec88" class="outline-2">
+<h2 id="ID-c840528f-b708-412a-b33d-2212d8c7ec88"><span class="section-number-2">4.</span> <a href="#ID-c840528f-b708-412a-b33d-2212d8c7ec88">Formatting text</a></h2>
+<div class="outline-text-2" id="text-4">
+<pre class="example">
+ID: c840528f-b708-412a-b33d-2212d8c7ec88
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+<div id="outline-container-ID-fb4ca44c-6b6d-4f32-a489-8d6281363300" class="outline-3">
+<h3 id="ID-fb4ca44c-6b6d-4f32-a489-8d6281363300"><span class="section-number-3">4.1.</span> <a href="#ID-fb4ca44c-6b6d-4f32-a489-8d6281363300">bold &amp; italic</a></h3>
+<div class="outline-text-3" id="text-4-1">
+<pre class="example">
+ID: fb4ca44c-6b6d-4f32-a489-8d6281363300
+</pre>
+
+<ul class="org-ul">
+<li><b>bold text</b></li>
+<li><i>italic text</i></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-ID-6db24646-62fa-49ea-adaa-a56fb8d4bfb7" class="outline-3">
+<h3 id="ID-6db24646-62fa-49ea-adaa-a56fb8d4bfb7"><span class="section-number-3">4.2.</span> <a href="#ID-6db24646-62fa-49ea-adaa-a56fb8d4bfb7">monospace, superscript and subscript</a></h3>
+<div class="outline-text-3" id="text-4-2">
+<pre class="example">
+ID: 6db24646-62fa-49ea-adaa-a56fb8d4bfb7
+</pre>
+
+<ul class="org-ul">
+<li>monospaced typewriter font for <code>inline code</code></li>
+<li>monospaced typewriter font for <code>verbatim text</code></li>
+<li><del>deleted text</del> (vs. <span class="underline">inserted text</span>)</li>
+<li>text with super<sup>script</sup>, such as 2<sup>10</sup></li>
+<li>text with sub<sub>script</sub>, such as H<sub>2</sub>O</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-ID-50e9abd8-45ed-42d1-8ba5-d3209ecc4ded" class="outline-3">
+<h3 id="ID-50e9abd8-45ed-42d1-8ba5-d3209ecc4ded"><span class="section-number-3">4.3.</span> <a href="#ID-50e9abd8-45ed-42d1-8ba5-d3209ecc4ded">Inline code</a></h3>
+<div class="outline-text-3" id="text-4-3">
+<pre class="example">
+ID: 50e9abd8-45ed-42d1-8ba5-d3209ecc4ded
+</pre>
+
+<p>
+<code>inline code</code>
+</p>
+
+<p>
+If you have <code>\equal</code>, <code>\quot</code> or <code>\rsquo</code> in code which you want to surround by <code>=code=</code>.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-a738b9bc-b97b-4901-bb01-3eb3f6cc995d" class="outline-2">
+<h2 id="ID-a738b9bc-b97b-4901-bb01-3eb3f6cc995d"><span class="section-number-2">5.</span> <a href="#ID-a738b9bc-b97b-4901-bb01-3eb3f6cc995d">Smart punctuation</a></h2>
+<div class="outline-text-2" id="text-5">
+<pre class="example">
+ID: a738b9bc-b97b-4901-bb01-3eb3f6cc995d
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+
+<p>
+If the XXX option is specified, Org mode will produce typographically correct
+output, converting straight quotes to curly quotes, <code>---</code> to em-dashes, <code>--</code> to
+en-dashes, and <code>...</code> to ellipses.
+</p>
+</div>
+</div>
+<div id="outline-container-ID-fbbd5b73-5594-4db4-94e3-d8141dc17a36" class="outline-2">
+<h2 id="ID-fbbd5b73-5594-4db4-94e3-d8141dc17a36"><span class="section-number-2">6.</span> <a href="#ID-fbbd5b73-5594-4db4-94e3-d8141dc17a36">Plain lists</a></h2>
+<div class="outline-text-2" id="text-6">
+<pre class="example">
+ID: fbbd5b73-5594-4db4-94e3-d8141dc17a36
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+<div id="outline-container-ID-067cafb7-cd55-47b1-b54b-6e6ff4dc41ce" class="outline-3">
+<h3 id="ID-067cafb7-cd55-47b1-b54b-6e6ff4dc41ce"><span class="section-number-3">6.1.</span> <a href="#ID-067cafb7-cd55-47b1-b54b-6e6ff4dc41ce">un-ordered lists</a></h3>
+<div class="outline-text-3" id="text-6-1">
+<pre class="example">
+ID: 067cafb7-cd55-47b1-b54b-6e6ff4dc41ce
+</pre>
+
+<ul class="org-ul">
+<li>one</li>
+<li>two</li>
+<li>three</li>
+
+<li class="off"><code>[&nbsp;]</code> one</li>
+<li class="off"><code>[&nbsp;]</code> two</li>
+
+<li id="one">1</li>
+<li id="two">2</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>Item with some lengthy text wrapping hopefully across several lines. We add
+a few words to really show the line wrapping.</li>
+<li>Bullet.
+<ul class="org-ul">
+<li>Bullet.
+<ul class="org-ul">
+<li>Bullet.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-ID-02dc3830-0639-44b0-9799-f971853661fe" class="outline-3">
+<h3 id="ID-02dc3830-0639-44b0-9799-f971853661fe"><span class="section-number-3">6.2.</span> <a href="#ID-02dc3830-0639-44b0-9799-f971853661fe">ordered lists</a></h3>
+<div class="outline-text-3" id="text-6-2">
+<pre class="example">
+ID: 02dc3830-0639-44b0-9799-f971853661fe
+</pre>
+
+<ol class="org-ol">
+<li>Arabic (decimal) numbered list item. We add a few words to show the line
+wrapping.
+<ol class="org-ol">
+<li>Upper case alpha (letter) numbered list item.
+<ol class="org-ol">
+<li>Lower alpha.</li>
+<li>Lower alpha.</li>
+</ol></li>
+<li>Upper alpha.</li>
+</ol></li>
+<li>Number.</li>
+</ol>
+</div>
+<div id="outline-container-ID-0220a1cf-2fc4-47dd-a2bf-6d3637d80529" class="outline-4">
+<h4 id="ID-0220a1cf-2fc4-47dd-a2bf-6d3637d80529"><span class="section-number-4">6.2.1.</span> <a href="#ID-0220a1cf-2fc4-47dd-a2bf-6d3637d80529">ordered list with jumping numbers</a></h4>
+<div class="outline-text-4" id="text-6-2-1">
+<pre class="example">
+ID: 0220a1cf-2fc4-47dd-a2bf-6d3637d80529
+</pre>
+
+<ol class="org-ol">
+<li>line one</li>
+<li value="2">We start with point number 2.</li>
+<li>Automatically numbered item.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-5e91b15b-79d1-4ea5-b679-0ab67ee3e2ab" class="outline-3">
+<h3 id="ID-5e91b15b-79d1-4ea5-b679-0ab67ee3e2ab"><span class="section-number-3">6.3.</span> <a href="#ID-5e91b15b-79d1-4ea5-b679-0ab67ee3e2ab">checklists</a></h3>
+<div class="outline-text-3" id="text-6-3">
+<pre class="example">
+ID: 5e91b15b-79d1-4ea5-b679-0ab67ee3e2ab
+</pre>
+
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Checked.</li>
+<li class="trans"><code>[-]</code> Half-checked.</li>
+<li class="off"><code>[&nbsp;]</code> Not checked.</li>
+<li>Normal list item.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-ID-e154cd3e-3b23-42ce-abeb-c54518f6ee85" class="outline-3">
+<h3 id="ID-e154cd3e-3b23-42ce-abeb-c54518f6ee85"><span class="section-number-3">6.4.</span> <a href="#ID-e154cd3e-3b23-42ce-abeb-c54518f6ee85">definition list</a></h3>
+<div class="outline-text-3" id="text-6-4">
+<pre class="example">
+ID: e154cd3e-3b23-42ce-abeb-c54518f6ee85
+</pre>
+
+<dl class="org-dl">
+<dt>First term to define</dt><dd>Definition of the first term. We add a few words to show the line wrapping,
+to see what happens when you have long lines.</dd>
+
+<dt>Second term</dt><dd><p>
+Explication of the second term with <b>inline markup</b>.
+</p>
+
+<p>
+In many paragraphs.
+</p></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-ID-342c7589-ce8c-4eee-9fcb-07eb72d9eec8" class="outline-3">
+<h3 id="ID-342c7589-ce8c-4eee-9fcb-07eb72d9eec8"><span class="section-number-3">6.5.</span> <a href="#ID-342c7589-ce8c-4eee-9fcb-07eb72d9eec8">separating lists</a></h3>
+<div class="outline-text-3" id="text-6-5">
+<pre class="example">
+ID: 342c7589-ce8c-4eee-9fcb-07eb72d9eec8
+</pre>
+
+<ul class="org-ul">
+<li>apples</li>
+<li>oranges</li>
+<li>bananas</li>
+</ul>
+
+<ul class="org-ul">
+<li>carrots</li>
+<li>tomatoes</li>
+<li>celery</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-335af6e1-9cad-47c4-acb4-f4f6b21d7183" class="outline-2">
+<h2 id="ID-335af6e1-9cad-47c4-acb4-f4f6b21d7183"><span class="section-number-2">7.</span> <a href="#ID-335af6e1-9cad-47c4-acb4-f4f6b21d7183">Tables</a></h2>
+<div class="outline-text-2" id="text-7">
+<pre class="example">
+ID: 335af6e1-9cad-47c4-acb4-f4f6b21d7183
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+
+<p>
+Tables are one of the most refined areas of the Org mode syntax. They are very
+easy to create and to read.
+</p>
+</div>
+<div id="outline-container-ID-d8d91db5-e30d-48b3-b9ac-c5c521bb78bc" class="outline-3">
+<h3 id="ID-d8d91db5-e30d-48b3-b9ac-c5c521bb78bc"><span class="section-number-3">7.1.</span> <a href="#ID-d8d91db5-e30d-48b3-b9ac-c5c521bb78bc">simple table</a></h3>
+<div class="outline-text-3" id="text-7-1">
+<pre class="example">
+ID: d8d91db5-e30d-48b3-b9ac-c5c521bb78bc
+</pre>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">column 1</th>
+<th scope="col" class="org-left">column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Cell in column 1, row 1</td>
+<td class="org-left">Cell in column 2, row 1</td>
+</tr>
+
+<tr>
+<td class="org-left">Cell in column 1, row 2</td>
+<td class="org-left">Cell in column 2, row 2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-ID-f9fa207e-1c43-4dd6-a08e-888023bca5e9" class="outline-3">
+<h3 id="ID-f9fa207e-1c43-4dd6-a08e-888023bca5e9"><span class="section-number-3">7.2.</span> <a href="#ID-f9fa207e-1c43-4dd6-a08e-888023bca5e9">Table with aligned cells</a></h3>
+<div class="outline-text-3" id="text-7-2">
+<pre class="example">
+ID: f9fa207e-1c43-4dd6-a08e-888023bca5e9
+</pre>
+
+<table>
+
+
+<colgroup>
+<col  class="org-right">
+
+<col  class="org-center">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-center">2</th>
+<th scope="col" class="org-left">3</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-right">Right</th>
+<th scope="col" class="org-center">Center</th>
+<th scope="col" class="org-left">Left</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">xxxxxxxxxxxx</td>
+<td class="org-center">xxxxxxxxxxxx</td>
+<td class="org-left">xxxxxxxxxxxx</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-ID-7200d3ae-4bb1-40bd-9055-9932371e6448" class="outline-3">
+<h3 id="ID-7200d3ae-4bb1-40bd-9055-9932371e6448"><span class="section-number-3">7.3.</span> <a href="#ID-7200d3ae-4bb1-40bd-9055-9932371e6448">Header row</a></h3>
+<div class="outline-text-3" id="text-7-3">
+<pre class="example">
+ID: 7200d3ae-4bb1-40bd-9055-9932371e6448
+</pre>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Name of column 1</th>
+<th scope="col" class="org-left">Name of column 2</th>
+<th scope="col" class="org-left">Name of column 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Top left</td>
+<td class="org-left">Top middle</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Right</td>
+</tr>
+
+<tr>
+<td class="org-left">Bottom left</td>
+<td class="org-left">Bottom middle</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-cc6c5740-3a87-402e-addd-d42c6e77b6df" class="outline-2">
+<h2 id="ID-cc6c5740-3a87-402e-addd-d42c6e77b6df"><span class="section-number-2">8.</span> <a href="#ID-cc6c5740-3a87-402e-addd-d42c6e77b6df">Hyperlinks</a></h2>
+<div class="outline-text-2" id="text-8">
+<pre class="example">
+ID: cc6c5740-3a87-402e-addd-d42c6e77b6df
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+<div id="outline-container-ID-d0993c1f-7a37-4972-afea-bb8cc35dde36" class="outline-3">
+<h3 id="ID-d0993c1f-7a37-4972-afea-bb8cc35dde36"><span class="section-number-3">8.1.</span> <a href="#ID-d0993c1f-7a37-4972-afea-bb8cc35dde36">Internal links</a></h3>
+<div class="outline-text-3" id="text-8-1">
+<pre class="example">
+ID: d0993c1f-7a37-4972-afea-bb8cc35dde36
+</pre>
+</div>
+<div id="outline-container-ID-912f6a31-553a-4e73-be0c-769643d56cc2" class="outline-4">
+<h4 id="ID-912f6a31-553a-4e73-be0c-769643d56cc2"><span class="section-number-4">8.1.1.</span> <a href="#ID-912f6a31-553a-4e73-be0c-769643d56cc2">radio target link</a></h4>
+<div class="outline-text-4" id="text-8-1-1">
+<pre class="example">
+ID: 912f6a31-553a-4e73-be0c-769643d56cc2
+</pre>
+
+<p>
+Here is a <a id="radio_target_link" name="radio_target_link">radio<sub>target</sub><sub>link</sub></a>
+</p>
+
+<hr>
+
+<p>
+Reference previous a <a href="#radio_target_link">radio<sub>target</sub><sub>link</sub></a>.
+</p>
+</div>
+<div id="outline-container-ID-fcb882a4-a428-44ba-9beb-c032b2d5e7b1" class="outline-5">
+<h5 id="ID-fcb882a4-a428-44ba-9beb-c032b2d5e7b1"><span class="section-number-5">8.1.1.1.</span> <a href="#ID-fcb882a4-a428-44ba-9beb-c032b2d5e7b1"><a id="foo" name="foo">foo</a></a></h5>
+<div class="outline-text-5" id="text-8-1-1-1">
+<pre class="example">
+ID: fcb882a4-a428-44ba-9beb-c032b2d5e7b1
+</pre>
+
+<p>
+About <a href="#foo">foo</a>. What is <a href="#foo">foo</a>?
+</p>
+</div>
+</div>
+<div id="outline-container-ID-b16096d0-d147-4872-8394-e982c0562994" class="outline-5">
+<h5 id="ID-b16096d0-d147-4872-8394-e982c0562994"><span class="section-number-5">8.1.1.2.</span> <a href="#ID-b16096d0-d147-4872-8394-e982c0562994"><a id="bar" name="bar">bar</a></a></h5>
+<div class="outline-text-5" id="text-8-1-1-2">
+<pre class="example">
+ID: b16096d0-d147-4872-8394-e982c0562994
+</pre>
+
+<p>
+<a href="#bar">bar</a> is developed based on <a href="#foo">foo</a>.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-127550da-5a57-42bf-bbdc-0c25b6fcc8eb" class="outline-4">
+<h4 id="ID-127550da-5a57-42bf-bbdc-0c25b6fcc8eb"><span class="section-number-4">8.1.2.</span> <a href="#ID-127550da-5a57-42bf-bbdc-0c25b6fcc8eb"><span class="todo TODO">TODO</span> coderef</a></h4>
+<div class="outline-text-4" id="text-8-1-2">
+<pre class="example">
+ID: 127550da-5a57-42bf-bbdc-0c25b6fcc8eb
+</pre>
+<ul class="org-ul">
+<li>State "TODO"       from              <span class="timestamp-wrapper"><time class="timestamp" datetime="2018-03-21T10:47:00">[2018-03-21 Wed 10:47]</time></span></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><span id="coderef-sc" class="coderef-off"><span class="linenr">1: </span><code data-ox-html-linenr="1"><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">save-excursion</span></code></span>
+<span id="coderef-jump" class="coderef-off"><span class="linenr">2: </span><code data-ox-html-linenr="2">   <span style="color: #f78c6c;">(</span>goto-char <span style="color: #c3e88d;">(</span>point-min<span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code></span>
+</code></pre>
+</div>
+
+<p>
+In line <a href="#coderef-sc" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sc');" onmouseout="CodeHighlightOff(this, 'coderef-sc');">1</a> we remember the current position. <a href="#coderef-jump" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-jump');" onmouseout="CodeHighlightOff(this, 'coderef-jump');">Line 2</a> jumps to point-min.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-147feca3-3651-4c29-9e46-b9c08f332d4b" class="outline-3">
+<h3 id="ID-147feca3-3651-4c29-9e46-b9c08f332d4b"><span class="section-number-3">8.2.</span> <a href="#ID-147feca3-3651-4c29-9e46-b9c08f332d4b">External links</a></h3>
+<div class="outline-text-3" id="text-8-2">
+<pre class="example">
+ID: 147feca3-3651-4c29-9e46-b9c08f332d4b
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-2d62890f-ced7-4f7b-9746-8fa1835d5704" class="outline-2">
+<h2 id="ID-2d62890f-ced7-4f7b-9746-8fa1835d5704"><span class="section-number-2">9.</span> <a href="#ID-2d62890f-ced7-4f7b-9746-8fa1835d5704">Drawers</a></h2>
+<div class="outline-text-2" id="text-9">
+<pre class="example">
+ID: 2d62890f-ced7-4f7b-9746-8fa1835d5704
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+<div id="outline-container-ID-8ac3c6c8-14ef-4b21-8efd-8dc5d91daee0" class="outline-3">
+<h3 id="ID-8ac3c6c8-14ef-4b21-8efd-8dc5d91daee0"><span class="section-number-3">9.1.</span> <a href="#ID-8ac3c6c8-14ef-4b21-8efd-8dc5d91daee0">test drawer</a></h3>
+<div class="outline-text-3" id="text-9-1">
+<pre class="example">
+ID: 8ac3c6c8-14ef-4b21-8efd-8dc5d91daee0
+</pre>
+<p>
+This is inside the drawer.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-a839d0ae-63bc-42fa-84fe-92b33b9d533c" class="outline-2">
+<h2 id="ID-a839d0ae-63bc-42fa-84fe-92b33b9d533c"><span class="section-number-2">10.</span> <a href="#ID-a839d0ae-63bc-42fa-84fe-92b33b9d533c">Dynamic blocks</a></h2>
+<div class="outline-text-2" id="text-10">
+<pre class="example">
+ID: a839d0ae-63bc-42fa-84fe-92b33b9d533c
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+
+<table>
+<caption class="t-above"><span class="table-number">Table 1:</span> Clock summary at <span class="timestamp-wrapper"><time class="timestamp" datetime="2017-02-24T09:37:00">[2017-02-24 Fri 09:37]</time></span></caption>
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Headline</th>
+<th scope="col" class="org-left">Time</th>
+<th scope="col" class="org-left">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Total time</b></td>
+<td class="org-left"><b>0:00</b></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-ID-af09b5b2-5882-4a36-88f5-d00733fad636" class="outline-2">
+<h2 id="ID-af09b5b2-5882-4a36-88f5-d00733fad636"><span class="section-number-2">11.</span> <a href="#ID-af09b5b2-5882-4a36-88f5-d00733fad636">ASCII export</a></h2>
+<div class="outline-text-2" id="text-11">
+<pre class="example">
+ID: af09b5b2-5882-4a36-88f5-d00733fad636
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+</div>
+<div id="outline-container-ID-14207a95-e121-47fd-9bba-63f4392e7181" class="outline-2">
+<h2 id="ID-14207a95-e121-47fd-9bba-63f4392e7181"><span class="section-number-2">12.</span> <a href="#ID-14207a95-e121-47fd-9bba-63f4392e7181">Inline Images</a></h2>
+<div class="outline-text-2" id="text-12">
+<pre class="example">
+ID: 14207a95-e121-47fd-9bba-63f4392e7181
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+
+
+<figure id="fig:bldg-1-5-seq">
+<img src="images/babel_lang_dot_example1.png" alt="babel_lang_dot_example1.png" width="300px">
+
+<figcaption><span class="figure-number">Figure 1: </span>This is an image</figcaption>
+</figure>
+</div>
+<div id="outline-container-ID-d89c0016-df43-44f3-88b8-535975506317" class="outline-3">
+<h3 id="ID-d89c0016-df43-44f3-88b8-535975506317"><span class="section-number-3">12.1.</span> <a href="#ID-d89c0016-df43-44f3-88b8-535975506317">Image attributes and values</a></h3>
+<div class="outline-text-3" id="text-12-1">
+<pre class="example">
+ID: d89c0016-df43-44f3-88b8-535975506317
+</pre>
+
+
+<figure id="org8c18257">
+<img src="images/babel_lang_dot_example1.png" alt="babel_lang_dot_example1.png">
+
+</figure>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-6c577429-a3f6-4c14-9794-c50a3753e49f" class="outline-2">
+<h2 id="ID-6c577429-a3f6-4c14-9794-c50a3753e49f"><span class="section-number-2">13.</span> <a href="#ID-6c577429-a3f6-4c14-9794-c50a3753e49f">Footnote</a></h2>
+<div class="outline-text-2" id="text-13">
+<pre class="example">
+ID: 6c577429-a3f6-4c14-9794-c50a3753e49f
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+
+<p>
+A footnote is defined in a paragraph that is started by a footnote marker in
+square brackets in column 0, no indentation allowed. The footnote reference is
+simply the marker in square brackets, inside text. For example:
+</p>
+
+<p>
+The org homepage <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> now looks a lot better than it used to.
+</p>
+</div>
+</div>
+<div id="outline-container-ID-a4dc8312-be47-4a4c-bdbe-ea4c36fbd186" class="outline-2">
+<h2 id="ID-a4dc8312-be47-4a4c-bdbe-ea4c36fbd186"><span class="section-number-2">14.</span> <a href="#ID-a4dc8312-be47-4a4c-bdbe-ea4c36fbd186">Entity</a></h2>
+<div class="outline-text-2" id="text-14">
+<pre class="example">
+ID: a4dc8312-be47-4a4c-bdbe-ea4c36fbd186
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+
+<p>
+1 + 1 = 2
+</p>
+
+<p>
+Like &euro; with
+</p>
+</div>
+</div>
+<div id="outline-container-ID-0f7f4e61-cc38-45d4-a821-72871d220707" class="outline-2">
+<h2 id="ID-0f7f4e61-cc38-45d4-a821-72871d220707"><span class="section-number-2">15.</span> <a href="#ID-0f7f4e61-cc38-45d4-a821-72871d220707">LaTeX</a></h2>
+<div class="outline-text-2" id="text-15">
+<pre class="example">
+ID: 0f7f4e61-cc38-45d4-a821-72871d220707
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+<div id="outline-container-ID-0cf98440-5210-4193-8f8e-7e85abbae324" class="outline-3">
+<h3 id="ID-0cf98440-5210-4193-8f8e-7e85abbae324"><span class="section-number-3">15.1.</span> <a href="#ID-0cf98440-5210-4193-8f8e-7e85abbae324">Inline LaTeX</a></h3>
+<div class="outline-text-3" id="text-15-1">
+<pre class="example">
+ID: 0cf98440-5210-4193-8f8e-7e85abbae324
+</pre>
+
+<p>
+This is inline latex \[ 1 + 2 = 3 \]. and \(3 * 3 = 9\) .
+</p>
+</div>
+</div>
+<div id="outline-container-ID-3fcbf355-d843-4cf0-9679-f406e83ba8cc" class="outline-3">
+<h3 id="ID-3fcbf355-d843-4cf0-9679-f406e83ba8cc"><span class="section-number-3">15.2.</span> <a href="#ID-3fcbf355-d843-4cf0-9679-f406e83ba8cc">LaTeX block</a></h3>
+<div class="outline-text-3" id="text-15-2">
+<pre class="example">
+ID: 3fcbf355-d843-4cf0-9679-f406e83ba8cc
+</pre>
+
+\begin{equation} \label{sqrt equation}
+y = \sqrt{r^2 - x^2}
+\end{equation}
+</div>
+</div>
+<div id="outline-container-ID-85b239ed-cfdd-4dbd-850d-9a80b0957da0" class="outline-3">
+<h3 id="ID-85b239ed-cfdd-4dbd-850d-9a80b0957da0"><span class="section-number-3">15.3.</span> <a href="#ID-85b239ed-cfdd-4dbd-850d-9a80b0957da0">a more complex latex block</a></h3>
+<div class="outline-text-3" id="text-15-3">
+<pre class="example">
+ID: 85b239ed-cfdd-4dbd-850d-9a80b0957da0
+</pre>
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{csharp}
+string title = "This is a Unicode π in the sky"
+/*
+Defined as $\pi=\lim_{n\to\infty}\frac{P_n}{d}$ where $P$ is the perimeter
+of an $n$-sided regular polygon circumscribing a
+circle of diameter $d$.
+*/
+const double pi = 3.1415926535
+\end{minted}
+</div>
+</div>
+</div>
+<div id="outline-container-ID-07a279b5-4105-45ad-a1b6-99c77b511335" class="outline-2">
+<h2 id="ID-07a279b5-4105-45ad-a1b6-99c77b511335"><span class="section-number-2">16.</span> <a href="#ID-07a279b5-4105-45ad-a1b6-99c77b511335">Blocks</a></h2>
+<div class="outline-text-2" id="text-16">
+<pre class="example">
+ID: 07a279b5-4105-45ad-a1b6-99c77b511335
+PUBDATE: <2019-08-14 Wed 19:46>
+</pre>
+</div>
+<div id="outline-container-ID-d0ff3d55-7517-42d9-9981-a0c2fcb0d74a" class="outline-3">
+<h3 id="ID-d0ff3d55-7517-42d9-9981-a0c2fcb0d74a"><span class="section-number-3">16.1.</span> <a href="#ID-d0ff3d55-7517-42d9-9981-a0c2fcb0d74a">Quote block</a></h3>
+<div class="outline-text-3" id="text-16-1">
+<pre class="example">
+ID: d0ff3d55-7517-42d9-9981-a0c2fcb0d74a
+</pre>
+
+<blockquote>
+<p>
+This is a quote block.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-ID-238bc88c-219c-47ef-be8c-1789b9f83e9f" class="outline-3">
+<h3 id="ID-238bc88c-219c-47ef-be8c-1789b9f83e9f"><span class="section-number-3">16.2.</span> <a href="#ID-238bc88c-219c-47ef-be8c-1789b9f83e9f">LaTeX export block</a></h3>
+<div class="outline-text-3" id="text-16-2">
+<pre class="example">
+ID: 238bc88c-219c-47ef-be8c-1789b9f83e9f
+</pre>
+</div>
+</div>
+<div id="outline-container-ID-cd71c785-f264-4ef1-9b9c-660d420687a4" class="outline-3">
+<h3 id="ID-cd71c785-f264-4ef1-9b9c-660d420687a4"><span class="section-number-3">16.3.</span> <a href="#ID-cd71c785-f264-4ef1-9b9c-660d420687a4">ASCII export block</a></h3>
+<div class="outline-text-3" id="text-16-3">
+<pre class="example">
+ID: cd71c785-f264-4ef1-9b9c-660d420687a4
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-shell"><code><code>tree .</code>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-1c841e94-df44-461a-9b11-8d9b1ecb4bd3" class="outline-3">
+<h3 id="ID-1c841e94-df44-461a-9b11-8d9b1ecb4bd3"><span class="section-number-3">16.4.</span> <a href="#ID-1c841e94-df44-461a-9b11-8d9b1ecb4bd3">HTML export block</a></h3>
+<div class="outline-text-3" id="text-16-4">
+<pre class="example">
+ID: 1c841e94-df44-461a-9b11-8d9b1ecb4bd3
+</pre>
+
+<div id="html-export">
+  <p>
+    helllo, worlllld!!!
+  </p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-0bbfd97e-52f8-4e75-968b-79a71f5a316a" class="outline-2">
+<h2 id="ID-0bbfd97e-52f8-4e75-968b-79a71f5a316a"><span class="section-number-2">17.</span> <a href="#ID-0bbfd97e-52f8-4e75-968b-79a71f5a316a">src blocks</a></h2>
+<div class="outline-text-2" id="text-17">
+<pre class="example">
+ID: 0bbfd97e-52f8-4e75-968b-79a71f5a316a
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+<div id="outline-container-ID-68e01fc8-0e03-4179-8ab4-a23ce58b9a20" class="outline-3">
+<h3 id="ID-68e01fc8-0e03-4179-8ab4-a23ce58b9a20"><span class="section-number-3">17.1.</span> <a href="#ID-68e01fc8-0e03-4179-8ab4-a23ce58b9a20">syntax highlighting</a></h3>
+<div class="outline-text-3" id="text-17-1">
+<pre class="example">
+ID: 68e01fc8-0e03-4179-8ab4-a23ce58b9a20
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #82aaff;">hello</span> <span style="color: #f78c6c;">(</span>name<span style="color: #f78c6c;">)</span></code>
+<code>  <span style="color: #f78c6c;">(</span>print <span style="color: #c3e88d;">(</span>format <span style="color: #c3e88d;">"Hello, </span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span> name<span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code>
+<code></code>
+<code><span style="color: #c792ea;">(</span>hello <span style="color: #c3e88d;">"stardiviner"</span><span style="color: #c792ea;">)</span></code>
+</code></pre>
+</div>
+
+<pre class="example">
+Hello, stardiviner
+</pre>
+</div>
+</div>
+<div id="outline-container-ID-cbed519a-be32-47f8-a7c4-beb408f632e9" class="outline-3">
+<h3 id="ID-cbed519a-be32-47f8-a7c4-beb408f632e9"><span class="section-number-3">17.2.</span> <a href="#ID-cbed519a-be32-47f8-a7c4-beb408f632e9">escape math formulas in src block</a></h3>
+<div class="outline-text-3" id="text-17-2">
+<pre class="example">
+ID: cbed519a-be32-47f8-a7c4-beb408f632e9
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><code><span style="color: #676E95;">;; </span><span style="color: #676E95;">Defined as $\pi=\lim_{n\to\infty}\frac{P_n}{d}$ where $P$ is the perimeter</code>
+<code></span><span style="color: #676E95;">;; </span><span style="color: #676E95;">of an $n$-sided regular polygon circumscribing a</code>
+<code></span><span style="color: #676E95;">;; </span><span style="color: #676E95;">circle of diameter $d$.</code>
+<code></span><span style="color: #c792ea;">(</span>prin1 <span style="color: #c3e88d;">"hello, world!"</span><span style="color: #c792ea;">)</span></code>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-92432324-3cf9-4152-aeb8-d5539137240f" class="outline-3">
+<h3 id="ID-92432324-3cf9-4152-aeb8-d5539137240f"><span class="section-number-3">17.3.</span> <a href="#ID-92432324-3cf9-4152-aeb8-d5539137240f">highlight code tags</a></h3>
+<div class="outline-text-3" id="text-17-3">
+<pre class="example">
+ID: 92432324-3cf9-4152-aeb8-d5539137240f
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><code><span style="color: #676E95; background-color: #3f7f4c8c6eae; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> TODO does this code tag highlighted?</code>
+<code></span><span style="color: #676E95; background-color: #3f7f4c8c6eae; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> TODO: what about this one?</code>
+<code></span><span style="color: #676E95; background-color: #3f7f4c8c6eae; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> XXX</code>
+<code></span><span style="color: #676E95; background-color: #3f7f4c8c6eae; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> BUG</code>
+<code></span><span style="color: #676E95; background-color: #3f7f4c8c6eae; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> NOTE</code>
+<code></span><span style="color: #c792ea;">(</span>prin1 <span style="color: #c3e88d;">"yes"</span><span style="color: #c792ea;">)</span></code>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-9e5200c5-3655-477e-ab20-b9a9fdda3857" class="outline-3">
+<h3 id="ID-9e5200c5-3655-477e-ab20-b9a9fdda3857"><span class="section-number-3">17.4.</span> <a href="#ID-9e5200c5-3655-477e-ab20-b9a9fdda3857">src block with inline image result</a></h3>
+<div class="outline-text-3" id="text-17-4">
+<pre class="example">
+ID: 9e5200c5-3655-477e-ab20-b9a9fdda3857
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-gnuplot"><code><code><span style="color: #f78c6c;">set</span> grid</code>
+<code></code>
+<code><span style="color: #89DDFF; font-weight: bold; font-style: italic;">plot</span> <span style="color: #82aaff;">sin</span>(x)</code>
+</code></pre>
+</div>
+
+
+<figure id="orgd29e6ae">
+<img src="images/babel-gnuplot-graphics-test.png" alt="babel-gnuplot-graphics-test.png">
+
+</figure>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-87084b84-e7f2-4eda-b689-44155df7fd18" class="outline-2">
+<h2 id="ID-87084b84-e7f2-4eda-b689-44155df7fd18"><span class="section-number-2">18.</span> <a href="#ID-87084b84-e7f2-4eda-b689-44155df7fd18">中文测试</a></h2>
+<div class="outline-text-2" id="text-18">
+<pre class="example">
+ID: 87084b84-e7f2-4eda-b689-44155df7fd18
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+
+<p>
+这是中文段落
+</p>
+</div>
+</div>
+<div id="outline-container-ID-e056308d-32c2-470a-b623-1635665b5a20" class="outline-2">
+<h2 id="ID-e056308d-32c2-470a-b623-1635665b5a20"><span class="section-number-2">19.</span> <a href="#ID-e056308d-32c2-470a-b623-1635665b5a20">Reference to previous pages links</a></h2>
+<div class="outline-text-2" id="text-19">
+<pre class="example">
+ID: e056308d-32c2-470a-b623-1635665b5a20
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+<div id="outline-container-ID-3a96566e-c212-4174-a576-08a154502a33" class="outline-3">
+<h3 id="ID-3a96566e-c212-4174-a576-08a154502a33"><span class="section-number-3">19.1.</span> <a href="#ID-3a96566e-c212-4174-a576-08a154502a33">radio target link reference</a></h3>
+<div class="outline-text-3" id="text-19-1">
+<pre class="example">
+ID: 3a96566e-c212-4174-a576-08a154502a33
+</pre>
+
+<p>
+<a href="#foo">foo</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-b01f97a7-9e77-44a9-ab89-cce03e5edad5" class="outline-3">
+<h3 id="ID-b01f97a7-9e77-44a9-ab89-cce03e5edad5"><span class="section-number-3">19.2.</span> <a href="#ID-b01f97a7-9e77-44a9-ab89-cce03e5edad5">coderef</a></h3>
+<div class="outline-text-3" id="text-19-2">
+<pre class="example">
+ID: b01f97a7-9e77-44a9-ab89-cce03e5edad5
+</pre>
+
+<p>
+In line <a href="#coderef-sc" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sc');" onmouseout="CodeHighlightOff(this, 'coderef-sc');">1</a> we remember the current position. <a href="#coderef-jump" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-jump');" onmouseout="CodeHighlightOff(this, 'coderef-jump');">Line 2</a> jumps to point-min.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-ID-f932913d-ca3e-4895-b9fc-c19b7a79d99d" class="outline-2">
+<h2 id="ID-f932913d-ca3e-4895-b9fc-c19b7a79d99d"><span class="section-number-2">20.</span> <a href="#ID-f932913d-ca3e-4895-b9fc-c19b7a79d99d">Footnotes</a></h2>
+<div class="outline-text-2" id="text-20">
+<pre class="example">
+ID: f932913d-ca3e-4895-b9fc-c19b7a79d99d
+PUBDATE: <2018-04-03 Tue 21:59>
+</pre>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The link is: <a href="http://orgmode.org">http://orgmode.org</a>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<footer>
+  Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
+  Last update date: 2025-08-21 Thu 21:50.<br>
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+
+  <!-- RSS -->
+  You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
+  
+  <!-- Show Org Source -->
+  <script>
+   var url = document.location.href;
+   var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+   function show_org_source(){
+     document.location.href = orgsource;
+   }
+  </script>
+  <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
+
+</footer>
+
+<!-- scroll to top -->
+<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
+
+<!-- payment -->
+<div class='payment'>
+  <!-- use two inline aligned small thumb QR code image -->
+  <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
+       <div id='wechat-payment'><a href="/About/index.html#Payment"><img src="/assets/images/wechat_payment.png" title="打赏" /></a></div> -->
+  
+  <!-- use a custom reward image to be more friendly -->
+  <div id="payment-icon">
+    <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
+  </div>
+</div>
+
+<!-- Google Analytics -->
+<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+     <script type="text/javascript">
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-63992234-1', 'auto');
+     ga('send', 'pageview');
+     </script> -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+     <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-63992234-1');
+     </script> -->
+
+<!-- Disqus -->
+<!-- <div class="comments">
+     <style>
+     /* hide comment policy */
+     .comment-policy {
+     display: none;
+     }
+     /* hide Disqus footer */
+     .disqus-footer__wrapper {
+     display: none;
+     } 
+     </style>
+     
+     <div id="disqus_thread"></div>
+     <script>
+     (function() {
+     var d = document, s = d.createElement('script');
+     s.src = 'https://stardiviner.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+     })();
+     </script>
+     </div> -->
+</div>
+</body>
+</html>
