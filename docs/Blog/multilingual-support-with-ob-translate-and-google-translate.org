@@ -1,4 +1,4 @@
-# Created 2025-08-22 Fri 15:41
+# Created 2025-08-22 Fri 16:18
 #+title: multilingual support with ob-translate and google-translate
 #+author: Christopher M. Miles
 * Why multilingual support?

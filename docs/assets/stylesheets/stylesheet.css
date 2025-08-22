@@ -167,6 +167,14 @@ div.outline-text-1 {
 
 /* tag in headline */
 .tag {
+  color: gray;
+}
+
+/* display "#" symbol before tags */
+.tag span.__::before {
+  content: "#";
+  display: inline-block;
+  color: lightgray;
 }
 
 /* avatar */
@@ -837,7 +845,8 @@ footer, #postamble {
   bottom: 20px;
   right: 30px;
   z-index: 99;
-  border: none;
+  border: 2px solid rgb(254 123 167 / 50%);
+  box-shadow: 12px 10px 1px -3px whitesmoke;
   outline: none;
   background-color: #db898959;
   color: white;
