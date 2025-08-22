@@ -167,6 +167,14 @@ div.outline-text-1 {
 
 /* tag in headline */
 .tag {
+  color: gray;
+}
+
+/* display "#" symbol before tags */
+.tag span.__::before {
+  content: "#";
+  display: inline-block;
+  color: lightgray;
 }
 
 /* avatar */
