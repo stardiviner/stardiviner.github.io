@@ -1,12 +1,18 @@
 # org-publish workflow
 
-1. git switch to the branch "main" with `git switch main`.
-2. modify website blog .org files.
-3. org-publish the changes with Emacs command `M-x org-publish RET WEBSITE RET`.
-4. git push the branch "main" changes to the remote repository with `git add .`, `git commit -m "your commit message"`, and `git push`.
-5. move org-publish exported directory "`org-publish`" to `/tmp`.
-6. git switch to the branch "gh-pages" with `git switch gh-pages`.
-7. replace and override current directory in the branch "`gh-pages`" with the content in `/tmp/org-publish`.
-8. git push the branch "gh-pages" to the remote repository with `git add .`, `git commit -m "your commit message"`, and `git push origin gh-pages`.
-9. git switch back to the branch "main" with `git switch main`.
-10. check the website at [my blog](https://stardiviner.github.io/).
+**NOTICE**: GitHub Pages services build and deploy from "main" branch and "docs/" directory.
+
+![GitHub Pages deploy](data/images/GitHub-Pages-deploy.png)
+
+1.  git switch to the branch "main" with `git switch main`.
+2.  modify my website blog `.org` files.
+3.  Emacs **org-publish** will publish the changes with Emacs *command* `[M-x org-publish RET WEBSITE RET]`.
+4.  git push the branch "`main`" **source code file changes** to the remote repository with:
+    1.  "`git add .`" (exclude **org-publish exported destination dir** "`docs/`")
+    2.  `git commit -m "<your commit message>"`
+    3.  `git push origin main`
+5.  git push the branch "`main`" **destination file changes** in "`docs/`" to remote repository with:
+    1.  "`git add docs`"
+    2.  `git commit -m "<your commit message>"`
+    3.  `git push origin main`
+6.  verify that the changes are live on the website at [my blog](<https://stardiviner.github.io/>).
