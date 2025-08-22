@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-08-21 Thu 23:50 -->
+<!-- 2025-08-22 Fri 13:08 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org-mode exporter template for testing</title>
@@ -810,8 +810,8 @@ ID: 127550da-5a57-42bf-bbdc-0c25b6fcc8eb
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span id="coderef-sc" class="coderef-off"><span class="linenr">1: </span><code data-ox-html-linenr="1"><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">save-excursion</span></code></span>
-<span id="coderef-jump" class="coderef-off"><span class="linenr">2: </span><code data-ox-html-linenr="2">   <span style="color: #f78c6c;">(</span>goto-char <span style="color: #c3e88d;">(</span>point-min<span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code></span>
+<pre class="src src-emacs-lisp"><code><span id="coderef-sc" class="coderef-off"><span class="linenr">1: </span><code data-ox-html-linenr="1"><span style="color: #707183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">save-excursion</span></code></span>
+<span id="coderef-jump" class="coderef-off"><span class="linenr">2: </span><code data-ox-html-linenr="2">   <span style="color: #7388D6;">(</span>goto-char <span style="color: #909183;">(</span>point-min<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code></span>
 </code></pre>
 </div>
 
@@ -904,7 +904,7 @@ PUBDATE: <2018-04-03 Tue 21:59>
 
 
 <figure id="fig:bldg-1-5-seq">
-<img src="images/babel_lang_dot_example1.png" alt="babel_lang_dot_example1.png" width="300px">
+<img src="data/images/babel_lang_dot_example1.png" alt="babel_lang_dot_example1.png" width="300px">
 
 <figcaption><span class="figure-number">Figure 1: </span>This is an image</figcaption>
 </figure>
@@ -917,8 +917,8 @@ ID: d89c0016-df43-44f3-88b8-535975506317
 </pre>
 
 
-<figure id="org8b768ee">
-<img src="images/babel_lang_dot_example1.png" alt="babel_lang_dot_example1.png">
+<figure id="org3c47248">
+<img src="data/images/babel_lang_dot_example1.png" alt="babel_lang_dot_example1.png">
 
 </figure>
 </div>
@@ -1090,10 +1090,10 @@ ID: 68e01fc8-0e03-4179-8ab4-a23ce58b9a20
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #82aaff;">hello</span> <span style="color: #f78c6c;">(</span>name<span style="color: #f78c6c;">)</span></code>
-<code>  <span style="color: #f78c6c;">(</span>print <span style="color: #c3e88d;">(</span>format <span style="color: #c3e88d;">"Hello, </span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span> name<span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #707183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #006699;">hello</span> <span style="color: #7388D6;">(</span>name<span style="color: #7388D6;">)</span></code>
+<code>  <span style="color: #7388D6;">(</span>print <span style="color: #909183;">(</span>format <span style="color: #008000;">"Hello, </span><span style="color: #0000FF; font-weight: bold; font-style: italic;">%s</span><span style="color: #008000;">"</span> name<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 <code></code>
-<code><span style="color: #c792ea;">(</span>hello <span style="color: #c3e88d;">"stardiviner"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #707183;">(</span>hello <span style="color: #008000;">"stardiviner"</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 
@@ -1110,10 +1110,10 @@ ID: cbed519a-be32-47f8-a7c4-beb408f632e9
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #676E95;">;; </span><span style="color: #676E95;">Defined as $\pi=\lim_{n\to\infty}\frac{P_n}{d}$ where $P$ is the perimeter</code>
-<code></span><span style="color: #676E95;">;; </span><span style="color: #676E95;">of an $n$-sided regular polygon circumscribing a</code>
-<code></span><span style="color: #676E95;">;; </span><span style="color: #676E95;">circle of diameter $d$.</code>
-<code></span><span style="color: #c792ea;">(</span>prin1 <span style="color: #c3e88d;">"hello, world!"</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Defined as $\pi=\lim_{n\to\infty}\frac{P_n}{d}$ where $P$ is the perimeter</code>
+<code></span><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">of an $n$-sided regular polygon circumscribing a</code>
+<code></span><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">circle of diameter $d$.</code>
+<code></span><span style="color: #707183;">(</span>prin1 <span style="color: #008000;">"hello, world!"</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 </div>
@@ -1126,12 +1126,12 @@ ID: 92432324-3cf9-4152-aeb8-d5539137240f
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #676E95; background-color: #3f7f4c8c6eae; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> TODO does this code tag highlighted?</code>
-<code></span><span style="color: #676E95; background-color: #3f7f4c8c6eae; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> TODO: what about this one?</code>
-<code></span><span style="color: #676E95; background-color: #3f7f4c8c6eae; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> XXX</code>
-<code></span><span style="color: #676E95; background-color: #3f7f4c8c6eae; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> BUG</code>
-<code></span><span style="color: #676E95; background-color: #3f7f4c8c6eae; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> NOTE</code>
-<code></span><span style="color: #c792ea;">(</span>prin1 <span style="color: #c3e88d;">"yes"</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #8D8D84; background-color: #cf0ecf0ecf0e; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> TODO does this code tag highlighted?</code>
+<code></span><span style="color: #8D8D84; background-color: #cf0ecf0ecf0e; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> TODO: what about this one?</code>
+<code></span><span style="color: #8D8D84; background-color: #cf0ecf0ecf0e; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> XXX</code>
+<code></span><span style="color: #8D8D84; background-color: #cf0ecf0ecf0e; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> BUG</code>
+<code></span><span style="color: #8D8D84; background-color: #cf0ecf0ecf0e; text-decoration: overline;">;;;</span><span style="text-decoration: overline;"> NOTE</code>
+<code></span><span style="color: #707183;">(</span>prin1 <span style="color: #008000;">"yes"</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 </div>
@@ -1144,15 +1144,15 @@ ID: 9e5200c5-3655-477e-ab20-b9a9fdda3857
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-gnuplot"><code><code><span style="color: #f78c6c;">set</span> grid</code>
+<pre class="src src-gnuplot"><code><code><span style="color: #D0372D;">set</span> grid</code>
 <code></code>
-<code><span style="color: #89DDFF; font-weight: bold; font-style: italic;">plot</span> <span style="color: #82aaff;">sin</span>(x)</code>
+<code><span style="color: #0000FF; font-weight: bold; font-style: italic;">plot</span> <span style="color: #006699;">sin</span>(x)</code>
 </code></pre>
 </div>
 
 
-<figure id="org20f0733">
-<img src="images/babel-gnuplot-graphics-test.png" alt="babel-gnuplot-graphics-test.png">
+<figure id="org8523071">
+<img src="data/images/babel-gnuplot-graphics-test.png" alt="babel-gnuplot-graphics-test.png">
 
 </figure>
 </div>
@@ -1227,7 +1227,7 @@ The link is: <a href="http://orgmode.org">http://orgmode.org</a>
 <div id="postamble" class="status">
 <footer>
   Copyright 2011, Author: stardiviner (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
-  Last update date: 2025-08-21 Thu 23:42.<br>
+  Last update date: 2025-08-22 Fri 12:32.<br>
   Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
   <!-- RSS -->
