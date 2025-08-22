@@ -18,7 +18,7 @@ suddenly popuped fantasy idea.
 #+ATTR_ORG: :width 200
 #+ATTR_LATEX: :width 2.0in
 #+ATTR_HTML: :id avatar :float left :width 200px :alt 那时23岁的我
-[[file:data/images/me_picture 23.jpg]]
+[[file:resources/images/me_picture 23.jpg]]
 
 喜欢电脑技术，喜欢编程，是一名Coder，喜欢Lisp，Clojure。在生活中主要用Emacs (Org
 Mode)。我的笔记本上安装的是Arch GNU/Linux。这是我从2012年开始用到现在的。平常会
@@ -64,7 +64,7 @@ style.
 #+ATTR_ORG: :width 600
 #+ATTR_LATEX: :width 6.0in
 #+ATTR_HTML: :width 600px
-[[file:data/images/my_emacs.png]]
+[[file:resources/images/my_emacs.png]]
 
 ** Conky
 
@@ -73,7 +73,7 @@ Having an awesome desktop is a cool thing.
 #+ATTR_ORG: :width 500
 #+ATTR_LATEX: :width 5.0in
 #+ATTR_HTML: :width 500px
-[[file:data/images/conky.png]]
+[[file:resources/images/conky.png]]
 
 * Payment
 :PROPERTIES:
@@ -139,7 +139,7 @@ qr7gc5z0zml5g2tj2d88yzxqx7t2wd0gtucugd2fdl
 
 #+begin_export html
 <div id="pain">
-  <img src="data/images/Nagato Pain.jpg" alt="Nagato Pain" title="Nagato Pain" />
+  <img src="resources/images/Nagato Pain.jpg" alt="Nagato Pain" title="Nagato Pain" />
 </div>
 <style type="text/css">
  #pain img {
