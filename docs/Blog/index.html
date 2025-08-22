@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-08-22 Fri 13:08 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>An amateurish coder's blog</title>
+<meta name="author" content="Christopher M. Miles" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link ref="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16"><link ref="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32"><link rel="stylesheet" type="text/css" href="/assets/stylesheets/stylesheet.css"/><link rel="stylesheet" type="text/css" href="/assets/stylesheets/syntax-highlight.css"/><link rel="alternate" type="application/rss+xml" href="https://stardiviner.github.io/Blog/index.xml"><script type="text/javascript" src="/assets/scripts/jquery-3.4.1.min.js"></script><script type="text/javascript" src="/assets/scripts/main.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="/assets/scripts/org-info-src.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "https://stardiviner.github.io/");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "3");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "2");
+org_html_manager.set("TOC", "0");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="https://stardiviner.github.io/"> HOME </a>
+</div><div id="preamble" class="status">
+<div class='nav'>
+  <ul>
+    <li><a href='/'>Home</a></li>
+    <li><a href='/Blog/index.html'>Blog</a></li>
+    <li><a href="/Thought/index.html">Thought</a></li>
+    <li><a href='/Literature/index.html'>文学</a></li>
+    <li><a href='/About/index.html'>About</a></li>
+  </ul>
+</div>
+<div class="epilogue">
+  <p>感谢那些照顾过我的人，也谢谢那些伤害过我的人，让我成为这样一个人。</p>
+</div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">An amateurish coder's blog</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#ID-170718D8-0EC1-4604-9510-27B1BF444E2F">1. 现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了</a></li>
+<li><a href="#ID-83a27f52-9420-457b-ae0f-2b49e31e482d">2. implement H5 jump to WeChat mini program</a></li>
+<li><a href="#ID-cebe95a2-5f8f-4a80-9304-385ceabfa6f6">3. Learn video editor Adobe Premiere to edit a WeChat 15s small video</a></li>
+<li><a href="#ID-4e50ff41-fa57-437d-b816-043ad7bfccbe">4. upgrade Org link syntax to new</a></li>
+<li><a href="#ID-8879a709-020b-4b28-b32b-fa2e4bef3336">5. Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</a></li>
+<li><a href="#ID-a5088ae4-7e8a-4351-b51e-7a55bbf04ce4">6. How to use docstring to annotate source code</a></li>
+<li><a href="#ID-187b85cb-b92d-49d7-b66e-e6c79b902266">7. Learn Programming Language from Diving into Source Code</a></li>
+<li><a href="#ID-2de740e7-d646-4ae3-88a9-2e4a7adca39a">8. Learn a little basic of Nginx for setting up web server</a></li>
+<li><a href="#ID-0de8004e-db90-4182-b07a-97f5acf0a513">9. Make company-mode support for nginx-mode</a></li>
+<li><a href="#ID-e1e67b92-9153-4ec2-8c59-df4619a0c994">10. Clojure Plotting to Org inline image in ob-clojure</a></li>
+<li><a href="#ID-42d79395-841e-4e5c-81a9-d586e70ed44a">11. How to Read Code in Emacs</a></li>
+<li><a href="#ID-f7e17854-2da5-4530-a2d4-dc896c963fd6">12. Literate Programming with Org Mode</a></li>
+<li><a href="#ID-b7e86ca8-367c-4ba0-8ebb-ba37860958c0">13. multilingual support with ob-translate and google-translate</a></li>
+<li><a href="#ID-dc0b9dbc-8abd-42ba-834d-e5205a99910b">14. Learned basic skateboard</a></li>
+<li><a href="#ID-62bcea74-3133-4a44-adda-bd71f977c8fc">15. Needlework: Setup the sewing machine</a></li>
+<li><a href="#ID-ecd128b5-33b0-42f8-bfa1-8a9134d697fa">16. How to BANISH myself</a></li>
+<li><a href="#ID-b80c8cad-9403-4533-9cd4-cb2fd5b92678">17. test org-mode ox-publish</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-ID-170718D8-0EC1-4604-9510-27B1BF444E2F" class="outline-2">
+<h2 id="ID-170718D8-0EC1-4604-9510-27B1BF444E2F"><span class="section-number-2">1.</span> <a href="#ID-170718D8-0EC1-4604-9510-27B1BF444E2F">现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了</a></h2>
+<div class="outline-text-2" id="text-1">
+<pre class="example">
+DATE: [2021-07-18 Sun 00:38]
+ID: 170718D8-0EC1-4604-9510-27B1BF444E2F
+PUBDATE: <2021-07-18 Sun 07:56>
+</pre>
+
+<p>
+<a href="more-restrict-censorship-on-platforms.html">现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-83a27f52-9420-457b-ae0f-2b49e31e482d" class="outline-2">
+<h2 id="ID-83a27f52-9420-457b-ae0f-2b49e31e482d"><span class="section-number-2">2.</span> <a href="#ID-83a27f52-9420-457b-ae0f-2b49e31e482d">implement H5 jump to WeChat mini program</a></h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
+DATE: [2019-09-20 Fri 15:29]
+ID: 83a27f52-9420-457b-ae0f-2b49e31e482d
+PUBDATE: <2019-09-20 Fri 15:50>
+</pre>
+
+<p>
+<a href="implement-H5-jump-to-WeChat-mini-program.html">implement H5 jump to WeChat mini program</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-cebe95a2-5f8f-4a80-9304-385ceabfa6f6" class="outline-2">
+<h2 id="ID-cebe95a2-5f8f-4a80-9304-385ceabfa6f6"><span class="section-number-2">3.</span> <a href="#ID-cebe95a2-5f8f-4a80-9304-385ceabfa6f6">Learn video editor Adobe Premiere to edit a WeChat 15s small video</a></h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
+DATE: [2019-05-22 Wed 07:15]
+ID: cebe95a2-5f8f-4a80-9304-385ceabfa6f6
+PUBDATE: <2019-05-22 Wed 08:50>
+</pre>
+
+<p>
+<a href="Learn-video-editor-Adobe-Premiere-to-edit-a-WeChat-15s-small-video.html">Learn video editor Adobe Premiere to edit a WeChat 15s small video</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-4e50ff41-fa57-437d-b816-043ad7bfccbe" class="outline-2">
+<h2 id="ID-4e50ff41-fa57-437d-b816-043ad7bfccbe"><span class="section-number-2">4.</span> <a href="#ID-4e50ff41-fa57-437d-b816-043ad7bfccbe">upgrade Org link syntax to new</a></h2>
+<div class="outline-text-2" id="text-4">
+<pre class="example">
+DATE: [2019-04-07 Sun 18:46]
+ID: 4e50ff41-fa57-437d-b816-043ad7bfccbe
+PUBDATE: <2019-04-07 Sun 19:15>
+</pre>
+
+<p>
+<a href="upgrade-Org-link-syntax-to-new.html">upgrade Org link syntax to new</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-8879a709-020b-4b28-b32b-fa2e4bef3336" class="outline-2">
+<h2 id="ID-8879a709-020b-4b28-b32b-fa2e4bef3336"><span class="section-number-2">5.</span> <a href="#ID-8879a709-020b-4b28-b32b-fa2e4bef3336">Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</a></h2>
+<div class="outline-text-2" id="text-5">
+<pre class="example">
+DATE: [2018-10-20 Sat 19:43]
+ID: 8879a709-020b-4b28-b32b-fa2e4bef3336
+PUBDATE: <2018-10-20 Sat 20:00>
+</pre>
+
+<p>
+<a href="Emacs-slow-and-heavy-Profile,-Benchmark-your-Emacs,-and-speed-it-up.html">Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-a5088ae4-7e8a-4351-b51e-7a55bbf04ce4" class="outline-2">
+<h2 id="ID-a5088ae4-7e8a-4351-b51e-7a55bbf04ce4"><span class="section-number-2">6.</span> <a href="#ID-a5088ae4-7e8a-4351-b51e-7a55bbf04ce4">How to use docstring to annotate source code</a></h2>
+<div class="outline-text-2" id="text-6">
+<pre class="example">
+DATE: [2018-09-28 Fri 11:00]
+ID: a5088ae4-7e8a-4351-b51e-7a55bbf04ce4
+PUBDATE: <2018-09-28 Fri 12:41>
+</pre>
+
+<p>
+<a href="How-to-use-docstring-to-annotate-source-code.html">How to use docstring to annotate source code</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-187b85cb-b92d-49d7-b66e-e6c79b902266" class="outline-2">
+<h2 id="ID-187b85cb-b92d-49d7-b66e-e6c79b902266"><span class="section-number-2">7.</span> <a href="#ID-187b85cb-b92d-49d7-b66e-e6c79b902266">Learn Programming Language from Diving into Source Code</a></h2>
+<div class="outline-text-2" id="text-7">
+<pre class="example">
+DATE: [2018-05-28 Mon 20:25]
+ID: 187b85cb-b92d-49d7-b66e-e6c79b902266
+PUBDATE: <2018-05-29 Tue 08:40>
+</pre>
+
+<p>
+<a href="Learn-Programming-Language-from-Diving-into-Source-Code.html">Learn Programming Language from Diving into Source Code</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-2de740e7-d646-4ae3-88a9-2e4a7adca39a" class="outline-2">
+<h2 id="ID-2de740e7-d646-4ae3-88a9-2e4a7adca39a"><span class="section-number-2">8.</span> <a href="#ID-2de740e7-d646-4ae3-88a9-2e4a7adca39a">Learn a little basic of Nginx for setting up web server</a></h2>
+<div class="outline-text-2" id="text-8">
+<pre class="example">
+DATE: [2018-05-22 Tue 11:11]
+ID: 2de740e7-d646-4ae3-88a9-2e4a7adca39a
+PUBDATE: <2018-05-22 Tue 11:13>
+</pre>
+
+<p>
+<a href="Learn-a-little-basic-of-Nginx-for-setting-up-web-server.html">Learn a little basic of Nginx for setting up web server</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-0de8004e-db90-4182-b07a-97f5acf0a513" class="outline-2">
+<h2 id="ID-0de8004e-db90-4182-b07a-97f5acf0a513"><span class="section-number-2">9.</span> <a href="#ID-0de8004e-db90-4182-b07a-97f5acf0a513">Make company-mode support for nginx-mode</a></h2>
+<div class="outline-text-2" id="text-9">
+<pre class="example">
+DATE: [2018-05-20 Sun 16:43]
+ID: 0de8004e-db90-4182-b07a-97f5acf0a513
+PUBDATE: <2018-05-20 Sun 18:06>
+</pre>
+
+<p>
+<a href="Make-company-mode-support-for-nginx-mode.html">Make company-mode support for nginx-mode</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-e1e67b92-9153-4ec2-8c59-df4619a0c994" class="outline-2">
+<h2 id="ID-e1e67b92-9153-4ec2-8c59-df4619a0c994"><span class="section-number-2">10.</span> <a href="#ID-e1e67b92-9153-4ec2-8c59-df4619a0c994">Clojure Plotting to Org inline image in ob-clojure</a></h2>
+<div class="outline-text-2" id="text-10">
+<pre class="example">
+DATE: [2018-05-17 Thu 10:01]
+ID: e1e67b92-9153-4ec2-8c59-df4619a0c994
+PUBDATE: <2018-05-17 Thu 11:47>
+</pre>
+
+<p>
+<a href="Clojure-Plotting-to-Org-inline-image-in-ob-clojure.html">Clojure Plotting to Org inline image in ob-clojure</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-42d79395-841e-4e5c-81a9-d586e70ed44a" class="outline-2">
+<h2 id="ID-42d79395-841e-4e5c-81a9-d586e70ed44a"><span class="section-number-2">11.</span> <a href="#ID-42d79395-841e-4e5c-81a9-d586e70ed44a">How to Read Code in Emacs</a></h2>
+<div class="outline-text-2" id="text-11">
+<pre class="example">
+DATE: [2018-05-17 Thu 08:31]
+ID: 42d79395-841e-4e5c-81a9-d586e70ed44a
+PUBDATE: <2018-05-17 Thu 09:00>
+</pre>
+
+<p>
+<a href="How-to-Read-Code-in-Emacs.html">How to Read Code in Emacs</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-f7e17854-2da5-4530-a2d4-dc896c963fd6" class="outline-2">
+<h2 id="ID-f7e17854-2da5-4530-a2d4-dc896c963fd6"><span class="section-number-2">12.</span> <a href="#ID-f7e17854-2da5-4530-a2d4-dc896c963fd6">Literate Programming with Org Mode</a></h2>
+<div class="outline-text-2" id="text-12">
+<pre class="example">
+DATE: [2018-05-15 Tue 17:40]
+ID: f7e17854-2da5-4530-a2d4-dc896c963fd6
+PUBDATE: <2018-05-17 Thu 09:00>
+</pre>
+
+<p>
+<a href="Literate-Programming-with-Org-Mode.html">Literate Programming with Org Mode</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-b7e86ca8-367c-4ba0-8ebb-ba37860958c0" class="outline-2">
+<h2 id="ID-b7e86ca8-367c-4ba0-8ebb-ba37860958c0"><span class="section-number-2">13.</span> <a href="#ID-b7e86ca8-367c-4ba0-8ebb-ba37860958c0">multilingual support with ob-translate and google-translate</a></h2>
+<div class="outline-text-2" id="text-13">
+<pre class="example">
+DATE: [2018-04-21 Sat 15:57]
+ID: b7e86ca8-367c-4ba0-8ebb-ba37860958c0
+PUBDATE: <2018-04-21 Sat 16:30>
+</pre>
+
+<p>
+<a href="multilingual-support-with-ob-translate-and-google-translate.html">multilingual support with ob-translate and google-translate</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-dc0b9dbc-8abd-42ba-834d-e5205a99910b" class="outline-2">
+<h2 id="ID-dc0b9dbc-8abd-42ba-834d-e5205a99910b"><span class="section-number-2">14.</span> <a href="#ID-dc0b9dbc-8abd-42ba-834d-e5205a99910b">Learned basic skateboard</a></h2>
+<div class="outline-text-2" id="text-14">
+<pre class="example">
+DATE: [2018-04-21 Sat 11:15]
+ID: dc0b9dbc-8abd-42ba-834d-e5205a99910b
+PUBDATE: <2018-04-21 Sat 11:32>
+</pre>
+
+<p>
+<a href="Learned-basic-skateboard.html">Learned basic skateboard</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-62bcea74-3133-4a44-adda-bd71f977c8fc" class="outline-2">
+<h2 id="ID-62bcea74-3133-4a44-adda-bd71f977c8fc"><span class="section-number-2">15.</span> <a href="#ID-62bcea74-3133-4a44-adda-bd71f977c8fc">Needlework: Setup the sewing machine</a></h2>
+<div class="outline-text-2" id="text-15">
+<pre class="example">
+DATE: [2018-04-20 Fri 11:41]
+ID: 62bcea74-3133-4a44-adda-bd71f977c8fc
+PUBDATE: <2018-04-20 Fri 12:32>
+</pre>
+
+<p>
+<a href="setup-the-sewing-machine-for-needlework.html">setup the sewing machine for needlework</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-ecd128b5-33b0-42f8-bfa1-8a9134d697fa" class="outline-2">
+<h2 id="ID-ecd128b5-33b0-42f8-bfa1-8a9134d697fa"><span class="section-number-2">16.</span> <a href="#ID-ecd128b5-33b0-42f8-bfa1-8a9134d697fa">How to BANISH myself</a></h2>
+<div class="outline-text-2" id="text-16">
+<pre class="example">
+DATE: [2018-04-18 Wed]
+ID: ecd128b5-33b0-42f8-bfa1-8a9134d697fa
+PUBDATE: <2018-04-18 Wed 14:13>
+</pre>
+
+<p>
+<a href="How-to-BANISH-myself.html">How to BANISH myself</a>
+</p>
+</div>
+</div>
+<div id="outline-container-ID-b80c8cad-9403-4533-9cd4-cb2fd5b92678" class="outline-2">
+<h2 id="ID-b80c8cad-9403-4533-9cd4-cb2fd5b92678"><span class="section-number-2">17.</span> <a href="#ID-b80c8cad-9403-4533-9cd4-cb2fd5b92678">test org-mode ox-publish</a></h2>
+<div class="outline-text-2" id="text-17">
+<pre class="example">
+TIME: [2016-04-22 Fri 22:54]
+ID: b80c8cad-9403-4533-9cd4-cb2fd5b92678
+PUBDATE: <2018-04-18 Wed 14:13>
+</pre>
+
+<p>
+<a href="Org-mode-exporter-template-for-testing.html">Test Org Mode ox-publish</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<footer>
+  Copyright 2011, Author: Christopher M. Miles (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
+  Last update date: 2025-08-22 Fri 00:10.<br>
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+
+  <!-- RSS -->
+  You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
+  
+  <!-- Show Org Source -->
+  <script>
+   var url = document.location.href;
+   var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+   function show_org_source(){
+     document.location.href = orgsource;
+   }
+  </script>
+  <div id="show_source"><input type="button" value="Show Org source" onClick='show_org_source()'></div>
+
+</footer>
+
+<!-- scroll to top -->
+<button onclick="myScrollTop()" id="scrollTopBtn" title="Go to top">Top</button>
+
+<!-- payment -->
+<div class='payment'>
+  <!-- use two inline aligned small thumb QR code image -->
+  <!-- <div id='alipay-payment'><a href="/About/index.html#Payment"><img src="/assets/images/alipay_payment.jpg" title="打赏" /></a></div>
+       <div id='wechat-payment'><a href="/About/index.html#Payment"><img src="/assets/images/wechat_payment.png" title="打赏" /></a></div> -->
+  
+  <!-- use a custom reward image to be more friendly -->
+  <div id="payment-icon">
+    <a href="/About/index.html#Payment"><img src="/assets/images/reward-icon.png" title="谢谢打赏" /></a>
+  </div>
+</div>
+
+<!-- Google Analytics -->
+<!-- <script async src="//www.google-analytics.com/analytics.js"></script>
+     <script type="text/javascript">
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-63992234-1', 'auto');
+     ga('send', 'pageview');
+     </script> -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63992234-1"></script>
+     <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-63992234-1');
+     </script> -->
+
+<!-- Disqus -->
+<!-- <div class="comments">
+     <style>
+     /* hide comment policy */
+     .comment-policy {
+     display: none;
+     }
+     /* hide Disqus footer */
+     .disqus-footer__wrapper {
+     display: none;
+     } 
+     </style>
+     
+     <div id="disqus_thread"></div>
+     <script>
+     (function() {
+     var d = document, s = d.createElement('script');
+     s.src = 'https://stardiviner.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+     })();
+     </script>
+     </div> -->
+</div>
+</body>
+</html>

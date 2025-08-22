@@ -1,0 +1,30 @@
+# Created 2025-08-22 Fri 13:10
+#+title: stardiviner's index page
+#+date: [2011-11-11 Fri 08:58]
+#+author: stardiviner
+* About Me
+
+[[file:assets/images/avatar.jpg]]
+
+I'm an amateurish coder like Lisp, Clojure, I use Emacs (Org Mode) a lot in my
+daily life! My working system is Arch Linux. I contribute some code to open
+sourced projects, Emacs packages, Org Mode etc sometimes. Mainly actived in
+Clojure forums, Emacs/Org-Mode mailing lists, IRC channels
+(#emacs,#archlinux,#lisp,#clojure) sometimes.
+
+I like literature, movie, philosophy, argue, and daydreams. I like get to know
+about any interested things. I write some small and never published novels with
+suddenly popuped fantasy idea.
+
+[[file:About/data/images/me_picture 23.jpg]]
+
+喜欢电脑技术，喜欢编程，是一名Coder，喜欢Lisp，Clojure。在生活中主要用Emacs (Org
+Mode)。我的笔记本上安装的是Arch GNU/Linux。这是我从2012年开始用到现在的。平常会
+对一些开源项目Emacs的插件或者Org Mode贡献代码。还喜欢 Programming Electric Music
+编程音乐 Overtone， 喜欢互联网。
+
+喜欢看哲学，文学，[[https://movie.douban.com/people/stardiviner/][电影]]，滑板，和史诗音乐。性格随和，思想开放乐观，接受多元化文化。
+还喜欢做白日梦，以及各种有趣的东西。也会把脑海中突然冒出来的一些奇怪的念头和想法
+写成短小的小说残篇，我还从来没有发表过他们。
+
+我的网上档案，更多信息： [[file:About/index.html][About]]

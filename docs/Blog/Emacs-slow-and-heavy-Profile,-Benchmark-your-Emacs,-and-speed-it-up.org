@@ -1,0 +1,1356 @@
+# Created 2025-08-22 Fri 13:06
+#+title: Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
+#+author: Christopher M. Miles
+* Is your Emacs slow and heavy?
+:PROPERTIES:
+:ID:       9348a942-1e91-4587-a10f-9dd769a32a9a
+:PUBDATE:  <2019-08-14 Wed 19:10>
+:END:
+
+When you installed many Emacs packages, or you set up many configurations. You found your
+Emacs is slow, and heavy. I have this situation many times. I can feel my typing in Emacs
+Org Mode. when code completion, and search, generating results etc. This makes me dive
+into problems and find solution for it.
+
+Here are some ways you can find out the reaons:
+
+- elp :: Emacs built-in Emacs Lisp profiler
+- profiler :: Emacs built-in profiler
+- esup :: Emacs start-up profiler
+** elp
+:PROPERTIES:
+:ID:       a5357d0e-a3e2-46c8-8cbb-8f51117e5121
+:END:
+*** workflow
+:PROPERTIES:
+:ID:       05782c93-bcee-4c8d-852c-822a213ad0ab
+:END:
+
+Profile the code while executing the function that takes a long time.
+
+1. instrument code
+
+   - instrument package
+     =[M-x elp-instrument-package RET <package> RET]=
+
+     Like =[M-x elp-instrument-package RET org- RET]=
+
+   - instrument function
+     =[M-x elp-instrument-function RET <function> RET]=
+
+2. execute code you want to profiling.
+
+3. show results with =[M-x elp-results]=.
+
+For example:
+
+use =elp= to see what is slowing down =elpy=.
+
+You can start monitoring the whole =elpy= package with:
+
+#+begin_src emacs-lisp
+(elp-instrument-package "elpy-")
+#+end_src
+
+#+RESULTS[<2018-10-18 Thu 14:16>  195bb60d4648549a9e035f99aebac8fd7feaa2a0]:
+
+do your time-consuming operations, and get a report with =[M-x elp-results]=.
+*** =[C-h p elp RET]=
+:PROPERTIES:
+:ID:       e5cd4631-becc-4b9d-b833-bd82705c66bc
+:END:
+
+If you want to profile a bunch of functions, set elp-function-list
+to the list of symbols, then do a M-x elp-instrument-list.  This
+hacks those functions so that profiling information is recorded
+whenever they are called.  To print out the current results, use
+M-x elp-results.  If you want output to go to standard-output
+instead of a separate buffer, setq elp-use-standard-output to
+non-nil.  With elp-reset-after-results set to non-nil, profiling
+information will be reset whenever the results are displayed.  You
+can also reset all profiling info at any time with M-x
+elp-reset-all.
+
+You can also instrument all functions in a package, provided that
+the package follows the GNU coding standard of a common textual
+prefix.  Use M-x elp-instrument-package for this.
+
+If you want to sort the results, set elp-sort-by-function to some
+predicate function.  The three most obvious choices are predefined:
+elp-sort-by-call-count, elp-sort-by-average-time, and
+elp-sort-by-total-time.  Also, you can prune from the output, all
+functions that have been called fewer than a given number of times
+by setting elp-report-limit.
+
+Elp can instrument byte-compiled functions just as easily as
+interpreted functions, but it cannot instrument macros.  However,
+when you redefine a function (e.g. with eval-defun), you'll need to
+re-instrument it with M-x elp-instrument-function.  This will also
+reset profiling information for that function.  Elp can handle
+interactive functions (i.e. commands), but of course any time spent
+idling for user prompts will show up in the timing results.
+
+You can also designate a `master' function.  Profiling times will
+be gathered for instrumented functions only during execution of
+this master function.  Thus, if you have some defuns like:
+
+(defun foo () (do-something-time-intensive))
+(defun bar () (foo))
+(defun baz () (bar) (foo))
+
+and you want to find out the amount of time spent in bar and foo,
+but only during execution of bar, make bar the master.  The call of
+foo from baz will not add to foo's total timing sums.  Use M-x
+elp-set-master and M-x elp-unset-master to utilize this feature.
+Only one master function can be set at a time.
+
+You can restore any function's original function definition with
+elp-restore-function.  The other instrument, restore, and reset
+functions are provided for symmetry.
+
+Here is a list of variable you can use to customize elp:
+  elp-function-list
+  elp-reset-after-results
+  elp-sort-by-function
+  elp-report-limit
+
+Here is a list of the interactive commands you can use:
+  elp-instrument-function
+  elp-restore-function
+  elp-instrument-list
+  elp-restore-list
+  elp-instrument-package
+  elp-restore-all
+  elp-reset-function
+  elp-reset-list
+  elp-reset-all
+  elp-set-master
+  elp-unset-master
+  elp-results
+
+Note that there are plenty of factors that could make the times
+reported unreliable, including the accuracy and granularity of your
+system clock, and the overhead spent in lisp calculating and
+recording the intervals.  I figure the latter is pretty constant,
+so while the times may not be entirely accurate, I think they'll
+give you a good feel for the relative amount of work spent in the
+various lisp routines you are profiling.  Note further that times
+are calculated using wall-clock time, so other system load will
+affect accuracy too.
+** profile
+:PROPERTIES:
+:ID:       d00418dd-365e-4ba4-8a7d-369a8d510fba
+:END:
+*** workflow
+:PROPERTIES:
+:ID:       59726f18-c60f-4b0e-b461-bdbd2d41fef5
+:END:
+
+1. active profiler
+
+   =[M-x profiler-start]=
+
+2. show profiler result report
+
+   =[M-x profiler-report]=
+
+3. stop profiler
+
+   =[M-x profiler-stop]=
+
+4. You need to reset profiler logs before nest new profiling.
+
+   =[M-x profiler-reset]=
+** esup
+:PROPERTIES:
+:ID:       48787dca-ae17-4b0b-8d80-7e7dfd692236
+:END:
+
+http://github.com/jschaf/esup
+*** workflow
+:PROPERTIES:
+:ID:       c01cc663-044d-41fd-b25f-3dee48c3e9af
+:END:
+
+1. start a new Emacs instance for ESUP.
+
+   =[M-x esup]=
+
+2. display ESUP result.
+
+   =[M-x esup-display-results]= it will read buffer =*esup-results*=.
+*** navigation -- =[n/p/<RET>]=
+:PROPERTIES:
+:ID:       f23ffbbe-237d-48f0-8ed9-8961f97f958e
+:END:
+*** FAQ
+:PROPERTIES:
+:ID:       bd1a8483-a23e-4155-b32b-eb41dd2c6856
+:END:
+**** Q: Debugger entered--Lisp error: (invalid-read-syntax "#")
+:PROPERTIES:
+:ID:       4801fa59-d0f8-4f60-ad7e-4b656f53b01c
+:END:
+
+#+begin_example
+Debugger entered--Lisp error: (invalid-read-syntax "#")
+  read(#<buffer *esup-results*>)
+  esup-read-result(1344074)
+  esup-read-results()
+  esup-display-results()
+  esup-child-process-sentinel(#<process *esup-child*> "finished\n")
+#+end_example
+
+- [-] use edebug on ~esup-read-results~, then =[M-x esup-display-results]=
+  - [X] disable package
+    - [X] comment-tags
+
+      #+begin_example
+      (esup-result "esup-result" :file "/home/stardiviner/.emacs.d/init/programming/languages/Query/init-prog-lang-database-mongodb.el" :start-point 402 :line-number 26 :expression-string #("(use-package ob-mongo
+      :ensure t
+      :defer t
+      :init
+      (add-to-list 'org-babel-load-languages '(mongo . t))
+      (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
+      ;; FIXME: (add-to-list 'org-babel-tangle-lang-exts '(\"mongo\" . \"??\"))
+      )" 0 22 (fontified nil) 22 32 (fontified nil) 32 41 (fontified nil) 41 47 (fontified nil) 47 100 (fontified nil) 100 181 (fontified nil) 181 184 (fontified nil) 184 190 (comment-tags-highlight (#<marker at 598 in init-prog-lang-database-mongodb.el> #<marker at 604 in init-prog-lang-database-mongodb.el>) fontified nil) 190 251 (fontified nil) 251 252 (fontified nil)) :end-point 668 :exec-time 0.070872 :gc-number 0 :gc-time 0.000000)
+      #+end_example
+
+  - [ ] execute ~(esup-read-result (point))~ in =*esup-results*= buffer, it will put point
+    on the read syntax error "#".
+    - [ ] (#<marker at 477 in init-prog-lsp.el> #<marker at 481 in init-prog-lsp.el>)
+    - [ ] init-prog-lang-javascript.el
+    - [ ] init-prog-lang-database-mongodb
+* The history commits I did which slow down my Emacs
+:PROPERTIES:
+:ID:       ef36eba6-6e1d-442a-a5a9-b8ebeba7d6ba
+:PUBDATE:  <2019-08-14 Wed 19:10>
+:END:
+
+Here is my Emacs config: https://github.com/stardiviner/emacs.d
+
+Let's search all my commits which slow down my Emacs and what I did to improve the
+performance. (If you have similar situation, you can find some hints about what might slow
+Emacs.)
+
+#+begin_src sh :dir "~/.emacs.d/"
+git log --grep "performance" --grep "speed" --grep "slow"
+#+end_src
+
+#+results[<2018-10-20 19:51:41> ecd2aaba08bb98dce108ec97d91d13db741e51df]: 
+#+begin_example
+commit fce52322ddae88d9fad148447c6141edd8bc10fb
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Oct 19 17:21:24 2018 +0800
+
+    [performance] disable blink-cursor-mode to speedup Emacs.
+
+commit a4414d5fb4c38e99188d597d610f5a2a2cbe4d7c
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Oct 19 17:19:16 2018 +0800
+
+    [performance] disable org-table-sticky-header to speedup in Org Mode.
+
+commit 0040ad77c82e99db28c894b80572b0516aad475f
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Oct 18 13:29:19 2018 +0800
+
+    [performance] remove symbol-overlay-mode auto highlight to speedup Emacs.
+
+commit 8dfffae3564ce3805e3882f429384c57b73a27ad
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun Oct 14 09:35:07 2018 +0800
+
+    [performance] disable smartparens in org-mode.
+
+commit ec243beba814a1a321d5ce39b90db19e44ee2b85
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun Oct 14 09:08:02 2018 +0800
+
+    [performance] put all opened files behinde Emacs after-init-hook.
+
+commit 443a73342ce6b1330b9dd8af8e05fb95743a5c90
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun Oct 14 09:05:05 2018 +0800
+
+    [performance] disable some packages slow down editing.
+
+commit 994aabdae68b4539c75187f52e4efa19a606cdd9
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Oct 9 19:37:08 2018 +0800
+
+    [performance] disable line number info in mode-line.
+
+commit c7076dd7d5911ce1d93dcbb79a1da4950d39bf74
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Oct 9 19:35:48 2018 +0800
+
+    [performance] disable blink cursor.
+
+commit 2c54e9546a7b6cb38e4d5f0819b16af9a39e8be1
+Author: stardiviner <numbchild@gmail.com>
+Date:   Mon Aug 13 21:58:15 2018 +0800
+
+    [performance] make lot of small optimization on Emacs startup performance.
+
+commit cadd4eb41e83dd3bac2a162379ffff9518ad137f
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun Aug 12 10:07:34 2018 +0800
+
+    [performance] define empty function before really loading custom mode-line fragments.
+
+commit bff7aae3e80eeed66204ba643dd4c44169628dd5
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Aug 10 14:47:58 2018 +0800
+
+    [performance] adjust some packages' configuration to speedup Emacs startup time.
+
+commit efc90339cd33d05e01ad69fb141b8e4f6eaade6e
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Aug 10 14:45:54 2018 +0800
+
+    [performance] disable custom mode-line fragments:
+    
+    projectile, github-notifications, copy-file-on-save.
+
+commit d624a3cfb229d49ecbaaf875cae21e4ccb7c363f
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Aug 8 15:52:51 2018 +0800
+
+    disable company-box.
+    
+    - Because no need for icons.
+    - and company-box tooltip is slower than company-mode default tooltip popup.
+    - disable one package to speedup Emacs startup performance.
+    - company-box's company-doc great support can be replaced by
+      company-mode [F1]/[M-h] open in a new buffer.
+
+commit dc16fd58cd2128ec1a99465ab10d3a6811cebd54
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Aug 2 08:53:47 2018 +0800
+
+    [performance] speed-up Emacs startup time (2)
+
+commit 27d707fc63f2d1ae04979e80b98d9dc108842b22
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Jul 26 13:55:08 2018 +0800
+
+    [performance] reduce Emacs startup time.
+    
+    - disable desktop-save-mode
+    - improve use-package :init and :config usage
+    - disable some packages and init files
+
+commit 10ce8ff506bceb52adb60998a2980ec86dc861d6
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Jun 5 12:16:27 2018 +0800
+
+    [mode-line] disable ruby env info and increase *github interval to speedup performance.
+
+commit b4422fcf0d69120600d0e181c4df767c976f01e1
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Jun 1 10:06:58 2018 +0800
+
+    [performance] to speed-up Emacs startup time.
+    
+    use (with-eval-after-load 'majro-mode (require 'init-prog-lang-*))
+
+commit 2f573892c4533766a88f7629b2668ce1c2366c03
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri May 25 09:45:43 2018 +0800
+
+    [performance] disable custom place Info directory to fix Emacs start-up freeze issue.
+
+commit 0b5cf1e43115b6f333e1ceea56aac6c283df8d9f
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed May 23 12:35:22 2018 +0800
+
+    [performance] improve Emacs performance by disable somethings.
+    
+    - increase company-box doc delay.
+    - disable aggressive-fill-paragraph in org-mode-hook
+    - disable undo-tree
+    - increase minibuffer savehist auto save interval
+    - disable indent-guide-mode in prog-mode-hook
+    - disable ob-clojure-literate-mode auto enable in org-mode-hook
+
+commit 1a9f7748dfbdb8eb484498d0ca31031d0ff8237c
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed May 23 12:31:15 2018 +0800
+
+    [performance] disable many init files to reduce Emacs startup time.
+
+commit f93fdd8f687f2141f46a3189d95c07f58bf45c87
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun May 13 08:07:59 2018 +0800
+
+    [mode-line] disable *company-lighter fragement to improve Emacs performance.
+    
+    Make company-mode smoother.
+
+commit 65e2e523237f8f80f486924a1189e2b71afa1732
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat May 12 10:54:11 2018 +0800
+
+    [mode-line] improve mode-line fragments condition performance.
+
+commit c2f675709fb1c4190a5cb9b2dab137481cfb6aa0
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu May 10 17:15:12 2018 +0800
+
+    [minibuffer] disable eldoc-mode in minibuffer.
+    
+    - it is enabled already (display in mode-line)
+    - affect company-mode, eldoc-eval performance
+
+commit 96990a44a7c36d08299c2137b5e41c2a9c21c174
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu May 10 16:29:55 2018 +0800
+
+    [Org-mode] disable my custom org faces init file to speed-up Emacs Org-mode performance.
+
+commit 1d8e3f4baac11f8e40695db1473eabd91db697e7
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu May 10 10:15:07 2018 +0800
+
+    [mode-line] simplify *buffer-info fragment to improve Emacs performance.
+
+commit cf53ee515a2ffdfb2e507bc84a9263a14bfa5265
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed May 9 09:43:33 2018 +0800
+
+    [mode-line] disable *selection-info fragment to speed-up Emacs performance:
+    
+    when region select large text.
+
+commit 977d11e15f445ec21eebda3998a03e49b4206212
+Author: stardiviner <numbchild@gmail.com>
+Date:   Mon May 7 11:55:42 2018 +0800
+
+    [performance] improve custom mode-line fragments.
+    
+    - those mode-line fragments are frequently invoked by many other functions.
+    - use buffer local variables to avoid frequently re-eval of FORMS.
+
+commit 5b55bf82129bca8efe84ac578de656def1dd3c57
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat May 5 18:15:53 2018 +0800
+
+    [performance] speed-up Emacs performance.
+    
+    - disable org-indent-mode
+    - remove company-quickhelp (fontify is ugly, *Help* [F1] is better)
+    - lightweight company-transformers
+    - lightweight custom mode-line fragment *buffer-info
+    - disable custom mode-line fragment *keycast
+    - disable custom mode-line fragment *major-mode timers
+    - disable beacon
+    - increase desktop-save-mode interval
+    - increase savehist interval
+    - vc only support Git backend
+    - remove lot of pdf-tools default options
+    - lightweight projectile config
+
+commit be0083109e1281c9419510198ab311c0195aacc1
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri May 4 08:13:04 2018 +0800
+
+    [company-box] disable split window performance slow for `company-box-doc'.
+    
+    Because `company-box` use `describe-function` to get doc for `company-box-doc`.
+
+commit b990950eaeeba85cdd953b09928376fa6e2a2cd5
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed May 2 21:04:35 2018 +0800
+
+    [performance] put Emacs startup set GC at very beginning of init.el
+
+commit 5360490ad5be3687e048f4f1c14b4fc4304e224a
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue May 1 20:52:36 2018 +0800
+
+    [git gutter] disable git-gutter+-mode to speed-up performance.
+
+commit 7bec33db01ab40f63b0e1523b29f6294d96adecc
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue May 1 20:50:42 2018 +0800
+
+    [HTML] disable cakecrumbs to speed-up performance.
+    
+    - disable auto-started timers in Org-mode src blocks.
+
+commit 461f4cec450a960242d0ffca46efcd762fdff80f
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue May 1 20:49:58 2018 +0800
+
+    [spelling] disable flyspell auto start to speed-up performance.
+
+commit 126bf909f969ae3a2da004afd16aec4e79665a50
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue May 1 10:24:14 2018 +0800
+
+    [performance] increase GC at Emacs startup.
+
+commit 150d54db26a3355192e0643698f52f1a5fe5731e
+Author: stardiviner <numbchild@gmail.com>
+Date:   Mon Apr 16 16:22:32 2018 +0800
+
+    [flycheck] enable flycheck manually instead of auto to speedup Emacs performance.
+
+commit 8970e1ff9994686315bb6ce561782b4b4bcd4fd1
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Apr 14 15:21:44 2018 +0800
+
+    [performance] disable many packages and refactor Emacs configurations.
+    
+    - disable company-mode, flyspell-mode in org-mode to speed-up Org-mode.
+    - enable many init files after improved performance.
+
+commit 7de2373c231a51eb275a58dc4ba69328fc94c682
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Apr 11 00:37:42 2018 +0800
+
+    [performance] disable many init files to speed-up Emacs.
+
+commit db54a8a9f0613b839a0581a13af1ead119daaa94
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Apr 11 15:02:57 2018 +0800
+
+    [mu4e] speedup mu4e indexing by lazy indexing. increase mu4e results limit.
+
+commit 35d1e9cc952571dee44e267e3dcd3e5e38af60ea
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Apr 6 15:10:57 2018 +0800
+
+    [mu4e] speedup mu4e indexing by lazy indexing. increase mu4e results limit.
+
+commit fa296e5d95ec203ddc2eb8df1000247dfec0ab8c
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Mar 14 10:05:13 2018 +0800
+
+    [tags] totally disable rtags to speed-up Emacs performance.
+
+commit 844f4f9b709b80507223326f1a74462c3e0b8d5e
+Author: stardiviner <numbchild@gmail.com>
+Date:   Mon Feb 19 20:11:40 2018 +0800
+
+    [performance] add use-package :defer keyword to speedup Emacs startup time.
+
+commit 63ff95c9288835a2020d0cdaa117dcd122c49d39
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Feb 6 16:43:30 2018 +0800
+
+    [company-mode] speed-up company-mode.
+    
+    - smaller delay on company-idle.
+    - put enable global-company-mode ahead.
+    - group company-abbrev with company-dabbrev-code
+
+commit 927737d7a698158008190cf517737ff1e768396b
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Feb 3 09:03:27 2018 +0800
+
+    [org-mode] disable all extra org-mode modules to speed-up Org-mode file opening.
+
+commit 915eb18498038ad775c01c53a891e3d404823577
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Jan 30 17:38:22 2018 +0800
+
+    [performance] disable some auto-revert in Dired buffer to fix Emacs suspend performance issues.
+
+commit 35aa03ab55a6ecfed88334507affab6a66e388d4
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Jan 27 18:33:33 2018 +0800
+
+    [flycheck] only start flycheck automatically after saving buffer.
+    
+    - speedup typing performance.
+
+commit 92bd20cd8f2ba823cb6493b2ba5045331f9b2aa9
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Jan 26 21:04:24 2018 +0800
+
+    [flyspell] improve flyspell performance.
+    
+    - disable flyspell in Org-mode to speed-up.
+    - refactor flyspell-use-meta-tab option with use-package :prefix section.
+    - only trigger flyspell in very small situations to speedup flyspell.
+
+commit 8c49301743d3aa3a28e15f4b6ffd189edff15cda
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Jan 25 12:00:30 2018 +0800
+
+    [pdf-tools] don't use mode-line unicode light to speed-up pdf-tools.
+
+commit 410a5ed172ee71550fa81dbc6c632357f94d34ce
+Author: stardiviner <numbchild@gmail.com>
+Date:   Mon Jan 8 13:25:47 2018 +0800
+
+    [performance] disable org-notify to speed up Emacs.
+
+commit 7ef57d093b7a4d93da35f33765fbc902f3ad370c
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Dec 30 18:58:49 2017 +0800
+
+    improve Emacs performance.
+    
+    - trigger flycheck only when saving buffer.
+    - disable eldoc-overlay-mode.
+    - disable org-mode startup inline-image display.
+    - remove lisp-extra-font-lock-global-mode.
+
+commit fe2899dbe91a2151da3cc8bf9a9129dc74db0a12
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Dec 13 10:50:57 2017 +0800
+
+    refactor to speedup Emacs config:
+    
+    - remove all other packages like js-refactor except basic packages
+    - disable other unless init files except elisp, clojure etc
+
+commit b881ad1db88cfd6e624d6d7815eaa915457f5d92
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Dec 5 18:30:01 2017 +0800
+
+    improve calendar markers:
+    
+    - disable marking calendar holidays to speed up org-time-stamp-interactive command performance
+    - change calendar-today face
+    - comment marking diary entries option
+
+commit 4976f70bfe01260d2c8f75802ba4b098859facc9
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Nov 17 23:51:17 2017 +0800
+
+    disable beacon-mode to speed-up Emacs normal move around performance.
+
+commit 0555b618511fd5fda0046e46cdf87f7767386ce1
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Nov 7 14:58:22 2017 +0800
+
+    disable org-agenda include diary to speed up org agenda entries generation.
+
+commit 4293927e958e74454320e638b749cf18ad08f25b
+Author: stardiviner <numbchild@gmail.com>
+Date:   Mon Nov 6 22:19:45 2017 +0800
+
+    add :defer to speed up Emacs startup.
+
+commit d8511554cee61a3a99d413a6beb30c2c41987ad4
+Author: stardiviner <numbchild@gmail.com>
+Date:   Mon Nov 6 10:41:48 2017 +0800
+
+    move reveal.js local library out of init/ path to speed up Emacs initializing.
+
+commit 25c4de0cedc3f48debb4319993af48a25ba742ab
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun Oct 8 11:38:08 2017 +0800
+
+    change irfc RFC documentations location.
+    
+    Delete all RFC documentations files to speed up .emacs.d/ project directory text search engine speed.
+
+commit 3476df47fc5124634abe64857237f5e7aa66c39c
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Sep 28 19:31:26 2017 +0800
+
+    disable erc-image and erc-crypt to speedup ERC loading.
+
+commit ae101803619b89ad6c99b95677c63fa6a06b3b81
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Aug 24 10:06:26 2017 +0800
+
+    change org-refile max level to speed up org-refile and reduce targets number.
+
+commit 74f372612c155aa3123b487b62398b55ebb92a4f
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Aug 24 10:05:43 2017 +0800
+
+    enable org-mode auto show inline images at startup after speed-up org-mode.
+
+commit bd06474eed93054b3061638640e7cb4048be7789
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Aug 24 09:52:37 2017 +0800
+
+    disable org-bullets to speed-up opening big org-mode files.
+
+commit 85d9b0db640ff4736a4d02700e7ad538d1d5f9c8
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun Aug 13 10:04:30 2017 +0800
+
+    disable company-shell to speed up.
+
+commit d3ea8d029f2f90a6b7df885d96c9d873fa9cdeda
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Jul 25 09:09:27 2017 +0800
+
+    improve Magit performance by:
+    
+    - disable status buffer refresh.
+    - disable auto revert Magit related buffers.
+    - disable Emacs built-in VC backends only for Git.
+
+commit d24ae4c0ba8c65a138397993e2261677e53d97f7
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Jun 6 19:53:26 2017 +0800
+
+    Speed up Emacs performance by disable many packages.
+    
+    - remove package wotd.
+    - disable mu4e-alert desktop notifications.
+    - disable package swift3-mode.
+    - disable ruby-test-mode.
+    - migrate EIN and ob-ipython to Data Science init file.
+    - disable global hl-todo-mode.
+    - disable eldoc-overlay-mode.
+    - disable org-drill-table.
+    - disable package etable.
+    - disable some init files to reduce Emacs require loading time.
+    - add package qt-pro-mode.
+    - disable json-mode.
+    - disable some Java related packages.
+    - disable ob-php.
+    - disable pygen package.
+    - disable bibtex related packages.
+    - disable hideshow.
+
+commit 98d0897f2ec36ffda5fc2f1c5f51552071ba9e8d
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat May 13 15:56:15 2017 +0800
+
+    disable aggressive-indent to speedup Emacs.
+
+commit 0fa74addab531efa8e1cbafb4d17a2018b410ecb
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Apr 28 12:18:08 2017 +0800
+
+    disable org-table chinese & english mixing fonts settings to improve org-mode performance.
+
+commit 5896368afb1f076ea5efead7b2292f9822f7132b
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Apr 28 12:17:41 2017 +0800
+
+    disable org-indent settings to improve org-mode performance.
+
+commit 2ac8c7c31ae889a1af75ff750b8a3d1024b964f6
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Apr 19 13:53:45 2017 +0800
+
+    fix flyspell-mode performance issue which cause Org-mode suspend.
+    
+    - disable package guess-language.
+    - disable package flyspell-correct-popup.
+
+commit edf33affb2b83bcab1943bc7212d31769c086212
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Apr 14 10:34:30 2017 +0800
+
+    Speedup Emacs by improve custom mode-line fragments.
+    
+    - fix custom mode-line fragment *major-mode missing major-mode name in fallback condition.
+    - speedup *major-mode condition detect.
+    - change all-the-icons function in custom mode-line fragment *major-mode to speedup Emacs.
+    - remove flycheck issues string for decrease length.
+    - remove redundant space to decrease length.
+    - decrease some all-the-icons size.
+    - improve custom mode-line fragment *current.
+
+commit e75ebb449c5017efe1d21c12f5ea8c056090d774
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Nov 24 22:44:55 2016 +0800
+
+    speed-up Emacs: disable some init files and some packages.
+
+commit ba562a7afef6a5d09398a356ed825601a8a6846a
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Nov 22 18:40:31 2016 +0800
+
+    disable a lot of init files to speed-up Emacs.
+    
+    - migrate org-mode babel language specific settings to corresponding init files.
+    - disable some modes.
+
+commit ace5bc229be0924ebdc7a4c07762d9580c3b5649
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Oct 28 10:54:43 2016 +0800
+
+    remove sr-speedbar deprecated options.
+
+commit 549112e8c5d2841dae457f469fb43416cde91188
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Oct 19 16:29:14 2016 +0800
+
+    refactor Emacs init files.
+    
+    - improve packages config of use-package :defer and :init.
+    
+    disable ejc-sql.
+    
+    enable Perl init file.
+    
+    configure plsense.
+    
+    define search engine for Google Translate.
+    
+    add :defer to lazy loading with use-package.
+    
+    disable some init files.
+    
+    remove package col-highlight.
+    
+    remove package pretty-mode.
+    
+    remove package package-break-lines.
+    
+    remove package ace-popup-menu.
+    
+    remove package discover.
+    
+    remove package apropos+.
+    
+    remove package icomplete.
+    
+    remove package eldoc-eval.
+    
+    enable feature help-at-pt.
+    
+    remove package E2WM.
+    
+    remove package ne2wm.
+    
+    remove perspective package usage comments.
+    
+    remove package window-purpose.
+    
+    remove package perspective.
+    
+    remove package golden-ratio.
+    
+    remove package shackle.
+    
+    remove package elscreen.
+    
+    remove package zone-nyan.
+    
+    remove package whitespace-mode.
+    
+    remove undo-tree usage comments.
+    
+    remove package kill-ring-ido.
+    
+    remove package kill-ring-search.
+    
+    remove package awk-it.
+    
+    remove package visual-mark.
+    
+    remove ace-jump-mode usage comments.
+    
+    remove package ace-isearch.
+    
+    remove package pophint.
+    
+    remove package popup-imenu.
+    
+    remove bookmark usage comments.
+    
+    remove package bind-key
+    
+    remove package outline.
+    
+    remove allout useless config.
+    
+    remove package allout-widgets & outshine.
+    
+    remove package chinese-pyim and quail.
+    
+    remove chinese input method init file.
+    
+    remove package flyspell-lazy.
+    
+    remove package flyspell-correct-ivy, flyguess.
+    
+    remove package auto-dictionary.
+    
+    remove package docview-mode usage comments.
+    
+    remove docview-mode configuration.
+    
+    enable package vlf.
+    
+    remove package kurecolor.
+    
+    enable package image+.
+    
+    remove doc-view configuration.
+    
+    refactor Dired init file.
+    
+    refactor mmm-mode config.
+    
+    refactor dabbrev usage comments.
+    
+    remove Isearch usage comments.
+    
+    remove package Isearch+.
+    
+    refactor anzu config.
+    
+    remove package color-moccur.
+    
+    remove package swoop.
+    
+    remove package helm-swoop.
+    
+    remove package find-fine-in-project.
+    
+    disable package f3.
+    
+    remove package highlight-quoted.
+    
+    remove package highlight-numbers.
+    
+    remove package highlight-escape-sequences.
+    
+    remove package highlight-stages.
+    
+    remove package pcre2el usage comments.
+    
+    remove duplicate swiper config in regexp init file.
+    
+    remove package shelldoc.
+    
+    remove package dizzee.
+    
+    remove package org-time-budgets.
+    
+    remove calc usage comments.
+    
+    remove package calculator-mode.
+    
+    remove package conkeror-minor-mode.
+    
+    remove package speedread.
+    
+    remove newsticker init file.
+    
+    remove package gist.el
+    
+    remove package mingus.
+    
+    remove Bongo init file.
+    
+    remove package capture.
+    
+    remove package mwe-log-commands.
+    
+    fix package glasses name.
+    
+    enable glasses-mode.
+    
+    remove ycmd init file.
+    
+    remove package etags-update.
+    
+    remove package etags-u.
+    
+    enable package helm-gtags.
+    
+    change ggtags keybindings prefix.
+    
+    remove rtags usage comments.
+    
+    remove redundant comments of temp config.
+    
+    refactor neotree config with use-package.
+    
+    migrate separate sidebar package init files into one init file.
+    
+    remove package howdoi.
+    
+    remove package which-function-mode.
+    
+    enable programming inferior init file.
+    
+    remove package flycheck-tip.
+    
+    remove emr usage comments.
+    
+    refactor projectile config.
+    
+    refactor vcs init files require.
+    
+    refactor magit config.
+    
+    refactor git-messenger config.
+    
+    remove package git-gutter-fringe.
+    
+    remove package diff-hl.
+    
+    remove git-gutter+ usage comments.
+    
+    remove package magit-filenotify.
+    
+    refactor magit-gerrit config.
+    
+    remove duplicate magit-gerrit config.
+    
+    refactor package bts config.
+    
+    remove package paren-face.
+    
+    refactor programming electric packages.
+    
+    refactor indent-guide config.
+    
+    refactor aggressive-indent config.
+    
+    refactor ac-capf config.
+    
+    refactor bm config.
+    
+    refactor slime config.
+    
+    refactor slime-company config.
+    
+    refactor sly config.
+    
+    refactor CIDER config.
+    
+    remove package pry.
+    
+    remove package anaconda-mode, company-anaconda.
+    
+    remove package company-shell.
+    
+    remove package bash-completion.
+    
+    remove package insert-shebang.
+    
+    remove package company-clang.
+    
+    remove package company-c-headers.
+    
+    remove package function-args.
+    
+    remove package ejc-sql.
+    
+    remove Matlab init file.
+    
+    remove packages ac-html-* and web-beautify.
+    
+    refactor Emacs init files.
+    
+    - improve packages config of use-package :defer and :init.
+    
+    refactor Emacs init files.
+    
+    refactor Org-mode init files.
+
+commit 38c1e3f0700e51dae10f060854418591f795cafd
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun Oct 9 20:49:50 2016 +0800
+
+    disable helm-dash debug output to speed up query.
+
+commit be50a8d814dd3ab83a5bd80a16760a7be4e5454c
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Sep 30 14:21:24 2016 +0800
+
+    increase company idle delay from 0.2 to 0.4.
+    
+    For Clojure. speed up my code typing.
+
+commit 8a638648ed75c9aa5f26f0dd627db99d694e666d
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Sep 14 14:31:20 2016 +0800
+
+    disable some elisp extra fontify and functionalities to speed-up.
+
+commit 3551c2433c020787098c9c1fea94af8d1ef6855b
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Jun 10 15:24:27 2016 +0800
+
+    replace project-explorer with sr-speedbar.
+
+commit 583a29bc02074e362021577cf37d4af7f9fbe6e3
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Jun 10 15:23:28 2016 +0800
+
+    wrap sr-speedbar with use-package.
+    
+    improve sr-speedbar config.
+
+commit be706c45307c21d67c210e5f3148bb24a8d4edf4
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Mar 18 20:20:11 2016 +0800
+
+    speedup Tramp with set re-read dir timeout to nil.
+
+commit 50f358f665d92cac50af8ba79bf5c281d49b2fbd
+Author: stardiviner <numbchild@gmail.com>
+Date:   Mon Mar 14 23:43:20 2016 +0800
+
+    replace elpy with python-mode + anaconda-mode again.
+    
+    Because it is too slow when completion.
+
+commit ff88ff554674ee474a01cf7540f3391589ea20da
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Mar 11 16:04:13 2016 +0800
+
+    disable eldoc in org-mode to speed-up.
+
+commit 90abed0f952531239155a07cf964caad34bf44e4
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Mar 9 18:51:39 2016 +0800
+
+    disable company-shell to speed up typing in shell script.
+
+commit ed20b9084fcd9c8a7ba687db40225859de317d97
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Mar 8 19:03:09 2016 +0800
+
+    disable flyspell-prog-mode in prog-mode to fix completion slow issue.
+
+commit e488f60d1f11926960467bf79183ceab3c039aa2
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Mar 8 19:01:53 2016 +0800
+
+    speedup Emacs by disabling a lot of things.
+    
+    - disable many init files.
+    - disable many packages.
+    - disable some features.
+
+commit d29a21e921337245a33d6068bedad1e37aac5562
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Mar 5 11:02:37 2016 +0800
+
+    remove spray & speedread usage comments.
+
+commit 02e62c764d9767267f60705e511b66f123bf0396
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Mar 3 19:21:45 2016 +0800
+
+    Do not check for old-style (K&R) function declarations;
+    
+    this speeds up indenting a lot.
+
+commit fdd52725b5551748904ea7aa842a04b974acdba6
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Jan 21 20:44:25 2016 +0800
+
+    notify user snippet placeholders exit with message instead of popup to speedup.
+
+commit 69188d1fc8e44b6c18547859a98dd6fe3cad6818
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Dec 9 21:54:24 2015 +0800
+
+    enable CDLaTeX for speeding up input Math in Org-mode.
+
+commit e9a299c968f1af03c1ab4776d0136f287978b413
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Dec 1 12:38:48 2015 +0800
+
+    disable org-contacts use gravatar to speedup query time.
+
+commit 37d2937a608c10332bf57ad42d5626465f788cc5
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Oct 13 21:34:08 2015 +0800
+
+    speedup helm delay.
+
+commit 8af3c91be48ee12dc17cea4e2cc7a9a88e248f55
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun Sep 27 18:13:54 2015 +0800
+
+    increase delay to speedup typing in code.
+
+commit 18b593c48710ae0e943005144f46a3cd51bde293
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Sep 19 10:59:31 2015 +0800
+
+    increase helm display delay to speedup helm response.
+
+commit 41d8ab212ae842875ea1a2c5c24677bab28a5210
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Aug 25 09:43:44 2015 +0800
+
+    remove R extension support in speedbar.
+
+commit d9c5fcee41b1874e8c213b773ad9653e69ec16d5
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Aug 1 10:00:50 2015 +0800
+
+    speed up company-quickhelp popup display.
+
+commit 54d7c18872d4b7801995a745b1ac788b4a7d22ba
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Jul 31 11:17:20 2015 +0800
+
+    disable helm-dash debugging to speed-up queries.
+
+commit cf3ce0a5bd1ea41446e99f5e0323876cd40b64e1
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Jul 2 09:14:05 2015 +0800
+
+    add *.R R files support to sr-speedbar.
+
+commit cd70684fd35ac5f3256aea8f859f8d34fc15e650
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun Jun 28 05:27:34 2015 +0800
+
+    disable Org-mode startup toggle inline-image & latex-preview for performance.
+
+commit ca6f6e0a9def7120ff2e2856c4f5e7963ade8d1f
+Author: stardiviner <numbchild@gmail.com>
+Date:   Mon Jun 22 11:03:05 2015 +0800
+
+    decrease spray speed. and reduce spray top margin to fit for small window.
+
+commit 752f7124633104c913adb47b663ec4059c6e0cdb
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed May 27 22:15:15 2015 +0800
+
+    disable company-quickhelp to speedup company-mode.
+
+commit 75e4a8ccda13c51a7deeaa540c01539f7e2ac43b
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu May 14 12:01:58 2015 +0800
+
+    slow down spray-mode speed.
+
+commit ee90f1dd85d8a73ea8b9886d8331921c8855e896
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Apr 30 18:08:34 2015 +0800
+
+    increase company-mode menu popup speed.
+
+commit 301cd1fc40481bf4a8a2199009206abc5170a5c7
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Apr 29 12:14:42 2015 +0800
+
+    add CDLaTeX mode to Org-mode to speed-up math input.
+
+commit 7109c9098eda051c6271ee8f1d2cb12a44317a7e
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun Apr 5 17:54:25 2015 +0800
+
+    speedup org agenda with disable some agenda heavy parsing.
+
+commit ef98f60bdf76b3a6b366f2025a1cd92a65504ab9
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Feb 24 13:35:01 2015 +0800
+
+    disable helm fuzzy feature. to fix helm slow issue.
+
+commit 027f178495c0fa06538e11bbf648fe6f9f3136f2
+Author: stardiviner <numbchild@gmail.com>
+Date:   Mon Feb 23 16:37:01 2015 +0800
+
+    disable SLIME in Emacs to speed up, and reduce memory usage.
+
+commit 7162be000afaace726adcd2a1e32fec4b2452b5f
+Author: stardiviner <numbchild@gmail.com>
+Date:   Mon Feb 23 16:33:04 2015 +0800
+
+    change speed-read (spray-mode) keybinding into [F9].
+
+commit 2767d666477bcbb8971da2435cc0dba8017b75ad
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Feb 7 21:38:48 2015 +0800
+
+    disable a lot of startup opened files to speedup Emacs.
+
+commit 63bdc69d5fa21ef679a60b64e62828ee610a1120
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Jan 30 10:09:10 2015 +0800
+
+    add a hook to open sr-speedbar when I open mu4e main view.
+
+commit 444d55df1774e9697e9ba1d1cf171aa718e954d9
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Jan 30 10:06:32 2015 +0800
+
+    improved my sr-speedbar toggle custom function.
+
+commit ff2ce34a3f790db48c70d103197c8bdbfe54cffd
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Jan 22 13:36:00 2015 +0800
+
+    disable sr-speedbar startup open.
+
+commit ffad72f99bf9b38b2b1f11ccdaf4f67f5a97af8d
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Jan 21 13:01:00 2015 +0800
+
+    migrate sr-speedbar startup enabled into startup init file.
+
+commit 0f54b5be3d83c9c4c8c818a9088654c97e44702d
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Jan 17 19:04:41 2015 +0800
+
+    add speedbar (functions, variables, etc) support for .R
+
+commit 425caacc2740cf0a16dee47a6b618186103c1be3
+Author: stardiviner <numbchild@gmail.com>
+Date:   Tue Dec 16 12:44:34 2014 +0800
+
+    use a smart custom function for sr-speedbar file explorer for key [F8].
+
+commit cd096d5243c6345aedb44436f5e3f9913189fb80
+Author: stardiviner <numbchild@gmail.com>
+Date:   Fri Nov 7 13:57:34 2014 +0800
+
+    use `autoload' for flyspell and ispell to replace the `require' to speed up.
+
+commit 4e49fb86a43d05723f39ea6f86c88df342b51775
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Aug 9 22:19:03 2014 +0800
+
+    swap sauron and speedbar toggle key.
+
+commit 036fc962e7e8b4e970b8a4ed972787e6d0c462ee
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Aug 9 22:18:48 2014 +0800
+
+    adjust speedbar size.
+
+commit ccbb3ffae8e02ecdbd236d15311d5f4105a45412
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Aug 7 14:29:03 2014 +0800
+
+    don't load speedread.
+
+commit e0d1180f38cf276192a690fe90176913259472a7
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Aug 7 11:59:44 2014 +0800
+
+    do not load extension speedread.
+
+commit b0fd316f4b8fb4623d0b70cf45445a40fb013e6a
+Author: stardiviner <numbchild@gmail.com>
+Date:   Thu Aug 7 11:58:13 2014 +0800
+
+    add SpeedReading (OpenSpritz) with two extensions: spray, speedread.
+
+commit ab84ea6e2a67326a8038bad83651828206c2b3d9
+Author: stardiviner <numbchild@gmail.com>
+Date:   Wed Aug 6 17:17:15 2014 +0800
+
+    separate neotree, sr-speedbar, project-explorer into files. and migrate them into init-my-prog-sidebar.el file.
+
+commit f358585c3712c459eb62f586b8a539554715021e
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sat Jun 14 11:27:16 2014 +0800
+
+    disable auto-complete in Org-mode to speed up Org-mode.
+
+commit de677a79739e2e4fa86552cbba058012e53f26d7
+Author: stardiviner <numbchild@gmail.com>
+Date:   Sun May 11 09:24:33 2014 +0800
+
+    longer time to delay for guide-key to speed up Emacs. and reduce distribution in keybindings.
+#+end_example
