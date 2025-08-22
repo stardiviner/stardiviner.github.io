@@ -2,6 +2,6 @@
 
    + data
      + images
-       + [[file:images/org-babel-plot-test][org-babel-plot-test]]
+       + [[file:data/images/org-babel-plot-test][org-babel-plot-test]]
    + [[file:2016-04-22 22:54][2016-04-22 22:54]]
    + [[file:index][index]]

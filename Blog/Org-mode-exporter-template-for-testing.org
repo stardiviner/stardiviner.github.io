@@ -325,7 +325,7 @@ This is inside the drawer.
 #+ATTR_ORG: :width 300
 #+ATTR_LATEX: :width 3.0in
 #+ATTR_HTML: :width 300px
-[[file:images/babel_lang_dot_example1.png]]
+[[file:data/images/babel_lang_dot_example1.png]]
 
 ** Image attributes and values
 :PROPERTIES:
@@ -333,7 +333,7 @@ This is inside the drawer.
 :END:
 
 #+ATTR_LaTeX: :width 0.4\linewidth
-[[file:images/babel_lang_dot_example1.png]]
+[[file:data/images/babel_lang_dot_example1.png]]
 
 * Footnote
 :PROPERTIES:
@@ -543,7 +543,7 @@ plot sin(x)
 #+end_src
 
 #+RESULTS[<2018-04-03 21:54:38> ed8d07c969050af99dda8a1e782e7aa404b80da0]:
-[[file:images/babel-gnuplot-graphics-test.png]]
+[[file:data/images/babel-gnuplot-graphics-test.png]]
 
 * 中文测试
 :PROPERTIES:

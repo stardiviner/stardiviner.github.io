@@ -58,7 +58,7 @@ correct absolute path:
 
 #+BEGIN_SRC org
 ,#+HEADERS: :var cwd=(concat (file-name-directory (buffer-file-name)) "data/images/")
-,#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-literate.png"
+,#+begin_src clojure :results graphics file link :dir "images" :file "ob-clojure-literate.png"
 (use '(incanter core stats datasets charts io pdf))
 (def hist (histogram (sample-normal 1000)))
 (save hist (str cwd "ob-clojure-literate.png"))
@@ -66,14 +66,14 @@ correct absolute path:
 #+END_SRC
 
 #+HEADERS: :var cwd=(concat (file-name-directory (buffer-file-name)) "data/images/")
-#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-literate.png"
+#+begin_src clojure :results graphics file link :dir "images" :file "ob-clojure-literate.png"
 (use '(incanter core stats datasets charts io pdf))
 (def hist (histogram (sample-normal 1000)))
 (save hist (str cwd "ob-clojure-literate.png"))
 #+end_src
 
 #+RESULTS[<2018-05-17 10:40:29> bbff27177a545feba5ed98a467689eb91ce7e501]:
-[[file:images/ob-clojure-literate.png]]
+[[file:data/images/ob-clojure-literate.png]]
 
 ** use final solution by move image file to target path with Clojure function
    :PROPERTIES:
@@ -81,7 +81,7 @@ correct absolute path:
    :END:
 
 #+BEGIN_SRC org
-,#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+,#+begin_src clojure :results graphics file link :dir "images" :file "ob-clojure-incanter-move.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (use '(incanter core stats datasets charts io pdf))
 (import '(java.io File))
 
@@ -101,7 +101,7 @@ correct absolute path:
 #+END_SRC
 
 #+RESULTS[<2018-05-17 11:46:15> ff75cfacbf1e10441f0349531db625b77acc7368]:
-[[file:images/ob-clojure-incanter-move.png]]
+[[file:data/images/ob-clojure-incanter-move.png]]
 
 
 * Incanter
@@ -111,7 +111,7 @@ correct absolute path:
   :END:
 
 #+BEGIN_SRC org
-,#+begin_src clojure :results graphics :dir "data/images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+,#+begin_src clojure :results graphics :dir "images" :file "ob-clojure-literate.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (use '(incanter core stats datasets charts io pdf))
 (def hist (histogram (sample-normal 1000)))
 (save hist (str dir "ob-clojure-literate.png"))
@@ -125,7 +125,7 @@ correct absolute path:
 #+END_SRC
 
 #+RESULTS[<2018-05-17 10:40:29> bbff27177a545feba5ed98a467689eb91ce7e501]:
-[[file:images/ob-clojure-literate.png]]
+[[file:data/images/ob-clojure-literate.png]]
 
 
 * clj-xchart
@@ -135,7 +135,7 @@ correct absolute path:
   :END:
 
 #+BEGIN_SRC org
-,#+begin_src clojure :results graphics file link :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+,#+begin_src clojure :results graphics file link :dir "images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (require '[com.hypirion.clj-xchart :as xchart])
 
 (def ob-clojure-clj-xchart
@@ -147,7 +147,7 @@ correct absolute path:
 ,#+end_src
 #+END_SRC
 
-#+begin_src clojure :eval no-export :results graphics file link :dir "data/images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
+#+begin_src clojure :eval no-export :results graphics file link :dir "images" :file "ob-clojure-clj-xchart.png" :var dir=(concat (file-name-directory (buffer-file-name)) "data/images/")
 (require '[com.hypirion.clj-xchart :as xchart])
 
 (def ob-clojure-clj-xchart
@@ -159,7 +159,7 @@ correct absolute path:
 #+end_src
 
 #+RESULTS[<2018-05-17 10:52:37> 0ada10eaeabcc1c8431c9805a3bc03c9c388fbd9]:
-[[file:images/ob-clojure-clj-xchart.png]]
+[[file:data/images/ob-clojure-clj-xchart.png]]
 
 
 * ggplot2
