@@ -75,112 +75,6 @@ p {
   max-width: 770px;
 }
 
-/* headlines */
-
-/* colorful headline levels */
-h2::before {
-  content: "1. ";
-  border-left: 4px solid #FF657C;
-  padding-left: 10px;
-}
-h3::before {
-  content: "2. ";
-  border-left: 10px solid #93FF72;
-  padding-left: 10px;
-  margin-left: 20px;
-}
-h4::before {
-  content: "3. ";
-  border-left: 20px solid #FDFF70;
-  padding-left: 10px;
-  margin-left: 40px;
-}
-h5::before {
-  content: "4. ";
-  border-left: 30px solid #81E8FF;
-  padding-left: 10px;
-  margin-left: 60px;
-}
-h6::before {
-  content: "5. ";
-  border-left: 40px solid #F290FF;
-  padding-left: 10px;
-  margin-left: 80px;
-}
-
-/* headline size */
-h2, h3, h4, h5, h6 {
-  font-weight: 100;
-  line-height: 1.2;
-  margin-bottom: .3em;
-  margin-top: .8em;
-}
-/* first level */
-h2 {
-  font-size: 30px;
-  font-family: 'Lobster', Helvetica, cursive;
-}
-h3 {
-  font-size: 20px;
-  font-family: unset;
-}
-h4 {
-  font-size: 20px;
-  font-family: unset;
-  font-style: oblique;
-}
-h5, h6 {
-  font-size: 15px;
-  font-family: unset;
-}
-
-/* add border line for outline blocks */
-div.outline-3 {
-  border: solid thin #8080802b;
-  padding: 0.5em 2em 0.5em 2em;
-  margin: 1em;
-  box-shadow: 0 0 0 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
-  border-radius: 10px;
-}
-div.outline-4 {
-  border: solid thin #8080802b;
-  padding: 0.5em 2em 0.5em 2em;
-  margin: 1em;
-  box-shadow: 0 0 0 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
-  border-radius: 10px;
-}
-div.outline-5 {
-  border: solid thin #8080802b;
-  padding: 0.5em 2em 0.5em 2em;
-  margin: 1em;
-  box-shadow: 0 0 0 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
-  border-radius: 10px;
-}
-
-/* headline sections */
-div.outline-1 {
-}
-div.outline-text-1 {
-}
-.section-number-1 a {
-  border-bottom: none;
-}
-.section-number-2 a {
-  border-bottom: none;
-}
-
-/* tag in headline */
-.tag {
-  color: gray;
-}
-
-/* display "#" symbol before tags */
-.tag span.__::before {
-  content: "#";
-  display: inline-block;
-  color: lightgray;
-}
-
 /* avatar */
 img#avatar {
   float: left;
@@ -189,22 +83,6 @@ img#avatar {
   width: 200px;
   margin-right: 40px;
   margin-bottom: 20px;
-}
-
-/* MathJax */
-div.MathJax_Display {
-  text-align: center;
-  position: relative;
-  width: 100%;
-  font-size: 170%;
-}
-div.MathJax_Display::before {
-  content: "| ";
-  display: inline;
-  position: relative;
-  float: left;
-  padding-right: 10px;
-  color: red;
 }
 
 /* preamble */
@@ -293,6 +171,22 @@ div.MathJax_Display::before {
 #org-info-js_console-input:focus {
   background-color: gray;
   width: 20%;
+}
+
+/* MathJax */
+div.MathJax_Display {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  font-size: 170%;
+}
+div.MathJax_Display::before {
+  content: "| ";
+  display: inline;
+  position: relative;
+  float: left;
+  padding-right: 10px;
+  color: red;
 }
 
 /* bold, italic, inline code */
@@ -793,14 +687,6 @@ input[type=button]:after {
   color: #727272;
 }
 
-/* footnote */
-p.footnote {
-}
-.footref {
-}
-.footref {
-}
-
 /* audio */
 audio {
   -webkit-transition:all 0.5s linear;
@@ -823,23 +709,110 @@ audio:hover, audio:focus, audio:active {
   transform: scale(1.05);
 }
 
-/* footer */
-/* postamble */
-footer, #postamble {
-  margin-top: 1em;
-  text-align: center;
+/* headlines */
+
+/* colorful headline levels */
+h2::before {
+  content: "1. ";
+  border-left: 4px solid #FF657C;
+  padding-left: 10px;
 }
-/* "Show Org source" button */
-#show_source input[type=button] {
-  background: white;
-  opacity: 2;
-  border: 1px solid;
-  border-radius: 4px;
-  height: 1.5rem;
-  margin-top: 5px;
+h3::before {
+  content: "2. ";
+  border-left: 10px solid #93FF72;
+  padding-left: 10px;
+  margin-left: 20px;
 }
-#show_source input[type=button]:hover {
-  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
+h4::before {
+  content: "3. ";
+  border-left: 20px solid #FDFF70;
+  padding-left: 10px;
+  margin-left: 40px;
+}
+h5::before {
+  content: "4. ";
+  border-left: 30px solid #81E8FF;
+  padding-left: 10px;
+  margin-left: 60px;
+}
+h6::before {
+  content: "5. ";
+  border-left: 40px solid #F290FF;
+  padding-left: 10px;
+  margin-left: 80px;
+}
+
+/* headline size */
+h2, h3, h4, h5, h6 {
+  font-weight: 100;
+  line-height: 1.2;
+  margin-bottom: .3em;
+  margin-top: .8em;
+}
+/* first level */
+h2 {
+  font-size: 30px;
+  font-family: 'Lobster', Helvetica, cursive;
+}
+h3 {
+  font-size: 20px;
+  font-family: unset;
+}
+h4 {
+  font-size: 20px;
+  font-family: unset;
+  font-style: oblique;
+}
+h5, h6 {
+  font-size: 15px;
+  font-family: unset;
+}
+
+/* add border line for outline blocks */
+div.outline-3 {
+  border: solid thin #8080802b;
+  padding: 0.5em 2em 0.5em 2em;
+  margin: 1em;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
+  border-radius: 10px;
+}
+div.outline-4 {
+  border: solid thin #8080802b;
+  padding: 0.5em 2em 0.5em 2em;
+  margin: 1em;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
+  border-radius: 10px;
+}
+div.outline-5 {
+  border: solid thin #8080802b;
+  padding: 0.5em 2em 0.5em 2em;
+  margin: 1em;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
+  border-radius: 10px;
+}
+
+/* headline sections */
+div.outline-1 {
+}
+div.outline-text-1 {
+}
+.section-number-1 a {
+  border-bottom: none;
+}
+.section-number-2 a {
+  border-bottom: none;
+}
+
+/* tag in headline */
+.tag {
+  color: gray;
+}
+
+/* display "#" symbol before tags */
+.tag span.__::before {
+  content: "#";
+  display: inline-block;
+  color: lightgray;
 }
 
 /* jump to beginning */
@@ -892,6 +865,34 @@ footer, #postamble {
 /* Comment */
 .comments {
 }
+
+/* footnote */
+p.footnote {
+}
+.footref {
+}
+.footref {
+}
+
+/* footer */
+/* postamble */
+footer, #postamble {
+  margin-top: 1em;
+  text-align: center;
+}
+/* "Show Org source" button */
+#show_source input[type=button] {
+  background: white;
+  opacity: 2;
+  border: 1px solid;
+  border-radius: 4px;
+  height: 1.5rem;
+  margin-top: 5px;
+}
+#show_source input[type=button]:hover {
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
+}
+
 /* Disqus */
 #comment-policy {
   background-color: inherit;
