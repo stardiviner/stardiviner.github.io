@@ -162,7 +162,11 @@ div.outline-1 {
 }
 div.outline-text-1 {
 }
-.section-number-1 {
+.section-number-1 a {
+  border-bottom: none;
+}
+.section-number-2 a {
+  border-bottom: none;
 }
 
 /* tag in headline */
@@ -365,8 +369,8 @@ div#nav a:hover {
 div#content a {
   text-decoration: none;
   background-color: transparent;
-  border-bottom: 2px solid #7a7a7a;
-  box-shadow: inset 0 -7px 0 0 #eeeeee80;
+  border-bottom: 1px inset rgb(223 223 223 / 85%);
+  box-shadow: inset 0 -7px 0 0 rgb(238 238 238 / 85%);
 }
 div#content a:hover {
   color: #333333;
