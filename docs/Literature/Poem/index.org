@@ -1,7 +1,7 @@
-# Created 2025-08-22 Fri 13:09
+# Created 2025-08-22 Fri 15:43
 #+title: Poem (诗词)
 #+author: stardiviner
-[[file:data/images/poem.jpg]]
+[[file:resources/images/poem.jpg]]
 * 我喜欢的一些诗词
 
 ** 戚氏

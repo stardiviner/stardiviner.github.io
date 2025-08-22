@@ -1,4 +1,4 @@
-# Created 2025-08-22 Fri 13:06
+# Created 2025-08-22 Fri 15:40
 #+title: 
 #+author: Christopher M. Miles
 * Test org-capture template for org-publish blog post convert space into dash

@@ -14,8 +14,8 @@
   <link>https://stardiviner.github.io/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Fri, 22 Aug 2025 13:09:20 +0800</pubDate>
-  <lastBuildDate>Fri, 22 Aug 2025 13:09:20 +0800</lastBuildDate>
+  <pubDate>Fri, 22 Aug 2025 15:42:31 +0800</pubDate>
+  <lastBuildDate>Fri, 22 Aug 2025 15:42:31 +0800</lastBuildDate>
   <generator>Emacs 31.0 Org-mode 9.8-pre</generator>
   <webMaster>numbchild@gmail.com (Christopher M. Miles)</webMaster>
   <image>
@@ -50,9 +50,9 @@
   </nav>
   <item>
     <title>现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了</title>
-    <link>https://stardiviner.github.io/index.html#org9e1bf1a</link>
+    <link>https://stardiviner.github.io/index.html#org7419f9b</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org9e1bf1a</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org7419f9b</guid>
     <pubDate>Sun, 18 Jul 2021 07:56:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -68,9 +68,9 @@
   </item>
   <item>
     <title>implement H5 jump to WeChat mini program</title>
-    <link>https://stardiviner.github.io/index.html#org52a0dc4</link>
+    <link>https://stardiviner.github.io/index.html#org6a09c9e</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org52a0dc4</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org6a09c9e</guid>
     <pubDate>Fri, 20 Sep 2019 15:50:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -86,9 +86,9 @@
   </item>
   <item>
     <title>Learn video editor Adobe Premiere to edit a WeChat 15s small video</title>
-    <link>https://stardiviner.github.io/index.html#org795ddfc</link>
+    <link>https://stardiviner.github.io/index.html#org72e5902</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org795ddfc</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org72e5902</guid>
     <pubDate>Wed, 22 May 2019 08:50:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -104,9 +104,9 @@
   </item>
   <item>
     <title>upgrade Org link syntax to new</title>
-    <link>https://stardiviner.github.io/index.html#org67a6737</link>
+    <link>https://stardiviner.github.io/index.html#orge8b8bb2</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org67a6737</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#orge8b8bb2</guid>
     <pubDate>Sun, 07 Apr 2019 19:15:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -122,9 +122,9 @@
   </item>
   <item>
     <title>Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up</title>
-    <link>https://stardiviner.github.io/index.html#org97aaacc</link>
+    <link>https://stardiviner.github.io/index.html#org0876ba1</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org97aaacc</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org0876ba1</guid>
     <pubDate>Sat, 20 Oct 2018 20:00:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -140,9 +140,9 @@
   </item>
   <item>
     <title>How to use docstring to annotate source code</title>
-    <link>https://stardiviner.github.io/index.html#orga9f334d</link>
+    <link>https://stardiviner.github.io/index.html#org62c9d5e</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#orga9f334d</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org62c9d5e</guid>
     <pubDate>Fri, 28 Sep 2018 12:41:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -158,9 +158,9 @@
   </item>
   <item>
     <title>Learn Programming Language from Diving into Source Code</title>
-    <link>https://stardiviner.github.io/index.html#orgc25718f</link>
+    <link>https://stardiviner.github.io/index.html#orgf8562c4</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#orgc25718f</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#orgf8562c4</guid>
     <pubDate>Tue, 29 May 2018 08:40:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -176,9 +176,9 @@
   </item>
   <item>
     <title>Learn a little basic of Nginx for setting up web server</title>
-    <link>https://stardiviner.github.io/index.html#orgcfe26bf</link>
+    <link>https://stardiviner.github.io/index.html#org1ef4f56</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#orgcfe26bf</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org1ef4f56</guid>
     <pubDate>Tue, 22 May 2018 11:13:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -194,9 +194,9 @@
   </item>
   <item>
     <title>Make company-mode support for nginx-mode</title>
-    <link>https://stardiviner.github.io/index.html#org86087f2</link>
+    <link>https://stardiviner.github.io/index.html#org9ccdeb3</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org86087f2</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org9ccdeb3</guid>
     <pubDate>Sun, 20 May 2018 18:06:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -212,9 +212,9 @@
   </item>
   <item>
     <title>Clojure Plotting to Org inline image in ob-clojure</title>
-    <link>https://stardiviner.github.io/index.html#org13e7679</link>
+    <link>https://stardiviner.github.io/index.html#org8017fac</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org13e7679</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org8017fac</guid>
     <pubDate>Thu, 17 May 2018 11:47:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -230,9 +230,9 @@
   </item>
   <item>
     <title>How to Read Code in Emacs</title>
-    <link>https://stardiviner.github.io/index.html#org0a7ad80</link>
+    <link>https://stardiviner.github.io/index.html#orgee0b578</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org0a7ad80</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#orgee0b578</guid>
     <pubDate>Thu, 17 May 2018 09:00:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -248,9 +248,9 @@
   </item>
   <item>
     <title>Literate Programming with Org Mode</title>
-    <link>https://stardiviner.github.io/index.html#org6a7112f</link>
+    <link>https://stardiviner.github.io/index.html#orgafdb5be</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org6a7112f</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#orgafdb5be</guid>
     <pubDate>Thu, 17 May 2018 09:00:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -266,9 +266,9 @@
   </item>
   <item>
     <title>multilingual support with ob-translate and google-translate</title>
-    <link>https://stardiviner.github.io/index.html#org27f3346</link>
+    <link>https://stardiviner.github.io/index.html#org40848f6</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org27f3346</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org40848f6</guid>
     <pubDate>Sat, 21 Apr 2018 16:30:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -284,9 +284,9 @@
   </item>
   <item>
     <title>Learned basic skateboard</title>
-    <link>https://stardiviner.github.io/index.html#org6a057da</link>
+    <link>https://stardiviner.github.io/index.html#org4b7e0db</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org6a057da</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org4b7e0db</guid>
     <pubDate>Sat, 21 Apr 2018 11:32:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -302,9 +302,9 @@
   </item>
   <item>
     <title>Needlework: Setup the sewing machine</title>
-    <link>https://stardiviner.github.io/index.html#org5c2db65</link>
+    <link>https://stardiviner.github.io/index.html#orga2abf5f</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org5c2db65</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#orga2abf5f</guid>
     <pubDate>Fri, 20 Apr 2018 12:32:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -320,9 +320,9 @@
   </item>
   <item>
     <title>How to BANISH myself</title>
-    <link>https://stardiviner.github.io/index.html#org9985862</link>
+    <link>https://stardiviner.github.io/index.html#org1741dec</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org9985862</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org1741dec</guid>
     <pubDate>Wed, 18 Apr 2018 14:13:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">
@@ -338,9 +338,9 @@
   </item>
   <item>
     <title>test org-mode ox-publish</title>
-    <link>https://stardiviner.github.io/index.html#orgc3c67b9</link>
+    <link>https://stardiviner.github.io/index.html#org100e75e</link>
     <author>numbchild@gmail.com (Christopher M. Miles)</author>
-    <guid isPermaLink="false">https://stardiviner.github.io/index.html#orgc3c67b9</guid>
+    <guid isPermaLink="false">https://stardiviner.github.io/index.html#org100e75e</guid>
     <pubDate>Wed, 18 Apr 2018 14:13:00 +0800</pubDate>
 
     <description><![CDATA[<pre class="example">

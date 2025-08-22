@@ -1,4 +1,4 @@
-# Created 2025-08-22 Fri 13:05
+# Created 2025-08-22 Fri 15:39
 #+title: Self Introduction (哲学命题：我)
 #+author: Christopher M. Miles
 [[file:../assets/images/avatar.jpg]]
@@ -13,7 +13,7 @@ I like literature, movie, philosophy, argue, and daydreams. I like get to know
 about any interested things. I write some small and never published novels with
 suddenly popuped fantasy idea.
 
-[[file:data/images/me_picture 23.jpg]]
+[[file:resources/images/me_picture 23.jpg]]
 
 喜欢电脑技术，喜欢编程，是一名Coder，喜欢Lisp，Clojure。在生活中主要用Emacs (Org
 Mode)。我的笔记本上安装的是Arch GNU/Linux。这是我从2012年开始用到现在的。平常会
@@ -52,12 +52,12 @@ I used to use Ubuntu about two yearts ago.
 I really like Emacs. It has some kind of spirit can help you do things in Emacs
 style.
 
-[[file:data/images/my_emacs.png]]
+[[file:resources/images/my_emacs.png]]
 ** Conky
 
 Having an awesome desktop is a cool thing.
 
-[[file:data/images/conky.png]]
+[[file:resources/images/conky.png]]
 * Payment
 :PROPERTIES:
 :CUSTOM_ID: Payment

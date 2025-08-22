@@ -1,4 +1,4 @@
-# Created 2025-08-22 Fri 13:10
+# Created 2025-08-22 Fri 15:38
 #+title: stardiviner's index page
 #+date: [2011-11-11 Fri 08:58]
 #+author: stardiviner
@@ -16,7 +16,7 @@ I like literature, movie, philosophy, argue, and daydreams. I like get to know
 about any interested things. I write some small and never published novels with
 suddenly popuped fantasy idea.
 
-[[file:About/data/images/me_picture 23.jpg]]
+[[file:About/resources/images/me_picture 23.jpg]]
 
 喜欢电脑技术，喜欢编程，是一名Coder，喜欢Lisp，Clojure。在生活中主要用Emacs (Org
 Mode)。我的笔记本上安装的是Arch GNU/Linux。这是我从2012年开始用到现在的。平常会
