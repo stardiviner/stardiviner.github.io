@@ -1,4 +1,4 @@
-# Created 2025-08-22 Fri 16:19
+# Created 2025-08-22 Fri 16:51
 #+title: Poem (诗词)
 #+author: stardiviner
 [[file:resources/images/poem.jpg]]
