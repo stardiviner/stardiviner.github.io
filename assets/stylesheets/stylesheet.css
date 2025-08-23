@@ -468,10 +468,10 @@ pre.example {
   display: block;
   color: #7b7b7b;
   border-color: #ccc;
-  font-size: 10px;
-  padding: 1px;
+  font-size: 0.7rem;
+  padding: 2px;
   margin: 0 0 10px 10px;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: none;
   text-shadow: unset;
 }
