@@ -713,30 +713,36 @@ audio:hover, audio:focus, audio:active {
 /* colorful headline levels */
 h2::before {
   content: "1. ";
-  border-left: 4px solid #FF657C;
+  display: inline;
+  /* float: left; */
+  border-left: 0.5rem solid #FF657C;
   padding-left: 10px;
 }
 h3::before {
   content: "2. ";
-  border-left: 10px solid #93FF72;
+  display: inline;
+  border-left: 1rem solid #93FF72;
   padding-left: 10px;
   margin-left: 20px;
 }
 h4::before {
   content: "3. ";
-  border-left: 20px solid #FDFF70;
+  display: inline;
+  border-left: 2rem solid #FDFF70;
   padding-left: 10px;
   margin-left: 40px;
 }
 h5::before {
   content: "4. ";
-  border-left: 30px solid #81E8FF;
+  display: inline;
+  border-left: 3rem solid #81E8FF;
   padding-left: 10px;
   margin-left: 60px;
 }
 h6::before {
   content: "5. ";
-  border-left: 40px solid #F290FF;
+  display: inline;
+  border-left: 4rem solid #F290FF;
   padding-left: 10px;
   margin-left: 80px;
 }
