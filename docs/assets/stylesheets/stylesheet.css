@@ -874,11 +874,18 @@ div.outline-text-1 {
 }
 
 /* footnote */
-p.footnote {
-}
+/* footnote reference */
 .footref {
+  vertical-align: super;
+  font-size: smaller;
+  color: hotpink;
 }
-.footref {
+/* footnote definition */
+.footdef {
+}
+/* footnote number */
+.footnum {
+  color: hotpink;
 }
 
 /* footer */
@@ -897,7 +904,7 @@ footer, #postamble {
   margin-top: 5px;
 }
 #show_source input[type=button]:hover {
-  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
+  box-shadow: 5px 5px 5px 0 rgb(249 0 36 / 35%), 5px 5px 5px 0 rgb(249 0 0 / 39%);
 }
 
 /* Disqus */
