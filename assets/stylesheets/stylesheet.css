@@ -874,11 +874,18 @@ div.outline-text-1 {
 }
 
 /* footnote */
-p.footnote {
-}
+/* footnote reference */
 .footref {
+  vertical-align: super;
+  font-size: smaller;
+  color: hotpink;
 }
-.footref {
+/* footnote definition */
+.footdef {
+}
+/* footnote number */
+.footnum {
+  color: hotpink;
 }
 
 /* footer */
