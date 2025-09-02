@@ -98,8 +98,14 @@ img#avatar {
   color: #333;
 }
 
+/* epilogue */
+#preamble .epilogue {
+  color: #8080800f;
+  float: right;
+}
+
 /* navigator */
-.nav {
+#preamble .nav {
   /* background: rgba(255,255,255,0.9) !important; */
   opacity: 1;
   transition: opacity 0.3s ease-out 0s, transform 0.3s ease-out 0s;
