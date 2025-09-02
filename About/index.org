@@ -5,34 +5,32 @@
 #+ATTR_HTML: :id avatar :float left :width 200px :alt 我的形象
 [[file:../assets/images/avatar.jpg]]
 
-I'm an amateurish coder like Lisp, Clojure, I use Emacs (Org Mode) a lot in my
-daily life! My working system is Arch Linux. I contribute some code to open
-sourced projects, Emacs packages, Org Mode etc sometimes. Mainly actived in
-Clojure forums, Emacs/Org-Mode mailing lists, IRC channels
+I'm an amateurish coder like Lisp, Clojure, I use Emacs (Org Mode) a lot in my daily life! My
+working system is Arch Linux. I contribute some code to open sourced projects, Emacs packages, Org
+Mode etc sometimes. Mainly actived in Clojure forums, Emacs/Org-Mode mailing lists, IRC channels
 (#emacs,#archlinux,#lisp,#clojure) sometimes.
 
-I like literature, movie, philosophy, argue, and daydreams. I like get to know
-about any interested things. I write some small and never published novels with
-suddenly popuped fantasy idea.
+I like literature, movie, philosophy, argue, and daydreams. I like get to know about any interested
+things. I write some small and never published novels with suddenly popuped fantasy idea.
 
 #+ATTR_ORG: :width 200
 #+ATTR_LATEX: :width 2.0in
 #+ATTR_HTML: :id avatar :float left :width 200px :alt 那时23岁的我
 [[file:resources/images/me_picture 23.jpg]]
 
-喜欢电脑技术，喜欢编程，是一名Coder，喜欢Lisp，Clojure。在生活中主要用Emacs (Org
-Mode)。我的笔记本上安装的是Arch GNU/Linux。这是我从2012年开始用到现在的。平常会
-对一些开源项目Emacs的插件或者Org Mode贡献代码。还喜欢 Programming Electric Music
-编程音乐 Overtone， 喜欢互联网。
+喜欢电脑技术，喜欢编程，是一名Coder，喜欢Lisp，Clojure。在生活中主要用Emacs (Org Mode)。我的笔记本上
+安装的是Arch GNU/Linux。这是我从2012年开始用到现在的。平常会对一些开源项目Emacs的插件或者Org Mode贡
+献代码。还喜欢 Programming Electric Music编程音乐 Overtone[fn:1]， 喜欢互联网。
 
-喜欢看哲学，文学，[[https://movie.douban.com/people/stardiviner/][电影]]，滑板，和史诗音乐。性格随和，思想开放乐观，接受多元化文化。
-还喜欢做白日梦，以及各种有趣的东西。也会把脑海中突然冒出来的一些奇怪的念头和想法
-写成短小的小说残篇，我还从来没有发表过他们。
+喜欢看哲学，文学，[[https://movie.douban.com/people/stardiviner/][电影]]，滑板，和史诗音乐。性格随和，思想开放乐观，接受多元化文化。还喜欢做白日梦，以
+及各种有趣的东西。也会把脑海中突然冒出来的一些奇怪的念头和想法写成短小的小说残篇，我还从来没有发表过他们。
 
 我的网上档案:
 - [[https://github.com/stardiviner/][GitHub: stardiviner]]
 - [[https://stardiviner.github.io/][Blog]]
 - [[https://stackexchange.com/users/366399/stardiviner][my Stack Overflow profile]]
+
+[fn:1] http://overtone.github.io/
 
 * Contact & Profiles
 :PROPERTIES:
@@ -40,26 +38,32 @@ Mode)。我的笔记本上安装的是Arch GNU/Linux。这是我从2012年开始
 :END:
 
 - Email: numbchild A/T gmail |. COM
-- IRC: stardiviner on Freenode
+- IRC: =stardiviner= on Libera Chat / Freenode
 - Keybase: https://keybase.io/stardiviner
 - Savannah GNU (Emacs, mainly contribute patch to org-mode): https://savannah.gnu.org/users/stardiviner
 
-* My Tools
+* Tools
 
-** GNU/Linux
+** macOS
+:PROPERTIES:
+:DATE:     [2025-09-02 Tue 18:53]
+:END:
+
+Currently I'm using macOS [2021-04-22 Thu]--[2025-09-02 Tue]
+
+** GNU Linux
 
 *** Arch Linux
 
-Currently I mainly use Arch Linux.
+I've used Arch Linux about 4 years [2018-09-02 Sun]--[2021-04-22 Thu].
 
 *** Ubuntu Linux
 
-I used to use Ubuntu about two yearts ago.
+I used to use Ubuntu about 6 years [2011-09-02 Fri]--[2018-09-02 Sun].
 
 ** Emacs
 
-I really like Emacs. It has some kind of spirit can help you do things in Emacs
-style.
+I really like Emacs. It has some kind of spirit can help you do things in Emacs style.
 
 #+ATTR_ORG: :width 600
 #+ATTR_LATEX: :width 6.0in
