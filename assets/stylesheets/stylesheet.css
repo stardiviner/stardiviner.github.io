@@ -879,7 +879,100 @@ div.outline-text-1 {
 .comments {
 }
 
-/* footnote */
+/* Sidenote */
+/* reference: https://karthinks.com/software/cool-your-heels-emacs/ */
+.sidenote {
+  font-size: 80%;
+  position: relative;
+}
+
+/* Wide viewport */
+@media (min-width: 1366px) {
+  .sidenote {
+    float: left;
+    clear: left;
+    margin-left: -23vw;
+    text-align: right;
+    top: -3rem;
+    width: 20vw;
+    margin-top: 1rem;
+  }
+  /* Highlight the sidenote when mouse hovers on the sidenote number in body. */
+  .sidenote-number:hover .sidenote {
+    background-color: yellow;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 10px;
+  }
+  .column {
+    float: left;
+    width: 50.0%;
+    padding: 5px;
+  }
+  .wide {
+    width: min(60vw,1366px);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .alignright {
+    float: right;
+    padding-left: 6px;
+  }
+  .alignleft {
+    float: left;
+    padding-right: 6px;
+  }
+}
+
+/* Narrow viewport */
+@media (max-width: 1366px) {
+  .sidenote {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin: 1rem 0;
+    padding-left: 15%;
+  }
+  .wide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .column {
+    width: 75%;
+    padding: 8px;
+  }
+}
+
+/* Sidenote counter */
+body {
+  counter-reset: sidenote-counter;
+}
+.sidenote-number {
+  counter-increment: sidenote-counter;
+}
+/* Counter before the sidenote in the margin. */
+.sidenote::before {
+  content: counter(sidenote-counter)".";
+  position: relative;
+  vertical-align: baseline;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+/* Counter in the main body. */
+.sidenote-number::after {
+  content: counter(sidenote-counter);
+  vertical-align: super;
+  font-size: 0.7em;
+  font-weight: bold;
+  margin-right: 0.1rem;
+  margin-left: -0.2rem;
+}
+
+/* Footnote */
 /* footnote reference */
 .footref {
   vertical-align: super;
