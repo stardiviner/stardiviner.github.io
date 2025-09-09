@@ -269,7 +269,7 @@ div#nav a:hover {
 div#content a {
   text-decoration: none;
   background-color: transparent;
-  border-bottom: 1px inset rgb(223 223 223 / 85%);
+  border-bottom: 2px inset rgb(223 223 223 / 85%);
 }
 div#content a:hover {
   color: #333333;
@@ -310,19 +310,15 @@ div.figure {
 
 /* kbd */
 kbd {
+  font-family: ui-sans-serif;
   font-weight: bold;
-  
   color: #333333;
-  background: rgba(255, 255, 255, 0.6) none repeat scroll 0% 0%;
-
+  background: rgb(9 215 255 / 66%) none repeat scroll 0% 0%;
   border: 0.5px solid #444444;
   border-radius: 3px;
-  box-shadow: 5px 5px 5px rgba(169, 170, 164, 0.9);
-  
-  /* padding: 2px 8px 1px; */
-  /* margin: 0px 2px; */
-  display: inline-block;
-  
+  box-shadow: 2px 4px 4px rgb(50 215 255 / 81%);
+  padding: 2px 4px 2px;
+  margin: 0px 2px;
   white-space: nowrap;
 }
 
@@ -463,6 +459,18 @@ pre.src:hover::before {
 }
 
 /* inline code */
+p > code {
+  color: #333333;
+  background: rgb(154 253 233 / 60%) none repeat scroll 0% 0%;
+  border: 0.5px solid #444444;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px rgb(0 249 255 / 72%);
+  padding: 2px 4px 2px;
+  margin: 0px 2px;
+  white-space: nowrap;
+}
+
+/* code block */
 pre > code {
   /* white neon effect text */
   text-shadow: 0 0 2px rgba(255,255,255,0.7);
