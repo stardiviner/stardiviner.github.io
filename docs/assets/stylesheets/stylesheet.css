@@ -83,6 +83,9 @@ img#avatar {
   width: 200px;
   margin-right: 40px;
 }
+img#avatar:hover {
+  filter: blur(2.5px);
+}
 
 /* preamble */
 #preamble {
