@@ -147,7 +147,7 @@ qr7gc5z0zml5g2tj2d88yzxqx7t2wd0gtucugd2fdl
 </div>
 <style type="text/css">
  #pain img {
-   width: 600px;
+   width: 300px;
  }
 </style>
 #+end_export
