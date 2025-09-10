@@ -858,9 +858,23 @@ div.outline-text-1 {
 }
 
 /* payment */
-.payment img {
-  display: none;              /* align horizontally */
-  height: 80px;                 /* smaller size like thumb */
+.payment {
+}
+/* 打赏 icon "assets/images/reward-icon.png" */
+#payment-icon img {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: block;
+  height: 80px;
+  width: 80px;
+}
+#payment-icon img:hover {
+  /* auto large when hover on */
+  height: 100px;
+  width: 100px;
+  transition: all .8s ease;
+  transform: rotate(1turn);
 }
 /* absolute position at left-bottom on page */
 #alipay-payment img {
@@ -879,8 +893,20 @@ div.outline-text-1 {
   left: 20px;
   border-radius: 40px;
 }
-.payment img:hover {
-  width: auto;                  /* auto large when hover on */
+
+/* payment qrcode of alipay & wechat */
+#payment-qr {
+  display: flex;
+  justify-content: space-around;
+  margin: 5px 5px 5px;
+}
+#payment-alipay {
+  width: 200px;
+  margin: auto;
+}
+div#payment-wechat {
+  width: 200px;
+  margin: auto;
 }
 
 /* Comment */
