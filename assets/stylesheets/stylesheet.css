@@ -806,12 +806,15 @@ div.outline-text-1 {
 }
 
 /* tag in headline */
-.tag {
+span.tag {
+  font-size: small;
   color: gray;
+  background-color: white;
+  margin-left: 20px;
 }
 
 /* display "#" symbol before tags */
-.tag span.__::before {
+span.tag span.__::before {
   content: "#";
   display: inline-block;
   color: lightgray;
