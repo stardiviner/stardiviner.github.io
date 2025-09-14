@@ -1,7 +1,5 @@
 /* global default settings */
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -244,8 +242,6 @@ a:hover {
   border-bottom-color: #fcc1d2;
   padding: 2px 4px;
   margin: -2px -4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
   border-radius: 4px;
   transition: all .1s ease;
 }
@@ -261,8 +257,6 @@ div#nav a:hover {
   border-bottom-color: #fcc1d2;
   padding: 2px 4px;
   margin: -2px -4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
   border-radius: 4px;
   transition: all .2s ease;
 }
@@ -281,8 +275,6 @@ div#content a:hover {
   border-bottom-color: #f881ad;
   padding: 2px 4px;
   margin: -2px -4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
   border-radius: 4px;
   transition: all .1s ease;
 }
@@ -568,12 +560,10 @@ sup a:after {
 
   text-align: right;
   
-  -webkit-box-shadow: 0 0 1em #777777;
-  -moz-box-shadow: 0 0 1em #777777;
+  box-shadow: 0 0 1em #777777;
   
   border:1px solid #e1e1e8;
-  -webkit-border-bottom-left-radius: 5px;
-  -moz-border-radius-bottomleft: 5px;
+  border-bottom-left-radius: 5px;
 
   display: block;
   /* ensure doesn't flow off the screen when expanded */
@@ -704,23 +694,12 @@ input[type=button]:after {
 
 /* audio */
 audio {
-  -webkit-transition:all 0.5s linear;
-  -moz-transition:all 0.5s linear;
-  -o-transition:all 0.5s linear;
   transition:all 0.5s linear;
-  -moz-box-shadow: 2px 2px 4px 0px #006773;
-  -webkit-box-shadow:  2px 2px 4px 0px #006773;
   box-shadow: 2px 2px 4px 0px #006773;
-  -moz-border-radius:7px 7px 7px 7px ;
-  -webkit-border-radius:7px 7px 7px 7px ;
   border-radius:7px 7px 7px 7px ;
 }
 audio:hover, audio:focus, audio:active {
-  -webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
-  -moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
   box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
-  -webkit-transform: scale(1.05);
-  -moz-transform: scale(1.05);
   transform: scale(1.05);
 }
 
