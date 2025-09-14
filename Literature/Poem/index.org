@@ -62,8 +62,6 @@
 
 ** 不负如来不负卿
 
-http://music.163.com/#/mv?id=5741268
-
 #+begin_export html
 <audio controls="controls" preload="auto">
   <source src="resources/audios/西游记-女儿国.mp3" type="audio/mpeg"/>
@@ -128,12 +126,11 @@ http://music.163.com/#/mv?id=5741268
 
 ** 摸鱼儿·雁丘词                                           :爱情:
 :PROPERTIES:
-:Attachments: 问世间-张馨予.mp3
 :AUTHOR:   元好问
 :END:
 
 #+begin_export html
-<audio controls"controls" preload="auto">
+<audio controls="controls" preload="auto">
   <source src="resources/audios/问世间-张馨予.mp3" type="audio/mpeg"/>
   <p>Your browser does not support the audio tag.</p>
 </audio>
