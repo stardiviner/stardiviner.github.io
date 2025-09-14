@@ -1,4 +1,4 @@
-# Created 2025-08-22 Fri 16:51
+# Created 2025-09-14 Sun 16:06
 #+title: Poem (诗词)
 #+author: stardiviner
 [[file:resources/images/poem.jpg]]
@@ -59,8 +59,6 @@
 措所作。此事并非出自作者本意，后《读者》为此事道歉。
 ** 不负如来不负卿
 
-http://music.163.com/#/mv?id=5741268
-
 #+begin_verse
 美人不是母胎生，应是桃花树长成，
 已恨桃花容易落，落花比汝尚多情。
@@ -115,7 +113,6 @@ http://music.163.com/#/mv?id=5741268
 #+end_quote
 ** 摸鱼儿·雁丘词                                                               :爱情:
 :PROPERTIES:
-:Attachments: 问世间-张馨予.mp3
 :AUTHOR:   元好问
 :END:
 
