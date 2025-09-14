@@ -1,4 +1,4 @@
-# Created 2025-09-14 Sun 16:06
+# Created 2025-09-14 Sun 17:31
 #+title: Poem (诗词)
 #+author: stardiviner
 [[file:resources/images/poem.jpg]]
@@ -160,7 +160,7 @@
 用年华赋春秋卷
 风云作砚 一划一重天
 #+end_quote
-* 格言致知, 方寸言志
+* 我自己写的一些诗词：格言致知, 方寸言志
 
 ** 入夜方觉                                                                  :生活:
 :PROPERTIES:
