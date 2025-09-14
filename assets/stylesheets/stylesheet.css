@@ -344,7 +344,7 @@ blockquote {
 blockquote::before {
   display: block;
   content: "“";
-  font: italic 400%/1 Cochin,Georgia,"Times New Roman", serif;
+  font: 400%/1 Cochin,Georgia,"Times New Roman", serif;
   height: 0;                    /* don't leave blockquote top empty space because of `content:`. */
   margin-left: -1.2em;
   color: #999;
