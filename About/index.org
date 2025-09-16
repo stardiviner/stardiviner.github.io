@@ -5,9 +5,9 @@
 #+ATTR_HTML: :id avatar :float left :width 200px :alt 我的形象
 [[file:../assets/images/avatar.jpg]]
 
-I'm an amateurish coder like Lisp, Clojure, I use Emacs (Org Mode) a lot in my daily life! My
+I'm an amateurish coder like Lisp, Clojure, I use Emacs (Org mode) a lot in my daily life! My
 working system is Arch Linux. I contribute some code to open sourced projects, Emacs packages, Org
-Mode etc sometimes. Mainly actived in Clojure forums, Emacs/Org-Mode mailing lists, IRC channels
+mode etc sometimes. Mainly actived in Clojure forums, Emacs/Org-mode mailing lists, IRC channels
 (#emacs,#archlinux,#lisp,#clojure) sometimes.
 
 I like literature, movie, philosophy, argue, and daydreams. I like get to know about any interested
@@ -18,8 +18,8 @@ things. I write some small and never published novels with suddenly popuped fant
 #+ATTR_HTML: :id avatar :float left :width 200px :alt 那时23岁的我
 [[file:resources/images/me_picture 23.jpg]]
 
-喜欢电脑技术，喜欢编程，是一名Coder，喜欢Lisp，Clojure。在生活中主要用Emacs (Org Mode)。我的笔记本上
-安装的是Arch GNU/Linux。这是我从2012年开始用到现在的。平常会对一些开源项目Emacs的插件或者Org Mode贡
+喜欢电脑技术，喜欢编程，是一名Coder，喜欢Lisp，Clojure。在生活中主要用Emacs (Org mode)。我的笔记本上
+安装的是Arch GNU/Linux。这是我从2012年开始用到现在的。平常会对一些开源项目Emacs的插件或者Org mode贡
 献代码。还喜欢 Programming Electric Music编程音乐 Overtone[fn:1]， 喜欢互联网。
 
 喜欢看哲学，文学，[[https://movie.douban.com/people/stardiviner/][电影]]，滑板，和史诗音乐。性格随和，思想开放乐观，接受多元化文化。还喜欢做白日梦，以
