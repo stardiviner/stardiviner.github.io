@@ -84,10 +84,6 @@ Having an awesome desktop is a cool thing.
 :END:
 
 ** Alipay & WeChat Payment
-:LOGBOOK:
-- Note taken on [2018-04-16 Mon 15:46] \\
-  Add CUSTOM_ID property for link anchor by other links.
-:END:
 
 #+begin_export html
 <div id="payment-qr">
