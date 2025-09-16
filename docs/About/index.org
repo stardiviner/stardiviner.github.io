@@ -1,4 +1,4 @@
-# Created 2025-09-10 Wed 10:20
+# Created 2025-09-16 Tue 22:35
 #+title: Self Introduction (哲学命题：我)
 #+author: Christopher M. Miles
 [[file:../assets/images/avatar.jpg]]
@@ -65,29 +65,9 @@ Having an awesome desktop is a cool thing.
 :PROPERTIES:
 :CUSTOM_ID: Payment
 :END:
+** Alipay & WeChat Payment
 :LOGBOOK:
 - Note taken on [2018-04-16 Mon 15:46]  \\
   Add CUSTOM_ID property for link anchor by other links.
 :END:
-** Digital Concurrency
-
-*** Bitcoin Wallet (BTC)
-
-注册 Coinbase 即可获得Bitcoin。 https://www.coinbase.com/join/53b8ac3eed744366f7000001
-
-My BitCoin Wallet Address:
-
-#+begin_example
-3QrdhGw9N1Jm1QLct74A46NPLHmjpw3yJk
-#+end_example
-*** BitCoin Cash Wallet (BTH)
-
-#+begin_example
-qr7gc5z0zml5g2tj2d88yzxqx7t2wd0gtucugd2fdl
-#+end_example
-*** Ethereum Wallet (ETH)
-
-#+begin_example
-0x04cdae4Db1dbbe29C7F98B6bA14C727Be98f658A
-#+end_example
 * Nagato Pain
