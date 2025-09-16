@@ -83,6 +83,8 @@ Having an awesome desktop is a cool thing.
 :PROPERTIES:
 :CUSTOM_ID: Payment
 :END:
+
+** Alipay & WeChat Payment
 :LOGBOOK:
 - Note taken on [2018-04-16 Mon 15:46] \\
   Add CUSTOM_ID property for link anchor by other links.
@@ -115,7 +117,7 @@ Having an awesome desktop is a cool thing.
 </style>
 #+end_export
 
-** Digital Concurrency
+** Digital Concurrency                                             :noexport:
 
 *** Bitcoin Wallet (BTC)
 
