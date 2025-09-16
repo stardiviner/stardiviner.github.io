@@ -27,7 +27,6 @@ things. I write some small and never published novels with suddenly popuped fant
 
 我的网上档案:
 - [[https://github.com/stardiviner/][GitHub: stardiviner]]
-- [[https://stardiviner.github.io/][Blog]]
 - [[https://stackexchange.com/users/366399/stardiviner][my Stack Overflow profile]]
 
 [fn:1] http://overtone.github.io/
@@ -42,7 +41,7 @@ things. I write some small and never published novels with suddenly popuped fant
 - Keybase: https://keybase.io/stardiviner
 - Savannah GNU (Emacs, mainly contribute patch to org-mode): https://savannah.gnu.org/users/stardiviner
 
-* Tools
+* Softwares
 
 ** macOS
 :PROPERTIES:
