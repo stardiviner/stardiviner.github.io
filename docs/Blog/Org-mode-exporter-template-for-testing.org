@@ -1,4 +1,4 @@
-# Created 2025-08-22 Fri 16:49
+# Created 2025-09-18 Thu 13:06
 #+options: num:t toc:1 H:4
 #+title: Org-mode exporter template for testing
 #+author: stardiviner
@@ -100,10 +100,10 @@ en-dashes, and ~...~ to ellipses.
 
 1. Arabic (decimal) numbered list item. We add a few words to show the line
    wrapping.
-   1. Upper case alpha (letter) numbered list item.
-      1. Lower alpha.
-      2. Lower alpha.
-   2. Upper alpha.
+   A. Upper case alpha (letter) numbered list item.
+      a. Lower alpha.
+      b. Lower alpha.
+   B. Upper alpha.
 2. Number.
 *** ordered list with jumping numbers
 :PROPERTIES:
