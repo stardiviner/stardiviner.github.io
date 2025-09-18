@@ -883,15 +883,15 @@ span.tag span.__::before {
 #payment-qr {
   display: flex;
   justify-content: space-around;
+  align-items: self-start;
+  /* min-height: auto; */
   margin: 5px 5px 5px;
 }
 #payment-alipay {
   width: 200px;
-  margin: auto;
 }
 div#payment-wechat {
   width: 200px;
-  margin: auto;
 }
 
 /* Comment */
