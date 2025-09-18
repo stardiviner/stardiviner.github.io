@@ -28,7 +28,7 @@ html, body {
 
 body {
   padding: 10px;
-  
+
   /* font */
   /* font-family: Monaco, monospace; */
   font-size: 16px;
@@ -396,7 +396,7 @@ pre {
 
   /* word wrap */
   word-wrap: break-word;
-  
+
   /* scroll bar */
   overflow-x: auto;
 }
@@ -437,7 +437,7 @@ pre.src:hover::before {
   float: right;
   overflow: visible;
   top: 5px;
-  
+
   opacity: 0.9;
   color: #ed1c1cb3;
   border: 1px solid gray;
@@ -560,9 +560,9 @@ sup a:after {
   padding-right: 5px;
 
   text-align: right;
-  
+
   box-shadow: 0 0 1em #777777;
-  
+
   border:1px solid #e1e1e8;
   border-bottom-left-radius: 5px;
 
