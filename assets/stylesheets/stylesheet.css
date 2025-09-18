@@ -822,8 +822,8 @@ span.tag span.__::before {
 }
 
 /* jump to beginning */
-#scrollTopBtn {
-  display: none;
+#scrollTopButton {
+  display: block;
   position: fixed;
   bottom: 20px;
   right: 30px;
@@ -838,7 +838,7 @@ span.tag span.__::before {
   border-radius: 10px;
   font-size: 18px;
 }
-#scrollTopBtn:hover {
+#scrollTopButton:hover {
   background-color: pink;
 }
 
