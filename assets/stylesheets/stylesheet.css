@@ -842,7 +842,7 @@ span.tag span.__::before {
   background-color: pink;
 }
 
-/* payment */
+/* left bottom corner payment icon */
 .payment {
 }
 /* 打赏 icon "assets/images/reward-icon.png" */
@@ -879,7 +879,7 @@ span.tag span.__::before {
   border-radius: 40px;
 }
 
-/* payment qrcode of alipay & wechat */
+/* payment section in About page: qrcode of alipay & wechat */
 #payment-qr {
   display: flex;
   justify-content: space-around;
