@@ -682,15 +682,15 @@ input[type=button]:after {
 
 /* active/inactive timestamp */
 .timestamp-wrapper {
-  background-color: #f3f3f380;
-  border: #d4d1d14d solid 2px;
-  padding: 4px 2px 2px 0px;
-  margin: 0px 2px 0px 2px;
+  background-color: #f3f3f3ad;
+  border: 1px dashed #3b03f759;
+  padding: 2px;
+  margin: 2px;
 }
 .timestamp-kwd {
 }
-.timestamp {
-  color: #727272;
+time.timestamp {
+  color: #5f5f5fcc;
 }
 
 /* audio */
@@ -842,7 +842,7 @@ span.tag span.__::before {
   background-color: pink;
 }
 
-/* payment */
+/* left bottom corner payment icon */
 .payment {
 }
 /* 打赏 icon "assets/images/reward-icon.png" */
@@ -879,19 +879,19 @@ span.tag span.__::before {
   border-radius: 40px;
 }
 
-/* payment qrcode of alipay & wechat */
+/* payment section in About page: qrcode of alipay & wechat */
 #payment-qr {
   display: flex;
   justify-content: space-around;
+  align-items: self-start;
+  /* min-height: auto; */
   margin: 5px 5px 5px;
 }
 #payment-alipay {
   width: 200px;
-  margin: auto;
 }
 div#payment-wechat {
   width: 200px;
-  margin: auto;
 }
 
 /* Comment */
@@ -1004,6 +1004,10 @@ body {
 /* footnote number */
 .footnum {
   color: hotpink;
+  border-bottom: none;
+}
+/* footnote doc */
+.footpara {
 }
 
 /* footer */
