@@ -1004,6 +1004,10 @@ body {
 /* footnote number */
 .footnum {
   color: hotpink;
+  border-bottom: none;
+}
+/* footnote doc */
+.footpara {
 }
 
 /* footer */
