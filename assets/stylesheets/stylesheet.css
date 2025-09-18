@@ -682,15 +682,15 @@ input[type=button]:after {
 
 /* active/inactive timestamp */
 .timestamp-wrapper {
-  background-color: #f3f3f380;
-  border: #d4d1d14d solid 2px;
-  padding: 4px 2px 2px 0px;
-  margin: 0px 2px 0px 2px;
+  background-color: #f3f3f3ad;
+  border: 1px dashed #3b03f759;
+  padding: 2px;
+  margin: 2px;
 }
 .timestamp-kwd {
 }
-.timestamp {
-  color: #727272;
+time.timestamp {
+  color: #5f5f5fcc;
 }
 
 /* audio */
