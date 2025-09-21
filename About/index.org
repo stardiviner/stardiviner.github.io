@@ -20,16 +20,18 @@ things. I write some small and never published novels with suddenly popuped fant
 
 喜欢电脑技术，喜欢编程，是一名Coder，喜欢Lisp，Clojure。在生活中主要用Emacs (Org mode)。我的笔记本上
 安装的是Arch GNU/Linux。这是我从2012年开始用到现在的。平常会对一些开源项目Emacs的插件或者Org mode贡
-献代码。还喜欢 Programming Electric Music编程音乐 Overtone[fn:1]， 喜欢互联网。
+献代码 [fn:2] [fn:3]。还喜欢 Programming Electric Music编程音乐 Overtone[fn:1]， 喜欢互联网。
 
-喜欢看哲学，文学，[[https://movie.douban.com/people/stardiviner/][电影]]，滑板，和史诗音乐。性格随和，思想开放乐观，接受多元化文化。还喜欢做白日梦，以
-及各种有趣的东西。也会把脑海中突然冒出来的一些奇怪的念头和想法写成短小的小说残篇，我还从来没有发表过他们。
+喜欢哲学，[[https://book.douban.com/people/stardiviner/][看书]]，[[https://movie.douban.com/people/stardiviner/][电影]]，和史诗音乐。性格随和，思想开放乐观，接受多元化文化。还喜欢做白日梦，以及各种有
+趣的东西。也会把脑海中突然冒出来的一些奇怪的念头和想法写成短小的小说残篇，我还从来没有发表过他们。
 
 我的网上档案:
 - [[https://github.com/stardiviner/][GitHub: stardiviner]]
 - [[https://stackexchange.com/users/366399/stardiviner][my Stack Overflow profile]]
 
 [fn:1] http://overtone.github.io/
+[fn:2] https://cgit.git.savannah.gnu.org/cgit/emacs/org-mode.git/log/?qt=grep&q=stardiviner
+[fn:3] https://cgit.git.savannah.gnu.org/cgit/emacs/org-mode.git/log/?qt=grep&q=numbchild
 
 * Contact & Profiles
 :PROPERTIES:
