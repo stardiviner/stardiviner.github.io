@@ -458,7 +458,7 @@ pre.src:hover::before {
 }
 
 /* inline code */
-p > code {
+div code, p > code {
   color: #333333;
   background: rgb(154 253 233 / 60%) none repeat scroll 0% 0%;
   border: 0.5px solid #444444;
