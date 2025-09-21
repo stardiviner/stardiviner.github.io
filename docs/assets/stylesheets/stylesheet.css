@@ -1027,6 +1027,7 @@ body {
 }
 /* footnote definition */
 .footdef {
+  margin-bottom: unset;
 }
 /* footnote number */
 .footnum {
