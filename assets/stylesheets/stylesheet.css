@@ -902,6 +902,8 @@ span.tag span.__::before {
 }
 #donateButton:hover {
   background-color: pink;
+  transform: scale(1.5);
+  transition: all .3s ease;
 }
 
 /* payment section in About page: qrcode of alipay & wechat */
