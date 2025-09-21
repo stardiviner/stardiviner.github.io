@@ -80,9 +80,14 @@ img#avatar {
   visibility: visible;
   width: 200px;
   margin-right: 40px;
+  filter: blur(3px);
+  transform: rotate(-6deg);
+  transition: all .3s ease;
 }
 img#avatar:hover {
-  filter: blur(2.5px);
+  filter: blur(0px);
+  transform: rotate(8deg);
+  transition: all .3s ease;
 }
 
 /* preamble */
