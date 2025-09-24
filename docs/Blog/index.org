@@ -1,4 +1,4 @@
-# Created 2025-09-18 Thu 13:06
+# Created 2025-09-25 Thu 04:00
 #+title: An amateurish coder's blog
 #+author: Christopher M. Miles
 * 现在的审查确实相较于几年前要严格很多，难怪主流网站上大多都是娱乐内容了

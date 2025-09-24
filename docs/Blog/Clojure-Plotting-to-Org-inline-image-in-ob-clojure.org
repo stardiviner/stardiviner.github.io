@@ -1,4 +1,4 @@
-# Created 2025-09-18 Thu 13:04
+# Created 2025-09-25 Thu 03:58
 #+title: Clojure Plotting to Org inline image in ob-clojure
 #+author: Christopher M. Miles
 * The Process of my Clojure Plotting

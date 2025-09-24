@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-09-18 Thu 13:05 -->
+<!-- 2025-09-25 Thu 03:58 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How to Read Code in Emacs</title>
@@ -244,7 +244,11 @@ org_html_manager.setup();  // activate after the parameters are set
     <li><a href='/Blog/index.html'>Blog</a></li>
     <li><a href="/Thought/index.html">Thought</a></li>
     <li><a href='/Literature/index.html'>文学</a></li>
-    <li><a href='/About/index.html'>About</a></li>
+    <li>
+      <span id="animationWords">
+        <a href='/About/index.html'>About</a>
+      </span>
+    </li>
   </ul>
 </div>
 <div class="epilogue">
@@ -291,7 +295,7 @@ ID: 98ca483b-70bd-4a8b-b1b9-d604672fb8f3
 </pre>
 
 
-<figure id="orgffa12bf">
+<figure id="org2bf4515">
 <img src="data/98/ca483b-70bd-4a8b-b1b9-d604672fb8f3/highlight code.png" alt="highlight code.png" width="600px">
 
 </figure>
@@ -377,7 +381,7 @@ me. I want it displayed at point.
 </p>
 
 
-<figure id="orgcaff7bf">
+<figure id="org7a35fe4">
 <img src="data/6c/961996-eff9-41fa-a420-9272520996af/Edebug result at point.png" alt="Edebug result at point.png">
 
 </figure>
@@ -387,13 +391,13 @@ Here is my trick after I dive into Edebug source code:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #707183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #006699;">my:edebug-previous-result</span> <span style="color: #7388D6;">()</span></code>
-<code>    <span style="color: #036A07;">"Print the previous result."</span></code>
-<code>    <span style="color: #7388D6;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">interactive</span><span style="color: #7388D6;">)</span></code>
-<code>    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">(pos-tip-show edebug-previous-result 'popup-face) ; slow</code>
-<code></span>    <span style="color: #7388D6;">(</span>popup-tip edebug-previous-result <span style="color: #006FE0;">:truncate</span> t <span style="color: #006FE0;">:height</span> 20 <span style="color: #006FE0;">:width</span> 45 <span style="color: #006FE0;">:nostrip</span> t <span style="color: #006FE0;">:margin</span> 1 <span style="color: #006FE0;">:nowait</span> nil<span style="color: #7388D6;">)</span></code>
-<code>    <span style="color: #707183;">)</span></code>
-<code>  <span style="color: #707183;">(</span>advice-add 'edebug-previous-result <span style="color: #006FE0;">:override</span> #'my:edebug-previous-result<span style="color: #707183;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #82aaff;">my:edebug-previous-result</span> <span style="color: #f78c6c;">()</span></code>
+<code>    <span style="color: #8d92af;">"Print the previous result."</span></code>
+<code>    <span style="color: #f78c6c;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">interactive</span><span style="color: #f78c6c;">)</span></code>
+<code>    <span style="color: #676E95;">;; </span><span style="color: #676E95;">(pos-tip-show edebug-previous-result 'popup-face) ; slow</code>
+<code></span>    <span style="color: #f78c6c;">(</span>popup-tip edebug-previous-result <span style="color: #82aaff;">:truncate</span> t <span style="color: #82aaff;">:height</span> 20 <span style="color: #82aaff;">:width</span> 45 <span style="color: #82aaff;">:nostrip</span> t <span style="color: #82aaff;">:margin</span> 1 <span style="color: #82aaff;">:nowait</span> nil<span style="color: #f78c6c;">)</span></code>
+<code>    <span style="color: #c792ea;">)</span></code>
+<code>  <span style="color: #c792ea;">(</span>advice-add 'edebug-previous-result <span style="color: #82aaff;">:override</span> #'my:edebug-previous-result<span style="color: #c792ea;">)</span></code>
 </code></pre>
 </div>
 

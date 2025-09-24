@@ -1,4 +1,4 @@
-# Created 2025-09-18 Thu 13:07
+# Created 2025-09-25 Thu 04:00
 #+title: upgrade Org link syntax to new
 #+author: stardiviner <numbchild@gmail.com>
 * which Org version using new link syntax?

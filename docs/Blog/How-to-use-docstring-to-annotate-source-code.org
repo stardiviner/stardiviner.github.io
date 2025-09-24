@@ -1,4 +1,4 @@
-# Created 2025-09-18 Thu 13:05
+# Created 2025-09-25 Thu 03:58
 #+title: 
 #+author: Christopher M. Miles
 * How does the idea comes up?
