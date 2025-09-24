@@ -141,6 +141,22 @@ img#avatar:hover {
   text-decoration: none;
 }
 
+/* About page navigator */
+#animationWords {
+  display: inline-block;
+  /* animation: swingDown 0.75s ease; */
+  animation-name: swingDown;
+  animation-duration: 0.75s;
+  animation-timing-function: ease;
+  transform: rotate(-7.5deg);
+  transform-origin: bottom right;
+  text-wrap: balance;
+}
+#animationWords:hover {
+  animation: pushUp 0.5s;
+  transform: rotate(0deg);
+}
+
 /* org-info.js */
 /* HOME/UP */
 #org-div-home-and-up {
