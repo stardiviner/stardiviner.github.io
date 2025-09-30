@@ -1056,9 +1056,13 @@ body {
 
 /* footer */
 /* postamble */
-footer, #postamble {
+#postamble footer {
   margin-top: 1em;
   text-align: center;
+  color: #00000047;
+}
+#postamble footer a {
+  color: #00000066;
 }
 /* "Show Org source" button */
 #show_source input[type=button] {
