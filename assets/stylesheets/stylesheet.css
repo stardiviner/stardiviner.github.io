@@ -111,7 +111,7 @@ img#avatar:hover {
 
 /* navigator */
 #preamble .nav {
-  /* background: rgba(255,255,255,0.9) !important; */
+  background: rgb(255 255 255 / 10%) !important;
   opacity: 1;
   transition: opacity 0.3s ease-out 0s, transform 0.3s ease-out 0s;
   transform: translateY(0px);
