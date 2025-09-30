@@ -1067,6 +1067,7 @@ body {
 /* "Show Org source" button */
 #show_source input[type=button] {
   background: white;
+  color: #ff8d8d9e;
   opacity: 2;
   border: 1px solid;
   border-radius: 4px;
@@ -1074,7 +1075,7 @@ body {
   margin-top: 5px;
 }
 #show_source input[type=button]:hover {
-  box-shadow: 5px 5px 5px 0 rgb(249 0 36 / 35%), 5px 5px 5px 0 rgb(249 0 0 / 39%);
+  box-shadow: 3px 3px 3px 0 rgb(255 222 227 / 35%), 3px 3px 3px 0 rgb(255 91 91 / 46%);
 }
 
 /* Disqus */
