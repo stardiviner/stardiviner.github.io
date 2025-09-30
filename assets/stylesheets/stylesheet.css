@@ -115,7 +115,7 @@ img#avatar:hover {
   opacity: 1;
   transition: opacity 0.3s ease-out 0s, transform 0.3s ease-out 0s;
   transform: translateY(0px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px 5px rgba(0,0,0,0.05);
   border-radius: 4px;
   display: flex;
   align-items: stretch;
