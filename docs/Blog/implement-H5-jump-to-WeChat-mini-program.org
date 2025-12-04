@@ -1,4 +1,4 @@
-# Created 2025-09-25 Thu 03:59
+# Created 2025-12-04 Thu 14:09
 #+title: Implement H5 jump to WeChat mini program
 #+author: Christopher M. Miles
 * 使用太阳码

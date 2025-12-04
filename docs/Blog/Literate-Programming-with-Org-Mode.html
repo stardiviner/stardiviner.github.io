@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-09-25 Thu 03:59 -->
+<!-- 2025-12-04 Thu 14:09 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Literate Programming with Org Mode</title>
@@ -391,7 +391,7 @@ Org source code, and GitHub, and maybe somewhere else.
 </code></pre>
 </div>
 
-<pre class="example" id="org84f4e2c">
+<pre class="example" id="org2c08a67">
 <code>- (sclang . t)</code>
 <code>- (spice . t)</code>
 <code>- (lilypond . t)</code>
@@ -501,9 +501,9 @@ In the Org-mode file:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-org"><code><code><span style="color: #8d92af;">name: hello-world-prefix</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;"></code>
-<code>&#60100;</span><span style="color: #676E95; background-color: #232635;"> shell :exports none</code>
-<code></span><span style="background-color: #3C435E;">  </span><span style="color: #82aaff; background-color: #3C435E;">echo</span><span style="background-color: #3C435E;"> </span><span style="color: #c3e88d; background-color: #3C435E;">"/-----------------------------------------------------------\\"</span><span style="background-color: #3C435E;"></code>
+<pre class="src src-org"><code><code><span style="color: #008ED1; background-color: #EAEAFF;">name: hello-world-prefix</span><span style="color: #0000FF; font-weight: bold; font-style: italic;"></code>
+<code>&#60100;</span><span style="color: #555555; background-color: #E2E1D5;"> shell :exports none</code>
+<code></span><span style="color: #000088; background-color: #FFFFE0;">  </span><span style="color: #006FE0; background-color: #FFFFE0;">echo</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #008000; background-color: #FFFFE0;">"/-----------------------------------------------------------\\"</span><span style="color: #000088; background-color: #FFFFE0;"></code>
 <code>&#986659;</span></code>
 </code></pre>
 </div>
@@ -513,9 +513,9 @@ HTML export of code: In the Org-mode file
 </p>
 
 <div class="org-src-container">
-<pre class="src src-org"><code><code><span style="color: #8d92af;">name: hello-world-postfix</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;"></code>
-<code>&#60100;</span><span style="color: #676E95; background-color: #232635;"> shell :exports none</code>
-<code></span><span style="background-color: #3C435E;">  </span><span style="color: #82aaff; background-color: #3C435E;">echo</span><span style="background-color: #3C435E;"> </span><span style="color: #c3e88d; background-color: #3C435E;">"\-----------------------------------------------------------/"</span><span style="background-color: #3C435E;"></code>
+<pre class="src src-org"><code><code><span style="color: #008ED1; background-color: #EAEAFF;">name: hello-world-postfix</span><span style="color: #0000FF; font-weight: bold; font-style: italic;"></code>
+<code>&#60100;</span><span style="color: #555555; background-color: #E2E1D5;"> shell :exports none</code>
+<code></span><span style="color: #000088; background-color: #FFFFE0;">  </span><span style="color: #006FE0; background-color: #FFFFE0;">echo</span><span style="color: #000088; background-color: #FFFFE0;"> </span><span style="color: #008000; background-color: #FFFFE0;">"\-----------------------------------------------------------/"</span><span style="color: #000088; background-color: #FFFFE0;"></code>
 <code>&#986659;</span></code>
 </code></pre>
 </div>
@@ -533,10 +533,10 @@ In the Org-mode file:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-org"><code><code><span style="color: #8d92af;">name: hello-world</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;"></code>
-<code>&#60100;</span><span style="color: #676E95; background-color: #232635;"> shell :tangle hello.sh :exports none :noweb yes</code>
-<code></span><span style="background-color: #3C435E;">  &lt;&lt;hello-world-prefix&gt;&gt;</span><span style="color: #c3e88d; background-color: #3C435E;"></code>
-<code></span><span style="background-color: #3C435E;">  echo "|                       hello world                         |"</code>
+<pre class="src src-org"><code><code><span style="color: #008ED1; background-color: #EAEAFF;">name: hello-world</span><span style="color: #0000FF; font-weight: bold; font-style: italic;"></code>
+<code>&#60100;</span><span style="color: #555555; background-color: #E2E1D5;"> shell :tangle hello.sh :exports none :noweb yes</code>
+<code></span><span style="color: #000088; background-color: #FFFFE0;">  &lt;&lt;hello-world-prefix&gt;&gt;</span><span style="color: #0000ff; background-color: #EEF5FE;"></code>
+<code></span><span style="color: #000088; background-color: #FFFFE0;">  echo "|                       hello world                         |"</code>
 <code>  &lt;&lt;hello-world-postfix&gt;&gt;</code>
 <code>&#986659;</span></code>
 </code></pre>
@@ -548,22 +548,22 @@ source code being written to the <code>hello.sh</code> file:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="hello.sh"><code><code><span style="color: #82aaff;">echo</span> <span style="color: #c3e88d;">"/-----------------------------------------------------------\\"</span></code>
-<code><span style="color: #82aaff;">echo</span> <span style="color: #c3e88d;">"|                       hello world                         |"</span></code>
-<code><span style="color: #82aaff;">echo</span> <span style="color: #c3e88d;">"\-----------------------------------------------------------/"</span></code>
+<pre class="src src-shell" id="hello.sh"><code><code><span style="color: #006FE0;">echo</span> <span style="color: #008000;">"/-----------------------------------------------------------\\"</span></code>
+<code><span style="color: #006FE0;">echo</span> <span style="color: #008000;">"|                       hello world                         |"</span></code>
+<code><span style="color: #006FE0;">echo</span> <span style="color: #008000;">"\-----------------------------------------------------------/"</span></code>
 </code></pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-shell" id="hello.sh"><code><code><span style="color: #676E95;">#</span><span style="color: #676E95;">!/usr/bin/</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">env</span><span style="color: #676E95;"> sh</code>
+<pre class="src src-shell" id="hello.sh"><code><code><span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">!/usr/bin/</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">env</span><span style="color: #8D8D84; font-style: italic;"> sh</code>
 <code></span></code>
-<code><span style="color: #676E95;"># </span><span style="color: #676E95;">[[file:~/org/temp/index.org::*Noweb test][hello-world]]</code>
+<code><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">[[file:~/org/temp/index.org::*Noweb test][hello-world]]</code>
 <code></span></code>
-<code><span style="color: #82aaff;">echo</span> <span style="color: #c3e88d;">"/-----------------------------------------------------------\\"</span></code>
-<code><span style="color: #82aaff;">echo</span> <span style="color: #c3e88d;">"|                       hello world                         |"</span></code>
-<code><span style="color: #82aaff;">echo</span> <span style="color: #c3e88d;">"\-----------------------------------------------------------/"</span></code>
-<code><span style="color: #676E95;"># </span><span style="color: #676E95;">hello-world ends here</span></code>
+<code><span style="color: #006FE0;">echo</span> <span style="color: #008000;">"/-----------------------------------------------------------\\"</span></code>
+<code><span style="color: #006FE0;">echo</span> <span style="color: #008000;">"|                       hello world                         |"</span></code>
+<code><span style="color: #006FE0;">echo</span> <span style="color: #008000;">"\-----------------------------------------------------------/"</span></code>
+<code><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">hello-world ends here</span></code>
 </code></pre>
 </div>
 
@@ -573,7 +573,7 @@ evaluating a code block, in this case one named example-block.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-org"><code><code><span style="color: #676E95;">#  &#8618; example-block() </span></code>
+<pre class="src src-org"><code><code><span style="color: #8D8D84; font-style: italic;">#  &#8618; example-block() </span></code>
 </code></pre>
 </div>
 
@@ -584,7 +584,7 @@ block functions (see the Library of babel). For example,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-org"><code><code><span style="color: #676E95;">#  &#8618; example-block(a=9) </span></code>
+<pre class="src src-org"><code><code><span style="color: #8D8D84; font-style: italic;">#  &#8618; example-block(a=9) </span></code>
 </code></pre>
 </div>
 
@@ -677,8 +677,8 @@ ID: baf81c8a-cf61-4971-90b3-cf77acc5b10f
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="hello"><code><span id="coderef-define function hello" class="coderef-off"><code><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #82aaff;">hello</span> <span style="color: #f78c6c;">(</span>name<span style="color: #f78c6c;">)</span>                               <span style="color: #676E95;">;</span><span style="color: #676E95;"></code> (define function hello)</span>
-<code></span>  <span style="color: #f78c6c;">(</span>print <span style="color: #c3e88d;">(</span>format <span style="color: #c3e88d;">"Hello, </span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span> name<span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp" id="hello"><code><span id="coderef-define function hello" class="coderef-off"><code><span style="color: #707183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #006699;">hello</span> <span style="color: #7388D6;">(</span>name<span style="color: #7388D6;">)</span>                               <span style="color: #8D8D84;">;</span><span style="color: #8D8D84; font-style: italic;"></code> (define function hello)</span>
+<code></span>  <span style="color: #7388D6;">(</span>print <span style="color: #909183;">(</span>format <span style="color: #008000;">"Hello, </span><span style="color: #0000FF; font-weight: bold; font-style: italic;">%s</span><span style="color: #008000;">"</span> name<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 
@@ -705,7 +705,7 @@ ID: 502e7979-5746-4596-be87-257a4882c947
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><code><code>&lt;&lt;hello&gt;&gt;</code>
 <code></code>
-<code><span style="color: #c792ea;">(</span>hello <span style="color: #c3e88d;">"stardiviner"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #707183;">(</span>hello <span style="color: #008000;">"stardiviner"</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 
@@ -769,7 +769,11 @@ Still there are many things need to write. But temporary like this for now.
 <footer>
   Copyright 2011, Author: Christopher M. Miles (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
   Last update date: 2025-08-22 Fri 13:44.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre).<br>
+  <a id="Emacs_Org_mode" href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;">
+    <img src="/assets/images/made_with_emacs_org-mode.jpg">
+  </a>
+  (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
   <!-- RSS -->
   You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.

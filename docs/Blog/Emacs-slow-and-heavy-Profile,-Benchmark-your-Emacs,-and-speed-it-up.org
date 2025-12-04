@@ -1,4 +1,4 @@
-# Created 2025-09-25 Thu 03:58
+# Created 2025-12-04 Thu 14:07
 #+title: Emacs slow and heavy? Profile, Benchmark your Emacs, and speed it up
 #+author: Christopher M. Miles
 * Is your Emacs slow and heavy?

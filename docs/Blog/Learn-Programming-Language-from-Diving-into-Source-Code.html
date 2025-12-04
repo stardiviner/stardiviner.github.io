@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-09-25 Thu 03:58 -->
+<!-- 2025-12-04 Thu 14:08 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Learn Programming Language from Diving into Source Code</title>
@@ -382,8 +382,8 @@ ID: b1d53db2-70c9-400a-8068-87b2b0b59bb4
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span>defengine github</code>
-<code>  <span style="color: #c3e88d;">"https://github.com/search?ref=simplesearch&amp;q=</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #707183;">(</span>defengine github</code>
+<code>  <span style="color: #008000;">"https://github.com/search?ref=simplesearch&amp;q=</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">%s</span><span style="color: #008000;">"</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 </div>
@@ -395,9 +395,9 @@ ID: b4d6e855-00e6-4919-8aa0-2d34bc58f76c
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span>defengine duckduckgo</code>
-<code>  <span style="color: #c3e88d;">"https://duckduckgo.com/?q=</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span></code>
-<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"d"</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #707183;">(</span>defengine duckduckgo</code>
+<code>  <span style="color: #008000;">"https://duckduckgo.com/?q=</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">%s</span><span style="color: #008000;">"</span></code>
+<code>  <span style="color: #006FE0;">:keybinding</span> <span style="color: #008000;">"d"</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 </div>
@@ -409,9 +409,9 @@ ID: cf89a876-7da0-48fc-a1cb-e58270fbead2
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span>defengine github</code>
-<code>  <span style="color: #c3e88d;">"https://github.com/search?ref=simplesearch&amp;q=</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span></code>
-<code>  <span style="color: #82aaff;">:browser</span> 'eww-browse-url<span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #707183;">(</span>defengine github</code>
+<code>  <span style="color: #008000;">"https://github.com/search?ref=simplesearch&amp;q=</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">%s</span><span style="color: #008000;">"</span></code>
+<code>  <span style="color: #006FE0;">:browser</span> 'eww-browse-url<span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 </div>
@@ -423,9 +423,9 @@ ID: 7c1d115d-c6c7-4bab-aff6-7aa570211df2
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span>defengine ctan</code>
-<code>  <span style="color: #c3e88d;">"http://www.ctan.org/search/?x=1&amp;PORTAL=on&amp;phrase=</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span></code>
-<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Search the Comprehensive TeX Archive Network (ctan.org)"</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #707183;">(</span>defengine ctan</code>
+<code>  <span style="color: #008000;">"http://www.ctan.org/search/?x=1&amp;PORTAL=on&amp;phrase=</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">%s</span><span style="color: #008000;">"</span></code>
+<code>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"Search the Comprehensive TeX Archive Network (ctan.org)"</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 </div>
@@ -440,63 +440,63 @@ ID: a8323cd7-a7c8-4347-9e4b-9cffff2c569f
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #676E95;">;; </span><span style="color: #676E95;">general search engines</code>
-<code></span><span style="color: #c792ea;">(</span>defengine google</code>
-<code>  <span style="color: #c3e88d;">"http://www.google.com/search?ie=utf-8&amp;oe=utf-8&amp;q=</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">%s</span><span style="color: #c3e88d;">"</span></code>
-<code>  <span style="color: #676E95;">;; </span><span style="color: #676E95;">"http://www.google.com/search?q=%s"</code>
-<code></span>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Google"</span></code>
-<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"g"</span><span style="color: #c792ea;">)</span></code>
-<code><span style="color: #c792ea;">(</span>defengine duckduckgo</code>
-<code>  <span style="color: #c3e88d;">"https://duckduckgo.com/?q=%s"</span></code>
-<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"DuckDuckGo"</span></code>
-<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"d"</span><span style="color: #c792ea;">)</span></code>
-<code><span style="color: #c792ea;">(</span>defengine blekko</code>
-<code>  <span style="color: #c3e88d;">"https://blekko.com/#?q=%s"</span></code>
-<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Blekko"</span></code>
-<code>  <span style="color: #676E95;">;; </span><span style="color: #676E95;">:keybinding "B"</code>
-<code></span>  <span style="color: #c792ea;">)</span></code>
-<code><span style="color: #c792ea;">(</span>defengine bing</code>
-<code>  <span style="color: #c3e88d;">"http://cn.bing.com/search?q="</span></code>
-<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Bing"</span><span style="color: #c792ea;">)</span></code>
-<code><span style="color: #c792ea;">(</span>defengine baidu</code>
-<code>  <span style="color: #c3e88d;">"http://www.baidu.com/s?wd=%s"</span></code>
-<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Baidu"</span></code>
-<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"b"</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">general search engines</code>
+<code></span><span style="color: #707183;">(</span>defengine google</code>
+<code>  <span style="color: #008000;">"http://www.google.com/search?ie=utf-8&amp;oe=utf-8&amp;q=</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">%s</span><span style="color: #008000;">"</span></code>
+<code>  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">"http://www.google.com/search?q=%s"</code>
+<code></span>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"Google"</span></code>
+<code>  <span style="color: #006FE0;">:keybinding</span> <span style="color: #008000;">"g"</span><span style="color: #707183;">)</span></code>
+<code><span style="color: #707183;">(</span>defengine duckduckgo</code>
+<code>  <span style="color: #008000;">"https://duckduckgo.com/?q=%s"</span></code>
+<code>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"DuckDuckGo"</span></code>
+<code>  <span style="color: #006FE0;">:keybinding</span> <span style="color: #008000;">"d"</span><span style="color: #707183;">)</span></code>
+<code><span style="color: #707183;">(</span>defengine blekko</code>
+<code>  <span style="color: #008000;">"https://blekko.com/#?q=%s"</span></code>
+<code>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"Blekko"</span></code>
+<code>  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">:keybinding "B"</code>
+<code></span>  <span style="color: #707183;">)</span></code>
+<code><span style="color: #707183;">(</span>defengine bing</code>
+<code>  <span style="color: #008000;">"http://cn.bing.com/search?q="</span></code>
+<code>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"Bing"</span><span style="color: #707183;">)</span></code>
+<code><span style="color: #707183;">(</span>defengine baidu</code>
+<code>  <span style="color: #008000;">"http://www.baidu.com/s?wd=%s"</span></code>
+<code>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"Baidu"</span></code>
+<code>  <span style="color: #006FE0;">:keybinding</span> <span style="color: #008000;">"b"</span><span style="color: #707183;">)</span></code>
 <code></code>
-<code><span style="color: #676E95;">;; </span><span style="color: #676E95;">Wikipedia</code>
-<code></span><span style="color: #c792ea;">(</span>defengine wikipedia</code>
-<code>  <span style="color: #c3e88d;">"http://www.wikipedia.org/search-redirect.php?language=en&amp;go=Go&amp;search=%s"</span></code>
-<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Wikipedia"</span></code>
-<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"w"</span><span style="color: #c792ea;">)</span></code>
-<code><span style="color: #c792ea;">(</span>defengine baidu_baike</code>
-<code>  <span style="color: #c3e88d;">"http://baike.baidu.com/search/none?word=%s"</span></code>
-<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Baidu Baike"</span></code>
-<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"W"</span><span style="color: #c792ea;">)</span></code>
-<code><span style="color: #c792ea;">(</span>defengine wolfram-alpha</code>
-<code>  <span style="color: #c3e88d;">"http://www.wolframalpha.com/input/?i=%s"</span></code>
-<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Wolfram Alpha"</span></code>
-<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"A"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Wikipedia</code>
+<code></span><span style="color: #707183;">(</span>defengine wikipedia</code>
+<code>  <span style="color: #008000;">"http://www.wikipedia.org/search-redirect.php?language=en&amp;go=Go&amp;search=%s"</span></code>
+<code>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"Wikipedia"</span></code>
+<code>  <span style="color: #006FE0;">:keybinding</span> <span style="color: #008000;">"w"</span><span style="color: #707183;">)</span></code>
+<code><span style="color: #707183;">(</span>defengine baidu_baike</code>
+<code>  <span style="color: #008000;">"http://baike.baidu.com/search/none?word=%s"</span></code>
+<code>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"Baidu Baike"</span></code>
+<code>  <span style="color: #006FE0;">:keybinding</span> <span style="color: #008000;">"W"</span><span style="color: #707183;">)</span></code>
+<code><span style="color: #707183;">(</span>defengine wolfram-alpha</code>
+<code>  <span style="color: #008000;">"http://www.wolframalpha.com/input/?i=%s"</span></code>
+<code>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"Wolfram Alpha"</span></code>
+<code>  <span style="color: #006FE0;">:keybinding</span> <span style="color: #008000;">"A"</span><span style="color: #707183;">)</span></code>
 <code></code>
-<code><span style="color: #676E95;">;; </span><span style="color: #676E95;">programming</code>
+<code><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">programming</code>
 <code></span></code>
-<code><span style="color: #676E95;">;; </span><span style="color: #676E95;">Docs: API</code>
-<code></span><span style="color: #c792ea;">(</span>defengine APIs</code>
-<code>  <span style="color: #c3e88d;">"http://apis.io/?search=%s"</span></code>
-<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"APIs"</span></code>
-<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"a"</span><span style="color: #c792ea;">)</span></code>
-<code><span style="color: #c792ea;">(</span>defengine mozilla-developer</code>
-<code>  <span style="color: #c3e88d;">"https://developer.mozilla.org/en-US/search?q=%s"</span></code>
-<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Mozilla Developer"</span></code>
-<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"m"</span><span style="color: #c792ea;">)</span></code>
-<code><span style="color: #c792ea;">(</span>defengine rfcs</code>
-<code>  <span style="color: #c3e88d;">"http://pretty-rfc.herokuapp.com/search?q=%s"</span></code>
-<code>  <span style="color: #676E95;">;; </span><span style="color: #676E95;">"https://www.rfc-editor.org/search/rfc_search_detail.php?rfc=%s"</code>
-<code></span>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"RFC"</span></code>
-<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"R"</span><span style="color: #c792ea;">)</span></code>
-<code><span style="color: #c792ea;">(</span>defengine emacswiki</code>
-<code>  <span style="color: #c3e88d;">"www.emacswiki.org/emacs?search=%s"</span></code>
-<code>  <span style="color: #82aaff;">:docstring</span> <span style="color: #c3e88d;">"Emacs Wiki"</span></code>
-<code>  <span style="color: #82aaff;">:keybinding</span> <span style="color: #c3e88d;">"e"</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Docs: API</code>
+<code></span><span style="color: #707183;">(</span>defengine APIs</code>
+<code>  <span style="color: #008000;">"http://apis.io/?search=%s"</span></code>
+<code>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"APIs"</span></code>
+<code>  <span style="color: #006FE0;">:keybinding</span> <span style="color: #008000;">"a"</span><span style="color: #707183;">)</span></code>
+<code><span style="color: #707183;">(</span>defengine mozilla-developer</code>
+<code>  <span style="color: #008000;">"https://developer.mozilla.org/en-US/search?q=%s"</span></code>
+<code>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"Mozilla Developer"</span></code>
+<code>  <span style="color: #006FE0;">:keybinding</span> <span style="color: #008000;">"m"</span><span style="color: #707183;">)</span></code>
+<code><span style="color: #707183;">(</span>defengine rfcs</code>
+<code>  <span style="color: #008000;">"http://pretty-rfc.herokuapp.com/search?q=%s"</span></code>
+<code>  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">"https://www.rfc-editor.org/search/rfc_search_detail.php?rfc=%s"</code>
+<code></span>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"RFC"</span></code>
+<code>  <span style="color: #006FE0;">:keybinding</span> <span style="color: #008000;">"R"</span><span style="color: #707183;">)</span></code>
+<code><span style="color: #707183;">(</span>defengine emacswiki</code>
+<code>  <span style="color: #008000;">"www.emacswiki.org/emacs?search=%s"</span></code>
+<code>  <span style="color: #006FE0;">:docstring</span> <span style="color: #008000;">"Emacs Wiki"</span></code>
+<code>  <span style="color: #006FE0;">:keybinding</span> <span style="color: #008000;">"e"</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 </div>
@@ -522,7 +522,11 @@ them at this post.
 <footer>
   Copyright 2011, Author: Christopher M. Miles (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
   Last update date: 2025-08-22 Fri 13:44.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre).<br>
+  <a id="Emacs_Org_mode" href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;">
+    <img src="/assets/images/made_with_emacs_org-mode.jpg">
+  </a>
+  (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
   <!-- RSS -->
   You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.

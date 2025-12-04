@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-09-25 Thu 04:00 -->
+<!-- 2025-12-04 Thu 14:10 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>multilingual support with ob-translate and google-translate</title>
@@ -347,15 +347,15 @@ PUBDATE: <2019-08-14 Wed 19:47>
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-org"><code><code><span style="color: #676E95; background-color: #232635;">&#60100; translate :src zh-CN :dest en,zh-TW,ja,ko</code>
-<code></span><span style="background-color: #3C435E;">&#20320;&#22909;&#65292;&#25105;&#21483;&#38463;&#22269;&#12290;</code>
-<code>&#986659;</span><span style="color: #676E95; background-color: #232635;"></code>
-<code></span><span style="color: #89DDFF; font-weight: bold; font-style: italic;"></code>
-<code></span><span style="color: #8d92af;">#+RESULTS[ </span><span style="color: #ffffff; background-color: #333333; font-size: 80%;">2018-04-21 </span><span style="color: #000000; background-color: #bfbfbf; font-size: 80%;"> 16:17:39 </span><span style="color: #8d92af;"> 7982d9e369a56107e0b9252c5b1a7753bd6ecef0]:</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;"></code>
-<code>|</span><span style="color: #82aaff;"> en    | Hello, my name is Aguo.              |</span><span style="color: #82aaff;"></code>
-<code>|</span><span style="color: #82aaff;"> zh-TW | &#20320;&#22909;&#65292;&#25105;&#21483;&#38463;&#22283;&#12290;                     |</span><span style="color: #82aaff;"></code>
-<code>|</span><span style="color: #82aaff;"> ja    | &#12371;&#12435;&#12395;&#12385;&#12399;&#12289;&#31169;&#12398;&#21517;&#21069;&#12399;&#12450;&#12464;&#12540;&#12458;&#12391;&#12377;&#12290; |</span><span style="color: #82aaff;"></code>
-<code>|</span><span style="color: #82aaff;"> ko    | &#50504;&#45397;, &#45236; &#51060;&#47492;&#51008; &#50500;&#44396;&#50500; &#50556;.           |</span></code>
+<pre class="src src-org"><code><code><span style="color: #555555; background-color: #E2E1D5;">&#60100; translate :src zh-CN :dest en,zh-TW,ja,ko</code>
+<code></span><span style="color: #000088; background-color: #FFFFE0;">&#20320;&#22909;&#65292;&#25105;&#21483;&#38463;&#22269;&#12290;</code>
+<code>&#986659;</span><span style="color: #555555; background-color: #E2E1D5;"></code>
+<code></span><span style="color: #0000FF; font-weight: bold; font-style: italic;"></code>
+<code></span><span style="color: #008ED1; background-color: #EAEAFF;">#+RESULTS[ </span><span style="color: #000000; background-color: #e5e5e5; font-size: 80%;">2018-04-21 </span><span style="color: #ffffff; background-color: #595959; font-size: 80%;"> 16:17:39 </span><span style="color: #008ED1; background-color: #EAEAFF;"> 7982d9e369a56107e0b9252c5b1a7753bd6ecef0]:</span><span style="color: #0000FF; font-weight: bold; font-style: italic;"></code>
+<code>|</span><span style="color: #006400; background-color: #EAFFEA;"> en    | Hello, my name is Aguo.              |</span><span style="color: #006400; background-color: #EAFFEA;"></code>
+<code>|</span><span style="color: #006400; background-color: #EAFFEA;"> zh-TW | &#20320;&#22909;&#65292;&#25105;&#21483;&#38463;&#22283;&#12290;                     |</span><span style="color: #006400; background-color: #EAFFEA;"></code>
+<code>|</span><span style="color: #006400; background-color: #EAFFEA;"> ja    | &#12371;&#12435;&#12395;&#12385;&#12399;&#12289;&#31169;&#12398;&#21517;&#21069;&#12399;&#12450;&#12464;&#12540;&#12458;&#12391;&#12377;&#12290; |</span><span style="color: #006400; background-color: #EAFFEA;"></code>
+<code>|</span><span style="color: #006400; background-color: #EAFFEA;"> ko    | &#50504;&#45397;, &#45236; &#51060;&#47492;&#51008; &#50500;&#44396;&#50500; &#50556;.           |</span></code>
 </code></pre>
 </div>
 
@@ -392,13 +392,13 @@ My sample config here:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">use-package</span> ob-translate</code>
-<code>  <span style="color: #82aaff;">:ensure</span> t</code>
-<code>  <span style="color: #82aaff;">:init</span></code>
-<code>  <span style="color: #f78c6c;">(</span>add-to-list 'org-babel-load-languages '<span style="color: #c3e88d;">(</span>translate . t<span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span></code>
-<code>  <span style="color: #f78c6c;">(</span>org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages<span style="color: #f78c6c;">)</span></code>
-<code>  <span style="color: #676E95;">;; </span><span style="color: #676E95;">add translate special block into structure template alist.</code>
-<code></span>  <span style="color: #f78c6c;">(</span>add-to-list 'org-structure-template-alist '<span style="color: #c3e88d;">(</span><span style="color: #c3e88d;">"t"</span> . <span style="color: #c3e88d;">"src translate"</span><span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #707183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">use-package</span> ob-translate</code>
+<code>  <span style="color: #006FE0;">:ensure</span> t</code>
+<code>  <span style="color: #006FE0;">:init</span></code>
+<code>  <span style="color: #7388D6;">(</span>add-to-list 'org-babel-load-languages '<span style="color: #909183;">(</span>translate . t<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span></code>
+<code>  <span style="color: #7388D6;">(</span>org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages<span style="color: #7388D6;">)</span></code>
+<code>  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">add translate special block into structure template alist.</code>
+<code></span>  <span style="color: #7388D6;">(</span>add-to-list 'org-structure-template-alist '<span style="color: #909183;">(</span><span style="color: #008000;">"t"</span> . <span style="color: #008000;">"src translate"</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 
@@ -414,8 +414,8 @@ ID: 68991e81-f2b4-43ca-a71d-b81e85ae0e07
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span>add-to-list 'org-babel-default-header-args '<span style="color: #f78c6c;">(</span><span style="color: #82aaff;">:eval</span> . <span style="color: #c3e88d;">"never-export"</span><span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code>
-<code><span style="color: #c792ea;">(</span>add-to-list 'org-babel-default-header-args '<span style="color: #f78c6c;">(</span><span style="color: #82aaff;">:exports</span> . <span style="color: #c3e88d;">"both"</span><span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #707183;">(</span>add-to-list 'org-babel-default-header-args '<span style="color: #7388D6;">(</span><span style="color: #006FE0;">:eval</span> . <span style="color: #008000;">"never-export"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
+<code><span style="color: #707183;">(</span>add-to-list 'org-babel-default-header-args '<span style="color: #7388D6;">(</span><span style="color: #006FE0;">:exports</span> . <span style="color: #008000;">"both"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 
@@ -433,15 +433,15 @@ ID: 57f31085-c85b-4dd7-9f75-dabbbb283dc0
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-snippet"><code><code><span style="color: #676E95;"># -*- mode: snippet -*-</span></code>
-<code><span style="color: #676E95;"># name: ob-translate</span></code>
-<code><span style="color: #676E95;"># key: babel-translate</span></code>
-<code><span style="color: #676E95;"># group: babel</span></code>
-<code><span style="color: #676E95;"># expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 't))</span></code>
-<code><span style="color: #676E95;"># --</span></code>
-<code><span style="color: #676E95;">#+begin_src translate :src ${</span><span style="color: #ffcb6b;">1</span><span style="color: #676E95;">:source: auto, en, zh-CN} :dest ${</span><span style="color: #ffcb6b;">2</span><span style="color: #676E95;">:en,zh-KW,ja,ko}</span></code>
-<code><span style="color: #89DDFF; font-weight: bold; font-style: italic;">$</span><span style="color: #c3e88d;">0</span></code>
-<code><span style="color: #676E95;">#+end_src</span></code>
+<pre class="src src-snippet"><code><code><span style="color: #8D8D84; font-style: italic;"># -*- mode: snippet -*-</span></code>
+<code><span style="color: #8D8D84; font-style: italic;"># name: ob-translate</span></code>
+<code><span style="color: #8D8D84; font-style: italic;"># key: babel-translate</span></code>
+<code><span style="color: #8D8D84; font-style: italic;"># group: babel</span></code>
+<code><span style="color: #8D8D84; font-style: italic;"># expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 't))</span></code>
+<code><span style="color: #8D8D84; font-style: italic;"># --</span></code>
+<code><span style="color: #8D8D84; font-style: italic;">#+begin_src translate :src ${</span><span style="color: #ff0000; font-weight: bold;">1</span><span style="color: #8D8D84; font-style: italic;">:source: auto, en, zh-CN} :dest ${</span><span style="color: #ff0000; font-weight: bold;">2</span><span style="color: #8D8D84; font-style: italic;">:en,zh-KW,ja,ko}</span></code>
+<code><span style="color: #0000FF; font-weight: bold; font-style: italic;">$</span><span style="color: #008000;">0</span></code>
+<code><span style="color: #8D8D84; font-style: italic;">#+end_src</span></code>
 </code></pre>
 </div>
 </div>
@@ -459,32 +459,32 @@ Here is my config example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">use-package</span> google-translate</code>
-<code>  <span style="color: #82aaff;">:ensure</span> t</code>
-<code>  <span style="color: #82aaff;">:defer</span> t</code>
-<code>  <span style="color: #82aaff;">:bind</span> <span style="color: #f78c6c;">(</span><span style="color: #82aaff;">:map</span> dictionary-prefix</code>
-<code>              <span style="color: #c3e88d;">(</span><span style="color: #c3e88d;">"t"</span> . google-translate-smooth-translate<span style="color: #c3e88d;">)</span></code>
-<code>              <span style="color: #c3e88d;">(</span><span style="color: #c3e88d;">"C-t"</span> . google-translate-at-point<span style="color: #c3e88d;">)</span></code>
-<code>              <span style="color: #c3e88d;">(</span><span style="color: #c3e88d;">"M-t"</span> . google-translate-query-translate<span style="color: #c3e88d;">)</span></code>
-<code>              <span style="color: #c3e88d;">(</span><span style="color: #c3e88d;">"C-r"</span> . google-translate-at-point-reverse<span style="color: #c3e88d;">)</span></code>
-<code>              <span style="color: #c3e88d;">(</span><span style="color: #c3e88d;">"M-r"</span> . google-translate-query-translate-reverse<span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span></code>
-<code>  <span style="color: #82aaff;">:init</span></code>
-<code>  <span style="color: #f78c6c;">(</span>add-to-list 'display-buffer-alist</code>
-<code>               '<span style="color: #c3e88d;">(</span><span style="color: #c3e88d;">"^\\*Google Translate\\*"</span> . <span style="color: #89DDFF;">(</span>display-buffer-below-selected<span style="color: #89DDFF;">)</span><span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span></code>
-<code>  <span style="color: #82aaff;">:config</span></code>
-<code>  <span style="color: #f78c6c;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">setq</span> google-translate-enable-ido-completion nil</code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #707183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">use-package</span> google-translate</code>
+<code>  <span style="color: #006FE0;">:ensure</span> t</code>
+<code>  <span style="color: #006FE0;">:defer</span> t</code>
+<code>  <span style="color: #006FE0;">:bind</span> <span style="color: #7388D6;">(</span><span style="color: #006FE0;">:map</span> dictionary-prefix</code>
+<code>              <span style="color: #909183;">(</span><span style="color: #008000;">"t"</span> . google-translate-smooth-translate<span style="color: #909183;">)</span></code>
+<code>              <span style="color: #909183;">(</span><span style="color: #008000;">"C-t"</span> . google-translate-at-point<span style="color: #909183;">)</span></code>
+<code>              <span style="color: #909183;">(</span><span style="color: #008000;">"M-t"</span> . google-translate-query-translate<span style="color: #909183;">)</span></code>
+<code>              <span style="color: #909183;">(</span><span style="color: #008000;">"C-r"</span> . google-translate-at-point-reverse<span style="color: #909183;">)</span></code>
+<code>              <span style="color: #909183;">(</span><span style="color: #008000;">"M-r"</span> . google-translate-query-translate-reverse<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span></code>
+<code>  <span style="color: #006FE0;">:init</span></code>
+<code>  <span style="color: #7388D6;">(</span>add-to-list 'display-buffer-alist</code>
+<code>               '<span style="color: #909183;">(</span><span style="color: #008000;">"^\\*Google Translate\\*"</span> . <span style="color: #709870;">(</span>display-buffer-below-selected<span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span></code>
+<code>  <span style="color: #006FE0;">:config</span></code>
+<code>  <span style="color: #7388D6;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">setq</span> google-translate-enable-ido-completion nil</code>
 <code>        google-translate-show-phonetic t</code>
-<code>        <span style="color: #676E95;">;; </span><span style="color: #676E95;">google-translate-listen-program</code>
-<code></span>        google-translate-output-destination nil <span style="color: #676E95;">; </span><span style="color: #676E95;">'echo-area, 'popup</code>
+<code>        <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">google-translate-listen-program</code>
+<code></span>        google-translate-output-destination nil <span style="color: #8D8D84;">; </span><span style="color: #8D8D84; font-style: italic;">'echo-area, 'popup</code>
 <code></span>        google-translate-pop-up-buffer-set-focus t</code>
-<code>        <span style="color: #676E95;">;; </span><span style="color: #676E95;">`</span><span style="color: #f78c6c;">google-translate-supported-languages</span><span style="color: #676E95;">'</code>
-<code></span>        google-translate-default-target-language <span style="color: #c3e88d;">"zh-CN"</span></code>
-<code>        <span style="color: #676E95;">;; </span><span style="color: #676E95;">for `</span><span style="color: #f78c6c;">google-translate-smooth-translate</span><span style="color: #676E95;">' + [C-n/p]</code>
-<code></span>        google-translate-translation-directions-alist '<span style="color: #c3e88d;">(</span><span style="color: #89DDFF;">(</span><span style="color: #c3e88d;">"en"</span> . <span style="color: #c3e88d;">"zh-CN"</span><span style="color: #89DDFF;">)</span></code>
-<code>                                                        <span style="color: #89DDFF;">(</span><span style="color: #c3e88d;">"zh-CN"</span> . <span style="color: #c3e88d;">"en"</span><span style="color: #89DDFF;">)</span></code>
-<code>                                                        <span style="color: #89DDFF;">(</span><span style="color: #c3e88d;">"zh-CN"</span> . <span style="color: #c3e88d;">"ja"</span><span style="color: #89DDFF;">)</span></code>
-<code>                                                        <span style="color: #89DDFF;">(</span><span style="color: #c3e88d;">"zh-CN"</span> . <span style="color: #c3e88d;">"ko"</span><span style="color: #89DDFF;">)</span><span style="color: #c3e88d;">)</span></code>
-<code>        <span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code>
+<code>        <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">`</span><span style="color: #D0372D; font-style: italic;">google-translate-supported-languages</span><span style="color: #8D8D84; font-style: italic;">'</code>
+<code></span>        google-translate-default-target-language <span style="color: #008000;">"zh-CN"</span></code>
+<code>        <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">for `</span><span style="color: #D0372D; font-style: italic;">google-translate-smooth-translate</span><span style="color: #8D8D84; font-style: italic;">' + [C-n/p]</code>
+<code></span>        google-translate-translation-directions-alist '<span style="color: #909183;">(</span><span style="color: #709870;">(</span><span style="color: #008000;">"en"</span> . <span style="color: #008000;">"zh-CN"</span><span style="color: #709870;">)</span></code>
+<code>                                                        <span style="color: #709870;">(</span><span style="color: #008000;">"zh-CN"</span> . <span style="color: #008000;">"en"</span><span style="color: #709870;">)</span></code>
+<code>                                                        <span style="color: #709870;">(</span><span style="color: #008000;">"zh-CN"</span> . <span style="color: #008000;">"ja"</span><span style="color: #709870;">)</span></code>
+<code>                                                        <span style="color: #709870;">(</span><span style="color: #008000;">"zh-CN"</span> . <span style="color: #008000;">"ko"</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span></code>
+<code>        <span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 
@@ -510,41 +510,41 @@ For now, you can simply use my helper function:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">defvar</span> <span style="color: #ffcb6b;">my:proxy-toggle-p</span> nil</code>
-<code>  <span style="color: #8d92af;">"A global variable indicate current proxy toggle status.</code>
-<code>Used by function `</span><span style="color: #f78c6c;">my:proxy-toggle</span><span style="color: #8d92af;">'."</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #707183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">defvar</span> <span style="color: #BA36A5;">my:proxy-toggle-p</span> nil</code>
+<code>  <span style="color: #036A07;">"A global variable indicate current proxy toggle status.</code>
+<code>Used by function `</span><span style="color: #D0372D;">my:proxy-toggle</span><span style="color: #036A07;">'."</span><span style="color: #707183;">)</span></code>
 <code></code>
-<code><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #82aaff;">my:proxy-toggle</span> <span style="color: #f78c6c;">(</span>proxy<span style="color: #f78c6c;">)</span></code>
-<code>  <span style="color: #8d92af;">"A command to toggle `</span><span style="color: #f78c6c;">PROXY</span><span style="color: #8d92af;">' for Emacs."</span></code>
-<code>  <span style="color: #f78c6c;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">interactive</span> <span style="color: #c3e88d;">(</span>list <span style="color: #89DDFF;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">unless</span> my:proxy-toggle-p</code>
-<code>                       <span style="color: #bb80b3;">(</span>completing-read <span style="color: #c3e88d;">"Select a proxy routine: "</span> '<span style="color: #ffcb6b;">(</span><span style="color: #c3e88d;">"socks"</span> <span style="color: #c3e88d;">"url_proxy_services"</span> <span style="color: #c3e88d;">"env HTTP_PROXY"</span><span style="color: #ffcb6b;">)</span><span style="color: #bb80b3;">)</span><span style="color: #89DDFF;">)</span><span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span></code>
-<code>  <span style="color: #f78c6c;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">if</span> my:proxy-toggle-p</code>
-<code>      <span style="color: #c3e88d;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">setq</span> my:proxy-toggle-p nil<span style="color: #c3e88d;">)</span></code>
-<code>    <span style="color: #c3e88d;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">setq</span> my:proxy-toggle-p proxy<span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span></code>
-<code>  <span style="color: #f78c6c;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">pcase</span> my:proxy-toggle-p</code>
-<code>    <span style="color: #c3e88d;">(</span><span style="color: #c3e88d;">"socks"</span></code>
-<code>     <span style="color: #89DDFF;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">setq</span> url-gateway-method 'socks</code>
-<code>           socks-noproxy '<span style="color: #bb80b3;">(</span><span style="color: #c3e88d;">"localhost"</span><span style="color: #bb80b3;">)</span></code>
-<code>           socks-server '<span style="color: #bb80b3;">(</span><span style="color: #c3e88d;">"Default server"</span> <span style="color: #c3e88d;">"127.0.0.1"</span> 1086 5<span style="color: #bb80b3;">)</span><span style="color: #89DDFF;">)</span><span style="color: #c3e88d;">)</span></code>
-<code>    <span style="color: #c3e88d;">(</span><span style="color: #c3e88d;">"url_proxy_services"</span></code>
-<code>     <span style="color: #89DDFF;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">setq</span> url-proxy-services</code>
-<code>           '<span style="color: #bb80b3;">(</span><span style="color: #ffcb6b;">(</span><span style="color: #c3e88d;">"http"</span>  . <span style="color: #c3e88d;">"127.0.0.1:8118"</span><span style="color: #ffcb6b;">)</span></code>
-<code>             <span style="color: #ffcb6b;">(</span><span style="color: #c3e88d;">"https"</span> . <span style="color: #c3e88d;">"127.0.0.1:8118"</span><span style="color: #ffcb6b;">)</span></code>
-<code>             <span style="color: #ffcb6b;">(</span><span style="color: #c3e88d;">"ftp"</span>   . <span style="color: #c3e88d;">"127.0.0.1:8118"</span><span style="color: #ffcb6b;">)</span></code>
-<code>             <span style="color: #676E95;">;; </span><span style="color: #676E95;">don't use `</span><span style="color: #f78c6c;">localhost</span><span style="color: #676E95;">', avoid robe server (For Ruby) can't response.</code>
-<code></span>             <span style="color: #ffcb6b;">(</span><span style="color: #c3e88d;">"no_proxy"</span> . <span style="color: #c3e88d;">"127.0.0.1"</span><span style="color: #ffcb6b;">)</span></code>
-<code>             <span style="color: #ffcb6b;">(</span><span style="color: #c3e88d;">"no_proxy"</span> . <span style="color: #c3e88d;">"^.*</span><span style="color: #89DDFF; font-weight: bold;">\\</span><span style="color: #89DDFF; font-weight: bold;">(</span><span style="color: #c3e88d;">baidu</span><span style="color: #89DDFF; font-weight: bold;">\\</span><span style="color: #89DDFF; font-weight: bold;">|</span><span style="color: #c3e88d;">sina)\\.com"</span><span style="color: #ffcb6b;">)</span></code>
-<code>             <span style="color: #bb80b3;">)</span><span style="color: #89DDFF;">)</span><span style="color: #c3e88d;">)</span></code>
-<code>    <span style="color: #c3e88d;">(</span><span style="color: #c3e88d;">"env HTTP_PROXY"</span></code>
-<code>     <span style="color: #676E95;">;; </span><span style="color: #676E95;">Privoxy</code>
-<code></span>     <span style="color: #89DDFF;">(</span>setenv <span style="color: #c3e88d;">"HTTP_PROXY"</span>  <span style="color: #c3e88d;">"http://localhost:8118"</span><span style="color: #89DDFF;">)</span></code>
-<code>     <span style="color: #89DDFF;">(</span>setenv <span style="color: #c3e88d;">"HTTPS_PROXY"</span> <span style="color: #c3e88d;">"http://localhost:8118"</span><span style="color: #89DDFF;">)</span><span style="color: #c3e88d;">)</span></code>
-<code>    <span style="color: #c3e88d;">(</span>_</code>
-<code>     <span style="color: #89DDFF;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">setq</span> url-gateway-method 'native<span style="color: #89DDFF;">)</span></code>
-<code>     <span style="color: #89DDFF;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">setq</span> url-proxy-services nil<span style="color: #89DDFF;">)</span></code>
-<code>     <span style="color: #89DDFF;">(</span>setenv <span style="color: #c3e88d;">"HTTP_PROXY"</span>  nil<span style="color: #89DDFF;">)</span></code>
-<code>     <span style="color: #89DDFF;">(</span>setenv <span style="color: #c3e88d;">"HTTPS_PROXY"</span> nil<span style="color: #89DDFF;">)</span><span style="color: #c3e88d;">)</span></code>
-<code>    <span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code>
+<code><span style="color: #707183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #006699;">my:proxy-toggle</span> <span style="color: #7388D6;">(</span>proxy<span style="color: #7388D6;">)</span></code>
+<code>  <span style="color: #036A07;">"A command to toggle `</span><span style="color: #D0372D;">PROXY</span><span style="color: #036A07;">' for Emacs."</span></code>
+<code>  <span style="color: #7388D6;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">interactive</span> <span style="color: #909183;">(</span>list <span style="color: #709870;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">unless</span> my:proxy-toggle-p</code>
+<code>                       <span style="color: #907373;">(</span>completing-read <span style="color: #008000;">"Select a proxy routine: "</span> '<span style="color: #6276BA;">(</span><span style="color: #008000;">"socks"</span> <span style="color: #008000;">"url_proxy_services"</span> <span style="color: #008000;">"env HTTP_PROXY"</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span></code>
+<code>  <span style="color: #7388D6;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">if</span> my:proxy-toggle-p</code>
+<code>      <span style="color: #909183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">setq</span> my:proxy-toggle-p nil<span style="color: #909183;">)</span></code>
+<code>    <span style="color: #909183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">setq</span> my:proxy-toggle-p proxy<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span></code>
+<code>  <span style="color: #7388D6;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">pcase</span> my:proxy-toggle-p</code>
+<code>    <span style="color: #909183;">(</span><span style="color: #008000;">"socks"</span></code>
+<code>     <span style="color: #709870;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">setq</span> url-gateway-method 'socks</code>
+<code>           socks-noproxy '<span style="color: #907373;">(</span><span style="color: #008000;">"localhost"</span><span style="color: #907373;">)</span></code>
+<code>           socks-server '<span style="color: #907373;">(</span><span style="color: #008000;">"Default server"</span> <span style="color: #008000;">"127.0.0.1"</span> 1086 5<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span></code>
+<code>    <span style="color: #909183;">(</span><span style="color: #008000;">"url_proxy_services"</span></code>
+<code>     <span style="color: #709870;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">setq</span> url-proxy-services</code>
+<code>           '<span style="color: #907373;">(</span><span style="color: #6276BA;">(</span><span style="color: #008000;">"http"</span>  . <span style="color: #008000;">"127.0.0.1:8118"</span><span style="color: #6276BA;">)</span></code>
+<code>             <span style="color: #6276BA;">(</span><span style="color: #008000;">"https"</span> . <span style="color: #008000;">"127.0.0.1:8118"</span><span style="color: #6276BA;">)</span></code>
+<code>             <span style="color: #6276BA;">(</span><span style="color: #008000;">"ftp"</span>   . <span style="color: #008000;">"127.0.0.1:8118"</span><span style="color: #6276BA;">)</span></code>
+<code>             <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">don't use `</span><span style="color: #D0372D; font-style: italic;">localhost</span><span style="color: #8D8D84; font-style: italic;">', avoid robe server (For Ruby) can't response.</code>
+<code></span>             <span style="color: #6276BA;">(</span><span style="color: #008000;">"no_proxy"</span> . <span style="color: #008000;">"127.0.0.1"</span><span style="color: #6276BA;">)</span></code>
+<code>             <span style="color: #6276BA;">(</span><span style="color: #008000;">"no_proxy"</span> . <span style="color: #008000;">"^.*</span><span style="color: #008000; font-weight: bold;">\\</span><span style="color: #008000; font-weight: bold;">(</span><span style="color: #008000;">baidu</span><span style="color: #008000; font-weight: bold;">\\</span><span style="color: #008000; font-weight: bold;">|</span><span style="color: #008000;">sina)\\.com"</span><span style="color: #6276BA;">)</span></code>
+<code>             <span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span></code>
+<code>    <span style="color: #909183;">(</span><span style="color: #008000;">"env HTTP_PROXY"</span></code>
+<code>     <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Privoxy</code>
+<code></span>     <span style="color: #709870;">(</span>setenv <span style="color: #008000;">"HTTP_PROXY"</span>  <span style="color: #008000;">"http://localhost:8118"</span><span style="color: #709870;">)</span></code>
+<code>     <span style="color: #709870;">(</span>setenv <span style="color: #008000;">"HTTPS_PROXY"</span> <span style="color: #008000;">"http://localhost:8118"</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span></code>
+<code>    <span style="color: #909183;">(</span>_</code>
+<code>     <span style="color: #709870;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">setq</span> url-gateway-method 'native<span style="color: #709870;">)</span></code>
+<code>     <span style="color: #709870;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">setq</span> url-proxy-services nil<span style="color: #709870;">)</span></code>
+<code>     <span style="color: #709870;">(</span>setenv <span style="color: #008000;">"HTTP_PROXY"</span>  nil<span style="color: #709870;">)</span></code>
+<code>     <span style="color: #709870;">(</span>setenv <span style="color: #008000;">"HTTPS_PROXY"</span> nil<span style="color: #709870;">)</span><span style="color: #909183;">)</span></code>
+<code>    <span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 </div>
@@ -627,7 +627,7 @@ ID: c2947e8d-c810-4431-861e-a87db6872f18
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-shell"><code><code>fanyi <span style="color: #c3e88d;">"&#20320;&#22909;&#65292;&#19990;&#30028;"</span></code>
+<pre class="src src-shell"><code><code>fanyi <span style="color: #008000;">"&#20320;&#22909;&#65292;&#19990;&#30028;"</span></code>
 </code></pre>
 </div>
 
@@ -654,7 +654,11 @@ ID: c2947e8d-c810-4431-861e-a87db6872f18
 <footer>
   Copyright 2011, Author: Christopher M. Miles (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
   Last update date: 2025-08-22 Fri 13:44.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre).<br>
+  <a id="Emacs_Org_mode" href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;">
+    <img src="/assets/images/made_with_emacs_org-mode.jpg">
+  </a>
+  (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
   <!-- RSS -->
   You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.

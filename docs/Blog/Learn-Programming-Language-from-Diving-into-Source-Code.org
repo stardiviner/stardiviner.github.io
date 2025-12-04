@@ -1,4 +1,4 @@
-# Created 2025-09-25 Thu 03:58
+# Created 2025-12-04 Thu 14:08
 #+title: Learn Programming Language from Diving into Source Code
 #+author: Christopher M. Miles
 * Master Core Functions

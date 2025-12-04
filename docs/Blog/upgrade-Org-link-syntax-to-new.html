@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-09-25 Thu 04:00 -->
+<!-- 2025-12-04 Thu 14:10 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>upgrade Org link syntax to new</title>
@@ -361,32 +361,32 @@ You need to evaluate following elisp code.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><code><span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #82aaff;">org-update-link-syntax</span> <span style="color: #f78c6c;">(</span><span style="color: #c792ea; font-style: italic;">&amp;optional</span> no-query<span style="color: #f78c6c;">)</span></code>
-<code>  <span style="color: #8d92af;">"Update syntax for links in current buffer."</span></code>
-<code>  <span style="color: #f78c6c;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">interactive</span><span style="color: #f78c6c;">)</span></code>
-<code>  <span style="color: #f78c6c;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">org-with-point-at</span> 1</code>
-<code>    <span style="color: #c3e88d;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">let</span> <span style="color: #89DDFF;">(</span><span style="color: #bb80b3;">(</span>case-fold-search t<span style="color: #bb80b3;">)</span><span style="color: #89DDFF;">)</span></code>
-<code>      <span style="color: #676E95;">;; </span><span style="color: #676E95;">(re-search-forward "\\[\\[[</span><span style="color: #89DDFF; font-weight: bold;">^</span><span style="color: #676E95;">]]*?%\\(?:2[05]\\|5[BD]\\)" nil t) ; safer matching</code>
-<code></span>      <span style="color: #89DDFF;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">while</span> <span style="color: #bb80b3;">(</span>re-search-forward <span style="color: #c3e88d;">"\\[\\[[</span><span style="color: #89DDFF; font-weight: bold;">^</span><span style="color: #c3e88d;">]]*?%"</span> nil t<span style="color: #bb80b3;">)</span> <span style="color: #676E95;">; </span><span style="color: #676E95;">wider matching</code>
-<code></span>        <span style="color: #bb80b3;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">let</span> <span style="color: #ffcb6b;">(</span><span style="color: #82aaff;">(</span>object <span style="color: #44b9b1;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">save-match-data</span> <span style="color: #80cbc4;">(</span>org-element-context<span style="color: #80cbc4;">)</span><span style="color: #44b9b1;">)</span><span style="color: #82aaff;">)</span><span style="color: #ffcb6b;">)</span></code>
-<code>          <span style="color: #ffcb6b;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">when</span> <span style="color: #82aaff;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">and</span> <span style="color: #44b9b1;">(</span>eq 'link <span style="color: #80cbc4;">(</span>org-element-type object<span style="color: #80cbc4;">)</span><span style="color: #44b9b1;">)</span></code>
-<code>                     <span style="color: #44b9b1;">(</span>= <span style="color: #80cbc4;">(</span>match-beginning 0<span style="color: #80cbc4;">)</span></code>
-<code>                        <span style="color: #80cbc4;">(</span>org-element-property <span style="color: #82aaff;">:begin</span> object<span style="color: #80cbc4;">)</span><span style="color: #44b9b1;">)</span><span style="color: #82aaff;">)</span></code>
-<code>            <span style="color: #82aaff;">(</span>goto-char <span style="color: #44b9b1;">(</span>org-element-property <span style="color: #82aaff;">:end</span> object<span style="color: #44b9b1;">)</span><span style="color: #82aaff;">)</span></code>
-<code>            <span style="color: #82aaff;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">let*</span> <span style="color: #44b9b1;">(</span><span style="color: #80cbc4;">(</span>uri-start <span style="color: #c792ea;">(</span>+ 2 <span style="color: #f78c6c;">(</span>match-beginning 0<span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span><span style="color: #80cbc4;">)</span></code>
-<code>                   <span style="color: #80cbc4;">(</span>uri-end <span style="color: #c792ea;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">save-excursion</span></code>
-<code>                              <span style="color: #f78c6c;">(</span>goto-char uri-start<span style="color: #f78c6c;">)</span></code>
-<code>                              <span style="color: #f78c6c;">(</span>re-search-forward <span style="color: #c3e88d;">"\\][][]"</span> nil t<span style="color: #f78c6c;">)</span></code>
-<code>                              <span style="color: #f78c6c;">(</span>match-beginning 0<span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span><span style="color: #80cbc4;">)</span></code>
-<code>                   <span style="color: #80cbc4;">(</span>uri <span style="color: #c792ea;">(</span>buffer-substring-no-properties uri-start uri-end<span style="color: #c792ea;">)</span><span style="color: #80cbc4;">)</span><span style="color: #44b9b1;">)</span></code>
-<code>              <span style="color: #44b9b1;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">when</span></code>
-<code>                  <span style="color: #676E95;">;; </span><span style="color: #676E95;">t ; if you don't want to confirm every one link, just use this t for automatically modify link.</code>
-<code></span>                <span style="color: #80cbc4;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">or</span> no-query</code>
-<code>                    <span style="color: #c792ea;">(</span>y-or-n-p</code>
-<code>                     <span style="color: #f78c6c;">(</span>format <span style="color: #c3e88d;">"Possibly obsolete URI syntax: %S.  Fix? "</span></code>
-<code>                             uri<span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span><span style="color: #80cbc4;">)</span></code>
-<code>                <span style="color: #80cbc4;">(</span><span style="color: #89DDFF; font-weight: bold; font-style: italic;">setf</span> <span style="color: #c792ea;">(</span>buffer-substring uri-start uri-end<span style="color: #c792ea;">)</span></code>
-<code>                      <span style="color: #c792ea;">(</span>org-link-escape <span style="color: #f78c6c;">(</span>org-link-decode uri<span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span><span style="color: #80cbc4;">)</span><span style="color: #44b9b1;">)</span><span style="color: #82aaff;">)</span><span style="color: #ffcb6b;">)</span><span style="color: #bb80b3;">)</span><span style="color: #89DDFF;">)</span><span style="color: #c3e88d;">)</span><span style="color: #f78c6c;">)</span><span style="color: #c792ea;">)</span></code>
+<pre class="src src-emacs-lisp"><code><code><span style="color: #707183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">defun</span> <span style="color: #006699;">org-update-link-syntax</span> <span style="color: #7388D6;">(</span><span style="color: #6434A3; font-style: italic;">&amp;optional</span> no-query<span style="color: #7388D6;">)</span></code>
+<code>  <span style="color: #036A07;">"Update syntax for links in current buffer."</span></code>
+<code>  <span style="color: #7388D6;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">interactive</span><span style="color: #7388D6;">)</span></code>
+<code>  <span style="color: #7388D6;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">org-with-point-at</span> 1</code>
+<code>    <span style="color: #909183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">let</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span>case-fold-search t<span style="color: #907373;">)</span><span style="color: #709870;">)</span></code>
+<code>      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">(re-search-forward "\\[\\[[</span><span style="color: #8D8D84; font-style: italic;">^</span><span style="color: #8D8D84; font-style: italic;">]]*?%\\(?:2[05]\\|5[BD]\\)" nil t) ; safer matching</code>
+<code></span>      <span style="color: #709870;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">while</span> <span style="color: #907373;">(</span>re-search-forward <span style="color: #008000;">"\\[\\[[</span><span style="color: #008000;">^</span><span style="color: #008000;">]]*?%"</span> nil t<span style="color: #907373;">)</span> <span style="color: #8D8D84;">; </span><span style="color: #8D8D84; font-style: italic;">wider matching</code>
+<code></span>        <span style="color: #907373;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">let</span> <span style="color: #6276BA;">(</span><span style="color: #858580;">(</span>object <span style="color: #80A880;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">save-match-data</span> <span style="color: #887070;">(</span>org-element-context<span style="color: #887070;">)</span><span style="color: #80A880;">)</span><span style="color: #858580;">)</span><span style="color: #6276BA;">)</span></code>
+<code>          <span style="color: #6276BA;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">when</span> <span style="color: #858580;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">and</span> <span style="color: #80A880;">(</span>eq 'link <span style="color: #887070;">(</span>org-element-type object<span style="color: #887070;">)</span><span style="color: #80A880;">)</span></code>
+<code>                     <span style="color: #80A880;">(</span>= <span style="color: #887070;">(</span>match-beginning 0<span style="color: #887070;">)</span></code>
+<code>                        <span style="color: #887070;">(</span>org-element-property <span style="color: #006FE0;">:begin</span> object<span style="color: #887070;">)</span><span style="color: #80A880;">)</span><span style="color: #858580;">)</span></code>
+<code>            <span style="color: #858580;">(</span>goto-char <span style="color: #80A880;">(</span>org-element-property <span style="color: #006FE0;">:end</span> object<span style="color: #80A880;">)</span><span style="color: #858580;">)</span></code>
+<code>            <span style="color: #858580;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">let*</span> <span style="color: #80A880;">(</span><span style="color: #887070;">(</span>uri-start <span style="color: #707183;">(</span>+ 2 <span style="color: #7388D6;">(</span>match-beginning 0<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span><span style="color: #887070;">)</span></code>
+<code>                   <span style="color: #887070;">(</span>uri-end <span style="color: #707183;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">save-excursion</span></code>
+<code>                              <span style="color: #7388D6;">(</span>goto-char uri-start<span style="color: #7388D6;">)</span></code>
+<code>                              <span style="color: #7388D6;">(</span>re-search-forward <span style="color: #008000;">"\\][][]"</span> nil t<span style="color: #7388D6;">)</span></code>
+<code>                              <span style="color: #7388D6;">(</span>match-beginning 0<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span><span style="color: #887070;">)</span></code>
+<code>                   <span style="color: #887070;">(</span>uri <span style="color: #707183;">(</span>buffer-substring-no-properties uri-start uri-end<span style="color: #707183;">)</span><span style="color: #887070;">)</span><span style="color: #80A880;">)</span></code>
+<code>              <span style="color: #80A880;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">when</span></code>
+<code>                  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">t ; if you don't want to confirm every one link, just use this t for automatically modify link.</code>
+<code></span>                <span style="color: #887070;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">or</span> no-query</code>
+<code>                    <span style="color: #707183;">(</span>y-or-n-p</code>
+<code>                     <span style="color: #7388D6;">(</span>format <span style="color: #008000;">"Possibly obsolete URI syntax: %S.  Fix? "</span></code>
+<code>                             uri<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span><span style="color: #887070;">)</span></code>
+<code>                <span style="color: #887070;">(</span><span style="color: #0000FF; font-weight: bold; font-style: italic;">setf</span> <span style="color: #707183;">(</span>buffer-substring uri-start uri-end<span style="color: #707183;">)</span></code>
+<code>                      <span style="color: #707183;">(</span>org-link-escape <span style="color: #7388D6;">(</span>org-link-decode uri<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span><span style="color: #887070;">)</span><span style="color: #80A880;">)</span><span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span></code>
 </code></pre>
 </div>
 
@@ -448,7 +448,11 @@ I will update here if there are new updates.
 <footer>
   Copyright 2011, Author: stardiviner &lt;numbchild@gmail.com&gt; (<a href="mailto:numbchild@gmail.com">numbchild@gmail.com</a>).<br>
   Last update date: 2025-08-22 Fri 13:44.<br>
-  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre). <a href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;"><img src="/assets/images/made_with_emacs_org-mode.jpg"></a> (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
+  Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 31.0.50 (<a href="https://orgmode.org">Org</a> mode 9.8-pre).<br>
+  <a id="Emacs_Org_mode" href="http://orgmode.org" alt="Made with Emacs Org-Mode" style="float:left; margin 20px 0px 20px 20px;">
+    <img src="/assets/images/made_with_emacs_org-mode.jpg">
+  </a>
+  (<a href="https://validator.w3.org/check?uri=referer">Validate</a> HTML)
 
   <!-- RSS -->
   You can <a href='Blog/index.xml'>subscribe</a> my blog through RSS.
