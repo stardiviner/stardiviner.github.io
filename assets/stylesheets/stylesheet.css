@@ -1064,6 +1064,12 @@ body {
 #postamble footer a {
   color: #00000066;
 }
+/* Made with Emacs Org-Mode icon */
+a#Emacs_Org_mode:hover {
+  all: rever;
+  transform: scale(0.8);
+  transition: all .3s ease;
+}
 /* "Show Org source" button */
 #show_source input[type=button] {
   background: white;
